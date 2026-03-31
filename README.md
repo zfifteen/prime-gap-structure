@@ -1,5 +1,7 @@
 # Geodesic Prime Prefilter
 
+![Geodesic Prime Prefilter hero](docs/assets/geodesic-prime-prefilter-hero.jpg)
+
 Deterministic cryptographic prime prefiltering derived from the sweet-spot Z-band at $v = e^{2}/2$.
 
 This repository presents the geodesic prime prefilter as a deterministic cryptographic primitive. It gives the mathematical basis of the method, a production Python implementation, and the validation vectors and benchmarks needed to reproduce the result.

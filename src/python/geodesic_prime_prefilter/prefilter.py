@@ -260,6 +260,15 @@ class CDLPrimeGeodesicPrefilter:
                 deep_tail_chunk_size,
                 start_exclusive=tail_prime_limit,
             )
+        self.survivor_prime_limit = 2000003
+        self.survivor_chunk_size = 256
+        self.survivor_table = None
+        if bit_length >= 512:
+            self.survivor_table = get_cached_wheel_prime_table(
+                self.survivor_prime_limit,
+                self.survivor_chunk_size,
+                start_exclusive=1000003,
+            )
 
     def _proxy(self, n: int) -> dict[str, float | int | bool | str | None]:
         """
@@ -341,6 +350,38 @@ class CDLPrimeGeodesicPrefilter:
     def is_prime_candidate(self, n: int) -> bool:
         """Return True when the candidate survives the CDL geodesic prefilter."""
         return not bool(self._proxy(n)["rejected"])
+
+    def dci_progressive_depth(self, n: int) -> int:
+        """
+        Divisor Curvature Identity progressive depth (survivor-only extension).
+
+        Depths 0–2: fast gated rejection.
+        Depth 3: survived base tables, rejected in the survivor stage.
+        Depth 4: cleared all deterministic stages.
+        """
+        if n < 2 or n % 2 == 0:
+            return 0
+
+        if self.primary_table.find_small_factor(n) is not None:
+            return 0
+        if self.tail_table.find_small_factor(n) is not None:
+            return 1
+        if (
+            self.deep_tail_table is not None
+            and n.bit_length() >= self.deep_tail_min_bits
+            and self.deep_tail_table.find_small_factor(n) is not None
+        ):
+            return 2
+        if (
+            self.survivor_table is not None
+            and self.survivor_table.find_small_factor(n) is not None
+        ):
+            return 3
+        return 4
+
+    def dci_survivor_strength(self, n: int) -> float:
+        """Normalize the progressive DCI depth into the range [0.0, 1.0]."""
+        return self.dci_progressive_depth(n) / 4.0
 
     def is_probable_prime(
         self,

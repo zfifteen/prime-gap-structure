@@ -114,7 +114,7 @@ def build_markdown_report(
                 f"- The accelerated path generated the same keypairs in `{accelerated['total_wall_time_ms']:.6f}` ms for a measured `{result['speedup']:.2f}x` speedup.",
                 f"- The proxy removed `{result['saved_miller_rabin_calls']}` Miller-Rabin calls (`{result['saved_miller_rabin_call_rate']:.2%}` of baseline MR work).",
                 f"- Proxy rejection rate was `{accelerated['proxy_rejection_rate']:.2%}` across the full candidate stream.",
-                f"- All `{fixed_points['fixed_point_count']}` confirmed primes remained on the fixed-point band `Z = 1.0` after final `sympy.isprime` confirmation.",
+                f"- All `{fixed_points['fixed_point_count']}` confirmed primes remained on the Divisor Curvature Identity (DCI) `Z(n) = n^(1 - d(n)/2)` band `Z = 1.0` after final `sympy.isprime` confirmation.",
             ]
         )
 

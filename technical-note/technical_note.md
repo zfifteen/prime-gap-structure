@@ -1,6 +1,6 @@
 ---
 title: "The Geodesic Prime Prefilter"
-subtitle: "Technical Note on Fixed-Point Collapse, Deterministic Factor-Gated Filtering, Candidate-Loop Screening, and RSA Key Generation Acceleration"
+subtitle: "Technical Note on the Divisor Curvature Identity, Deterministic Factor-Gated Filtering, Candidate-Loop Screening, and RSA Key Generation Acceleration"
 author: "Dionisio Alberto Lopez III"
 date: "March 31, 2026"
 documentclass: article
@@ -11,21 +11,21 @@ bibliography: references.bib
 link-citations: true
 colorlinks: true
 abstract: |
-  The Geodesic Prime Prefilter is a deterministic cryptographic prime prefilter derived from the fixed-point traversal rate $v = e^2 / 2$ of the divisor-curvature normalization $Z(n) = n / \exp(v \cdot \kappa(n))$ with $\kappa(n) = d(n)\ln(n) / e^2$. At that rate the exact closed form becomes $Z(n) = n^{1 - d(n)/2}$, so confirmed primes collapse to the invariant band $Z = 1.0$ and composites contract below that band. Validation in this repository shows 29/29 calibration primes on the fixed-point band, 0 composite false fixed points, and an exact-calibration curvature separation ratio of 4.54× on the tractable corpus. The production Python path replaces exact divisor counting with a deterministic factor-gated surrogate that preserves the fixed-point survivor convention before fixed-base Miller-Rabin and final sympy.isprime confirmation. The curated repo benchmark summary reports 91.02 % and 91.41 % candidate rejection before Miller-Rabin on 2048-bit and 4096-bit corpora, candidate-loop speedups of 2.95× and 3.33×, and end-to-end deterministic RSA key-generation speedups of 2.09× over 300 2048-bit keypairs and 2.82× over 50 4096-bit keypairs while reducing Miller-Rabin work by 90.97 % to 91.07 %. The repository therefore establishes a mathematically derived fixed-point law, a deterministic production prefilter built from it, and a measured cryptographic payoff in the tested Python regime.
+  The Geodesic Prime Prefilter is a deterministic cryptographic prime prefilter derived from the fixed-point traversal rate $v = e^2 / 2$ of the divisor-curvature normalization $Z(n) = n / \exp(v \cdot \kappa(n))$ with $\kappa(n) = d(n)\ln(n) / e^2$. At that rate the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\) holds exactly, so confirmed primes collapse to the invariant band $Z = 1.0$ and composites contract below that band. Validation in this repository shows 29/29 calibration primes on the fixed-point band, 0 composite false fixed points, and an exact-calibration curvature separation ratio of 4.54× on the tractable corpus. The production Python path replaces exact divisor counting with a deterministic factor-gated surrogate that preserves the fixed-point survivor convention before fixed-base Miller-Rabin and final sympy.isprime confirmation. The curated repo benchmark summary reports 91.02 % and 91.41 % candidate rejection before Miller-Rabin on 2048-bit and 4096-bit corpora, candidate-loop speedups of 2.95× and 3.33×, and end-to-end deterministic RSA key-generation speedups of 2.09× over 300 2048-bit keypairs and 2.82× over 50 4096-bit keypairs while reducing Miller-Rabin work by 90.97 % to 91.07 %. The repository therefore establishes the mathematically derived DCI, a deterministic production prefilter built from it, and a measured cryptographic payoff in the tested Python regime.
 ---
 
-**Keywords:** divisor count; fixed-point collapse; prime generation; Miller-Rabin prefilter; deterministic screening; RSA key generation
+**Keywords:** divisor count; Divisor Curvature Identity; prime generation; Miller-Rabin prefilter; deterministic screening; RSA key generation
 
 # Opening Statement
 
-The Geodesic Prime Prefilter is a deterministic cryptographic prefilter derived from a fixed-point law in divisor-curvature normalization.
+The Geodesic Prime Prefilter is a deterministic cryptographic prefilter derived from the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\) in divisor-curvature normalization.
 
 At the distinguished traversal rate $v = e^2 / 2$, the exact normalization sends every prime to the invariant band $Z = 1.0$ and pushes composites below that band.
 
 The repository establishes four concrete results:
 
-- the exact fixed-point law holds numerically on the tractable calibration corpus,
-- the production path preserves that law as its survivor convention,
+- the exact DCI holds numerically on the tractable calibration corpus,
+- the production path preserves the DCI as its survivor convention,
 - candidate-loop screening removes about 91 % of tested cryptographic candidates before Miller-Rabin,
 - the current Python implementation yields measured end-to-end RSA key-generation gains on deterministic streams.
 
@@ -47,7 +47,7 @@ $$
 v = \frac{e^2}{2},
 $$
 
-the normalization collapses to the exact closed form
+the normalization yields the exact DCI
 
 $$
 Z(n) = n^{1 - d(n)/2}.
@@ -65,7 +65,7 @@ This note describes what the repository establishes when that law is turned into
 
 # Why This Matters Computationally
 
-The fixed-point law supplies an exact invariant target for prime candidates. It separates the mathematical derivation from the runtime production filter without breaking the logic that connects them. It lets the implementation reject many composites before the probable-prime path rather than after it. It yields a deterministic screening front end for prime search inside RSA-style key construction.
+The DCI supplies an exact invariant target for prime candidates. It separates the mathematical derivation from the runtime production filter without breaking the logic that connects them. It lets the implementation reject many composites before the probable-prime path rather than after it. It yields a deterministic screening front end for prime search inside RSA-style key construction.
 
 The repository presents a deterministic structural prefilter whose payoff can be measured on the same candidate streams and the same final confirmation path.
 
@@ -102,7 +102,7 @@ Z(n) &= \frac{n}{\exp\left(\frac{e^2}{2} \cdot \frac{d(n)\ln(n)}{e^2}\right)} \\
 \end{aligned}
 $$
 
-That is the exact fixed-point collapse.
+That is the exact Divisor Curvature Identity.
 
 The tractable calibration corpus in the repo shows:
 
@@ -114,11 +114,11 @@ The tractable calibration corpus in the repo shows:
 
 On that same 20-bit calibration corpus, fixed-base Miller-Rabin matches exact primality with 100 % accuracy in the committed benchmark report.
 
-Under exact divisor counting, the fixed-point law is algebraically exact and numerically clean on the tractable calibration regime tested in this repository.
+Under exact divisor counting, the DCI is algebraically exact and numerically clean on the tractable calibration regime tested in this repository.
 
 # Operational Evidence in the Exact Setting
 
-The exact fixed-point law is the derivation surface and the calibration oracle. Exact divisor counting still uses $O(\sqrt{n})$ enumeration in the current executable path. For arbitrary 2048-bit candidates the benchmark report describes the implied worst-case trial space as about $2^{1024}$ divisibility checks per candidate.
+The exact DCI is the derivation surface and the calibration oracle. Exact divisor counting still uses $O(\sqrt{n})$ enumeration in the current executable path. For arbitrary 2048-bit candidates the benchmark report describes the implied worst-case trial space as about $2^{1024}$ divisibility checks per candidate.
 
 That scale boundary cleanly separates two jobs:
 
@@ -129,7 +129,7 @@ The same calibration corpus shows that the deterministic proxy still preserves t
 
 The exact regime therefore anchors the invariant target that the production filter is built to preserve.
 
-# From Exact Fixed-Point Law to Deterministic Production Filter
+# From Exact DCI to Deterministic Production Filter
 
 The runtime pipeline in this repository is intentionally narrow.
 
@@ -149,7 +149,7 @@ The contract surface is equally narrow:
 - Python is the initial normative executable implementation,
 - future Java and Apple-Silicon C ports are required to match that same parity surface before any reference-status claim changes.
 
-The exact fixed-point law supplies the invariant. The production path keeps one deterministic execution flow that respects that invariant while moving the expensive work farther down the pipeline.
+The exact DCI supplies the invariant. The production path keeps one deterministic execution flow that respects that invariant while moving the expensive work farther down the pipeline.
 
 # Candidate-Loop Screening and RSA Key Generation
 
@@ -184,24 +184,24 @@ The benchmark harness requires the baseline and accelerated paths to produce ide
 
 The repository establishes the following results.
 
-1. The divisor-curvature normalization has a distinguished fixed-point traversal rate $v = e^2 / 2$ at which the exact closed form becomes $Z(n) = n^{1 - d(n)/2}$.
+1. The divisor-curvature normalization has a distinguished fixed-point traversal rate $v = e^2 / 2$ at which the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\) holds exactly.
 2. Under exact divisor counting on the tractable calibration corpus, confirmed primes lie on $Z = 1.0$, composites contract below that band, and the observed curvature separation ratio is 4.54×.
-3. The production Python path converts that fixed-point law into a deterministic factor-gated prefilter with one narrow survivor convention and one narrow rejection rule.
+3. The production Python path converts the DCI into a deterministic factor-gated prefilter with one narrow survivor convention and one narrow rejection rule.
 4. On the committed cryptographic candidate corpora, the prefilter removes about 91 % of candidates before Miller-Rabin and yields about threefold candidate-loop speedup in the curated summary surface.
 5. On deterministic RSA key generation, the current Python implementation achieves 2.09× speedup at 2048 bits and 2.82× speedup at 4096 bits while cutting Miller-Rabin work by 90.97 % to 91.07 %.
 6. The contract, vectors, tests, and benchmark artifacts make the result reproducible and portable across future implementations.
 
-That is a mathematically derived fixed-point law, a deterministic production prefilter built from that law, and a measured cryptographic acceleration artifact in the regime the repository has validated.
+That is the mathematically derived DCI, a deterministic production prefilter built from it, and a measured cryptographic acceleration artifact in the regime the repository has validated.
 
 # Limits and Scope
 
-The current note is strong on the tested Python regime. The fixed-point law is exact, but the executable exact divisor-count path is only practical on the small calibration regime. The production prefilter rejects only when one of the gated prime tables finds a concrete factor. The validated implementation surface is Python. Java and Apple-Silicon C ports are planned in the repo architecture but are not yet parity-complete. The benchmark settings do not exhaust the performance envelope across all bit sizes, machines, or table configurations.
+The current note is strong on the tested Python regime. The DCI is exact, but the executable exact divisor-count path is only practical on the small calibration regime. The production prefilter rejects only when one of the gated prime tables finds a concrete factor. The validated implementation surface is Python. Java and Apple-Silicon C ports are planned in the repo architecture but are not yet parity-complete. The benchmark settings do not exhaust the performance envelope across all bit sizes, machines, or table configurations.
 
 # Practical Interpretation
 
-The practical use of the Geodesic Prime Prefilter is to use the exact fixed-point law as the derivation and audit surface, use the deterministic factor-gated surrogate as the runtime screen, preserve the fixed-point band as the invariant survivor target, and reduce probable-prime workload without changing the deterministic candidate stream or the final confirmation semantics.
+The practical use of the Geodesic Prime Prefilter is to use the exact DCI as the derivation and audit surface, use the deterministic factor-gated surrogate as the runtime screen, preserve the fixed-point band as the invariant survivor target, and reduce probable-prime workload without changing the deterministic candidate stream or the final confirmation semantics.
 
-In the current repository the mathematical law and the engineering path stay connected. The prefilter is structured around the fixed-point collapse. That makes the artifact useful both as research code and as a foundation for future ports. Its behavior is compact enough to audit, explicit enough to reproduce, and narrow enough to defend.
+In the current repository the mathematical law and the engineering path stay connected. The prefilter is structured around the DCI. That makes the artifact useful both as research code and as a foundation for future ports. Its behavior is compact enough to audit, explicit enough to reproduce, and narrow enough to defend.
 
 # Open Technical Targets
 
@@ -215,7 +215,7 @@ The strongest next steps are:
 
 # Conclusion
 
-The narrow mathematical heart of the project is the fixed-point collapse
+The narrow mathematical heart of the project is the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\)
 
 $$
 Z(n) = n^{1 - d(n)/2}
@@ -227,9 +227,9 @@ $$
 v = \frac{e^2}{2}.
 $$
 
-The repository now establishes a broader operational result set around that core. The exact law is real on the tractable calibration corpus. The production path turns that law into a deterministic factor-gated prefilter. The tested Python implementation then converts that screening advantage into measured end-to-end RSA key-generation gains on deterministic streams.
+The repository now establishes a broader operational result set around that core. The exact DCI is real on the tractable calibration corpus. The production path turns it into a deterministic factor-gated prefilter. The tested Python implementation then converts that screening advantage into measured end-to-end RSA key-generation gains on deterministic streams.
 
-The Geodesic Prime Prefilter now stands as a mathematically derived fixed-point law, a deterministic production filter built from that law, and a measured cryptographic acceleration artifact in the regime the repository has validated.
+The Geodesic Prime Prefilter now stands as a deterministic production filter built from the DCI and a measured cryptographic acceleration artifact in the regime the repository has validated.
 
 # Artifact References
 

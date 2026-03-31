@@ -89,7 +89,7 @@ def test_prefilter_decision_vectors_match_proxy_behavior():
 
 
 def test_fixed_point_vectors_match_exact_small_n_contract():
-    """The small-n fixed-point vectors must match the exact fixed-point closed form."""
+    """The small-n fixed-point vectors must match the exact DCI closed form."""
     module = load_candidate_benchmark()
     payload = load_json("fixed_points_small_n.json")
 

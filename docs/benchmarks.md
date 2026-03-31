@@ -1,6 +1,6 @@
 # Benchmarks
 
-The current validated production numbers come from the extracted Python implementation.
+The current validated production numbers come from the extracted Python implementation built around the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\).
 
 ## End-to-End RSA Key Generation
 
@@ -24,10 +24,16 @@ The current validated production numbers come from the extracted Python implemen
   proxy rejection `91.41%`
   pipeline speedup `3.33x`
 
-## Fixed-Point Calibration
+## DCI Calibration
 
 - `29/29` calibration primes stayed on `Z = 1.0`
 - `0` composite false fixed points
+
+## Table-Depth Structural Sweep
+
+The repository also includes a deterministic sweep that fixes covered prime-table depth,
+varies candidate bit length, and writes a report plus SVG plot showing whether rejection
+tracks table depth rather than prime density.
 
 ## Reproduction Commands
 
@@ -69,4 +75,24 @@ python3 benchmarks/python/rsa_sweep_benchmark.py \
   --max-rsa-bits 4096 \
   --public-exponent 65537 \
   --output-dir benchmarks/output/python/rsa-sweep
+```
+
+Table-depth sweep:
+
+```bash
+python3 benchmarks/python/table_depth_sweep.py \
+  --output-dir benchmarks/output/python/table-depth-sweep \
+  --bit-lengths 2048 4096 8192 16384 \
+  --table-limits 300007 1000003 3000000 \
+  --candidate-count 1024
+```
+
+End-to-end 8192-bit RSA table-depth sweep:
+
+```bash
+python3 benchmarks/python/rsa_table_depth_sweep.py \
+  --output-dir benchmarks/output/python/rsa-table-depth-sweep \
+  --rsa-bits 8192 \
+  --keypair-count 2 \
+  --table-limits 300007 1000003 3000000
 ```

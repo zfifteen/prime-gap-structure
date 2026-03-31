@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic benchmark for exact CDL, the proxy path, and Miller-Rabin control."""
+"""Deterministic benchmark for exact CDL, the DCI calibration path, and Miller-Rabin control."""
 
 from __future__ import annotations
 
@@ -57,7 +57,7 @@ def exact_divisor_count(n: int) -> int:
 
 
 def exact_z_normalize(n: int, v: float = FIXED_POINT_V) -> float:
-    """Apply the exact fixed-point normalization used in the calibration corpus."""
+    """Apply the exact Divisor Curvature Identity (DCI) normalization used in the calibration corpus."""
     if n <= 1:
         return 0.0
 
@@ -724,7 +724,7 @@ def build_report_markdown(results: Dict) -> str:
         "",
         f"Date: {results['experiment_date']}",
         "",
-        "This report benchmarks the exact fixed-point calibration path where the current implementation is executable,",
+        "This report benchmarks the exact **Divisor Curvature Identity** (DCI) \\(Z(n) = n^{1 - d(n)/2}\\) calibration path where the current implementation is executable,",
         "a deterministic CDL proxy backed by bit-length-gated interval-split chunked prime tables,",
         "and fixed-base Miller-Rabin on deterministic cryptographic-scale odd candidates.",
         "",
@@ -749,10 +749,10 @@ def build_report_markdown(results: Dict) -> str:
         "",
         "## Headline Findings",
         "",
-        f"- The exact fixed-point path hit the fixed-point band for `{calibration['numeric_fixed_points']}` of `{calibration['prime_count']}` calibration primes within numeric tolerance, with `{calibration['numeric_false_fixed_points']}` fixed-point composites.",
+        f"- The exact DCI path hit the fixed-point band for `{calibration['numeric_fixed_points']}` of `{calibration['prime_count']}` calibration primes within numeric tolerance, with `{calibration['numeric_false_fixed_points']}` composite points on the band.",
         f"- The deterministic proxy hit `{proxy_calibration['fixed_points']}` fixed points on the same calibration corpus with `{proxy_calibration['false_fixed_points']}` composite fixed points and calibration accuracy `{proxy_metrics['accuracy']:.2%}`.",
         f"- On the same `{calibration['bit_length']}`-bit calibration corpus, fixed-base Miller-Rabin matched exact primality with accuracy `{mr_small['accuracy']:.2%}`.",
-        f"- Mean runtime on the calibration corpus was `{calibration['z_timing_ms']['mean']:.6f}` ms per candidate for exact fixed-point `z_normalize`, `{proxy_calibration['timing_ms']['mean']:.6f}` ms for the deterministic proxy, and `{mr_small['timing_ms']['mean']:.6f}` ms for Miller-Rabin.",
+        f"- Mean runtime on the calibration corpus was `{calibration['z_timing_ms']['mean']:.6f}` ms per candidate for exact DCI `z_normalize`, `{proxy_calibration['timing_ms']['mean']:.6f}` ms for the deterministic proxy, and `{mr_small['timing_ms']['mean']:.6f}` ms for Miller-Rabin.",
         f"- On the `{crypto['bit_length']}`-bit control corpus, Miller-Rabin averaged `{crypto['timing_ms']['mean']:.6f}` ms per candidate and passed `{crypto['miller_rabin_pass_count']}` of `{crypto['candidate_count']}` odd candidates; first pass index: `{first_pass_text}`.",
         f"- The deterministic proxy rejected `{proxy_crypto['rejected_by_proxy']}` of `{proxy_crypto['candidate_count']}` cryptographic candidates before Miller-Rabin (`{proxy_crypto['rejection_rate']:.2%}`), cut the end-to-end pipeline to `{proxy_crypto['pipeline_timing_ms']['mean']:.6f}` ms per candidate, and delivered a measured `{proxy_speedup:.2f}x` speedup over Miller-Rabin alone on this corpus.",
     ]

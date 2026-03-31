@@ -155,7 +155,7 @@ def test_cheap_cdl_proxy_deep_tail_gate_only_activates_at_or_above_threshold():
 
 
 def test_exact_calibration_keeps_fixed_points_on_primes():
-    """The calibration harness should preserve the fixed-point prime band on a small panel."""
+    """The calibration harness should preserve the prime DCI band on a small panel."""
     module = load_module()
     candidates = [3, 5, 9, 15, 21]
     result = module.run_exact_calibration(candidates, mr_bases=[2, 3, 5, 7])

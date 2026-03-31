@@ -1,10 +1,11 @@
 # Geodesic Prime Prefilter Contract
 
-This contract defines the deterministic behavior each implementation must satisfy.
+This contract defines the deterministic behavior each implementation must satisfy. Its mathematical core is the **Divisor Curvature Identity** (DCI) `Z(n) = n^(1 - d(n)/2)`.
 
 ## Core Invariants
 
 - The fixed-point traversal rate is fixed at `v = e^2 / 2`.
+- The exact identity is the Divisor Curvature Identity (DCI) `Z(n) = n^(1 - d(n)/2)`.
 - Confirmed primes lie on the fixed-point band `Z = 1.0`.
 - The production prefilter rejects a candidate only when it has found a concrete factor in one of the gated prime tables.
 - Survivor status is not a primality proof. Survivors advance to fixed-base Miller-Rabin and then final confirmation in the production Python path.

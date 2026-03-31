@@ -2,9 +2,9 @@
 
 ![Geodesic Prime Prefilter hero](docs/assets/geodesic-prime-prefilter-hero.jpg)
 
-Deterministic cryptographic prime prefiltering derived from the fixed-point band at $v = e^{2}/2$.
+Deterministic cryptographic prime prefiltering derived from the prime band implied by the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\) at $v = e^{2}/2$.
 
-This repository presents the geodesic prime prefilter as a deterministic cryptographic primitive. It gives the mathematical basis of the method, a production Python implementation, and the validation vectors and benchmarks needed to reproduce the result.
+This repository presents the geodesic prime prefilter as a deterministic cryptographic primitive. It gives the mathematical basis of the method, centered on the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\), a production Python implementation, and the validation vectors and benchmarks needed to reproduce the result.
 
 ## Overview
 
@@ -33,7 +33,7 @@ where:
 
 This equation measures how much factor structure an integer carries once scale is taken into account. With curvature defined, primes are the minimal case under this measure, while composites carry increasingly more structural load. This is the sense in which the framework speaks of straightness, distortion, or curvature in integer space.
 
-## Fixed-Point Derivation
+## Divisor Curvature Identity
 
 The curvature signal becomes useful when it is passed through the Z-transform:
 
@@ -66,7 +66,7 @@ Z(n) &= \frac{n}{\exp\left(\frac{e^{2}}{2} \cdot \frac{d(n) \cdot \ln(n)}{e^{2}}
 \end{align*}
 $$
 
-So the fixed-point closed form is
+So the **Divisor Curvature Identity** (DCI) \(Z(n) = n^{1 - d(n)/2}\) is
 
 $$
 Z(n) = n^{1 - d(n)/2}
@@ -78,17 +78,17 @@ This has an immediate effect:
 - Semiprime with two distinct prime factors: $d(n) = 4$, so $Z(n) = 1/n$
 - Composite in general: $d(n) > 2$, so $Z(n) < 1$
 
-Under the exact fixed-point model, the entire prime class collapses to the invariant band $Z = 1.0$. Composites are pushed strictly below that band.
+Under the exact DCI, the entire prime class collapses to the invariant band $Z = 1.0$. Composites are pushed strictly below that band.
 
 ## Why This Becomes a Prefilter
 
-This effect is the practical core of the method. Cryptographic prime generation spends most of its time on candidates that are composite and never need a full probable-prime path. Standard Miller-Rabin pipelines are fast, but they do not provide a structural invariant of this kind. The fixed-point band does.
+This effect is the practical core of the method. Cryptographic prime generation spends most of its time on candidates that are composite and never need a full probable-prime path. Standard Miller-Rabin pipelines are fast, but they do not provide a structural invariant of this kind. The DCI band does.
 
-Because confirmed primes live at $Z = 1.0$ and composites contract below it, the prefilter creates a clean structural separation in normalized space. That separation makes it possible to reject many candidates before paying the full cost of the survivor regime.
+Because confirmed primes live at $Z = 1.0$ under the DCI and composites contract below it, the prefilter creates a clean structural separation in normalized space. That separation makes it possible to reject many candidates before paying the full cost of the survivor regime.
 
 ## Production Filter
 
-The exact fixed-point closed form depends on exact divisor count. That exact path is valuable as the derivation and as the oracle, but it is not the runtime path for cryptographic-scale key generation.
+The exact DCI depends on exact divisor count. That exact path is valuable as the derivation and as the oracle, but it is not the runtime path for cryptographic-scale key generation.
 
 The production implementation in this repository therefore uses a deterministic surrogate with the same invariant target:
 
@@ -101,7 +101,7 @@ The production implementation in this repository therefore uses a deterministic 
 So the logic flows in one direction:
 
 - the Divisor Curvature Equation defines the structural signal
-- the fixed-point traversal rate turns that signal into the prime fixed-point band
+- the fixed-point traversal rate turns that signal into the prime DCI band
 - the band creates a usable structural separation
 - the production filter exploits that separation to reduce Miller-Rabin work
 
@@ -135,7 +135,7 @@ Empirically, this extracted Python path produced:
   proxy rejection $91.41\,\%$  
   pipeline speedup $3.33\times$
 
-### Fixed-Point Calibration
+### DCI Calibration
 
 - $29/29$ calibration primes stayed on $Z = 1.0$
 - $0$ composite false fixed points

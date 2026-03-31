@@ -345,10 +345,10 @@ def compare_keypair_sets(
 
 def confirm_prime_fixed_points(keypairs: Sequence[Dict[str, int]]) -> Dict[str, object]:
     """
-    Confirm the prime fixed-point band on final RSA primes via primality.
+    Confirm the prime DCI band on final RSA primes via primality.
 
-    Once a final keypair factor is confirmed prime, the fixed-point closed form locks
-    the invariant exactly at Z = 1.0.
+    Once a final keypair factor is confirmed prime, the Divisor Curvature Identity
+    (DCI) `Z(n) = n^(1 - d(n)/2)` locks the invariant exactly at Z = 1.0.
     """
     confirmed_primes = 0
     for keypair in keypairs:
@@ -430,7 +430,7 @@ def build_rsa_report_section(title: str, results: Dict) -> List[str]:
         f"- The accelerated path generated the same `{baseline['keypair_count']}` keypairs in `{accelerated['total_wall_time_ms']:.6f}` ms total (`{accelerated['keypairs_per_second']:.6f}` keypairs/s) for a measured `{results['speedup']:.2f}x` speedup.",
         f"- The proxy removed `{results['saved_miller_rabin_calls']}` Miller-Rabin calls (`{results['saved_miller_rabin_call_rate']:.2%}` of baseline MR work) while preserving identical deterministic keypairs across both paths.",
         f"- Timing buckets in the accelerated path broke down into `{accelerated['total_proxy_time_ms']:.6f}` ms proxy filtering (`{accelerated['proxy_time_share']:.2%}`), `{accelerated['total_miller_rabin_time_ms']:.6f}` ms survivor Miller-Rabin (`{accelerated['miller_rabin_time_share']:.2%}`), `{accelerated['total_assembly_time_ms']:.6f}` ms RSA assembly/validation (`{accelerated['assembly_time_share']:.2%}`), and `{accelerated['total_residual_time_ms']:.6f}` ms residual search overhead (`{accelerated['residual_time_share']:.2%}`).",
-        f"- Final keypair primes were confirmed by `sympy.isprime`; under the fixed-point closed form, all `{fixed_points['fixed_point_count']}` confirmed factors remain exactly on the `Z = 1.0` fixed-point band.",
+        f"- Final keypair primes were confirmed by `sympy.isprime`; under the Divisor Curvature Identity (DCI) `Z(n) = n^(1 - d(n)/2)`, all `{fixed_points['fixed_point_count']}` confirmed factors remain exactly on the `Z = 1.0` fixed-point band.",
         "",
         "| Metric | Baseline | Accelerated |",
         "|---|---:|---:|",

@@ -201,7 +201,7 @@ def get_cached_wheel_prime_table(
 
 
 class CDLPrimeGeodesicPrefilter:
-    """Deterministic CDL accelerator locked to the fixed-point prime band."""
+    """Deterministic CDL accelerator built around the Divisor Curvature Identity (DCI) `Z(n) = n^(1 - d(n)/2)`."""
 
     def __init__(
         self,
@@ -262,7 +262,12 @@ class CDLPrimeGeodesicPrefilter:
             )
 
     def _proxy(self, n: int) -> dict[str, float | int | bool | str | None]:
-        """Evaluate the deterministic geodesic proxy for one candidate."""
+        """
+        Evaluate the deterministic geodesic proxy for one candidate.
+
+        This path preserves the DCI survivor band at `Z = 1.0` unless a concrete
+        factor is found in the gated prime tables.
+        """
         if n < 2:
             return {
                 "z_hat": 0.0,
@@ -328,8 +333,8 @@ class CDLPrimeGeodesicPrefilter:
         the gated prime tables, so the candidate advances to Miller-Rabin. It is not
         a primality proof by itself. After `generate_prime()` returns, the surviving
         candidate has also passed fixed-base Miller-Rabin and final `sympy.isprime`
-        confirmation on the same deterministic path, and the fixed-point closed form
-        locks confirmed primes to `Z = 1.0`.
+        confirmation on the same deterministic path, and the Divisor Curvature
+        Identity (DCI) `Z(n) = n^(1 - d(n)/2)` locks confirmed primes to `Z = 1.0`.
         """
         return float(self._proxy(n)["z_hat"])
 

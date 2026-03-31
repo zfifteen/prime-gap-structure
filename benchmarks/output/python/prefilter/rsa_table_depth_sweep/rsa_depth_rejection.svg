@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="#fcfbf7" />
+<text x="95" y="46" font-family="Menlo, Monaco, monospace" font-size="26" fill="#1f2933">8192-bit RSA rejection versus structural ceiling</text>
+<text x="95" y="72" font-family="Menlo, Monaco, monospace" font-size="14" fill="#52606d">Observed end-to-end proxy rejection tracks the same small-prime depth ceiling seen in the candidate sweep</text>
+<line x1="95" y1="670.00" x2="1120" y2="670.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="675.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">89.31%</text>
+<line x1="95" y1="554.00" x2="1120" y2="554.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="559.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">90.14%</text>
+<line x1="95" y1="438.00" x2="1120" y2="438.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="443.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">90.97%</text>
+<line x1="95" y1="322.00" x2="1120" y2="322.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="327.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">91.81%</text>
+<line x1="95" y1="206.00" x2="1120" y2="206.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="211.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">92.64%</text>
+<line x1="95" y1="90.00" x2="1120" y2="90.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="95.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">93.47%</text>
+<line x1="95" y1="670" x2="1120" y2="670" stroke="#243b53" stroke-width="1.5" />
+<line x1="95" y1="90" x2="95" y2="670" stroke="#243b53" stroke-width="1.5" />
+<polyline fill="none" stroke="#0b6e4f" stroke-width="3.5" points="95.00,530.67 607.50,374.57 1120.00,284.81" />
+<polyline fill="none" stroke="#c84c09" stroke-width="3" stroke-dasharray="8 6" points="95.00,420.83 607.50,312.74 1120.00,229.33" />
+<circle cx="95.00" cy="530.67" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="95.00" cy="420.83" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="95.00" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">300,007</text>
+<text x="95.00" y="716.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">-0.79 pp</text>
+<circle cx="607.50" cy="374.57" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="607.50" cy="312.74" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="607.50" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">1,000,003</text>
+<text x="607.50" y="716.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">-0.44 pp</text>
+<circle cx="1120.00" cy="284.81" r="6" fill="#0b6e4f" stroke="#fcfbf7" stroke-width="2" />
+<circle cx="1120.00" cy="229.33" r="5" fill="#c84c09" stroke="#fcfbf7" stroke-width="2" />
+<text x="1120.00" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">3,000,000</text>
+<text x="1120.00" y="716.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">-0.40 pp</text>
+<line x1="890" y1="106.00" x2="924" y2="106.00" stroke="#0b6e4f" stroke-width="3.5" />
+<text x="934" y="111.00" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">observed end-to-end rejection</text>
+<line x1="890" y1="130.00" x2="924" y2="130.00" stroke="#c84c09" stroke-width="3" stroke-dasharray="8 6" />
+<text x="934" y="135.00" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">structural ceiling from covered primes</text>
+<text x="607.50" y="732" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">Covered odd-prime limit</text>
+<text x="24" y="380.00" transform="rotate(-90 24 380.00)" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">Composite rejection rate</text>
+</svg>

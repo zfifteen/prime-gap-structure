@@ -8,11 +8,8 @@ import math
 import sys
 from typing import Sequence
 
+from geodesic_prime_invariant import FIXED_POINT_TOLERANCE, FIXED_POINT_V
 from sympy import isprime
-
-
-FIXED_POINT_V = math.e ** 2 / 2.0
-FIXED_POINT_TOLERANCE = 1e-12
 
 DEFAULT_NAMESPACE = "cdl-prime-geodesic"
 DEFAULT_MR_BASES = (2, 3, 5, 7, 11, 13, 17, 19)

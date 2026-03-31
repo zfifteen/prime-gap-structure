@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="#fcfbf7" />
+<text x="95" y="46" font-family="Menlo, Monaco, monospace" font-size="26" fill="#1f2933">8192-bit RSA speedup by table depth</text>
+<text x="95" y="72" font-family="Menlo, Monaco, monospace" font-size="14" fill="#52606d">End-to-end deterministic RSA keygen speedup versus covered odd-prime depth</text>
+<line x1="95" y1="670.00" x2="1120" y2="670.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="675.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">0.00x</text>
+<line x1="95" y1="554.00" x2="1120" y2="554.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="559.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">0.77x</text>
+<line x1="95" y1="438.00" x2="1120" y2="438.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="443.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">1.54x</text>
+<line x1="95" y1="322.00" x2="1120" y2="322.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="327.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">2.30x</text>
+<line x1="95" y1="206.00" x2="1120" y2="206.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="211.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">3.07x</text>
+<line x1="95" y1="90.00" x2="1120" y2="90.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="95.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">3.84x</text>
+<line x1="95" y1="670" x2="1120" y2="670" stroke="#243b53" stroke-width="1.5" />
+<line x1="95" y1="90" x2="95" y2="670" stroke="#243b53" stroke-width="1.5" />
+<rect x="166.75" y="241.71" width="198.17" height="428.29" rx="6" fill="#0b6e4f" />
+<text x="265.83" y="231.71" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">2.84x</text>
+<text x="265.83" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53"><= 300,007</text>
+<text x="265.83" y="716.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">90.31% reject</text>
+<rect x="508.42" y="206.00" width="198.17" height="464.00" rx="6" fill="#c84c09" />
+<text x="607.50" y="196.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">3.07x</text>
+<text x="607.50" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53"><= 1,000,003</text>
+<text x="607.50" y="716.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">91.43% reject</text>
+<rect x="850.08" y="214.48" width="198.17" height="455.52" rx="6" fill="#2b59c3" />
+<text x="949.17" y="204.48" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">3.02x</text>
+<text x="949.17" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53"><= 3,000,000</text>
+<text x="949.17" y="716.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="12" fill="#52606d">92.07% reject</text>
+<text x="607.50" y="732" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">Covered odd-prime limit</text>
+<text x="24" y="380.00" transform="rotate(-90 24 380.00)" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">End-to-end speedup</text>
+</svg>

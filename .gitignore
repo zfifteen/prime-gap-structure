@@ -6,7 +6,6 @@ __pycache__/
 .DS_Store
 .venv/
 venv/
-benchmarks/output/
 .idea/
 
 # OTHER

@@ -1,0 +1,422 @@
+{
+  "experiment_date": "2026-03-31",
+  "configuration": {
+    "bit_lengths": [
+      2048,
+      4096,
+      8192,
+      16384
+    ],
+    "table_limits": [
+      300007,
+      1000003,
+      3000000
+    ],
+    "candidate_count": 4096,
+    "chunk_size": 256,
+    "primary_limit": 200003,
+    "tail_limit": 300007,
+    "namespace": "cdl-table-depth-sweep"
+  },
+  "rows": [
+    {
+      "bit_length": 2048,
+      "candidate_count": 4096,
+      "covered_prime_limit": 300007,
+      "covered_prime_count": 25997,
+      "observed_rejection_rate": 0.894775390625,
+      "theoretical_rejection_rate": 0.9109655013204063,
+      "observed_minus_theory": -0.016190110695406323,
+      "observed_standard_error": 0.004794415874061897,
+      "odd_prime_density_estimate": 0.0014088818758681283,
+      "odd_prime_reciprocal_density_estimate": 709.782712893384,
+      "proxy_timing_ms": {
+        "mean": 0.26727922192382814,
+        "median": 0.015375,
+        "min": 0.013125,
+        "max": 3.330833
+      },
+      "factor_source_counts": {
+        "primary": 3659,
+        "tail": 6,
+        "deep_tail": 0,
+        "survivor": 431,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 0,
+        "deep_tail_min_bits": 0
+      }
+    },
+    {
+      "bit_length": 4096,
+      "candidate_count": 4096,
+      "covered_prime_limit": 300007,
+      "covered_prime_count": 25997,
+      "observed_rejection_rate": 0.917236328125,
+      "theoretical_rejection_rate": 0.9109655013204063,
+      "observed_minus_theory": 0.006270826804593677,
+      "observed_standard_error": 0.0043050730457099414,
+      "odd_prime_density_estimate": 0.0007044409379340642,
+      "odd_prime_reciprocal_density_estimate": 1419.565425786768,
+      "proxy_timing_ms": {
+        "mean": 0.3054228532714844,
+        "median": 0.02775,
+        "min": 0.0245,
+        "max": 4.2785
+      },
+      "factor_source_counts": {
+        "primary": 3746,
+        "tail": 11,
+        "deep_tail": 0,
+        "survivor": 339,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 0,
+        "deep_tail_min_bits": 0
+      }
+    },
+    {
+      "bit_length": 8192,
+      "candidate_count": 4096,
+      "covered_prime_limit": 300007,
+      "covered_prime_count": 25997,
+      "observed_rejection_rate": 0.914794921875,
+      "theoretical_rejection_rate": 0.9109655013204063,
+      "observed_minus_theory": 0.0038294205545936766,
+      "observed_standard_error": 0.004362291049423573,
+      "odd_prime_density_estimate": 0.0003522204689670321,
+      "odd_prime_reciprocal_density_estimate": 2839.130851573536,
+      "proxy_timing_ms": {
+        "mean": 0.7135892360839844,
+        "median": 0.056,
+        "min": 0.049333,
+        "max": 8.570375
+      },
+      "factor_source_counts": {
+        "primary": 3736,
+        "tail": 11,
+        "deep_tail": 0,
+        "survivor": 349,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 0,
+        "deep_tail_min_bits": 0
+      }
+    },
+    {
+      "bit_length": 16384,
+      "candidate_count": 4096,
+      "covered_prime_limit": 300007,
+      "covered_prime_count": 25997,
+      "observed_rejection_rate": 0.910400390625,
+      "theoretical_rejection_rate": 0.9109655013204063,
+      "observed_minus_theory": -0.0005651106954063234,
+      "observed_standard_error": 0.004462613776966908,
+      "odd_prime_density_estimate": 0.00017611023448351604,
+      "odd_prime_reciprocal_density_estimate": 5678.261703147072,
+      "proxy_timing_ms": {
+        "mean": 1.683207630859375,
+        "median": 0.1128335,
+        "min": 0.098625,
+        "max": 47.596208
+      },
+      "factor_source_counts": {
+        "primary": 3712,
+        "tail": 17,
+        "deep_tail": 0,
+        "survivor": 367,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 0,
+        "deep_tail_min_bits": 0
+      }
+    },
+    {
+      "bit_length": 2048,
+      "candidate_count": 4096,
+      "covered_prime_limit": 1000003,
+      "covered_prime_count": 78498,
+      "observed_rejection_rate": 0.90478515625,
+      "theoretical_rejection_rate": 0.9187236609328794,
+      "observed_minus_theory": -0.013938504682879382,
+      "observed_standard_error": 0.004586116565915845,
+      "odd_prime_density_estimate": 0.0014088818758681283,
+      "odd_prime_reciprocal_density_estimate": 709.782712893384,
+      "proxy_timing_ms": {
+        "mean": 0.7651575637207031,
+        "median": 0.015042,
+        "min": 0.012875,
+        "max": 7.757625
+      },
+      "factor_source_counts": {
+        "primary": 3659,
+        "tail": 6,
+        "deep_tail": 41,
+        "survivor": 390,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 1000003,
+        "deep_tail_min_bits": 2
+      }
+    },
+    {
+      "bit_length": 4096,
+      "candidate_count": 4096,
+      "covered_prime_limit": 1000003,
+      "covered_prime_count": 78498,
+      "observed_rejection_rate": 0.923095703125,
+      "theoretical_rejection_rate": 0.9187236609328794,
+      "observed_minus_theory": 0.004372042192120618,
+      "observed_standard_error": 0.004163117739833135,
+      "odd_prime_density_estimate": 0.0007044409379340642,
+      "odd_prime_reciprocal_density_estimate": 1419.565425786768,
+      "proxy_timing_ms": {
+        "mean": 0.90172991796875,
+        "median": 0.027917,
+        "min": 0.024417,
+        "max": 114.042416
+      },
+      "factor_source_counts": {
+        "primary": 3746,
+        "tail": 11,
+        "deep_tail": 24,
+        "survivor": 315,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 1000003,
+        "deep_tail_min_bits": 2
+      }
+    },
+    {
+      "bit_length": 8192,
+      "candidate_count": 4096,
+      "covered_prime_limit": 1000003,
+      "covered_prime_count": 78498,
+      "observed_rejection_rate": 0.922119140625,
+      "theoretical_rejection_rate": 0.9187236609328794,
+      "observed_minus_theory": 0.0033954796921206176,
+      "observed_standard_error": 0.004187250200047254,
+      "odd_prime_density_estimate": 0.0003522204689670321,
+      "odd_prime_reciprocal_density_estimate": 2839.130851573536,
+      "proxy_timing_ms": {
+        "mean": 1.9475330502929689,
+        "median": 0.056709,
+        "min": 0.049292,
+        "max": 80.830542
+      },
+      "factor_source_counts": {
+        "primary": 3736,
+        "tail": 11,
+        "deep_tail": 30,
+        "survivor": 319,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 1000003,
+        "deep_tail_min_bits": 2
+      }
+    },
+    {
+      "bit_length": 16384,
+      "candidate_count": 4096,
+      "covered_prime_limit": 1000003,
+      "covered_prime_count": 78498,
+      "observed_rejection_rate": 0.916259765625,
+      "theoretical_rejection_rate": 0.9187236609328794,
+      "observed_minus_theory": -0.0024638953078793824,
+      "observed_standard_error": 0.004328091367249177,
+      "odd_prime_density_estimate": 0.00017611023448351604,
+      "odd_prime_reciprocal_density_estimate": 5678.261703147072,
+      "proxy_timing_ms": {
+        "mean": 4.595306976318359,
+        "median": 0.1121665,
+        "min": 0.098709,
+        "max": 93.595791
+      },
+      "factor_source_counts": {
+        "primary": 3712,
+        "tail": 17,
+        "deep_tail": 24,
+        "survivor": 343,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 1000003,
+        "deep_tail_min_bits": 2
+      }
+    },
+    {
+      "bit_length": 2048,
+      "candidate_count": 4096,
+      "covered_prime_limit": 3000000,
+      "covered_prime_count": 216815,
+      "observed_rejection_rate": 0.9111328125,
+      "theoretical_rejection_rate": 0.9247103724259675,
+      "observed_minus_theory": -0.013577559925967542,
+      "observed_standard_error": 0.004446124170347078,
+      "odd_prime_density_estimate": 0.0014088818758681283,
+      "odd_prime_reciprocal_density_estimate": 709.782712893384,
+      "proxy_timing_ms": {
+        "mean": 2.112435685058594,
+        "median": 0.0152295,
+        "min": 0.012916,
+        "max": 89.757875
+      },
+      "factor_source_counts": {
+        "primary": 3659,
+        "tail": 6,
+        "deep_tail": 67,
+        "survivor": 364,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 3000000,
+        "deep_tail_min_bits": 2
+      }
+    },
+    {
+      "bit_length": 4096,
+      "candidate_count": 4096,
+      "covered_prime_limit": 3000000,
+      "covered_prime_count": 216815,
+      "observed_rejection_rate": 0.928955078125,
+      "theoretical_rejection_rate": 0.9247103724259675,
+      "observed_minus_theory": 0.004244705699032458,
+      "observed_standard_error": 0.004014060400166562,
+      "odd_prime_density_estimate": 0.0007044409379340642,
+      "odd_prime_reciprocal_density_estimate": 1419.565425786768,
+      "proxy_timing_ms": {
+        "mean": 2.417710807861328,
+        "median": 0.027959,
+        "min": 0.024375,
+        "max": 39.264083
+      },
+      "factor_source_counts": {
+        "primary": 3746,
+        "tail": 11,
+        "deep_tail": 48,
+        "survivor": 291,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 3000000,
+        "deep_tail_min_bits": 2
+      }
+    },
+    {
+      "bit_length": 8192,
+      "candidate_count": 4096,
+      "covered_prime_limit": 3000000,
+      "covered_prime_count": 216815,
+      "observed_rejection_rate": 0.927978515625,
+      "theoretical_rejection_rate": 0.9247103724259675,
+      "observed_minus_theory": 0.0032681431990324583,
+      "observed_standard_error": 0.004039429388662663,
+      "odd_prime_density_estimate": 0.0003522204689670321,
+      "odd_prime_reciprocal_density_estimate": 2839.130851573536,
+      "proxy_timing_ms": {
+        "mean": 4.97943217578125,
+        "median": 0.057167,
+        "min": 0.049375,
+        "max": 96.067
+      },
+      "factor_source_counts": {
+        "primary": 3736,
+        "tail": 11,
+        "deep_tail": 54,
+        "survivor": 295,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 3000000,
+        "deep_tail_min_bits": 2
+      }
+    },
+    {
+      "bit_length": 16384,
+      "candidate_count": 4096,
+      "covered_prime_limit": 3000000,
+      "covered_prime_count": 216815,
+      "observed_rejection_rate": 0.921142578125,
+      "theoretical_rejection_rate": 0.9247103724259675,
+      "observed_minus_theory": -0.0035677943009675417,
+      "observed_standard_error": 0.004211189083690127,
+      "odd_prime_density_estimate": 0.00017611023448351604,
+      "odd_prime_reciprocal_density_estimate": 5678.261703147072,
+      "proxy_timing_ms": {
+        "mean": 12.495339901611327,
+        "median": 0.113542,
+        "min": 0.09875,
+        "max": 202.650833
+      },
+      "factor_source_counts": {
+        "primary": 3712,
+        "tail": 17,
+        "deep_tail": 44,
+        "survivor": 323,
+        "even": 0
+      },
+      "intervals": {
+        "primary_limit": 200003,
+        "tail_limit": 300007,
+        "deep_tail_limit": 3000000,
+        "deep_tail_min_bits": 2
+      }
+    }
+  ],
+  "summaries": [
+    {
+      "covered_prime_limit": 300007,
+      "theoretical_rejection_rate": 0.9109655013204063,
+      "observed_min_rejection_rate": 0.894775390625,
+      "observed_max_rejection_rate": 0.917236328125,
+      "observed_spread_percentage_points": 2.24609375,
+      "asymptotic_speedup_if_proxy_free": 11.23160139979758
+    },
+    {
+      "covered_prime_limit": 1000003,
+      "theoretical_rejection_rate": 0.9187236609328794,
+      "observed_min_rejection_rate": 0.90478515625,
+      "observed_max_rejection_rate": 0.923095703125,
+      "observed_spread_percentage_points": 1.8310546875,
+      "asymptotic_speedup_if_proxy_free": 12.30370377748151
+    },
+    {
+      "covered_prime_limit": 3000000,
+      "theoretical_rejection_rate": 0.9247103724259675,
+      "observed_min_rejection_rate": 0.9111328125,
+      "observed_max_rejection_rate": 0.928955078125,
+      "observed_spread_percentage_points": 1.7822265625,
+      "asymptotic_speedup_if_proxy_free": 13.282042058405692
+    }
+  ],
+  "reproduction_command": "python3 benchmarks/python/prefilter/table_depth_sweep.py --output-dir benchmarks/output/python/prefilter/table_depth_sweep --bit-lengths 2048 4096 8192 16384 --table-limits 300007 1000003 3000000 --candidate-count 4096 --chunk-size 256 --primary-limit 200003 --tail-limit 300007 --namespace cdl-table-depth-sweep"
+}

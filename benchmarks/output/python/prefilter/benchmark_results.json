@@ -1,0 +1,448 @@
+{
+  "experiment_date": "2026-03-31",
+  "configuration": {
+    "exact_bits": 20,
+    "exact_count": 256,
+    "crypto_bits": 2048,
+    "crypto_count": 1024,
+    "bonus_crypto_bits": 4096,
+    "bonus_crypto_count": 256,
+    "proxy_trial_prime_limit": 200003,
+    "proxy_chunk_size": 256,
+    "proxy_tail_prime_limit": 300007,
+    "proxy_tail_chunk_size": 256,
+    "proxy_deep_tail_prime_limit": 1000003,
+    "proxy_deep_tail_chunk_size": 256,
+    "proxy_deep_tail_min_bits": 4096,
+    "mr_bases": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19
+    ],
+    "truth_check": false
+  },
+  "exact_scaling_boundary": {
+    "divisor_count_implementation": "local_exact_O(sqrt_n)_enumeration",
+    "sqrt_space_bits": 1024,
+    "worst_case_candidate_bits": 2048
+  },
+  "exact_calibration": {
+    "candidate_source": "deterministic_sha256_odd_stream",
+    "candidate_count": 256,
+    "bit_length": 20,
+    "prime_count": 29,
+    "composite_count": 227,
+    "fixed_point_v": 3.6945280494653248,
+    "prime_kappa_mean": 3.688274950245989,
+    "composite_kappa_mean": 16.75454988793984,
+    "separation_ratio": 4.542652083685464,
+    "algebraic_fixed_points": 29,
+    "numeric_fixed_points": 29,
+    "numeric_false_fixed_points": 0,
+    "strict_contractions": 227,
+    "z_timing_ms": {
+      "mean": 0.06156953515625,
+      "median": 0.058333,
+      "min": 0.046959,
+      "max": 0.650666
+    },
+    "miller_rabin_control": {
+      "bases": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "timing_ms": {
+        "mean": 0.0017398984375000001,
+        "median": 0.000333,
+        "min": 0.000208,
+        "max": 0.017333
+      },
+      "accuracy": 1.0,
+      "true_positives": 29,
+      "true_negatives": 227,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    "candidate_preview": [
+      "0x81bbf",
+      "0x83eb3",
+      "0xe651d"
+    ]
+  },
+  "proxy_calibration": {
+    "candidate_source": "deterministic_sha256_odd_stream",
+    "candidate_count": 256,
+    "bit_length": 20,
+    "trial_prime_limit": 200003,
+    "trial_prime_count": 17984,
+    "chunk_size": 256,
+    "tail_prime_limit": 300007,
+    "tail_prime_count": 8013,
+    "tail_chunk_size": 256,
+    "deep_tail_prime_limit": 1000003,
+    "deep_tail_prime_count": 52501,
+    "deep_tail_chunk_size": 256,
+    "deep_tail_min_bits": 4096,
+    "fixed_points": 29,
+    "false_fixed_points": 0,
+    "strict_contractions": 227,
+    "timing_ms": {
+      "mean": 0.01164698046875,
+      "median": 0.001458,
+      "min": 0.001208,
+      "max": 0.141125
+    },
+    "classification": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "true_positives": 29,
+      "false_positives": 0,
+      "true_negatives": 227,
+      "false_negatives": 0
+    }
+  },
+  "crypto_control": {
+    "candidate_source": "deterministic_sha256_odd_stream",
+    "candidate_count": 1024,
+    "bit_length": 2048,
+    "miller_rabin_bases": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19
+    ],
+    "miller_rabin_pass_count": 1,
+    "miller_rabin_pass_rate": 0.0009765625,
+    "first_pass_index": 354,
+    "timing_ms": {
+      "mean": 8.582225599609375,
+      "median": 0.002125,
+      "min": 0.000708,
+      "max": 231.011834
+    },
+    "candidate_preview": [
+      "0xa8817da494bc5962...6d814142f23ea59b",
+      "0xc2c69823294fec0a...d89f136719477a33",
+      "0xfe93c2ed29b3f061...adcfdf3dfde4f103"
+    ]
+  },
+  "proxy_crypto_pipeline": {
+    "candidate_source": "deterministic_sha256_odd_stream",
+    "candidate_count": 1024,
+    "bit_length": 2048,
+    "trial_prime_limit": 200003,
+    "trial_prime_count": 17984,
+    "chunk_size": 256,
+    "tail_prime_limit": 300007,
+    "tail_prime_count": 8013,
+    "tail_chunk_size": 256,
+    "deep_tail_prime_limit": 1000003,
+    "deep_tail_prime_count": 52501,
+    "deep_tail_chunk_size": 256,
+    "deep_tail_min_bits": 4096,
+    "rejected_by_proxy": 932,
+    "rejection_rate": 0.91015625,
+    "survivors_to_miller_rabin": 92,
+    "survivor_rate": 0.08984375,
+    "miller_rabin_pass_count": 1,
+    "first_pass_index": 354,
+    "proxy_timing_ms": {
+      "mean": 0.2450114462890625,
+      "median": 0.015125,
+      "min": 0.013041,
+      "max": 9.330667
+    },
+    "miller_rabin_survivor_timing_ms": {
+      "mean": 30.097926673913044,
+      "median": 27.765791999999998,
+      "min": 27.06325,
+      "max": 218.333584
+    },
+    "pipeline_timing_ms": {
+      "mean": 2.9491220458984375,
+      "median": 0.015125,
+      "min": 0.013041,
+      "max": 220.481251
+    },
+    "candidate_preview": [
+      "0xa8817da494bc5962...6d814142f23ea59b",
+      "0xc2c69823294fec0a...d89f136719477a33",
+      "0xfe93c2ed29b3f061...adcfdf3dfde4f103"
+    ]
+  },
+  "bonus_crypto_control": {
+    "candidate_source": "deterministic_sha256_odd_stream",
+    "candidate_count": 256,
+    "bit_length": 4096,
+    "miller_rabin_bases": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19
+    ],
+    "miller_rabin_pass_count": 0,
+    "miller_rabin_pass_rate": 0.0,
+    "first_pass_index": null,
+    "timing_ms": {
+      "mean": 64.340912109375,
+      "median": 0.003229,
+      "min": 0.00125,
+      "max": 237.570375
+    },
+    "candidate_preview": [
+      "0xfe3dd18e1c47176e...ce89f8ce93d2e4ad",
+      "0xaed642ab8918eedb...44db3d2571dde50b",
+      "0xbc098eadbd129b0e...251b864685fab5a9"
+    ]
+  },
+  "bonus_proxy_crypto_pipeline": {
+    "candidate_source": "deterministic_sha256_odd_stream",
+    "candidate_count": 256,
+    "bit_length": 4096,
+    "trial_prime_limit": 200003,
+    "trial_prime_count": 17984,
+    "chunk_size": 256,
+    "tail_prime_limit": 300007,
+    "tail_prime_count": 8013,
+    "tail_chunk_size": 256,
+    "deep_tail_prime_limit": 1000003,
+    "deep_tail_prime_count": 52501,
+    "deep_tail_chunk_size": 256,
+    "deep_tail_min_bits": 4096,
+    "rejected_by_proxy": 234,
+    "rejection_rate": 0.9140625,
+    "survivors_to_miller_rabin": 22,
+    "survivor_rate": 0.0859375,
+    "miller_rabin_pass_count": 0,
+    "first_pass_index": null,
+    "proxy_timing_ms": {
+      "mean": 0.9493568125,
+      "median": 0.0275415,
+      "min": 0.024541,
+      "max": 10.366333
+    },
+    "miller_rabin_survivor_timing_ms": {
+      "mean": 213.54032581818183,
+      "median": 213.7769375,
+      "min": 211.949417,
+      "max": 214.673
+    },
+    "pipeline_timing_ms": {
+      "mean": 19.3004785625,
+      "median": 0.0275415,
+      "min": 0.024541,
+      "max": 224.613042
+    },
+    "candidate_preview": [
+      "0xfe3dd18e1c47176e...ce89f8ce93d2e4ad",
+      "0xaed642ab8918eedb...44db3d2571dde50b",
+      "0xbc098eadbd129b0e...251b864685fab5a9"
+    ]
+  },
+  "reproduction_command": "python3 benchmarks/python/prefilter/candidate_benchmark.py --exact-bits 20 --exact-count 256 --crypto-bits 2048 --crypto-count 1024 --bonus-crypto-bits 4096 --bonus-crypto-count 256 --proxy-trial-prime-limit 200003 --proxy-chunk-size 256 --proxy-tail-prime-limit 300007 --proxy-tail-chunk-size 256 --proxy-deep-tail-prime-limit 1000003 --proxy-deep-tail-chunk-size 256 --proxy-deep-tail-min-bits 4096 --mr-bases 2 3 5 7 11 13 17 19",
+  "rsa_keygen": {
+    "rsa_bits": 64,
+    "keypair_count": 2,
+    "public_exponent": 65537,
+    "baseline": {
+      "rsa_bits": 64,
+      "prime_bits": 32,
+      "keypair_count": 2,
+      "public_exponent": 65537,
+      "path": "miller_rabin_only",
+      "total_wall_time_ms": 0.235958,
+      "keypairs_per_second": 8476.08472694293,
+      "mean_time_per_keypair_ms": 0.117979,
+      "total_candidates_tested": 20,
+      "total_miller_rabin_calls": 20,
+      "total_proxy_rejections": 0,
+      "proxy_rejection_rate": 0.0,
+      "mean_candidates_per_prime": 5.0,
+      "mean_miller_rabin_calls_per_prime": 5.0,
+      "total_proxy_time_ms": 0.0,
+      "total_miller_rabin_time_ms": 0.129956,
+      "total_assembly_time_ms": 0.03275,
+      "total_residual_time_ms": 0.073252,
+      "proxy_time_share": 0.0,
+      "miller_rabin_time_share": 0.5507590333872977,
+      "assembly_time_share": 0.13879588740369048,
+      "residual_time_share": 0.31044507920901177,
+      "mean_proxy_time_per_keypair_ms": 0.0,
+      "mean_miller_rabin_time_per_keypair_ms": 0.064978,
+      "mean_assembly_time_per_keypair_ms": 0.016375,
+      "mean_residual_time_per_keypair_ms": 0.036626,
+      "candidate_preview": [
+        "0xf018881bbfbb27c3",
+        "0x6f4d8705eda6c567"
+      ],
+      "mean_candidates_per_keypair": 10.0,
+      "median_candidates_per_keypair": 10.0,
+      "max_candidates_per_keypair": 15,
+      "median_miller_rabin_calls_per_keypair": 10.0,
+      "max_miller_rabin_calls_per_keypair": 15
+    },
+    "accelerated": {
+      "rsa_bits": 64,
+      "prime_bits": 32,
+      "keypair_count": 2,
+      "public_exponent": 65537,
+      "path": "gated_proxy_then_miller_rabin",
+      "total_wall_time_ms": 1.139417,
+      "keypairs_per_second": 1755.2836231160322,
+      "mean_time_per_keypair_ms": 0.5697085,
+      "total_candidates_tested": 20,
+      "total_miller_rabin_calls": 4,
+      "total_proxy_rejections": 16,
+      "proxy_rejection_rate": 0.8,
+      "mean_candidates_per_prime": 5.0,
+      "mean_miller_rabin_calls_per_prime": 1.0,
+      "total_proxy_time_ms": 0.923001,
+      "total_miller_rabin_time_ms": 0.132959,
+      "total_assembly_time_ms": 0.030334,
+      "total_residual_time_ms": 0.053123,
+      "proxy_time_share": 0.8100642697098603,
+      "miller_rabin_time_share": 0.11669037762294227,
+      "assembly_time_share": 0.02662238671180086,
+      "residual_time_share": 0.046622965955396486,
+      "mean_proxy_time_per_keypair_ms": 0.4615005,
+      "mean_miller_rabin_time_per_keypair_ms": 0.0664795,
+      "mean_assembly_time_per_keypair_ms": 0.015167,
+      "mean_residual_time_per_keypair_ms": 0.0265615,
+      "candidate_preview": [
+        "0xf018881bbfbb27c3",
+        "0x6f4d8705eda6c567"
+      ],
+      "mean_candidates_per_keypair": 10.0,
+      "median_candidates_per_keypair": 10.0,
+      "max_candidates_per_keypair": 15,
+      "median_miller_rabin_calls_per_keypair": 2.0,
+      "max_miller_rabin_calls_per_keypair": 2
+    },
+    "speedup": 0.20708660657160638,
+    "saved_miller_rabin_calls": 16,
+    "saved_miller_rabin_call_rate": 0.8,
+    "matching_keypairs": 2,
+    "prime_fixed_points": {
+      "verification_mode": "sympy_isprime_then_closed_form_fixed_point",
+      "confirmed_prime_count": 4,
+      "fixed_point_count": 4,
+      "fixed_point_value": 1.0
+    }
+  },
+  "bonus_rsa_keygen": {
+    "rsa_bits": 128,
+    "keypair_count": 1,
+    "public_exponent": 65537,
+    "baseline": {
+      "rsa_bits": 128,
+      "prime_bits": 64,
+      "keypair_count": 1,
+      "public_exponent": 65537,
+      "path": "miller_rabin_only",
+      "total_wall_time_ms": 0.608583,
+      "keypairs_per_second": 1643.1612450561386,
+      "mean_time_per_keypair_ms": 0.608583,
+      "total_candidates_tested": 78,
+      "total_miller_rabin_calls": 78,
+      "total_proxy_rejections": 0,
+      "proxy_rejection_rate": 0.0,
+      "mean_candidates_per_prime": 39.0,
+      "mean_miller_rabin_calls_per_prime": 39.0,
+      "total_proxy_time_ms": 0.0,
+      "total_miller_rabin_time_ms": 0.328963,
+      "total_assembly_time_ms": 0.036458,
+      "total_residual_time_ms": 0.243162,
+      "proxy_time_share": 0.0,
+      "miller_rabin_time_share": 0.5405392526574025,
+      "assembly_time_share": 0.0599063726722567,
+      "residual_time_share": 0.3995543746703408,
+      "mean_proxy_time_per_keypair_ms": 0.0,
+      "mean_miller_rabin_time_per_keypair_ms": 0.328963,
+      "mean_assembly_time_per_keypair_ms": 0.036458,
+      "mean_residual_time_per_keypair_ms": 0.243162,
+      "candidate_preview": [
+        "0x7126b1e17810357cc1fd8152c586b76b"
+      ],
+      "mean_candidates_per_keypair": 78.0,
+      "median_candidates_per_keypair": 78,
+      "max_candidates_per_keypair": 78,
+      "median_miller_rabin_calls_per_keypair": 78,
+      "max_miller_rabin_calls_per_keypair": 78
+    },
+    "accelerated": {
+      "rsa_bits": 128,
+      "prime_bits": 64,
+      "keypair_count": 1,
+      "public_exponent": 65537,
+      "path": "gated_proxy_then_miller_rabin",
+      "total_wall_time_ms": 9.304417,
+      "keypairs_per_second": 107.4758364763746,
+      "mean_time_per_keypair_ms": 9.304417,
+      "total_candidates_tested": 78,
+      "total_miller_rabin_calls": 4,
+      "total_proxy_rejections": 74,
+      "proxy_rejection_rate": 0.9487179487179487,
+      "mean_candidates_per_prime": 39.0,
+      "mean_miller_rabin_calls_per_prime": 2.0,
+      "total_proxy_time_ms": 8.591464,
+      "total_miller_rabin_time_ms": 0.361749,
+      "total_assembly_time_ms": 0.187375,
+      "total_residual_time_ms": 0.163829,
+      "proxy_time_share": 0.9233747799566593,
+      "miller_rabin_time_share": 0.03887927636949204,
+      "assembly_time_share": 0.020138284859760693,
+      "residual_time_share": 0.017607658814087976,
+      "mean_proxy_time_per_keypair_ms": 8.591464,
+      "mean_miller_rabin_time_per_keypair_ms": 0.361749,
+      "mean_assembly_time_per_keypair_ms": 0.187375,
+      "mean_residual_time_per_keypair_ms": 0.163829,
+      "candidate_preview": [
+        "0x7126b1e17810357cc1fd8152c586b76b"
+      ],
+      "mean_candidates_per_keypair": 78.0,
+      "median_candidates_per_keypair": 78,
+      "max_candidates_per_keypair": 78,
+      "median_miller_rabin_calls_per_keypair": 4,
+      "max_miller_rabin_calls_per_keypair": 4
+    },
+    "speedup": 0.06540796699030148,
+    "saved_miller_rabin_calls": 74,
+    "saved_miller_rabin_call_rate": 0.9487179487179487,
+    "matching_keypairs": 1,
+    "prime_fixed_points": {
+      "verification_mode": "sympy_isprime_then_closed_form_fixed_point",
+      "confirmed_prime_count": 2,
+      "fixed_point_count": 2,
+      "fixed_point_value": 1.0
+    }
+  },
+  "rsa_configuration": {
+    "rsa_bits": 64,
+    "rsa_keypair_count": 2,
+    "bonus_rsa_bits": 128,
+    "bonus_rsa_keypair_count": 1,
+    "public_exponent": 65537
+  },
+  "rsa_reproduction_command": "python3 benchmarks/python/prefilter/rsa_keygen_benchmark.py --rsa-bits 64 --rsa-keypair-count 2 --bonus-rsa-bits 128 --bonus-rsa-keypair-count 1 --public-exponent 65537"
+}

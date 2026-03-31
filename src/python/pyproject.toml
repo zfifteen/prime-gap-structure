@@ -14,4 +14,4 @@ Repository = "https://github.com/zfifteen/geodesic-prime-prefilter"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["geodesic_prime_prefilter*"]
+include = ["geodesic_prime_*"]

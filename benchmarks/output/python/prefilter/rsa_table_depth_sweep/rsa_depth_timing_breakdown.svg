@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="#fcfbf7" />
+<text x="95" y="46" font-family="Menlo, Monaco, monospace" font-size="26" fill="#1f2933">8192-bit RSA timing breakdown by table depth</text>
+<text x="95" y="72" font-family="Menlo, Monaco, monospace" font-size="14" fill="#52606d">Stacked end-to-end wall time per deterministic sweep cell</text>
+<line x1="95" y1="670.00" x2="1120" y2="670.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="675.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">0.0s</text>
+<line x1="95" y1="554.00" x2="1120" y2="554.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="559.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">56.2s</text>
+<line x1="95" y1="438.00" x2="1120" y2="438.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="443.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">112.4s</text>
+<line x1="95" y1="322.00" x2="1120" y2="322.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="327.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">168.5s</text>
+<line x1="95" y1="206.00" x2="1120" y2="206.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="211.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">224.7s</text>
+<line x1="95" y1="90.00" x2="1120" y2="90.00" stroke="#d9e2ec" stroke-width="1" />
+<text x="81" y="95.00" text-anchor="end" font-family="Menlo, Monaco, monospace" font-size="13" fill="#486581">280.9s</text>
+<line x1="95" y1="670" x2="1120" y2="670" stroke="#243b53" stroke-width="1.5" />
+<line x1="95" y1="90" x2="95" y2="670" stroke="#243b53" stroke-width="1.5" />
+<rect x="148.81" y="173.85" width="148.62" height="496.15" fill="#c84c09" />
+<rect x="148.81" y="165.83" width="148.62" height="8.01" fill="#2b59c3" />
+<rect x="148.81" y="165.65" width="148.62" height="0.18" fill="#9fb3c8" />
+<text x="223.12" y="155.65" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">244.3s</text>
+<text x="223.12" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">baseline</text>
+<rect x="405.06" y="667.45" width="148.62" height="2.55" fill="#0b6e4f" />
+<rect x="405.06" y="500.24" width="148.62" height="167.20" fill="#c84c09" />
+<rect x="405.06" y="492.26" width="148.62" height="7.98" fill="#2b59c3" />
+<rect x="405.06" y="492.13" width="148.62" height="0.12" fill="#9fb3c8" />
+<text x="479.38" y="482.13" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">86.1s</text>
+<text x="479.38" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53"><= 300,007</text>
+<rect x="661.31" y="662.69" width="148.62" height="7.31" fill="#0b6e4f" />
+<rect x="661.31" y="513.84" width="148.62" height="148.85" fill="#c84c09" />
+<rect x="661.31" y="505.95" width="148.62" height="7.89" fill="#2b59c3" />
+<rect x="661.31" y="505.82" width="148.62" height="0.12" fill="#9fb3c8" />
+<text x="735.62" y="495.82" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">79.5s</text>
+<text x="735.62" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53"><= 1,000,003</text>
+<rect x="917.56" y="650.07" width="148.62" height="19.93" fill="#0b6e4f" />
+<rect x="917.56" y="510.96" width="148.62" height="139.11" fill="#c84c09" />
+<rect x="917.56" y="502.89" width="148.62" height="8.07" fill="#2b59c3" />
+<rect x="917.56" y="502.77" width="148.62" height="0.12" fill="#9fb3c8" />
+<text x="991.88" y="492.77" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">81.0s</text>
+<text x="991.88" y="696.00" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53"><= 3,000,000</text>
+<rect x="910" y="96.00" width="16" height="16" fill="#0b6e4f" />
+<text x="934" y="109.00" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">proxy filtering</text>
+<rect x="910" y="120.00" width="16" height="16" fill="#c84c09" />
+<text x="934" y="133.00" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">survivor MR</text>
+<rect x="910" y="144.00" width="16" height="16" fill="#2b59c3" />
+<text x="934" y="157.00" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">assembly + validation</text>
+<rect x="910" y="168.00" width="16" height="16" fill="#9fb3c8" />
+<text x="934" y="181.00" font-family="Menlo, Monaco, monospace" font-size="13" fill="#243b53">residual search overhead</text>
+<text x="607.50" y="732" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">Baseline and accelerated depth cells</text>
+<text x="24" y="380.00" transform="rotate(-90 24 380.00)" text-anchor="middle" font-family="Menlo, Monaco, monospace" font-size="14" fill="#243b53">Total wall time</text>
+</svg>

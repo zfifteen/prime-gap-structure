@@ -144,9 +144,9 @@ Empirically, this extracted Python path produced:
 
 - Up to `10^6` on the natural number line, the strongest exact raw composite `Z` value inside a prime gap lands at edge distance `2` in `43.6006%` of gaps versus an exact within-gap baseline of `22.1859%`, and is carried by a `d(n) = 4` composite in `82.9027%` of gaps versus a baseline of `20.1401%`.
 
-See [docs/raw_composite_z_gap_edge.md](docs/raw_composite_z_gap_edge.md) for the exact method and measured table.
+See [docs/gap_ridge/raw_composite_z_gap_edge.md](docs/gap_ridge/raw_composite_z_gap_edge.md) for the exact method and measured table.
 
-See [docs/benchmarks.md](docs/benchmarks.md) for the curated benchmark summary and [docs/manual_validation.md](docs/manual_validation.md) for the exact reproduction commands.
+See [docs/prefilter/benchmarks.md](docs/prefilter/benchmarks.md) for the curated benchmark summary and [docs/prefilter/manual_validation.md](docs/prefilter/manual_validation.md) for the exact reproduction commands.
 
 ## Python API
 

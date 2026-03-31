@@ -15,7 +15,7 @@ That distinction is the starting point of this method. A number with more exact 
 
 The logarithmic term serves one specific purpose: it lets scale matter without letting raw magnitude overwhelm the structural signal. Moving from `10` to `100` to `1000` should register as growth, but not in a way that buries the divisor pattern under sheer size alone. The logarithm compresses that growth into steady increments, so divisor structure can still be compared meaningfully across small and large integers.
 
-That is also the point where the word "curvature" becomes justified. Start from the minimal divisor case: a prime has only `1` and itself. As additional exact divisors appear, the integer departs farther from that minimal case. The method uses "curvature" as the name for that departure once divisor structure and scale have been combined into a single quantity.
+The method uses the word curvature for the combined quantity because it measures departure from the minimal divisor case. A prime has only `1` and itself. As additional exact divisors appear, the integer carries more internal branching relative to that baseline. Once divisor structure and logarithmic size are taken together, that accumulated departure is the quantity denoted by `kappa(n)`.
 
 We call the resulting law the **Divisor Curvature Equation**:
 

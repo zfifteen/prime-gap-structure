@@ -1,0 +1,1260 @@
+{
+  "parameters": {
+    "exact_limits": [
+      1000000,
+      20000000
+    ],
+    "scales": [
+      100000000,
+      1000000000,
+      10000000000,
+      100000000000,
+      1000000000000,
+      10000000000000,
+      100000000000000,
+      1000000000000000,
+      10000000000000000,
+      100000000000000000,
+      1000000000000000000
+    ],
+    "window_size": 2000000,
+    "window_count": 2,
+    "max_examples": 10
+  },
+  "exact_runs": [
+    {
+      "scale": 1000000,
+      "window_mode": "exact",
+      "lo": 2,
+      "hi": 1000001,
+      "window_size": 999999,
+      "gap_count": 70327,
+      "winner_d3_count": 167,
+      "winner_d4_count": 58303,
+      "d4_winner_gap_count": 58303,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 58303,
+      "d4_winner_semiprime_count": 58296,
+      "d4_winner_prime_cube_count": 7,
+      "no_square_has_d4_gap_count": 58303,
+      "no_square_has_d4_first_d4_winner_count": 58303,
+      "max_gap": 114,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        }
+      ],
+      "interval_count": 1,
+      "runtime_seconds": 0.8894439581781626,
+      "winner_d3_share": 0.002374621411406714,
+      "winner_d4_share": 0.8290272583787166,
+      "d4_winner_share": 0.8290272583787166,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9998799375675351,
+      "d4_winner_prime_cube_share": 0.00012006243246488174,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 20000000,
+      "window_mode": "exact",
+      "lo": 2,
+      "hi": 20000001,
+      "window_size": 19999999,
+      "gap_count": 1163198,
+      "winner_d3_count": 606,
+      "winner_d4_count": 959730,
+      "d4_winner_gap_count": 959730,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 959730,
+      "d4_winner_semiprime_count": 959715,
+      "d4_winner_prime_cube_count": 15,
+      "no_square_has_d4_gap_count": 959730,
+      "no_square_has_d4_first_d4_winner_count": 959730,
+      "max_gap": 180,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 2248087,
+          "right_prime": 2248117,
+          "gap": 30,
+          "winner_n": 2248091,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 3442949,
+          "right_prime": 3442963,
+          "gap": 14,
+          "winner_n": 3442951,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 1,
+      "runtime_seconds": 21.670037417206913,
+      "winner_d3_share": 0.0005209775119970977,
+      "winner_d4_share": 0.8250787914009481,
+      "d4_winner_share": 0.8250787914009481,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999843706042324,
+      "d4_winner_prime_cube_share": 1.5629395767559626e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    }
+  ],
+  "exact": {
+    "scale": 1000000,
+    "window_mode": "exact",
+    "lo": 2,
+    "hi": 1000001,
+    "window_size": 999999,
+    "gap_count": 70327,
+    "winner_d3_count": 167,
+    "winner_d4_count": 58303,
+    "d4_winner_gap_count": 58303,
+    "d4_winner_with_interior_square_count": 0,
+    "d4_winner_equals_first_d4_count": 58303,
+    "d4_winner_semiprime_count": 58296,
+    "d4_winner_prime_cube_count": 7,
+    "no_square_has_d4_gap_count": 58303,
+    "no_square_has_d4_first_d4_winner_count": 58303,
+    "max_gap": 114,
+    "d4_winner_with_interior_square_examples": [],
+    "no_square_has_d4_not_first_d4_examples": [],
+    "d4_winner_prime_cube_examples": [
+      {
+        "left_prime": 6857,
+        "right_prime": 6863,
+        "gap": 6,
+        "winner_n": 6859,
+        "winner_offset": 2
+      },
+      {
+        "left_prime": 12163,
+        "right_prime": 12197,
+        "gap": 34,
+        "winner_n": 12167,
+        "winner_offset": 4
+      },
+      {
+        "left_prime": 29789,
+        "right_prime": 29803,
+        "gap": 14,
+        "winner_n": 29791,
+        "winner_offset": 2
+      },
+      {
+        "left_prime": 50651,
+        "right_prime": 50671,
+        "gap": 20,
+        "winner_n": 50653,
+        "winner_offset": 2
+      },
+      {
+        "left_prime": 148873,
+        "right_prime": 148891,
+        "gap": 18,
+        "winner_n": 148877,
+        "winner_offset": 4
+      },
+      {
+        "left_prime": 300761,
+        "right_prime": 300779,
+        "gap": 18,
+        "winner_n": 300763,
+        "winner_offset": 2
+      },
+      {
+        "left_prime": 571783,
+        "right_prime": 571789,
+        "gap": 6,
+        "winner_n": 571787,
+        "winner_offset": 4
+      }
+    ],
+    "interval_count": 1,
+    "runtime_seconds": 0.8894439581781626,
+    "winner_d3_share": 0.002374621411406714,
+    "winner_d4_share": 0.8290272583787166,
+    "d4_winner_share": 0.8290272583787166,
+    "d4_winner_with_interior_square_rate": 0.0,
+    "d4_winner_equals_first_d4_rate": 1.0,
+    "d4_winner_semiprime_share": 0.9998799375675351,
+    "d4_winner_prime_cube_share": 0.00012006243246488174,
+    "no_square_has_d4_first_d4_winner_rate": 1.0
+  },
+  "even_bands": [
+    {
+      "scale": 100000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 100000002,
+      "window_size": 2000000,
+      "gap_count": 234639,
+      "winner_d3_count": 231,
+      "winner_d4_count": 193728,
+      "d4_winner_gap_count": 193728,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 193728,
+      "d4_winner_semiprime_count": 193720,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 193728,
+      "no_square_has_d4_first_d4_winner_count": 193728,
+      "max_gap": 176,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 4.448839457705617,
+      "winner_d3_share": 0.000984491069259586,
+      "winner_d4_share": 0.8256427959546367,
+      "d4_winner_share": 0.8256427959546367,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999587049884374,
+      "d4_winner_prime_cube_share": 4.1295011562603234e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 1000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 1000000002,
+      "window_size": 2000000,
+      "gap_count": 224237,
+      "winner_d3_count": 224,
+      "winner_d4_count": 185013,
+      "d4_winner_gap_count": 185013,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 185013,
+      "d4_winner_semiprime_count": 185005,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 185013,
+      "no_square_has_d4_first_d4_winner_count": 185013,
+      "max_gap": 190,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 4.70272191753611,
+      "winner_d3_share": 0.0009989430825421317,
+      "winner_d4_share": 0.8250779309391403,
+      "d4_winner_share": 0.8250779309391403,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999567597952577,
+      "d4_winner_prime_cube_share": 4.3240204742369454e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 10000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 10000000002,
+      "window_size": 2000000,
+      "gap_count": 215807,
+      "winner_d3_count": 223,
+      "winner_d4_count": 178500,
+      "d4_winner_gap_count": 178500,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 178500,
+      "d4_winner_semiprime_count": 178492,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 178500,
+      "no_square_has_d4_first_d4_winner_count": 178500,
+      "max_gap": 288,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 5.109811457339674,
+      "winner_d3_share": 0.0010333307075303397,
+      "winner_d4_share": 0.8271279430231642,
+      "d4_winner_share": 0.8271279430231642,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999551820728292,
+      "d4_winner_prime_cube_share": 4.481792717086835e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 100000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 100000000002,
+      "window_size": 2000000,
+      "gap_count": 208766,
+      "winner_d3_count": 222,
+      "winner_d4_count": 172443,
+      "d4_winner_gap_count": 172443,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 172443,
+      "d4_winner_semiprime_count": 172435,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 172443,
+      "no_square_has_d4_first_d4_winner_count": 172443,
+      "max_gap": 268,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 5.518730999901891,
+      "winner_d3_share": 0.001063391548432216,
+      "winner_d4_share": 0.8260109404788136,
+      "d4_winner_share": 0.8260109404788136,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999536078588287,
+      "d4_winner_prime_cube_share": 4.6392141171285584e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 1000000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 1000000000002,
+      "window_size": 2000000,
+      "gap_count": 202949,
+      "winner_d3_count": 222,
+      "winner_d4_count": 167575,
+      "d4_winner_gap_count": 167575,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 167575,
+      "d4_winner_semiprime_count": 167567,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 167575,
+      "no_square_has_d4_first_d4_winner_count": 167575,
+      "max_gap": 306,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 5.891459417063743,
+      "winner_d3_share": 0.0010938708739634095,
+      "winner_d4_share": 0.8257000527226052,
+      "d4_winner_share": 0.8257000527226052,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.999952260182008,
+      "d4_winner_prime_cube_share": 4.7739817991943906e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 10000000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 10000000000002,
+      "window_size": 2000000,
+      "gap_count": 197687,
+      "winner_d3_count": 222,
+      "winner_d4_count": 163487,
+      "d4_winner_gap_count": 163487,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 163487,
+      "d4_winner_semiprime_count": 163479,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 163487,
+      "no_square_has_d4_first_d4_winner_count": 163487,
+      "max_gap": 300,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 6.114740458317101,
+      "winner_d3_share": 0.0011229873486875719,
+      "winner_d4_share": 0.8269992462832659,
+      "d4_winner_share": 0.8269992462832659,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999510664456501,
+      "d4_winner_prime_cube_share": 4.893355434988715e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 100000000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 100000000000002,
+      "window_size": 2000000,
+      "gap_count": 193665,
+      "winner_d3_count": 222,
+      "winner_d4_count": 160154,
+      "d4_winner_gap_count": 160154,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 160154,
+      "d4_winner_semiprime_count": 160146,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 160154,
+      "no_square_has_d4_first_d4_winner_count": 160154,
+      "max_gap": 358,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 6.549938541837037,
+      "winner_d3_share": 0.001146309348617458,
+      "winner_d4_share": 0.8269640874706323,
+      "d4_winner_share": 0.8269640874706323,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999500480787242,
+      "d4_winner_prime_cube_share": 4.995192127577207e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 1000000000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 1000000000000002,
+      "window_size": 2000000,
+      "gap_count": 189602,
+      "winner_d3_count": 222,
+      "winner_d4_count": 156752,
+      "d4_winner_gap_count": 156752,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 156752,
+      "d4_winner_semiprime_count": 156744,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 156752,
+      "no_square_has_d4_first_d4_winner_count": 156752,
+      "max_gap": 436,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 6.736039000097662,
+      "winner_d3_share": 0.0011708737249607071,
+      "winner_d4_share": 0.8267423339416251,
+      "d4_winner_share": 0.8267423339416251,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999489639685618,
+      "d4_winner_prime_cube_share": 5.103603143819537e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 10000000000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 10000000000000002,
+      "window_size": 2000000,
+      "gap_count": 186494,
+      "winner_d3_count": 222,
+      "winner_d4_count": 154278,
+      "d4_winner_gap_count": 154278,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 154278,
+      "d4_winner_semiprime_count": 154270,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 154278,
+      "no_square_has_d4_first_d4_winner_count": 154278,
+      "max_gap": 432,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 7.252220916096121,
+      "winner_d3_share": 0.0011903868220961532,
+      "winner_d4_share": 0.8272544961231997,
+      "d4_winner_share": 0.8272544961231997,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999481455554259,
+      "d4_winner_prime_cube_share": 5.1854444574080554e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 100000000000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 100000000000000002,
+      "window_size": 2000000,
+      "gap_count": 183355,
+      "winner_d3_count": 222,
+      "winner_d4_count": 151823,
+      "d4_winner_gap_count": 151823,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 151823,
+      "d4_winner_semiprime_count": 151815,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 151823,
+      "no_square_has_d4_first_d4_winner_count": 151823,
+      "max_gap": 448,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 7.805075626354665,
+      "winner_d3_share": 0.001210766000381773,
+      "winner_d4_share": 0.8280275967385673,
+      "d4_winner_share": 0.8280275967385673,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.9999473070615125,
+      "d4_winner_prime_cube_share": 5.269293848758093e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    },
+    {
+      "scale": 1000000000000000000,
+      "window_mode": "even",
+      "lo": 2,
+      "hi": 1000000000000000002,
+      "window_size": 2000000,
+      "gap_count": 180447,
+      "winner_d3_count": 222,
+      "winner_d4_count": 149279,
+      "d4_winner_gap_count": 149279,
+      "d4_winner_with_interior_square_count": 0,
+      "d4_winner_equals_first_d4_count": 149279,
+      "d4_winner_semiprime_count": 149271,
+      "d4_winner_prime_cube_count": 8,
+      "no_square_has_d4_gap_count": 149279,
+      "no_square_has_d4_first_d4_winner_count": 149279,
+      "max_gap": 448,
+      "d4_winner_with_interior_square_examples": [],
+      "no_square_has_d4_not_first_d4_examples": [],
+      "d4_winner_prime_cube_examples": [
+        {
+          "left_prime": 6857,
+          "right_prime": 6863,
+          "gap": 6,
+          "winner_n": 6859,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 12163,
+          "right_prime": 12197,
+          "gap": 34,
+          "winner_n": 12167,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 29789,
+          "right_prime": 29803,
+          "gap": 14,
+          "winner_n": 29791,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 50651,
+          "right_prime": 50671,
+          "gap": 20,
+          "winner_n": 50653,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 148873,
+          "right_prime": 148891,
+          "gap": 18,
+          "winner_n": 148877,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 300761,
+          "right_prime": 300779,
+          "gap": 18,
+          "winner_n": 300763,
+          "winner_offset": 2
+        },
+        {
+          "left_prime": 571783,
+          "right_prime": 571789,
+          "gap": 6,
+          "winner_n": 571787,
+          "winner_offset": 4
+        },
+        {
+          "left_prime": 1295027,
+          "right_prime": 1295033,
+          "gap": 6,
+          "winner_n": 1295029,
+          "winner_offset": 2
+        }
+      ],
+      "interval_count": 2,
+      "runtime_seconds": 8.384409457910806,
+      "winner_d3_share": 0.0012302781426125123,
+      "winner_d4_share": 0.8272733822119515,
+      "d4_winner_share": 0.8272733822119515,
+      "d4_winner_with_interior_square_rate": 0.0,
+      "d4_winner_equals_first_d4_rate": 1.0,
+      "d4_winner_semiprime_share": 0.999946409072944,
+      "d4_winner_prime_cube_share": 5.359092705604941e-05,
+      "no_square_has_d4_first_d4_winner_rate": 1.0
+    }
+  ]
+}

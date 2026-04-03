@@ -22,6 +22,16 @@ refer directly to an older artifact whose title or filename already uses it.
 - [`no_later_simpler_composite_theorem.md`](./no_later_simpler_composite_theorem.md):
   Theorem-candidate framing of the closure condition as a direct prime-gap
   termination law under the name `No-Later-Simpler-Composite Theorem`.
+- [`dominant_d4_arrival_reduction_findings.md`](./dominant_d4_arrival_reduction_findings.md):
+  Exact and deterministic-band evidence that the dominant $d=4$ winner regime
+  reduces to square exclusion plus first-$d=4$ arrival, together with the
+  explicit falsification of the stricter semiprime-only wording.
+- [`square_exclusion_first_d4_theorem.md`](./square_exclusion_first_d4_theorem.md):
+  Theorem-candidate framing of the dominant $d=4$ reduction as a direct
+  prime-gap law.
+- [`why_the_dominant_d4_reduction_matters.md`](./why_the_dominant_d4_reduction_matters.md):
+  Formal project-level and number-theoretic implications of the dominant
+  $d=4$ reduction, including the current through-$10^{18}$ validation status.
 
 ## Legacy Inputs
 

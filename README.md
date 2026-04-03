@@ -47,6 +47,15 @@ bands through $10^{18}$.
   [theorem candidate note](gwr/findings/no_later_simpler_composite_theorem.md)
   and the
   [findings summary](gwr/findings/closure_constraint_findings.md).
+- **Dominant $d=4$ reduction.** In the dominant winner regime, the tested gaps
+  admit no interior prime square, and the implemented winner is exactly the
+  first interior carrier with $d(n)=4$. This holds on exact full scans at
+  $10^6$ and $2 \times 10^7$ and on the deterministic even-band ladder through
+  $10^{18}$, while the stricter semiprime-only wording is explicitly falsified
+  by a thin prime-cube exception family. See the
+  [findings note](gwr/findings/dominant_d4_arrival_reduction_findings.md) and
+  the
+  [theorem candidate note](gwr/findings/square_exclusion_first_d4_theorem.md).
 - **Deterministic prefilter performance.** The current production Python path
   rejects about $91\%$ of tested odd candidates before Miller-Rabin and
   produced $2.09\times$ and $2.82\times$ end-to-end deterministic RSA
@@ -75,12 +84,24 @@ features on the prime-gap interior surface:
 Those are not separate committed rules in the current reading. They are
 consequences of the same winner law when it holds.
 
+The dominant winner class now has a documented local reduction of its own.
+On the current exact-and-band surface, every tested gap with winner class
+$d(w)=4$ contains no interior prime square, and its true winner is exactly the
+first interior carrier with $d(n)=4$. That gives the leading regime a visible
+mechanism: square exclusion first, then first-$d=4$ arrival. The stricter
+semiprime-only slogan is false; a thin prime-cube exception family survives
+inside the broader $d=4$ class.
+
 See [gwr/story/README.md](gwr/story/README.md) for the plain-language write-up,
 [gwr/findings/gap_winner_rule.md](gwr/findings/gap_winner_rule.md) for the
 formal statement, and
 [gwr/findings/lexicographic_raw_z_dominance_theorem.md](gwr/findings/lexicographic_raw_z_dominance_theorem.md)
 for the surviving directional dominance theorem that sits beneath the gap-local
-collapse.
+collapse. See
+[gwr/findings/dominant_d4_arrival_reduction_findings.md](gwr/findings/dominant_d4_arrival_reduction_findings.md)
+and
+[gwr/findings/square_exclusion_first_d4_theorem.md](gwr/findings/square_exclusion_first_d4_theorem.md)
+for the dominant-case reduction and its theorem-candidate form.
 
 ## No-Later-Simpler-Composite Theorem Candidate
 

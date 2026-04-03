@@ -315,7 +315,7 @@ dominates so much of that picture.
 The fifth is the RH bridge concern.
 
 That is the analytic bridge from DNI into zeta-function territory: the fact
-that the native generating objects built from divisor count and curvature
+that the native generating objects built from divisor count and normalization load
 reconstruct the classical prime detector `-ζ′/ζ`.
 
 Those five concerns all grew from the same starting point.

@@ -8,4 +8,4 @@ ordinary language, with formulas written in plain unicode when needed.
 
 Current essays:
 
-- [01_genesis_of_dci.md](./01_genesis_of_dci.md)
+- [01_genesis_of_dni.md](./01_genesis_of_dni.md)

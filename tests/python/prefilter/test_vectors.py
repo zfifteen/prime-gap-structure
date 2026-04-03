@@ -1,4 +1,4 @@
-"""Golden-vector parity tests for the standalone geodesic prefilter repo."""
+"""Golden-vector parity tests for the standalone Z-Band prefilter repo."""
 
 from __future__ import annotations
 
@@ -89,7 +89,7 @@ def test_prefilter_decision_vectors_match_proxy_behavior():
 
 
 def test_fixed_point_vectors_match_exact_small_n_contract():
-    """The small-n fixed-point vectors must match the exact DCI closed form."""
+    """The small-n fixed-point vectors must match the exact DNI closed form."""
     module = load_candidate_benchmark()
     payload = load_json("fixed_points_small_n.json")
 
@@ -108,7 +108,7 @@ def test_generate_prime_vectors_match_public_api():
     payload = load_json("generate_prime_cases.json")
 
     for case in payload["cases"]:
-        generator = prefilter.CDLPrimeGeodesicPrefilter(
+        generator = prefilter.CDLPrimeZBandPrefilter(
             bit_length=case["bit_length"],
             namespace=case["namespace"],
         )

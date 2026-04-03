@@ -28,7 +28,7 @@ DNI field on prime-gap interiors:
 
 That is the near-edge ridge result documented in:
 
-- [docs/dci_gap_ridge.md](../dci_gap_ridge.md)
+- [docs/dni_gap_ridge.md](../dni_gap_ridge.md)
 - [docs/gap_ridge/raw_composite_z_gap_edge.md](./raw_composite_z_gap_edge.md)
 - [docs/gap_ridge/raw_composite_z_gap_edge_figures.md](./raw_composite_z_gap_edge_figures.md)
 

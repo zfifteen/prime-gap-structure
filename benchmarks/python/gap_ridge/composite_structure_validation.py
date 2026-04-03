@@ -9,7 +9,7 @@ import os
 import sys
 from pathlib import Path
 
-os.environ.setdefault("MPLCONFIGDIR", "/tmp/geodesic-prime-prefilter-mpl")
+os.environ.setdefault("MPLCONFIGDIR", "/tmp/z-band-prime-prefilter-mpl")
 
 import matplotlib
 

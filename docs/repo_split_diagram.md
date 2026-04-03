@@ -2,9 +2,9 @@
 
 ```mermaid
 flowchart TB
-    A["Current repository<br/>geodesic-prime-prefilter"] --> B["Repo 1<br/>geodesic-prime-prefilter<br/><br/>Normative production artifact"]
-    A --> C["Repo 2<br/>geodesic-prime-gap-ridge<br/><br/>Gap-ridge research and findings"]
-    A --> D["Optional Repo 3<br/>geodesic-prime-composite-field<br/><br/>Shared exact divisor-count and field helpers"]
+    A["Current repository<br/>z-band-prime-prefilter"] --> B["Repo 1<br/>z-band-prime-prefilter<br/><br/>Normative production artifact"]
+    A --> C["Repo 2<br/>z-band-prime-gap-ridge<br/><br/>Gap-ridge research and findings"]
+    A --> D["Optional Repo 3<br/>z-band-prime-composite-field<br/><br/>Shared exact divisor-count and field helpers"]
 
     B --> B1["Keep<br/>src/python/geodesic_prime_prefilter/<br/>spec/contract.md<br/>spec/vectors/<br/>tests/python/prefilter/<br/>docs/prefilter/<br/>docs/architecture.md"]
     C --> C1["Move<br/>benchmarks/python/gap_ridge/<br/>benchmarks/output/python/gap_ridge/<br/>docs/gap_ridge/<br/>docs/findings/<br/>tests/python/gap_ridge/"]
@@ -30,8 +30,8 @@ flowchart TB
 
 Start with two repos, not three:
 
-1. `geodesic-prime-prefilter`
-2. `geodesic-prime-gap-ridge`
+1. `z-band-prime-prefilter`
+2. `z-band-prime-gap-ridge`
 
 Only split out a shared field/core repo later if both repos actually need to
 version that code independently.

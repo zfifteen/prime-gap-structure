@@ -52,5 +52,5 @@ Artifacts written by this verifier:
 ## Reproduction
 
 ```bash
-python3 benchmarks/python/prefilter/structural_amplification_verifier.py --output-dir /Users/velocityworks/IdeaProjects/geodesic-prime-prefilter/benchmarks/output/python/prefilter/structural_amplification --schedule 1024:24 2048:12 3072:8 4096:6 8192:2 --repetitions 3 --evaluation-min-rsa-bits 2048 --rejection-stability-tolerance 0.02 --public-exponent 65537 --namespace cdl-structural-amplification
+python3 benchmarks/python/prefilter/structural_amplification_verifier.py --output-dir /Users/velocityworks/IdeaProjects/z-band-prime-prefilter/benchmarks/output/python/prefilter/structural_amplification --schedule 1024:24 2048:12 3072:8 4096:6 8192:2 --repetitions 3 --evaluation-min-rsa-bits 2048 --rejection-stability-tolerance 0.02 --public-exponent 65537 --namespace cdl-structural-amplification
 ```

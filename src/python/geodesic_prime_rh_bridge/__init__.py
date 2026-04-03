@@ -1,4 +1,4 @@
-"""Dirichlet-series helpers for the DCI-to-RH bridge."""
+"""Dirichlet-series helpers for the DNI-to-RH bridge."""
 
 from .bridge import (
     AnalyticBridgeEvaluation,

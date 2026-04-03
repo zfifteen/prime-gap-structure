@@ -2,7 +2,7 @@
 
 This report benchmarks the deterministic RSA key-generation pipeline across
 the fixed sweep schedule up to the requested RSA ceiling. Its invariant target is
-the **Divisor Curvature Identity** (DCI) $Z(n) = n^{1 - d(n)/2}$.
+the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$.
 
 ## Configuration
 
@@ -26,7 +26,7 @@ the **Divisor Curvature Identity** (DCI) $Z(n) = n^{1 - d(n)/2}$.
 - The accelerated path generated the same keypairs in `1566.871875` ms for a measured `0.60x` speedup.
 - The proxy removed `17096` Miller-Rabin calls (`91.24%` of baseline MR work).
 - Proxy rejection rate was `91.24%` across the full candidate stream.
-- All `200` confirmed primes remained on the DCI band `Z = 1.0` after final `sympy.isprime` confirmation.
+- All `200` confirmed primes remained on the DNI fixed-point locus `Z = 1.0` after final `sympy.isprime` confirmation.
 
 ## RSA 1024
 
@@ -34,7 +34,7 @@ the **Divisor Curvature Identity** (DCI) $Z(n) = n^{1 - d(n)/2}$.
 - The accelerated path generated the same keypairs in `7936.873958` ms for a measured `1.26x` speedup.
 - The proxy removed `33246` Miller-Rabin calls (`91.14%` of baseline MR work).
 - Proxy rejection rate was `91.14%` across the full candidate stream.
-- All `200` confirmed primes remained on the DCI band `Z = 1.0` after final `sympy.isprime` confirmation.
+- All `200` confirmed primes remained on the DNI fixed-point locus `Z = 1.0` after final `sympy.isprime` confirmation.
 
 ## RSA 2048
 
@@ -42,7 +42,7 @@ the **Divisor Curvature Identity** (DCI) $Z(n) = n^{1 - d(n)/2}$.
 - The accelerated path generated the same keypairs in `25518.274625` ms for a measured `2.12x` speedup.
 - The proxy removed `36975` Miller-Rabin calls (`90.97%` of baseline MR work).
 - Proxy rejection rate was `90.97%` across the full candidate stream.
-- All `100` confirmed primes remained on the DCI band `Z = 1.0` after final `sympy.isprime` confirmation.
+- All `100` confirmed primes remained on the DNI fixed-point locus `Z = 1.0` after final `sympy.isprime` confirmation.
 
 ## RSA 3072
 
@@ -50,7 +50,7 @@ the **Divisor Curvature Identity** (DCI) $Z(n) = n^{1 - d(n)/2}$.
 - The accelerated path generated the same keypairs in `32310.299291` ms for a measured `2.53x` speedup.
 - The proxy removed `19488` Miller-Rabin calls (`91.28%` of baseline MR work).
 - Proxy rejection rate was `91.28%` across the full candidate stream.
-- All `40` confirmed primes remained on the DCI band `Z = 1.0` after final `sympy.isprime` confirmation.
+- All `40` confirmed primes remained on the DNI fixed-point locus `Z = 1.0` after final `sympy.isprime` confirmation.
 
 ## RSA 4096
 
@@ -58,4 +58,4 @@ the **Divisor Curvature Identity** (DCI) $Z(n) = n^{1 - d(n)/2}$.
 - The accelerated path generated the same keypairs in `45168.493917` ms for a measured `2.77x` speedup.
 - The proxy removed `13031` Miller-Rabin calls (`91.15%` of baseline MR work).
 - Proxy rejection rate was `91.15%` across the full candidate stream.
-- All `20` confirmed primes remained on the DCI band `Z = 1.0` after final `sympy.isprime` confirmation.
+- All `20` confirmed primes remained on the DNI fixed-point locus `Z = 1.0` after final `sympy.isprime` confirmation.

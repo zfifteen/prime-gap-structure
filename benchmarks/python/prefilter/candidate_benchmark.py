@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic benchmark for exact CDL, the DCI calibration path, and Miller-Rabin control."""
+"""Deterministic benchmark for exact CDL, the DNI calibration path, and Miller-Rabin control."""
 
 from __future__ import annotations
 
@@ -217,7 +217,7 @@ class WheelPrimeTable:
         Return a divisor-count lower bound induced by the first small factor found.
 
         Returns `(2.0, None)` as the survivor sentinel when this interval finds no
-        factor. That floor keeps the candidate on the prime band until another
+        factor. That floor keeps the candidate on the fixed-point locus until another
         interval or Miller-Rabin resolves it.
         """
         factor = self.find_small_factor(n)
@@ -248,7 +248,7 @@ def cheap_cdl_proxy(
 
     This path rejects candidates only when a concrete factor is found in the primary
     or tail intervals. When no factor is found, the proxy leaves the candidate on
-    the prime band (`z_hat = 1.0`) and defers to Miller-Rabin.
+    the fixed-point locus (`z_hat = 1.0`) and defers to Miller-Rabin.
     """
     if n < 2:
         return {
@@ -705,7 +705,7 @@ def build_report_markdown(results: Dict) -> str:
         "",
         f"Date: {results['experiment_date']}",
         "",
-        "This report benchmarks the exact **Divisor Curvature Identity** (DCI) $Z(n) = n^{1 - d(n)/2}$ calibration path where the current implementation is executable,",
+        "This report benchmarks the exact **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ calibration path where the current implementation is executable,",
         "a deterministic CDL proxy backed by bit-length-gated interval-split chunked prime tables,",
         "and fixed-base Miller-Rabin on deterministic cryptographic-scale odd candidates.",
         "",
@@ -730,10 +730,10 @@ def build_report_markdown(results: Dict) -> str:
         "",
         "## Headline Findings",
         "",
-        f"- The exact DCI path hit the fixed-point band for `{calibration['numeric_fixed_points']}` of `{calibration['prime_count']}` calibration primes within numeric tolerance, with `{calibration['numeric_false_fixed_points']}` composite points on the band.",
+        f"- The exact DNI path hit the fixed-point locus for `{calibration['numeric_fixed_points']}` of `{calibration['prime_count']}` calibration primes within numeric tolerance, with `{calibration['numeric_false_fixed_points']}` composite points on the locus.",
         f"- The deterministic proxy hit `{proxy_calibration['fixed_points']}` fixed points on the same calibration corpus with `{proxy_calibration['false_fixed_points']}` composite fixed points and calibration accuracy `{proxy_metrics['accuracy']:.2%}`.",
         f"- On the same `{calibration['bit_length']}`-bit calibration corpus, fixed-base Miller-Rabin matched exact primality with accuracy `{mr_small['accuracy']:.2%}`.",
-        f"- Mean runtime on the calibration corpus was `{calibration['z_timing_ms']['mean']:.6f}` ms per candidate for exact DCI `z_normalize`, `{proxy_calibration['timing_ms']['mean']:.6f}` ms for the deterministic proxy, and `{mr_small['timing_ms']['mean']:.6f}` ms for Miller-Rabin.",
+        f"- Mean runtime on the calibration corpus was `{calibration['z_timing_ms']['mean']:.6f}` ms per candidate for exact DNI `z_normalize`, `{proxy_calibration['timing_ms']['mean']:.6f}` ms for the deterministic proxy, and `{mr_small['timing_ms']['mean']:.6f}` ms for Miller-Rabin.",
         f"- On the `{crypto['bit_length']}`-bit control corpus, Miller-Rabin averaged `{crypto['timing_ms']['mean']:.6f}` ms per candidate and passed `{crypto['miller_rabin_pass_count']}` of `{crypto['candidate_count']}` odd candidates; first pass index: `{first_pass_text}`.",
         f"- The deterministic proxy rejected `{proxy_crypto['rejected_by_proxy']}` of `{proxy_crypto['candidate_count']}` cryptographic candidates before Miller-Rabin (`{proxy_crypto['rejection_rate']:.2%}`), cut the end-to-end pipeline to `{proxy_crypto['pipeline_timing_ms']['mean']:.6f}` ms per candidate, and delivered a measured `{proxy_speedup:.2f}x` speedup over Miller-Rabin alone on this corpus.",
     ]

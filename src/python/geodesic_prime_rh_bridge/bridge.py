@@ -1,4 +1,4 @@
-"""Dirichlet-series helpers for the DCI-to-RH bridge."""
+"""Dirichlet-series helpers for the DNI-to-RH bridge."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from geodesic_prime_invariant import FIXED_POINT_V
 
 @dataclass(frozen=True)
 class BridgeCoefficientRow:
-    """One coefficient-side row in the DCI-to-RH bridge."""
+    """One coefficient-side row in the DNI-to-RH bridge."""
 
     n: int
     divisor_count: int
@@ -29,7 +29,7 @@ class BridgeCoefficientRow:
 
 @dataclass(frozen=True)
 class PartialSumBridgeEvaluation:
-    """One direct partial-sum evaluation of the DCI-to-RH bridge."""
+    """One direct partial-sum evaluation of the DNI-to-RH bridge."""
 
     s: complex
     terms: int
@@ -58,7 +58,7 @@ class PartialSumBridgeEvaluation:
 
 @dataclass(frozen=True)
 class AnalyticBridgeEvaluation:
-    """One analytic evaluation of the continued DCI ratio."""
+    """One analytic evaluation of the continued DNI ratio."""
 
     s: complex
     divisor_series: complex
@@ -134,7 +134,7 @@ def curvature_coefficients_up_to(
     limit: int,
     divisor_counts: tuple[int, ...] | None = None,
 ) -> tuple[float, ...]:
-    """Return the DCI curvature coefficients from `0` through one positive limit."""
+    """Return the DNI normalization-load coefficients from `0` through one positive limit."""
     counts = divisor_counts or divisor_counts_up_to(limit)
     if len(counts) != limit + 1:
         raise ValueError("divisor_counts must have length limit + 1")
@@ -242,7 +242,7 @@ def evaluate_analytic_bridge(
     s: complex | float,
     dps: int = 50,
 ) -> AnalyticBridgeEvaluation:
-    """Evaluate the continued DCI ratio and compare it to `-zeta'/zeta`."""
+    """Evaluate the continued DNI ratio and compare it to `-zeta'/zeta`."""
     if dps < 15:
         raise ValueError("dps must be at least 15")
 

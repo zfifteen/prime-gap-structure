@@ -239,7 +239,7 @@ question:
 
 Those results are documented in:
 
-- [docs/dci_gap_ridge.md](./dci_gap_ridge.md)
+- [docs/dni_gap_ridge.md](./dni_gap_ridge.md)
 - [docs/gap_ridge/raw_composite_z_gap_edge.md](./gap_ridge/raw_composite_z_gap_edge.md)
 - [docs/findings/lexicographic_winner_take_all_peak_rule.md](./findings/lexicographic_winner_take_all_peak_rule.md)
 
@@ -368,14 +368,14 @@ That identity is enough to make the relationship precise:
 
 For the exact DNI and production path:
 
-- [docs/dci_prefilter.md](./dci_prefilter.md)
+- [docs/dni_prefilter.md](./dni_prefilter.md)
 - [technical-note/technical_note.md](../technical-note/technical_note.md)
 - [spec/contract.md](../spec/contract.md)
-- [src/python/geodesic_prime_rh_bridge/bridge.py](../src/python/geodesic_prime_rh_bridge/bridge.py)
+- [the RH bridge helpers](../src/python/geodesic_prime_rh_bridge/bridge.py)
 
 For the exact gap-ridge research surface:
 
-- [docs/dci_gap_ridge.md](./dci_gap_ridge.md)
+- [docs/dni_gap_ridge.md](./dni_gap_ridge.md)
 - [docs/gap_ridge/raw_composite_z_gap_edge.md](./gap_ridge/raw_composite_z_gap_edge.md)
 - [docs/gap_ridge/residue_mod30_ridge_orientation_note.md](./gap_ridge/residue_mod30_ridge_orientation_note.md)
 - [docs/findings/lexicographic_winner_take_all_peak_rule.md](./findings/lexicographic_winner_take_all_peak_rule.md)

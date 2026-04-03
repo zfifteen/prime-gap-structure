@@ -1,6 +1,6 @@
 # Z-Band Prime Prefilter
 
-![Z-Band Prime Prefilter hero](docs/assets/geodesic-prime-prefilter-hero.jpg)
+![Z-Band Prime Prefilter hero](docs/assets/z-band-prime-prefilter-hero.jpg)
 
 Deterministic cryptographic prime prefiltering derived from the prime locus implied by the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ at normalization scaling parameter $v = e^{2}/2$.
 

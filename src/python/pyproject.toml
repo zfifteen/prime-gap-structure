@@ -3,14 +3,14 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "geodesic-prime-prefilter"
+name = "z-band-prime-prefilter"
 version = "0.1.0"
 description = "Deterministic Z-Band prime prefilter locked to the fixed-point locus."
 requires-python = ">=3.11"
 dependencies = ["sympy>=1.13"]
 
 [project.urls]
-Repository = "https://github.com/zfifteen/geodesic-prime-prefilter"
+Repository = "https://github.com/zfifteen/z-band-prime-prefilter"
 
 [tool.setuptools.packages.find]
 where = ["."]

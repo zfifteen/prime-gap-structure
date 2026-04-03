@@ -1,4 +1,4 @@
-"""Exact DCI invariant helpers."""
+"""Exact DNI invariant helpers."""
 
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ def exact_divisor_count(n: int) -> int:
 
 
 def exact_z_normalize(n: int, v: float = FIXED_POINT_V) -> float:
-    """Evaluate the exact DCI normalization at the fixed-point rate."""
+    """Evaluate the exact DNI normalization at the fixed-point rate."""
     if n <= 1:
         return 0.0
 

@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
-Name: geodesic-prime-prefilter
+Name: z-band-prime-prefilter
 Version: 0.1.0
-Summary: Deterministic geodesic prime prefilter locked to the fixed-point band.
-Project-URL: Repository, https://github.com/zfifteen/geodesic-prime-prefilter
+Summary: Deterministic Z-Band prime prefilter locked to the fixed-point locus.
+Project-URL: Repository, https://github.com/zfifteen/z-band-prime-prefilter
 Requires-Python: >=3.11
 Requires-Dist: sympy>=1.13

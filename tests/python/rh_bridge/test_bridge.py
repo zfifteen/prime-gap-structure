@@ -1,4 +1,4 @@
-"""Tests for the DCI-to-RH bridge helpers."""
+"""Tests for the DNI-to-RH bridge helpers."""
 
 from __future__ import annotations
 
@@ -46,7 +46,7 @@ def test_small_mangoldt_values_match_prime_power_support():
 
 
 def test_bridge_rows_recover_scaled_curvature_coefficients():
-    """The coefficient bridge should match the scaled curvature layer term by term."""
+    """The coefficient bridge should match the scaled normalization-load layer term by term."""
     rows = build_bridge_rows(128)
 
     assert max(row.abs_error for row in rows) < 1e-12
@@ -56,7 +56,7 @@ def test_bridge_rows_recover_scaled_curvature_coefficients():
 
 
 def test_analytic_bridge_matches_negative_zeta_log_derivative():
-    """The continued DCI ratio should equal `-zeta'/zeta` numerically."""
+    """The continued DNI ratio should equal `-zeta'/zeta` numerically."""
     evaluation = evaluate_analytic_bridge(2.0, dps=80)
 
     assert evaluation.abs_error < 1e-30

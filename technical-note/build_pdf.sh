@@ -7,4 +7,4 @@ mkdir -p export
 pandoc technical_note.md \
   --citeproc \
   --pdf-engine=xelatex \
-  --output export/geodesic-prime-prefilter-technical-note.pdf
+  --output export/z-band-prime-prefilter-technical-note.pdf

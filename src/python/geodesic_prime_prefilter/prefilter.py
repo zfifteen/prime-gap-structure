@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic CDL geodesic prefilter for cryptographic prime generation."""
+"""Deterministic CDL Z-Band prefilter for cryptographic prime generation."""
 
 from __future__ import annotations
 
@@ -164,7 +164,7 @@ class WheelPrimeTable:
         Return the divisor lower bound induced by the first factor found.
 
         Returns `(2.0, None)` as the survivor sentinel when this interval finds no
-        factor. That floor preserves the prime band until another interval or the
+        factor. That floor preserves the fixed-point locus until another interval or the
         final Miller-Rabin path resolves the candidate.
         """
         factor = self.find_small_factor(n)
@@ -197,8 +197,8 @@ def get_cached_wheel_prime_table(
     return table
 
 
-class CDLPrimeGeodesicPrefilter:
-    """Deterministic CDL accelerator built around the Divisor Curvature Identity (DCI) `Z(n) = n^(1 - d(n)/2)`."""
+class CDLPrimeZBandPrefilter:
+    """Deterministic CDL accelerator built around the Divisor Normalization Identity (DNI) `Z(n) = n^(1 - d(n)/2)`."""
 
     def __init__(
         self,
@@ -260,9 +260,9 @@ class CDLPrimeGeodesicPrefilter:
 
     def _proxy(self, n: int) -> dict[str, float | int | bool | str | None]:
         """
-        Evaluate the deterministic geodesic proxy for one candidate.
+        Evaluate the deterministic Z-Band proxy for one candidate.
 
-        This path preserves the DCI survivor band at `Z = 1.0` unless a concrete
+        This path preserves the DNI survivor convention at `Z = 1.0` unless a concrete
         factor is found in the gated prime tables.
         """
         if n < 2:
@@ -330,13 +330,13 @@ class CDLPrimeGeodesicPrefilter:
         the gated prime tables, so the candidate advances to Miller-Rabin. It is not
         a primality proof by itself. After `generate_prime()` returns, the surviving
         candidate has also passed fixed-base Miller-Rabin and final `sympy.isprime`
-        confirmation on the same deterministic path, and the Divisor Curvature
-        Identity (DCI) `Z(n) = n^(1 - d(n)/2)` locks confirmed primes to `Z = 1.0`.
+        confirmation on the same deterministic path, and the Divisor Normalization
+        Identity (DNI) `Z(n) = n^(1 - d(n)/2)` locks confirmed primes to `Z = 1.0`.
         """
         return float(self._proxy(n)["z_hat"])
 
     def is_prime_candidate(self, n: int) -> bool:
-        """Return True when the candidate survives the CDL geodesic prefilter."""
+        """Return True when the candidate survives the CDL Z-Band prefilter."""
         return not bool(self._proxy(n)["rejected"])
 
     def is_probable_prime(
@@ -397,9 +397,9 @@ def generate_rsa_prime(
     namespace: str = DEFAULT_NAMESPACE,
     public_exponent: int = 65537,
 ) -> int:
-    """Generate one deterministic RSA prime with the CDL geodesic prefilter."""
+    """Generate one deterministic RSA prime with the CDL Z-Band prefilter."""
     validate_public_exponent(public_exponent)
-    prefilter = CDLPrimeGeodesicPrefilter(bit_length=bit_length, namespace=namespace)
+    prefilter = CDLPrimeZBandPrefilter(bit_length=bit_length, namespace=namespace)
     return prefilter.generate_prime(public_exponent=public_exponent)
 
 
@@ -408,7 +408,7 @@ def generate_prime(
     namespace: str = DEFAULT_NAMESPACE,
     public_exponent: int = 65537,
 ) -> int:
-    """Generate one deterministic prime with the CDL geodesic prefilter."""
+    """Generate one deterministic prime with the CDL Z-Band prefilter."""
     return generate_rsa_prime(
         bit_length=bit_length,
         namespace=namespace,
@@ -416,7 +416,11 @@ def generate_prime(
     )
 
 
+CDLPrimeGeodesicPrefilter = CDLPrimeZBandPrefilter
+
+
 __all__ = [
+    "CDLPrimeZBandPrefilter",
     "CDLPrimeGeodesicPrefilter",
     "DEFAULT_MR_BASES",
     "DEFAULT_NAMESPACE",

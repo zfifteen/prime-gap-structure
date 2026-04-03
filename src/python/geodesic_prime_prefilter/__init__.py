@@ -1,6 +1,7 @@
-"""Public Python API for the geodesic prime prefilter."""
+"""Public Python API for the Z-Band prime prefilter."""
 
 from .prefilter import (
+    CDLPrimeZBandPrefilter,
     CDLPrimeGeodesicPrefilter,
     DEFAULT_MR_BASES,
     DEFAULT_NAMESPACE,
@@ -12,6 +13,7 @@ from .prefilter import (
 
 
 __all__ = [
+    "CDLPrimeZBandPrefilter",
     "CDLPrimeGeodesicPrefilter",
     "DEFAULT_MR_BASES",
     "DEFAULT_NAMESPACE",

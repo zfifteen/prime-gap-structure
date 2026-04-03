@@ -2,7 +2,7 @@
 
 Date: 2026-03-31
 
-This report benchmarks the exact **Divisor Curvature Identity** (DCI) $Z(n) = n^{1 - d(n)/2}$ calibration path where the current implementation is executable,
+This report benchmarks the exact **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ calibration path where the current implementation is executable,
 a deterministic CDL proxy backed by bit-length-gated interval-split chunked prime tables,
 and fixed-base Miller-Rabin on deterministic cryptographic-scale odd candidates.
 
@@ -27,10 +27,10 @@ and fixed-base Miller-Rabin on deterministic cryptographic-scale odd candidates.
 
 ## Headline Findings
 
-- The exact DCI path hit the fixed-point band for `29` of `29` calibration primes within numeric tolerance, with `0` composite points on the band.
+- The exact DNI path hit the fixed-point locus for `29` of `29` calibration primes within numeric tolerance, with `0` composite points on the locus.
 - The deterministic proxy hit `29` fixed points on the same calibration corpus with `0` composite fixed points and calibration accuracy `100.00%`.
 - On the same `20`-bit calibration corpus, fixed-base Miller-Rabin matched exact primality with accuracy `100.00%`.
-- Mean runtime on the calibration corpus was `0.061570` ms per candidate for exact DCI `z_normalize`, `0.011647` ms for the deterministic proxy, and `0.001740` ms for Miller-Rabin.
+- Mean runtime on the calibration corpus was `0.061570` ms per candidate for exact DNI `z_normalize`, `0.011647` ms for the deterministic proxy, and `0.001740` ms for Miller-Rabin.
 - On the `2048`-bit control corpus, Miller-Rabin averaged `8.582226` ms per candidate and passed `1` of `1024` odd candidates; first pass index: `354`.
 - The deterministic proxy rejected `932` of `1024` cryptographic candidates before Miller-Rabin (`91.02%`), cut the end-to-end pipeline to `2.949122` ms per candidate, and delivered a measured `2.91x` speedup over Miller-Rabin alone on this corpus.
 - On the `4096`-bit bonus corpus, the same deterministic proxy rejected `234` of `256` candidates (`91.41%`), reduced mean runtime from `64.340912` ms to `19.300479` ms per candidate, and delivered a measured `3.33x` speedup.
@@ -173,7 +173,7 @@ These output files are generated into the local benchmark output directory.
 - The accelerated path generated the same `2` keypairs in `1.139417` ms total (`1755.283623` keypairs/s) for a measured `0.21x` speedup.
 - The proxy removed `16` Miller-Rabin calls (`80.00%` of baseline MR work) while preserving identical deterministic keypairs across both paths.
 - Timing buckets in the accelerated path broke down into `0.923001` ms proxy filtering (`81.01%`), `0.132959` ms survivor Miller-Rabin (`11.67%`), `0.030334` ms RSA assembly/validation (`2.66%`), and `0.053123` ms residual search overhead (`4.66%`).
-- Final keypair primes were confirmed by `sympy.isprime`; under the DCI, all `4` confirmed factors remain exactly on the `Z = 1.0` fixed-point band.
+- Final keypair primes were confirmed by `sympy.isprime`; under the DNI, all `4` confirmed factors remain exactly on the `Z = 1.0` fixed-point locus.
 
 | Metric | Baseline | Accelerated |
 |---|---:|---:|
@@ -203,7 +203,7 @@ These output files are generated into the local benchmark output directory.
 - The accelerated path generated the same `1` keypairs in `9.304417` ms total (`107.475836` keypairs/s) for a measured `0.07x` speedup.
 - The proxy removed `74` Miller-Rabin calls (`94.87%` of baseline MR work) while preserving identical deterministic keypairs across both paths.
 - Timing buckets in the accelerated path broke down into `8.591464` ms proxy filtering (`92.34%`), `0.361749` ms survivor Miller-Rabin (`3.89%`), `0.187375` ms RSA assembly/validation (`2.01%`), and `0.163829` ms residual search overhead (`1.76%`).
-- Final keypair primes were confirmed by `sympy.isprime`; under the DCI, all `2` confirmed factors remain exactly on the `Z = 1.0` fixed-point band.
+- Final keypair primes were confirmed by `sympy.isprime`; under the DNI, all `2` confirmed factors remain exactly on the `Z = 1.0` fixed-point locus.
 
 | Metric | Baseline | Accelerated |
 |---|---:|---:|

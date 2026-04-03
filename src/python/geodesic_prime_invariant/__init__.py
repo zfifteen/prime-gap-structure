@@ -1,4 +1,4 @@
-"""Exact DCI invariant helpers and fixed-point constants."""
+"""Exact DNI invariant helpers and fixed-point constants."""
 
 from .core import (
     FIXED_POINT_TOLERANCE,

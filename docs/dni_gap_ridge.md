@@ -62,7 +62,7 @@ $$
 
 only to preserve the ordering of the exact same raw field without floating-point underflow. The quantity being studied remains raw `Z`.
 
-In the normative Python helpers for this concern, exact divisor counts over intervals are supplied by the exact composite-field path, and the gap-ridge summaries are produced by [src/python/geodesic_prime_gap_ridge/runs.py](../src/python/geodesic_prime_gap_ridge/runs.py).
+In the normative Python helpers for this concern, exact divisor counts over intervals are supplied by the exact composite-field path, and the gap-ridge summaries are produced by [the gap-ridge run helpers](../src/python/geodesic_prime_gap_ridge/runs.py).
 
 ## Exact `10^6` Result
 

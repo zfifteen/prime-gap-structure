@@ -27,13 +27,12 @@ def load_module(name: str):
 def test_validate_closure_constraint_on_small_exact_surface():
     """Small exact surfaces should show no closure-constraint violations."""
     module = load_module("gwr_closure_constraint")
-    prime_lookup = module.build_prime_lookup(max_value=10_001, prime_buffer=1_000)
     row = module.validate_closure_constraint_on_interval(
         2,
         10_001,
         10_000,
         "exact",
-        prime_lookup=prime_lookup,
+        prime_buffer=1_000,
     )
 
     assert row["gap_count"] > 0

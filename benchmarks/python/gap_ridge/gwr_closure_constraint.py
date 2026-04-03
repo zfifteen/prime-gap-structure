@@ -98,11 +98,12 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def build_prime_lookup(max_value: int, prime_buffer: int) -> np.ndarray:
-    """Build a prime table for d=4 threat summaries."""
-    root_limit = math.isqrt(max_value) + prime_buffer
-    divisor_count = divisor_counts_segment(2, root_limit + 1)
-    values = np.arange(2, root_limit + 1, dtype=np.int64)
+def build_prime_lookup(lo: int, hi: int, prime_buffer: int) -> np.ndarray:
+    """Build a local prime table for one interval's d=4 threat summaries."""
+    root_lo = max(2, math.isqrt(max(lo, 2)) - 1)
+    root_hi = math.isqrt(hi) + prime_buffer
+    divisor_count = divisor_counts_segment(root_lo, root_hi + 1)
+    values = np.arange(root_lo, root_hi + 1, dtype=np.int64)
     primes = values[divisor_count == 2]
     if primes.size == 0:
         raise RuntimeError("prime lookup construction failed")
@@ -199,12 +200,13 @@ def validate_closure_constraint_on_interval(
     scale: int,
     window_mode: str,
     *,
-    prime_lookup: np.ndarray,
+    prime_buffer: int,
     seed: int | None = None,
     max_examples: int = DEFAULT_MAX_EXAMPLES,
 ) -> dict[str, object]:
     """Check that no later interior composite is strictly simpler than the score winner."""
     started = time.perf_counter()
+    prime_lookup = build_prime_lookup(lo=lo, hi=hi, prime_buffer=prime_buffer)
     divisor_count = divisor_counts_segment(lo, hi)
     values = np.arange(lo, hi, dtype=np.int64)
     primes = values[divisor_count == 2]
@@ -383,7 +385,7 @@ def run_sampled_sweeps(
     window_size: int,
     window_count: int,
     seeds: Sequence[int],
-    prime_lookup: np.ndarray,
+    prime_buffer: int,
     max_examples: int,
 ) -> list[dict[str, object]]:
     """Run even and seeded sampled closure-constraint sweeps."""
@@ -394,12 +396,12 @@ def run_sampled_sweeps(
         interval_rows = [
             validate_closure_constraint_on_interval(
                 lo=start,
-                hi=start + window_size,
-                scale=scale,
-                window_mode="even",
-                prime_lookup=prime_lookup,
-                max_examples=max_examples,
-            )
+                    hi=start + window_size,
+                    scale=scale,
+                    window_mode="even",
+                    prime_buffer=prime_buffer,
+                    max_examples=max_examples,
+                )
             for start in starts
         ]
         rows.append(
@@ -423,7 +425,7 @@ def run_sampled_sweeps(
                     scale=scale,
                     window_mode="seeded",
                     seed=seed,
-                    prime_lookup=prime_lookup,
+                    prime_buffer=prime_buffer,
                     max_examples=max_examples,
                 )
                 for start in starts
@@ -479,15 +481,12 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    max_value = max([args.exact_limit + 1, *(scale + args.window_size for scale in args.sampled_scales)])
-    prime_lookup = build_prime_lookup(max_value=max_value, prime_buffer=args.prime_buffer)
-
     exact = validate_closure_constraint_on_interval(
         lo=2,
         hi=args.exact_limit + 1,
         scale=args.exact_limit,
         window_mode="exact",
-        prime_lookup=prime_lookup,
+        prime_buffer=args.prime_buffer,
         max_examples=args.max_examples,
     )
     sampled = run_sampled_sweeps(
@@ -495,7 +494,7 @@ def main(argv: list[str] | None = None) -> int:
         window_size=args.window_size,
         window_count=args.window_count,
         seeds=args.seeds,
-        prime_lookup=prime_lookup,
+        prime_buffer=args.prime_buffer,
         max_examples=args.max_examples,
     )
 

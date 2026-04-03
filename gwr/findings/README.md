@@ -19,6 +19,9 @@ refer directly to an older artifact whose title or filename already uses it.
 - [`closure_constraint_findings.md`](./closure_constraint_findings.md):
   First empirical closure-constraint results, including exact and sampled
   zero-violation surfaces and the initial `d=4` threat-horizon summary.
+- [`no_later_simpler_composite_theorem.md`](./no_later_simpler_composite_theorem.md):
+  Theorem-candidate framing of the closure condition as a direct prime-gap
+  termination law under the name `No-Later-Simpler-Composite Theorem`.
 
 ## Legacy Inputs
 

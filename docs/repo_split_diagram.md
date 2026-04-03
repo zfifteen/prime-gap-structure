@@ -6,9 +6,9 @@ flowchart TB
     A --> C["Repo 2<br/>z-band-prime-gap-ridge<br/><br/>Gap-ridge research and findings"]
     A --> D["Optional Repo 3<br/>z-band-prime-composite-field<br/><br/>Shared exact divisor-count and field helpers"]
 
-    B --> B1["Keep<br/>src/python/geodesic_prime_prefilter/<br/>spec/contract.md<br/>spec/vectors/<br/>tests/python/prefilter/<br/>docs/prefilter/<br/>docs/architecture.md"]
+    B --> B1["Keep<br/>src/python/z_band_prime_prefilter/<br/>spec/contract.md<br/>spec/vectors/<br/>tests/python/prefilter/<br/>docs/prefilter/<br/>docs/architecture.md"]
     C --> C1["Move<br/>benchmarks/python/gap_ridge/<br/>benchmarks/output/python/gap_ridge/<br/>docs/gap_ridge/<br/>docs/findings/<br/>tests/python/gap_ridge/"]
-    D --> D1["Move only if needed<br/>src/python/geodesic_prime_composite_field/<br/>src/python/geodesic_prime_gap_ridge/<br/>shared field utilities"]
+    D --> D1["Move only if needed<br/>src/python/z_band_prime_composite_field/<br/>src/python/z_band_prime_gap_ridge/<br/>shared field utilities"]
 
     B -. "GitHub links" .-> C
     B -. "submodule or subtree only if parity tracking is needed" .-> D

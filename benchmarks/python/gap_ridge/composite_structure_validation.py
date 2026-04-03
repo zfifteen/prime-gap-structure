@@ -24,8 +24,8 @@ SOURCE_DIR = ROOT / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
-from geodesic_prime_composite_field import divisor_counts_segment
-from geodesic_prime_gap_ridge.runs import build_even_window_starts
+from z_band_prime_composite_field import divisor_counts_segment
+from z_band_prime_gap_ridge.runs import build_even_window_starts
 
 
 DEFAULT_OUTPUT_DIR = Path("benchmarks/output/python/gap_ridge/composite_structure_validation")

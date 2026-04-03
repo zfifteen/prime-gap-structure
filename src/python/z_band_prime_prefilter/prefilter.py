@@ -8,7 +8,7 @@ import math
 import sys
 from typing import Sequence
 
-from geodesic_prime_invariant import FIXED_POINT_TOLERANCE, FIXED_POINT_V
+from z_band_prime_invariant import FIXED_POINT_TOLERANCE, FIXED_POINT_V
 from sympy import isprime
 
 DEFAULT_NAMESPACE = "cdl-prime-geodesic"
@@ -345,7 +345,7 @@ class CDLPrimeZBandPrefilter:
         public_exponent: int | None = None,
         excluded_values: set[int] | None = None,
     ) -> bool:
-        """Return True when the candidate survives the band test and final confirmation."""
+        """Return True when the candidate survives the fixed-point locus test and final confirmation."""
         if public_exponent is not None:
             validate_public_exponent(public_exponent)
         if not self.is_prime_candidate(n):
@@ -415,13 +415,8 @@ def generate_prime(
         public_exponent=public_exponent,
     )
 
-
-CDLPrimeGeodesicPrefilter = CDLPrimeZBandPrefilter
-
-
 __all__ = [
     "CDLPrimeZBandPrefilter",
-    "CDLPrimeGeodesicPrefilter",
     "DEFAULT_MR_BASES",
     "DEFAULT_NAMESPACE",
     "FIXED_POINT_TOLERANCE",

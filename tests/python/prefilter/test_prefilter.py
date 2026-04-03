@@ -14,31 +14,31 @@ SOURCE_DIR = Path(__file__).resolve().parents[3] / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
-import geodesic_prime_prefilter.prefilter as prefilter
-from geodesic_prime_invariant import exact_divisor_count
+import z_band_prime_prefilter.prefilter as prefilter
+from z_band_prime_invariant import exact_divisor_count
 
 
-def test_prefilter_rejects_small_factor_composites_and_keeps_prime_band():
+def test_prefilter_rejects_small_factor_composites_and_keeps_fixed_point_locus():
     """The production proxy should contract easy composites and keep prime survivors."""
-    geodesic = prefilter.CDLPrimeZBandPrefilter(bit_length=32, namespace="unit")
+    z_band = prefilter.CDLPrimeZBandPrefilter(bit_length=32, namespace="unit")
 
-    assert geodesic.is_prime_candidate(101) is True
-    assert geodesic.proxy_z(101) == 1.0
+    assert z_band.is_prime_candidate(101) is True
+    assert z_band.proxy_z(101) == 1.0
 
     composite = 3 * 101
-    assert geodesic.is_prime_candidate(composite) is False
-    assert geodesic.proxy_z(composite) < 1.0
-    assert geodesic.is_prime_candidate(100) is False
-    assert geodesic.proxy_z(100) < 1.0
+    assert z_band.is_prime_candidate(composite) is False
+    assert z_band.proxy_z(composite) < 1.0
+    assert z_band.is_prime_candidate(100) is False
+    assert z_band.proxy_z(100) < 1.0
 
 
 def test_large_composite_underflow_stays_explicitly_rejected():
     """Very large rejected composites should clamp cleanly instead of overflowing logs."""
-    geodesic = prefilter.CDLPrimeZBandPrefilter(bit_length=2048, namespace="unit:large")
+    z_band = prefilter.CDLPrimeZBandPrefilter(bit_length=2048, namespace="unit:large")
     composite = 3 * ((1 << 2046) + 1)
 
-    assert geodesic.is_prime_candidate(composite) is False
-    assert geodesic.proxy_z(composite) == 0.0
+    assert z_band.is_prime_candidate(composite) is False
+    assert z_band.proxy_z(composite) == 0.0
 
 
 def test_generate_prime_matches_first_baseline_survivor_on_same_stream():
@@ -59,8 +59,8 @@ def test_generate_prime_matches_first_baseline_survivor_on_same_stream():
         if prefilter.miller_rabin_fixed_bases(candidate, prefilter.DEFAULT_MR_BASES):
             expected = candidate
 
-    geodesic = prefilter.CDLPrimeZBandPrefilter(bit_length=32, namespace=namespace)
-    actual = geodesic.generate_prime(public_exponent=65537)
+    z_band = prefilter.CDLPrimeZBandPrefilter(bit_length=32, namespace=namespace)
+    actual = z_band.generate_prime(public_exponent=65537)
 
     assert actual == expected
     assert prefilter.miller_rabin_fixed_bases(actual, prefilter.DEFAULT_MR_BASES) is True
@@ -91,19 +91,19 @@ def test_prefilter_exposes_tunable_tables_and_bounds_dedup_memory():
 
 def test_generate_prime_rejects_known_strong_pseudoprime():
     """The public acceptance path should not accept the fixed-base pseudoprime example."""
-    geodesic = prefilter.CDLPrimeZBandPrefilter(bit_length=64, namespace="unit:pseudoprime")
+    z_band = prefilter.CDLPrimeZBandPrefilter(bit_length=64, namespace="unit:pseudoprime")
     pseudoprime = 341550071728321
 
     assert prefilter.miller_rabin_fixed_bases(pseudoprime, prefilter.DEFAULT_MR_BASES) is True
-    assert geodesic.is_probable_prime(pseudoprime) is False
+    assert z_band.is_probable_prime(pseudoprime) is False
 
 
 def test_generate_prime_validates_public_exponent_up_front():
     """Invalid RSA exponents should fail fast instead of spinning the search loop."""
-    geodesic = prefilter.CDLPrimeZBandPrefilter(bit_length=32, namespace="unit:exp")
+    z_band = prefilter.CDLPrimeZBandPrefilter(bit_length=32, namespace="unit:exp")
 
     with pytest.raises(ValueError, match="public_exponent"):
-        geodesic.generate_prime(public_exponent=2)
+        z_band.generate_prime(public_exponent=2)
 
 
 def test_generate_rsa_prime_hits_exact_small_scale_fixed_point():

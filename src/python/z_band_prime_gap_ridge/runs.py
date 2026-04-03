@@ -8,7 +8,7 @@ from typing import Sequence
 
 import numpy as np
 
-from geodesic_prime_composite_field import divisor_counts_segment
+from z_band_prime_composite_field import divisor_counts_segment
 
 
 DEFAULT_FULL_LIMITS = (1_000_000, 10_000_000)

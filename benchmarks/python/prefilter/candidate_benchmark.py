@@ -21,7 +21,7 @@ SOURCE_DIR = ROOT / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
-from geodesic_prime_invariant import (
+from z_band_prime_invariant import (
     FIXED_POINT_TOLERANCE,
     FIXED_POINT_V,
     exact_divisor_count,

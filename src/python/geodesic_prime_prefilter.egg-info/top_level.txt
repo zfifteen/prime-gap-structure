@@ -1,5 +1,0 @@
-geodesic_prime_composite_field
-geodesic_prime_gap_ridge
-geodesic_prime_invariant
-geodesic_prime_prefilter
-geodesic_prime_rh_bridge

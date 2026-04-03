@@ -298,7 +298,7 @@ The Z-Band Prime Prefilter now stands as a deterministic production filter built
 - [Contract](../spec/contract.md)
 - [Benchmark Report](../benchmarks/output/python/BENCHMARK_REPORT.md)
 - [Manual Validation](../docs/prefilter/manual_validation.md)
-- [Python Implementation](../src/python/geodesic_prime_prefilter/prefilter.py)
+- [Python Implementation](../src/python/z_band_prime_prefilter/prefilter.py)
 - [DNI Gap Ridge](../docs/dni_gap_ridge.md)
 - [Exact Raw Composite Z Field: Gap-Edge Ridge Study](../docs/gap_ridge/raw_composite_z_gap_edge.md)
 - [Lexicographic Winner-Take-All Peak Rule](../docs/findings/lexicographic_winner_take_all_peak_rule.md)

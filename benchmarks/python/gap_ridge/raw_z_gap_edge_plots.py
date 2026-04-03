@@ -25,7 +25,7 @@ SOURCE_DIR = ROOT / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
-from geodesic_prime_composite_field import divisor_counts_segment
+from z_band_prime_composite_field import divisor_counts_segment
 
 
 DEFAULT_SUITE_JSON = (

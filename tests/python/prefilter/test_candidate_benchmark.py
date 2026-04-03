@@ -88,7 +88,7 @@ def test_wheel_prime_table_respects_interval_start():
     assert table.find_small_factor(23 * 101) == 23
 
 
-def test_cheap_cdl_proxy_rejects_small_factor_composites_and_keeps_prime_band():
+def test_cheap_cdl_proxy_rejects_small_factor_composites_and_keeps_fixed_point_locus():
     """The deterministic proxy should reject obvious composites and preserve prime survivors."""
     module = load_module()
     table = module.WheelPrimeTable(limit=97, chunk_size=8)
@@ -107,7 +107,7 @@ def test_cheap_cdl_proxy_rejects_small_factor_composites_and_keeps_prime_band():
     assert even_proxy["factor_source"] == "even"
 
 
-def test_cheap_cdl_proxy_tail_interval_rejects_survivor_without_moving_prime_band():
+def test_cheap_cdl_proxy_tail_interval_rejects_survivor_without_moving_fixed_point_locus():
     """The tail interval should catch later factors while keeping prime survivors at Z = 1."""
     module = load_module()
     primary_table = module.WheelPrimeTable(limit=19, chunk_size=4)

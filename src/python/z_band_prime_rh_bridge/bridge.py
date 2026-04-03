@@ -7,7 +7,7 @@ from dataclasses import asdict, dataclass
 
 from mpmath import mp
 
-from geodesic_prime_invariant import FIXED_POINT_V
+from z_band_prime_invariant import FIXED_POINT_V
 
 
 @dataclass(frozen=True)
@@ -16,7 +16,7 @@ class BridgeCoefficientRow:
 
     n: int
     divisor_count: int
-    kappa_coefficient: float
+    normalization_load_coefficient: float
     mangoldt: float
     scaled_bridge_coefficient: float
     convolution_value: float
@@ -34,7 +34,7 @@ class PartialSumBridgeEvaluation:
     s: complex
     terms: int
     divisor_series: complex
-    curvature_series: complex
+    normalization_load_series: complex
     normalized_ratio: complex
     mangoldt_series: complex
     analytic_ratio: complex
@@ -47,7 +47,7 @@ class PartialSumBridgeEvaluation:
             "s": str(self.s),
             "terms": self.terms,
             "divisor_series": str(self.divisor_series),
-            "curvature_series": str(self.curvature_series),
+            "normalization_load_series": str(self.normalization_load_series),
             "normalized_ratio": str(self.normalized_ratio),
             "mangoldt_series": str(self.mangoldt_series),
             "analytic_ratio": str(self.analytic_ratio),
@@ -62,7 +62,7 @@ class AnalyticBridgeEvaluation:
 
     s: complex
     divisor_series: complex
-    curvature_series: complex
+    normalization_load_series: complex
     normalized_ratio: complex
     zeta_log_derivative: complex
     abs_error: float
@@ -72,7 +72,7 @@ class AnalyticBridgeEvaluation:
         return {
             "s": str(self.s),
             "divisor_series": str(self.divisor_series),
-            "curvature_series": str(self.curvature_series),
+            "normalization_load_series": str(self.normalization_load_series),
             "normalized_ratio": str(self.normalized_ratio),
             "zeta_log_derivative": str(self.zeta_log_derivative),
             "abs_error": self.abs_error,
@@ -130,7 +130,7 @@ def mangoldt_values_up_to(limit: int) -> tuple[float, ...]:
     return tuple(values)
 
 
-def curvature_coefficients_up_to(
+def normalization_load_coefficients_up_to(
     limit: int,
     divisor_counts: tuple[int, ...] | None = None,
 ) -> tuple[float, ...]:
@@ -170,18 +170,18 @@ def build_bridge_rows(limit: int) -> list[BridgeCoefficientRow]:
     """Build the coefficient-side bridge rows up to one positive limit."""
     divisor_counts = divisor_counts_up_to(limit)
     mangoldt = mangoldt_values_up_to(limit)
-    curvature = curvature_coefficients_up_to(limit, divisor_counts)
+    normalization_load = normalization_load_coefficients_up_to(limit, divisor_counts)
     convolution = dirichlet_convolution(divisor_counts, mangoldt)
 
     rows: list[BridgeCoefficientRow] = []
     for n in range(1, limit + 1):
-        scaled_bridge_coefficient = FIXED_POINT_V * curvature[n]
+        scaled_bridge_coefficient = FIXED_POINT_V * normalization_load[n]
         abs_error = abs(convolution[n] - scaled_bridge_coefficient)
         rows.append(
             BridgeCoefficientRow(
                 n=n,
                 divisor_count=divisor_counts[n],
-                kappa_coefficient=curvature[n],
+                normalization_load_coefficient=normalization_load[n],
                 mangoldt=mangoldt[n],
                 scaled_bridge_coefficient=scaled_bridge_coefficient,
                 convolution_value=convolution[n],
@@ -208,28 +208,28 @@ def evaluate_partial_sum_bridge(
 
     divisor_counts = divisor_counts_up_to(terms)
     mangoldt = mangoldt_values_up_to(terms)
-    curvature = curvature_coefficients_up_to(terms, divisor_counts)
+    normalization_load = normalization_load_coefficients_up_to(terms, divisor_counts)
 
     with mp.workdps(dps):
         s_mp = mp.mpc(s_complex)
         divisor_series = mp.mpc(0)
-        curvature_series = mp.mpc(0)
+        normalization_load_series = mp.mpc(0)
         mangoldt_series = mp.mpc(0)
 
         for n in range(1, terms + 1):
             n_power = mp.power(n, -s_mp)
             divisor_series += divisor_counts[n] * n_power
-            curvature_series += curvature[n] * n_power
+            normalization_load_series += normalization_load[n] * n_power
             mangoldt_series += mangoldt[n] * n_power
 
-        normalized_ratio = FIXED_POINT_V * curvature_series / divisor_series
+        normalized_ratio = FIXED_POINT_V * normalization_load_series / divisor_series
         analytic_ratio = -mp.diff(mp.zeta, s_mp) / mp.zeta(s_mp)
 
         return PartialSumBridgeEvaluation(
             s=s_complex,
             terms=terms,
             divisor_series=complex(divisor_series),
-            curvature_series=complex(curvature_series),
+            normalization_load_series=complex(normalization_load_series),
             normalized_ratio=complex(normalized_ratio),
             mangoldt_series=complex(mangoldt_series),
             analytic_ratio=complex(analytic_ratio),
@@ -252,14 +252,14 @@ def evaluate_analytic_bridge(
         zeta_value = mp.zeta(s_mp)
         divisor_series = zeta_value ** 2
         divisor_derivative = mp.diff(lambda value: mp.zeta(value) ** 2, s_mp)
-        curvature_series = -divisor_derivative / (math.e ** 2)
-        normalized_ratio = FIXED_POINT_V * curvature_series / divisor_series
+        normalization_load_series = -divisor_derivative / (math.e ** 2)
+        normalized_ratio = FIXED_POINT_V * normalization_load_series / divisor_series
         zeta_log_derivative = -mp.diff(mp.zeta, s_mp) / zeta_value
 
         return AnalyticBridgeEvaluation(
             s=s_complex,
             divisor_series=complex(divisor_series),
-            curvature_series=complex(curvature_series),
+            normalization_load_series=complex(normalization_load_series),
             normalized_ratio=complex(normalized_ratio),
             zeta_log_derivative=complex(zeta_log_derivative),
             abs_error=float(abs(normalized_ratio - zeta_log_derivative)),

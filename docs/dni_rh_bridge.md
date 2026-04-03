@@ -371,7 +371,7 @@ For the exact DNI and production path:
 - [docs/dni_prefilter.md](./dni_prefilter.md)
 - [technical-note/technical_note.md](../technical-note/technical_note.md)
 - [spec/contract.md](../spec/contract.md)
-- [the RH bridge helpers](../src/python/geodesic_prime_rh_bridge/bridge.py)
+- [the RH bridge helpers](../src/python/z_band_prime_rh_bridge/bridge.py)
 
 For the exact gap-ridge research surface:
 

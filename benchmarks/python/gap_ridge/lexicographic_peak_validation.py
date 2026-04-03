@@ -26,7 +26,7 @@ for entry in (SOURCE_DIR, SCRIPT_DIR):
     if str(entry) not in sys.path:
         sys.path.insert(0, str(entry))
 
-from geodesic_prime_composite_field import divisor_counts_segment
+from z_band_prime_composite_field import divisor_counts_segment
 from raw_z_gap_edge_runs import build_even_window_starts
 
 

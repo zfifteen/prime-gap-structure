@@ -12,7 +12,7 @@ SOURCE_DIR = ROOT / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
-from geodesic_prime_gap_ridge import (  # noqa: F401
+from z_band_prime_gap_ridge import (  # noqa: F401
     DEFAULT_FULL_LIMITS,
     DEFAULT_RANDOM_SEED,
     DEFAULT_WINDOW_COUNT,

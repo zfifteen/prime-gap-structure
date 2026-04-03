@@ -14,7 +14,7 @@ SOURCE_DIR = ROOT / "src" / "python"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
-from geodesic_prime_rh_bridge import (
+from z_band_prime_rh_bridge import (
     build_bridge_rows,
     divisor_counts_up_to,
     evaluate_analytic_bridge,
@@ -45,7 +45,7 @@ def test_small_mangoldt_values_match_prime_power_support():
     assert values[10] == 0.0
 
 
-def test_bridge_rows_recover_scaled_curvature_coefficients():
+def test_bridge_rows_recover_scaled_normalization_load_coefficients():
     """The coefficient bridge should match the scaled normalization-load layer term by term."""
     rows = build_bridge_rows(128)
 

@@ -14,4 +14,4 @@ Repository = "https://github.com/zfifteen/z-band-prime-prefilter"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["geodesic_prime_*"]
+include = ["z_band_prime_*"]

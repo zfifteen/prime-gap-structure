@@ -17,7 +17,7 @@ VECTORS_DIR = ROOT / "spec" / "vectors"
 if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
-import geodesic_prime_prefilter.prefilter as prefilter
+import z_band_prime_prefilter.prefilter as prefilter
 
 
 def load_candidate_benchmark():

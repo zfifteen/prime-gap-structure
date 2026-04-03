@@ -88,7 +88,7 @@ The repository commits to the following production behavior:
 - survivor status is not a primality proof,
 - the fixed Miller-Rabin base set is `2, 3, 5, 7, 11, 13, 17, 19`.
 
-That contract is recorded in [spec/contract.md](../spec/contract.md), and the parity surface is committed in [spec/vectors/](../spec/vectors/). The normative executable implementation of this concern is [the Python prefilter module](../src/python/geodesic_prime_prefilter/prefilter.py), with the public API exported through [the package entrypoint](../src/python/geodesic_prime_prefilter/__init__.py).
+That contract is recorded in [spec/contract.md](../spec/contract.md), and the parity surface is committed in [spec/vectors/](../spec/vectors/). The normative executable implementation of this concern is [the Python prefilter module](../src/python/z_band_prime_prefilter/prefilter.py), with the public API exported through [the package entrypoint](../src/python/z_band_prime_prefilter/__init__.py).
 
 The public Python surface for this concern includes:
 

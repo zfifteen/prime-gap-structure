@@ -2,7 +2,6 @@
 
 from .prefilter import (
     CDLPrimeZBandPrefilter,
-    CDLPrimeGeodesicPrefilter,
     DEFAULT_MR_BASES,
     DEFAULT_NAMESPACE,
     FIXED_POINT_TOLERANCE,
@@ -14,7 +13,6 @@ from .prefilter import (
 
 __all__ = [
     "CDLPrimeZBandPrefilter",
-    "CDLPrimeGeodesicPrefilter",
     "DEFAULT_MR_BASES",
     "DEFAULT_NAMESPACE",
     "FIXED_POINT_TOLERANCE",

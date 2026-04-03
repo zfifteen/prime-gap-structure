@@ -9,18 +9,20 @@ not have to be rewritten.
 
 ## Core Statement
 
-Inside a prime gap `(p, q)` with at least one composite interior, define the
-raw-`Z` score of an interior integer `n` by
+Inside a prime gap $(p, q)$ with at least one composite interior, define the
+raw-$Z$ score of an interior integer $n$ by
 
-`Z(n) = (1 - d(n) / 2) * ln(n)`.
+$$
+Z(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
+$$
 
-The `Gap Winner Rule` says the raw-`Z` winner is exactly the lexicographic
+The `Gap Winner Rule` says the raw-$Z$ winner is exactly the lexicographic
 winner:
 
-1. minimize the interior divisor count `d(n)`,
+1. minimize the interior divisor count $d(n)$,
 2. among ties, choose the leftmost interior integer.
 
-Any gap where the raw-`Z` argmax differs from that winner is a counterexample.
+Any gap where the raw-$Z$ argmax differs from that winner is a counterexample.
 
 ## Subtree Layout
 

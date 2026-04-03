@@ -14,7 +14,7 @@ claims of each section, and the figures each section needs.
 
 The story should move in this order:
 
-1. start from the raw-`Z` score inside prime gaps,
+1. start from the raw-$Z$ score inside prime gaps,
 2. describe the original visual impression: a near-edge ridge,
 3. present the surprise: the winner collapses to a simple arithmetic rule,
 4. show that this one rule explains several separate-looking phenomena,
@@ -27,7 +27,7 @@ The story should move in this order:
 
 ### Purpose
 
-Introduce the raw-`Z` score in plain language without opening with formalism.
+Introduce the raw-$Z$ score in plain language without opening with formalism.
 
 ### Main claim
 
@@ -37,13 +37,13 @@ We began with a score on composite interiors of prime gaps that looked like a
 ### Points to cover
 
 - prime gaps have composite interiors,
-- each interior composite gets a raw-`Z` score,
+- each interior composite gets a raw-$Z$ score,
 - the original visual effect looked like a near-edge ridge rather than a
   discrete winner law.
 
 ### Figure needs
 
-- one introductory exemplar gap plot showing raw-`Z` across the interior of a
+- one introductory exemplar gap plot showing raw-$Z$ across the interior of a
   prime gap,
 - winner highlighted.
 
@@ -60,7 +60,7 @@ inside the gap in a smooth way.
 
 ### Points to cover
 
-- raw-`Z` depends on both `d(n)` and `ln(n)`,
+- raw-$Z$ depends on both $d(n)$ and $\ln(n)$,
 - visually the winner often sits near the left edge,
 - this initially looks like a geometric field effect rather than a simple law.
 
@@ -77,7 +77,7 @@ State `GWR` cleanly and early as the central surprise.
 
 ### Main claim
 
-On the tested prime-gap surface, the raw-`Z` winner is always the same as the
+On the tested prime-gap surface, the raw-$Z$ winner is always the same as the
 minimum-divisor leftmost winner.
 
 ### Points to cover
@@ -88,7 +88,7 @@ minimum-divisor leftmost winner.
 
 ### Figure needs
 
-- identity plot of raw-`Z` winner versus GWR winner,
+- identity plot of raw-$Z$ winner versus GWR winner,
 - match-rate-by-regime summary plot.
 
 ## 4. One Rule, Several Consequences
@@ -99,7 +99,7 @@ Show that `GWR` compresses multiple previously separate observations.
 
 ### Main claim
 
-`d(n)=4` dominance, left-edge dominance, and edge-distance-`2` enrichment are
+$d(n)=4$ dominance, left-edge dominance, and edge-distance-$2$ enrichment are
 not separate mysteries on the tested surface. They are consequences of the same
 winner law.
 
@@ -128,7 +128,7 @@ pairs, but that stronger unrestricted statement is false.
 
 ### Points to cover
 
-- explain the temptation: perhaps raw-`Z` is globally lexicographic on
+- explain the temptation: perhaps raw-$Z$ is globally lexicographic on
   composites,
 - show the explicit counterexample,
 - explain why this does not damage `GWR`.
@@ -147,7 +147,7 @@ Introduce the narrower dominance theorem cleanly.
 ### Main claim
 
 What survives is an ordered-direction dominance statement: earlier composite
-plus no larger divisor count implies larger raw-`Z`.
+plus no larger divisor count implies larger raw-$Z$.
 
 ### Points to cover
 
@@ -187,7 +187,7 @@ inside the regime where the lexicographic winner dominates.
 These are the initial figures to generate after the skeleton is approved.
 
 1. `figure_01_exemplar_gap_profiles`
-   Raw-`Z` profiles for selected prime gaps with raw-`Z` and GWR winners marked.
+   Raw-$Z$ profiles for selected prime gaps with raw-$Z$ and GWR winners marked.
 
 2. `figure_02_winner_identity`
    Raw-`Z` winner versus GWR winner identity check.

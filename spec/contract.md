@@ -1,12 +1,12 @@
 # Z-Band Prime Prefilter Contract
 
-This contract defines the deterministic behavior each implementation must satisfy. Its mathematical core is the **Divisor Normalization Identity** (DNI) `Z(n) = n^(1 - d(n)/2)`.
+This contract defines the deterministic behavior each implementation must satisfy. Its mathematical core is the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$.
 
 ## Core Invariants
 
-- The normalization scaling parameter is fixed at `v = e^2 / 2`.
-- The exact identity is the Divisor Normalization Identity (DNI) `Z(n) = n^(1 - d(n)/2)`.
-- Confirmed primes lie on the fixed-point locus `Z = 1.0`.
+- The normalization scaling parameter is fixed at $v = e^2 / 2$.
+- The exact identity is the Divisor Normalization Identity (DNI) $Z(n) = n^{1 - d(n)/2}$.
+- Confirmed primes lie on the fixed-point locus $Z = 1.0$.
 - The production prefilter rejects a candidate only when it has found a concrete factor in one of the gated prime tables.
 - Survivor status is not a primality proof. Survivors advance to fixed-base Miller-Rabin and then final confirmation in the production Python path.
 
@@ -14,7 +14,7 @@ This contract defines the deterministic behavior each implementation must satisf
 
 - Candidate generation uses the SHA-256 namespace/index stream already defined by the Python implementation.
 - The fixed Miller-Rabin base set is `2, 3, 5, 7, 11, 13, 17, 19`.
-- RSA public exponents must be odd integers greater than `1`.
+- RSA public exponents must be odd integers greater than $1$.
 
 ## Vector Families
 

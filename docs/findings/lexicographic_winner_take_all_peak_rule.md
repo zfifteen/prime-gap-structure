@@ -4,10 +4,10 @@ This note records the strongest gap-ridge finding developed in this session.
 
 ## Finding
 
-On the tested surface, the exact raw-`Z` peak inside every tested prime gap is
+On the tested surface, the exact raw-$Z$ peak inside every tested prime gap is
 identical to the lexicographic winner:
 
-1. choose the smallest interior divisor count `d(n)`,
+1. choose the smallest interior divisor count $d(n)$,
 2. if several interiors share that minimum divisor count, choose the leftmost
    one.
 
@@ -19,7 +19,7 @@ in every tested regime.
 The rule was evaluated with a direct counterexample search:
 
 - validate on the tested surface if and only if every tested regime contains
-  zero gaps where the exact raw-`Z` peak differs from the lexicographic winner,
+  zero gaps where the exact raw-$Z$ peak differs from the lexicographic winner,
 - falsify immediately if even one such counterexample appears.
 
 ## Visual Evidence
@@ -71,6 +71,6 @@ Its winner is fully determined by a simple arithmetic ordering rule:
 
 This gives one exact tested explanation for:
 
-- `d(n)=4` carrier dominance,
+- $d(n)=4$ carrier dominance,
 - left-edge dominance,
 - and the frequent edge-distance-`2` peak.

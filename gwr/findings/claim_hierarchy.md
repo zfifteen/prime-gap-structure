@@ -9,11 +9,13 @@ repo so theorem-backed statements and empirical statements do not get mixed.
 
 This is the deepest exact claim.
 
-For composite integers, the raw-`Z` score
+For composite integers, the raw-$Z$ score
 
-`Z(n) = (1 - d(n)/2) ln(n)`
+$$
+Z(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n)
+$$
 
-is strictly ordered by the lexicographic order `(d(n), n)`, with smaller
+is strictly ordered by the lexicographic order $(d(n), n)$, with smaller
 divisor count first and, among equal divisor counts, smaller integer first.
 
 This claim is global. It is not specific to prime gaps.
@@ -28,10 +30,10 @@ Primary note:
 
 This is the prime-gap specialization of the global theorem.
 
-Inside a prime gap, the raw-`Z` winner among interior composites is exactly the
+Inside a prime gap, the raw-$Z$ winner among interior composites is exactly the
 lexicographic winner:
 
-1. minimal divisor count `d(n)`,
+1. minimal divisor count $d(n)$,
 2. then leftmost interior integer.
 
 Canonical note:
@@ -45,7 +47,7 @@ prime-gap surface.
 
 Use this category for statements such as:
 
-- `d(n)=4` winner dominance,
+- $d(n)=4$ winner dominance,
 - left-half winner dominance,
 - frequent edge-distance-`2` winners.
 
@@ -61,7 +63,7 @@ Examples:
 - small smooth perturbations of the logarithmic factor,
 - alternate sampling surfaces or window placements.
 
-The exact global theorem is about raw-`Z` as defined. Robustness findings for
+The exact global theorem is about raw-$Z$ as defined. Robustness findings for
 nearby scores are separate evidence, not part of the theorem.
 
 ## 5. Novelty Framing
@@ -82,4 +84,4 @@ prior theorem has yet been identified in the literature search done so far.`
 
 Use this sentence when a compact overview is needed:
 
-`The Gap Winner Rule is the prime-gap corollary of the Lexicographic Raw-`Z` Dominance Theorem on composite integers.`
+`The Gap Winner Rule is the prime-gap corollary of the Lexicographic Raw-$Z$ Dominance Theorem on composite integers.`

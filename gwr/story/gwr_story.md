@@ -2,8 +2,8 @@
 
 ## How a geometric-looking score collapsed to a simple arithmetic law
 
-Take two consecutive prime numbers, like `11` and `17`.
-The numbers in between, `12, 13, 14, 15, 16`, are the interior of the gap.
+Take two consecutive prime numbers, like $13$ and $17$.
+The numbers in between, $14, 15, 16$, are the interior of the gap.
 In a prime gap, every interior number is composite.
 
 I wanted to compare those interior composites using one numerical score.
@@ -56,16 +56,17 @@ integer selected by the simple rule:
 1. choose the smallest interior divisor count $d(n)$,
 2. among ties, choose the leftmost interior integer.
 
-That is the `Gap Winner Rule` (`GWR`).
+That is the Gap Winner Rule (GWR).
 
-The important point is that `GWR` is not a loose summary on the tested surface.
-It is an exact identity on the current validation ladder.
+The important point is that GWR is not a loose summary on the tested surface.
+It is an exact identity on the current validation ladder, from exact runs at
+$10^6$ and $2 \times 10^7$ through sampled higher-scale windows out to $10^{12}$.
 
 ![GWR validation surface: every reported tested regime remains at match rate 1.0](./plots/figure_02_match_rate_surface.png)
 
 The figure above shows the current ladder of reported validation regimes. The
-line stays at match rate `1.0` throughout. The anchor table beneath it keeps the
-gap counts readable without overloading the chart.
+line stays at match rate $1.0$ throughout. The anchor table beneath it keeps
+the gap counts readable without overloading the chart.
 
 So the headline is not “the score often agrees with a simpler rule.” The
 headline is: on the tested surface, the score winner and the rule winner are
@@ -73,13 +74,13 @@ the same point.
 
 ## One winner law explains several separate-looking phenomena
 
-Before `GWR`, several observations looked like distinct facts:
+Before GWR, several observations looked like distinct facts:
 
 - $d(n)=4$ winners appeared unusually often,
 - winners appeared unusually often in the left half of the gap,
 - edge-distance `2` showed up again and again.
 
-Once `GWR` is in view, those observations compress into one mechanism.
+Once GWR is in view, those observations compress into one mechanism.
 
 The divisor-count effect becomes clear when winners are compared against the
 baseline availability of divisor classes across all interior composites.
@@ -87,7 +88,7 @@ baseline availability of divisor classes across all interior composites.
 ![Winner selection is strongly enriched toward low divisor-count classes](./plots/figure_03_divisor_enrichment.png)
 
 This plot is not showing raw counts. It is showing selection pressure. A bar
-above `1` means that divisor class is chosen more often than its baseline
+above $1$ means that divisor class is chosen more often than its baseline
 availability would predict. The dominant winner classes are the lowest ones
 available, especially $d(n)=3$ and $d(n)=4$. On the tested prime-gap surface,
 the frequent winner class is $d(n)=4$ because it is the first abundant low-
@@ -105,7 +106,7 @@ The edge-distance view isolates this even more sharply.
 
 ![Edge-distance 2 is heavily overrepresented among winners](./plots/figure_05_edge_distance.png)
 
-Edge-distance `2` stands out immediately. That is not a separate law. It is one
+Edge-distance $2$ stands out immediately. That is not a separate law. It is one
 of the visible consequences of the same winner rule when low-divisor carriers
 appear near the left boundary of the gap.
 
@@ -123,11 +124,11 @@ pairs.
 
 That stronger claim is false.
 
-One explicit counterexample is the pair `49` and `6`.
+One explicit counterexample is the pair $49$ and $6$.
 
 ![Why the unrestricted global theorem fails: lower d(n) does not always win out of order](./plots/figure_06_counterexample_pair.png)
 
-Here `49` has smaller divisor count than `6`, but it does not have larger
+Here $49$ has smaller divisor count than $6$, but it does not have larger
 raw-$Z$. That matters because it tells us not to over-read the empirical prime-
 gap result into a broader unrestricted theorem that the score does not actually
 satisfy.
@@ -141,7 +142,7 @@ The exact theorem that survives is narrower and cleaner.
 
 If $a < b$ are composite integers and $d(a) \le d(b)$, then $Z(a) > Z(b)$.
 
-This is the `Lexicographic Raw-Z Dominance Theorem`. It is a directional
+This is the Lexicographic Raw-Z Dominance Theorem. It is a directional
 dominance result, not an unrestricted global ordering law. Earlier composite
 plus no larger divisor count forces larger raw-$Z$.
 
@@ -176,7 +177,7 @@ captures the whole story in one frame. The score looks continuous. The winner
 law looks discrete. The tested prime-gap interiors land in the corner where the
 discrete law wins.
 
-That is why `GWR` matters.
+That is why GWR matters.
 
 It does not merely say that a geometric-looking score often peaks near the left
 edge. On the tested surface, it says that the winner is governed by a simpler
@@ -191,3 +192,6 @@ selection rule.
 The central open question is whether prime-gap interiors satisfy a deeper
 structural condition that forces that rule to hold, and whether that condition
 can be stated and proved cleanly.
+
+For the formal statement and the legacy-name notes, see
+[`gwr/findings/gap_winner_rule.md`](../findings/gap_winner_rule.md).

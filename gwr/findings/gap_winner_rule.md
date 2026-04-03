@@ -2,18 +2,20 @@
 
 ## Statement
 
-Inside each prime gap `(p, q)` with at least one composite interior, assign each
-interior integer `n` the raw-`Z` score
+Inside each prime gap $(p, q)$ with at least one composite interior, assign each
+interior integer $n$ the raw-$Z$ score
 
-`Z(n) = (1 - d(n) / 2) * ln(n)`.
+$$
+Z(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
+$$
 
-The `Gap Winner Rule` (`GWR`) says the raw-`Z` argmax is exactly the interior
+The `Gap Winner Rule` (`GWR`) says the raw-$Z$ argmax is exactly the interior
 integer selected by this arithmetic order:
 
-1. choose the smallest interior divisor count `d(n)`,
+1. choose the smallest interior divisor count $d(n)$,
 2. among interiors with that minimum, choose the leftmost one.
 
-Equivalently, the raw-`Z` winner and the lexicographic winner are the same
+Equivalently, the raw-$Z$ winner and the lexicographic winner are the same
 carrier on every tested gap.
 
 ## Legacy Name
@@ -43,7 +45,7 @@ On those current surfaces, the repo reports zero counterexamples.
 On the tested surface, `GWR` compresses several observed features into one
 selection law:
 
-- `d(n)=4` winner dominance,
+- $d(n)=4$ winner dominance,
 - left-half winner dominance,
 - frequent edge-distance-`2` winners.
 

@@ -3,19 +3,25 @@
 ## Statement
 
 Inside each prime gap $(p, q)$ with at least one composite interior, assign each
-interior integer $n$ the raw-$Z$ score
+interior integer $n$ the raw-$Z$ quantity
 
 $$
-Z(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
+Z_{\mathrm{raw}}(n) = n^{\,1 - d(n)/2}.
 $$
 
-The `Gap Winner Rule` (`GWR`) says the raw-$Z$ argmax is exactly the interior
-integer selected by this arithmetic order:
+For winner comparisons, the implementation uses the equivalent log-score
+
+$$
+L(n) = \ln Z_{\mathrm{raw}}(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
+$$
+
+The Gap Winner Rule (GWR) says the log-score argmax, equivalently the raw-$Z$
+argmax, is exactly the interior integer selected by this arithmetic order:
 
 1. choose the smallest interior divisor count $d(n)$,
 2. among interiors with that minimum, choose the leftmost one.
 
-Equivalently, the raw-$Z$ winner and the lexicographic winner are the same
+Equivalently, the log-score winner and the lexicographic winner are the same
 carrier on every tested gap.
 
 ## Legacy Name
@@ -47,7 +53,7 @@ selection law:
 
 - $d(n)=4$ winner dominance,
 - left-half winner dominance,
-- frequent edge-distance-`2` winners.
+- frequent edge-distance $2$ winners.
 
 Those observations are not separate rules in the current interpretation. They
 are consequences of the same winner law when it holds.

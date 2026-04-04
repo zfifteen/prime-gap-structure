@@ -1,0 +1,140 @@
+{
+  "probe": "bouncycastle-keygen-direct-core-strategy-probe",
+  "output_path": "/Users/velocityworks/IdeaProjects/prime-gap-structure/tests/performance-comparisons/bouncycastle-keygen-baseline/results/bcprov-jdk18on-1.83-source-r1rv83-rsa4096-strategy-probe-seed-byte-42.json",
+  "started_at_utc": "2026-04-04T18:11:11.657507Z",
+  "completed_at_utc": "2026-04-04T18:47:21.652512Z",
+  "provenance": {
+    "artifact_origin": "source-build",
+    "bc_source_tag": "r1rv83",
+    "bc_source_commit": "d4cc9614fc849e840ffdc7941f4a2941131d0c9c",
+    "bc_build_java_version": "openjdk version \"25.0.2\" 2026-01-20",
+    "bc_runtime_java_version": "openjdk version \"21.0.10\" 2026-01-20",
+    "bc_built_jar_sha256": "0f7de9775ca37908dfb77d33964075e8b9ce9a92eab5e2695fbb194715ec709e"
+  },
+  "configuration": {
+    "bcprov_artifact": "bcprov-jdk18on",
+    "bcprov_version": "1.83",
+    "generator_path": "org.bouncycastle.crypto.generators.RSAKeyPairGenerator",
+    "candidate_source": "org.bouncycastle.util.BigIntegers.createRandomPrime",
+    "rsa_bits": 4096,
+    "candidate_bits": 2048,
+    "corpus_size": 4096,
+    "create_random_prime_certainty": 1,
+    "bc_certainty": 144,
+    "bc_mr_iterations": 12,
+    "public_exponent": 65537,
+    "secure_random_algorithm": "SHA1PRNG",
+    "corpus_seed_bytes_decimal": [42],
+    "mr_seed_bytes_decimal": [42],
+    "chunk_size": 256,
+    "table_start_exclusive": 743,
+    "java_version": "21.0.10",
+    "java_vendor": "Homebrew",
+    "os_name": "Mac OS X",
+    "os_arch": "aarch64"
+  },
+  "theoretical_incremental_ceiling": {
+    "bc_create_random_prime_limit": 743,
+    "rows": [
+      {
+        "table_limit": 300007,
+        "incremental_reject_rate_vs_bc_create_random_prime_survivors": 0.472537475797
+      },
+      {
+        "table_limit": 1000003,
+        "incremental_reject_rate_vs_bc_create_random_prime_survivors": 0.518498743767
+      }
+    ]
+  },
+  "summary": {
+    "best_variant_by_modeled_total": "current_bc",
+    "best_variant_modeled_total_ms": 85805.206835,
+    "current_bc_modeled_total_ms": 85805.206835
+  },
+  "variants": [
+    {
+      "name": "current_bc",
+      "table_limit": 743,
+      "added_table_screen_time_ns": 0,
+      "added_table_screen_time_ms": 0.000000,
+      "bc_mr_time_ns": 85773921348,
+      "bc_mr_time_ms": 85773.921348,
+      "modeled_total_post_create_random_prime_time_ns": 85805206835,
+      "modeled_total_post_create_random_prime_time_ms": 85805.206835,
+      "modeled_speedup_vs_current_bc": 1.000000000000,
+      "added_table_reject_rate_vs_basic_bc_eligible": 0.000000000000,
+      "mr_call_reduction_vs_current_bc": 0.000000000000,
+      "counts": {
+        "total_candidates": 4096,
+        "eligible_after_mod_e_and_squared_bound": 2376,
+        "bc_mr_calls": 2376,
+        "final_survivors": 2376,
+        "total_rejected": 1720
+      },
+      "rejections": {
+        "mod_e": 0,
+        "squared_bound": 1720,
+        "added_table": 0,
+        "bc_small_factors": 0,
+        "bc_mr": 0,
+        "gcd_e_p_minus_1": 0
+      }
+    },
+    {
+      "name": "bc_plus_chunked_gcd_300007",
+      "table_limit": 300007,
+      "added_table_screen_time_ns": 22896545795,
+      "added_table_screen_time_ms": 22896.545795,
+      "bc_mr_time_ns": 85857264336,
+      "bc_mr_time_ms": 85857.264336,
+      "modeled_total_post_create_random_prime_time_ns": 108787686157,
+      "modeled_total_post_create_random_prime_time_ms": 108787.686157,
+      "modeled_speedup_vs_current_bc": 0.788740066694,
+      "added_table_reject_rate_vs_basic_bc_eligible": 0.000000000000,
+      "mr_call_reduction_vs_current_bc": 0.000000000000,
+      "counts": {
+        "total_candidates": 4096,
+        "eligible_after_mod_e_and_squared_bound": 2376,
+        "bc_mr_calls": 2376,
+        "final_survivors": 2376,
+        "total_rejected": 1720
+      },
+      "rejections": {
+        "mod_e": 0,
+        "squared_bound": 1720,
+        "added_table": 0,
+        "bc_small_factors": 0,
+        "bc_mr": 0,
+        "gcd_e_p_minus_1": 0
+      }
+    },
+    {
+      "name": "bc_plus_chunked_gcd_1000003",
+      "table_limit": 1000003,
+      "added_table_screen_time_ns": 71325618375,
+      "added_table_screen_time_ms": 71325.618375,
+      "bc_mr_time_ns": 86036491385,
+      "bc_mr_time_ms": 86036.491385,
+      "modeled_total_post_create_random_prime_time_ns": 157399997079,
+      "modeled_total_post_create_random_prime_time_ms": 157399.997079,
+      "modeled_speedup_vs_current_bc": 0.545141095472,
+      "added_table_reject_rate_vs_basic_bc_eligible": 0.000000000000,
+      "mr_call_reduction_vs_current_bc": 0.000000000000,
+      "counts": {
+        "total_candidates": 4096,
+        "eligible_after_mod_e_and_squared_bound": 2376,
+        "bc_mr_calls": 2376,
+        "final_survivors": 2376,
+        "total_rejected": 1720
+      },
+      "rejections": {
+        "mod_e": 0,
+        "squared_bound": 1720,
+        "added_table": 0,
+        "bc_small_factors": 0,
+        "bc_mr": 0,
+        "gcd_e_p_minus_1": 0
+      }
+    }
+  ]
+}

@@ -42,6 +42,25 @@ DEFAULT_VALIDATION_JSON = Path(
 DEFAULT_WINDOW_SIZE = 2_000_000
 DEFAULT_WINDOW_COUNT = 4
 RESIDUE_ORDER = [1, 7, 11, 13, 17, 19, 23, 29]
+LANE_GATE_ORDER = [
+    "p2_open",
+    "p2_blocked",
+    "first_open_2",
+    "first_open_4",
+    "first_open_6",
+]
+LANE_GATE_LABELS = {
+    "p2_open": "p+2 open",
+    "p2_blocked": "p+2 blocked",
+    "first_open_2": "first open = 2",
+    "first_open_4": "first open = 4",
+    "first_open_6": "first open = 6",
+}
+GAP_BIN_SPECS = (
+    ("4-10", 4, 10),
+    ("12-20", 12, 20),
+    ("22+", 22, None),
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -105,6 +124,41 @@ def is_odd_prime_square(n: int, divisor_count: int) -> bool:
     return root * root == n
 
 
+def empty_orientation_bucket() -> dict[str, int]:
+    """Return one zeroed orientation bucket."""
+    return {"gaps": 0, "left": 0, "right": 0, "center": 0, "edge2": 0}
+
+
+def first_open_offset(residue: int) -> int:
+    """Return the first even offset whose residue is coprime to 30."""
+    for offset in (2, 4, 6, 8, 10, 12):
+        candidate = (residue + offset) % 30
+        if candidate % 3 != 0 and candidate % 5 != 0:
+            return offset
+    raise RuntimeError("no wheel-open offset found")
+
+
+def classify_gap_bin(gap: int) -> str | None:
+    """Return the configured gap-bin label for one prime gap."""
+    for label, lo, hi in GAP_BIN_SPECS:
+        if gap >= lo and (hi is None or gap <= hi):
+            return label
+    return None
+
+
+def update_orientation_bucket(bucket: dict[str, int], gap: int, best_offset: int) -> None:
+    """Accumulate one winner location into an orientation bucket."""
+    edge_distance = min(best_offset, gap - best_offset)
+    bucket["gaps"] += 1
+    bucket["edge2"] += int(edge_distance == 2)
+    if best_offset < gap / 2:
+        bucket["left"] += 1
+    elif best_offset > gap / 2:
+        bucket["right"] += 1
+    else:
+        bucket["center"] += 1
+
+
 def analyze_d4_interval(lo: int, hi: int) -> dict[str, int]:
     """Analyze one interval for d(n)=4 availability and peak-carrier rates."""
     divisor_count = divisor_counts_segment(lo, hi)
@@ -157,11 +211,16 @@ def analyze_residue_interval(lo: int, hi: int) -> dict[str, object]:
     primes = values[divisor_count == 2]
     scores = raw_log_scores(divisor_count, values)
 
-    stats = {
-        residue: {"gaps": 0, "left": 0, "right": 0, "center": 0, "edge2": 0}
-        for residue in RESIDUE_ORDER
+    stats = {residue: empty_orientation_bucket() for residue in RESIDUE_ORDER}
+    global_stats = empty_orientation_bucket()
+    lane_stats = {category: empty_orientation_bucket() for category in LANE_GATE_ORDER}
+    lane_gap_bins = {
+        label: {
+            "p2_open": empty_orientation_bucket(),
+            "p2_blocked": empty_orientation_bucket(),
+        }
+        for label, _, _ in GAP_BIN_SPECS
     }
-    global_stats = {"gaps": 0, "left": 0, "right": 0, "center": 0, "edge2": 0}
 
     for left_prime, right_prime in zip(primes[:-1], primes[1:]):
         gap = int(right_prime - left_prime)
@@ -176,27 +235,24 @@ def analyze_residue_interval(lo: int, hi: int) -> dict[str, object]:
         right_index = int(right_prime - lo)
         gap_scores = scores[left_index:right_index]
         best_offset = int(np.argmax(gap_scores)) + 1
-        edge_distance = min(best_offset, gap - best_offset)
+        update_orientation_bucket(stats[residue], gap, best_offset)
+        update_orientation_bucket(global_stats, gap, best_offset)
 
-        bucket = stats[residue]
-        bucket["gaps"] += 1
-        global_stats["gaps"] += 1
+        offset = first_open_offset(residue)
+        p2_category = "p2_open" if offset == 2 else "p2_blocked"
+        update_orientation_bucket(lane_stats[p2_category], gap, best_offset)
+        update_orientation_bucket(lane_stats[f"first_open_{offset}"], gap, best_offset)
 
-        if best_offset < gap / 2:
-            bucket["left"] += 1
-            global_stats["left"] += 1
-        elif best_offset > gap / 2:
-            bucket["right"] += 1
-            global_stats["right"] += 1
-        else:
-            bucket["center"] += 1
-            global_stats["center"] += 1
+        gap_bin = classify_gap_bin(gap)
+        if gap_bin is not None:
+            update_orientation_bucket(lane_gap_bins[gap_bin][p2_category], gap, best_offset)
 
-        if edge_distance == 2:
-            bucket["edge2"] += 1
-            global_stats["edge2"] += 1
-
-    return {"stats": stats, "global": global_stats}
+    return {
+        "stats": stats,
+        "global": global_stats,
+        "lane_stats": lane_stats,
+        "lane_gap_bins": lane_gap_bins,
+    }
 
 
 def summarize_d4_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
@@ -251,6 +307,61 @@ def summarize_residue_rows(rows: list[dict[str, object]]) -> dict[str, object]:
                 }
             )
     return {"rows": rows, "summary": summary}
+
+
+def summarize_lane_gate_rows(rows: list[dict[str, object]]) -> dict[str, object]:
+    """Convert wheel-gate orientation counts into JSON-ready summaries."""
+    summary: list[dict[str, object]] = []
+    gap_bin_summary: list[dict[str, object]] = []
+
+    for row in rows:
+        global_stats = row["global"]
+        global_right_share = global_stats["right"] / global_stats["gaps"]
+        global_edge2_share = global_stats["edge2"] / global_stats["gaps"]
+
+        for category in LANE_GATE_ORDER:
+            stats = row["lane_stats"][category]
+            gaps = int(stats["gaps"])
+            right_share = stats["right"] / gaps if gaps else 0.0
+            left_share = stats["left"] / gaps if gaps else 0.0
+            center_share = stats["center"] / gaps if gaps else 0.0
+            edge2_share = stats["edge2"] / gaps if gaps else 0.0
+            summary.append(
+                {
+                    "scale": int(row["scale"]),
+                    "mode": str(row["mode"]),
+                    "category": category,
+                    "label": LANE_GATE_LABELS[category],
+                    "gaps": gaps,
+                    "right_share": right_share,
+                    "left_share": left_share,
+                    "center_share": center_share,
+                    "edge2_share": edge2_share,
+                    "right_lift": right_share / global_right_share if global_right_share else 0.0,
+                    "edge2_lift": edge2_share / global_edge2_share if global_edge2_share else 0.0,
+                }
+            )
+
+        for gap_bin, categories in row["lane_gap_bins"].items():
+            for category in ("p2_open", "p2_blocked"):
+                stats = categories[category]
+                gaps = int(stats["gaps"])
+                gap_bin_summary.append(
+                    {
+                        "scale": int(row["scale"]),
+                        "mode": str(row["mode"]),
+                        "gap_bin": gap_bin,
+                        "category": category,
+                        "label": LANE_GATE_LABELS[category],
+                        "gaps": gaps,
+                        "right_share": stats["right"] / gaps if gaps else 0.0,
+                        "left_share": stats["left"] / gaps if gaps else 0.0,
+                        "center_share": stats["center"] / gaps if gaps else 0.0,
+                        "edge2_share": stats["edge2"] / gaps if gaps else 0.0,
+                    }
+                )
+
+    return {"rows": rows, "summary": summary, "gap_bin_summary": gap_bin_summary}
 
 
 def render_d4_availability(rows: list[dict[str, object]], output_path: Path) -> None:
@@ -338,6 +449,110 @@ def render_residue_orientation(payload: dict[str, object], output_path: Path) ->
     plt.close(fig)
 
 
+def render_lane_gate_split(payload: dict[str, object], output_path: Path) -> None:
+    """Render the p+2 wheel-gate split across scale and first-open classes."""
+    summary = payload["summary"]
+
+    def pick(category: str) -> list[dict[str, object]]:
+        return sorted(
+            [row for row in summary if str(row["category"]) == category],
+            key=lambda row: int(row["scale"]),
+        )
+
+    open_rows = pick("p2_open")
+    blocked_rows = pick("p2_blocked")
+
+    scales = [int(row["scale"]) for row in open_rows]
+    open_right = [float(row["right_share"]) for row in open_rows]
+    blocked_right = [float(row["right_share"]) for row in blocked_rows]
+    open_edge2 = [float(row["edge2_share"]) for row in open_rows]
+    blocked_edge2 = [float(row["edge2_share"]) for row in blocked_rows]
+
+    exact_scale = max(
+        int(row["scale"]) for row in summary if str(row["mode"]) == "exact"
+    )
+    first_open_rows = {
+        category: next(
+            row
+            for row in summary
+            if int(row["scale"]) == exact_scale and str(row["category"]) == category
+        )
+        for category in ("first_open_2", "first_open_4", "first_open_6")
+    }
+    class_labels = ["2", "4", "6"]
+    class_right = [
+        float(first_open_rows[f"first_open_{label}"]["right_share"]) for label in class_labels
+    ]
+    class_edge2 = [
+        float(first_open_rows[f"first_open_{label}"]["edge2_share"]) for label in class_labels
+    ]
+
+    fig, axes = plt.subplots(2, 2, figsize=(11.0, 6.8))
+
+    top_left = axes[0, 0]
+    top_left.plot(scales, open_right, marker="o", linewidth=2.2, color="#1f4e79", label="p+2 open")
+    top_left.plot(
+        scales,
+        blocked_right,
+        marker="s",
+        linewidth=2.2,
+        color="#c05621",
+        label="p+2 blocked",
+    )
+    top_left.set_xscale("log")
+    top_left.set_title("Right-edge share by p+2 gate")
+    top_left.set_ylabel("Right-edge share")
+    top_left.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value * 100.0:.1f}%"))
+    top_left.xaxis.set_major_formatter(
+        FuncFormatter(lambda value, _: rf"$10^{{{int(np.log10(value))}}}$")
+    )
+    top_left.grid(True, alpha=0.25)
+    top_left.legend(frameon=False, loc="upper right")
+
+    bottom_left = axes[1, 0]
+    bottom_left.plot(scales, open_edge2, marker="o", linewidth=2.2, color="#245c3b", label="p+2 open")
+    bottom_left.plot(
+        scales,
+        blocked_edge2,
+        marker="s",
+        linewidth=2.2,
+        color="#8b1e3f",
+        label="p+2 blocked",
+    )
+    bottom_left.set_xscale("log")
+    bottom_left.set_title("Edge-distance-2 share by p+2 gate")
+    bottom_left.set_xlabel("Scale")
+    bottom_left.set_ylabel("Edge-distance-2 share")
+    bottom_left.yaxis.set_major_formatter(
+        FuncFormatter(lambda value, _: f"{value * 100.0:.1f}%")
+    )
+    bottom_left.xaxis.set_major_formatter(
+        FuncFormatter(lambda value, _: rf"$10^{{{int(np.log10(value))}}}$")
+    )
+    bottom_left.grid(True, alpha=0.25)
+
+    top_right = axes[0, 1]
+    top_right.bar(class_labels, class_right, color="#1f4e79")
+    top_right.set_title(f"Right-edge share by first-open class at exact $10^{{{int(np.log10(exact_scale))}}}$")
+    top_right.set_ylabel("Right-edge share")
+    top_right.set_xlabel("First wheel-open offset")
+    top_right.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value * 100.0:.1f}%"))
+
+    bottom_right = axes[1, 1]
+    bottom_right.bar(class_labels, class_edge2, color="#245c3b")
+    bottom_right.set_title(f"Edge-distance-2 share by first-open class at exact $10^{{{int(np.log10(exact_scale))}}}$")
+    bottom_right.set_ylabel("Edge-distance-2 share")
+    bottom_right.set_xlabel("First wheel-open offset")
+    bottom_right.yaxis.set_major_formatter(
+        FuncFormatter(lambda value, _: f"{value * 100.0:.1f}%")
+    )
+
+    fig.suptitle("p+2 wheel-open gate versus early winner arrival", y=0.98)
+    fig.tight_layout()
+    fig.savefig(output_path, format="svg")
+    plt.close(fig)
+
+
 def render_match_by_scale(rows: list[dict[str, object]], output_path: Path) -> None:
     """Render lexicographic match rate by scale."""
     scales = [int(row["scale"]) for row in rows]
@@ -386,6 +601,7 @@ def main(argv: list[str] | None = None) -> int:
 
     d4_rows: list[dict[str, object]] = []
     residue_rows: list[dict[str, object]] = []
+    lane_rows: list[dict[str, object]] = []
 
     for limit in args.full_limits:
         d4_stats = analyze_d4_interval(2, limit + 1)
@@ -402,16 +618,36 @@ def main(argv: list[str] | None = None) -> int:
                 "global": residue_stats["global"],
             }
         )
+        lane_rows.append(
+            {
+                "scale": limit,
+                "mode": "exact",
+                "lane_stats": residue_stats["lane_stats"],
+                "lane_gap_bins": residue_stats["lane_gap_bins"],
+                "global": residue_stats["global"],
+            }
+        )
 
     for scale in args.window_scales:
         starts = build_even_window_starts(scale, args.window_size, args.window_count)
 
-        merged_d4 = {"gap_count": 0, "has_d4": 0, "peak_d4": 0, "violations": 0, "square_exceptions": 0}
-        merged_residue = {
-            residue: {"gaps": 0, "left": 0, "right": 0, "center": 0, "edge2": 0}
-            for residue in RESIDUE_ORDER
+        merged_d4 = {
+            "gap_count": 0,
+            "has_d4": 0,
+            "peak_d4": 0,
+            "violations": 0,
+            "square_exceptions": 0,
         }
-        merged_global = {"gaps": 0, "left": 0, "right": 0, "center": 0, "edge2": 0}
+        merged_residue = {residue: empty_orientation_bucket() for residue in RESIDUE_ORDER}
+        merged_global = empty_orientation_bucket()
+        merged_lane = {category: empty_orientation_bucket() for category in LANE_GATE_ORDER}
+        merged_lane_gap_bins = {
+            label: {
+                "p2_open": empty_orientation_bucket(),
+                "p2_blocked": empty_orientation_bucket(),
+            }
+            for label, _, _ in GAP_BIN_SPECS
+        }
 
         for start in starts:
             d4_stats = analyze_d4_interval(start, start + args.window_size)
@@ -424,6 +660,15 @@ def main(argv: list[str] | None = None) -> int:
                     merged_residue[residue][key] += int(residue_stats["stats"][residue][key])
             for key in merged_global:
                 merged_global[key] += int(residue_stats["global"][key])
+            for category in LANE_GATE_ORDER:
+                for key in merged_lane[category]:
+                    merged_lane[category][key] += int(residue_stats["lane_stats"][category][key])
+            for gap_bin in merged_lane_gap_bins:
+                for category in ("p2_open", "p2_blocked"):
+                    for key in merged_lane_gap_bins[gap_bin][category]:
+                        merged_lane_gap_bins[gap_bin][category][key] += int(
+                            residue_stats["lane_gap_bins"][gap_bin][category][key]
+                        )
 
         merged_d4["scale"] = scale
         merged_d4["mode"] = "even-window"
@@ -437,9 +682,19 @@ def main(argv: list[str] | None = None) -> int:
                 "global": merged_global,
             }
         )
+        lane_rows.append(
+            {
+                "scale": scale,
+                "mode": "even-window",
+                "lane_stats": merged_lane,
+                "lane_gap_bins": merged_lane_gap_bins,
+                "global": merged_global,
+            }
+        )
 
     d4_summary = summarize_d4_rows(d4_rows)
     residue_payload = summarize_residue_rows(residue_rows)
+    lane_payload = summarize_lane_gate_rows(lane_rows)
 
     validation_payload = json.loads(args.validation_json.read_text(encoding="utf-8"))
     validation_rows = [
@@ -464,6 +719,10 @@ def main(argv: list[str] | None = None) -> int:
         residue_payload,
         args.output_dir / "residue_mod30_right_edge_share.svg",
     )
+    render_lane_gate_split(
+        lane_payload,
+        args.output_dir / "p2_wheel_gate_split.svg",
+    )
     render_match_by_scale(
         validation_rows,
         args.output_dir / "lexicographic_rule_match_by_scale.svg",
@@ -479,6 +738,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     (args.output_dir / "residue_mod30_right_edge_share.json").write_text(
         json.dumps(residue_payload, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    (args.output_dir / "p2_wheel_gate_split.json").write_text(
+        json.dumps(lane_payload, indent=2) + "\n",
         encoding="utf-8",
     )
     (args.output_dir / "lexicographic_rule_match_by_scale.json").write_text(

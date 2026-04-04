@@ -83,10 +83,16 @@ def test_insight_probes_emits_expected_artifacts(tmp_path):
     assert (output_dir / "d4_availability_vs_peak_share.svg").exists()
     assert (output_dir / "residue_mod30_right_edge_share.json").exists()
     assert (output_dir / "residue_mod30_right_edge_share.svg").exists()
+    assert (output_dir / "p2_wheel_gate_split.json").exists()
+    assert (output_dir / "p2_wheel_gate_split.svg").exists()
     assert (output_dir / "lexicographic_rule_match_by_scale.json").exists()
     assert (output_dir / "lexicographic_rule_match_by_scale.svg").exists()
     assert (output_dir / "lexicographic_rule_match_rate.json").exists()
     assert (output_dir / "lexicographic_rule_match_rate.svg").exists()
+
+    lane_payload = json.loads((output_dir / "p2_wheel_gate_split.json").read_text(encoding="utf-8"))
+    categories = {row["category"] for row in lane_payload["summary"]}
+    assert {"p2_open", "p2_blocked", "first_open_2", "first_open_4", "first_open_6"} <= categories
 
 
 def test_insight_probes_defaults_extend_through_10e18():

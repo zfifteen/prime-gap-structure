@@ -12,6 +12,7 @@ Current findings from this session:
 - [d(n)=4 carrier dominance is availability-driven](./d4_availability_driven_carrier_dominance.md)
 - [Lexicographic winner-take-all peak rule](./lexicographic_winner_take_all_peak_rule.md)
 - [Residue-modulated ridge orientation](./residue_mod30_ridge_orientation.md)
+- [$p+2$ wheel-open gate splits early winner arrival](./p2_wheel_open_gate.md)
 
 As new findings are developed, add a new document to this folder rather than
 burying the result inside a broader note.

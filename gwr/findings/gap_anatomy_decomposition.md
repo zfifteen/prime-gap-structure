@@ -76,7 +76,7 @@ $$
 The implemented winner is
 
 $$
-w = \operatorname*{argmax}_{p < n < q} L(n),
+w = \arg\max_{p < n < q} L(n),
 \qquad
 L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
 $$

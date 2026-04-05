@@ -15,7 +15,7 @@ Let $(p, q)$ be a prime gap, and let $w$ be the implemented log-score winner on
 the interior composites:
 
 $$
-w = \operatorname*{argmax}_{p < n < q} L(n),
+w = \arg\max_{p < n < q} L(n),
 $$
 
 where

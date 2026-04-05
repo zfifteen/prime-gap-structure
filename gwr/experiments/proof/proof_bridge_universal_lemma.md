@@ -53,18 +53,18 @@ $$
 
 ## 2. Normalized Bridge Load
 
-Define the dimensionless bridge load
+Define the dimensionless bridge quantity
 
 $$
-\operatorname{bridge\_load}(k,m^*)
+B(k,m^*)
 =
 \frac{\frac{\ln m^*}{\ln k} - 1}{\frac{\delta}{d_{\min} - 2}}.
 $$
 
-Then the no-early-spoiler condition is exactly
-
 $$
-\operatorname{bridge\_load}(k,m^*) < 1.
+L(k) < L(m^*)
+\quad\Longleftrightarrow\quad
+B(k,m^*) < 1.
 $$
 
 This is the normalized quantity measured directly by
@@ -168,7 +168,7 @@ So the bridge denominator is bounded below by a subpolynomial term.
 Combine the numerator and denominator bounds:
 
 $$
-\operatorname{bridge\_load}(k,m^*)
+B(k,m^*)
 <
 \frac{g(p)}{p \ln p}
 \cdot
@@ -188,7 +188,7 @@ for all sufficiently large $p$, with some fixed $\theta < 1$.
 Then
 
 $$
-\operatorname{bridge\_load}(k,m^*)
+B(k,m^*)
 <
 p^{\theta - 1}
 (\ln p)^{-1}
@@ -203,7 +203,7 @@ Because $\theta < 1$, the exponent $\theta - 1 + o(1)$ is eventually
 negative. Therefore
 
 $$
-\operatorname{bridge\_load}(k,m^*) \to 0
+B(k,m^*) \to 0
 \qquad\text{as } p \to \infty.
 $$
 
@@ -211,7 +211,7 @@ So there exists an effective threshold $N_{\mathrm{bridge}}$ such that for all
 prime gaps with left endpoint $p \ge N_{\mathrm{bridge}}$,
 
 $$
-\operatorname{bridge\_load}(k,m^*) < 1
+B(k,m^*) < 1
 $$
 
 for every earlier candidate $k$.

@@ -7,6 +7,7 @@ Each finding gets its own note.
 
 Current findings from this session:
 
+- [ASCII payload geometry status](./ascii_payload_geometry_status.md)
 - [Broad prime-edge insulation is falsified](./broad_prime_edge_insulation_falsified.md)
 - [Odd-Composite Near-Edge Ridge](./odd_composite_near_edge_ridge.md)
 - [d(n)=4 carrier dominance is availability-driven](./d4_availability_driven_carrier_dominance.md)

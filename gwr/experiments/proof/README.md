@@ -54,3 +54,10 @@ They target the exact missing universal step identified in the findings notes:
   - records the smallest winner-minus-earlier log-score margin,
   - and records the smallest critical-ratio slack in the exact spoiler
     inequality.
+- [`no_early_spoiler_ratio_frontier.py`](./no_early_spoiler_ratio_frontier.py):
+  exact pair-frontier extractor that
+  - finds the tightest realized case for each winner/earlier divisor-class
+    pair,
+  - ranks those pairs by critical-ratio slack,
+  - and emits the current ratio-form frontier of the no-early-spoiler
+    condition.

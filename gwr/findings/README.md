@@ -55,6 +55,10 @@ refer directly to an older artifact whose title or filename already uses it.
   Exact margin scan against the actual `GWR` carrier, recording the tightest
   direct log-score and critical-ratio slack for the no-early-spoiler
   condition.
+- [`no_early_spoiler_ratio_frontier_findings.md`](./no_early_spoiler_ratio_frontier_findings.md):
+  Exact pair-frontier note identifying which winner/earlier divisor-class
+  pairs come closest to the ratio-form spoiler threshold on the current exact
+  surface.
 
 ## Legacy Inputs
 

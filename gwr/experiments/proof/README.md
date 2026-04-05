@@ -73,3 +73,9 @@ They target the exact missing universal step identified in the findings notes:
   - rewrites the no-early-spoiler inequality as a dimensionless load,
   - records the maximum realized bridge load on the exact surface,
   - and emits pair and gap-size frontiers in that normalized coordinate.
+- [`proof_bridge_universal_lemma.md`](./proof_bridge_universal_lemma.md):
+  theorem-facing bridge note that
+  - derives a non-empirical large-$p$ upper bound for the normalized
+    no-early-spoiler load,
+  - isolates the exact remaining dependence on explicit literature constants,
+  - and states the remaining finite verification obligation precisely.

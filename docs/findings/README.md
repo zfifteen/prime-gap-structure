@@ -12,6 +12,7 @@ Current findings from this session:
 - [Odd-Composite Near-Edge Ridge](./odd_composite_near_edge_ridge.md)
 - [d(n)=4 carrier dominance is availability-driven](./d4_availability_driven_carrier_dominance.md)
 - [Lexicographic winner-take-all peak rule](./lexicographic_winner_take_all_peak_rule.md)
+- [Meissel-Mertens constant as a computational horizon anchor](./meissel_mertens_horizon_anchor.md)
 - [Residue-modulated ridge orientation](./residue_mod30_ridge_orientation.md)
 - [$p+2$ wheel-open gate splits early winner arrival](./p2_wheel_open_gate.md)
 

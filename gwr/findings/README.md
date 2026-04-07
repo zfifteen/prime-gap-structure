@@ -16,6 +16,15 @@ refer directly to an older artifact whose title or filename already uses it.
 - [`prime_gap_exclusion_consequences.md`](./prime_gap_exclusion_consequences.md):
   Local exclusion reading of what GWR says consecutive primes are not allowed
   to enclose before the winner.
+- [`prime_boundary_placement_finding.md`](./prime_boundary_placement_finding.md):
+  Finding note that `GWR`, if true as a prime-gap law, is also a local
+  boundary-placement constraint on where the consecutive boundary primes are
+  allowed to occur, with a square-phase utilization reading in the dominant
+  `d=4` regime.
+- [`prime_gap_admissibility_censorship_finding.md`](./prime_gap_admissibility_censorship_finding.md):
+  Cross-artifact synthesis that the hardest remaining surface may be an
+  admissibility law for which divisor-arrival patterns consecutive primes are
+  actually allowed to realize, not a generic large-scale spoiler tail.
 - [`closure_constraint_findings.md`](./closure_constraint_findings.md):
   First empirical closure-constraint results, including exact and sampled
   zero-violation surfaces and the initial `d=4` threat-horizon summary.

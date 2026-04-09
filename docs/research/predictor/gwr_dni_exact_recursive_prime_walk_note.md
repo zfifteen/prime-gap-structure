@@ -27,6 +27,17 @@ This is not yet a closed-form formula for $p_n$. It is an exact deterministic
 sequential generator on the tested surface: given one known prime, it recovers
 the immediate next prime by a bounded DNI scan plus one witness lookup.
 
+The mechanism now has a clean split:
+
+- the unbounded DNI/GWR transition is exact by construction, because it scans
+  the full next-gap interior and takes the lexicographic divisor minimum before
+  the first prime boundary;
+- the current $44/60$ rule is a finite compression of that exact mechanism.
+
+So the remaining theorem question is not whether the mechanism itself can be
+exact. It is whether the bounded compression always recovers the same
+next-gap lex-min as the unbounded reference.
+
 ## 1. Setting
 
 Let $q$ be a known prime and let $q^+$ be the immediate next prime. Write
@@ -102,6 +113,18 @@ often appeared just beyond the prefix.
 
 ## 3. The Exact Transition Rule
 
+There are now two related transition laws in the repository.
+
+The unconditional reference law is:
+
+1. start at $q+1$,
+2. read exact divisor counts until the first prime boundary appears,
+3. over the composite offsets before that boundary, take the lexicographic
+   minimum.
+
+That rule is exact by construction. The bounded $44/60$ law below is the
+current finite compression of that exact mechanism.
+
 ### 3.1 First-Open Offset
 
 Let
@@ -155,6 +178,29 @@ The resulting next prime is then recovered by:
 $$
 q^+ = \operatorname{nextprime}(W_{\delta(q)}(q+1)-1).
 $$
+
+### 3.4 Canonical Counterexample Scan
+
+The repository now also contains a dedicated proof-or-counterexample harness:
+[`gwr_dni_cutoff_counterexample_scan.py`](../../../benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py).
+
+That scan iterates consecutive prime gaps in increasing right-prime order and
+compares:
+
+- the bounded cutoff rule;
+- the exact unbounded reference transition.
+
+Its contract is narrow:
+
+- if one mismatch appears, the finite cutoff law is false and the first
+  counterexample is recorded;
+- if no mismatch appears on a finite surface, the scan emits the exact frontier
+  certificates that any proof of the cutoff law must explain.
+
+The proof-facing reduction and branch-obstruction notes now live in:
+
+- [`../../../gwr/experiments/proof/dni_cutoff_theorem_reduction.md`](../../../gwr/experiments/proof/dni_cutoff_theorem_reduction.md)
+- [`../../../gwr/experiments/proof/dni_cutoff_branch_reduction.md`](../../../gwr/experiments/proof/dni_cutoff_branch_reduction.md)
 
 ## 4. Exactness on the Verified Surface
 
@@ -276,6 +322,12 @@ The remaining open problem is narrower:
 - or whether it is the first visible instance of a deeper exact bound that
   depends on additional invariants.
 
+The new counterexample scan is therefore the canonical theorem test:
+
+- the unbounded transition is the exact reference,
+- the bounded rule is the conjectured compression,
+- the scan decides whether the compression survives each tested surface.
+
 ## 8. What This Does and Does Not Claim
 
 This note supports the following claim:
@@ -292,6 +344,7 @@ This note does not support the following stronger claims:
 So the correct present description is:
 
 - exact deterministic sequential generator on the tested surface;
+- unconditional exact transition mechanism in unbounded form;
 - not yet an unconditional all-scale theorem;
 - not yet a direct $n \mapsto p_n$ closed form.
 
@@ -321,6 +374,13 @@ python3 benchmarks/python/predictor/gwr_dni_recursive_gap_scaling_sweep.py \
 ```
 
 ```bash
+python3 benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py \
+  --min-right-prime 11 \
+  --max-right-prime 1000000 \
+  --output-dir /tmp/gwr_dni_cutoff_counterexample_scan_1e6
+```
+
+```bash
 python3 benchmarks/python/predictor/plot_gwr_dni_recursive_gap_scaling_sweep.py \
   --input-dir /tmp/gwr_dni_recursive_gap_scaling_2_to_18 \
   --output-dir /tmp/gwr_dni_recursive_gap_scaling_2_to_18/plots
@@ -331,6 +391,7 @@ Focused validation for the new exact walk and scaling surface is:
 ```bash
 pytest -q \
   tests/python/predictor/test_gwr_dni_direct_rule_probe.py \
+  tests/python/predictor/test_gwr_dni_cutoff_counterexample_scan.py \
   tests/python/predictor/test_gwr_dni_recursive_walk.py \
   tests/python/predictor/test_gwr_dni_recursive_gap_scaling_sweep.py
 ```

@@ -83,5 +83,22 @@ They target the exact missing universal step identified in the findings notes:
   explicit-constant certificate helper that
   - loads the exact finite bridge artifact,
   - computes the bridge threshold implied by one chosen gap bound and divisor
-    majoration,
+  majoration,
   - and reports whether the verified finite base already closes that bridge.
+- [`dni_cutoff_branch_frontier.py`](./dni_cutoff_branch_frontier.py):
+  exact branch-frontier extractor that
+  - compares the bounded DNI cutoff rule to the exact unbounded next-gap
+    oracle,
+  - groups the exact extrema by `(first_open_offset, next_dmin)`,
+  - and emits the branch obstruction rows the cutoff theorem must explain.
+- [`dni_cutoff_theorem_reduction.md`](./dni_cutoff_theorem_reduction.md):
+  theorem-facing reduction note that
+  - defines the cutoff theorem precisely,
+  - shows that it is equivalent to all-prime exactness of the bounded walker,
+  - and fixes the role of finite computation as certification rather than
+    empirical persuasion.
+- [`dni_cutoff_branch_reduction.md`](./dni_cutoff_branch_reduction.md):
+  branch-obstruction note that
+  - reads the exact branch frontier,
+  - identifies which branch families actually carry the theorem pressure,
+  - and records the current reduction target for the symbolic tail proof.

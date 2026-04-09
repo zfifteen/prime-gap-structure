@@ -108,12 +108,13 @@ The newest predictor result in this repository is not a loose heuristic and
 not a skip-prone gap jumper. On the current verified surface, it is an exact
 deterministic sequential generator:
 
-1. read the bounded DNI structure to the right of one known prime,
+1. use the bounded DNI cutoff rule as a finite compression of the exact
+   next-gap mechanism,
 2. recover the immediate next gap minimum divisor class and its first carrier,
 3. recover the immediate next prime exactly,
 4. repeat with zero skipped gaps.
 
-The exact transition law is documented in
+The predictor note is documented in
 [docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md).
 The strongest verified numbers are:
 
@@ -129,6 +130,13 @@ The strongest verified numbers are:
 This is a significant change in status for the predictor program. The repo now
 has an implemented and verified DNI/GWR next-prime walk on the tested surface,
 not merely a witness recovery rule waiting on a seed.
+
+The theorem boundary is now sharper too. The unbounded DNI/GWR transition is
+exact by construction: scan the next-gap interior until the first prime
+boundary and take the lexicographic divisor minimum. The open question is only
+whether the finite cutoff map `2 -> 44`, `4 -> 60`, `6 -> 60` always matches
+that exact unbounded mechanism. The canonical test surface for that theorem is
+[benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py](benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py).
 
 ![Exact DNI recursive-walk performance](docs/research/predictor/figures/gwr_dni_recursive_gap_scaling_performance.png)
 

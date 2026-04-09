@@ -94,7 +94,7 @@ for a prime square branch, the exact minimum occurs at the first interior prime
 square. So the theorem implies
 
 $$
-p^2 - \operatorname{prevprime}(p^2) \le 60
+p^2 - prevprime(p^2) <= 60
 $$
 
 for every prime square whose previous prime lies in the $o(q)=4$ or $6$
@@ -206,7 +206,7 @@ The square branch is special because it converts the theorem into a statement
 about
 
 $$
-p^2 - \operatorname{prevprime}(p^2).
+p^2 - prevprime(p^2).
 $$
 
 That is much simpler than the full next-gap lex-min problem.

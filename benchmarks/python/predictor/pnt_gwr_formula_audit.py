@@ -10,7 +10,7 @@ import time
 from pathlib import Path
 
 import numpy as np
-from sympy import divisor_count, isprime, nextprime
+from sympy import divisor_count, nextprime
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -19,6 +19,7 @@ if str(SOURCE_DIR) not in sys.path:
     sys.path.insert(0, str(SOURCE_DIR))
 
 from z_band_prime_composite_field import divisor_counts_segment
+from z_band_prime_predictor import W_d, placed_prime_from_seed
 
 
 DEFAULT_OUTPUT_DIR = ROOT / "output"
@@ -45,29 +46,9 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def placed_prime_from_seed(seed: int) -> int:
-    """Return the right endpoint prime of the gap containing one composite seed."""
-    if seed < 4:
-        raise ValueError("seed must be at least 4")
-    return int(nextprime(seed - 1))
-
-
-def next_witness_with_divisor_count(seed: int, divisor_target: int) -> int:
-    """Return the first composite at or after seed with the requested divisor count."""
-    if seed < 4:
-        raise ValueError("seed must be at least 4")
-    if divisor_target < 3:
-        raise ValueError("divisor_target must be at least 3")
-
-    witness = seed
-    while isprime(witness) or divisor_count(witness) != divisor_target:
-        witness += 1
-    return witness
-
-
 def witness_prime_from_seed(seed: int, divisor_target: int) -> int:
     """Return the prime recovered by the witness search started at seed."""
-    witness = next_witness_with_divisor_count(seed, divisor_target)
+    witness = W_d(seed, divisor_target)
     return int(nextprime(witness - 1))
 
 
@@ -81,7 +62,7 @@ def _build_counterexample(
     interior_divisors: np.ndarray,
 ) -> dict[str, object]:
     """Return one concrete seed-level counterexample record."""
-    witness = next_witness_with_divisor_count(seed, divisor_target)
+    witness = W_d(seed, divisor_target)
     return {
         "left_prime": left_prime,
         "right_prime": right_prime,

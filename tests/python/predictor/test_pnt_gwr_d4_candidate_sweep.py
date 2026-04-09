@@ -32,15 +32,26 @@ def test_small_sweep_exposes_nonzero_error_surface():
     assert summary["mean_abs_prime_offset"] > 0.0
     assert summary["mean_abs_rank_offset"] > 0.0
     assert summary["exact_hits_equal_witness_hits"] is True
+    assert summary["exact_hits_equal_corridor_hits"] is True
+    assert summary["seed_in_d4_corridor_rate"] == 0.0
 
 
-def test_admissible_rate_dominates_seed_in_gap_rate_on_small_surface():
-    """The seed can still be before an admissible target-gap d=4 carrier."""
+def test_small_surface_is_partitioned_by_gap_exclusion_states():
+    """Every target gap falls into one exclusion state for the d=4 corridor."""
     module = load_module()
     _, summary = module.run_sweep(10, 100)
 
-    assert summary["admissible_d4_from_seed_rate"] >= summary["seed_in_target_gap_rate"]
-    assert summary["witness_in_target_gap_rate"] <= summary["admissible_d4_from_seed_rate"]
+    assert summary["seed_in_d4_corridor_rate"] == summary["witness_in_target_gap_rate"]
+    assert summary["blocked_by_pre_gap_d4_count"] == summary["gap_has_d4_count"]
+    assert summary["past_last_gap_d4_count"] == 0
+    assert (
+        summary["blocked_by_pre_gap_d4_count"]
+        + summary["gap_lacks_d4_count"]
+        + summary["past_last_gap_d4_count"]
+        + summary["seed_in_d4_corridor_count"]
+        == summary["count"]
+    )
+    assert summary["mean_seed_corridor_left_deficit"] > 0.0
 
 
 def test_entry_point_writes_summary_and_detail_artifacts(tmp_path):
@@ -58,3 +69,4 @@ def test_entry_point_writes_summary_and_detail_artifacts(tmp_path):
     assert payload["n_start"] == 10
     assert payload["n_end"] == 25
     assert payload["count"] == 16
+    assert payload["seed_in_d4_corridor_count"] == 0

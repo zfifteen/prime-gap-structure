@@ -3,6 +3,12 @@
 This note records the first local audit pass on
 [the Perplexity handoff paper](./pnt_gwr_prime_formula_paper.md).
 
+The packaged implementation now lives in
+[`src/python/z_band_prime_predictor/predictor.py`](../../../src/python/z_band_prime_predictor/predictor.py).
+The original research-path script at
+[`pnt_gwr_predictor.py`](./pnt_gwr_predictor.py) is now a thin wrapper around
+that production surface.
+
 The strongest supported correction is concrete:
 
 - if an integer seed $s$ already lies inside the gap $(p_{n-1}, p_n)$, then
@@ -46,6 +52,17 @@ must lie at or before the last interior $d_{\min}$ carrier. For the dominant
 $d=4$ specialization, the seed must lie at or before the last interior
 $d=4$ carrier.
 
+For gap prediction in the dominant $d=4$ regime, there is a sharper exact
+statement. Let $\sigma^-_4(p, q)$ be the last $d=4$ composite below $p$, and
+let $\sigma^+_4(p, q)$ be the last $d=4$ composite in $(p, q)$. Then the
+first $d=4$ witness after an integer seed $s$ lies in $(p, q)$ if and only if
+
+$$\sigma^-_4(p, q) < s \le \sigma^+_4(p, q).$$
+
+This is the exact dominant-regime seed corridor. Seeds at or below
+$\sigma^-_4$ are blocked by a pre-gap spoiler. Seeds above $\sigma^+_4$ miss
+the target gap because no in-gap $d=4$ carrier remains.
+
 ## Small Exact Surface
 
 The executable audit lives in
@@ -72,14 +89,22 @@ On the deterministic sweep $n = 10$ through $1000$, it reports:
 - seed-in-target-gap rate: $0.0000$;
 - witness-in-target-gap rate: $0.0000$;
 - target-gap $d=4$ availability rate: $0.7185$;
-- admissible target-gap $d=4$ rate from the seed position: $0.7185$;
+- exact $d=4$ seed-corridor hit rate: $0.0000$;
+- blocked by a pre-gap $d=4$ spoiler: $0.7185$;
+- target gaps with no interior $d=4$ carrier: $0.2815$;
+- mean deficit from the left corridor edge: $50.42$;
+- mean exact corridor width: $11.09$;
 - mean prime offset: $-52.07$;
 - mean absolute rank offset: $6.55$.
 
-On that surface, the current PNT seed undershoots enough that the first global
-$d=4$ witness is always reached before the target gap begins. The remaining
-problem is therefore not witness recovery inside the target gap. It is seed
-tightening.
+The earlier forward-only admissibility count was too loose because it asked
+only whether some in-gap $d=4$ carrier lay ahead of the seed. Gap recovery
+also requires the seed to start to the right of the last pre-gap $d=4$
+carrier. On this corrected exact corridor metric, the result is stronger:
+whenever the target gap contains $d=4$ carriers at all, the current PNT seed is
+still blocked by a pre-gap spoiler. The remaining problem is therefore not
+witness recovery inside the target gap. It is crossing the lower exclusion
+boundary.
 
 ## Practical Consequence
 
@@ -89,7 +114,10 @@ and then recover $p_n$ with a witness." Once the seed is inside the gap,
 
 The nontrivial problem is stricter:
 
-- either enlarge the admissible seed region so the witness map can start
-  outside the final gap and still land on an in-gap carrier;
+- either predict the exact dominant-regime corridor
+  $(\sigma^-_4(p, q), \sigma^+_4(p, q)]$ from $n$;
+- or enlarge the admissible seed region so the witness map can start
+  outside the final gap but still cross the last pre-gap spoiler and land on
+  an in-gap carrier;
 - or predict a seed that lands before a certified in-gap carrier, not merely
   somewhere inside the gap.

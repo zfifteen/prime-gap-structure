@@ -6,12 +6,22 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import sys
 from collections import Counter, defaultdict
 from itertools import combinations
 from pathlib import Path
 
 
+ROOT = Path(__file__).resolve().parents[3]
+SOURCE_DIR = ROOT / "src" / "python"
+if str(SOURCE_DIR) not in sys.path:
+    sys.path.insert(0, str(SOURCE_DIR))
+
+from z_band_prime_composite_field import divisor_counts_segment
+
+
 PREFIX_OFFSETS = tuple(range(1, 13))
+EXTENDED_CUTOFF_MAP = {2: 44, 4: 60, 6: 60}
 LOW_DIVISOR_CLASSES = (3, 4, 6, 8, 10, 12)
 MISS_COMPONENT_KEYS = (
     "current_gap_width",
@@ -80,6 +90,71 @@ def rule_min_first(row: dict[str, str]) -> tuple[str, str]:
     return lexicographic_min_present(prefix_values(row))
 
 
+def rule_extended_min(
+    row: dict[str, str],
+) -> tuple[str, str]:
+    """Return the extended lex-min prediction with gap-boundary detection.
+
+    The rule works in two stages:
+
+    Stage 1 (offsets 1..12):
+        Compute the standard 12-prefix lexicographic minimum.
+
+    Stage 2 (offsets 13..cutoff):
+        If ALL 12 prefix values are present (the gap extends past offset 12)
+        and the prefix minimum exceeds 3, scan offsets 13 through the
+        piecewise cutoff bound.  Stop the scan at the first offset whose
+        divisor count is 2 (a prime, marking the gap boundary).  Among
+        composites encountered, update the lex-min when a strictly lower
+        divisor count appears.
+
+    The piecewise cutoff bounds by first_open_offset are:
+        2 -> 44,  4 -> 60,  6 -> 60
+    These are exact upper bounds on next_peak_offset observed on the
+    combined 10^6 + 10^7 surface.
+    """
+    pv = prefix_values(row)
+    rp = int(row["current_right_prime"])
+    foo = int(row["first_open_offset"])
+    cutoff = EXTENDED_CUTOFF_MAP.get(foo, 60)
+
+    # Stage 1: 12-prefix lex-min
+    best_d: int | None = None
+    best_offset: int | None = None
+    all_present = True
+    for i, d in enumerate(pv):
+        if d is None:
+            all_present = False
+            continue
+        if best_d is None or d < best_d or (d == best_d and (i + 1) < best_offset):
+            best_d = d
+            best_offset = i + 1
+
+    # Narrow gap: prefix already covers the full gap interior
+    if not all_present:
+        return str(best_d), str(best_offset)
+
+    # Lowest composite divisor class; no scan can improve
+    if best_d is not None and best_d <= 3:
+        return str(best_d), str(best_offset)
+
+    # Stage 2: extend the scan through offsets 13..cutoff
+    if cutoff > 12:
+        ext_lo = rp + 13
+        ext_hi = rp + cutoff + 1
+        extended_counts = divisor_counts_segment(ext_lo, ext_hi)
+        for i in range(len(extended_counts)):
+            d = int(extended_counts[i])
+            offset = 13 + i
+            if d == 2:  # prime = gap boundary
+                break
+            if d < best_d or (d == best_d and offset < best_offset):
+                best_d = d
+                best_offset = offset
+
+    return str(best_d), str(best_offset)
+
+
 def ambiguous_prefix12_summary(rows: list[dict[str, str]]) -> dict[str, object]:
     """Return how often the raw twelve-step prefix alone is target-ambiguous."""
     support: dict[tuple[str, ...], Counter[tuple[str, str]]] = defaultdict(Counter)
@@ -115,6 +190,20 @@ def direct_rule_accuracy(rows: list[dict[str, str]]) -> dict[str, object]:
         1
         for row in rows
         if rule_min_first(row) == (row["next_dmin"], row["next_peak_offset"])
+    )
+    return {
+        "exact_count": exact,
+        "row_count": len(rows),
+        "exact_rate": exact / len(rows),
+    }
+
+
+def extended_rule_accuracy(rows: list[dict[str, str]]) -> dict[str, object]:
+    """Return the exactness of the extended lex-min rule on one row set."""
+    exact = sum(
+        1
+        for row in rows
+        if rule_extended_min(row) == (row["next_dmin"], row["next_peak_offset"])
     )
     return {
         "exact_count": exact,
@@ -412,6 +501,7 @@ def summarize(train_rows: list[dict[str, str]], test_rows: list[dict[str, str]])
         "combined_row_count": len(combined_rows),
         "prefix12_ambiguity": ambiguous_prefix12_summary(combined_rows),
         "direct_min_first_accuracy": direct_rule_accuracy(combined_rows),
+        "extended_min_accuracy": extended_rule_accuracy(combined_rows),
         "direct_rule_miss_surface": miss_surface_summary(combined_rows),
         "cutoff_rules": cutoff_rule_summary(combined_rows),
         "low_divisor_first_position_family_exact": low_divisor_first_position_family_exact(combined_rows),

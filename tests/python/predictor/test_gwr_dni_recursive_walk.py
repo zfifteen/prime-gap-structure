@@ -66,13 +66,28 @@ def test_compare_transition_rules_small_prime():
     comparison = module.compare_transition_rules(23)
 
     assert comparison["first_open_offset"] == 6
-    assert comparison["cutoff"] == 60
+    # dynamic_cutoff(23) == max(64, ceil(0.5 * log(23)^2)) == 64
+    assert comparison["cutoff"] == 64
     assert comparison["bounded_next_dmin"] == 3
     assert comparison["bounded_next_peak_offset"] == 2
     assert comparison["exact_next_dmin"] == 3
     assert comparison["exact_next_peak_offset"] == 2
     assert comparison["exact_gap_boundary_offset"] == 6
     assert comparison["exact_next_prime"] == 29
+    assert comparison["matches_cutoff_rule"] is True
+    assert comparison["overshoot_margin"] == 0
+
+
+def test_dynamic_cutoff_covers_known_counterexample():
+    """dynamic_cutoff must cover the known falsification point q=24098209.
+
+    The fixed map gave cutoff=60; E(q)=72 falsified it.
+    dynamic_cutoff must return a value >= 72 at that prime.
+    """
+    module = load_module()
+    cutoff = module.dynamic_cutoff(24098209)
+    assert cutoff >= 72, f"dynamic_cutoff({24098209}) = {cutoff} does not cover E(q)=72"
+    comparison = module.compare_transition_rules(24098209)
     assert comparison["matches_cutoff_rule"] is True
     assert comparison["overshoot_margin"] == 0
 

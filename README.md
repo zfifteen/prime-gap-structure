@@ -35,16 +35,34 @@ before the gap closes.
 
 ## Current Headline Results
 
-- **Exact DNI/GWR recursive prime walk.** The repository now carries an exact
-  deterministic no-skip sequential prime walk on the tested surface. The
-  extended DNI transition rule is exact on the combined $10^6 + 10^7$
-  next-gap surface with `743,075 / 743,075` exact transitions, and the
-  recursive walk records `664,578 / 664,578` exact consecutive next-prime
-  recoveries from prime `11` through prime `10,000,121` with `0` skipped
-  gaps. The sampled decade ladder from $10^2$ through $10^18$ also stayed at
-  exact hit rate `1.0` with `0` skipped gaps across `860` measured recursive
-  steps. See
+- **Unconditional exact DNI/GWR next-prime oracle.** The repository now
+  carries an exact next-prime walker in unbounded form. Given a known prime
+  `q`, the oracle scans divisor counts to the right until the first prime
+  boundary, takes the lexicographic minimum over the composite interior, and
+  recovers the next prime by the witness map. That mechanism is exact by
+  construction at any scale. See
   [docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md).
+- **Dynamic bounded walker replaces the falsified fixed theorem.** The old
+  fixed map `{2:44, 4:60, 6:60}` is false. It fails at `q = 24,098,209`,
+  where the square branch gives `E(q) = 72 > 60`. The current bounded walker
+  uses `C(q) = max(64, ceil(0.5 * log(q)^2))`. The square-branch audit through
+  `p <= 10^6` tested `78,498` prime squares, found `7,477` fixed-map
+  violations, and observed maximum square offset `246`. See
+  [benchmarks/python/predictor/square_branch_gap_audit.py](benchmarks/python/predictor/square_branch_gap_audit.py)
+  and
+  [benchmarks/python/predictor/gwr_dni_recursive_walk.py](benchmarks/python/predictor/gwr_dni_recursive_walk.py).
+- **Verified recursive walk surface.** On the combined exact $10^6 + 10^7$
+  next-gap surface, the DNI transition rule is exact on
+  `743,075 / 743,075` rows. The recursive walk records
+  `664,578 / 664,578` exact consecutive next-prime recoveries from prime `11`
+  through prime `10,000,121` with `0` skipped gaps, and the sampled decade
+  ladder from $10^2$ through $10^18$ stayed at exact hit rate `1.0` with `0`
+  skipped gaps across `860` measured recursive steps. See
+  [docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md).
+- **Built-in falsification instrument.** The predictor walker now ships with a
+  compare mode that runs the bounded and unbounded walkers in lockstep and
+  records any bounded miss immediately. See
+  [benchmarks/python/predictor/gwr_dni_recursive_walk.py](benchmarks/python/predictor/gwr_dni_recursive_walk.py).
 - **Formal theorem statement.** The current headline theorem is
   [gwr/findings/gwr_hierarchical_local_dominator_theorem.md](gwr/findings/gwr_hierarchical_local_dominator_theorem.md).
   It states the winner law directly in hierarchical first-arrival and
@@ -104,15 +122,24 @@ before the gap closes.
 
 ## Exact Recursive Prime Walk
 
-The newest predictor result in this repository is not a loose heuristic and
-not a skip-prone gap jumper. On the current verified surface, it is an exact
-deterministic sequential generator:
+The predictor line now has a cleaner split than before.
 
-1. use the bounded DNI cutoff rule as a finite compression of the exact
-   next-gap mechanism,
-2. recover the immediate next gap minimum divisor class and its first carrier,
-3. recover the immediate next prime exactly,
-4. repeat with zero skipped gaps.
+One part is unconditional:
+
+1. start from a known prime `q`,
+2. scan divisor counts to the right until the first prime boundary,
+3. take the lexicographic minimum over the composite interior,
+4. recover the next prime from that divisor class by the witness map.
+
+That unbounded oracle is exact by construction. No cutoff theorem is involved.
+
+The second part is the finite compression used by the bounded walker:
+
+- `C(q) = max(64, ceil(0.5 * log(q)^2))`
+
+That bound is empirical. It replaced the older fixed map `{2:44, 4:60, 6:60}`
+after the square branch falsified it at `q = 24,098,209`, where
+`E(q) = 72 > 60`.
 
 The predictor note is documented in
 [docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](docs/research/predictor/gwr_dni_exact_recursive_prime_walk_note.md).
@@ -124,18 +151,22 @@ The strongest verified numbers are:
   `10,000,121`, with `0` skipped gaps;
 - sampled decade sweep from $10^2$ through $10^{18}$ at exact hit rate `1.0`
   with `0` skipped gaps across `860` measured recursive steps;
-- largest observed next-gap peak offset in that sampled decade sweep: `32`,
-  still well inside the current tested continuation bound.
+- square-branch audit through `p <= 10^6`: `78,498` tested prime squares,
+  `7,477` fixed-map violations, and maximum square offset `246`;
+- current bounded cutoff:
+  `C(q) = max(64, ceil(0.5 * log(q)^2))`.
 
 This is a significant change in status for the predictor program. The repo now
-has an implemented and verified DNI/GWR next-prime walk on the tested surface,
-not merely a witness recovery rule waiting on a seed.
+has an implemented exact next-prime oracle, an empirical bounded compression
+that covers every known case on the current tested surface, and a compare mode
+that falsifies the compression immediately if it diverges.
 
 The theorem boundary is now sharper too. The unbounded DNI/GWR transition is
 exact by construction: scan the next-gap interior until the first prime
 boundary and take the lexicographic divisor minimum. The open question is only
-whether the finite cutoff map `2 -> 44`, `4 -> 60`, `6 -> 60` always matches
-that exact unbounded mechanism. The canonical test surface for that theorem is
+whether the dynamic bounded cutoff
+`C(q) = max(64, ceil(0.5 * log(q)^2))` always matches that exact unbounded
+mechanism. The canonical test surface for that theorem is
 [benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py](benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py).
 
 ![Exact DNI recursive-walk performance](docs/research/predictor/figures/gwr_dni_recursive_gap_scaling_performance.png)
@@ -303,14 +334,13 @@ $$
 
 Now set $v = e^{2}/2$:
 
-$$
-\begin{align*}
-Z(n) &= \frac{n}{\exp\left(\frac{e^{2}}{2} \cdot \frac{d(n) \cdot \ln(n)}{e^{2}}\right)} \\
-&= \frac{n}{\exp\left(\frac{d(n)}{2} \cdot \ln(n)\right)} \\
-&= \frac{n}{n^{d(n)/2}} \\
-&= n^{1 - d(n)/2}
-\end{align*}
-$$
+$$Z(n) = \frac{n}{\exp\left(\frac{e^{2}}{2} \cdot \frac{d(n) \cdot \ln(n)}{e^{2}}\right)}$$
+
+$$Z(n) = \frac{n}{\exp\left(\frac{d(n)}{2} \cdot \ln(n)\right)}$$
+
+$$Z(n) = \frac{n}{n^{d(n)/2}}$$
+
+$$Z(n) = n^{1 - d(n)/2}$$
 
 So the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ is
 

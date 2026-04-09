@@ -1,8 +1,12 @@
 # Exact DNI/GWR Recursive Prime Walk
 
-This note records the current strongest verified result in the predictor line:
-the DNI/GWR transition rule now yields an exact deterministic no-skip
-sequential prime walk on the tested surface.
+This note records the current predictor state honestly.
+
+The predictor line now has two distinct layers:
+
+- an unbounded DNI/GWR next-gap oracle that is exact by construction;
+- a bounded dynamic cutoff walker that compresses the oracle to a finite scan
+  and is empirical rather than proved.
 
 The result is implemented in:
 
@@ -11,9 +15,10 @@ The result is implemented in:
 - [`gwr_dni_recursive_gap_scaling_sweep.py`](../../../benchmarks/python/predictor/gwr_dni_recursive_gap_scaling_sweep.py)
 - [`plot_gwr_dni_recursive_gap_scaling_sweep.py`](../../../benchmarks/python/predictor/plot_gwr_dni_recursive_gap_scaling_sweep.py)
 
-The strongest supported claim is concrete:
+The strongest supported claims are concrete:
 
-- on the combined exact $10^6 + 10^7$ transition surface, the extended DNI
+- the unbounded DNI/GWR transition is exact by construction at any scale;
+- on the combined exact $10^6 + 10^7$ transition surface, the DNI transition
   rule predicts the immediate next gap state with exact rate $1.0$ on
   $743{,}075$ rows;
 - on the exact recursive walk from prime $11$ through prime $10{,}000{,}121$,
@@ -21,21 +26,27 @@ The strongest supported claim is concrete:
   with zero skipped gaps;
 - on the sampled decade ladder from $10^2$ through $10^18$, the exact walk
   remains at hit rate $1.0$ with zero skipped gaps across $860$ measured
-  recursive steps.
+  recursive steps;
+- the fixed cutoff map `{2:44, 4:60, 6:60}` is false;
+- the current dynamic cutoff `C(q) = max(64, ceil(0.5 * log(q)^2))` covers
+  every known square-branch falsification case through `p <= 10^6`.
 
-This is not yet a closed-form formula for $p_n$. It is an exact deterministic
-sequential generator on the tested surface: given one known prime, it recovers
-the immediate next prime by a bounded DNI scan plus one witness lookup.
+This is not yet a closed-form formula for $p_n$. The unconditional part is a
+sequential next-prime oracle: given one known prime, it recovers the immediate
+next prime by scanning the full next-gap interior and then applying one
+witness lookup. The bounded walker is a finite empirical compression of that
+oracle.
 
 The mechanism now has a clean split:
 
 - the unbounded DNI/GWR transition is exact by construction, because it scans
   the full next-gap interior and takes the lexicographic divisor minimum before
   the first prime boundary;
-- the current $44/60$ rule is a finite compression of that exact mechanism.
+- the current bounded walker uses a dynamic log-squared cutoff rather than the
+  falsified fixed `44/60` map.
 
 So the remaining theorem question is not whether the mechanism itself can be
-exact. It is whether the bounded compression always recovers the same
+exact. It is whether the dynamic bounded compression always recovers the same
 next-gap lex-min as the unbounded reference.
 
 ## 1. Setting
@@ -58,9 +69,7 @@ $$
 Once the correct next-gap minimum divisor class $\delta(q)$ is known, the
 recovery step is exact on the tested surface:
 
-$$
-q^+ = \operatorname{nextprime}(W_{\delta(q)}(q+1) - 1).
-$$
+$$q^+ = nextprime(W_{\delta(q)}(q+1) - 1).$$
 
 So the remaining problem was not witness recovery. The remaining problem was
 the transition law for the immediate next gap.
@@ -111,7 +120,7 @@ So the failure mode was not that the first $12$ offsets produced the wrong
 local structure. The failure mode was that the correct minimum first carrier
 often appeared just beyond the prefix.
 
-## 3. The Exact Transition Rule
+## 3. Exact Oracle and Dynamic Compression
 
 There are now two related transition laws in the repository.
 
@@ -122,40 +131,33 @@ The unconditional reference law is:
 3. over the composite offsets before that boundary, take the lexicographic
    minimum.
 
-That rule is exact by construction. The bounded $44/60$ law below is the
-current finite compression of that exact mechanism.
+That rule is exact by construction.
 
-### 3.1 First-Open Offset
+### 3.1 Dynamic Cutoff
 
-Let
+The current bounded compression is
 
-$$
-o(q) = \text{first even offset after } q \text{ whose residue class is open mod } 30.
-$$
+$$C(q) = \max(64, \lceil 0.5 \cdot \log(q)^2 \rceil).$$
 
-Since $q$ is prime and odd, the only possible values on the tested surface are
-$o(q) \in \{2,4,6\}$.
+This is an empirical replacement for the earlier fixed cutoff map
+`{2:44, 4:60, 6:60}`.
 
-### 3.2 Empirical Continuation Bound
+### 3.2 Why the Fixed Map Was Removed
 
-The measured continuation bound is:
+The fixed theorem is false. The committed counterexample is:
 
-$$
-C(q)=
-\begin{cases}
-44, & o(q)=2, \\
-60, & o(q)\in\{4,6\}.
-\end{cases}
-$$
+- current right prime `q = 24,098,209`
+- next prime `q^+ = 24,098,287`
+- square branch interior point `4909^2 = 24,098,281`
+- exact square offset `72`
 
-This is not yet proved universal. It is the exact tested bound on the current
-surface.
+So the old `60` branch fails directly.
 
 ### 3.3 Operational Rule
 
 For a known prime $q$:
 
-1. Compute $o(q)$ and the corresponding cutoff $C(q)$.
+1. Compute the dynamic cutoff $C(q)$.
 2. Scan offsets $1$ through $12$, reading divisor counts $d(q+k)$.
 3. If a prime appears inside that prefix, the gap closes inside the prefix.
    Return the lexicographic minimum over the composite offsets already seen.
@@ -175,32 +177,31 @@ boundary of the gap.
 
 The resulting next prime is then recovered by:
 
-$$
-q^+ = \operatorname{nextprime}(W_{\delta(q)}(q+1)-1).
-$$
+$$q^+ = nextprime(W_{\delta(q)}(q+1)-1).$$
 
-### 3.4 Canonical Counterexample Scan
+### 3.4 Canonical Falsification Instruments
 
-The repository now also contains a dedicated proof-or-counterexample harness:
+The repository now contains two direct instruments for the bounded layer.
+
+The compare harness is
 [`gwr_dni_cutoff_counterexample_scan.py`](../../../benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py).
-
-That scan iterates consecutive prime gaps in increasing right-prime order and
+It iterates consecutive prime gaps in increasing right-prime order and
 compares:
 
-- the bounded cutoff rule;
+- the bounded dynamic cutoff rule;
 - the exact unbounded reference transition.
 
 Its contract is narrow:
 
-- if one mismatch appears, the finite cutoff law is false and the first
+- if one mismatch appears, the bounded law is false and the first
   counterexample is recorded;
 - if no mismatch appears on a finite surface, the scan emits the exact frontier
-  certificates that any proof of the cutoff law must explain.
+  certificates that any proof of the bounded law must explain.
 
-The proof-facing reduction and branch-obstruction notes now live in:
-
-- [`../../../gwr/experiments/proof/dni_cutoff_theorem_reduction.md`](../../../gwr/experiments/proof/dni_cutoff_theorem_reduction.md)
-- [`../../../gwr/experiments/proof/dni_cutoff_branch_reduction.md`](../../../gwr/experiments/proof/dni_cutoff_branch_reduction.md)
+The square branch now has its own direct audit too:
+[`square_branch_gap_audit.py`](../../../benchmarks/python/predictor/square_branch_gap_audit.py).
+Through `p <= 10^6`, it tested `78,498` prime squares, found `7,477`
+violations of the old fixed map, and observed maximum square offset `246`.
 
 ## 4. Exactness on the Verified Surface
 
@@ -290,9 +291,9 @@ $0.0$ across the full sampled range.
 ![Exact DNI recursive-walk performance](./figures/gwr_dni_recursive_gap_scaling_performance.png)
 
 Figure 2 shows the observed peak offsets and the fraction of the tested cutoff
-window actually used. The key visual fact is that the observed offsets remain
-well inside the tested $44/60$ continuation bound. On this run the largest
-observed peak offset is $32$, not $44$ or $60$.
+window actually used on the sampled recursive walk. This figure is a walker
+diagnostic, not a proof of the bounded compression. The real pressure test for
+the compression layer is the compare mode and the square-branch audit.
 
 ![Exact DNI recursive-walk offsets](./figures/gwr_dni_recursive_gap_scaling_offsets.png)
 
@@ -317,10 +318,9 @@ support an exact next-prime walk. On the tested surface, it does.
 
 The remaining open problem is narrower:
 
-- whether the piecewise continuation bound
-  $C(q)\in\{44,60\}$ is universal,
-- or whether it is the first visible instance of a deeper exact bound that
-  depends on additional invariants.
+- whether the dynamic bounded cutoff
+  $C(q) = \max(64, \lceil 0.5 \cdot \log(q)^2 \rceil)$ is universal,
+- or whether the coefficient `0.5` eventually needs to grow.
 
 The new counterexample scan is therefore the canonical theorem test:
 
@@ -330,22 +330,23 @@ The new counterexample scan is therefore the canonical theorem test:
 
 ## 8. What This Does and Does Not Claim
 
-This note supports the following claim:
+This note supports the following claims:
 
-- there is an exact deterministic DNI/GWR next-prime walk on the tested
-  surface, implemented and verified in the repository.
+- there is an exact deterministic DNI/GWR next-prime oracle in the repository;
+- there is an empirical bounded compression layer in the repository;
+- there is a built-in compare mode that can falsify that compression directly.
 
 This note does not support the following stronger claims:
 
-- a proof that the cutoff map $2 \mapsto 44$, $4 \mapsto 60$, $6 \mapsto 60$
-  holds for all larger primes;
+- a proof that the current dynamic cutoff is sufficient at all larger primes;
 - a direct closed-form expression for $p_n$ as a function of $n$ alone.
 
 So the correct present description is:
 
 - exact deterministic sequential generator on the tested surface;
 - unconditional exact transition mechanism in unbounded form;
-- not yet an unconditional all-scale theorem;
+- dynamic bounded walker calibrated through the current tested surface;
+- not yet an unconditional all-scale theorem for the compression layer;
 - not yet a direct $n \mapsto p_n$ closed form.
 
 ## 9. Reproduction
@@ -371,6 +372,12 @@ python3 benchmarks/python/predictor/gwr_dni_recursive_gap_scaling_sweep.py \
   --min-power 2 \
   --max-power 18 \
   --output-dir /tmp/gwr_dni_recursive_gap_scaling_2_to_18
+```
+
+```bash
+python3 benchmarks/python/predictor/square_branch_gap_audit.py \
+  --max-prime 1000000 \
+  --output-dir /tmp/square_branch_audit_1e6
 ```
 
 ```bash

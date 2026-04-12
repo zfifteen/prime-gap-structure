@@ -73,6 +73,27 @@ def test_exact_next_gap_profile_small_primes():
     assert profile["next_prime"] == 29
 
 
+def test_bounded_profile_uses_prefix_lock_witness_without_extended_scan(monkeypatch):
+    """A locked 12-offset prefix should recover the exact boundary without an extended scan."""
+    module = load_module()
+    calls: list[tuple[int, int]] = []
+    original = module.divisor_counts_segment
+
+    def tracked_divisor_counts_segment(start: int, stop: int):
+        calls.append((start, stop))
+        return original(start, stop)
+
+    monkeypatch.setattr(module, "divisor_counts_segment", tracked_divisor_counts_segment)
+
+    profile = module.bounded_next_gap_profile(229433)
+
+    assert profile["next_dmin"] == 3
+    assert profile["next_peak_offset"] == 8
+    assert profile["gap_boundary_offset"] == 26
+    assert profile["next_prime"] == 229459
+    assert calls == [(229434, 229446)]
+
+
 def test_compare_transition_rules_small_prime():
     """The bounded rule should match the exact oracle on a known small gap."""
     module = load_module()

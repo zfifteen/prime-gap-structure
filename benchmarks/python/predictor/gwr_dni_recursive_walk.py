@@ -15,8 +15,9 @@ Modes:
     Run bounded and unbounded in lockstep and record any divergence.
 
 The walk advances by reading the next-gap profile and moving directly to the
-prime boundary. It does not perform a second witness-recovery search after the
-transition scan.
+prime boundary. When the 12-offset prefix locks at delta <= 3, the bounded
+path recovers that boundary from the witness map instead of continuing the
+extended divisor scan.
 """
 
 from __future__ import annotations
@@ -29,7 +30,7 @@ import sys
 import time
 from pathlib import Path
 
-from sympy import prime
+from sympy import nextprime, prime
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_DIR = ROOT / "src" / "python"
@@ -94,6 +95,30 @@ def dynamic_cutoff(q: int) -> int:
     return max(64, math.ceil(0.5 * math.log(q) ** 2))
 
 
+def _scan_prefix_state(current_right_prime: int) -> tuple[int, int, int | None]:
+    """Return the 12-offset lex-min state and any in-prefix prime boundary."""
+    rp = current_right_prime
+    best_d: int | None = None
+    best_offset: int | None = None
+
+    prefix_counts = divisor_counts_segment(rp + 1, rp + PREFIX_LEN + 1)
+    for index, raw_d in enumerate(prefix_counts):
+        d = int(raw_d)
+        offset = index + 1
+        if d == 2:
+            if best_d is None or best_offset is None:
+                raise ValueError(f"empty next gap from prime {rp}")
+            return best_d, best_offset, offset
+        if best_d is None or d < best_d or (d == best_d and offset < best_offset):
+            best_d = d
+            best_offset = offset
+
+    if best_d is None or best_offset is None:
+        raise ValueError(f"empty next gap from prime {rp}")
+
+    return best_d, best_offset, None
+
+
 def exact_next_gap_profile(
     current_right_prime: int,
     scan_block: int = EXACT_SCAN_BLOCK,
@@ -139,28 +164,31 @@ def bounded_next_gap_profile(current_right_prime: int) -> dict[str, int]:
     """Return the bounded next-gap profile when the prime boundary lies by cutoff."""
     rp = current_right_prime
     cutoff = dynamic_cutoff(rp)
+    best_d, best_offset, prefix_prime_offset = _scan_prefix_state(rp)
 
-    best_d: int | None = None
-    best_offset: int | None = None
+    if prefix_prime_offset is not None:
+        return {
+            "current_right_prime": rp,
+            "next_prime": rp + prefix_prime_offset,
+            "gap_boundary_offset": prefix_prime_offset,
+            "next_dmin": best_d,
+            "next_peak_offset": best_offset,
+        }
 
-    prefix_hi = rp + PREFIX_LEN + 1
-    prefix_counts = divisor_counts_segment(rp + 1, prefix_hi)
-    for index, raw_d in enumerate(prefix_counts):
-        d = int(raw_d)
-        offset = index + 1
-        if d == 2:
-            if best_d is None or best_offset is None:
-                raise ValueError(f"empty next gap from prime {rp}")
-            return {
-                "current_right_prime": rp,
-                "next_prime": rp + offset,
-                "gap_boundary_offset": offset,
-                "next_dmin": best_d,
-                "next_peak_offset": best_offset,
-            }
-        if best_d is None or d < best_d or (d == best_d and offset < best_offset):
-            best_d = d
-            best_offset = offset
+    if best_d <= 3:
+        next_prime_value = int(nextprime(rp + best_offset - 1))
+        gap_boundary_offset = next_prime_value - rp
+        if gap_boundary_offset > cutoff:
+            raise RuntimeError(
+                f"bounded cutoff missed the next prime boundary for {rp} by cutoff {cutoff}"
+            )
+        return {
+            "current_right_prime": rp,
+            "next_prime": next_prime_value,
+            "gap_boundary_offset": gap_boundary_offset,
+            "next_dmin": best_d,
+            "next_peak_offset": best_offset,
+        }
 
     ext_lo = rp + PREFIX_LEN + 1
     ext_hi = rp + cutoff + 1
@@ -212,23 +240,20 @@ def predict_next_gap_unbounded(current_right_prime: int) -> tuple[int, int]:
 def predict_next_gap_bounded(current_right_prime: int) -> tuple[int, int]:
     """Return the bounded next-gap lex-min over offsets up to the cutoff."""
     rp = current_right_prime
+    best_d, best_offset, prefix_prime_offset = _scan_prefix_state(rp)
+    if prefix_prime_offset is not None or best_d <= 3:
+        return best_d, best_offset
+
     cutoff = dynamic_cutoff(rp)
-
-    best_d: int | None = None
-    best_offset: int | None = None
-
-    counts = divisor_counts_segment(rp + 1, rp + cutoff + 1)
+    counts = divisor_counts_segment(rp + PREFIX_LEN + 1, rp + cutoff + 1)
     for index, raw_d in enumerate(counts):
         d = int(raw_d)
-        offset = index + 1
+        offset = PREFIX_LEN + 1 + index
         if d == 2:
             break
-        if best_d is None or d < best_d or (d == best_d and offset < best_offset):
+        if d < best_d or (d == best_d and offset < best_offset):
             best_d = d
             best_offset = offset
-
-    if best_d is None or best_offset is None:
-        raise ValueError(f"empty next gap from prime {rp}")
 
     return best_d, best_offset
 

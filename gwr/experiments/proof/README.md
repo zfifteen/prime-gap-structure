@@ -7,12 +7,15 @@ The current scripts in this folder are research instruments.
 They are not part of the validation registry, and none of them by itself is a
 mandatory proof gate for `GWR`.
 
-They target the exact universal bridge step identified in the findings notes:
+They target the exact earlier-side closure step identified in the findings
+notes:
 
 - the ordered-dominance theorem already proves that the `GWR` candidate beats
   every later interior composite,
-- the no-early-spoiler bridge certificate now eliminates every earlier
-  higher-divisor spoiler under the recorded BHP/Robin constants.
+- the current live earlier-side route is the local admissibility program in
+  [`../findings/prime_gap_admissibility_theorem.md`](../findings/prime_gap_admissibility_theorem.md),
+- the older bridge certificate remains in the folder as historical comparison
+  material rather than as the proof-critical path.
 
 ## Current Entry Point
 
@@ -94,11 +97,17 @@ The parallel scanner has now been extended to $p < 1{,}000{,}000{,}001$.
   - writes one JSON checkpoint per completed segment,
   - aggregates exact spoiler counts and bridge-load extrema across segments,
   - and provides the straight execution path for extending the finite GWR base
-    beyond the current $10^9$ surface.
+  beyond the current $10^9$ surface.
+- [`prime_gap_admissibility_frontier.py`](./prime_gap_admissibility_frontier.py):
+  deterministic local-frontier extractor that
+  - canonicalizes each exact hard case by the local chamber variables,
+  - splits the earlier-side problem into square and square-free branches,
+  - records the retained finite residual classes below the high-divisor cutoff,
+  - and emits the proof-facing artifacts for the local admissibility route.
 - [`proof_bridge_universal_lemma.md`](./proof_bridge_universal_lemma.md):
   theorem-facing bridge note that
   - derives a non-empirical large-$p$ upper bound for the normalized
-    no-early-spoiler load,
+  no-early-spoiler load,
   - records the exact dependence on explicit literature constants,
   - separates the bounded unconditional Dusart regime from the provisional BHP
     tail,

@@ -33,14 +33,17 @@ conditions used throughout the repo: every earlier composite is beaten by a
 later admissible composite, and no later strictly simpler composite appears
 before the gap closes.
 
-The no-early-spoiler bridge has now been closed below the repo's exact finite
-base under BHP's $\theta = 0.525$ and explicit Robin-style divisor-function
-majoration constants. The analytic bridge thresholds are `102` under
-$c=\ln(2)e^\gamma$ and `3,544` under conservative `c = 1.5379`, while the exact
-finite base runs through $p < 20{,}000{,}001$. The committed bridge artifact
-records `1,163,198` gaps, `3,349,874` earlier candidates, and `0` bridge
-failures. See
-[gwr/findings/gwr_universal_bridge_closure.md](gwr/findings/gwr_universal_bridge_closure.md).
+The live earlier-side proof route is now the local admissibility program in
+[gwr/findings/prime_gap_admissibility_theorem.md](gwr/findings/prime_gap_admissibility_theorem.md).
+That route closes the square branch directly, fixes the square-free branch in a
+deterministic chamber model with $W = 30030$ and $K = 128$, and records the
+remaining obstruction as a finite low-class residual table rather than an
+asymptotic BHP tail. The exact finite audit through
+$p < 1{,}000{,}000{,}001$ still records `42,101,885` gaps,
+`149,214,917` earlier candidates, `0` exact spoilers, and maximum realized
+bridge load `3.749140087272451e-08`. See
+[GWR_PROOF.md](GWR_PROOF.md) and
+[docs/current_headline_results.md](docs/current_headline_results.md).
 
 For the current headline results, see
 [docs/current_headline_results.md](docs/current_headline_results.md).
@@ -119,10 +122,9 @@ literature:
 - **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
   exact arithmetic identity collapsing all primes to `Z = 1.0`.
 - **Gap Winner Rule (GWR):** inside any prime gap, the log-score argmax is
-  exactly the leftmost carrier of the minimum interior divisor class. This is a
-  conditionally proven universal theorem under the explicit BHP/Robin bridge
-  constants recorded in
-  [gwr/findings/gwr_universal_bridge_closure.md](gwr/findings/gwr_universal_bridge_closure.md).
+  exactly the leftmost carrier of the minimum interior divisor class. The live
+  proof route is now the local admissibility program recorded in
+  [gwr/findings/prime_gap_admissibility_theorem.md](gwr/findings/prime_gap_admissibility_theorem.md).
 - **No-Later-Simpler-Composite (NLSC) condition:** once the GWR winner
   appears, no later interior composite with strictly smaller divisor count
   precedes the next prime. Zero violations observed through `10^18`.
@@ -195,24 +197,23 @@ a prime gap collapses to a simpler arithmetic choice:
 That is the Gap Winner Rule.
 
 The formal theorem file expresses this as a hierarchical local-dominator law.
-The repo now carries GWR as a conditionally proven universal theorem under the
-recorded BHP/Robin assumptions. The proof chain combines elementary later-side
-lexicographic raw-$Z$ dominance, the exact finite earlier-side base through
-$p < 20{,}000{,}001$, and the explicit analytic bridge certificate whose
-thresholds fall below that finite base.
+The current proof chain combines elementary later-side lexicographic raw-$Z$
+dominance, the exact finite earlier-side audit through $p < 10^9$, the closed
+square branch, and the local chamber reduction of the square-free branch. The
+remaining live obstruction is a finite low-class residual table rather than an
+asymptotic BHP constant.
 
 The newer no-early-spoiler artifacts close the left flank against the actual
-winner itself. On the full exact through-$2 \times 10^7$ surface, the repo
-records zero exact earlier spoilers against the true `GWR` carrier, identifies
-the tightest realized winner/earlier divisor-class frontier, shows that the
-largest gaps are not the hard regime, and packages the universal target as a
-normalized bridge load. The explicit bridge certificate then puts the analytic
-threshold below that finite base under the stated BHP/Robin constants.
+winner itself on the exact base and now feed the local admissibility frontier.
+On the full exact through-$2 \times 10^7$ surface, the repo records zero exact
+earlier spoilers against the true `GWR` carrier, identifies the tightest
+realized winner/earlier divisor-class frontier, and packages the remaining
+left-side burden as a finite local chamber problem.
 
 See [gwr/story/README.md](gwr/story/README.md),
 [gwr/findings/gwr_hierarchical_local_dominator_theorem.md](gwr/findings/gwr_hierarchical_local_dominator_theorem.md),
 [gwr/findings/gap_winner_rule.md](gwr/findings/gap_winner_rule.md), and
-[gwr/findings/gwr_universal_bridge_closure.md](gwr/findings/gwr_universal_bridge_closure.md).
+[gwr/findings/prime_gap_admissibility_theorem.md](gwr/findings/prime_gap_admissibility_theorem.md).
 
 ## Exact Recursive Prime Walk
 
@@ -391,9 +392,10 @@ runtime exact DNI evaluation.
   gaps versus an exact within-gap baseline of $22.1859\%$, and is carried by a
   $d(n)=4$ composite in $82.9027\%$ of gaps versus a baseline of $20.1401\%$.
 - Later repository notes sharpen that ridge picture into the current winner
-  theorem: GWR conditionally proves that the implemented log-score winner is the
-  arithmetic choice “minimize interior divisor count, then take the leftmost
-  carrier,” under the recorded BHP/Robin bridge constants. The tested surfaces
+  theorem: GWR says the implemented log-score winner is the arithmetic choice
+  “minimize interior divisor count, then take the leftmost carrier,” and the
+  current proof route reduces the remaining earlier-side burden to a finite
+  local admissibility closure. The tested surfaces
   remain the finite base, stress surface, and audit record for that proof chain.
 - The dedicated closure study then strengthens the right-edge reading further:
   on the current documented even-band ladder through $10^{18}$, once the

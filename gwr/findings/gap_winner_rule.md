@@ -22,10 +22,7 @@ argmax, is exactly the interior integer selected by this arithmetic order:
 2. among interiors with that minimum, choose the leftmost one.
 
 Equivalently, the log-score winner and the lexicographic winner are the same
-carrier. The repo now proves this statement conditionally for all prime gaps
-under BHP's $\theta = 0.525$ and the explicit divisor-function majoration
-constants recorded in
-[`gwr_universal_bridge_closure.md`](./gwr_universal_bridge_closure.md).
+carrier.
 
 ## Legacy Name
 
@@ -49,12 +46,21 @@ The historical validation surface includes:
 
 On those current surfaces, the repo reports zero counterexamples.
 
-The current proof closure uses the exact finite bridge-load base
-[`asymptotic_bridge_load_scan_2e7.json`](../../output/gwr_proof/asymptotic_bridge_load_scan_2e7.json)
-and the explicit certificate
-[`proof_bridge_certificate_2e7.json`](../../output/gwr_proof/proof_bridge_certificate_2e7.json).
-The finite base records `1,163,198` gaps, `3,349,874` earlier candidates, and
-`0` bridge failures through $p < 20{,}000{,}001$.
+The current proof program is local rather than asymptotic.
+
+- the later side is closed by
+  [`lexicographic_raw_z_dominance_theorem.md`](./lexicographic_raw_z_dominance_theorem.md);
+- the square branch is closed in
+  [`prime_gap_admissibility_theorem.md`](./prime_gap_admissibility_theorem.md);
+- the square-free branch is reduced there to a fixed early window
+  $K = 128$ plus a finite low-class residual table;
+- the deterministic admissibility artifacts are
+  [`../../output/gwr_proof/prime_gap_admissibility_frontier_2e7.json`](../../output/gwr_proof/prime_gap_admissibility_frontier_2e7.json)
+  and
+  [`../../output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json`](../../output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json).
+
+The older BHP bridge notes remain part of the repo history, but they are no
+longer the live proof-critical route.
 
 ## Immediate Consequences
 

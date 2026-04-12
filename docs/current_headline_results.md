@@ -1,24 +1,27 @@
 # Current Headline Results
 
-- **Unconditional GWR through the bounded Dusart regime.** The exact parallel
-  finite scan now reaches $p < 1{,}000{,}000{,}001$, and the conservative
-  Dusart/Nicolas-Robin bridge still covers the bounded tail through
-  $p \le 5{,}571{,}362{,}243{,}795$. So `GWR` is now unconditional on that
-  full range. The exact artifact
-  [../output/gwr_proof/parallel_no_early_spoiler_1e9.json](../output/gwr_proof/parallel_no_early_spoiler_1e9.json)
-  records `42,101,885` gaps, `149,214,917` earlier candidates, `0` spoilers,
-  `0` bridge failures, and maximum realized bridge load
-  `3.749140087272451e-08`. See
-  [../gwr/experiments/proof/parallel_no_early_spoiler_scan.py](../gwr/experiments/proof/parallel_no_early_spoiler_scan.py)
-  and
-  [../gwr/experiments/proof/proof_bridge_universal_lemma.md](../gwr/experiments/proof/proof_bridge_universal_lemma.md).
-- **Conditional asymptotic tail remains explicit about its dependency.** Beyond
-  $p > 5{,}571{,}362{,}243{,}795$, the bridge still uses BHP's
-  $\theta = 0.525$ with provisional `A = 1`. The helper
-  [../gwr/experiments/proof/proof_bridge_certificate.py](../gwr/experiments/proof/proof_bridge_certificate.py)
-  records the provisional BHP thresholds `102` for $c=\ln(2)e^\gamma$ and
-  `3,544` for conservative `c = 1.5379`, alongside the bounded unconditional
-  Dusart regime.
+- **Local admissibility route replaces the former BHP tail as the live proof
+  engine.** The new note
+  [../gwr/findings/prime_gap_admissibility_theorem.md](../gwr/findings/prime_gap_admissibility_theorem.md)
+  closes the square branch directly, proves the square-free first-$d=4$ window
+  lemma, and fixes the earlier-side problem as a finite local chamber closure
+  rather than an asymptotic BHP task. The headline proof summary is now
+  [../GWR_PROOF.md](../GWR_PROOF.md).
+- **Exact admissibility frontier is now committed on the two proof surfaces.**
+  The new extractor
+  [../gwr/experiments/proof/prime_gap_admissibility_frontier.py](../gwr/experiments/proof/prime_gap_admissibility_frontier.py)
+  writes:
+  [../output/gwr_proof/prime_gap_admissibility_frontier_2e7.json](../output/gwr_proof/prime_gap_admissibility_frontier_2e7.json)
+  for the exact $2 \times 10^7$ surface and
+  [../output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json](../output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json)
+  for the retained exact $10^9$ frontier. On both current surfaces, the
+  extractor records `non_square_beyond_window_count = 0`, so every current
+  non-square hard case stays inside the fixed window `K = 128`.
+- **The remaining obstruction is finite and low-class.** The same frontier
+  artifacts mark every checked class with `d(k) >= 64` as automatically
+  eliminated and move the live bottleneck into a finite low-divisor residual
+  table. The project is no longer waiting on an explicit BHP constant. It is
+  waiting on local closure of those residual chamber families.
 - **Unconditional exact DNI/GWR next-prime oracle.** The repository now
   carries an exact next-prime walker in unbounded form. Given a known prime
   `q`, the oracle scans divisor counts to the right until the first prime
@@ -76,11 +79,9 @@
   the helper
   [../gwr/experiments/proof/proof_bridge_certificate.py](../gwr/experiments/proof/proof_bridge_certificate.py)
   checks concrete gap-bound and divisor-growth parameter choices against the
-  exact finite base already committed in the repo. The current proof-facing
-  status is therefore: the bridge is unconditional through the bounded Dusart
-  regime up to $p \le 5{,}571{,}362{,}243{,}795$, while the asymptotic tail to
-  infinity remains conditional on an explicit leading constant for a
-  fixed-exponent gap bound such as effective BHP.
+  exact finite base already committed in the repo. Those bridge files now
+  remain as historical and comparison material rather than as the live
+  proof-critical route.
 - **No-Later-Simpler-Composite condition.** Once the implemented winner
   appears inside a tested prime gap, the next prime arrives before any later
   interior composite with strictly smaller divisor count. The dedicated closure

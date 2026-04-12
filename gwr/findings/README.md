@@ -9,6 +9,10 @@ refer directly to an older artifact whose title or filename already uses it.
 
 - [`gap_winner_rule.md`](./gap_winner_rule.md): Canonical statement of the rule
   under the new name.
+- [`prime_gap_admissibility_theorem.md`](./prime_gap_admissibility_theorem.md):
+  The local admissibility proof engine replacing the former BHP tail as the
+  live earlier-side route, including the closed square branch, the square-free
+  first-$d=4$ window lemma, and the current finite residual frontier.
 - [`claim_hierarchy.md`](./claim_hierarchy.md): Claim structure separating the
   formal theorem, the prime-gap corollary, and empirical consequences.
 - [`gwr_universal_bridge_closure.md`](./gwr_universal_bridge_closure.md):

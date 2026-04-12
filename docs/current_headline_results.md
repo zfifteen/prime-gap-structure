@@ -1,14 +1,14 @@
 # Current Headline Results
 
 - **Unconditional GWR through the bounded Dusart regime.** The exact parallel
-  finite scan now reaches $p < 100{,}000{,}001$, and the conservative
+  finite scan now reaches $p < 1{,}000{,}000{,}001$, and the conservative
   Dusart/Nicolas-Robin bridge still covers the bounded tail through
   $p \le 5{,}571{,}362{,}243{,}795$. So `GWR` is now unconditional on that
   full range. The exact artifact
-  [../output/gwr_proof/parallel_no_early_spoiler_1e8.json](../output/gwr_proof/parallel_no_early_spoiler_1e8.json)
-  records `4,157,943` gaps, `13,321,098` earlier candidates, `0` spoilers,
+  [../output/gwr_proof/parallel_no_early_spoiler_1e9.json](../output/gwr_proof/parallel_no_early_spoiler_1e9.json)
+  records `42,101,885` gaps, `149,214,917` earlier candidates, `0` spoilers,
   `0` bridge failures, and maximum realized bridge load
-  `1.6601014296568906e-07`. See
+  `3.749140087272451e-08`. See
   [../gwr/experiments/proof/parallel_no_early_spoiler_scan.py](../gwr/experiments/proof/parallel_no_early_spoiler_scan.py)
   and
   [../gwr/experiments/proof/proof_bridge_universal_lemma.md](../gwr/experiments/proof/proof_bridge_universal_lemma.md).
@@ -56,14 +56,14 @@
   [../output/gwr_proof/earlier_spoiler_local_dominator_scan_2e7.json](../output/gwr_proof/earlier_spoiler_local_dominator_scan_2e7.json)
   reports `1,163,198` gaps, `3,349,874` earlier candidates, and `0`
   unresolved.
-- **Exact no-early-spoiler surface through $10^8$.** The committed aggregate
+- **Exact no-early-spoiler surface through $10^9$.** The committed aggregate
   artifact
-  [../output/gwr_proof/parallel_no_early_spoiler_1e8.json](../output/gwr_proof/parallel_no_early_spoiler_1e8.json)
-  reports `4,157,943` gaps, `13,321,098` earlier candidates before the true
+  [../output/gwr_proof/parallel_no_early_spoiler_1e9.json](../output/gwr_proof/parallel_no_early_spoiler_1e9.json)
+  reports `42,101,885` gaps, `149,214,917` earlier candidates before the true
   `GWR` carrier, `0` exact earlier spoilers, and maximum realized bridge load
-  `1.6601014296568906e-07`. The scanner writes deterministic per-segment JSON
+  `3.749140087272451e-08`. The scanner writes deterministic per-segment JSON
   checkpoints and aggregates them exactly with padded left-endpoint semantics,
-  so the $10^8$ surface is fully reproducible from the same code path.
+  so the $10^9$ surface is fully reproducible from the same code path.
 - **Square-adjacent stress test at $10^{12}$.** The matched pre-square and
   post-square artifact
   [../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json](../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)

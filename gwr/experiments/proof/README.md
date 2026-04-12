@@ -18,17 +18,18 @@ They target the exact universal bridge step identified in the findings notes:
 
 ## Latest Scan Milestone (April 2026)
 
-The parallel scanner has now been extended to $p < 100{,}000{,}001$.
+The parallel scanner has now been extended to $p < 1{,}000{,}000{,}001$.
 
 - Aggregate artifact:
-  [`../../../output/gwr_proof/parallel_no_early_spoiler_1e8.json`](../../../output/gwr_proof/parallel_no_early_spoiler_1e8.json)
+  [`../../../output/gwr_proof/parallel_no_early_spoiler_1e9.json`](../../../output/gwr_proof/parallel_no_early_spoiler_1e9.json)
 - Key statistics:
-  `4,157,943` gaps,
-  `13,321,098` earlier candidates,
-  `0` failures,
-  maximum bridge load `1.6601014296568906e-07`
+  `42,101,885` gaps,
+  `149,214,917` earlier candidates,
+  `0` exact spoilers,
+  `0` bridge failures,
+  maximum bridge load `3.749140087272451e-08`
 - Next target:
-  $p < 10^9$
+  $p < 10^{10}$
 
 - [`earlier_spoiler_scan.py`](./earlier_spoiler_scan.py):
   exact interval scan that
@@ -93,7 +94,7 @@ The parallel scanner has now been extended to $p < 100{,}000{,}001$.
   - writes one JSON checkpoint per completed segment,
   - aggregates exact spoiler counts and bridge-load extrema across segments,
   - and provides the straight execution path for extending the finite GWR base
-    beyond the current $2 \cdot 10^7$ surface.
+    beyond the current $10^9$ surface.
 - [`proof_bridge_universal_lemma.md`](./proof_bridge_universal_lemma.md):
   theorem-facing bridge note that
   - derives a non-empirical large-$p$ upper bound for the normalized

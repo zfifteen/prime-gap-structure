@@ -77,6 +77,19 @@ def divisor_count_at(n: int) -> int:
     return int(divisor_counts_segment(n, n + 1)[0])
 
 
+def previous_prime(n: int) -> int:
+    """Return the largest prime less than or equal to one integer."""
+    if n < 2:
+        raise ValueError("no primes less than or equal to 1")
+
+    cursor = n
+    while cursor >= 2:
+        if divisor_count_at(cursor) == 2:
+            return cursor
+        cursor -= 1
+    return 2
+
+
 def scan_to_first_prime(start: int, block: int = DEFAULT_SCAN_BLOCK) -> int:
     """Return the first prime at or after one starting integer by divisor scan."""
     if start < 2:
@@ -135,6 +148,16 @@ def witness_map_next_prime(q: int, block: int = DEFAULT_SCAN_BLOCK) -> tuple[int
         "next_prime_boundary": next_prime_boundary,
         "next_prime_via_witness": next_prime_via_witness,
     }
+
+
+def next_prime(n: int) -> int:
+    """Return the smallest prime strictly greater than one integer."""
+    if n < 2:
+        return 2
+
+    q = previous_prime(n)
+    next_p, _profile = witness_map_next_prime(q)
+    return next_p
 
 
 def lockstep_compare(

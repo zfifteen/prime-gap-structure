@@ -54,6 +54,24 @@ def test_witness_map_handles_gap_after_two():
     assert profile["gap_width"] == 1
 
 
+def test_previous_prime_finds_exact_anchor():
+    """The backward exact scan should recover the previous prime anchor."""
+    module = load_module()
+
+    assert module.previous_prime(29) == 29
+    assert module.previous_prime(28) == 23
+
+
+def test_next_prime_uses_previous_prime_anchor_and_witness_path():
+    """The public next-prime helper should advance from the previous prime anchor."""
+    module = load_module()
+
+    assert module.next_prime(1) == 2
+    assert module.next_prime(2) == 3
+    assert module.next_prime(24) == 29
+    assert module.next_prime(29) == 31
+
+
 def test_lockstep_compare_has_no_divergence_on_short_run():
     """A short exact run from 11 should remain divergence-free."""
     module = load_module()

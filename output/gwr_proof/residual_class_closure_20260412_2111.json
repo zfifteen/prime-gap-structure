@@ -1,0 +1,153 @@
+{
+  "run_timestamp": "2026-04-12T21:11:14-04:00",
+  "residual_classes_examined": [
+    10,
+    14,
+    18,
+    20,
+    22,
+    26,
+    27,
+    28,
+    30,
+    36,
+    40,
+    42,
+    44,
+    50,
+    52,
+    54,
+    56,
+    60
+  ],
+  "results": {
+    "10": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<10. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (10-2) ln p > (d-2) ln(2p), equivalently p^(10-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The only remaining large-p threshold after the automatic odd-square eliminations is p > 128; the smallest prime above it is 131. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 131 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 131,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "14": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<14. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (14-2) ln p > (d-2) ln(2p), equivalently p^(14-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The odd neighbor class d(w)=13 is automatic because min_n_with_tau(13)=4096 forces p >= 2053 > 2048. The only remaining large-p threshold after the automatic odd-square eliminations is p > 32; the smallest prime above it is 37. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 37 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 37,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "18": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<18. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (18-2) ln p > (d-2) ln(2p), equivalently p^(18-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The odd neighbor class d(w)=17 is automatic because min_n_with_tau(17)=65536 forces p >= 32771 > 32768. The only remaining large-p threshold after the automatic odd-square eliminations is p > 128; the smallest prime above it is 131. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 131 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 131,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "20": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<20. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (20-2) ln p > (d-2) ln(2p), equivalently p^(20-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The odd neighbor class d(w)=19 is automatic because min_n_with_tau(19)=262144 forces p >= 131101 > 131072. The only remaining large-p threshold after the automatic odd-square eliminations is p > 256; the smallest prime above it is 257. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 257 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 257,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "22": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<22. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (22-2) ln p > (d-2) ln(2p), equivalently p^(22-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The only remaining large-p threshold after the automatic odd-square eliminations is p > 524288; the smallest prime above it is 524309. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 524309 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 524309,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "26": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<26. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (26-2) ln p > (d-2) ln(2p), equivalently p^(26-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The only remaining large-p threshold after the automatic odd-square eliminations is p > 8388608; the smallest prime above it is 8388617. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 8388617 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 8388617,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "27": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<27. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (27-2) ln p > (d-2) ln(2p), equivalently p^(27-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The only remaining large-p threshold after the automatic odd-square eliminations is p > 16777216; the smallest prime above it is 16777259. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 16777259 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 16777259,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "28": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<28. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (28-2) ln p > (d-2) ln(2p), equivalently p^(28-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The only remaining large-p threshold after the automatic odd-square eliminations is p > 33554432; the smallest prime above it is 33554467. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 33554467 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 33554467,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "30": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<30. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (30-2) ln p > (d-2) ln(2p), equivalently p^(30-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The odd neighbor class d(w)=29 is automatic because min_n_with_tau(29)=268435456 forces p >= 134217757 > 134217728. The only remaining large-p threshold after the automatic odd-square eliminations is p > 8192; the smallest prime above it is 8209. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 8209 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 8209,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "36": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "All winner classes d(w)<36 are eliminated except the odd composite neighbor class d(w)=35. For every other d, either the generic bridge threshold p > 2^((d-2)/(36-d)) lies below the exact no-spoiler ceiling p < 1000000000, or the exact minimal witness min_n_with_tau(35) is large enough to force p above that threshold automatically. The unresolved branch is d(w)=35, where min_n_with_tau(35)=5184 only gives p >= 2593, while the bridge requires p > 8589934592. The committed exact scan already removes the whole interval p < 1000000000, so the remaining gap is the unproved window 1000000000 <= p <= 8589934592. On the retained 1e9 frontier this class appears 1514 times, with representative winner class 32, offsets off_k=1, off_w=3, off_dom=2, and no exact earlier spoiler.",
+      "counterexample": null
+    },
+    "40": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "All winner classes d(w)<40 are eliminated except the odd composite neighbor class d(w)=39. For every other d, either the generic bridge threshold p > 2^((d-2)/(40-d)) lies below the exact no-spoiler ceiling p < 1000000000, or the exact minimal witness min_n_with_tau(39) is large enough to force p above that threshold automatically. The unresolved branch is d(w)=39, where min_n_with_tau(39)=36864 only gives p >= 18433, while the bridge requires p > 137438953472. The committed exact scan already removes the whole interval p < 1000000000, so the remaining gap is the unproved window 1000000000 <= p <= 137438953472. On the retained 1e9 frontier this class appears 41 times, with representative winner class 36, offsets off_k=1, off_w=2, off_dom=1, and no exact earlier spoiler.",
+      "counterexample": null
+    },
+    "42": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<42. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (42-2) ln p > (d-2) ln(2p), equivalently p^(42-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The odd neighbor class d(w)=41 is automatic because min_n_with_tau(41)=1099511627776 forces p >= 549755813911 > 549755813888. The only remaining large-p threshold after the automatic odd-square eliminations is p > 524288; the smallest prime above it is 524309. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 524309 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 524309,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "44": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<44. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (44-2) ln p > (d-2) ln(2p), equivalently p^(44-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The odd neighbor class d(w)=43 is automatic because min_n_with_tau(43)=4398046511104 forces p >= 2199023255579 > 2199023255552. The only remaining large-p threshold after the automatic odd-square eliminations is p > 1048576; the smallest prime above it is 1048583. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 1048583 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 1048583,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "50": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "All winner classes d(w)<50 are eliminated except the odd composite neighbor class d(w)=49. For every other d, either the generic bridge threshold p > 2^((d-2)/(50-d)) lies below the exact no-spoiler ceiling p < 1000000000, or the exact minimal witness min_n_with_tau(49) is large enough to force p above that threshold automatically. The unresolved branch is d(w)=49, where min_n_with_tau(49)=46656 only gives p >= 23333, while the bridge requires p > 140737488355328. The committed exact scan already removes the whole interval p < 1000000000, so the remaining gap is the unproved window 1000000000 <= p <= 140737488355328. On the retained 1e9 frontier this class appears 1 times, with representative winner class 48, offsets off_k=1, off_w=3, off_dom=2, and no exact earlier spoiler.",
+      "counterexample": null
+    },
+    "52": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "All winner classes d(w)<52 are eliminated except the odd composite neighbor class d(w)=51. For every other d, either the generic bridge threshold p > 2^((d-2)/(52-d)) lies below the exact no-spoiler ceiling p < 1000000000, or the exact minimal witness min_n_with_tau(51) is large enough to force p above that threshold automatically. The unresolved branch is d(w)=51, where min_n_with_tau(51)=589824 only gives p >= 294919, while the bridge requires p > 562949953421312. The committed exact scan already removes the whole interval p < 1000000000, so the remaining gap is the unproved window 1000000000 <= p <= 562949953421312. On the retained 1e9 frontier this class appears 2 times, with representative winner class 48, offsets off_k=1, off_w=2, off_dom=1, and no exact earlier spoiler.",
+      "counterexample": null
+    },
+    "54": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<54. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (54-2) ln p > (d-2) ln(2p), equivalently p^(54-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The odd neighbor class d(w)=53 is automatic because min_n_with_tau(53)=4503599627370496 forces p >= 2251799813685269 > 2251799813685248. The only remaining large-p threshold after the automatic odd-square eliminations is p > 33554432; the smallest prime above it is 33554467. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 33554467 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 33554467,
+      "tightest_bound": null,
+      "counterexample": null
+    },
+    "56": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "All winner classes d(w)<56 are eliminated except the odd composite neighbor class d(w)=55. For every other d, either the generic bridge threshold p > 2^((d-2)/(56-d)) lies below the exact no-spoiler ceiling p < 1000000000, or the exact minimal witness min_n_with_tau(55) is large enough to force p above that threshold automatically. The unresolved branch is d(w)=55, where min_n_with_tau(55)=82944 only gives p >= 41479, while the bridge requires p > 9007199254740992. The committed exact scan already removes the whole interval p < 1000000000, so the remaining gap is the unproved window 1000000000 <= p <= 9007199254740992. On the retained 1e9 frontier this class appears 20 times, with representative winner class 48, offsets off_k=1, off_w=2, off_dom=1, and no exact earlier spoiler.",
+      "counterexample": null
+    },
+    "60": {
+      "status": "CLOSED",
+      "argument": "Let d=d(w)<60. From k>p, w<q, and Bertrand's theorem q<2p, it is enough to show (60-2) ln p > (d-2) ln(2p), equivalently p^(60-d) > 2^(d-2). For each candidate winner class d, this closes either because the threshold itself lies below the exact surface ceiling p < 10^9, or because the exact minimal witness min_n_with_tau(d) forces every such winner to occur only for p already above that threshold. The odd neighbor class d(w)=59 is automatic because min_n_with_tau(59)=288230376151711744 forces p >= 144115188075855881 > 144115188075855872. The only remaining large-p threshold after the automatic odd-square eliminations is p > 11585; the smallest prime above it is 11587. The committed exact no-early-spoiler surface has zero spoilers in 42101885 prime gaps and 149214917 earlier candidates through p < 1000000000, and 11587 < 1000000000. Therefore the class closes universally.",
+      "min_p_threshold": 11587,
+      "tightest_bound": null,
+      "counterexample": null
+    }
+  },
+  "all_classes_closed": false,
+  "notes": "Loaded the committed 2e7 admissibility frontier, the retained 1e9 admissibility frontier, the full 1e9 no-early-spoiler aggregate, the admissibility extractor, and the current proof notes. The decisive refinement over the earlier runs is to test every possible winner divisor count against the exact min_n_with_tau(d) lower bound, not against the false surrogate 2^(d-1). Under that correction, thirteen residual classes close. The remaining open classes are exactly 36, 40, 50, 52, and 56, and each reduces to one unresolved odd composite neighbor winner class: 35, 39, 49, 51, and 55 respectively. No counterexample is known; the committed exact surface still has zero earlier spoilers through p < 10^9."
+}

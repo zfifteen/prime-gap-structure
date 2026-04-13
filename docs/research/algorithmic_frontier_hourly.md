@@ -207,3 +207,39 @@ Artifacts:
 `benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `docs/research/algorithmic_frontier_hourly.md`; in-shell verification output with old bounded call counts `26` and `30`, live prefix-path divisor-count calls `12` and `12`, and exact recovered boundaries `229459` and `1026197`.
 Next step:
 Derive an exact `delta = 4` sub-condition from the Z-band invariants that certifies when the same winner-location prediction can fire without any extended scan.
+
+## 2026-04-12 20:17 run
+Mechanism:
+Winner-anchored tail scan: once the DNI/GWR lex-min localizer has identified the leftmost minimum-divisor carrier at offset `omega`, recover the next-prime boundary by scanning only from `q + omega + 1` forward instead of from `q + 1`.
+Why it could help:
+It removes the left prefix `[q + 1, q + omega]` from the exact divisor-field boundary search. Because the lex-min carrier stays near the left edge on the tested surface, that cuts pure DNI/GWR search width before any classical machinery enters.
+Method:
+Deterministic experiment.
+What was built or tested:
+An in-shell Python experiment used `benchmarks/python/predictor/gwr_dni_recursive_walk.py:exact_next_gap_profile` to collect `5,000` consecutive exact next-gap profiles starting at `q = 10000000000037`, then timed the same exact divisor-field boundary scan twice on that chain: once from `q + 1`, and once from the exact winner anchor `q + omega + 1`.
+Result:
+The winner-anchored scan matched the same `5,000` next primes with `0` mismatches. Mean exact gap width was `29.6308`, mean winner offset was `5.9066`, and the exact search width after the winner was `23.7242`, so the DNI/GWR anchor removed `19.93%` of the pure boundary-search width. In the current `64`-wide block implementation that reduced divisor-field reads from `356,736` to `347,264` (`2.66%`) and improved boundary-scan wall time from `11.0483 s` to `10.7264 s` (`1.0300x`).
+Status:
+ADVANCE
+Artifacts:
+`docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `steps = 5000`, `search_width_saved_fraction_exact = 0.19933987607489503`, `baseline_integers_read = 356736`, `anchor_integers_read = 347264`, and `elapsed_speedup = 1.0300109322761077`.
+Next step:
+Inline the same winner-anchored tail scan into the exact recursive walker after lex-min localization and re-measure the end-to-end pure DNI/GWR step gain.
+
+## 2026-04-12 21:10 run
+Mechanism:
+Current-lex-min clipped divisor classification: in a pure DNI/GWR exact next-prime walk, evaluate each new interior candidate only up to the current winning divisor class `delta - 1`, and stop the factor work as soon as the candidate is forced above that threshold.
+Why it could help:
+Once the walk has already seen a candidate with divisor class `delta`, no later value with `d(n) >= delta` can change the lex-min state. That means most later composites do not need full divisor evaluation.
+Method:
+Deterministic experiment.
+What was built or tested:
+An in-shell Python sandbox built two candidate-by-candidate pure DNI/GWR exact walkers on the same `1,000`-gap chain starting at `q = 100000007`: a baseline that computed each interior `d(n)` exactly, and a clipped walker that used the live lex-min threshold `stop_at = delta - 1` to abort factor work as soon as a candidate could no longer improve the state.
+Result:
+The clipped walker recovered the same `1,000` consecutive next primes with `0` mismatches and reached the same final prime `100018627`. Wall time fell from `0.10189116699621081 s` to `0.05691070796456188 s` (`1.7903689945248638x` speedup). On the same chain it reduced prime-factor trial steps from `718,602` to `317,108` (`55.87%`), factor divisions from `48,725` to `32,592` (`33.11%`), residual primality checks from `18,652` to `4,248` (`77.22%`), and residual square checks from `6,758` to `1,501` (`77.79%`). The exact next-gap minimum was `d = 4` on `749` of the `1,000` gaps, so the live threshold usually collapsed quickly to the `3`-class test.
+Status:
+ADVANCE
+Artifacts:
+`docs/research/algorithmic_frontier_hourly.md`; in-shell Python experiment output with `start_q = 100000007`, `steps = 1000`, `speedup = 1.7903689945248638`, `prime_trial_reduction_fraction = 0.55871539461343`, and `residual_prime_check_reduction_fraction = 0.7722496247051255`.
+Next step:
+Move the same clipped-divisor rule into a repo-side predictor prototype and re-measure it against the current vectorized exact walk.

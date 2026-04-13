@@ -1,0 +1,269 @@
+{
+  "run_timestamp": "2026-04-12T21:06:08-04:00",
+  "source_artifacts": [
+    "output/gwr_proof/residual_class_closure_20260412_2048.json",
+    "output/gwr_proof/prime_gap_admissibility_frontier_1e9_checkpoints.json",
+    "gwr/findings/prime_gap_admissibility_theorem.md"
+  ],
+  "search_interval": {
+    "lo": 2,
+    "hi": 20000001
+  },
+  "method": "Exact consecutive-prime gap scan with divisor_counts_segment; first violation per residual class recorded when winner_divisor_count satisfies the class closure bound and w-k exceeds the retained delta window.",
+  "all_classes_resolved": true,
+  "open_classes": [],
+  "results": [
+    {
+      "D": 10,
+      "delta_observed": 14,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 410857,
+        "q": 410899,
+        "k": 410864,
+        "w": 410881,
+        "delta_actual": 17
+      }
+    },
+    {
+      "D": 14,
+      "delta_observed": 7,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 96703,
+        "q": 96731,
+        "k": 96704,
+        "w": 96721,
+        "delta_actual": 17
+      }
+    },
+    {
+      "D": 18,
+      "delta_observed": 5,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 11131,
+        "q": 11149,
+        "k": 11132,
+        "w": 11138,
+        "delta_actual": 6
+      }
+    },
+    {
+      "D": 20,
+      "delta_observed": 4,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 3469,
+        "q": 3491,
+        "k": 3472,
+        "w": 3481,
+        "delta_actual": 9
+      }
+    },
+    {
+      "D": 22,
+      "delta_observed": 1,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 5119,
+        "q": 5147,
+        "k": 5120,
+        "w": 5123,
+        "delta_actual": 3
+      }
+    },
+    {
+      "D": 26,
+      "delta_observed": 2,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 94207,
+        "q": 94219,
+        "k": 94208,
+        "w": 94211,
+        "delta_actual": 3
+      }
+    },
+    {
+      "D": 27,
+      "delta_observed": 1,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 43261,
+        "q": 43271,
+        "k": 43264,
+        "w": 43269,
+        "delta_actual": 5
+      }
+    },
+    {
+      "D": 28,
+      "delta_observed": 4,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 28607,
+        "q": 28619,
+        "k": 28608,
+        "w": 28617,
+        "delta_actual": 9
+      }
+    },
+    {
+      "D": 30,
+      "delta_observed": 1,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 4463,
+        "q": 4481,
+        "k": 4464,
+        "w": 4467,
+        "delta_actual": 3
+      }
+    },
+    {
+      "D": 36,
+      "delta_observed": 4,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 8447,
+        "q": 8461,
+        "k": 8448,
+        "w": 8453,
+        "delta_actual": 5
+      }
+    },
+    {
+      "D": 40,
+      "delta_observed": 2,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 3023,
+        "q": 3037,
+        "k": 3024,
+        "w": 3027,
+        "delta_actual": 3
+      }
+    },
+    {
+      "D": 42,
+      "delta_observed": 1,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 16703,
+        "q": 16729,
+        "k": 16704,
+        "w": 16706,
+        "delta_actual": 2
+      }
+    },
+    {
+      "D": 44,
+      "delta_observed": 1,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 21503,
+        "q": 21517,
+        "k": 21504,
+        "w": 21506,
+        "delta_actual": 2
+      }
+    },
+    {
+      "D": 50,
+      "delta_observed": 2,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 24623,
+        "q": 24631,
+        "k": 24624,
+        "w": 24627,
+        "delta_actual": 3
+      }
+    },
+    {
+      "D": 52,
+      "delta_observed": 1,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 143357,
+        "q": 143387,
+        "k": 143360,
+        "w": 143363,
+        "delta_actual": 3
+      }
+    },
+    {
+      "D": 54,
+      "delta_observed": 2,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 15299,
+        "q": 15307,
+        "k": 15300,
+        "w": 15303,
+        "delta_actual": 3
+      }
+    },
+    {
+      "D": 56,
+      "delta_observed": 2,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 24631,
+        "q": 24659,
+        "k": 24640,
+        "w": 24649,
+        "delta_actual": 9
+      }
+    },
+    {
+      "D": 60,
+      "delta_observed": 1,
+      "status": "VIOLATION_FOUND",
+      "lemma": null,
+      "min_p_threshold": null,
+      "violation": {
+        "p": 20879,
+        "q": 20887,
+        "k": 20880,
+        "w": 20883,
+        "delta_actual": 3
+      }
+    }
+  ]
+}

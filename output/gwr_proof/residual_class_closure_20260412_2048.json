@@ -1,0 +1,153 @@
+{
+  "run_timestamp": "2026-04-12T20:48:32-04:00",
+  "residual_classes_examined": [
+    10,
+    14,
+    18,
+    20,
+    22,
+    26,
+    27,
+    28,
+    30,
+    36,
+    40,
+    42,
+    44,
+    50,
+    52,
+    54,
+    56,
+    60
+  ],
+  "results": {
+    "10": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=152; winner classes={8: 152}; off_k>=1, off_w<=15, delta<= 14, off_dom<= 14; min critical-ratio margin=0.333333330228092084, min log margin=18.5250561555544877; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 8 and w-k<= 14: then L(k)<L(w) for every tau=10 earlier candidate once k>= 12, and min_n_with_tau(10)=48 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(169931791,169931803,169931792,169931802).",
+      "counterexample": null
+    },
+    "14": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=515; winner classes={12: 515}; off_k>=1, off_w<=10, delta<= 7, off_dom<= 7; min critical-ratio margin=0.19999999818406744, min log margin=18.5889525553468218; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 12 and w-k<= 7: then L(k)<L(w) for every tau=14 earlier candidate once k>= 12, and min_n_with_tau(14)=192 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(118487741,118487749,118487744,118487748).",
+      "counterexample": null
+    },
+    "18": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=9270; winner classes={16: 9270}; off_k>=1, off_w<=6, delta<= 5, off_dom<= 5; min critical-ratio margin=0.142857141232079377, min log margin=18.4207176032730615; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 16 and w-k<= 5: then L(k)<L(w) for every tau=18 earlier candidate once k>= 12, and min_n_with_tau(18)=180 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(131658083,131658089,131658084,131658088).",
+      "counterexample": null
+    },
+    "20": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=168; winner classes={18: 168}; off_k>=1, off_w<=7, delta<= 4, off_dom<= 4; min critical-ratio margin=0.124999999260589911, min log margin=18.5252913224776137; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 18 and w-k<= 4: then L(k)<L(w) for every tau=20 earlier candidate once k>= 12, and min_n_with_tau(20)=240 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(278221423,278221429,278221424,278221428).",
+      "counterexample": null
+    },
+    "22": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=4; winner classes={20: 4}; off_k>=1, off_w<=5, delta<= 1, off_dom<= 1; min critical-ratio margin=0.11111111088358494, min log margin=19.2464302062719526; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 20 and w-k<= 1: then L(k)<L(w) for every tau=22 earlier candidate once k>= 6, and min_n_with_tau(22)=3072 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(228359167,228359171,228359168,228359169).",
+      "counterexample": null
+    },
+    "26": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=4; winner classes={24: 4}; off_k>=1, off_w<=3, delta<= 2, off_dom<= 2; min critical-ratio margin=0.0909090903719060872, min log margin=18.4306632822076608; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 24 and w-k<= 2: then L(k)<L(w) for every tau=26 earlier candidate once k>= 10, and min_n_with_tau(26)=12288 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(101003263,101003267,101003264,101003265).",
+      "counterexample": null
+    },
+    "27": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=1; winner classes={24: 1}; off_k>=2, off_w<=3, delta<= 1, off_dom<= 1; min critical-ratio margin=0.136363636287808898, min log margin=30.4384775340477631; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 24 and w-k<= 1: then L(k)<L(w) for every tau=27 earlier candidate once k>= 5, and min_n_with_tau(27)=900 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(649893047,649893053,649893049,649893050).",
+      "counterexample": null
+    },
+    "28": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=392; winner classes={24: 391, 27: 1}; off_k>=1, off_w<=5, delta<= 4, off_dom<= 4; min critical-ratio margin=0.0399999998164695114, min log margin=9.72537707010616259; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 27 and w-k<= 4: then L(k)<L(w) for every tau=28 earlier candidate once k>= 29, and min_n_with_tau(28)=960 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(280127167,280127171,280127168,280127169).",
+      "counterexample": null
+    },
+    "30": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=4; winner classes={28: 4}; off_k>=1, off_w<=3, delta<= 1, off_dom<= 1; min critical-ratio margin=0.0769230766307540392, min log margin=19.0082867647615785; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 28 and w-k<= 1: then L(k)<L(w) for every tau=30 earlier candidate once k>= 7, and min_n_with_tau(30)=720 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(179967499,179967503,179967500,179967501).",
+      "counterexample": null
+    },
+    "36": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=1514; winner classes={30: 6, 32: 1508}; off_k>=1, off_w<=5, delta<= 4, off_dom<= 4; min critical-ratio margin=0.133333332247707936, min log margin=36.8415551785254252; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 32 and w-k<= 4: then L(k)<L(w) for every tau=36 earlier candidate once k>= 11, and min_n_with_tau(36)=1260 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(100009699,100009703,100009700,100009702).",
+      "counterexample": null
+    },
+    "40": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=41; winner classes={32: 1, 36: 40}; off_k>=1, off_w<=3, delta<= 2, off_dom<= 2; min critical-ratio margin=0.117647058382693848, min log margin=37.2364178747553751; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 36 and w-k<= 2: then L(k)<L(w) for every tau=40 earlier candidate once k>= 8, and min_n_with_tau(40)=1680 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(121838749,121838753,121838750,121838751).",
+      "counterexample": null
+    },
+    "42": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=4; winner classes={36: 1, 40: 3}; off_k>=1, off_w<=3, delta<= 1, off_dom<= 1; min critical-ratio margin=0.0526315788241298321, min log margin=19.8297183359252358; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 40 and w-k<= 1: then L(k)<L(w) for every tau=42 earlier candidate once k>= 9, and min_n_with_tau(42)=2880 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(409201549,409201553,409201551,409201552).",
+      "counterexample": null
+    },
+    "44": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=1; winner classes={40: 1}; off_k>=1, off_w<=2, delta<= 1, off_dom<= 1; min critical-ratio margin=0.105263157835863819, min log margin=41.0671499995657996; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 40 and w-k<= 1: then L(k)<L(w) for every tau=44 earlier candidate once k>= 6, and min_n_with_tau(44)=15360 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(827214847,827214851,827214848,827214849).",
+      "counterexample": null
+    },
+    "50": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=1; winner classes={48: 1}; off_k>=1, off_w<=3, delta<= 2, off_dom<= 2; min critical-ratio margin=0.0434782606093504498, min log margin=19.7780867096078055; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 48 and w-k<= 2: then L(k)<L(w) for every tau=50 earlier candidate once k>= 16, and min_n_with_tau(50)=6480 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(388609999,388610003,388610000,388610002).",
+      "counterexample": null
+    },
+    "52": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=2; winner classes={48: 2}; off_k>=1, off_w<=2, delta<= 1, off_dom<= 1; min critical-ratio margin=0.0869565213838061624, min log margin=37.6458316355569877; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 48 and w-k<= 1: then L(k)<L(w) for every tau=52 earlier candidate once k>= 6, and min_n_with_tau(52)=61440 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(149516287,149516291,149516288,149516289).",
+      "counterexample": null
+    },
+    "54": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=5; winner classes={48: 5}; off_k>=1, off_w<=3, delta<= 2, off_dom<= 2; min critical-ratio margin=0.130434782373931801, min log margin=59.4385324181416195; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 48 and w-k<= 2: then L(k)<L(w) for every tau=54 earlier candidate once k>= 7, and min_n_with_tau(54)=6300 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(428615899,428615903,428615900,428615902).",
+      "counterexample": null
+    },
+    "56": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=20; winner classes={48: 20}; off_k>=1, off_w<=3, delta<= 2, off_dom<= 2; min critical-ratio margin=0.173913043134716228, min log margin=75.4197162688174672; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 48 and w-k<= 2: then L(k)<L(w) for every tau=56 earlier candidate once k>= 6, and min_n_with_tau(56)=6720 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(154380223,154380227,154380224,154380225).",
+      "counterexample": null
+    },
+    "60": {
+      "status": "OPEN",
+      "argument": null,
+      "min_p_threshold": null,
+      "tightest_bound": "Retained 1e9 frontier count=1; winner classes={56: 1}; off_k>=1, off_w<=2, delta<= 1, off_dom<= 1; min critical-ratio margin=0.0740740740068865922, min log margin=40.8152503457590683; first_d4_offset is always null=True, square_margin stays positive=True. Conditional closure is immediate if one proves a universal local window d(w)<= 56 and w-k<= 1: then L(k)<L(w) for every tau=60 earlier candidate once k>= 7, and min_n_with_tau(60)=5040 already exceeds that threshold. Tightest retained case: (p,q,k,w)=(729321487,729321491,729321488,729321489).",
+      "counterexample": null
+    }
+  },
+  "all_classes_closed": false,
+  "notes": "Loaded the committed 2e7 admissibility frontier, the retained 1e9 admissibility frontier, the full 1e9 no-early-spoiler aggregate, the admissibility extractor, and the current proof notes. The retained 1e9 checkpoint frontier contributes 52439 deduplicated retained cases, of which 12099 fall in the residual divisor set. No class-specific counterexample appears on that retained frontier, and the exact aggregate still reports zero earlier spoilers across 149214917 earlier candidates in 42101885 prime gaps through p < 10^9. Every retained residual class is square-free on this surface in the narrow sense that first_d4_offset is null and square_margin stays positive, and each class already lives in a tiny local window. What remains open is not the score inequality once the winner geometry is granted; it is the universal structural theorem forcing the observed class-specific winner window beyond the current exact surface."
+}

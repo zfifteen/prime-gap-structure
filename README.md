@@ -2,129 +2,114 @@
 
 ![Prime Gap Structure hero](docs/assets/prime-gap-structure-hero.jpg)
 
-This repository carries two linked results from the same divisor-normalized
-arithmetic program.
+This repository is about one simple deterministic rule inside prime gaps.
 
-The executable artifact is a deterministic cryptographic prime prefilter whose
-invariant target is the exact **Divisor Normalization Identity** (DNI)
+Take the consecutive primes `23` and `29`. The integers between them are
+`24, 25, 26, 27, 28`. Their divisor counts are:
+
+- `d(24) = 8`
+- `d(25) = 3`
+- `d(26) = 4`
+- `d(27) = 4`
+- `d(28) = 6`
+
+So `25` wins this gap because it has the smallest divisor count present.
+
+Now take `89` and `97`. The interior integers are
+`90, 91, 92, 93, 94, 95, 96`. Their divisor counts are:
+
+- `d(90) = 12`
+- `d(91) = 4`
+- `d(92) = 6`
+- `d(93) = 4`
+- `d(94) = 4`
+- `d(95) = 4`
+- `d(96) = 12`
+
+Here the smallest divisor count present is `4`, and the leftmost carrier of
+that minimum is `91`, so `91` wins.
+
+The central claim of this repository is that this is not a toy pattern or a
+near miss. It is exact.
+
+## Gap Winner Rule
+
+The **Gap Winner Rule (GWR)** says:
+
+1. inside a prime gap, find the smallest divisor count present among the
+   interior composites;
+2. if more than one interior composite has that divisor count, take the
+   leftmost one.
+
+That chosen interior integer is the winner of the gap.
+
+The headline mathematical result carried by the repository is that the
+implemented divisor-normalization score picks exactly that same integer in
+every prime gap. The theorem statement is
+[Gap Winner Rule — Hierarchical Local-Dominator Law](gwr/findings/gwr_hierarchical_local_dominator_theorem.md),
+and the proof surface is summarized in [GWR_PROOF.md](GWR_PROOF.md).
+
+## Why The Score Exists
+
+The score exists because the repo wants one number per interior composite, so a
+whole gap can be compared as a single ordered field rather than as a list of
+cases.
+
+Divisor count already tells part of the story: fewer divisors means less
+factor structure. But divisor count alone does not give one scalar quantity for
+the whole gap, and it does not explain what the winner is winning relative to.
+
+The divisor-normalization program builds that scalar by using primes as the
+reference class. Its purpose is to answer one concrete question:
+
+> Which composite in the gap comes closest to the prime baseline?
+
+The normalization is built so that every prime lands at the same fixed point,
+`Z = 1.0`, while composites fall below that point. That makes the winner easy
+to interpret: it is the interior composite closest to the prime fixed point
+under the normalization.
+
+The raw quantity is
 
 $$
 Z_{\mathrm{raw}}(n) = n^{1 - d(n)/2}
 $$
 
-at normalization scaling parameter
+and the implementation compares interiors using its logarithm
 
 $$
-v = \frac{e^{2}}{2}.
+L(n) = \ln Z_{\mathrm{raw}}(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
 $$
 
-The headline mathematical result now carried by the repository is the
-committed theorem statement
-[Gap Winner Rule — Hierarchical Local-Dominator Law](gwr/findings/gwr_hierarchical_local_dominator_theorem.md).
-Inside a prime gap, the implemented log-score
+Maximizing `Z_raw(n)` and maximizing `L(n)` pick the same winner. The score is
+there to turn the gap interior into one exact competition, not to decorate the
+rule with jargon.
 
-$$
-L(n) = \ln Z_{\mathrm{raw}}(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n)
-$$
+## What This Repository Carries
 
-is maximized exactly at the leftmost interior carrier of the smallest divisor
-class present in the gap. The same theorem statement records the two flank
-conditions used throughout the repo: every earlier composite is beaten by a
-later admissible composite, and no later strictly simpler composite appears
-before the gap closes.
+The main result in this repository is the proved GWR theorem.
 
-The live earlier-side proof route is now the local admissibility program in
-[gwr/findings/prime_gap_admissibility_theorem.md](gwr/findings/prime_gap_admissibility_theorem.md).
-That route closes the square branch directly, fixes the square-free branch in a
-deterministic chamber model with $W = 30030$ and $K = 128$, and now closes the
-formerly finite low-class remainder through the committed residual-class
-closure artifacts. The exact finite audit through
-$p < 5{,}000{,}000{,}000$ records zero exact earlier spoilers on the committed
-aggregate surface. See
-[GWR_PROOF.md](GWR_PROOF.md) and
-[docs/current_headline_results.md](docs/current_headline_results.md).
+Downstream from that, the repo also carries:
 
-For the current headline results, see
-[docs/current_headline_results.md](docs/current_headline_results.md).
+- an exact DNI/GWR recursive next-prime walk,
+- a deterministic prime-generation filter derived from the same
+  divisor-normalization program.
 
-## Overview
-
-Every positive integer has a divisor pattern.
-
-- A prime has exactly two positive divisors: 1 and itself.
-- A composite has additional positive divisors.
-
-This distinction is the starting point. A number with more exact divisors
-carries more internal factor structure than a number with fewer. Divisor count
-alone is not enough, because the same divisor count does not mean the same
-thing at different scales. The approach therefore combines divisor structure
-with logarithmic size.
-
-The logarithmic term accounts for magnitude in a balanced way. It registers
-growth in size without letting raw magnitude overwhelm the structural signal.
-Moving from $10$ to $100$ to $1000$ produces steady increments, so divisor
-structure can be compared meaningfully across small and large integers.
-
-The resulting combined quantity is called the divisor normalization load. This
-load measures the departure of an integer from the minimal divisor case. This
-is the simplest structure represented by a prime. Primes have the lowest load.
-As additional exact divisors appear, the integer carries more internal
-branching relative to that baseline. When divisor structure and logarithmic
-scale are taken together, this accumulated departure is the quantity denoted
-by $\kappa(n)$.
-
-We call the resulting law the **Divisor Normalization Equation**:
-
-$$
-\kappa(n) = \frac{d(n) \cdot \ln(n)}{e^{2}}
-$$
-
-where:
-
-- $d(n)$ is the divisor count of $n$
-- $\ln(n)$ is the natural logarithm of $n$
-- $e^{2}$ is the normalization constant
-
-This equation measures how much factor structure an integer carries once scale
-is taken into account. With the divisor normalization load defined, primes are
-the minimal case under this measure, while composites carry increasingly more
-structural load.
-
-## Terminology
-
-This repository uses precise language to name structural roles inside one
-discrete arithmetic normalization. The terminology is intended literally
-within that setting.
-
-- **Divisor normalization load** names the scalar quantity
-  $\kappa(n) = d(n)\ln(n)/e^2$. It measures how far an integer has moved away
-  from the minimal-divisor prime case once divisor structure and logarithmic
-  scale are combined.
-- **Z-Band** names the straight fixed-point regime selected by the
-  normalization. Under the exact DNI, primes occupy the fixed-point locus
-  $Z = 1.0$, while composites deviate below it as additional factor structure
-  appears.
-- **Normalization scaling parameter** names the scalar $v$ in the Z-transform
-  $Z(n) = n / \exp(v \cdot \kappa(n))$. The distinguished value $v = e^2/2$
-  is the fixed-point parameter because it produces the exact collapse
-  $Z(n) = n^{1 - d(n)/2}$.
-- **Fixed-point locus** names the normalized set $Z = 1.0$ picked out by the
-  exact identity for the prime class.
-- **Ridge** names a measured concentration of local maxima in the exact raw
-  composite Z-field inside prime gaps.
+The deterministic filter is a secondary engineering artifact built from the
+same normalization. The central result is the winner law.
 
 ## Novel Structures in This Repository
 
 Five structures introduced here do not appear under these names in the
 literature:
 
-- **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
-  exact arithmetic identity collapsing all primes to `Z = 1.0`.
 - **Gap Winner Rule (GWR):** inside any prime gap, the log-score argmax is
   exactly the leftmost carrier of the minimum interior divisor class. On the
   repository's current proof surface, this is a proved universal prime-gap
   winner theorem summarized in [GWR_PROOF.md](GWR_PROOF.md) and recorded in
   [gwr/findings/gwr_hierarchical_local_dominator_theorem.md](gwr/findings/gwr_hierarchical_local_dominator_theorem.md).
+- **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
+  exact arithmetic identity collapsing all primes to `Z = 1.0`.
 - **No-Later-Simpler-Composite (NLSC) condition:** once the GWR winner
   appears, no later interior composite with strictly smaller divisor count
   precedes the next prime. Zero violations observed through `10^18`.
@@ -138,7 +123,16 @@ literature:
 
 ## Divisor Normalization Identity
 
-The divisor normalization load signal becomes useful when it is passed through the Z-transform:
+The raw-$Z$ quantity exists because the repo wants a normalization in which the
+entire prime class lands at one fixed point while composites fall below it.
+
+The construction starts from the divisor normalization load
+
+$$
+\kappa(n) = \frac{d(n) \cdot \ln(n)}{e^{2}}
+$$
+
+and then passes that load through the Z-transform:
 
 $$
 Z(n) = \frac{n}{\exp(v \cdot \kappa(n))}
@@ -183,10 +177,10 @@ This has an immediate effect:
 Under the exact DNI, the entire prime class collapses to the fixed-point locus $Z = 1.0$. Composites are pushed strictly below that locus.
 
 This fixed-point collapse is the mathematical base of the repository. It is
-the invariant behind both the prime-gap structure line and the deterministic
-prefilter line.
+the invariant behind both the prime-gap theorem and the downstream
+deterministic filter.
 
-## Gap Winner Rule
+## GWR Proof Surface
 
 The central winner law in this repository is that the log-score argmax inside
 a prime gap collapses to a simpler arithmetic choice:
@@ -307,11 +301,19 @@ See
 and
 [gwr/findings/square_exclusion_first_d4_theorem.md](gwr/findings/square_exclusion_first_d4_theorem.md).
 
-## Deterministic Prefilter Performance
+## Deterministic Filter Performance
 
-This fixed-point separation is the practical core of the method. Cryptographic prime generation spends most of its time on candidates that are composite and never need a full probable-prime path. The exact DNI provides the invariant target. The production implementation below is the bounded deterministic surrogate calibrated against that target rather than a runtime exact-divisor evaluator.
+This fixed-point separation is one downstream engineering use of the method.
+Cryptographic prime generation spends most of its time on candidates that are
+composite and never need a full probable-prime path. The exact DNI provides
+the invariant target. The production implementation below is the bounded
+deterministic surrogate calibrated against that target rather than a runtime
+exact-divisor evaluator.
 
-Because confirmed primes live at $Z = 1.0$ under the DNI and composites contract below it, the prefilter creates a clean structural separation in normalized space. That separation makes it possible to reject many candidates before paying the full cost of the survivor regime.
+Because confirmed primes live at $Z = 1.0$ under the DNI and composites
+contract below it, the filter creates a clean structural separation in
+normalized space. That separation makes it possible to reject many candidates
+before paying the full cost of the survivor regime.
 
 Empirically, this extracted Python path produced:
 
@@ -326,7 +328,7 @@ that rejects many doomed candidates before Miller-Rabin.
 See [docs/prefilter/benchmarks.md](docs/prefilter/benchmarks.md) and
 [technical-note/technical_note.md](technical-note/technical_note.md).
 
-## Production Filter
+## Production Filter Path
 
 The exact DNI depends on exact divisor count. That exact path is valuable as
 the derivation and as the oracle, but it is not the runtime path for
@@ -381,7 +383,7 @@ runtime exact DNI evaluation.
 
 ### Exact Raw Composite Z Field
 
-- This is a separate exact-field concern from the production prefilter.
+- This is a separate exact-field concern from the production filter.
 - Up to $10^6$ on the natural number line, the strongest exact raw composite
   $Z$ value inside a prime gap lands at edge-distance $2$ in $43.6006\%$ of
   gaps versus an exact within-gap baseline of $22.1859\%$, and is carried by a

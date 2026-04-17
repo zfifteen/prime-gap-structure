@@ -413,3 +413,23 @@ Install the Python package from the repo root:
 ```bash
 python3 -m pip install -e ./src/python
 ```
+
+## License
+
+This repository is source-available under the
+[Business Source License 1.1](LICENSE).
+
+The current grant keeps the code open for research, evaluation, and other
+non-production work, and it also permits internal production use for smaller
+organizations under the Additional Use Grant in [LICENSE](LICENSE).
+
+Commercial production use outside that grant requires a separate commercial
+license. For licensing terms, support, or private commercial use, contact
+`dionisio.lopez@icloud.com`.
+
+Each version converts to [Apache License, Version 2.0](LICENSE) four years
+after that version is first publicly distributed under the Business Source
+License 1.1.
+
+Versions that were first publicly distributed before this change under the MIT
+license remain available under those earlier terms.

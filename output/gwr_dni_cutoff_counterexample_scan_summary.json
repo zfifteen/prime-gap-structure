@@ -1,0 +1,26 @@
+{
+  "min_right_prime": 11,
+  "max_right_prime": 10000000,
+  "tested_gap_count": 664575,
+  "first_tested_right_prime": 11,
+  "last_tested_right_prime": 9999991,
+  "first_counterexample": null,
+  "max_exact_peak_offset_overall": 60,
+  "max_exact_peak_offset_by_first_open_offset": {
+    "2": 44,
+    "4": 60,
+    "6": 60
+  },
+  "max_cutoff_utilization_overall": 0.6153846153846154,
+  "max_cutoff_utilization_by_first_open_offset": {
+    "2": 0.3855421686746988,
+    "4": 0.6153846153846154,
+    "6": 0.5436893203883495
+  },
+  "max_boundary_utilization_overall": 1.3962264150943395,
+  "max_boundary_utilization_by_first_open_offset": {
+    "2": 1.2941176470588236,
+    "4": 1.3962264150943395,
+    "6": 1.3493975903614457
+  }
+}

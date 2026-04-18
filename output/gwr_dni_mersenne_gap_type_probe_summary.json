@@ -1,0 +1,81 @@
+{
+  "tractable_limit_reason": "Current exact gap typing uses the repo's int64-based divisor-field segment path, so the tested known Mersenne-prime surface stops at exponent 61.",
+  "tractable_mersenne_exponents": [
+    2,
+    3,
+    5,
+    7,
+    13,
+    17,
+    19,
+    31,
+    61
+  ],
+  "local_window_radius": 20,
+  "mersenne_prime_count": 9,
+  "preceding_gap_count": 8,
+  "following_gap_count": 9,
+  "distinct_preceding_type_count": 6,
+  "distinct_following_type_count": 4,
+  "preceding_family_distribution": {
+    "prime_square": {
+      "count": 1,
+      "share": 0.125
+    },
+    "prime_cube": {
+      "count": 0,
+      "share": 0.0
+    },
+    "even_semiprime": {
+      "count": 2,
+      "share": 0.25
+    },
+    "odd_semiprime": {
+      "count": 4,
+      "share": 0.5
+    },
+    "higher_divisor_even": {
+      "count": 1,
+      "share": 0.125
+    },
+    "higher_divisor_odd": {
+      "count": 0,
+      "share": 0.0
+    }
+  },
+  "following_family_distribution": {
+    "prime_square": {
+      "count": 2,
+      "share": 0.2222222222222222
+    },
+    "prime_cube": {
+      "count": 0,
+      "share": 0.0
+    },
+    "even_semiprime": {
+      "count": 0,
+      "share": 0.0
+    },
+    "odd_semiprime": {
+      "count": 7,
+      "share": 0.7777777777777778
+    },
+    "higher_divisor_even": {
+      "count": 0,
+      "share": 0.0
+    },
+    "higher_divisor_odd": {
+      "count": 0,
+      "share": 0.0
+    }
+  },
+  "p_ge_5_following_all_odd_semiprime": true,
+  "p_ge_5_following_exact_type_distribution": {
+    "o6_d4_a2_odd_semiprime": 4,
+    "o4_d4_a2_odd_semiprime": 3
+  },
+  "p_ge_5_following_local_exact_rank_one_count": 0,
+  "p_ge_5_following_local_exact_share_min": 0.024390243902439025,
+  "p_ge_5_following_local_exact_share_max": 0.12195121951219512,
+  "runtime_seconds": 8.744797458988614
+}

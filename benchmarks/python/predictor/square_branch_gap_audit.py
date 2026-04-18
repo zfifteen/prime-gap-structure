@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit prime-square offsets against the falsified fixed cutoff theorem."""
+"""Audit prime-square offsets against fixed and dynamic cutoff surfaces."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[3]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from benchmarks.python.predictor.gwr_dni_recursive_walk import first_open_offset
+from benchmarks.python.predictor.gwr_dni_recursive_walk import dynamic_cutoff, first_open_offset
 
 DEFAULT_MAX_PRIME = 100_000
 DEFAULT_OUTPUT_DIR = ROOT / "output"
@@ -25,14 +25,15 @@ CSV_FIELDS = [
     "previous_prime",
     "offset",
     "o_q",
-    "cutoff",
+    "fixed_cutoff",
+    "dynamic_cutoff",
 ]
 
 
 def build_parser() -> argparse.ArgumentParser:
     """Build the CLI parser."""
     parser = argparse.ArgumentParser(
-        description="Audit prime-square offsets against the fixed cutoff branches.",
+        description="Audit prime-square offsets against fixed and dynamic cutoff surfaces.",
     )
     parser.add_argument(
         "--max-prime",
@@ -85,7 +86,8 @@ def audit_square_branch(max_prime: int) -> tuple[dict[str, object], list[dict[st
             "previous_prime": previous_prime,
             "offset": int(offset),
             "o_q": int(first_open),
-            "cutoff": int(cutoff),
+            "fixed_cutoff": int(cutoff),
+            "dynamic_cutoff": int(dynamic_cutoff(previous_prime)),
         }
         all_rows.append(row)
 
@@ -108,12 +110,24 @@ def audit_square_branch(max_prime: int) -> tuple[dict[str, object], list[dict[st
         "violation_count": len(violation_rows),
         "global_max_offset": int(global_max["offset"]),
         "global_max_row": global_max,
+        "max_dynamic_cutoff_utilization": max(
+            float(row["offset"]) / float(row["dynamic_cutoff"]) for row in all_rows
+        ),
+        "dynamic_cutoff_covers_all_rows": all(
+            int(row["offset"]) <= int(row["dynamic_cutoff"]) for row in all_rows
+        ),
         "max_offset_by_o_q": {
             str(branch): (
                 None
                 if branch_maxima[branch] is None
                 else {
                     "offset": int(branch_maxima[branch]["offset"]),
+                    "fixed_cutoff": int(branch_maxima[branch]["fixed_cutoff"]),
+                    "dynamic_cutoff": int(branch_maxima[branch]["dynamic_cutoff"]),
+                    "dynamic_cutoff_utilization": (
+                        float(branch_maxima[branch]["offset"])
+                        / float(branch_maxima[branch]["dynamic_cutoff"])
+                    ),
                     "row": branch_maxima[branch],
                 }
             )

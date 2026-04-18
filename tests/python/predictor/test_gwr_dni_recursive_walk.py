@@ -116,6 +116,7 @@ def test_compare_transition_rules_small_prime():
     assert comparison["exact_gap_boundary_offset"] == 6
     assert comparison["exact_next_prime"] == 29
     assert comparison["matches_cutoff_rule"] is True
+    assert comparison["boundary_utilization"] == 6 / 64
     assert comparison["overshoot_margin"] == 0
 
 

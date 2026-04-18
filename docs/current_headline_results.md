@@ -34,11 +34,15 @@
   `664,578 / 664,578` exact consecutive next-prime recoveries from prime `11`
   through prime `10,000,121` with `0` skipped gaps.
 - **The old fixed cutoff theorem is false and stays archived as false.** The
-  fixed map `{2:44, 4:60, 6:60}` fails at `q = 24,098,209`. The current
-  bounded walker uses the empirical compression
-  `C(q) = max(64, ceil(0.5 * log(q)^2))`, with compare mode in
-  [../benchmarks/python/predictor/gwr_dni_recursive_walk.py](../benchmarks/python/predictor/gwr_dni_recursive_walk.py)
-  acting as the live falsification instrument.
+  fixed map `{2:44, 4:60, 6:60}` fails at `q = 24,098,209`.
+- **The live bounded walker is certified on the committed exact surface
+  through `q <= 10^7`.** The bounded rule is the empirical compression
+  `C(q) = max(64, ceil(0.5 * log(q)^2))`, and the live honesty gate is the
+  exact compare scan in
+  [../benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py](../benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py).
+  The committed `10^7` scan reports `664,575` tested gaps, `0`
+  counterexamples, maximum exact peak offset `60`, and maximum cutoff
+  utilization `0.6153846153846154`.
 - **Deterministic prefilter performance remains the practical payoff.** The
   current production Python path rejects about `91%` of tested odd candidates
   before Miller-Rabin and produced `2.09x` and `2.82x` end-to-end deterministic

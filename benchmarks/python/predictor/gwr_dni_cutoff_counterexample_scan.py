@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scan consecutive prime gaps for a cutoff-law counterexample."""
+"""Scan consecutive prime gaps for a dynamic-cutoff counterexample."""
 
 from __future__ import annotations
 
@@ -87,6 +87,7 @@ def _frontier_row(comparison: dict[str, object]) -> dict[str, object]:
         "exact_gap_boundary_offset": int(comparison["exact_gap_boundary_offset"]),
         "cutoff": int(comparison["cutoff"]),
         "cutoff_utilization": float(comparison["cutoff_utilization"]),
+        "boundary_utilization": float(comparison["boundary_utilization"]),
         "divisor_ladder": " ".join(str(value) for value in ladder),
     }
 
@@ -112,6 +113,8 @@ def run_scan(
     max_cutoff_utilization_overall = 0.0
     max_exact_peak_offset_by_first_open_offset = _empty_offset_dict_int()
     max_cutoff_utilization_by_first_open_offset = _empty_offset_dict_float()
+    max_boundary_utilization_overall = 0.0
+    max_boundary_utilization_by_first_open_offset = _empty_offset_dict_float()
 
     while current_right_prime <= max_right_prime:
         comparison = walk.compare_transition_rules(current_right_prime)
@@ -134,6 +137,11 @@ def run_scan(
             max_cutoff_utilization_overall = cutoff_utilization
         if cutoff_utilization > max_cutoff_utilization_by_first_open_offset[first_open_key]:
             max_cutoff_utilization_by_first_open_offset[first_open_key] = cutoff_utilization
+        boundary_utilization = float(comparison["boundary_utilization"])
+        if boundary_utilization > max_boundary_utilization_overall:
+            max_boundary_utilization_overall = boundary_utilization
+        if boundary_utilization > max_boundary_utilization_by_first_open_offset[first_open_key]:
+            max_boundary_utilization_by_first_open_offset[first_open_key] = boundary_utilization
 
         if not bool(comparison["matches_cutoff_rule"]) and first_counterexample is None:
             first_counterexample = comparison
@@ -153,6 +161,8 @@ def run_scan(
         "max_exact_peak_offset_by_first_open_offset": max_exact_peak_offset_by_first_open_offset,
         "max_cutoff_utilization_overall": max_cutoff_utilization_overall,
         "max_cutoff_utilization_by_first_open_offset": max_cutoff_utilization_by_first_open_offset,
+        "max_boundary_utilization_overall": max_boundary_utilization_overall,
+        "max_boundary_utilization_by_first_open_offset": max_boundary_utilization_by_first_open_offset,
     }
     return frontier_rows, summary, first_counterexample
 
@@ -182,6 +192,7 @@ def main(argv: list[str] | None = None) -> int:
         "exact_gap_boundary_offset",
         "cutoff",
         "cutoff_utilization",
+        "boundary_utilization",
         "divisor_ladder",
     ]
     with frontier_path.open("w", encoding="utf-8", newline="") as handle:

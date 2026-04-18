@@ -92,7 +92,7 @@ def run_walk_from_gap(
             current_right_prime,
         )
         first_open = walk.first_open_offset(current_right_prime % 30)
-        scan_cutoff = walk.EXTENDED_CUTOFF_MAP[first_open]
+        scan_cutoff = walk.dynamic_cutoff(current_right_prime)
         row["step"] = step + 1
         row["first_open_offset"] = first_open
         row["scan_cutoff"] = scan_cutoff

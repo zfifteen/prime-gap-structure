@@ -42,6 +42,17 @@ def test_small_scaling_sweep_is_well_formed():
     assert all(0.0 <= float(row["max_cutoff_utilization"]) <= 1.0 for row in rows)
 
 
+def test_scaling_sweep_uses_dynamic_cutoff():
+    """Cutoff utilization must be computed from the live dynamic cutoff."""
+    module = load_module("gwr_dni_recursive_gap_scaling_sweep", SWEEP_MODULE_PATH)
+    walk_module = load_module("gwr_dni_recursive_walk", ROOT / "benchmarks" / "python" / "predictor" / "gwr_dni_recursive_walk.py")
+
+    rows = module.run_walk_from_gap(97, 101, 1)
+    row = rows[0]
+    expected_cutoff = walk_module.dynamic_cutoff(101)
+    assert float(row["cutoff_utilization"]) == float(row["predicted_peak_offset"]) / float(expected_cutoff)
+
+
 def test_scaling_sweep_entry_point_writes_artifacts(tmp_path):
     """The sweep CLI should emit JSON and CSV artifacts."""
     module = load_module("gwr_dni_recursive_gap_scaling_sweep", SWEEP_MODULE_PATH)

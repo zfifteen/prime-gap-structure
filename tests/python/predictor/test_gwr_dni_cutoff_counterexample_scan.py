@@ -39,6 +39,8 @@ def test_small_consecutive_surface_has_no_counterexample():
     assert frontier_rows
     assert summary["max_exact_peak_offset_overall"] <= 60
     assert summary["max_cutoff_utilization_overall"] <= 1.0
+    assert summary["max_boundary_utilization_overall"] <= 1.0
+    assert set(summary["max_boundary_utilization_by_first_open_offset"]) == {"2", "4", "6"}
 
 
 def test_counterexample_scan_entry_point_writes_artifacts(tmp_path):
@@ -70,6 +72,7 @@ def test_counterexample_scan_entry_point_writes_artifacts(tmp_path):
     assert payload["first_counterexample"] is None
     assert payload["tested_gap_count"] > 0
     assert payload["max_exact_peak_offset_overall"] <= 60
+    assert payload["max_boundary_utilization_overall"] <= 1.0
 
 
 def test_scan_stops_at_first_counterexample(monkeypatch):
@@ -109,3 +112,4 @@ def test_exact_scan_through_one_million_has_no_counterexample():
     assert frontier_rows
     assert summary["max_exact_peak_offset_overall"] <= 60
     assert summary["max_cutoff_utilization_overall"] <= 1.0
+    assert summary["max_boundary_utilization_overall"] >= 1.0

@@ -1,0 +1,15 @@
+{
+  "power_start": 2,
+  "power_end": 18,
+  "count": 17,
+  "mean_exact_hit_rate": 1.0,
+  "mean_mean_skipped_gap_count": 0.0,
+  "all_zero_skips": true,
+  "all_exact_hits": true,
+  "max_runtime_seconds": 39.371231416007504,
+  "max_runtime_seconds_per_step": 3.9371231416007504,
+  "max_start_right_prime": 1000000000000000003,
+  "max_final_predicted_next_prime": 1000000000000000507,
+  "max_observed_peak_offset": 32,
+  "max_observed_cutoff_utilization": 0.1875
+}

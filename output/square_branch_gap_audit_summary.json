@@ -1,0 +1,64 @@
+{
+  "max_prime": 1000000,
+  "tested_prime_count": 78498,
+  "violation_count": 7477,
+  "global_max_offset": 246,
+  "global_max_row": {
+    "p": 909463,
+    "square": 827122948369,
+    "previous_prime": 827122948123,
+    "offset": 246,
+    "o_q": 4,
+    "fixed_cutoff": 60,
+    "dynamic_cutoff": 377
+  },
+  "max_dynamic_cutoff_utilization": 0.7153284671532847,
+  "dynamic_cutoff_covers_all_rows": true,
+  "max_offset_by_o_q": {
+    "2": {
+      "offset": 212,
+      "fixed_cutoff": 44,
+      "dynamic_cutoff": 370,
+      "dynamic_cutoff_utilization": 0.572972972972973,
+      "row": {
+        "p": 794071,
+        "square": 630548753041,
+        "previous_prime": 630548752829,
+        "offset": 212,
+        "o_q": 2,
+        "fixed_cutoff": 44,
+        "dynamic_cutoff": 370
+      }
+    },
+    "4": {
+      "offset": 246,
+      "fixed_cutoff": 60,
+      "dynamic_cutoff": 377,
+      "dynamic_cutoff_utilization": 0.6525198938992043,
+      "row": {
+        "p": 909463,
+        "square": 827122948369,
+        "previous_prime": 827122948123,
+        "offset": 246,
+        "o_q": 4,
+        "fixed_cutoff": 60,
+        "dynamic_cutoff": 377
+      }
+    },
+    "6": {
+      "offset": 218,
+      "fixed_cutoff": 60,
+      "dynamic_cutoff": 348,
+      "dynamic_cutoff_utilization": 0.6264367816091954,
+      "row": {
+        "p": 528419,
+        "square": 279226639561,
+        "previous_prime": 279226639343,
+        "offset": 218,
+        "o_q": 6,
+        "fixed_cutoff": 60,
+        "dynamic_cutoff": 348
+      }
+    }
+  }
+}

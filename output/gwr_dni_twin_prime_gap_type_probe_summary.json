@@ -1,0 +1,319 @@
+{
+  "max_right_prime": 1000000,
+  "surface_prime_count": 78497,
+  "twin_pair_count": 8169,
+  "defined_preceding_twin_pair_count": 8168,
+  "left_twin_residues_mod30": [
+    11,
+    17,
+    29
+  ],
+  "right_twin_residues_mod30": [
+    1,
+    13,
+    19
+  ],
+  "preceding_family_vs_residue_baseline": {
+    "prime_square": {
+      "twin_count": 18,
+      "twin_share": 0.0022037218413320275,
+      "baseline_count": 57,
+      "baseline_share": 0.001937194127243067,
+      "share_delta": 0.0002665277140889606,
+      "lift": 1.1375844115676066
+    },
+    "prime_cube": {
+      "twin_count": 0,
+      "twin_share": 0.0,
+      "baseline_count": 2,
+      "baseline_share": 6.797172376291462e-05,
+      "share_delta": -6.797172376291462e-05,
+      "lift": 0.0
+    },
+    "even_semiprime": {
+      "twin_count": 1492,
+      "twin_share": 0.18266405484818804,
+      "baseline_count": 5504,
+      "baseline_share": 0.18705818379554107,
+      "share_delta": -0.0043941289473530265,
+      "lift": 0.9765092932145866
+    },
+    "odd_semiprime": {
+      "twin_count": 4946,
+      "twin_share": 0.6055337904015671,
+      "baseline_count": 17685,
+      "baseline_share": 0.6010399673735726,
+      "share_delta": 0.0044938230279945035,
+      "lift": 1.0074767457605718
+    },
+    "higher_divisor_even": {
+      "twin_count": 1001,
+      "twin_share": 0.12255142017629775,
+      "baseline_count": 3685,
+      "baseline_share": 0.1252379010331702,
+      "share_delta": -0.002686480856872453,
+      "lift": 0.9785489789056676
+    },
+    "higher_divisor_odd": {
+      "twin_count": 711,
+      "twin_share": 0.08704701273261509,
+      "baseline_count": 2491,
+      "baseline_share": 0.08465878194671017,
+      "share_delta": 0.0023882307859049157,
+      "lift": 1.0282100773361968
+    }
+  },
+  "following_family_vs_residue_baseline": {
+    "prime_square": {
+      "twin_count": 18,
+      "twin_share": 0.0022034520749173708,
+      "baseline_count": 61,
+      "baseline_share": 0.002073489921479316,
+      "share_delta": 0.00012996215343805476,
+      "lift": 1.0626779769179366
+    },
+    "prime_cube": {
+      "twin_count": 1,
+      "twin_share": 0.00012241400416207614,
+      "baseline_count": 3,
+      "baseline_share": 0.0001019749141711139,
+      "share_delta": 2.0439089990962245e-05,
+      "lift": 1.2004325294813727
+    },
+    "even_semiprime": {
+      "twin_count": 1923,
+      "twin_share": 0.2354021300036724,
+      "baseline_count": 7293,
+      "baseline_share": 0.2479010163499779,
+      "share_delta": -0.012498886346305499,
+      "lift": 0.9495811411734593
+    },
+    "odd_semiprime": {
+      "twin_count": 4498,
+      "twin_share": 0.5506181907210185,
+      "baseline_count": 15927,
+      "baseline_share": 0.5413848193344437,
+      "share_delta": 0.009233371386574762,
+      "lift": 1.017055098437976
+    },
+    "higher_divisor_even": {
+      "twin_count": 1071,
+      "twin_share": 0.13110539845758354,
+      "baseline_count": 3870,
+      "baseline_share": 0.13154763928073693,
+      "share_delta": -0.0004422408231533892,
+      "lift": 0.9966381698252327
+    },
+    "higher_divisor_odd": {
+      "twin_count": 658,
+      "twin_share": 0.0805484147386461,
+      "baseline_count": 2265,
+      "baseline_share": 0.076991060199191,
+      "share_delta": 0.0035573545394551043,
+      "lift": 1.0462047740380704
+    }
+  },
+  "distinct_preceding_type_count": 117,
+  "distinct_following_type_count": 88,
+  "distinct_outer_pair_signature_count": 1312,
+  "top_preceding_types": [
+    {
+      "type_key": "o2_d4_a2_odd_semiprime",
+      "count": 1512,
+      "share": 0.1851126346718903
+    },
+    {
+      "type_key": "o4_d4_a4_odd_semiprime",
+      "count": 950,
+      "share": 0.116307541625857
+    },
+    {
+      "type_key": "o6_d4_a2_odd_semiprime",
+      "count": 462,
+      "share": 0.056562193927522035
+    },
+    {
+      "type_key": "o4_d4_a2_odd_semiprime",
+      "count": 427,
+      "share": 0.052277179236043095
+    },
+    {
+      "type_key": "o4_d4_a1_even_semiprime",
+      "count": 372,
+      "share": 0.0455435847208619
+    },
+    {
+      "type_key": "o6_d4_a6_odd_semiprime",
+      "count": 354,
+      "share": 0.04333986287952987
+    },
+    {
+      "type_key": "o4_d4_a3_even_semiprime",
+      "count": 302,
+      "share": 0.036973555337904015
+    },
+    {
+      "type_key": "o6_d4_a4_odd_semiprime",
+      "count": 295,
+      "share": 0.036116552399608225
+    },
+    {
+      "type_key": "o4_d8_a1_higher_divisor_even",
+      "count": 294,
+      "share": 0.03599412340842312
+    },
+    {
+      "type_key": "o4_d4_a6_odd_semiprime",
+      "count": 246,
+      "share": 0.03011753183153771
+    },
+    {
+      "type_key": "o6_d4_a3_even_semiprime",
+      "count": 237,
+      "share": 0.029015670910871694
+    },
+    {
+      "type_key": "o2_d4_a6_odd_semiprime",
+      "count": 218,
+      "share": 0.026689520078354553
+    }
+  ],
+  "top_following_types": [
+    {
+      "type_key": "o4_d4_a4_odd_semiprime",
+      "count": 1764,
+      "share": 0.2159383033419023
+    },
+    {
+      "type_key": "o4_d4_a3_even_semiprime",
+      "count": 677,
+      "share": 0.08287428081772555
+    },
+    {
+      "type_key": "o6_d4_a6_odd_semiprime",
+      "count": 557,
+      "share": 0.06818460031827642
+    },
+    {
+      "type_key": "o4_d4_a2_odd_semiprime",
+      "count": 520,
+      "share": 0.0636552821642796
+    },
+    {
+      "type_key": "o6_d4_a2_odd_semiprime",
+      "count": 426,
+      "share": 0.052148365773044436
+    },
+    {
+      "type_key": "o4_d4_a6_odd_semiprime",
+      "count": 405,
+      "share": 0.04957767168564084
+    },
+    {
+      "type_key": "o4_d4_a1_even_semiprime",
+      "count": 394,
+      "share": 0.048231117639858
+    },
+    {
+      "type_key": "o6_d4_a4_odd_semiprime",
+      "count": 387,
+      "share": 0.04737421961072347
+    },
+    {
+      "type_key": "o6_d4_a1_even_semiprime",
+      "count": 353,
+      "share": 0.04321214346921288
+    },
+    {
+      "type_key": "o6_d4_a3_even_semiprime",
+      "count": 297,
+      "share": 0.03635695923613661
+    },
+    {
+      "type_key": "o4_d8_a1_higher_divisor_even",
+      "count": 276,
+      "share": 0.033786265148733015
+    },
+    {
+      "type_key": "o4_d8_a2_higher_divisor_odd",
+      "count": 243,
+      "share": 0.0297466030113845
+    }
+  ],
+  "top_outer_pair_signatures": [
+    {
+      "preceding_type_key": "o2_d4_a2_odd_semiprime",
+      "following_type_key": "o4_d4_a4_odd_semiprime",
+      "count": 315,
+      "share": 0.03856513222331048
+    },
+    {
+      "preceding_type_key": "o4_d4_a4_odd_semiprime",
+      "following_type_key": "o4_d4_a4_odd_semiprime",
+      "count": 143,
+      "share": 0.017507345739471106
+    },
+    {
+      "preceding_type_key": "o2_d4_a2_odd_semiprime",
+      "following_type_key": "o4_d4_a3_even_semiprime",
+      "count": 139,
+      "share": 0.017017629774730657
+    },
+    {
+      "preceding_type_key": "o6_d4_a2_odd_semiprime",
+      "following_type_key": "o4_d4_a4_odd_semiprime",
+      "count": 101,
+      "share": 0.012365328109696375
+    },
+    {
+      "preceding_type_key": "o2_d4_a2_odd_semiprime",
+      "following_type_key": "o6_d4_a6_odd_semiprime",
+      "count": 101,
+      "share": 0.012365328109696375
+    },
+    {
+      "preceding_type_key": "o4_d4_a2_odd_semiprime",
+      "following_type_key": "o4_d4_a4_odd_semiprime",
+      "count": 97,
+      "share": 0.011875612144955926
+    },
+    {
+      "preceding_type_key": "o2_d4_a2_odd_semiprime",
+      "following_type_key": "o4_d4_a6_odd_semiprime",
+      "count": 91,
+      "share": 0.01114103819784525
+    },
+    {
+      "preceding_type_key": "o4_d8_a1_higher_divisor_even",
+      "following_type_key": "o4_d4_a4_odd_semiprime",
+      "count": 90,
+      "share": 0.011018609206660137
+    },
+    {
+      "preceding_type_key": "o4_d4_a1_even_semiprime",
+      "following_type_key": "o4_d4_a4_odd_semiprime",
+      "count": 87,
+      "share": 0.010651322233104799
+    },
+    {
+      "preceding_type_key": "o2_d4_a2_odd_semiprime",
+      "following_type_key": "o4_d4_a2_odd_semiprime",
+      "count": 84,
+      "share": 0.01028403525954946
+    },
+    {
+      "preceding_type_key": "o2_d4_a2_odd_semiprime",
+      "following_type_key": "o6_d4_a2_odd_semiprime",
+      "count": 83,
+      "share": 0.010161606268364348
+    },
+    {
+      "preceding_type_key": "o4_d4_a4_odd_semiprime",
+      "following_type_key": "o6_d4_a6_odd_semiprime",
+      "count": 82,
+      "share": 0.010039177277179236
+    }
+  ],
+  "same_outer_family_share": 0.3828354554358472,
+  "runtime_seconds": 24.12354741594754
+}

@@ -1,0 +1,2637 @@
+{
+  "interval": {
+    "min_right_prime": 11,
+    "max_right_prime": 10000000
+  },
+  "tested_gap_count": 664575,
+  "first_tested_right_prime": 11,
+  "last_tested_right_prime": 9999991,
+  "branch_count": 104,
+  "branch_summary": [
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 3,
+      "count": 179,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 60,
+      "max_cutoff_utilization": 0.6153846153846154,
+      "max_boundary_utilization": 0.8461538461538461,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.6153846153846154,
+        "current_right_prime": 259033,
+        "next_prime": 259099,
+        "gap_width": 66,
+        "gap_boundary_offset": 66,
+        "peak_offset": 48
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.8461538461538461,
+        "current_right_prime": 259033,
+        "next_prime": 259099,
+        "gap_width": 66,
+        "gap_boundary_offset": 66,
+        "peak_offset": 48
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 3,
+      "count": 79,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 60,
+      "max_cutoff_utilization": 0.5436893203883495,
+      "max_boundary_utilization": 0.7787610619469026,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.5436893203883495,
+        "current_right_prime": 1646033,
+        "next_prime": 1646101,
+        "gap_width": 68,
+        "gap_boundary_offset": 68,
+        "peak_offset": 56
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.7787610619469026,
+        "current_right_prime": 3323311,
+        "next_prime": 3323399,
+        "gap_width": 88,
+        "gap_boundary_offset": 88,
+        "peak_offset": 18
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 3,
+      "count": 186,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 44,
+      "max_cutoff_utilization": 0.3855421686746988,
+      "max_boundary_utilization": 0.8793103448275862,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.3855421686746988,
+        "current_right_prime": 380657,
+        "next_prime": 380707,
+        "gap_width": 50,
+        "gap_boundary_offset": 50,
+        "peak_offset": 32
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.8793103448275862,
+        "current_right_prime": 4044077,
+        "next_prime": 4044179,
+        "gap_width": 102,
+        "gap_boundary_offset": 102,
+        "peak_offset": 44
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 4,
+      "count": 188559,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 30,
+      "max_cutoff_utilization": 0.2608695652173913,
+      "max_boundary_utilization": 1.3962264150943395,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.2608695652173913,
+        "current_right_prime": 124309,
+        "next_prime": 124337,
+        "gap_width": 28,
+        "gap_boundary_offset": 28,
+        "peak_offset": 18
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 1.3962264150943395,
+        "current_right_prime": 2010733,
+        "next_prime": 2010881,
+        "gap_width": 148,
+        "gap_boundary_offset": 148,
+        "peak_offset": 4
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 4,
+      "count": 138994,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 29,
+      "max_cutoff_utilization": 0.25,
+      "max_boundary_utilization": 1.3493975903614457,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.25,
+        "current_right_prime": 60661,
+        "next_prime": 60679,
+        "gap_width": 18,
+        "gap_boundary_offset": 18,
+        "peak_offset": 16
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 1.3493975903614457,
+        "current_right_prime": 370261,
+        "next_prime": 370373,
+        "gap_width": 112,
+        "gap_boundary_offset": 112,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 4,
+      "count": 172343,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 30,
+      "max_cutoff_utilization": 0.23255813953488372,
+      "max_boundary_utilization": 1.2941176470588236,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.23255813953488372,
+        "current_right_prime": 8901041,
+        "next_prime": 8901089,
+        "gap_width": 48,
+        "gap_boundary_offset": 48,
+        "peak_offset": 30
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 1.2941176470588236,
+        "current_right_prime": 1561919,
+        "next_prime": 1562051,
+        "gap_width": 132,
+        "gap_boundary_offset": 132,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 6,
+      "count": 10339,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 20,
+      "max_cutoff_utilization": 0.19801980198019803,
+      "max_boundary_utilization": 0.25,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.19801980198019803,
+        "current_right_prime": 1450249,
+        "next_prime": 1450271,
+        "gap_width": 22,
+        "gap_boundary_offset": 22,
+        "peak_offset": 20
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.25,
+        "current_right_prime": 39343,
+        "next_prime": 39359,
+        "gap_width": 16,
+        "gap_boundary_offset": 16,
+        "peak_offset": 6
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 6,
+      "count": 7694,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 18,
+      "max_cutoff_utilization": 0.1590909090909091,
+      "max_boundary_utilization": 0.23529411764705882,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.1590909090909091,
+        "current_right_prime": 541283,
+        "next_prime": 541301,
+        "gap_width": 18,
+        "gap_boundary_offset": 18,
+        "peak_offset": 14
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.23529411764705882,
+        "current_right_prime": 4942711,
+        "next_prime": 4942739,
+        "gap_width": 28,
+        "gap_boundary_offset": 28,
+        "peak_offset": 18
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 6,
+      "count": 4628,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 17,
+      "max_cutoff_utilization": 0.14655172413793102,
+      "max_boundary_utilization": 0.26229508196721313,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.14655172413793102,
+        "current_right_prime": 4044851,
+        "next_prime": 4044869,
+        "gap_width": 18,
+        "gap_boundary_offset": 18,
+        "peak_offset": 17
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.26229508196721313,
+        "current_right_prime": 5922317,
+        "next_prime": 5922349,
+        "gap_width": 32,
+        "gap_boundary_offset": 32,
+        "peak_offset": 8
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 8,
+      "count": 17976,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 9,
+      "max_cutoff_utilization": 0.1038961038961039,
+      "max_boundary_utilization": 0.25287356321839083,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.1038961038961039,
+        "current_right_prime": 229171,
+        "next_prime": 229181,
+        "gap_width": 10,
+        "gap_boundary_offset": 10,
+        "peak_offset": 8
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.25287356321839083,
+        "current_right_prime": 512821,
+        "next_prime": 512843,
+        "gap_width": 22,
+        "gap_boundary_offset": 22,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 8,
+      "count": 15943,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 11,
+      "max_cutoff_utilization": 0.09009009009009009,
+      "max_boundary_utilization": 0.2222222222222222,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.09009009009009009,
+        "current_right_prime": 2887067,
+        "next_prime": 2887081,
+        "gap_width": 14,
+        "gap_boundary_offset": 14,
+        "peak_offset": 10
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.2222222222222222,
+        "current_right_prime": 4357781,
+        "next_prime": 4357807,
+        "gap_width": 26,
+        "gap_boundary_offset": 26,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 8,
+      "count": 36283,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 10,
+      "max_cutoff_utilization": 0.0847457627118644,
+      "max_boundary_utilization": 0.26865671641791045,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.0847457627118644,
+        "current_right_prime": 4669369,
+        "next_prime": 4669381,
+        "gap_width": 12,
+        "gap_boundary_offset": 12,
+        "peak_offset": 10
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.26865671641791045,
+        "current_right_prime": 104659,
+        "next_prime": 104677,
+        "gap_width": 18,
+        "gap_boundary_offset": 18,
+        "peak_offset": 3
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 10,
+      "count": 690,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 9,
+      "max_cutoff_utilization": 0.07377049180327869,
+      "max_boundary_utilization": 0.08450704225352113,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.07377049180327869,
+        "current_right_prime": 6030919,
+        "next_prime": 6030929,
+        "gap_width": 10,
+        "gap_boundary_offset": 10,
+        "peak_offset": 9
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.08450704225352113,
+        "current_right_prime": 143503,
+        "next_prime": 143509,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 12,
+      "count": 6409,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 8,
+      "max_cutoff_utilization": 0.06722689075630252,
+      "max_boundary_utilization": 0.08403361344537816,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.06722689075630252,
+        "current_right_prime": 4812373,
+        "next_prime": 4812383,
+        "gap_width": 10,
+        "gap_boundary_offset": 10,
+        "peak_offset": 8
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.08403361344537816,
+        "current_right_prime": 4812373,
+        "next_prime": 4812383,
+        "gap_width": 10,
+        "gap_boundary_offset": 10,
+        "peak_offset": 8
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 10,
+      "count": 121,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 5,
+      "max_cutoff_utilization": 0.06666666666666667,
+      "max_boundary_utilization": 0.09375,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.06666666666666667,
+        "current_right_prime": 197963,
+        "next_prime": 197969,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 5
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.09375,
+        "current_right_prime": 28591,
+        "next_prime": 28597,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 10,
+      "count": 40,
+      "cutoff": 74,
+      "max_exact_next_peak_offset": 6,
+      "max_cutoff_utilization": 0.06578947368421052,
+      "max_boundary_utilization": 0.08108108108108109,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.06578947368421052,
+        "current_right_prime": 219371,
+        "next_prime": 219377,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 5
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.08108108108108109,
+        "current_right_prime": 192047,
+        "next_prime": 192053,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 4
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 12,
+      "count": 949,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 6,
+      "max_cutoff_utilization": 0.0641025641025641,
+      "max_boundary_utilization": 0.09375,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.0641025641025641,
+        "current_right_prime": 252151,
+        "next_prime": 252157,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 5
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.09375,
+        "current_right_prime": 17573,
+        "next_prime": 17579,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 12,
+      "count": 3280,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 7,
+      "max_cutoff_utilization": 0.056910569105691054,
+      "max_boundary_utilization": 0.09230769230769231,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.056910569105691054,
+        "current_right_prime": 6169469,
+        "next_prime": 6169477,
+        "gap_width": 8,
+        "gap_boundary_offset": 8,
+        "peak_offset": 7
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.09230769230769231,
+        "current_right_prime": 84131,
+        "next_prime": 84137,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 16,
+      "count": 329,
+      "cutoff": 79,
+      "max_exact_next_peak_offset": 5,
+      "max_cutoff_utilization": 0.05319148936170213,
+      "max_boundary_utilization": 0.0759493670886076,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.05319148936170213,
+        "current_right_prime": 873421,
+        "next_prime": 873427,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 5
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.0759493670886076,
+        "current_right_prime": 274831,
+        "next_prime": 274837,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 3
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 16,
+      "count": 5869,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 4,
+      "max_cutoff_utilization": 0.046875,
+      "max_boundary_utilization": 0.07317073170731707,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.046875,
+        "current_right_prime": 58309,
+        "next_prime": 58313,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.07317073170731707,
+        "current_right_prime": 355507,
+        "next_prime": 355513,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 3
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 9,
+      "count": 10,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.046875,
+      "max_boundary_utilization": 0.0625,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.046875,
+        "current_right_prime": 42433,
+        "next_prime": 42437,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.0625,
+        "current_right_prime": 42433,
+        "next_prime": 42437,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 14,
+      "count": 111,
+      "cutoff": 68,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.04411764705882353,
+      "max_boundary_utilization": 0.06060606060606061,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.04411764705882353,
+        "current_right_prime": 112573,
+        "next_prime": 112577,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.06060606060606061,
+        "current_right_prime": 1269187,
+        "next_prime": 1269193,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 16,
+      "count": 8604,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 5,
+      "max_cutoff_utilization": 0.04310344827586207,
+      "max_boundary_utilization": 0.06666666666666667,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.04310344827586207,
+        "current_right_prime": 3969821,
+        "next_prime": 3969827,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 5
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.06666666666666667,
+        "current_right_prime": 632147,
+        "next_prime": 632153,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 14,
+      "count": 3,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 5,
+      "max_cutoff_utilization": 0.041666666666666664,
+      "max_boundary_utilization": 0.05,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.041666666666666664,
+        "current_right_prime": 5300027,
+        "next_prime": 5300033,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 5
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.05,
+        "current_right_prime": 5300027,
+        "next_prime": 5300033,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 5
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 14,
+      "count": 11,
+      "cutoff": 121,
+      "max_exact_next_peak_offset": 5,
+      "max_cutoff_utilization": 0.04065040650406504,
+      "max_boundary_utilization": 0.049586776859504134,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.04065040650406504,
+        "current_right_prime": 6173243,
+        "next_prime": 6173249,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 5
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.049586776859504134,
+        "current_right_prime": 5669821,
+        "next_prime": 5669827,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 3
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 18,
+      "count": 47,
+      "cutoff": 76,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.03896103896103896,
+      "max_boundary_utilization": 0.05263157894736842,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.03896103896103896,
+        "current_right_prime": 242449,
+        "next_prime": 242453,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.05263157894736842,
+        "current_right_prime": 210823,
+        "next_prime": 210827,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 20,
+      "count": 174,
+      "cutoff": 69,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.033707865168539325,
+      "max_boundary_utilization": 0.057971014492753624,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.033707865168539325,
+        "current_right_prime": 618253,
+        "next_prime": 618257,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.057971014492753624,
+        "current_right_prime": 122449,
+        "next_prime": 122453,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 15,
+      "count": 5,
+      "cutoff": 72,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.03125,
+      "max_boundary_utilization": 0.05555555555555555,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 1008013,
+        "next_prime": 1008017,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.05555555555555555,
+        "current_right_prime": 149767,
+        "next_prime": 149771,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 9,
+      "count": 1,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 2,
+      "max_cutoff_utilization": 0.03125,
+      "max_boundary_utilization": 0.09375,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 70223,
+        "next_prime": 70229,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.09375,
+        "current_right_prime": 70223,
+        "next_prime": 70229,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 24,
+      "count": 426,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.02912621359223301,
+      "max_boundary_utilization": 0.0625,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.02912621359223301,
+        "current_right_prime": 1648063,
+        "next_prime": 1648067,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.0625,
+        "current_right_prime": 72223,
+        "next_prime": 72227,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 30,
+      "count": 5,
+      "cutoff": 109,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.027522935779816515,
+      "max_boundary_utilization": 0.03669724770642202,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.027522935779816515,
+        "current_right_prime": 2486509,
+        "next_prime": 2486513,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03669724770642202,
+        "current_right_prime": 2486509,
+        "next_prime": 2486513,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 28,
+      "count": 8,
+      "cutoff": 115,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.02608695652173913,
+      "max_boundary_utilization": 0.034782608695652174,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.02608695652173913,
+        "current_right_prime": 3768253,
+        "next_prime": 3768257,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.034782608695652174,
+        "current_right_prime": 3768253,
+        "next_prime": 3768257,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 32,
+      "count": 73,
+      "cutoff": 81,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.025,
+      "max_boundary_utilization": 0.04938271604938271,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.025,
+        "current_right_prime": 5108023,
+        "next_prime": 5108027,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.04938271604938271,
+        "current_right_prime": 318679,
+        "next_prime": 318683,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 36,
+      "count": 1,
+      "cutoff": 128,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.0234375,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.0234375,
+        "current_right_prime": 8761849,
+        "next_prime": 8761853,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 8761849,
+        "next_prime": 8761853,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      }
+    },
+    {
+      "first_open_offset": 4,
+      "exact_next_dmin": 40,
+      "count": 2,
+      "cutoff": 128,
+      "max_exact_next_peak_offset": 3,
+      "max_cutoff_utilization": 0.023076923076923078,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.023076923076923078,
+        "current_right_prime": 9572749,
+        "next_prime": 9572753,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 3
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 8855503,
+        "next_prime": 8855507,
+        "gap_width": 4,
+        "gap_boundary_offset": 4,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 9,
+      "count": 4,
+      "cutoff": 95,
+      "max_exact_next_peak_offset": 2,
+      "max_cutoff_utilization": 0.021052631578947368,
+      "max_boundary_utilization": 0.06315789473684211,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.021052631578947368,
+        "current_right_prime": 946727,
+        "next_prime": 946733,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.06315789473684211,
+        "current_right_prime": 946727,
+        "next_prime": 946733,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 18,
+      "count": 678,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 2,
+      "max_cutoff_utilization": 0.020618556701030927,
+      "max_boundary_utilization": 0.061855670103092786,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.020618556701030927,
+        "current_right_prime": 1073147,
+        "next_prime": 1073153,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.061855670103092786,
+        "current_right_prime": 1073147,
+        "next_prime": 1073153,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 2
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 20,
+      "count": 694,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 239,
+        "next_prime": 241,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 239,
+        "next_prime": 241,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 24,
+      "count": 7853,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 419,
+        "next_prime": 421,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 419,
+        "next_prime": 421,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 28,
+      "count": 149,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 2111,
+        "next_prime": 2113,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 2111,
+        "next_prime": 2113,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 30,
+      "count": 282,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 1619,
+        "next_prime": 1621,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 1619,
+        "next_prime": 1621,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 32,
+      "count": 8429,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 1319,
+        "next_prime": 1321,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 1319,
+        "next_prime": 1321,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 36,
+      "count": 2121,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 2339,
+        "next_prime": 2341,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 2339,
+        "next_prime": 2341,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 40,
+      "count": 1418,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 3119,
+        "next_prime": 3121,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 3119,
+        "next_prime": 3121,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 42,
+      "count": 76,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 4799,
+        "next_prime": 4801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 4799,
+        "next_prime": 4801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 44,
+      "count": 13,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 15359,
+        "next_prime": 15361,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 15359,
+        "next_prime": 15361,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 48,
+      "count": 7333,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 3359,
+        "next_prime": 3361,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 3359,
+        "next_prime": 3361,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 54,
+      "count": 199,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 6299,
+        "next_prime": 6301,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 6299,
+        "next_prime": 6301,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 56,
+      "count": 333,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 29759,
+        "next_prime": 29761,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 29759,
+        "next_prime": 29761,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 60,
+      "count": 702,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 12239,
+        "next_prime": 12241,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 12239,
+        "next_prime": 12241,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 64,
+      "count": 3747,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 7559,
+        "next_prime": 7561,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 7559,
+        "next_prime": 7561,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 70,
+      "count": 13,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 81647,
+        "next_prime": 81649,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 81647,
+        "next_prime": 81649,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 72,
+      "count": 2158,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 21599,
+        "next_prime": 21601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 21599,
+        "next_prime": 21601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 80,
+      "count": 1055,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 21839,
+        "next_prime": 21841,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 21839,
+        "next_prime": 21841,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 84,
+      "count": 148,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 33599,
+        "next_prime": 33601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 33599,
+        "next_prime": 33601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 90,
+      "count": 100,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 35279,
+        "next_prime": 35281,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 35279,
+        "next_prime": 35281,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 96,
+      "count": 2993,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 42839,
+        "next_prime": 42841,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 42839,
+        "next_prime": 42841,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 108,
+      "count": 283,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 81899,
+        "next_prime": 81901,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 81899,
+        "next_prime": 81901,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 120,
+      "count": 516,
+      "cutoff": 64,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.015625,
+      "max_boundary_utilization": 0.03125,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 55439,
+        "next_prime": 55441,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.03125,
+        "current_right_prime": 55439,
+        "next_prime": 55441,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 126,
+      "count": 20,
+      "cutoff": 67,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.014925373134328358,
+      "max_boundary_utilization": 0.029850746268656716,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.014925373134328358,
+        "current_right_prime": 100799,
+        "next_prime": 100801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.029850746268656716,
+        "current_right_prime": 100799,
+        "next_prime": 100801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 144,
+      "count": 743,
+      "cutoff": 68,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.014705882352941176,
+      "max_boundary_utilization": 0.029411764705882353,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.014705882352941176,
+        "current_right_prime": 110879,
+        "next_prime": 110881,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.029411764705882353,
+        "current_right_prime": 110879,
+        "next_prime": 110881,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 112,
+      "count": 197,
+      "cutoff": 70,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.014285714285714285,
+      "max_boundary_utilization": 0.02857142857142857,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.014285714285714285,
+        "current_right_prime": 127679,
+        "next_prime": 127681,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.02857142857142857,
+        "current_right_prime": 127679,
+        "next_prime": 127681,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 128,
+      "count": 671,
+      "cutoff": 70,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.014285714285714285,
+      "max_boundary_utilization": 0.02857142857142857,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.014285714285714285,
+        "current_right_prime": 128519,
+        "next_prime": 128521,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.02857142857142857,
+        "current_right_prime": 128519,
+        "next_prime": 128521,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 88,
+      "count": 24,
+      "cutoff": 71,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.014084507042253521,
+      "max_boundary_utilization": 0.028169014084507043,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.014084507042253521,
+        "current_right_prime": 138239,
+        "next_prime": 138241,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.028169014084507043,
+        "current_right_prime": 138239,
+        "next_prime": 138241,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 140,
+      "count": 16,
+      "cutoff": 79,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.012658227848101266,
+      "max_boundary_utilization": 0.02531645569620253,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.012658227848101266,
+        "current_right_prime": 285119,
+        "next_prime": 285121,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.02531645569620253,
+        "current_right_prime": 285119,
+        "next_prime": 285121,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 160,
+      "count": 253,
+      "cutoff": 79,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.012658227848101266,
+      "max_boundary_utilization": 0.02531645569620253,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.012658227848101266,
+        "current_right_prime": 287279,
+        "next_prime": 287281,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.02531645569620253,
+        "current_right_prime": 287279,
+        "next_prime": 287281,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 100,
+      "count": 43,
+      "cutoff": 80,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.0125,
+      "max_boundary_utilization": 0.025,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.0125,
+        "current_right_prime": 304559,
+        "next_prime": 304561,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.025,
+        "current_right_prime": 304559,
+        "next_prime": 304561,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 50,
+      "count": 22,
+      "cutoff": 83,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.012048192771084338,
+      "max_boundary_utilization": 0.024096385542168676,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.012048192771084338,
+        "current_right_prime": 388961,
+        "next_prime": 388963,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.024096385542168676,
+        "current_right_prime": 388961,
+        "next_prime": 388963,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 192,
+      "count": 351,
+      "cutoff": 84,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.011904761904761904,
+      "max_boundary_utilization": 0.023809523809523808,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.011904761904761904,
+        "current_right_prime": 415799,
+        "next_prime": 415801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.023809523809523808,
+        "current_right_prime": 415799,
+        "next_prime": 415801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 180,
+      "count": 86,
+      "cutoff": 85,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.011764705882352941,
+      "max_boundary_utilization": 0.023529411764705882,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.011764705882352941,
+        "current_right_prime": 453599,
+        "next_prime": 453601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.023529411764705882,
+        "current_right_prime": 453599,
+        "next_prime": 453601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 168,
+      "count": 82,
+      "cutoff": 88,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.011363636363636364,
+      "max_boundary_utilization": 0.022727272727272728,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.011363636363636364,
+        "current_right_prime": 571199,
+        "next_prime": 571201,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.022727272727272728,
+        "current_right_prime": 571199,
+        "next_prime": 571201,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 66,
+      "count": 5,
+      "cutoff": 89,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.011235955056179775,
+      "max_boundary_utilization": 0.02247191011235955,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.011235955056179775,
+        "current_right_prime": 617471,
+        "next_prime": 617473,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.02247191011235955,
+        "current_right_prime": 617471,
+        "next_prime": 617473,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 104,
+      "count": 7,
+      "cutoff": 91,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.01098901098901099,
+      "max_boundary_utilization": 0.02197802197802198,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.01098901098901099,
+        "current_right_prime": 675839,
+        "next_prime": 675841,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.02197802197802198,
+        "current_right_prime": 675839,
+        "next_prime": 675841,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 52,
+      "count": 4,
+      "cutoff": 92,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.010869565217391304,
+      "max_boundary_utilization": 0.021739130434782608,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.010869565217391304,
+        "current_right_prime": 724991,
+        "next_prime": 724993,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.021739130434782608,
+        "current_right_prime": 724991,
+        "next_prime": 724993,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 38,
+      "count": 1,
+      "cutoff": 93,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.010752688172043012,
+      "max_boundary_utilization": 0.021505376344086023,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.010752688172043012,
+        "current_right_prime": 786431,
+        "next_prime": 786433,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.021505376344086023,
+        "current_right_prime": 786431,
+        "next_prime": 786433,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 132,
+      "count": 10,
+      "cutoff": 93,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.010752688172043012,
+      "max_boundary_utilization": 0.021505376344086023,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.010752688172043012,
+        "current_right_prime": 783359,
+        "next_prime": 783361,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.021505376344086023,
+        "current_right_prime": 783359,
+        "next_prime": 783361,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 150,
+      "count": 12,
+      "cutoff": 93,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.010752688172043012,
+      "max_boundary_utilization": 0.021505376344086023,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.010752688172043012,
+        "current_right_prime": 825551,
+        "next_prime": 825553,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.021505376344086023,
+        "current_right_prime": 825551,
+        "next_prime": 825553,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 216,
+      "count": 88,
+      "cutoff": 95,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.010526315789473684,
+      "max_boundary_utilization": 0.021052631578947368,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.010526315789473684,
+        "current_right_prime": 957599,
+        "next_prime": 957601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.021052631578947368,
+        "current_right_prime": 957599,
+        "next_prime": 957601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 78,
+      "count": 2,
+      "cutoff": 96,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.010416666666666666,
+      "max_boundary_utilization": 0.020833333333333332,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.010416666666666666,
+        "current_right_prime": 995327,
+        "next_prime": 995329,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.020833333333333332,
+        "current_right_prime": 995327,
+        "next_prime": 995329,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 162,
+      "count": 13,
+      "cutoff": 98,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.01020408163265306,
+      "max_boundary_utilization": 0.02040816326530612,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.01020408163265306,
+        "current_right_prime": 1190699,
+        "next_prime": 1190701,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.02040816326530612,
+        "current_right_prime": 1190699,
+        "next_prime": 1190701,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 200,
+      "count": 19,
+      "cutoff": 101,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.009900990099009901,
+      "max_boundary_utilization": 0.019801980198019802,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.009900990099009901,
+        "current_right_prime": 1406159,
+        "next_prime": 1406161,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.019801980198019802,
+        "current_right_prime": 1406159,
+        "next_prime": 1406161,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 240,
+      "count": 71,
+      "cutoff": 103,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.009708737864077669,
+      "max_boundary_utilization": 0.019417475728155338,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.009708737864077669,
+        "current_right_prime": 1621619,
+        "next_prime": 1621621,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.019417475728155338,
+        "current_right_prime": 1621619,
+        "next_prime": 1621621,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 252,
+      "count": 12,
+      "cutoff": 104,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.009615384615384616,
+      "max_boundary_utilization": 0.019230769230769232,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.009615384615384616,
+        "current_right_prime": 1713599,
+        "next_prime": 1713601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.019230769230769232,
+        "current_right_prime": 1713599,
+        "next_prime": 1713601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 256,
+      "count": 34,
+      "cutoff": 105,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.009523809523809525,
+      "max_boundary_utilization": 0.01904761904761905,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.009523809523809525,
+        "current_right_prime": 1867319,
+        "next_prime": 1867321,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.01904761904761905,
+        "current_right_prime": 1867319,
+        "next_prime": 1867321,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 270,
+      "count": 6,
+      "cutoff": 105,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.009523809523809525,
+      "max_boundary_utilization": 0.01904761904761905,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.009523809523809525,
+        "current_right_prime": 1940399,
+        "next_prime": 1940401,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.01904761904761905,
+        "current_right_prime": 1940399,
+        "next_prime": 1940401,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 210,
+      "count": 5,
+      "cutoff": 106,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.009433962264150943,
+      "max_boundary_utilization": 0.018867924528301886,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.009433962264150943,
+        "current_right_prime": 2041199,
+        "next_prime": 2041201,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.018867924528301886,
+        "current_right_prime": 2041199,
+        "next_prime": 2041201,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 224,
+      "count": 20,
+      "cutoff": 107,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.009345794392523364,
+      "max_boundary_utilization": 0.018691588785046728,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.009345794392523364,
+        "current_right_prime": 2185919,
+        "next_prime": 2185921,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.018691588785046728,
+        "current_right_prime": 2185919,
+        "next_prime": 2185921,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 176,
+      "count": 8,
+      "cutoff": 109,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.009174311926605505,
+      "max_boundary_utilization": 0.01834862385321101,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.009174311926605505,
+        "current_right_prime": 2472959,
+        "next_prime": 2472961,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.01834862385321101,
+        "current_right_prime": 2472959,
+        "next_prime": 2472961,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 288,
+      "count": 39,
+      "cutoff": 109,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.009174311926605505,
+      "max_boundary_utilization": 0.01834862385321101,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.009174311926605505,
+        "current_right_prime": 2489759,
+        "next_prime": 2489761,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.01834862385321101,
+        "current_right_prime": 2489759,
+        "next_prime": 2489761,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 110,
+      "count": 2,
+      "cutoff": 112,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.008928571428571428,
+      "max_boundary_utilization": 0.017857142857142856,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.008928571428571428,
+        "current_right_prime": 3068927,
+        "next_prime": 3068929,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.017857142857142856,
+        "current_right_prime": 3068927,
+        "next_prime": 3068929,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 156,
+      "count": 2,
+      "cutoff": 112,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.008928571428571428,
+      "max_boundary_utilization": 0.017857142857142856,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.008928571428571428,
+        "current_right_prime": 3133439,
+        "next_prime": 3133441,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.017857142857142856,
+        "current_right_prime": 3133439,
+        "next_prime": 3133441,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 264,
+      "count": 1,
+      "cutoff": 114,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.008771929824561403,
+      "max_boundary_utilization": 0.017543859649122806,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.008771929824561403,
+        "current_right_prime": 3548159,
+        "next_prime": 3548161,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.017543859649122806,
+        "current_right_prime": 3548159,
+        "next_prime": 3548161,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 208,
+      "count": 2,
+      "cutoff": 116,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.008620689655172414,
+      "max_boundary_utilization": 0.017241379310344827,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.008620689655172414,
+        "current_right_prime": 3870719,
+        "next_prime": 3870721,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.017241379310344827,
+        "current_right_prime": 3870719,
+        "next_prime": 3870721,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 320,
+      "count": 8,
+      "cutoff": 116,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.008620689655172414,
+      "max_boundary_utilization": 0.017241379310344827,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.008620689655172414,
+        "current_right_prime": 3991679,
+        "next_prime": 3991681,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.017241379310344827,
+        "current_right_prime": 3991679,
+        "next_prime": 3991681,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 198,
+      "count": 2,
+      "cutoff": 117,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.008547008547008548,
+      "max_boundary_utilization": 0.017094017094017096,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.008547008547008548,
+        "current_right_prime": 4377599,
+        "next_prime": 4377601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.017094017094017096,
+        "current_right_prime": 4377599,
+        "next_prime": 4377601,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 300,
+      "count": 2,
+      "cutoff": 118,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.00847457627118644,
+      "max_boundary_utilization": 0.01694915254237288,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.00847457627118644,
+        "current_right_prime": 4633199,
+        "next_prime": 4633201,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.01694915254237288,
+        "current_right_prime": 4633199,
+        "next_prime": 4633201,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 280,
+      "count": 3,
+      "cutoff": 119,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.008403361344537815,
+      "max_boundary_utilization": 0.01680672268907563,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.008403361344537815,
+        "current_right_prime": 4847039,
+        "next_prime": 4847041,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.01680672268907563,
+        "current_right_prime": 4847039,
+        "next_prime": 4847041,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 384,
+      "count": 7,
+      "cutoff": 124,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.008064516129032258,
+      "max_boundary_utilization": 0.016129032258064516,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.008064516129032258,
+        "current_right_prime": 6652799,
+        "next_prime": 6652801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.016129032258064516,
+        "current_right_prime": 6652799,
+        "next_prime": 6652801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 360,
+      "count": 5,
+      "cutoff": 125,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.008,
+      "max_boundary_utilization": 0.016,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.008,
+        "current_right_prime": 6985439,
+        "next_prime": 6985441,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.016,
+        "current_right_prime": 6985439,
+        "next_prime": 6985441,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 102,
+      "count": 1,
+      "cutoff": 126,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.007936507936507936,
+      "max_boundary_utilization": 0.015873015873015872,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.007936507936507936,
+        "current_right_prime": 7667711,
+        "next_prime": 7667713,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.015873015873015872,
+        "current_right_prime": 7667711,
+        "next_prime": 7667713,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 6,
+      "exact_next_dmin": 24,
+      "count": 1,
+      "cutoff": 126,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.007936507936507936,
+      "max_boundary_utilization": 0.047619047619047616,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.007936507936507936,
+        "current_right_prime": 7761211,
+        "next_prime": 7761217,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.047619047619047616,
+        "current_right_prime": 7761211,
+        "next_prime": 7761217,
+        "gap_width": 6,
+        "gap_boundary_offset": 6,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 294,
+      "count": 1,
+      "cutoff": 127,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.007874015748031496,
+      "max_boundary_utilization": 0.015748031496062992,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.007874015748031496,
+        "current_right_prime": 8164799,
+        "next_prime": 8164801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.015748031496062992,
+        "current_right_prime": 8164799,
+        "next_prime": 8164801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 324,
+      "count": 1,
+      "cutoff": 127,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.007874015748031496,
+      "max_boundary_utilization": 0.015748031496062992,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.007874015748031496,
+        "current_right_prime": 8236799,
+        "next_prime": 8236801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.015748031496062992,
+        "current_right_prime": 8236799,
+        "next_prime": 8236801,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    },
+    {
+      "first_open_offset": 2,
+      "exact_next_dmin": 336,
+      "count": 5,
+      "cutoff": 128,
+      "max_exact_next_peak_offset": 1,
+      "max_cutoff_utilization": 0.0078125,
+      "max_boundary_utilization": 0.015625,
+      "argmax_cutoff_utilization": {
+        "metric_value": 0.0078125,
+        "current_right_prime": 8796479,
+        "next_prime": 8796481,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      },
+      "argmax_boundary_utilization": {
+        "metric_value": 0.015625,
+        "current_right_prime": 8796479,
+        "next_prime": 8796481,
+        "gap_width": 2,
+        "gap_boundary_offset": 2,
+        "peak_offset": 1
+      }
+    }
+  ],
+  "global_max_peak_branch": {
+    "first_open_offset": 4,
+    "exact_next_dmin": 3,
+    "count": 179,
+    "cutoff": 64,
+    "max_exact_next_peak_offset": 60,
+    "max_cutoff_utilization": 0.6153846153846154,
+    "max_boundary_utilization": 0.8461538461538461,
+    "argmax_cutoff_utilization": {
+      "metric_value": 0.6153846153846154,
+      "current_right_prime": 259033,
+      "next_prime": 259099,
+      "gap_width": 66,
+      "gap_boundary_offset": 66,
+      "peak_offset": 48
+    },
+    "argmax_boundary_utilization": {
+      "metric_value": 0.8461538461538461,
+      "current_right_prime": 259033,
+      "next_prime": 259099,
+      "gap_width": 66,
+      "gap_boundary_offset": 66,
+      "peak_offset": 48
+    }
+  }
+}

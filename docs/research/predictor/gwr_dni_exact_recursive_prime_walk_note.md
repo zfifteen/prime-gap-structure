@@ -28,8 +28,9 @@ The strongest supported claims are concrete:
   remains at hit rate $1.0$ with zero skipped gaps across $860$ measured
   recursive steps;
 - the fixed cutoff map `{2:44, 4:60, 6:60}` is false;
-- the current dynamic cutoff `C(q) = max(64, ceil(0.5 * log(q)^2))` covers
-  every known square-branch falsification case through `p <= 10^6`.
+- the current dynamic cutoff `C(q) = max(64, ceil(0.5 * log(q)^2))` is
+  certified on the committed exact consecutive-right-prime surface through
+  `q <= 10^7`.
 
 This is not yet a closed-form formula for $p_n$. The unconditional part is a
 sequential next-prime oracle: given one known prime, it recovers the immediate
@@ -45,9 +46,10 @@ The mechanism now has a clean split:
 - the current bounded walker uses a dynamic log-squared cutoff rather than the
   falsified fixed `44/60` map.
 
-So the remaining theorem question is not whether the mechanism itself can be
-exact. It is whether the dynamic bounded compression always recovers the same
-next-gap lex-min as the unbounded reference.
+So the remaining open theorem question is not whether the mechanism itself can
+be exact. It is whether the dynamic bounded compression always recovers the
+same next-gap lex-min as the unbounded reference beyond the current certified
+finite surface.
 
 ## 1. Setting
 
@@ -195,13 +197,26 @@ Its contract is narrow:
 
 - if one mismatch appears, the bounded law is false and the first
   counterexample is recorded;
-- if no mismatch appears on a finite surface, the scan emits the exact frontier
-  certificates that any proof of the bounded law must explain.
+- if no mismatch appears on a finite surface, the scan certifies exactly that
+  finite surface and emits the frontier certificates that any larger claim must
+  explain.
+
+On the current committed scan through `q <= 10^7`, the exact compare surface
+reports:
+
+- tested gaps: `664,575`;
+- first tested right prime: `11`;
+- last tested right prime: `9,999,991`;
+- first counterexample: `none`;
+- maximum exact peak offset: `60`;
+- maximum cutoff utilization: `0.6153846153846154`.
 
 The square branch now has its own direct audit too:
 [`square_branch_gap_audit.py`](../../../benchmarks/python/predictor/square_branch_gap_audit.py).
 Through `p <= 10^6`, it tested `78,498` prime squares, found `7,477`
-violations of the old fixed map, and observed maximum square offset `246`.
+violations of the old fixed map, observed maximum square offset `246`, and
+records dynamic-cutoff pressure alongside the archived fixed-cutoff failure
+counts.
 
 ## 4. Exactness on the Verified Surface
 
@@ -220,6 +235,8 @@ On the combined exact $10^6 + 10^7$ surface:
 | extended DNI lex-min | $743{,}075$ | $743{,}075$ | $1.0$ |
 
 So the bounded extension removes every known miss on that full exact surface.
+That exact transition surface is the current committed certification surface
+for the bounded rule.
 
 ### 4.2 Exact Recursive Walk
 
@@ -259,20 +276,20 @@ Across all $17$ decade regimes:
 | all exact hits | `true` |
 | all zero skips | `true` |
 | max observed peak offset | $32$ |
-| max observed cutoff utilization | $0.7272727272727273$ |
-| max runtime per regime | $1.434689$ s |
-| mean runtime per step | $0.0071075$ s |
+| max observed cutoff utilization | $0.1875$ |
+| max runtime per regime | $39.371231416007504$ s |
+| mean runtime per step | $0.31360285915989045$ s |
 
 Selected decade rows are:
 
 | start regime | steps | start right prime | final predicted prime | max peak offset | max cutoff utilization | exact hit rate |
 |---|---:|---:|---:|---:|---:|---:|
-| $10^2$ | $100$ | $101$ | $701$ | $8$ | $0.1333$ | $1.0$ |
-| $10^7$ | $100$ | $10{,}000{,}019$ | $10{,}001{,}687$ | $13$ | $0.2273$ | $1.0$ |
-| $10^{10}$ | $50$ | $10{,}000{,}000{,}019$ | $10{,}000{,}001{,}113$ | $18$ | $0.3182$ | $1.0$ |
-| $10^{13}$ | $20$ | `10000000000037` | `10000000000657` | $16$ | $0.3636$ | $1.0$ |
-| $10^{16}$ | $10$ | `10000000000000061` | `10000000000000753` | $24$ | $0.4$ | $1.0$ |
-| $10^{18}$ | $10$ | `1000000000000000003` | `1000000000000000507` | $12$ | $0.2$ | $1.0$ |
+| $10^2$ | $100$ | $101$ | $701$ | $8$ | $0.125$ | $1.0$ |
+| $10^7$ | $100$ | $10{,}000{,}019$ | $10{,}001{,}687$ | $13$ | $0.1$ | $1.0$ |
+| $10^{10}$ | $50$ | $10{,}000{,}000{,}019$ | $10{,}000{,}001{,}113$ | $18$ | $0.06766917293233082$ | $1.0$ |
+| $10^{13}$ | $20$ | `10000000000037` | `10000000000657` | $16$ | $0.035634743875278395$ | $1.0$ |
+| $10^{16}$ | $10$ | `10000000000000061` | `10000000000000753` | $24$ | $0.035346097201767304$ | $1.0$ |
+| $10^{18}$ | $10$ | `1000000000000000003` | `1000000000000000507` | $12$ | $0.013969732246798603$ | $1.0$ |
 
 The deepest sampled regime is especially important:
 
@@ -334,6 +351,8 @@ This note supports the following claims:
 
 - there is an exact deterministic DNI/GWR next-prime oracle in the repository;
 - there is an empirical bounded compression layer in the repository;
+- that bounded layer is certified on the committed exact surface through
+  `q <= 10^7`;
 - there is a built-in compare mode that can falsify that compression directly.
 
 This note does not support the following stronger claims:
@@ -345,7 +364,10 @@ So the correct present description is:
 
 - exact deterministic sequential generator on the tested surface;
 - unconditional exact transition mechanism in unbounded form;
-- dynamic bounded walker calibrated through the current tested surface;
+- dynamic bounded walker certified through the committed exact surface
+  `q <= 10^7`;
+- dynamic square-branch audit through `p <= 10^6` with `7,477` archived fixed-
+  cutoff violations and full dynamic-cutoff coverage on that audit surface;
 - not yet an unconditional all-scale theorem for the compression layer;
 - not yet a direct $n \mapsto p_n$ closed form.
 
@@ -383,8 +405,8 @@ python3 benchmarks/python/predictor/square_branch_gap_audit.py \
 ```bash
 python3 benchmarks/python/predictor/gwr_dni_cutoff_counterexample_scan.py \
   --min-right-prime 11 \
-  --max-right-prime 1000000 \
-  --output-dir /tmp/gwr_dni_cutoff_counterexample_scan_1e6
+  --max-right-prime 10000000 \
+  --output-dir /tmp/gwr_dni_cutoff_counterexample_scan_1e7
 ```
 
 ```bash

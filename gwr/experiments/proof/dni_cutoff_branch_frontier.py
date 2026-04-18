@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extract the exact branch frontier for the DNI cutoff theorem."""
+"""Extract the exact branch frontier for the dynamic bounded certification surface."""
 
 from __future__ import annotations
 
@@ -21,14 +21,14 @@ import gwr_dni_recursive_walk as walk
 
 
 DEFAULT_MIN_RIGHT_PRIME = 11
-DEFAULT_MAX_RIGHT_PRIME = 10**6
-DEFAULT_OUTPUT = ROOT / "output" / "gwr_proof" / "dni_cutoff_branch_frontier_1e6.json"
+DEFAULT_MAX_RIGHT_PRIME = 10**7
+DEFAULT_OUTPUT = ROOT / "output" / "gwr_proof" / "dni_dynamic_cutoff_branch_frontier_1e7.json"
 
 
 def build_parser() -> argparse.ArgumentParser:
     """Build the CLI parser."""
     parser = argparse.ArgumentParser(
-        description="Extract the exact branch frontier for the DNI cutoff theorem.",
+        description="Extract the exact branch frontier for the dynamic bounded certification surface.",
     )
     parser.add_argument(
         "--min-right-prime",
@@ -71,6 +71,18 @@ def _branch_key(comparison: dict[str, object]) -> tuple[int, int]:
     )
 
 
+def _argmax_payload(comparison: dict[str, object], metric_key: str) -> dict[str, object]:
+    """Return the identifying payload for one extremal comparison row."""
+    return {
+        "metric_value": float(comparison[metric_key]),
+        "current_right_prime": int(comparison["current_right_prime"]),
+        "next_prime": int(comparison["exact_next_prime"]),
+        "gap_width": int(comparison["exact_gap_width"]),
+        "gap_boundary_offset": int(comparison["exact_gap_boundary_offset"]),
+        "peak_offset": int(comparison["exact_next_peak_offset"]),
+    }
+
+
 def _make_summary_row(comparison: dict[str, object]) -> dict[str, object]:
     """Return the branch summary row for one extremal exact case."""
     return {
@@ -80,10 +92,9 @@ def _make_summary_row(comparison: dict[str, object]) -> dict[str, object]:
         "cutoff": int(comparison["cutoff"]),
         "max_exact_next_peak_offset": int(comparison["exact_next_peak_offset"]),
         "max_cutoff_utilization": float(comparison["cutoff_utilization"]),
-        "argmax_current_right_prime": int(comparison["current_right_prime"]),
-        "argmax_next_prime": int(comparison["exact_next_prime"]),
-        "argmax_gap_width": int(comparison["exact_gap_width"]),
-        "argmax_gap_boundary_offset": int(comparison["exact_gap_boundary_offset"]),
+        "max_boundary_utilization": float(comparison["boundary_utilization"]),
+        "argmax_cutoff_utilization": _argmax_payload(comparison, "cutoff_utilization"),
+        "argmax_boundary_utilization": _argmax_payload(comparison, "boundary_utilization"),
     }
 
 
@@ -101,6 +112,7 @@ def _frontier_row(comparison: dict[str, object]) -> dict[str, object]:
         "cutoff": int(comparison["cutoff"]),
         "cutoff_utilization": float(comparison["cutoff_utilization"]),
         "exact_gap_boundary_offset": int(comparison["exact_gap_boundary_offset"]),
+        "boundary_utilization": float(comparison["boundary_utilization"]),
         "divisor_ladder": " ".join(str(value) for value in ladder),
     }
 
@@ -141,11 +153,22 @@ def run_frontier(
         cutoff_utilization = float(comparison["cutoff_utilization"])
         if peak_offset > int(row["max_exact_next_peak_offset"]):
             row["max_exact_next_peak_offset"] = peak_offset
+
+        if cutoff_utilization > float(row["max_cutoff_utilization"]):
             row["max_cutoff_utilization"] = cutoff_utilization
-            row["argmax_current_right_prime"] = int(comparison["current_right_prime"])
-            row["argmax_next_prime"] = int(comparison["exact_next_prime"])
-            row["argmax_gap_width"] = int(comparison["exact_gap_width"])
-            row["argmax_gap_boundary_offset"] = int(comparison["exact_gap_boundary_offset"])
+            row["argmax_cutoff_utilization"] = _argmax_payload(
+                comparison,
+                "cutoff_utilization",
+            )
+            frontier_rows.append(_frontier_row(comparison))
+
+        boundary_utilization = float(comparison["boundary_utilization"])
+        if boundary_utilization > float(row["max_boundary_utilization"]):
+            row["max_boundary_utilization"] = boundary_utilization
+            row["argmax_boundary_utilization"] = _argmax_payload(
+                comparison,
+                "boundary_utilization",
+            )
             frontier_rows.append(_frontier_row(comparison))
 
         current_right_prime = int(nextprime(current_right_prime))
@@ -197,6 +220,7 @@ def main(argv: list[str] | None = None) -> int:
         "cutoff",
         "cutoff_utilization",
         "exact_gap_boundary_offset",
+        "boundary_utilization",
         "divisor_ladder",
     ]
     with frontier_path.open("w", encoding="utf-8", newline="") as handle:

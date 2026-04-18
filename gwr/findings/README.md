@@ -49,6 +49,12 @@ language than those anchors.
   Implications of the dominant `d=4` regime.
 - [gap_anatomy_decomposition.md](./gap_anatomy_decomposition.md):
   Hierarchical and local-arrival reading of the gap interior.
+- [mersenne_prime_gap_type_probe_findings.md](./mersenne_prime_gap_type_probe_findings.md):
+  Exact tractable test of whether known Mersenne primes carry distinctive
+  adjacent gap types.
+- [twin_prime_gap_type_probe_findings.md](./twin_prime_gap_type_probe_findings.md):
+  Exact `10^6` test of whether twin primes sit inside distinctive outer
+  gap-type shells.
 
 ## Historical Archive
 

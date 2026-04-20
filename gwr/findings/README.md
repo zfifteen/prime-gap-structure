@@ -55,6 +55,9 @@ language than those anchors.
 - [gap_type_sequence_grammar_findings.md](./gap_type_sequence_grammar_findings.md):
   Measured transition-grammar reading of the gap-type stream, including the
   reduced `open_family|d_bucket` probe.
+- [gap_type_generative_grammar_findings.md](./gap_type_generative_grammar_findings.md):
+  Deterministic held-out generative test of the persistent `14`-state
+  reduced grammar against the sampled `10^18` window.
 - [mersenne_prime_gap_type_probe_findings.md](./mersenne_prime_gap_type_probe_findings.md):
   Exact tractable test of whether known Mersenne primes carry distinctive
   adjacent gap types.

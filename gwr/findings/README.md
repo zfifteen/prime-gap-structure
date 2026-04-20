@@ -61,6 +61,10 @@ language than those anchors.
 - [gap_type_engine_decode_findings.md](./gap_type_engine_decode_findings.md):
   Rulebook, million-step stress test, and record-gap rarity readout for the
   persistent `14`-state engine surface.
+- [gap_type_scheduler_findings.md](./gap_type_scheduler_findings.md):
+  Deterministic scheduler search showing that aligned `256`-window scoring
+  nearly closes the higher-order gap with a finite scheduler above the
+  persistent `14`-state core.
 - [mersenne_prime_gap_type_probe_findings.md](./mersenne_prime_gap_type_probe_findings.md):
   Exact tractable test of whether known Mersenne primes carry distinctive
   adjacent gap types.

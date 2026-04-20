@@ -2,7 +2,10 @@
 
 ![Prime Gap Structure hero](docs/assets/prime-gap-structure-hero.jpg)
 
-This repository is about one simple deterministic rule inside prime gaps.
+This repository now carries two major prime-gap results:
+
+- a proved local arithmetic winner law inside prime gaps;
+- a frozen hierarchical finite-state engine for reduced prime-gap types.
 
 Take the consecutive primes `23` and `29`. The integers between them are
 `24, 25, 26, 27, 28`. Their divisor counts are:
@@ -29,8 +32,16 @@ Now take `89` and `97`. The interior integers are
 Here the smallest divisor count present is `4`, and the leftmost carrier of
 that minimum is `91`, so `91` wins.
 
-The central claim of this repository is that this is not a toy pattern or a
-near miss. It is exact.
+These examples show the local arithmetic choice that anchors the repository.
+
+## Two Headline Results
+
+- **Gap Winner Rule (GWR):** on the repository's current proof surface, the
+  implemented divisor-normalization score picks exactly the leftmost carrier of
+  the minimum interior divisor class in every prime gap.
+- **Prime Gap Generative Engine v1.0:** on the persistent reduced gap-type
+  surface, prime-gap types close to a frozen hierarchical finite-state engine
+  with a stable `14`-state core.
 
 ## Gap Winner Rule
 
@@ -48,6 +59,41 @@ implemented divisor-normalization score picks exactly that same integer in
 every prime gap. The theorem statement is
 [Gap Winner Rule — Hierarchical Local-Dominator Law](gwr/findings/gwr_hierarchical_local_dominator_theorem.md),
 and the proof surface is summarized in [GWR_PROOF.md](GWR_PROOF.md).
+
+## Prime Gap Generative Engine v1.0
+
+The second headline result in the repository is the frozen engine on the
+persistent reduced gap-type surface. This is a result about the persistent
+reduced gap-type surface, not yet a theorem about the full raw gap-size
+sequence.
+
+On that reduced surface, the type stream closes to a persistent `14`-state
+core. Its dominant dynamical object is the **Semiprime Wheel Attractor**:
+
+- `o2_odd_semiprime|d<=4`
+- `o4_odd_semiprime|d<=4`
+- `o6_odd_semiprime|d<=4`
+
+The frozen `v1.0` engine has three layers:
+
+1. core grammar;
+2. scheduler;
+3. higher-divisor-triggered long-horizon controller.
+
+Its reference operating profiles are:
+
+- local fidelity: pooled-window concentration L1 `0.0116`
+- balanced frontier: pooled-window concentration L1 `0.0150`,
+  full-walk three-step concentration `0.5564`
+- long-horizon study: full-walk three-step concentration `0.6278`
+
+See also:
+
+- [Prime Gap Generative Engine v1.0 release note](docs/releases/prime_gap_generative_engine_v1_0.md)
+- [Gap-type engine v1.0 freeze note](gwr/findings/gap_type_engine_v1_freeze.md)
+- [Gap-type engine v1.0 rulebook](gwr/findings/gap_type_engine_v1_rulebook.md)
+- [Hierarchical engine paper draft](docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md)
+- [Engine overview figure](output/gwr_dni_gap_type_engine_v1_overview.png)
 
 ## Why The Score Exists
 
@@ -87,21 +133,20 @@ rule with jargon.
 
 ## What This Repository Carries
 
-The main result in this repository is the proved GWR theorem.
+This repository now carries three visible lines of work:
 
-Downstream from that, the repo also carries:
+- the proved GWR theorem and its proof surface;
+- the reduced gap-type engine and pattern results on the persistent reduced
+  surface;
+- downstream deterministic DNI-based predictor and prefilter work.
 
-- an exact DNI/GWR recursive next-prime walk,
-- a deterministic prime-generation filter derived from the same
-  divisor-normalization program.
-
-The deterministic filter is a secondary engineering artifact built from the
-same normalization. The central result is the winner law.
+The GWR theorem remains the theorem anchor. The gap-type engine is the second
+headline prime-gap result. The recursive walk and deterministic filter are
+downstream deterministic instruments built from the same normalization.
 
 ## Novel Structures in This Repository
 
-Five structures introduced here do not appear under these names in the
-literature:
+The repository now carries the following named structures and results:
 
 - **Gap Winner Rule (GWR):** inside any prime gap, the log-score argmax is
   exactly the leftmost carrier of the minimum interior divisor class. On the
@@ -110,6 +155,24 @@ literature:
   [gwr/findings/gwr_hierarchical_local_dominator_theorem.md](gwr/findings/gwr_hierarchical_local_dominator_theorem.md).
 - **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
   exact arithmetic identity collapsing all primes to `Z = 1.0`.
+- **Gap-type catalog / reduced state surface:** the repository defines a
+  deterministic reduced gap-type surface and catalogs it through sampled
+  windows to `10^18`, with a persistent `14`-state core on the settled
+  high-scale surface. See
+  [gwr/findings/gap_type_catalog_through_1e18.md](gwr/findings/gap_type_catalog_through_1e18.md)
+  and
+  [gwr/findings/gap_type_sequence_grammar_findings.md](gwr/findings/gap_type_sequence_grammar_findings.md).
+- **Semiprime Wheel Attractor:** the triad
+  `o2_odd_semiprime|d<=4`, `o4_odd_semiprime|d<=4`,
+  `o6_odd_semiprime|d<=4` is the dominant dynamical object on the persistent
+  reduced gap-type surface. See
+  [gwr/findings/gap_type_engine_v1_freeze.md](gwr/findings/gap_type_engine_v1_freeze.md).
+- **Hierarchical finite-state engine:** on the persistent reduced gap-type
+  surface, the frozen `v1.0` engine combines a `14`-state core grammar, a
+  scheduler layer, and a higher-divisor-triggered long-horizon controller. See
+  [docs/releases/prime_gap_generative_engine_v1_0.md](docs/releases/prime_gap_generative_engine_v1_0.md)
+  and
+  [gwr/findings/gap_type_engine_v1_rulebook.md](gwr/findings/gap_type_engine_v1_rulebook.md).
 - **No-Later-Simpler-Composite (NLSC) condition:** once the GWR winner
   appears, no later interior composite with strictly smaller divisor count
   precedes the next prime. Zero violations observed through `10^18`.

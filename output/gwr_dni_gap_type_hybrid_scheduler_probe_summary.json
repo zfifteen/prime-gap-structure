@@ -1,0 +1,336 @@
+{
+  "synthetic_length": 1000000,
+  "reference_window_length": 256,
+  "real_reference_window_concentrations": {
+    "one_step": 0.32844243792325056,
+    "two_step": 0.5059490084985836,
+    "three_step": 0.7593856655290102
+  },
+  "real_reference_higher_divisor_share": 0.19617762788083193,
+  "core_state_count": 14,
+  "core_states": [
+    "o2_even_semiprime|d<=4",
+    "o2_higher_divisor_even|17<=d<=64",
+    "o2_higher_divisor_even|5<=d<=16",
+    "o2_higher_divisor_even|d>64",
+    "o2_higher_divisor_odd|5<=d<=16",
+    "o2_odd_semiprime|d<=4",
+    "o4_even_semiprime|d<=4",
+    "o4_higher_divisor_even|5<=d<=16",
+    "o4_higher_divisor_odd|5<=d<=16",
+    "o4_odd_semiprime|d<=4",
+    "o6_even_semiprime|d<=4",
+    "o6_higher_divisor_even|5<=d<=16",
+    "o6_higher_divisor_odd|5<=d<=16",
+    "o6_odd_semiprime|d<=4"
+  ],
+  "models": {
+    "second_order_rotor": {
+      "description": "Baseline persistent 14-state second-order rotor.",
+      "scheduler_phase_count": 0,
+      "transition_context_count": 167,
+      "family_l1_to_real_pool": 0.06924275210792583,
+      "peak_offset_l1_to_real_pool": 0.16568421697582913,
+      "higher_divisor_share": 0.210701,
+      "higher_divisor_share_error": 0.014523372119168071,
+      "full_walk_concentrations": {
+        "one_step": 0.2849342849342849,
+        "two_step": 0.33449066898133795,
+        "three_step": 0.3477600432801298
+      },
+      "pooled_window_concentrations": {
+        "one_step": 0.3107265845406263,
+        "two_step": 0.45138914087351983,
+        "three_step": 0.8260636823049166
+      },
+      "pooled_window_concentration_l1": 0.13895373778359438
+    },
+    "lag2_state_scheduler": {
+      "description": "Finite scheduler whose phase is the reduced state two steps back; equivalently, a third-order walk on the persistent core.",
+      "scheduler_phase_count": 14,
+      "transition_context_count": 803,
+      "family_l1_to_real_pool": 0.06750675210792581,
+      "peak_offset_l1_to_real_pool": 0.1648222169758291,
+      "higher_divisor_share": 0.209917,
+      "higher_divisor_share_error": 0.013739372119168064,
+      "full_walk_concentrations": {
+        "one_step": 0.284995284995285,
+        "two_step": 0.33453166906333814,
+        "three_step": 0.4900134700404101
+      },
+      "pooled_window_concentrations": {
+        "one_step": 0.3244922341696535,
+        "two_step": 0.4987602356157093,
+        "three_step": 0.7503850365000435
+      },
+      "pooled_window_concentration_l1": 0.020139605665438043
+    },
+    "mod_cycle_scheduler": {
+      "description": "Simple 8-phase modulo scheduler over the second-order core.",
+      "scheduler_phase_count": 8,
+      "transition_context_count": 759,
+      "family_l1_to_real_pool": 0.06698675210792583,
+      "peak_offset_l1_to_real_pool": 0.16408021697582914,
+      "higher_divisor_share": 0.21021,
+      "higher_divisor_share_error": 0.01403237211916808,
+      "full_walk_concentrations": {
+        "one_step": 0.2861712861712862,
+        "two_step": 0.33524567049134096,
+        "three_step": 0.3957321871965616
+      },
+      "pooled_window_concentrations": {
+        "one_step": 0.32633153619870886,
+        "two_step": 0.5005966996060977,
+        "three_step": 0.7768629998644024
+      },
+      "pooled_window_concentration_l1": 0.024940544952419874
+    },
+    "hybrid_lag2_mod8_scheduler": {
+      "description": "Hybrid lag-2 plus 8-phase modulo scheduler with no explicit reset trigger.",
+      "scheduler_phase_count": 112,
+      "transition_context_count": 1782,
+      "family_l1_to_real_pool": 0.05867275210792576,
+      "peak_offset_l1_to_real_pool": 0.16053820910623945,
+      "higher_divisor_share": 0.206633,
+      "higher_divisor_share_error": 0.010455372119168083,
+      "full_walk_concentrations": {
+        "one_step": 0.2861102861102861,
+        "two_step": 0.3376516753033506,
+        "three_step": 0.49658548975646927
+      },
+      "pooled_window_concentrations": {
+        "one_step": 0.33156631828358585,
+        "two_step": 0.5080181509569368,
+        "three_step": 0.7713439747100336
+      },
+      "pooled_window_concentration_l1": 0.01715133199971186
+    },
+    "hybrid_lag2_mod8_reset_hdiv_scheduler": {
+      "description": "Hybrid lag-2 plus 8-phase modulo scheduler with phase reset when a higher-divisor state arrives.",
+      "scheduler_phase_count": 112,
+      "transition_context_count": 1239,
+      "family_l1_to_real_pool": 0.06667875210792579,
+      "peak_offset_l1_to_real_pool": 0.16444621697582915,
+      "higher_divisor_share": 0.209754,
+      "higher_divisor_share_error": 0.013576372119168068,
+      "full_walk_concentrations": {
+        "one_step": 0.28467228467228467,
+        "two_step": 0.33423966847933695,
+        "three_step": 0.4929004787014361
+      },
+      "pooled_window_concentrations": {
+        "one_step": 0.3276065981948335,
+        "two_step": 0.5084293898746528,
+        "three_step": 0.7734750834330077
+      },
+      "pooled_window_concentration_l1": 0.017405639008483798
+    },
+    "hybrid_lag2_mod8_reset_nontriad_scheduler": {
+      "description": "Hybrid lag-2 plus 8-phase modulo scheduler with phase reset when the walk leaves the Semiprime Wheel Attractor.",
+      "scheduler_phase_count": 112,
+      "transition_context_count": 965,
+      "family_l1_to_real_pool": 0.06706075210792577,
+      "peak_offset_l1_to_real_pool": 0.1643742169758291,
+      "higher_divisor_share": 0.208773,
+      "higher_divisor_share_error": 0.012595372119168058,
+      "full_walk_concentrations": {
+        "one_step": 0.2837872837872838,
+        "two_step": 0.33521967043934087,
+        "three_step": 0.4907304721914166
+      },
+      "pooled_window_concentrations": {
+        "one_step": 0.3269108360189954,
+        "two_step": 0.505697876475118,
+        "three_step": 0.7692300686690589
+      },
+      "pooled_window_concentration_l1": 0.01162713706776941
+    }
+  },
+  "ranking_by_pooled_window_concentration_l1": [
+    {
+      "model_id": "hybrid_lag2_mod8_reset_nontriad_scheduler",
+      "pooled_window_concentration_l1": 0.01162713706776941
+    },
+    {
+      "model_id": "hybrid_lag2_mod8_scheduler",
+      "pooled_window_concentration_l1": 0.01715133199971186
+    },
+    {
+      "model_id": "hybrid_lag2_mod8_reset_hdiv_scheduler",
+      "pooled_window_concentration_l1": 0.017405639008483798
+    },
+    {
+      "model_id": "lag2_state_scheduler",
+      "pooled_window_concentration_l1": 0.020139605665438043
+    },
+    {
+      "model_id": "mod_cycle_scheduler",
+      "pooled_window_concentration_l1": 0.024940544952419874
+    },
+    {
+      "model_id": "second_order_rotor",
+      "pooled_window_concentration_l1": 0.13895373778359438
+    }
+  ],
+  "ranking_by_full_walk_three_step": [
+    {
+      "model_id": "hybrid_lag2_mod8_scheduler",
+      "full_walk_three_step": 0.49658548975646927
+    },
+    {
+      "model_id": "hybrid_lag2_mod8_reset_hdiv_scheduler",
+      "full_walk_three_step": 0.4929004787014361
+    },
+    {
+      "model_id": "hybrid_lag2_mod8_reset_nontriad_scheduler",
+      "full_walk_three_step": 0.4907304721914166
+    },
+    {
+      "model_id": "lag2_state_scheduler",
+      "full_walk_three_step": 0.4900134700404101
+    },
+    {
+      "model_id": "mod_cycle_scheduler",
+      "full_walk_three_step": 0.3957321871965616
+    },
+    {
+      "model_id": "second_order_rotor",
+      "full_walk_three_step": 0.3477600432801298
+    }
+  ],
+  "best_pooled_model_id": "hybrid_lag2_mod8_reset_nontriad_scheduler",
+  "best_full_walk_three_step_model_id": "hybrid_lag2_mod8_scheduler",
+  "cycle_sweeps": {
+    "mod_cycle_scheduler": [
+      {
+        "cycle_length": 2,
+        "pooled_window_concentration_l1": 0.07788352212006205,
+        "full_walk_three_step": 0.355001065003195
+      },
+      {
+        "cycle_length": 3,
+        "pooled_window_concentration_l1": 0.05766745410002655,
+        "full_walk_three_step": 0.3609250827752483
+      },
+      {
+        "cycle_length": 4,
+        "pooled_window_concentration_l1": 0.04499215480759827,
+        "full_walk_three_step": 0.37167511502534506
+      },
+      {
+        "cycle_length": 5,
+        "pooled_window_concentration_l1": 0.03801863563315494,
+        "full_walk_three_step": 0.38093714281142843
+      },
+      {
+        "cycle_length": 6,
+        "pooled_window_concentration_l1": 0.03273944861858574,
+        "full_walk_three_step": 0.3815661446984341
+      },
+      {
+        "cycle_length": 7,
+        "pooled_window_concentration_l1": 0.029578511662394114,
+        "full_walk_three_step": 0.3957241871725615
+      },
+      {
+        "cycle_length": 8,
+        "pooled_window_concentration_l1": 0.024940544952419874,
+        "full_walk_three_step": 0.3957321871965616
+      },
+      {
+        "cycle_length": 9,
+        "pooled_window_concentration_l1": 0.02414539338259919,
+        "full_walk_three_step": 0.39855019565058697
+      },
+      {
+        "cycle_length": 10,
+        "pooled_window_concentration_l1": 0.020997095005287847,
+        "full_walk_three_step": 0.406778220334661
+      },
+      {
+        "cycle_length": 11,
+        "pooled_window_concentration_l1": 0.020209141302337308,
+        "full_walk_three_step": 0.4148992446977341
+      },
+      {
+        "cycle_length": 12,
+        "pooled_window_concentration_l1": 0.020315312311061096,
+        "full_walk_three_step": 0.41189823569470707
+      }
+    ],
+    "hybrid_reset_hdiv_scheduler": [
+      {
+        "cycle_length": 2,
+        "pooled_window_concentration_l1": 0.009126752291163276,
+        "full_walk_three_step": 0.4917104751314254
+      },
+      {
+        "cycle_length": 3,
+        "pooled_window_concentration_l1": 0.011896481621476551,
+        "full_walk_three_step": 0.4913774741324224
+      },
+      {
+        "cycle_length": 4,
+        "pooled_window_concentration_l1": 0.01357699411068497,
+        "full_walk_three_step": 0.49259047777143333
+      },
+      {
+        "cycle_length": 5,
+        "pooled_window_concentration_l1": 0.01507154830875318,
+        "full_walk_three_step": 0.4912824738474215
+      },
+      {
+        "cycle_length": 6,
+        "pooled_window_concentration_l1": 0.01635318545743819,
+        "full_walk_three_step": 0.4921464764394293
+      },
+      {
+        "cycle_length": 7,
+        "pooled_window_concentration_l1": 0.017462840593813478,
+        "full_walk_three_step": 0.49202347607042823
+      },
+      {
+        "cycle_length": 8,
+        "pooled_window_concentration_l1": 0.017405639008483798,
+        "full_walk_three_step": 0.4929004787014361
+      },
+      {
+        "cycle_length": 9,
+        "pooled_window_concentration_l1": 0.017670622288985804,
+        "full_walk_three_step": 0.4922814768444305
+      },
+      {
+        "cycle_length": 10,
+        "pooled_window_concentration_l1": 0.017624968506698424,
+        "full_walk_three_step": 0.49247047741143224
+      },
+      {
+        "cycle_length": 11,
+        "pooled_window_concentration_l1": 0.016706180026919093,
+        "full_walk_three_step": 0.49191647574942726
+      },
+      {
+        "cycle_length": 12,
+        "pooled_window_concentration_l1": 0.0168341936719823,
+        "full_walk_three_step": 0.49222147666443
+      }
+    ]
+  },
+  "runtime_seconds": 76.33011516591068,
+  "record_reset_signature": {
+    "all_records": {
+      "record_count": 387,
+      "previous_higher_divisor_share": 0.21188630490956073,
+      "previous_nontriad_share": 0.3281653746770026,
+      "current_higher_divisor_share": 0.0,
+      "current_nontriad_share": 0.1421188630490956
+    },
+    "maximal_records": {
+      "record_count": 24,
+      "previous_higher_divisor_share": 0.2916666666666667,
+      "previous_nontriad_share": 0.375,
+      "current_higher_divisor_share": 0.0,
+      "current_nontriad_share": 0.08333333333333333
+    }
+  }
+}

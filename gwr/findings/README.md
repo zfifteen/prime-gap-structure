@@ -65,6 +65,10 @@ language than those anchors.
   Deterministic scheduler search showing that aligned `256`-window scoring
   nearly closes the higher-order gap with a finite scheduler above the
   persistent `14`-state core.
+- [gap_type_hybrid_scheduler_findings.md](./gap_type_hybrid_scheduler_findings.md):
+  Hybrid lag-2 plus periodic scheduler search showing that the local-window
+  engine closes further, while the stationary long-horizon re-entry law
+  remains the missing piece.
 - [mersenne_prime_gap_type_probe_findings.md](./mersenne_prime_gap_type_probe_findings.md):
   Exact tractable test of whether known Mersenne primes carry distinctive
   adjacent gap types.

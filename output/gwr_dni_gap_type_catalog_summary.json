@@ -1,0 +1,2582 @@
+{
+  "type_key_definition": {
+    "format": "o{first_open}_d{winner_d}_a{winner_offset}_{family}",
+    "first_open_offsets_observed": [
+      2,
+      4,
+      6
+    ],
+    "carrier_families": [
+      "prime_square",
+      "prime_cube",
+      "even_semiprime",
+      "odd_semiprime",
+      "higher_divisor_even",
+      "higher_divisor_odd"
+    ]
+  },
+  "exact_baseline_max_right_prime": 1000000,
+  "sampled_window_steps": 256,
+  "surface_count": 13,
+  "surface_order": [
+    "baseline_1e6",
+    "10^7",
+    "10^8",
+    "10^9",
+    "10^10",
+    "10^11",
+    "10^12",
+    "10^13",
+    "10^14",
+    "10^15",
+    "10^16",
+    "10^17",
+    "10^18"
+  ],
+  "surface_display_order": [
+    "<=10^6",
+    "10^7",
+    "10^8",
+    "10^9",
+    "10^10",
+    "10^11",
+    "10^12",
+    "10^13",
+    "10^14",
+    "10^15",
+    "10^16",
+    "10^17",
+    "10^18"
+  ],
+  "union_distinct_exact_type_count": 274,
+  "post_baseline_new_exact_type_count": 50,
+  "common_exact_type_count": 22,
+  "common_exact_types": [
+    "o2_d48_a1_higher_divisor_even",
+    "o2_d4_a12_odd_semiprime",
+    "o2_d4_a2_odd_semiprime",
+    "o2_d4_a4_odd_semiprime",
+    "o2_d4_a5_even_semiprime",
+    "o2_d4_a6_odd_semiprime",
+    "o2_d4_a8_odd_semiprime",
+    "o2_d8_a2_higher_divisor_odd",
+    "o4_d4_a10_odd_semiprime",
+    "o4_d4_a12_odd_semiprime",
+    "o4_d4_a1_even_semiprime",
+    "o4_d4_a2_odd_semiprime",
+    "o4_d4_a3_even_semiprime",
+    "o4_d4_a4_odd_semiprime",
+    "o4_d4_a6_odd_semiprime",
+    "o4_d8_a2_higher_divisor_odd",
+    "o6_d4_a10_odd_semiprime",
+    "o6_d4_a2_odd_semiprime",
+    "o6_d4_a3_even_semiprime",
+    "o6_d4_a4_odd_semiprime",
+    "o6_d4_a6_odd_semiprime",
+    "o6_d4_a8_odd_semiprime"
+  ],
+  "distinct_first_open_offsets": [
+    2,
+    4,
+    6
+  ],
+  "distinct_dmin_values": [
+    3,
+    4,
+    6,
+    8,
+    9,
+    10,
+    12,
+    14,
+    15,
+    16,
+    18,
+    20,
+    24,
+    28,
+    30,
+    32,
+    36,
+    38,
+    40,
+    42,
+    44,
+    48,
+    50,
+    52,
+    54,
+    56,
+    60,
+    64,
+    66,
+    70,
+    72,
+    78,
+    80,
+    84,
+    88,
+    90,
+    96,
+    100,
+    104,
+    108,
+    112,
+    120,
+    126,
+    128,
+    132,
+    140,
+    144,
+    150,
+    160,
+    168,
+    180,
+    192,
+    216,
+    224,
+    240,
+    256,
+    288,
+    384,
+    432,
+    512,
+    560
+  ],
+  "max_observed_peak_offset": 50,
+  "max_observed_dmin": 560,
+  "first_seen_counts_by_surface_label": {
+    "baseline_1e6": 224,
+    "10^7": 0,
+    "10^8": 4,
+    "10^9": 0,
+    "10^10": 1,
+    "10^11": 4,
+    "10^12": 4,
+    "10^13": 6,
+    "10^14": 9,
+    "10^15": 6,
+    "10^16": 6,
+    "10^17": 5,
+    "10^18": 5
+  },
+  "first_seen_counts_by_surface_display_label": {
+    "<=10^6": 224,
+    "10^7": 0,
+    "10^8": 4,
+    "10^9": 0,
+    "10^10": 1,
+    "10^11": 4,
+    "10^12": 4,
+    "10^13": 6,
+    "10^14": 9,
+    "10^15": 6,
+    "10^16": 6,
+    "10^17": 5,
+    "10^18": 5
+  },
+  "post_baseline_new_type_family_distribution": {
+    "even_semiprime": {
+      "count": 6,
+      "share": 0.12
+    },
+    "higher_divisor_even": {
+      "count": 16,
+      "share": 0.32
+    },
+    "higher_divisor_odd": {
+      "count": 11,
+      "share": 0.22
+    },
+    "odd_semiprime": {
+      "count": 17,
+      "share": 0.34
+    }
+  },
+  "post_baseline_new_type_dmin_distribution": {
+    "14": {
+      "count": 1,
+      "share": 0.02
+    },
+    "16": {
+      "count": 6,
+      "share": 0.12
+    },
+    "224": {
+      "count": 1,
+      "share": 0.02
+    },
+    "24": {
+      "count": 2,
+      "share": 0.04
+    },
+    "240": {
+      "count": 1,
+      "share": 0.02
+    },
+    "256": {
+      "count": 1,
+      "share": 0.02
+    },
+    "288": {
+      "count": 1,
+      "share": 0.02
+    },
+    "30": {
+      "count": 1,
+      "share": 0.02
+    },
+    "32": {
+      "count": 1,
+      "share": 0.02
+    },
+    "384": {
+      "count": 1,
+      "share": 0.02
+    },
+    "4": {
+      "count": 23,
+      "share": 0.46
+    },
+    "432": {
+      "count": 1,
+      "share": 0.02
+    },
+    "512": {
+      "count": 1,
+      "share": 0.02
+    },
+    "560": {
+      "count": 1,
+      "share": 0.02
+    },
+    "6": {
+      "count": 2,
+      "share": 0.04
+    },
+    "8": {
+      "count": 6,
+      "share": 0.12
+    }
+  },
+  "overall_family_distribution": {
+    "even_semiprime": {
+      "count": 13411,
+      "share": 0.1644129509985411
+    },
+    "higher_divisor_even": {
+      "count": 14834,
+      "share": 0.1818583040125538
+    },
+    "higher_divisor_odd": {
+      "count": 5841,
+      "share": 0.0716080864053746
+    },
+    "odd_semiprime": {
+      "count": 47308,
+      "share": 0.5799752356900293
+    },
+    "prime_cube": {
+      "count": 7,
+      "share": 8.58169157400483e-05
+    },
+    "prime_square": {
+      "count": 168,
+      "share": 0.0020596059777611593
+    }
+  },
+  "overall_top_exact_types": [
+    {
+      "type_key": "o2_d4_a2_odd_semiprime",
+      "count": 13605,
+      "share": 0.1667913055204796
+    },
+    {
+      "type_key": "o4_d4_a4_odd_semiprime",
+      "count": 9568,
+      "share": 0.1172994642572546
+    },
+    {
+      "type_key": "o6_d4_a2_odd_semiprime",
+      "count": 4278,
+      "share": 0.05244639507656095
+    },
+    {
+      "type_key": "o6_d4_a6_odd_semiprime",
+      "count": 3843,
+      "share": 0.04711348674128652
+    },
+    {
+      "type_key": "o4_d4_a2_odd_semiprime",
+      "count": 3789,
+      "share": 0.046451470534149004
+    },
+    {
+      "type_key": "o4_d4_a1_even_semiprime",
+      "count": 2905,
+      "share": 0.035614020032120046
+    },
+    {
+      "type_key": "o6_d4_a4_odd_semiprime",
+      "count": 2853,
+      "share": 0.0349765229437654
+    },
+    {
+      "type_key": "o4_d4_a3_even_semiprime",
+      "count": 2646,
+      "share": 0.032438794149738256
+    },
+    {
+      "type_key": "o6_d4_a3_even_semiprime",
+      "count": 2381,
+      "share": 0.02919001091100786
+    },
+    {
+      "type_key": "o4_d4_a6_odd_semiprime",
+      "count": 2213,
+      "share": 0.0271304049332467
+    },
+    {
+      "type_key": "o2_d4_a6_odd_semiprime",
+      "count": 2194,
+      "share": 0.026897473304809426
+    },
+    {
+      "type_key": "o4_d8_a1_higher_divisor_even",
+      "count": 1774,
+      "share": 0.021748458360406526
+    },
+    {
+      "type_key": "o4_d8_a2_higher_divisor_odd",
+      "count": 1534,
+      "share": 0.018806164106462013
+    },
+    {
+      "type_key": "o6_d4_a1_even_semiprime",
+      "count": 1452,
+      "share": 0.017800880236364305
+    },
+    {
+      "type_key": "o2_d16_a1_higher_divisor_even",
+      "count": 1315,
+      "share": 0.016121320599737646
+    },
+    {
+      "type_key": "o2_d24_a1_higher_divisor_even",
+      "count": 1283,
+      "share": 0.01572901469921171
+    },
+    {
+      "type_key": "o2_d32_a1_higher_divisor_even",
+      "count": 1178,
+      "share": 0.014441760963110986
+    },
+    {
+      "type_key": "o2_d4_a5_even_semiprime",
+      "count": 1156,
+      "share": 0.014172050656499405
+    },
+    {
+      "type_key": "o2_d4_a4_odd_semiprime",
+      "count": 1103,
+      "share": 0.013522294008753325
+    },
+    {
+      "type_key": "o4_d8_a3_higher_divisor_even",
+      "count": 1053,
+      "share": 0.012909316039181553
+    }
+  ],
+  "post_baseline_new_exact_types": [
+    {
+      "type_key": "o6_d8_a7_higher_divisor_even",
+      "first_seen_surface_label": "10^10",
+      "first_seen_surface_display_label": "10^10",
+      "current_right_prime": 10000003441,
+      "next_gap_width": 10,
+      "next_dmin": 8,
+      "next_peak_offset": 7,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d4_a17_even_semiprime",
+      "first_seen_surface_label": "10^11",
+      "first_seen_surface_display_label": "10^11",
+      "current_right_prime": 100000004177,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 17,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a26_odd_semiprime",
+      "first_seen_surface_label": "10^11",
+      "first_seen_surface_display_label": "10^11",
+      "current_right_prime": 100000004591,
+      "next_gap_width": 62,
+      "next_dmin": 4,
+      "next_peak_offset": 26,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a28_odd_semiprime",
+      "first_seen_surface_label": "10^11",
+      "first_seen_surface_display_label": "10^11",
+      "current_right_prime": 100000000951,
+      "next_gap_width": 58,
+      "next_dmin": 4,
+      "next_peak_offset": 28,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a30_odd_semiprime",
+      "first_seen_surface_label": "10^11",
+      "first_seen_surface_display_label": "10^11",
+      "current_right_prime": 100000000283,
+      "next_gap_width": 36,
+      "next_dmin": 4,
+      "next_peak_offset": 30,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a20_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000005491,
+      "next_gap_width": 42,
+      "next_dmin": 4,
+      "next_peak_offset": 20,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a50_odd_semiprime",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000004501,
+      "next_gap_width": 80,
+      "next_dmin": 4,
+      "next_peak_offset": 50,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d24_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000005073,
+      "next_gap_width": 4,
+      "next_dmin": 24,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d384_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^12",
+      "first_seen_surface_display_label": "10^12",
+      "current_right_prime": 1000000003799,
+      "next_gap_width": 2,
+      "next_dmin": 384,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d4_a24_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000005077,
+      "next_gap_width": 54,
+      "next_dmin": 4,
+      "next_peak_offset": 24,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a28_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000002019,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 28,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a32_odd_semiprime",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000001777,
+      "next_gap_width": 56,
+      "next_dmin": 4,
+      "next_peak_offset": 32,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o6_d8_a9_higher_divisor_even",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000004693,
+      "next_gap_width": 20,
+      "next_dmin": 8,
+      "next_peak_offset": 9,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d8_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000002121,
+      "next_gap_width": 12,
+      "next_dmin": 8,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d16_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^13",
+      "first_seen_surface_display_label": "10^13",
+      "current_right_prime": 10000000001087,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d4_a21_even_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000007441,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 21,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a22_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000006261,
+      "next_gap_width": 108,
+      "next_dmin": 4,
+      "next_peak_offset": 22,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a24_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000001203,
+      "next_gap_width": 70,
+      "next_dmin": 4,
+      "next_peak_offset": 24,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a30_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000002239,
+      "next_gap_width": 84,
+      "next_dmin": 4,
+      "next_peak_offset": 30,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a36_odd_semiprime",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000006817,
+      "next_gap_width": 56,
+      "next_dmin": 4,
+      "next_peak_offset": 36,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d16_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000005553,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d16_a5_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000005821,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 5,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d30_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000003789,
+      "next_gap_width": 4,
+      "next_dmin": 30,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d560_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^14",
+      "first_seen_surface_display_label": "10^14",
+      "current_right_prime": 100000000001087,
+      "next_gap_width": 2,
+      "next_dmin": 560,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d4_a21_even_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000002473,
+      "next_gap_width": 30,
+      "next_dmin": 4,
+      "next_peak_offset": 21,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a24_odd_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000004783,
+      "next_gap_width": 68,
+      "next_dmin": 4,
+      "next_peak_offset": 24,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a30_odd_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000004659,
+      "next_gap_width": 84,
+      "next_dmin": 4,
+      "next_peak_offset": 30,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d4_a38_odd_semiprime",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000004021,
+      "next_gap_width": 86,
+      "next_dmin": 4,
+      "next_peak_offset": 38,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d32_a3_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000002247,
+      "next_gap_width": 4,
+      "next_dmin": 32,
+      "next_peak_offset": 3,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d288_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^15",
+      "first_seen_surface_display_label": "10^15",
+      "current_right_prime": 1000000000007147,
+      "next_gap_width": 2,
+      "next_dmin": 288,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d4_a22_odd_semiprime",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000006157,
+      "next_gap_width": 36,
+      "next_dmin": 4,
+      "next_peak_offset": 22,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o4_d4_a27_even_semiprime",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000005979,
+      "next_gap_width": 28,
+      "next_dmin": 4,
+      "next_peak_offset": 27,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d6_a15_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000006997,
+      "next_gap_width": 26,
+      "next_dmin": 6,
+      "next_peak_offset": 15,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d16_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000004569,
+      "next_gap_width": 10,
+      "next_dmin": 16,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d24_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000001723,
+      "next_gap_width": 8,
+      "next_dmin": 24,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d224_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^16",
+      "first_seen_surface_display_label": "10^16",
+      "current_right_prime": 10000000000005311,
+      "next_gap_width": 2,
+      "next_dmin": 224,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d4_a29_even_semiprime",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000006577,
+      "next_gap_width": 66,
+      "next_dmin": 4,
+      "next_peak_offset": 29,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o2_d8_a11_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000000871,
+      "next_gap_width": 18,
+      "next_dmin": 8,
+      "next_peak_offset": 11,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o6_d16_a4_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000004003,
+      "next_gap_width": 6,
+      "next_dmin": 16,
+      "next_peak_offset": 4,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d16_a6_higher_divisor_odd",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000002929,
+      "next_gap_width": 8,
+      "next_dmin": 16,
+      "next_peak_offset": 6,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d512_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^17",
+      "first_seen_surface_display_label": "10^17",
+      "current_right_prime": 100000000000003559,
+      "next_gap_width": 2,
+      "next_dmin": 512,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o4_d4_a25_even_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000008673,
+      "next_gap_width": 198,
+      "next_dmin": 4,
+      "next_peak_offset": 25,
+      "carrier_family": "even_semiprime"
+    },
+    {
+      "type_key": "o6_d4_a26_odd_semiprime",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000005271,
+      "next_gap_width": 88,
+      "next_dmin": 4,
+      "next_peak_offset": 26,
+      "carrier_family": "odd_semiprime"
+    },
+    {
+      "type_key": "o2_d6_a22_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000005611,
+      "next_gap_width": 36,
+      "next_dmin": 6,
+      "next_peak_offset": 22,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d8_a8_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000003187,
+      "next_gap_width": 14,
+      "next_dmin": 8,
+      "next_peak_offset": 8,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o4_d8_a10_higher_divisor_odd",
+      "first_seen_surface_label": "10^18",
+      "first_seen_surface_display_label": "10^18",
+      "current_right_prime": 1000000000000007527,
+      "next_gap_width": 24,
+      "next_dmin": 8,
+      "next_peak_offset": 10,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o6_d14_a2_higher_divisor_odd",
+      "first_seen_surface_label": "10^8",
+      "first_seen_surface_display_label": "10^8",
+      "current_right_prime": 100002031,
+      "next_gap_width": 6,
+      "next_dmin": 14,
+      "next_peak_offset": 2,
+      "carrier_family": "higher_divisor_odd"
+    },
+    {
+      "type_key": "o2_d240_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^8",
+      "first_seen_surface_display_label": "10^8",
+      "current_right_prime": 100002671,
+      "next_gap_width": 2,
+      "next_dmin": 240,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d256_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^8",
+      "first_seen_surface_display_label": "10^8",
+      "current_right_prime": 100004519,
+      "next_gap_width": 2,
+      "next_dmin": 256,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    },
+    {
+      "type_key": "o2_d432_a1_higher_divisor_even",
+      "first_seen_surface_label": "10^8",
+      "first_seen_surface_display_label": "10^8",
+      "current_right_prime": 100000799,
+      "next_gap_width": 2,
+      "next_dmin": 432,
+      "next_peak_offset": 1,
+      "carrier_family": "higher_divisor_even"
+    }
+  ],
+  "surface_summaries": [
+    {
+      "surface_label": "baseline_1e6",
+      "surface_display_label": "<=10^6",
+      "surface_kind": "exact_baseline",
+      "power": null,
+      "start_right_prime": 3,
+      "gap_count": 78497,
+      "distinct_exact_type_count": 224,
+      "new_exact_type_count": 224,
+      "cumulative_distinct_exact_type_count": 224,
+      "max_next_peak_offset": 48,
+      "max_next_dmin": 216,
+      "family_distribution": {
+        "prime_square": {
+          "count": 168,
+          "share": 0.002140209179968661
+        },
+        "prime_cube": {
+          "count": 7,
+          "share": 8.917538249869422e-05
+        },
+        "even_semiprime": {
+          "count": 13030,
+          "share": 0.1659936048511408
+        },
+        "odd_semiprime": {
+          "count": 45268,
+          "share": 0.5766844592786986
+        },
+        "higher_divisor_even": {
+          "count": 14450,
+          "share": 0.18408346815801876
+        },
+        "higher_divisor_odd": {
+          "count": 5574,
+          "share": 0.07100908314967451
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 13243,
+          "share": 0.1687070843471725
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 9257,
+          "share": 0.11792807368434463
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 4194,
+          "share": 0.05342879345707479
+        },
+        {
+          "type_key": "o4_d4_a2_odd_semiprime",
+          "count": 3721,
+          "share": 0.047403085468234456
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 3678,
+          "share": 0.046855293832885336
+        },
+        {
+          "type_key": "o4_d4_a1_even_semiprime",
+          "count": 2860,
+          "share": 0.036434513420895064
+        },
+        {
+          "type_key": "o6_d4_a4_odd_semiprime",
+          "count": 2797,
+          "share": 0.03563193497840682
+        },
+        {
+          "type_key": "o4_d4_a3_even_semiprime",
+          "count": 2595,
+          "share": 0.033058588226301644
+        },
+        {
+          "type_key": "o6_d4_a3_even_semiprime",
+          "count": 2327,
+          "share": 0.02964444501063735
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 2083,
+          "share": 0.02653604596354001
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o4_d3_a1_prime_square",
+          "current_right_prime": 3,
+          "next_gap_width": 2,
+          "next_dmin": 3,
+          "next_peak_offset": 1,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o2_d3_a2_prime_square",
+          "current_right_prime": 47,
+          "next_gap_width": 6,
+          "next_dmin": 3,
+          "next_peak_offset": 2,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o4_d3_a2_prime_square",
+          "current_right_prime": 7,
+          "next_gap_width": 4,
+          "next_dmin": 3,
+          "next_peak_offset": 2,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o6_d3_a2_prime_square",
+          "current_right_prime": 23,
+          "next_gap_width": 6,
+          "next_dmin": 3,
+          "next_peak_offset": 2,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o4_d3_a6_prime_square",
+          "current_right_prime": 283,
+          "next_gap_width": 10,
+          "next_dmin": 3,
+          "next_peak_offset": 6,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o2_d3_a8_prime_square",
+          "current_right_prime": 26561,
+          "next_gap_width": 12,
+          "next_dmin": 3,
+          "next_peak_offset": 8,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o6_d3_a8_prime_square",
+          "current_right_prime": 113,
+          "next_gap_width": 14,
+          "next_dmin": 3,
+          "next_peak_offset": 8,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o4_d3_a12_prime_square",
+          "current_right_prime": 1669,
+          "next_gap_width": 24,
+          "next_dmin": 3,
+          "next_peak_offset": 12,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o2_d3_a14_prime_square",
+          "current_right_prime": 11867,
+          "next_gap_width": 20,
+          "next_dmin": 3,
+          "next_peak_offset": 14,
+          "carrier_family": "prime_square"
+        },
+        {
+          "type_key": "o4_d3_a18_prime_square",
+          "current_right_prime": 96703,
+          "next_gap_width": 28,
+          "next_dmin": 3,
+          "next_peak_offset": 18,
+          "carrier_family": "prime_square"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^7",
+      "surface_display_label": "10^7",
+      "surface_kind": "sampled_decade_window",
+      "power": 7,
+      "start_right_prime": 10000019,
+      "gap_count": 256,
+      "distinct_exact_type_count": 59,
+      "new_exact_type_count": 0,
+      "cumulative_distinct_exact_type_count": 224,
+      "max_next_peak_offset": 14,
+      "max_next_dmin": 120,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 38,
+          "share": 0.1484375
+        },
+        "odd_semiprime": {
+          "count": 157,
+          "share": 0.61328125
+        },
+        "higher_divisor_even": {
+          "count": 40,
+          "share": 0.15625
+        },
+        "higher_divisor_odd": {
+          "count": 21,
+          "share": 0.08203125
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 37,
+          "share": 0.14453125
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 30,
+          "share": 0.1171875
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 16,
+          "share": 0.0625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 12,
+          "share": 0.046875
+        },
+        {
+          "type_key": "o6_d4_a4_odd_semiprime",
+          "count": 10,
+          "share": 0.0390625
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 10,
+          "share": 0.0390625
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 9,
+          "share": 0.03515625
+        },
+        {
+          "type_key": "o4_d8_a2_higher_divisor_odd",
+          "count": 9,
+          "share": 0.03515625
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o4_d4_a3_even_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        }
+      ],
+      "first_seen_exact_type_examples": []
+    },
+    {
+      "surface_label": "10^8",
+      "surface_display_label": "10^8",
+      "surface_kind": "sampled_decade_window",
+      "power": 8,
+      "start_right_prime": 100000007,
+      "gap_count": 256,
+      "distinct_exact_type_count": 64,
+      "new_exact_type_count": 4,
+      "cumulative_distinct_exact_type_count": 228,
+      "max_next_peak_offset": 18,
+      "max_next_dmin": 432,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 32,
+          "share": 0.125
+        },
+        "odd_semiprime": {
+          "count": 152,
+          "share": 0.59375
+        },
+        "higher_divisor_even": {
+          "count": 57,
+          "share": 0.22265625
+        },
+        "higher_divisor_odd": {
+          "count": 15,
+          "share": 0.05859375
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 35,
+          "share": 0.13671875
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 18,
+          "share": 0.0703125
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 15,
+          "share": 0.05859375
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 13,
+          "share": 0.05078125
+        },
+        {
+          "type_key": "o4_d4_a2_odd_semiprime",
+          "count": 12,
+          "share": 0.046875
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 12,
+          "share": 0.046875
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 10,
+          "share": 0.0390625
+        },
+        {
+          "type_key": "o4_d8_a1_higher_divisor_even",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o6_d4_a4_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o6_d14_a2_higher_divisor_odd",
+          "current_right_prime": 100002031,
+          "next_gap_width": 6,
+          "next_dmin": 14,
+          "next_peak_offset": 2,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d240_a1_higher_divisor_even",
+          "current_right_prime": 100002671,
+          "next_gap_width": 2,
+          "next_dmin": 240,
+          "next_peak_offset": 1,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o2_d256_a1_higher_divisor_even",
+          "current_right_prime": 100004519,
+          "next_gap_width": 2,
+          "next_dmin": 256,
+          "next_peak_offset": 1,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o2_d432_a1_higher_divisor_even",
+          "current_right_prime": 100000799,
+          "next_gap_width": 2,
+          "next_dmin": 432,
+          "next_peak_offset": 1,
+          "carrier_family": "higher_divisor_even"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^9",
+      "surface_display_label": "10^9",
+      "surface_kind": "sampled_decade_window",
+      "power": 9,
+      "start_right_prime": 1000000007,
+      "gap_count": 256,
+      "distinct_exact_type_count": 61,
+      "new_exact_type_count": 0,
+      "cumulative_distinct_exact_type_count": 228,
+      "max_next_peak_offset": 16,
+      "max_next_dmin": 144,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 35,
+          "share": 0.13671875
+        },
+        "odd_semiprime": {
+          "count": 167,
+          "share": 0.65234375
+        },
+        "higher_divisor_even": {
+          "count": 36,
+          "share": 0.140625
+        },
+        "higher_divisor_odd": {
+          "count": 18,
+          "share": 0.0703125
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 40,
+          "share": 0.15625
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 26,
+          "share": 0.1015625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 15,
+          "share": 0.05859375
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 13,
+          "share": 0.05078125
+        },
+        {
+          "type_key": "o6_d4_a4_odd_semiprime",
+          "count": 11,
+          "share": 0.04296875
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 11,
+          "share": 0.04296875
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 9,
+          "share": 0.03515625
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o4_d4_a3_even_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o4_d4_a1_even_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        }
+      ],
+      "first_seen_exact_type_examples": []
+    },
+    {
+      "surface_label": "10^10",
+      "surface_display_label": "10^10",
+      "surface_kind": "sampled_decade_window",
+      "power": 10,
+      "start_right_prime": 10000000019,
+      "gap_count": 256,
+      "distinct_exact_type_count": 69,
+      "new_exact_type_count": 1,
+      "cumulative_distinct_exact_type_count": 229,
+      "max_next_peak_offset": 19,
+      "max_next_dmin": 160,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 32,
+          "share": 0.125
+        },
+        "odd_semiprime": {
+          "count": 172,
+          "share": 0.671875
+        },
+        "higher_divisor_even": {
+          "count": 27,
+          "share": 0.10546875
+        },
+        "higher_divisor_odd": {
+          "count": 25,
+          "share": 0.09765625
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 45,
+          "share": 0.17578125
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 26,
+          "share": 0.1015625
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 16,
+          "share": 0.0625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 14,
+          "share": 0.0546875
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 11,
+          "share": 0.04296875
+        },
+        {
+          "type_key": "o4_d4_a2_odd_semiprime",
+          "count": 9,
+          "share": 0.03515625
+        },
+        {
+          "type_key": "o2_d8_a2_higher_divisor_odd",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o6_d8_a7_higher_divisor_even",
+          "current_right_prime": 10000003441,
+          "next_gap_width": 10,
+          "next_dmin": 8,
+          "next_peak_offset": 7,
+          "carrier_family": "higher_divisor_even"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^11",
+      "surface_display_label": "10^11",
+      "surface_kind": "sampled_decade_window",
+      "power": 11,
+      "start_right_prime": 100000000003,
+      "gap_count": 256,
+      "distinct_exact_type_count": 66,
+      "new_exact_type_count": 4,
+      "cumulative_distinct_exact_type_count": 233,
+      "max_next_peak_offset": 30,
+      "max_next_dmin": 192,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 31,
+          "share": 0.12109375
+        },
+        "odd_semiprime": {
+          "count": 175,
+          "share": 0.68359375
+        },
+        "higher_divisor_even": {
+          "count": 36,
+          "share": 0.140625
+        },
+        "higher_divisor_odd": {
+          "count": 14,
+          "share": 0.0546875
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 26,
+          "share": 0.1015625
+        },
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 25,
+          "share": 0.09765625
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 20,
+          "share": 0.078125
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 17,
+          "share": 0.06640625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 11,
+          "share": 0.04296875
+        },
+        {
+          "type_key": "o6_d4_a3_even_semiprime",
+          "count": 9,
+          "share": 0.03515625
+        },
+        {
+          "type_key": "o4_d4_a2_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o2_d4_a14_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o6_d4_a4_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o4_d4_a3_even_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o2_d4_a17_even_semiprime",
+          "current_right_prime": 100000004177,
+          "next_gap_width": 30,
+          "next_dmin": 4,
+          "next_peak_offset": 17,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a26_odd_semiprime",
+          "current_right_prime": 100000004591,
+          "next_gap_width": 62,
+          "next_dmin": 4,
+          "next_peak_offset": 26,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a28_odd_semiprime",
+          "current_right_prime": 100000000951,
+          "next_gap_width": 58,
+          "next_dmin": 4,
+          "next_peak_offset": 28,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a30_odd_semiprime",
+          "current_right_prime": 100000000283,
+          "next_gap_width": 36,
+          "next_dmin": 4,
+          "next_peak_offset": 30,
+          "carrier_family": "odd_semiprime"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^12",
+      "surface_display_label": "10^12",
+      "surface_kind": "sampled_decade_window",
+      "power": 12,
+      "start_right_prime": 1000000000039,
+      "gap_count": 256,
+      "distinct_exact_type_count": 65,
+      "new_exact_type_count": 4,
+      "cumulative_distinct_exact_type_count": 237,
+      "max_next_peak_offset": 50,
+      "max_next_dmin": 384,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 33,
+          "share": 0.12890625
+        },
+        "odd_semiprime": {
+          "count": 166,
+          "share": 0.6484375
+        },
+        "higher_divisor_even": {
+          "count": 33,
+          "share": 0.12890625
+        },
+        "higher_divisor_odd": {
+          "count": 24,
+          "share": 0.09375
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 25,
+          "share": 0.09765625
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 21,
+          "share": 0.08203125
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 17,
+          "share": 0.06640625
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 17,
+          "share": 0.06640625
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 13,
+          "share": 0.05078125
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o4_d4_a1_even_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o4_d4_a3_even_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o2_d4_a20_odd_semiprime",
+          "current_right_prime": 1000000005491,
+          "next_gap_width": 42,
+          "next_dmin": 4,
+          "next_peak_offset": 20,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a50_odd_semiprime",
+          "current_right_prime": 1000000004501,
+          "next_gap_width": 80,
+          "next_dmin": 4,
+          "next_peak_offset": 50,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d24_a3_higher_divisor_even",
+          "current_right_prime": 1000000005073,
+          "next_gap_width": 4,
+          "next_dmin": 24,
+          "next_peak_offset": 3,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o2_d384_a1_higher_divisor_even",
+          "current_right_prime": 1000000003799,
+          "next_gap_width": 2,
+          "next_dmin": 384,
+          "next_peak_offset": 1,
+          "carrier_family": "higher_divisor_even"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^13",
+      "surface_display_label": "10^13",
+      "surface_kind": "sampled_decade_window",
+      "power": 13,
+      "start_right_prime": 10000000000037,
+      "gap_count": 256,
+      "distinct_exact_type_count": 71,
+      "new_exact_type_count": 6,
+      "cumulative_distinct_exact_type_count": 243,
+      "max_next_peak_offset": 32,
+      "max_next_dmin": 192,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 30,
+          "share": 0.1171875
+        },
+        "odd_semiprime": {
+          "count": 167,
+          "share": 0.65234375
+        },
+        "higher_divisor_even": {
+          "count": 34,
+          "share": 0.1328125
+        },
+        "higher_divisor_odd": {
+          "count": 25,
+          "share": 0.09765625
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 32,
+          "share": 0.125
+        },
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 26,
+          "share": 0.1015625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 17,
+          "share": 0.06640625
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 13,
+          "share": 0.05078125
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 12,
+          "share": 0.046875
+        },
+        {
+          "type_key": "o4_d4_a12_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        },
+        {
+          "type_key": "o2_d8_a2_higher_divisor_odd",
+          "count": 6,
+          "share": 0.0234375
+        },
+        {
+          "type_key": "o6_d4_a12_odd_semiprime",
+          "count": 5,
+          "share": 0.01953125
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o2_d4_a24_odd_semiprime",
+          "current_right_prime": 10000000005077,
+          "next_gap_width": 54,
+          "next_dmin": 4,
+          "next_peak_offset": 24,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a28_odd_semiprime",
+          "current_right_prime": 10000000002019,
+          "next_gap_width": 30,
+          "next_dmin": 4,
+          "next_peak_offset": 28,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a32_odd_semiprime",
+          "current_right_prime": 10000000001777,
+          "next_gap_width": 56,
+          "next_dmin": 4,
+          "next_peak_offset": 32,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o6_d8_a9_higher_divisor_even",
+          "current_right_prime": 10000000004693,
+          "next_gap_width": 20,
+          "next_dmin": 8,
+          "next_peak_offset": 9,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o6_d8_a10_higher_divisor_odd",
+          "current_right_prime": 10000000002121,
+          "next_gap_width": 12,
+          "next_dmin": 8,
+          "next_peak_offset": 10,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d16_a4_higher_divisor_odd",
+          "current_right_prime": 10000000001087,
+          "next_gap_width": 6,
+          "next_dmin": 16,
+          "next_peak_offset": 4,
+          "carrier_family": "higher_divisor_odd"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^14",
+      "surface_display_label": "10^14",
+      "surface_kind": "sampled_decade_window",
+      "power": 14,
+      "start_right_prime": 100000000000031,
+      "gap_count": 256,
+      "distinct_exact_type_count": 73,
+      "new_exact_type_count": 9,
+      "cumulative_distinct_exact_type_count": 252,
+      "max_next_peak_offset": 36,
+      "max_next_dmin": 560,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 32,
+          "share": 0.125
+        },
+        "odd_semiprime": {
+          "count": 171,
+          "share": 0.66796875
+        },
+        "higher_divisor_even": {
+          "count": 28,
+          "share": 0.109375
+        },
+        "higher_divisor_odd": {
+          "count": 25,
+          "share": 0.09765625
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 31,
+          "share": 0.12109375
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 26,
+          "share": 0.1015625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 17,
+          "share": 0.06640625
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 14,
+          "share": 0.0546875
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 13,
+          "share": 0.05078125
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 9,
+          "share": 0.03515625
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "count": 9,
+          "share": 0.03515625
+        },
+        {
+          "type_key": "o6_d4_a3_even_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        },
+        {
+          "type_key": "o2_d4_a12_odd_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o2_d4_a21_even_semiprime",
+          "current_right_prime": 100000000007441,
+          "next_gap_width": 30,
+          "next_dmin": 4,
+          "next_peak_offset": 21,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a22_odd_semiprime",
+          "current_right_prime": 100000000006261,
+          "next_gap_width": 108,
+          "next_dmin": 4,
+          "next_peak_offset": 22,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a24_odd_semiprime",
+          "current_right_prime": 100000000001203,
+          "next_gap_width": 70,
+          "next_dmin": 4,
+          "next_peak_offset": 24,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a30_odd_semiprime",
+          "current_right_prime": 100000000002239,
+          "next_gap_width": 84,
+          "next_dmin": 4,
+          "next_peak_offset": 30,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a36_odd_semiprime",
+          "current_right_prime": 100000000006817,
+          "next_gap_width": 56,
+          "next_dmin": 4,
+          "next_peak_offset": 36,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d16_a4_higher_divisor_odd",
+          "current_right_prime": 100000000005553,
+          "next_gap_width": 6,
+          "next_dmin": 16,
+          "next_peak_offset": 4,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d16_a5_higher_divisor_even",
+          "current_right_prime": 100000000005821,
+          "next_gap_width": 6,
+          "next_dmin": 16,
+          "next_peak_offset": 5,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o4_d30_a3_higher_divisor_even",
+          "current_right_prime": 100000000003789,
+          "next_gap_width": 4,
+          "next_dmin": 30,
+          "next_peak_offset": 3,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o2_d560_a1_higher_divisor_even",
+          "current_right_prime": 100000000001087,
+          "next_gap_width": 2,
+          "next_dmin": 560,
+          "next_peak_offset": 1,
+          "carrier_family": "higher_divisor_even"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^15",
+      "surface_display_label": "10^15",
+      "surface_kind": "sampled_decade_window",
+      "power": 15,
+      "start_right_prime": 1000000000000037,
+      "gap_count": 256,
+      "distinct_exact_type_count": 80,
+      "new_exact_type_count": 6,
+      "cumulative_distinct_exact_type_count": 258,
+      "max_next_peak_offset": 38,
+      "max_next_dmin": 288,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 30,
+          "share": 0.1171875
+        },
+        "odd_semiprime": {
+          "count": 174,
+          "share": 0.6796875
+        },
+        "higher_divisor_even": {
+          "count": 31,
+          "share": 0.12109375
+        },
+        "higher_divisor_odd": {
+          "count": 21,
+          "share": 0.08203125
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 26,
+          "share": 0.1015625
+        },
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 20,
+          "share": 0.078125
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 15,
+          "share": 0.05859375
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 13,
+          "share": 0.05078125
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 13,
+          "share": 0.05078125
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 10,
+          "share": 0.0390625
+        },
+        {
+          "type_key": "o2_d8_a2_higher_divisor_odd",
+          "count": 9,
+          "share": 0.03515625
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o4_d4_a2_odd_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o6_d4_a21_even_semiprime",
+          "current_right_prime": 1000000000002473,
+          "next_gap_width": 30,
+          "next_dmin": 4,
+          "next_peak_offset": 21,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a24_odd_semiprime",
+          "current_right_prime": 1000000000004783,
+          "next_gap_width": 68,
+          "next_dmin": 4,
+          "next_peak_offset": 24,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a30_odd_semiprime",
+          "current_right_prime": 1000000000004659,
+          "next_gap_width": 84,
+          "next_dmin": 4,
+          "next_peak_offset": 30,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d4_a38_odd_semiprime",
+          "current_right_prime": 1000000000004021,
+          "next_gap_width": 86,
+          "next_dmin": 4,
+          "next_peak_offset": 38,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d32_a3_higher_divisor_even",
+          "current_right_prime": 1000000000002247,
+          "next_gap_width": 4,
+          "next_dmin": 32,
+          "next_peak_offset": 3,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o2_d288_a1_higher_divisor_even",
+          "current_right_prime": 1000000000007147,
+          "next_gap_width": 2,
+          "next_dmin": 288,
+          "next_peak_offset": 1,
+          "carrier_family": "higher_divisor_even"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^16",
+      "surface_display_label": "10^16",
+      "surface_kind": "sampled_decade_window",
+      "power": 16,
+      "start_right_prime": 10000000000000061,
+      "gap_count": 256,
+      "distinct_exact_type_count": 81,
+      "new_exact_type_count": 6,
+      "cumulative_distinct_exact_type_count": 264,
+      "max_next_peak_offset": 28,
+      "max_next_dmin": 384,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 37,
+          "share": 0.14453125
+        },
+        "odd_semiprime": {
+          "count": 175,
+          "share": 0.68359375
+        },
+        "higher_divisor_even": {
+          "count": 23,
+          "share": 0.08984375
+        },
+        "higher_divisor_odd": {
+          "count": 21,
+          "share": 0.08203125
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 33,
+          "share": 0.12890625
+        },
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 27,
+          "share": 0.10546875
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 13,
+          "share": 0.05078125
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 12,
+          "share": 0.046875
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 10,
+          "share": 0.0390625
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o6_d4_a2_odd_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        },
+        {
+          "type_key": "o6_d4_a3_even_semiprime",
+          "count": 5,
+          "share": 0.01953125
+        },
+        {
+          "type_key": "o2_d4_a14_odd_semiprime",
+          "count": 5,
+          "share": 0.01953125
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o2_d4_a22_odd_semiprime",
+          "current_right_prime": 10000000000006157,
+          "next_gap_width": 36,
+          "next_dmin": 4,
+          "next_peak_offset": 22,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o4_d4_a27_even_semiprime",
+          "current_right_prime": 10000000000005979,
+          "next_gap_width": 28,
+          "next_dmin": 4,
+          "next_peak_offset": 27,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d6_a15_higher_divisor_even",
+          "current_right_prime": 10000000000006997,
+          "next_gap_width": 26,
+          "next_dmin": 6,
+          "next_peak_offset": 15,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o4_d16_a8_higher_divisor_odd",
+          "current_right_prime": 10000000000004569,
+          "next_gap_width": 10,
+          "next_dmin": 16,
+          "next_peak_offset": 8,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o6_d24_a4_higher_divisor_odd",
+          "current_right_prime": 10000000000001723,
+          "next_gap_width": 8,
+          "next_dmin": 24,
+          "next_peak_offset": 4,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d224_a1_higher_divisor_even",
+          "current_right_prime": 10000000000005311,
+          "next_gap_width": 2,
+          "next_dmin": 224,
+          "next_peak_offset": 1,
+          "carrier_family": "higher_divisor_even"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^17",
+      "surface_display_label": "10^17",
+      "surface_kind": "sampled_decade_window",
+      "power": 17,
+      "start_right_prime": 100000000000000003,
+      "gap_count": 256,
+      "distinct_exact_type_count": 81,
+      "new_exact_type_count": 5,
+      "cumulative_distinct_exact_type_count": 269,
+      "max_next_peak_offset": 32,
+      "max_next_dmin": 512,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 28,
+          "share": 0.109375
+        },
+        "odd_semiprime": {
+          "count": 176,
+          "share": 0.6875
+        },
+        "higher_divisor_even": {
+          "count": 22,
+          "share": 0.0859375
+        },
+        "higher_divisor_odd": {
+          "count": 30,
+          "share": 0.1171875
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 33,
+          "share": 0.12890625
+        },
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 25,
+          "share": 0.09765625
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 14,
+          "share": 0.0546875
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 11,
+          "share": 0.04296875
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 10,
+          "share": 0.0390625
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o2_d4_a14_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        },
+        {
+          "type_key": "o6_d4_a10_odd_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 6,
+          "share": 0.0234375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o2_d4_a29_even_semiprime",
+          "current_right_prime": 100000000000006577,
+          "next_gap_width": 66,
+          "next_dmin": 4,
+          "next_peak_offset": 29,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o2_d8_a11_higher_divisor_even",
+          "current_right_prime": 100000000000000871,
+          "next_gap_width": 18,
+          "next_dmin": 8,
+          "next_peak_offset": 11,
+          "carrier_family": "higher_divisor_even"
+        },
+        {
+          "type_key": "o6_d16_a4_higher_divisor_odd",
+          "current_right_prime": 100000000000004003,
+          "next_gap_width": 6,
+          "next_dmin": 16,
+          "next_peak_offset": 4,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d16_a6_higher_divisor_odd",
+          "current_right_prime": 100000000000002929,
+          "next_gap_width": 8,
+          "next_dmin": 16,
+          "next_peak_offset": 6,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d512_a1_higher_divisor_even",
+          "current_right_prime": 100000000000003559,
+          "next_gap_width": 2,
+          "next_dmin": 512,
+          "next_peak_offset": 1,
+          "carrier_family": "higher_divisor_even"
+        }
+      ]
+    },
+    {
+      "surface_label": "10^18",
+      "surface_display_label": "10^18",
+      "surface_kind": "sampled_decade_window",
+      "power": 18,
+      "start_right_prime": 1000000000000000003,
+      "gap_count": 256,
+      "distinct_exact_type_count": 76,
+      "new_exact_type_count": 5,
+      "cumulative_distinct_exact_type_count": 274,
+      "max_next_peak_offset": 30,
+      "max_next_dmin": 216,
+      "family_distribution": {
+        "prime_square": {
+          "count": 0,
+          "share": 0.0
+        },
+        "prime_cube": {
+          "count": 0,
+          "share": 0.0
+        },
+        "even_semiprime": {
+          "count": 23,
+          "share": 0.08984375
+        },
+        "odd_semiprime": {
+          "count": 188,
+          "share": 0.734375
+        },
+        "higher_divisor_even": {
+          "count": 17,
+          "share": 0.06640625
+        },
+        "higher_divisor_odd": {
+          "count": 28,
+          "share": 0.109375
+        }
+      },
+      "top_exact_types": [
+        {
+          "type_key": "o4_d4_a4_odd_semiprime",
+          "count": 22,
+          "share": 0.0859375
+        },
+        {
+          "type_key": "o2_d4_a2_odd_semiprime",
+          "count": 18,
+          "share": 0.0703125
+        },
+        {
+          "type_key": "o6_d4_a6_odd_semiprime",
+          "count": 18,
+          "share": 0.0703125
+        },
+        {
+          "type_key": "o4_d4_a10_odd_semiprime",
+          "count": 17,
+          "share": 0.06640625
+        },
+        {
+          "type_key": "o4_d4_a6_odd_semiprime",
+          "count": 15,
+          "share": 0.05859375
+        },
+        {
+          "type_key": "o2_d4_a6_odd_semiprime",
+          "count": 14,
+          "share": 0.0546875
+        },
+        {
+          "type_key": "o2_d4_a8_odd_semiprime",
+          "count": 9,
+          "share": 0.03515625
+        },
+        {
+          "type_key": "o6_d4_a10_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o2_d4_a12_odd_semiprime",
+          "count": 8,
+          "share": 0.03125
+        },
+        {
+          "type_key": "o6_d4_a8_odd_semiprime",
+          "count": 7,
+          "share": 0.02734375
+        }
+      ],
+      "first_seen_exact_type_examples": [
+        {
+          "type_key": "o4_d4_a25_even_semiprime",
+          "current_right_prime": 1000000000000008673,
+          "next_gap_width": 198,
+          "next_dmin": 4,
+          "next_peak_offset": 25,
+          "carrier_family": "even_semiprime"
+        },
+        {
+          "type_key": "o6_d4_a26_odd_semiprime",
+          "current_right_prime": 1000000000000005271,
+          "next_gap_width": 88,
+          "next_dmin": 4,
+          "next_peak_offset": 26,
+          "carrier_family": "odd_semiprime"
+        },
+        {
+          "type_key": "o2_d6_a22_higher_divisor_odd",
+          "current_right_prime": 1000000000000005611,
+          "next_gap_width": 36,
+          "next_dmin": 6,
+          "next_peak_offset": 22,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o2_d8_a8_higher_divisor_odd",
+          "current_right_prime": 1000000000000003187,
+          "next_gap_width": 14,
+          "next_dmin": 8,
+          "next_peak_offset": 8,
+          "carrier_family": "higher_divisor_odd"
+        },
+        {
+          "type_key": "o4_d8_a10_higher_divisor_odd",
+          "current_right_prime": 1000000000000007527,
+          "next_gap_width": 24,
+          "next_dmin": 8,
+          "next_peak_offset": 10,
+          "carrier_family": "higher_divisor_odd"
+        }
+      ]
+    }
+  ],
+  "runtime_seconds": 67.6424138750881
+}

@@ -1,0 +1,50 @@
+{
+  "prime_limit": 4000,
+  "prime_count": 550,
+  "spiral_prime_count": 300,
+  "q_series_limit": 120,
+  "dirichlet_collapse": {
+    "sigma": 2.0,
+    "t_min": -12.0,
+    "t_max": 12.0,
+    "t_samples": 401,
+    "max_absolute_difference": 4.4343821139132427e-16,
+    "mean_absolute_difference": 8.729874624979433e-17,
+    "max_relative_difference": 2.4261049684244914e-15,
+    "status": "collapsed_to_shifted_prime_zeta"
+  },
+  "named_path_closure": {
+    "prime_indicator_tau_only": true,
+    "tau_only_operations": [
+      "linear_combination_with_tau_only_series",
+      "petersson_inner_product_returns_scalar",
+      "rankin_cohen_bracket_preserves_tau_only_dependence"
+    ],
+    "modular_witness": "[E4, E6]_1",
+    "modular_witness_weight": 12,
+    "modular_witness_abs_at_tau": 11.698890728160661,
+    "conclusion": "named_path_stays_tau_only_without_explicit_z_insertion"
+  },
+  "jacobi_check": {
+    "tau_real": 0.31,
+    "tau_imag": 0.91,
+    "modular_t_residual": 7.477241356904126e-16,
+    "modular_s_residual": 6.091577186220445e-16,
+    "elliptic_unit_shift_residual": 0.0,
+    "elliptic_tau_shift_residual_min": 12.146797465869176,
+    "elliptic_tau_shift_residual_mean": 1148.5804708244277,
+    "elliptic_tau_shift_residual_max": 7040.4910924428805,
+    "passes_weight_12_modular_checks": true,
+    "fails_index_1_elliptic_check": true
+  },
+  "fourier_match": {
+    "status": "blocked",
+    "reason": "no positive-index Jacobi form was constructed on the named path, so Leech-linked Fourier matching is undefined at the claimed stage"
+  },
+  "artifacts": {
+    "summary_json": "/Users/velocityworks/IdeaProjects/prime-gap-structure/benchmarks/output/python/prime_spiral/prime_spiral_modular_lift_diagnostic/prime_spiral_modular_lift_diagnostic_summary.json",
+    "prime_spiral_projection": "/Users/velocityworks/IdeaProjects/prime-gap-structure/benchmarks/output/python/prime_spiral/prime_spiral_modular_lift_diagnostic/prime_spiral_projection.png",
+    "dirichlet_resonance_collapse": "/Users/velocityworks/IdeaProjects/prime-gap-structure/benchmarks/output/python/prime_spiral/prime_spiral_modular_lift_diagnostic/dirichlet_resonance_collapse.png",
+    "jacobi_tau_only_failure": "/Users/velocityworks/IdeaProjects/prime-gap-structure/benchmarks/output/python/prime_spiral/prime_spiral_modular_lift_diagnostic/jacobi_tau_only_failure.png"
+  }
+}

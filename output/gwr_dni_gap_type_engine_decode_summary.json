@@ -1,0 +1,801 @@
+{
+  "training_surfaces": [
+    "10^7",
+    "10^8",
+    "10^9",
+    "10^10",
+    "10^11",
+    "10^12",
+    "10^13",
+    "10^14",
+    "10^15",
+    "10^16",
+    "10^17"
+  ],
+  "reference_surfaces": [
+    "10^12",
+    "10^13",
+    "10^14",
+    "10^15",
+    "10^16",
+    "10^17",
+    "10^18"
+  ],
+  "core_state_count": 14,
+  "core_states": [
+    "o2_even_semiprime|d<=4",
+    "o2_higher_divisor_even|17<=d<=64",
+    "o2_higher_divisor_even|5<=d<=16",
+    "o2_higher_divisor_even|d>64",
+    "o2_higher_divisor_odd|5<=d<=16",
+    "o2_odd_semiprime|d<=4",
+    "o4_even_semiprime|d<=4",
+    "o4_higher_divisor_even|5<=d<=16",
+    "o4_higher_divisor_odd|5<=d<=16",
+    "o4_odd_semiprime|d<=4",
+    "o6_even_semiprime|d<=4",
+    "o6_higher_divisor_even|5<=d<=16",
+    "o6_higher_divisor_odd|5<=d<=16",
+    "o6_odd_semiprime|d<=4"
+  ],
+  "segment_count": 26,
+  "Semiprime_Wheel_Attractor": [
+    "o2_odd_semiprime|d<=4",
+    "o4_odd_semiprime|d<=4",
+    "o6_odd_semiprime|d<=4"
+  ],
+  "rulebook": [
+    {
+      "rule_id": "aggregate_non_triad_to_attractor",
+      "formal_rule": "current_state not in Semiprime Wheel Attractor => next_state in Semiprime Wheel Attractor",
+      "natural_language": "When current state not in Semiprime Wheel Attractor, the next state lands in the Semiprime Wheel Attractor with share 0.6752.",
+      "share": 0.6751863684771033,
+      "hit_count": 634,
+      "observation_count": 939
+    },
+    {
+      "rule_id": "aggregate_higher_divisor_to_attractor",
+      "formal_rule": "current_state family = higher_divisor_* => next_state in Semiprime Wheel Attractor",
+      "natural_language": "When current state family = higher divisor *, the next state lands in the Semiprime Wheel Attractor with share 0.6701.",
+      "share": 0.67008547008547,
+      "hit_count": 392,
+      "observation_count": 585
+    },
+    {
+      "rule_id": "aggregate_even_semiprime_to_attractor",
+      "formal_rule": "current_state family = even_semiprime => next_state in Semiprime Wheel Attractor",
+      "natural_language": "When current state family = even semiprime, the next state lands in the Semiprime Wheel Attractor with share 0.6836.",
+      "share": 0.6836158192090396,
+      "hit_count": 242,
+      "observation_count": 354
+    },
+    {
+      "rule_id": "aggregate_attractor_retention",
+      "formal_rule": "current_state in Semiprime Wheel Attractor => next_state in Semiprime Wheel Attractor",
+      "natural_language": "When current state in Semiprime Wheel Attractor, the next state lands in the Semiprime Wheel Attractor with share 0.6552.",
+      "share": 0.6552287581699346,
+      "hit_count": 1203,
+      "observation_count": 1836
+    },
+    {
+      "rule_id": "pair_context_rule",
+      "formal_rule": "(o2_odd_semiprime|d<=4, o2_higher_divisor_even|5<=d<=16) => o4_odd_semiprime|d<=4",
+      "natural_language": "After the pair (o2_odd_semiprime|d<=4, o2_higher_divisor_even|5<=d<=16), the next state is most often o4_odd_semiprime|d<=4 with share 0.5333.",
+      "share": 0.5333333333333333,
+      "hit_count": 8,
+      "observation_count": 15
+    },
+    {
+      "rule_id": "pair_context_rule",
+      "formal_rule": "(o4_odd_semiprime|d<=4, o4_higher_divisor_even|5<=d<=16) => o2_odd_semiprime|d<=4",
+      "natural_language": "After the pair (o4_odd_semiprime|d<=4, o4_higher_divisor_even|5<=d<=16), the next state is most often o2_odd_semiprime|d<=4 with share 0.4800.",
+      "share": 0.48,
+      "hit_count": 12,
+      "observation_count": 25
+    },
+    {
+      "rule_id": "pair_context_rule",
+      "formal_rule": "(o2_even_semiprime|d<=4, o4_odd_semiprime|d<=4) => o2_odd_semiprime|d<=4",
+      "natural_language": "After the pair (o2_even_semiprime|d<=4, o4_odd_semiprime|d<=4), the next state is most often o2_odd_semiprime|d<=4 with share 0.4706.",
+      "share": 0.47058823529411764,
+      "hit_count": 8,
+      "observation_count": 17
+    },
+    {
+      "rule_id": "pair_context_rule",
+      "formal_rule": "(o6_odd_semiprime|d<=4, o2_higher_divisor_even|17<=d<=64) => o4_odd_semiprime|d<=4",
+      "natural_language": "After the pair (o6_odd_semiprime|d<=4, o2_higher_divisor_even|17<=d<=64), the next state is most often o4_odd_semiprime|d<=4 with share 0.4667.",
+      "share": 0.4666666666666667,
+      "hit_count": 7,
+      "observation_count": 15
+    },
+    {
+      "rule_id": "pair_context_rule",
+      "formal_rule": "(o4_odd_semiprime|d<=4, o4_higher_divisor_odd|5<=d<=16) => o2_odd_semiprime|d<=4",
+      "natural_language": "After the pair (o4_odd_semiprime|d<=4, o4_higher_divisor_odd|5<=d<=16), the next state is most often o2_odd_semiprime|d<=4 with share 0.4500.",
+      "share": 0.45,
+      "hit_count": 9,
+      "observation_count": 20
+    },
+    {
+      "rule_id": "pair_context_rule",
+      "formal_rule": "(o2_odd_semiprime|d<=4, o2_higher_divisor_even|d>64) => o4_odd_semiprime|d<=4",
+      "natural_language": "After the pair (o2_odd_semiprime|d<=4, o2_higher_divisor_even|d>64), the next state is most often o4_odd_semiprime|d<=4 with share 0.4444.",
+      "share": 0.4444444444444444,
+      "hit_count": 8,
+      "observation_count": 18
+    },
+    {
+      "rule_id": "pair_context_rule",
+      "formal_rule": "(o6_odd_semiprime|d<=4, o6_even_semiprime|d<=4) => o2_odd_semiprime|d<=4",
+      "natural_language": "After the pair (o6_odd_semiprime|d<=4, o6_even_semiprime|d<=4), the next state is most often o2_odd_semiprime|d<=4 with share 0.4375.",
+      "share": 0.4375,
+      "hit_count": 7,
+      "observation_count": 16
+    },
+    {
+      "rule_id": "pair_context_rule",
+      "formal_rule": "(o6_odd_semiprime|d<=4, o4_even_semiprime|d<=4) => o2_odd_semiprime|d<=4",
+      "natural_language": "After the pair (o6_odd_semiprime|d<=4, o4_even_semiprime|d<=4), the next state is most often o2_odd_semiprime|d<=4 with share 0.4231.",
+      "share": 0.4230769230769231,
+      "hit_count": 11,
+      "observation_count": 26
+    }
+  ],
+  "real_extreme_scale_reference": {
+    "row_count": 1779,
+    "family_distribution": {
+      "even_semiprime": 0.11973018549747048,
+      "higher_divisor_even": 0.10118043844856661,
+      "odd_semiprime": 0.6840921866216976,
+      "higher_divisor_odd": 0.09499718943226532
+    },
+    "peak_offset_distribution": {
+      "7": 0.011242270938729624,
+      "1": 0.09274873524451939,
+      "3": 0.05564924114671164,
+      "2": 0.1911186059584036,
+      "6": 0.15682967959527824,
+      "8": 0.07195053400786959,
+      "16": 0.01854974704890388,
+      "4": 0.14783586284429454,
+      "5": 0.02473299606520517,
+      "10": 0.07082630691399663,
+      "12": 0.05002810567734682,
+      "11": 0.006183249016301293,
+      "9": 0.01517706576728499,
+      "20": 0.007307476110174255,
+      "50": 0.0005621135469364812,
+      "18": 0.012928611579539067,
+      "14": 0.02304665542439573,
+      "13": 0.005621135469364812,
+      "32": 0.0022484541877459247,
+      "28": 0.002810567734682406,
+      "24": 0.007869589657110737,
+      "30": 0.002810567734682406,
+      "15": 0.004496908375491849,
+      "22": 0.01011804384485666,
+      "36": 0.0005621135469364812,
+      "21": 0.0011242270938729624,
+      "26": 0.0011242270938729624,
+      "38": 0.0005621135469364812,
+      "17": 0.0011242270938729624,
+      "27": 0.0011242270938729624,
+      "19": 0.0005621135469364812,
+      "29": 0.0005621135469364812,
+      "25": 0.0005621135469364812
+    },
+    "higher_divisor_share": 0.19617762788083193,
+    "concentrations": {
+      "one_step": 0.32844243792325056,
+      "two_step": 0.5059490084985836,
+      "three_step": 0.7593856655290102
+    },
+    "window_bands": {
+      "higher_divisor_share": {
+        "min": 0.16535433070866143,
+        "max": 0.23046875
+      },
+      "one_step_concentration": {
+        "min": 0.31496062992125984,
+        "max": 0.344
+      },
+      "two_step_concentration": {
+        "min": 0.48031496062992124,
+        "max": 0.5220883534136547
+      },
+      "three_step_concentration": {
+        "min": 0.7312252964426877,
+        "max": 0.7944664031620553
+      },
+      "max_peak_offset": {
+        "min": 28.0,
+        "max": 50.0
+      }
+    }
+  },
+  "stress_walk": {
+    "synthetic_length": 1000000,
+    "horizon_metrics": [
+      {
+        "prefix_length": 256,
+        "family_l1_to_real_pool": 0.14744062675660485,
+        "peak_offset_l1_to_real_pool": 0.1531935075885329,
+        "higher_divisor_share": 0.1328125,
+        "higher_divisor_share_error": 0.06336512788083193,
+        "one_step_concentration": 0.3333333333333333,
+        "one_step_concentration_error": 0.004890895410082752,
+        "two_step_concentration": 0.3937007874015748,
+        "two_step_concentration_error": 0.11224822109700877,
+        "three_step_concentration": 0.8063241106719368,
+        "three_step_concentration_error": 0.046938445142926555
+      },
+      {
+        "prefix_length": 1024,
+        "family_l1_to_real_pool": 0.0894287521079258,
+        "peak_offset_l1_to_real_pool": 0.16991309197582913,
+        "higher_divisor_share": 0.203125,
+        "higher_divisor_share_error": 0.0069473721191680715,
+        "one_step_concentration": 0.29716520039100686,
+        "one_step_concentration_error": 0.03127723753224371,
+        "two_step_concentration": 0.34833659491193736,
+        "two_step_concentration_error": 0.15761241358664624,
+        "three_step_concentration": 0.6444662095984329,
+        "three_step_concentration_error": 0.11491945593057729
+      },
+      {
+        "prefix_length": 4096,
+        "family_l1_to_real_pool": 0.0777100021079258,
+        "peak_offset_l1_to_real_pool": 0.16942481072582913,
+        "higher_divisor_share": 0.212890625,
+        "higher_divisor_share_error": 0.01671299711916807,
+        "one_step_concentration": 0.2869352869352869,
+        "one_step_concentration_error": 0.04150715098796365,
+        "two_step_concentration": 0.33854421104054716,
+        "two_step_concentration_error": 0.16740479745803644,
+        "three_step_concentration": 0.4803322746151967,
+        "three_step_concentration_error": 0.27905339091381354
+      },
+      {
+        "prefix_length": 16384,
+        "family_l1_to_real_pool": 0.0714844161704258,
+        "peak_offset_l1_to_real_pool": 0.16649512322582913,
+        "higher_divisor_share": 0.21136474609375,
+        "higher_divisor_share_error": 0.015187118212918072,
+        "one_step_concentration": 0.28474638344625525,
+        "one_step_concentration_error": 0.043696054476995316,
+        "two_step_concentration": 0.33445244780857036,
+        "two_step_concentration_error": 0.17149656069001323,
+        "three_step_concentration": 0.4092546242598132,
+        "three_step_concentration_error": 0.35013104126919703
+      },
+      {
+        "prefix_length": 65536,
+        "family_l1_to_real_pool": 0.0698669845298008,
+        "peak_offset_l1_to_real_pool": 0.16606787713207913,
+        "higher_divisor_share": 0.210906982421875,
+        "higher_divisor_share_error": 0.014729354541043072,
+        "one_step_concentration": 0.28493171587701227,
+        "one_step_concentration_error": 0.04351072204623829,
+        "two_step_concentration": 0.3346507156590472,
+        "two_step_concentration_error": 0.1712982928395364,
+        "three_step_concentration": 0.36937115651656416,
+        "three_step_concentration_error": 0.39001450901244605
+      },
+      {
+        "prefix_length": 262144,
+        "family_l1_to_real_pool": 0.06929477993995704,
+        "peak_offset_l1_to_real_pool": 0.16570929558911038,
+        "higher_divisor_share": 0.21070098876953125,
+        "higher_divisor_share_error": 0.014523360888699322,
+        "one_step_concentration": 0.28494752863894895,
+        "one_step_concentration_error": 0.04349490928430161,
+        "two_step_concentration": 0.3345095406306506,
+        "two_step_concentration_error": 0.17143946786793302,
+        "three_step_concentration": 0.3534243021885169,
+        "three_step_concentration_error": 0.4059613633404933
+      },
+      {
+        "prefix_length": 1000000,
+        "family_l1_to_real_pool": 0.06924275210792583,
+        "peak_offset_l1_to_real_pool": 0.16568421697582913,
+        "higher_divisor_share": 0.210701,
+        "higher_divisor_share_error": 0.014523372119168071,
+        "one_step_concentration": 0.2849342849342849,
+        "one_step_concentration_error": 0.043508152988965654,
+        "two_step_concentration": 0.33449066898133795,
+        "two_step_concentration_error": 0.17145833951724565,
+        "three_step_concentration": 0.3477600432801298,
+        "three_step_concentration_error": 0.4116256222488804
+      }
+    ],
+    "final_metrics": {
+      "prefix_length": 1000000,
+      "family_l1_to_real_pool": 0.06924275210792583,
+      "peak_offset_l1_to_real_pool": 0.16568421697582913,
+      "higher_divisor_share": 0.210701,
+      "higher_divisor_share_error": 0.014523372119168071,
+      "one_step_concentration": 0.2849342849342849,
+      "one_step_concentration_error": 0.043508152988965654,
+      "two_step_concentration": 0.33449066898133795,
+      "two_step_concentration_error": 0.17145833951724565,
+      "three_step_concentration": 0.3477600432801298,
+      "three_step_concentration_error": 0.4116256222488804
+    },
+    "top_states": [
+      {
+        "reduced_state": "o2_odd_semiprime|d<=4",
+        "count": 257468,
+        "share": 0.257468
+      },
+      {
+        "reduced_state": "o4_odd_semiprime|d<=4",
+        "count": 242017,
+        "share": 0.242017
+      },
+      {
+        "reduced_state": "o6_odd_semiprime|d<=4",
+        "count": 161686,
+        "share": 0.161686
+      },
+      {
+        "reduced_state": "o4_even_semiprime|d<=4",
+        "count": 55758,
+        "share": 0.055758
+      },
+      {
+        "reduced_state": "o4_higher_divisor_even|5<=d<=16",
+        "count": 43665,
+        "share": 0.043665
+      },
+      {
+        "reduced_state": "o6_even_semiprime|d<=4",
+        "count": 42413,
+        "share": 0.042413
+      },
+      {
+        "reduced_state": "o4_higher_divisor_odd|5<=d<=16",
+        "count": 33187,
+        "share": 0.033187
+      },
+      {
+        "reduced_state": "o2_even_semiprime|d<=4",
+        "count": 29957,
+        "share": 0.029957
+      },
+      {
+        "reduced_state": "o2_higher_divisor_odd|5<=d<=16",
+        "count": 26295,
+        "share": 0.026295
+      },
+      {
+        "reduced_state": "o2_higher_divisor_even|17<=d<=64",
+        "count": 26265,
+        "share": 0.026265
+      },
+      {
+        "reduced_state": "o6_higher_divisor_odd|5<=d<=16",
+        "count": 23815,
+        "share": 0.023815
+      },
+      {
+        "reduced_state": "o6_higher_divisor_even|5<=d<=16",
+        "count": 21140,
+        "share": 0.02114
+      }
+    ],
+    "top_peak_offsets": [
+      {
+        "next_peak_offset": 2,
+        "count": 227126,
+        "share": 0.227126
+      },
+      {
+        "next_peak_offset": 4,
+        "count": 153183,
+        "share": 0.153183
+      },
+      {
+        "next_peak_offset": 6,
+        "count": 151583,
+        "share": 0.151583
+      },
+      {
+        "next_peak_offset": 1,
+        "count": 112989,
+        "share": 0.112989
+      },
+      {
+        "next_peak_offset": 3,
+        "count": 73576,
+        "share": 0.073576
+      },
+      {
+        "next_peak_offset": 8,
+        "count": 63185,
+        "share": 0.063185
+      },
+      {
+        "next_peak_offset": 10,
+        "count": 54405,
+        "share": 0.054405
+      },
+      {
+        "next_peak_offset": 12,
+        "count": 38548,
+        "share": 0.038548
+      },
+      {
+        "next_peak_offset": 5,
+        "count": 25333,
+        "share": 0.025333
+      },
+      {
+        "next_peak_offset": 14,
+        "count": 17835,
+        "share": 0.017835
+      },
+      {
+        "next_peak_offset": 9,
+        "count": 16091,
+        "share": 0.016091
+      },
+      {
+        "next_peak_offset": 7,
+        "count": 12896,
+        "share": 0.012896
+      }
+    ]
+  },
+  "record_gap_probe": {
+    "control_mean_transition_surprisal_bits": 2.626562453060369,
+    "core_scored_record_count": 348,
+    "noncore_record_count": 39,
+    "subset_summaries": {
+      "all_records": {
+        "record_count": 348,
+        "mean_transition_probability": 0.21764910982737065,
+        "mean_transition_surprisal_bits": 2.4414897763913723,
+        "mean_rank_fraction": 0.2748920779093193,
+        "share_above_control_mean_surprisal": 0.31896551724137934
+      },
+      "maximal_records": {
+        "record_count": 22,
+        "mean_transition_probability": 0.22950506790624206,
+        "mean_transition_surprisal_bits": 2.2509066187516393,
+        "mean_rank_fraction": 0.2812168891714346,
+        "share_above_control_mean_surprisal": 0.2727272727272727
+      },
+      "nonmaximal_first_occurrences": {
+        "record_count": 326,
+        "mean_transition_probability": 0.21684901449689464,
+        "mean_transition_surprisal_bits": 2.4543512164774897,
+        "mean_rank_fraction": 0.2744652501554342,
+        "share_above_control_mean_surprisal": 0.3220858895705521
+      }
+    },
+    "most_surprising_records": [
+      {
+        "gap_start": 673252372176533,
+        "gap_size": 794,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o6_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 9,
+        "in_core": 1,
+        "context_left_state": "o6_odd_semiprime|d<=4",
+        "context_right_state": "o4_odd_semiprime|d<=4",
+        "transition_probability": 0.02459016393442623,
+        "transition_surprisal_bits": 5.34577483684173,
+        "transition_rank": 10,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 23900175352205171,
+        "gap_size": 1068,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o2_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 11,
+        "in_core": 1,
+        "context_left_state": "o2_odd_semiprime|d<=4",
+        "context_right_state": "o6_odd_semiprime|d<=4",
+        "transition_probability": 0.02608695652173913,
+        "transition_surprisal_bits": 5.260527550223219,
+        "transition_rank": 6,
+        "context_fanout": 13
+      },
+      {
+        "gap_start": 991215618225244991,
+        "gap_size": 1238,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o2_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 11,
+        "in_core": 1,
+        "context_left_state": "o2_odd_semiprime|d<=4",
+        "context_right_state": "o4_even_semiprime|d<=4",
+        "transition_probability": 0.02631578947368421,
+        "transition_surprisal_bits": 5.247927513443585,
+        "transition_rank": 6,
+        "context_fanout": 10
+      },
+      {
+        "gap_start": 4698198022874969,
+        "gap_size": 944,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o2_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 5,
+        "in_core": 1,
+        "context_left_state": "o4_odd_semiprime|d<=4",
+        "context_right_state": "o4_odd_semiprime|d<=4",
+        "transition_probability": 0.028368794326241134,
+        "transition_surprisal_bits": 5.139551352398794,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 2126985673135679,
+        "gap_size": 908,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o2_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 3,
+        "in_core": 1,
+        "context_left_state": "o4_odd_semiprime|d<=4",
+        "context_right_state": "o4_odd_semiprime|d<=4",
+        "transition_probability": 0.028368794326241134,
+        "transition_surprisal_bits": 5.139551352398794,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 14141685364577,
+        "gap_size": 642,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o2_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 5,
+        "in_core": 1,
+        "context_left_state": "o4_odd_semiprime|d<=4",
+        "context_right_state": "o4_odd_semiprime|d<=4",
+        "transition_probability": 0.028368794326241134,
+        "transition_surprisal_bits": 5.139551352398794,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 1529741785139,
+        "gap_size": 528,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o2_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 3,
+        "in_core": 1,
+        "context_left_state": "o4_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.029069767441860465,
+        "transition_surprisal_bits": 5.104336659814735,
+        "transition_rank": 9,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 2705074880971613,
+        "gap_size": 878,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o6_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 5,
+        "in_core": 1,
+        "context_left_state": "o6_even_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.03125,
+        "transition_surprisal_bits": 5.0,
+        "transition_rank": 9,
+        "context_fanout": 10
+      },
+      {
+        "gap_start": 12112937821403,
+        "gap_size": 606,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o6_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 3,
+        "in_core": 1,
+        "context_left_state": "o4_odd_semiprime|d<=4",
+        "context_right_state": "o6_odd_semiprime|d<=4",
+        "transition_probability": 0.03225806451612903,
+        "transition_surprisal_bits": 4.954196310386875,
+        "transition_rank": 8,
+        "context_fanout": 12
+      },
+      {
+        "gap_start": 4286129201882221,
+        "gap_size": 922,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o6_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 1,
+        "in_core": 1,
+        "context_left_state": "o4_even_semiprime|d<=4",
+        "context_right_state": "o6_odd_semiprime|d<=4",
+        "transition_probability": 0.03333333333333333,
+        "transition_surprisal_bits": 4.906890595608519,
+        "transition_rank": 11,
+        "context_fanout": 11
+      },
+      {
+        "gap_start": 703390724952490921,
+        "gap_size": 1192,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o6_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 13,
+        "in_core": 1,
+        "context_left_state": "o4_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.03488372093023256,
+        "transition_surprisal_bits": 4.841302253980942,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 43614652195746623,
+        "gap_size": 1064,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o6_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 11,
+        "in_core": 1,
+        "context_left_state": "o4_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.03488372093023256,
+        "transition_surprisal_bits": 4.841302253980942,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 70099348325843,
+        "gap_size": 756,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o6_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 15,
+        "in_core": 1,
+        "context_left_state": "o4_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.03488372093023256,
+        "transition_surprisal_bits": 4.841302253980942,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 41459443375351,
+        "gap_size": 682,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o6_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 3,
+        "in_core": 1,
+        "context_left_state": "o4_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.03488372093023256,
+        "transition_surprisal_bits": 4.841302253980942,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 443136926113560739,
+        "gap_size": 1204,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o4_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 15,
+        "in_core": 1,
+        "context_left_state": "o2_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.03571428571428571,
+        "transition_surprisal_bits": 4.807354922057605,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 9483480841753,
+        "gap_size": 636,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o4_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 1,
+        "in_core": 1,
+        "context_left_state": "o2_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.03571428571428571,
+        "transition_surprisal_bits": 4.807354922057605,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 9105981382177,
+        "gap_size": 610,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o4_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 1,
+        "in_core": 1,
+        "context_left_state": "o2_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.03571428571428571,
+        "transition_surprisal_bits": 4.807354922057605,
+        "transition_rank": 8,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 10244316228469423,
+        "gap_size": 928,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o4_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 15,
+        "in_core": 1,
+        "context_left_state": "o6_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.04032258064516129,
+        "transition_surprisal_bits": 4.632268215499513,
+        "transition_rank": 6,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 497067290087413,
+        "gap_size": 820,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o4_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 1,
+        "in_core": 1,
+        "context_left_state": "o6_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.04032258064516129,
+        "transition_surprisal_bits": 4.632268215499513,
+        "transition_rank": 6,
+        "context_fanout": 14
+      },
+      {
+        "gap_start": 2707053887651,
+        "gap_size": 542,
+        "is_maximal": 0,
+        "is_first": 1,
+        "current_state": "o2_even_semiprime|d<=4",
+        "current_carrier_family": "even_semiprime",
+        "current_peak_offset": 3,
+        "in_core": 1,
+        "context_left_state": "o6_odd_semiprime|d<=4",
+        "context_right_state": "o2_odd_semiprime|d<=4",
+        "transition_probability": 0.04032258064516129,
+        "transition_surprisal_bits": 4.632268215499513,
+        "transition_rank": 5,
+        "context_fanout": 14
+      }
+    ]
+  },
+  "runtime_seconds": 17.686036375002004
+}

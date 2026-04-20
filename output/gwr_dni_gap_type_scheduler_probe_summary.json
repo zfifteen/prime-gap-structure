@@ -1,0 +1,105 @@
+{
+  "synthetic_length": 1000000,
+  "reference_window_length": 256,
+  "real_reference_window_concentrations": {
+    "one_step": 0.32844243792325056,
+    "two_step": 0.5059490084985836,
+    "three_step": 0.7593856655290102
+  },
+  "real_reference_higher_divisor_share": 0.19617762788083193,
+  "core_state_count": 14,
+  "core_states": [
+    "o2_even_semiprime|d<=4",
+    "o2_higher_divisor_even|17<=d<=64",
+    "o2_higher_divisor_even|5<=d<=16",
+    "o2_higher_divisor_even|d>64",
+    "o2_higher_divisor_odd|5<=d<=16",
+    "o2_odd_semiprime|d<=4",
+    "o4_even_semiprime|d<=4",
+    "o4_higher_divisor_even|5<=d<=16",
+    "o4_higher_divisor_odd|5<=d<=16",
+    "o4_odd_semiprime|d<=4",
+    "o6_even_semiprime|d<=4",
+    "o6_higher_divisor_even|5<=d<=16",
+    "o6_higher_divisor_odd|5<=d<=16",
+    "o6_odd_semiprime|d<=4"
+  ],
+  "models": {
+    "second_order_rotor": {
+      "description": "Baseline persistent 14-state second-order rotor.",
+      "scheduler_phase_count": 0,
+      "transition_context_count": 167,
+      "family_l1_to_real_pool": 0.06924275210792583,
+      "peak_offset_l1_to_real_pool": 0.16568421697582913,
+      "higher_divisor_share": 0.210701,
+      "higher_divisor_share_error": 0.014523372119168071,
+      "full_walk_concentrations": {
+        "one_step": 0.2849342849342849,
+        "two_step": 0.33449066898133795,
+        "three_step": 0.3477600432801298
+      },
+      "pooled_window_concentrations": {
+        "one_step": 0.3107265845406263,
+        "two_step": 0.45138914087351983,
+        "three_step": 0.8260636823049166
+      },
+      "pooled_window_concentration_l1": 0.13895373778359438
+    },
+    "mod_cycle_scheduler": {
+      "description": "Simple 8-phase modulo scheduler over the second-order core.",
+      "scheduler_phase_count": 8,
+      "transition_context_count": 759,
+      "family_l1_to_real_pool": 0.06698675210792583,
+      "peak_offset_l1_to_real_pool": 0.16408021697582914,
+      "higher_divisor_share": 0.21021,
+      "higher_divisor_share_error": 0.01403237211916808,
+      "full_walk_concentrations": {
+        "one_step": 0.2861712861712862,
+        "two_step": 0.33524567049134096,
+        "three_step": 0.3957321871965616
+      },
+      "pooled_window_concentrations": {
+        "one_step": 0.32633153619870886,
+        "two_step": 0.5005966996060977,
+        "three_step": 0.7768629998644024
+      },
+      "pooled_window_concentration_l1": 0.024940544952419874
+    },
+    "lag2_state_scheduler": {
+      "description": "Finite scheduler whose phase is the reduced state two steps back; equivalently, a third-order walk on the persistent core.",
+      "scheduler_phase_count": 14,
+      "transition_context_count": 803,
+      "family_l1_to_real_pool": 0.06750675210792581,
+      "peak_offset_l1_to_real_pool": 0.1648222169758291,
+      "higher_divisor_share": 0.209917,
+      "higher_divisor_share_error": 0.013739372119168064,
+      "full_walk_concentrations": {
+        "one_step": 0.284995284995285,
+        "two_step": 0.33453166906333814,
+        "three_step": 0.4900134700404101
+      },
+      "pooled_window_concentrations": {
+        "one_step": 0.3244922341696535,
+        "two_step": 0.4987602356157093,
+        "three_step": 0.7503850365000435
+      },
+      "pooled_window_concentration_l1": 0.020139605665438043
+    }
+  },
+  "ranking_by_pooled_window_concentration_l1": [
+    {
+      "model_id": "lag2_state_scheduler",
+      "pooled_window_concentration_l1": 0.020139605665438043
+    },
+    {
+      "model_id": "mod_cycle_scheduler",
+      "pooled_window_concentration_l1": 0.024940544952419874
+    },
+    {
+      "model_id": "second_order_rotor",
+      "pooled_window_concentration_l1": 0.13895373778359438
+    }
+  ],
+  "best_model_id": "lag2_state_scheduler",
+  "runtime_seconds": 7.059142166050151
+}

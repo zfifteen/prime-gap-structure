@@ -1,0 +1,652 @@
+{
+  "training_surfaces": [
+    "10^7",
+    "10^8",
+    "10^9",
+    "10^10",
+    "10^11",
+    "10^12",
+    "10^13",
+    "10^14",
+    "10^15",
+    "10^16",
+    "10^17"
+  ],
+  "held_out_surface": "10^18",
+  "reduced_state_definition": {
+    "state_form": "open_family|d_bucket",
+    "d_bucket_labels": [
+      "d<=4",
+      "5<=d<=16",
+      "17<=d<=64",
+      "d>64"
+    ]
+  },
+  "core_state_count": 14,
+  "core_states": [
+    "o2_even_semiprime|d<=4",
+    "o2_higher_divisor_even|17<=d<=64",
+    "o2_higher_divisor_even|5<=d<=16",
+    "o2_higher_divisor_even|d>64",
+    "o2_higher_divisor_odd|5<=d<=16",
+    "o2_odd_semiprime|d<=4",
+    "o4_even_semiprime|d<=4",
+    "o4_higher_divisor_even|5<=d<=16",
+    "o4_higher_divisor_odd|5<=d<=16",
+    "o4_odd_semiprime|d<=4",
+    "o6_even_semiprime|d<=4",
+    "o6_higher_divisor_even|5<=d<=16",
+    "o6_higher_divisor_odd|5<=d<=16",
+    "o6_odd_semiprime|d<=4"
+  ],
+  "segment_count": 26,
+  "training_start_state": "o2_odd_semiprime|d<=4",
+  "training_start_pair": [
+    "o4_odd_semiprime|d<=4",
+    "o2_odd_semiprime|d<=4"
+  ],
+  "held_out_window": {
+    "gap_count": 256,
+    "state_count": 14,
+    "triad_share": 0.734375,
+    "pair_top_successor_share": 0.3411764705882353,
+    "max_peak_offset": 30,
+    "family_distribution": {
+      "odd_semiprime": 0.734375,
+      "higher_divisor_odd": 0.109375,
+      "higher_divisor_even": 0.06640625,
+      "even_semiprime": 0.08984375
+    }
+  },
+  "aggregated_rules": [
+    {
+      "rule": "higher_divisor_to_triad",
+      "share": 0.67008547008547,
+      "hit_count": 392,
+      "observation_count": 585
+    },
+    {
+      "rule": "even_semiprime_to_triad",
+      "share": 0.6836158192090396,
+      "hit_count": 242,
+      "observation_count": 354
+    },
+    {
+      "rule": "non_triad_to_triad",
+      "share": 0.6751863684771033,
+      "hit_count": 634,
+      "observation_count": 939
+    },
+    {
+      "rule": "triad_to_triad",
+      "share": 0.6552287581699346,
+      "hit_count": 1203,
+      "observation_count": 1836
+    },
+    {
+      "current_state": "o2_higher_divisor_even|5<=d<=16",
+      "next_state": "o4_odd_semiprime|d<=4",
+      "share": 0.5490196078431373,
+      "count": 28,
+      "observation_count": 51
+    },
+    {
+      "current_state": "o2_higher_divisor_even|17<=d<=64",
+      "next_state": "o4_odd_semiprime|d<=4",
+      "share": 0.44594594594594594,
+      "count": 33,
+      "observation_count": 74
+    },
+    {
+      "current_state": "o4_higher_divisor_even|5<=d<=16",
+      "next_state": "o2_odd_semiprime|d<=4",
+      "share": 0.4180327868852459,
+      "count": 51,
+      "observation_count": 122
+    },
+    {
+      "current_state": "o2_higher_divisor_even|d>64",
+      "next_state": "o6_odd_semiprime|d<=4",
+      "share": 0.34615384615384615,
+      "count": 18,
+      "observation_count": 52
+    },
+    {
+      "current_state": "o4_higher_divisor_odd|5<=d<=16",
+      "next_state": "o2_odd_semiprime|d<=4",
+      "share": 0.33695652173913043,
+      "count": 31,
+      "observation_count": 92
+    },
+    {
+      "current_state": "o6_higher_divisor_odd|5<=d<=16",
+      "next_state": "o2_odd_semiprime|d<=4",
+      "share": 0.3125,
+      "count": 20,
+      "observation_count": 64
+    }
+  ],
+  "model_comparisons": {
+    "iid_balanced_cycle": {
+      "prefix_length": 256,
+      "state_count": 14,
+      "reduced_state_l1": 0.2421875,
+      "reduced_state_pair_l1": 0.7058823529411764,
+      "family_l1": 0.203125,
+      "peak_offset_l1": 0.421875,
+      "triad_share": 0.66015625,
+      "held_triad_share": 0.734375,
+      "triad_share_error": 0.07421875,
+      "pair_top_successor_share": 0.3764705882352941,
+      "held_pair_top_successor_share": 0.3411764705882353,
+      "pair_top_successor_share_error": 0.03529411764705881,
+      "max_peak_offset": 24,
+      "held_max_peak_offset": 30,
+      "max_peak_offset_error": 6
+    },
+    "first_order_rotor": {
+      "prefix_length": 256,
+      "state_count": 14,
+      "reduced_state_l1": 0.265625,
+      "reduced_state_pair_l1": 0.5568627450980392,
+      "family_l1": 0.1953125,
+      "peak_offset_l1": 0.421875,
+      "triad_share": 0.66796875,
+      "held_triad_share": 0.734375,
+      "triad_share_error": 0.06640625,
+      "pair_top_successor_share": 0.2901960784313726,
+      "held_pair_top_successor_share": 0.3411764705882353,
+      "pair_top_successor_share_error": 0.05098039215686273,
+      "max_peak_offset": 24,
+      "held_max_peak_offset": 30,
+      "max_peak_offset_error": 6
+    },
+    "second_order_rotor": {
+      "prefix_length": 256,
+      "state_count": 13,
+      "reduced_state_l1": 0.234375,
+      "reduced_state_pair_l1": 0.4627450980392157,
+      "family_l1": 0.1171875,
+      "peak_offset_l1": 0.359375,
+      "triad_share": 0.7578125,
+      "held_triad_share": 0.734375,
+      "triad_share_error": 0.0234375,
+      "pair_top_successor_share": 0.3333333333333333,
+      "held_pair_top_successor_share": 0.3411764705882353,
+      "pair_top_successor_share_error": 0.007843137254901988,
+      "max_peak_offset": 32,
+      "held_max_peak_offset": 30,
+      "max_peak_offset_error": 2
+    }
+  },
+  "second_order_synthetic_summary": {
+    "synthetic_length": 10000,
+    "state_count": 14,
+    "triad_share": 0.6586,
+    "pair_top_successor_share": 0.285028502850285,
+    "max_peak_offset": 50,
+    "top_states": [
+      {
+        "reduced_state": "o2_odd_semiprime|d<=4",
+        "count": 2576,
+        "share": 0.2576
+      },
+      {
+        "reduced_state": "o4_odd_semiprime|d<=4",
+        "count": 2415,
+        "share": 0.2415
+      },
+      {
+        "reduced_state": "o6_odd_semiprime|d<=4",
+        "count": 1595,
+        "share": 0.1595
+      },
+      {
+        "reduced_state": "o4_even_semiprime|d<=4",
+        "count": 565,
+        "share": 0.0565
+      },
+      {
+        "reduced_state": "o4_higher_divisor_even|5<=d<=16",
+        "count": 441,
+        "share": 0.0441
+      },
+      {
+        "reduced_state": "o6_even_semiprime|d<=4",
+        "count": 417,
+        "share": 0.0417
+      },
+      {
+        "reduced_state": "o4_higher_divisor_odd|5<=d<=16",
+        "count": 333,
+        "share": 0.0333
+      },
+      {
+        "reduced_state": "o2_even_semiprime|d<=4",
+        "count": 307,
+        "share": 0.0307
+      },
+      {
+        "reduced_state": "o2_higher_divisor_even|17<=d<=64",
+        "count": 271,
+        "share": 0.0271
+      },
+      {
+        "reduced_state": "o2_higher_divisor_odd|5<=d<=16",
+        "count": 266,
+        "share": 0.0266
+      }
+    ],
+    "top_peak_offsets": [
+      {
+        "next_peak_offset": 2,
+        "count": 2267,
+        "share": 0.2267
+      },
+      {
+        "next_peak_offset": 4,
+        "count": 1527,
+        "share": 0.1527
+      },
+      {
+        "next_peak_offset": 6,
+        "count": 1509,
+        "share": 0.1509
+      },
+      {
+        "next_peak_offset": 1,
+        "count": 1147,
+        "share": 0.1147
+      },
+      {
+        "next_peak_offset": 3,
+        "count": 737,
+        "share": 0.0737
+      },
+      {
+        "next_peak_offset": 8,
+        "count": 629,
+        "share": 0.0629
+      },
+      {
+        "next_peak_offset": 10,
+        "count": 540,
+        "share": 0.054
+      },
+      {
+        "next_peak_offset": 12,
+        "count": 383,
+        "share": 0.0383
+      },
+      {
+        "next_peak_offset": 5,
+        "count": 257,
+        "share": 0.0257
+      },
+      {
+        "next_peak_offset": 14,
+        "count": 178,
+        "share": 0.0178
+      }
+    ]
+  },
+  "plot_cache": {
+    "held_states": [
+      {
+        "kind": "str",
+        "key": "o2_even_semiprime|d<=4",
+        "share": 0.01953125
+      },
+      {
+        "kind": "str",
+        "key": "o2_higher_divisor_even|17<=d<=64",
+        "share": 0.01171875
+      },
+      {
+        "kind": "str",
+        "key": "o2_higher_divisor_even|5<=d<=16",
+        "share": 0.00390625
+      },
+      {
+        "kind": "str",
+        "key": "o2_higher_divisor_even|d>64",
+        "share": 0.0234375
+      },
+      {
+        "kind": "str",
+        "key": "o2_higher_divisor_odd|5<=d<=16",
+        "share": 0.0390625
+      },
+      {
+        "kind": "str",
+        "key": "o2_odd_semiprime|d<=4",
+        "share": 0.24609375
+      },
+      {
+        "kind": "str",
+        "key": "o4_even_semiprime|d<=4",
+        "share": 0.0390625
+      },
+      {
+        "kind": "str",
+        "key": "o4_higher_divisor_even|5<=d<=16",
+        "share": 0.01171875
+      },
+      {
+        "kind": "str",
+        "key": "o4_higher_divisor_odd|5<=d<=16",
+        "share": 0.05078125
+      },
+      {
+        "kind": "str",
+        "key": "o4_odd_semiprime|d<=4",
+        "share": 0.28515625
+      },
+      {
+        "kind": "str",
+        "key": "o6_even_semiprime|d<=4",
+        "share": 0.03125
+      },
+      {
+        "kind": "str",
+        "key": "o6_higher_divisor_even|5<=d<=16",
+        "share": 0.015625
+      },
+      {
+        "kind": "str",
+        "key": "o6_higher_divisor_odd|5<=d<=16",
+        "share": 0.01953125
+      },
+      {
+        "kind": "str",
+        "key": "o6_odd_semiprime|d<=4",
+        "share": 0.203125
+      }
+    ],
+    "held_peaks": [
+      {
+        "kind": "int",
+        "key": 1,
+        "share": 0.0703125
+      },
+      {
+        "kind": "int",
+        "key": 2,
+        "share": 0.16796875
+      },
+      {
+        "kind": "int",
+        "key": 3,
+        "share": 0.03515625
+      },
+      {
+        "kind": "int",
+        "key": 4,
+        "share": 0.11328125
+      },
+      {
+        "kind": "int",
+        "key": 5,
+        "share": 0.01171875
+      },
+      {
+        "kind": "int",
+        "key": 6,
+        "share": 0.1953125
+      },
+      {
+        "kind": "int",
+        "key": 7,
+        "share": 0.01171875
+      },
+      {
+        "kind": "int",
+        "key": 8,
+        "share": 0.07421875
+      },
+      {
+        "kind": "int",
+        "key": 10,
+        "share": 0.109375
+      },
+      {
+        "kind": "int",
+        "key": 11,
+        "share": 0.00390625
+      },
+      {
+        "kind": "int",
+        "key": 12,
+        "share": 0.05859375
+      },
+      {
+        "kind": "int",
+        "key": 13,
+        "share": 0.0078125
+      },
+      {
+        "kind": "int",
+        "key": 14,
+        "share": 0.0234375
+      },
+      {
+        "kind": "int",
+        "key": 15,
+        "share": 0.0078125
+      },
+      {
+        "kind": "int",
+        "key": 16,
+        "share": 0.01953125
+      },
+      {
+        "kind": "int",
+        "key": 17,
+        "share": 0.00390625
+      },
+      {
+        "kind": "int",
+        "key": 18,
+        "share": 0.0234375
+      },
+      {
+        "kind": "int",
+        "key": 20,
+        "share": 0.0078125
+      },
+      {
+        "kind": "int",
+        "key": 22,
+        "share": 0.01953125
+      },
+      {
+        "kind": "int",
+        "key": 24,
+        "share": 0.015625
+      },
+      {
+        "kind": "int",
+        "key": 25,
+        "share": 0.00390625
+      },
+      {
+        "kind": "int",
+        "key": 26,
+        "share": 0.00390625
+      },
+      {
+        "kind": "int",
+        "key": 28,
+        "share": 0.0078125
+      },
+      {
+        "kind": "int",
+        "key": 30,
+        "share": 0.00390625
+      }
+    ],
+    "second_order_peaks": [
+      {
+        "kind": "int",
+        "key": 1,
+        "share": 0.1147
+      },
+      {
+        "kind": "int",
+        "key": 2,
+        "share": 0.2267
+      },
+      {
+        "kind": "int",
+        "key": 3,
+        "share": 0.0737
+      },
+      {
+        "kind": "int",
+        "key": 4,
+        "share": 0.1527
+      },
+      {
+        "kind": "int",
+        "key": 5,
+        "share": 0.0257
+      },
+      {
+        "kind": "int",
+        "key": 6,
+        "share": 0.1509
+      },
+      {
+        "kind": "int",
+        "key": 7,
+        "share": 0.0129
+      },
+      {
+        "kind": "int",
+        "key": 8,
+        "share": 0.0629
+      },
+      {
+        "kind": "int",
+        "key": 9,
+        "share": 0.0162
+      },
+      {
+        "kind": "int",
+        "key": 10,
+        "share": 0.054
+      },
+      {
+        "kind": "int",
+        "key": 11,
+        "share": 0.005
+      },
+      {
+        "kind": "int",
+        "key": 12,
+        "share": 0.0383
+      },
+      {
+        "kind": "int",
+        "key": 13,
+        "share": 0.0032
+      },
+      {
+        "kind": "int",
+        "key": 14,
+        "share": 0.0178
+      },
+      {
+        "kind": "int",
+        "key": 15,
+        "share": 0.0033
+      },
+      {
+        "kind": "int",
+        "key": 16,
+        "share": 0.0111
+      },
+      {
+        "kind": "int",
+        "key": 17,
+        "share": 0.0007
+      },
+      {
+        "kind": "int",
+        "key": 18,
+        "share": 0.0085
+      },
+      {
+        "kind": "int",
+        "key": 19,
+        "share": 0.0007
+      },
+      {
+        "kind": "int",
+        "key": 20,
+        "share": 0.0039
+      },
+      {
+        "kind": "int",
+        "key": 21,
+        "share": 0.0008
+      },
+      {
+        "kind": "int",
+        "key": 22,
+        "share": 0.005
+      },
+      {
+        "kind": "int",
+        "key": 24,
+        "share": 0.0036
+      },
+      {
+        "kind": "int",
+        "key": 26,
+        "share": 0.0007
+      },
+      {
+        "kind": "int",
+        "key": 27,
+        "share": 0.0007
+      },
+      {
+        "kind": "int",
+        "key": 28,
+        "share": 0.0015
+      },
+      {
+        "kind": "int",
+        "key": 29,
+        "share": 0.0004
+      },
+      {
+        "kind": "int",
+        "key": 30,
+        "share": 0.0019
+      },
+      {
+        "kind": "int",
+        "key": 32,
+        "share": 0.0014
+      },
+      {
+        "kind": "int",
+        "key": 36,
+        "share": 0.0004
+      },
+      {
+        "kind": "int",
+        "key": 38,
+        "share": 0.0004
+      },
+      {
+        "kind": "int",
+        "key": 50,
+        "share": 0.0003
+      }
+    ]
+  },
+  "runtime_seconds": 0.09003766602836549
+}

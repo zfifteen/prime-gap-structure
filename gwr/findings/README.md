@@ -52,6 +52,32 @@ language than those anchors.
 - [gap_type_catalog_through_1e18.md](./gap_type_catalog_through_1e18.md):
   Deterministic catalog of the distinct exact gap types visible on the exact
   `10^6` baseline plus sampled decade windows through `10^18`.
+- [gap_type_sequence_grammar_findings.md](./gap_type_sequence_grammar_findings.md):
+  Measured transition-grammar reading of the gap-type stream, including the
+  reduced `open_family|d_bucket` probe.
+- [gap_type_generative_grammar_findings.md](./gap_type_generative_grammar_findings.md):
+  Deterministic held-out generative test of the persistent `14`-state
+  reduced grammar against the sampled `10^18` window.
+- [gap_type_engine_decode_findings.md](./gap_type_engine_decode_findings.md):
+  Rulebook, million-step stress test, and record-gap rarity readout for the
+  persistent `14`-state engine surface.
+- [gap_type_scheduler_findings.md](./gap_type_scheduler_findings.md):
+  Deterministic scheduler search showing that aligned `256`-window scoring
+  nearly closes the higher-order gap with a finite scheduler above the
+  persistent `14`-state core.
+- [gap_type_hybrid_scheduler_findings.md](./gap_type_hybrid_scheduler_findings.md):
+  Hybrid lag-2 plus periodic scheduler search showing that the local-window
+  engine closes further, while the stationary long-horizon re-entry law
+  remains the missing piece.
+- [gap_type_long_horizon_controller_findings.md](./gap_type_long_horizon_controller_findings.md):
+  Deterministic long-horizon controller search showing the current frontier
+  between local-window fidelity and stationary-walk concentration.
+- [gap_type_engine_v1_freeze.md](./gap_type_engine_v1_freeze.md):
+  Frozen `v1.0` definition of the hierarchical gap-type engine, including the
+  reference operating profiles and the current frontier boundary.
+- [gap_type_engine_v1_rulebook.md](./gap_type_engine_v1_rulebook.md):
+  Minimal readable rulebook for the frozen `v1.0` engine on the persistent
+  `14`-state reduced surface.
 - [mersenne_prime_gap_type_probe_findings.md](./mersenne_prime_gap_type_probe_findings.md):
   Exact tractable test of whether known Mersenne primes carry distinctive
   adjacent gap types.

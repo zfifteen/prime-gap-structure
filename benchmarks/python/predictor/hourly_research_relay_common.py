@@ -88,9 +88,16 @@ def stage_commit_push(
     commit_message: str,
 ) -> str:
     """Stage the requested artifacts, commit them, and push the branch."""
+    current_branch = run_git("branch", "--show-current")
+    if not current_branch:
+        raise RuntimeError("hourly relay task requires a non-detached git branch")
+    if current_branch != branch_name:
+        raise RuntimeError(
+            f"hourly relay task expected branch `{branch_name}`, but is on `{current_branch}`"
+        )
     run_git("add", *[str(path.relative_to(ROOT)) for path in artifact_paths])
     run_git("commit", "-m", commit_message)
-    run_git("push", "-u", "origin", branch_name)
+    run_git("push", "-u", "origin", f"HEAD:{branch_name}")
     return run_git("rev-parse", "HEAD")
 
 

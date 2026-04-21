@@ -1677,6 +1677,6 @@
       "beats_parity_alone": false
     }
   ],
-  "history_seed_present": false,
-  "runtime_seconds": 43.6335982499877
+  "history_seed_present": true,
+  "runtime_seconds": 43.339831833029166
 }

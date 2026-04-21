@@ -1,6 +1,6 @@
 ---
-title: "The Z-Band Prime Prefilter"
-subtitle: "Technical Note on the Divisor Normalization Identity, Exact Raw Composite Gap-Ridge Structure, Deterministic Factor-Gated Filtering, Candidate-Loop Screening, and RSA Key Generation Acceleration"
+title: "Technical Note on GWR, DNI, and the Downstream Python Prefilter"
+subtitle: "Technical Note on the Divisor Normalization Identity, the deterministic Gap Winner Rule substrate, exact raw composite gap structure, and the older extracted Python prefilter artifact"
 author: "Dionisio Alberto Lopez III"
 date: "March 31, 2026"
 documentclass: article
@@ -11,22 +11,31 @@ bibliography: references.bib
 link-citations: true
 colorlinks: true
 abstract: |
-  The Z-Band Prime Prefilter is a deterministic cryptographic prime prefilter derived from the normalization scaling parameter $v = e^2 / 2$ of the divisor normalization $Z(n) = n / \exp(v \cdot \kappa(n))$ with $\kappa(n) = d(n)\ln(n) / e^2$. At that rate the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ holds exactly, so confirmed primes collapse to the fixed-point locus $Z = 1.0$ and composites contract below that locus. Validation in this repository shows 29/29 calibration primes on the fixed-point locus, 0 composite false fixed points, and an exact-calibration normalization-load separation ratio of 4.54× on the tractable corpus. The same exact field now supports a separate prime-gap result surface: up to $10^6$, the gap-local raw composite $Z$ maximum lands at edge distance 2 in 43.6006 % of tested gaps against an exact within-gap baseline of 22.1859 %, is carried by a $d(n)=4$ composite in 82.9027 % of tested gaps against an exact within-gap baseline of 20.1401 %, and matches the lexicographic winner "smallest interior divisor count, then leftmost" on the current committed execution surface through sampled $10^{18}$ with zero counterexamples observed. The production Python path replaces exact divisor counting with a deterministic factor-gated surrogate that preserves the fixed-point survivor convention before fixed-base Miller-Rabin and final sympy.isprime confirmation. The curated repo benchmark summary reports 91.02 % and 91.41 % candidate rejection before Miller-Rabin on 2048-bit and 4096-bit corpora, candidate-loop speedups of 2.95× and 3.33×, and end-to-end deterministic RSA key-generation speedups of 2.09× over 300 2048-bit keypairs and 2.82× over 50 4096-bit keypairs while reducing Miller-Rabin work by 90.97 % to 91.07 %. The repository therefore establishes the mathematically derived DNI, an exact raw composite gap-ridge structure in prime interiors, a deterministic production prefilter built from the same invariant, and a measured cryptographic payoff in the tested Python regime.
+  This repository is not organized around a probabilistic primality pipeline with GWR as a front end. Its theorem anchor is the deterministic GWR + DNI prime-gap program. At the normalization scaling parameter $v = e^2 / 2$ of the divisor normalization $Z(n) = n / \exp(v \cdot \kappa(n))$ with $\kappa(n) = d(n)\ln(n) / e^2$, the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ holds exactly. On the current repository proof surface, the implemented winner law closes to the leftmost carrier of the minimum interior divisor class, and the exact recursive walk uses that ordered gap structure to recover the next prime directly. Validation in this repository shows 29/29 calibration primes on the fixed-point locus, 0 composite false fixed points, and an exact-calibration normalization-load separation ratio of 4.54× on the tractable corpus. The same exact field supports a separate prime-gap result surface: up to $10^6$, the gap-local raw composite $Z$ maximum lands at edge distance 2 in 43.6006 % of tested gaps against an exact within-gap baseline of 22.1859 %, is carried by a $d(n)=4$ composite in 82.9027 % of tested gaps against an exact within-gap baseline of 20.1401 %, and matches the lexicographic winner "smallest interior divisor count, then leftmost" on the current committed execution surface through sampled $10^{18}$ with zero counterexamples observed. The older production Python path in this repository is a downstream extracted factor-gated artifact that preserves the fixed-point survivor convention before fixed-base Miller-Rabin and final sympy.isprime confirmation. Its curated benchmark summary reports 91.02 % and 91.41 % candidate rejection before Miller-Rabin on 2048-bit and 4096-bit corpora, candidate-loop speedups of 2.95× and 3.33×, and end-to-end deterministic RSA key-generation speedups of 2.09× over 300 2048-bit keypairs and 2.82× over 50 4096-bit keypairs while reducing Miller-Rabin work by 90.97 % to 91.07 %. The repository therefore establishes the mathematically derived DNI, a deterministic GWR prime-gap substrate, an exact raw composite gap-ridge structure in prime interiors, and a downstream extracted Python prefilter artifact built from the same invariant.
 ---
 
-**Keywords:** divisor count; Divisor Normalization Identity; prime gaps; divisor-count ridge; prime generation; Miller-Rabin prefilter; deterministic screening; RSA key generation
+**Keywords:** divisor count; Divisor Normalization Identity; Gap Winner Rule; prime gaps; deterministic prime walk; divisor-count ridge; downstream Python prefilter; RSA key generation
 
 # Opening Statement
 
-The Z-Band Prime Prefilter is a deterministic cryptographic prefilter derived from the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ in divisor normalization.
+This repository is centered on the deterministic `GWR + DNI` prime-gap program, not on a probabilistic primality pipeline with a prefilter in front.
+
+The older Z-Band Python prefilter remains in the repository as one downstream engineering extraction from the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ in divisor normalization.
+
+In the exact `GWR + DNI` regime, the primality mechanism is the gap law
+itself. The repository does not test the target integer in isolation. It
+examines the preceding gap, identifies the `GWR` winner, and uses the
+no-later-simpler closure to conclude that the next prime is structurally
+forced before any strictly simpler later composite can appear.
 
 At the distinguished normalization scaling parameter $v = e^2 / 2$, the exact normalization sends every prime to the fixed-point locus $Z = 1.0$ and pushes composites below that locus.
 
-The repository establishes five concrete results:
+The repository establishes six concrete results:
 
 - the exact DNI holds numerically on the tractable calibration corpus,
+- the deterministic `GWR` winner law and exact recursive walk form the theorem anchor on the current proof surface,
 - the exact raw composite field in prime gaps shows a near-edge low-divisor ridge on the tested surface,
-- the production path preserves the DNI as its survivor convention,
+- the older extracted Python prefilter preserves the DNI as its survivor convention,
 - candidate-loop screening removes about 91 % of tested cryptographic candidates before Miller-Rabin,
 - the current Python implementation yields measured end-to-end RSA key-generation gains on deterministic streams.
 
@@ -62,13 +71,13 @@ That identity has immediate arithmetic consequences:
 
 Divisor structure and logarithmic scale determine a normalization scaling parameter at which primes occupy a fixed-point locus and composites contract below it.
 
-This note describes what the repository establishes when that law is turned into a deterministic prime-screening pipeline.
+This note describes the theorem-level deterministic gap program first, then the older downstream Python prefilter extracted from the same law.
 
 # Why This Matters Computationally
 
-The DNI supplies an exact invariant target for prime candidates. It separates the mathematical derivation from the runtime production filter without breaking the logic that connects them. It lets the implementation reject many composites before the probable-prime path rather than after it. It yields a deterministic screening front end for prime search inside RSA-style key construction.
+The DNI supplies an exact invariant target for prime-gap structure. On the current proof and audit surface, `GWR` and the exact recursive walk use that structure directly rather than asking a separate primality test to decide the next prime after the gap has already become legible.
 
-The repository presents a deterministic structural prefilter whose payoff can be measured on the same candidate streams and the same final confirmation path.
+The repository also carries an older downstream Python prefilter whose payoff can be measured on the same candidate streams and the same final confirmation path.
 
 # Mathematical Core: Fixed-Point Collapse
 

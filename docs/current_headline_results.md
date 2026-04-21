@@ -1,5 +1,10 @@
 # Current Headline Results
 
+- **Do not summarize this repository as "`GWR` before Miller-Rabin."** The
+  theorem anchor is the deterministic `GWR + DNI` prime-gap program. The exact
+  recursive walk recovers the next prime from ordered gap structure itself.
+  The older Python prefilter path is a downstream engineering artifact, not
+  the conceptual frame for the repo.
 - **GWR is proved and closed on the repository's current proof surface.** The
   live theorem statement is
   [../gwr/findings/gwr_hierarchical_local_dominator_theorem.md](../gwr/findings/gwr_hierarchical_local_dominator_theorem.md),
@@ -28,6 +33,12 @@
   a known prime `q`, the unbounded walker recovers the next prime from the
   ordered divisor structure of the next-gap interior. See
   [./research/predictor/gwr_dni_exact_recursive_prime_walk_note.md](./research/predictor/gwr_dni_exact_recursive_prime_walk_note.md).
+- **In the exact walk, the primality test is the gap law itself.** The
+  repository does not certify the target integer by running a separate test on
+  that integer. It certifies the preceding gap: identify the `GWR` winner,
+  apply the no-later-simpler closure, and the next prime is structurally
+  forced. This exact claim does not describe the older downstream Python
+  prefilter benchmarks, which still measure a separate extracted path.
 - **The recursive walk surface remains exact on the committed tested ladder.**
   The DNI transition rule is exact on `743,075 / 743,075` rows from the
   combined `10^6 + 10^7` next-gap surface, and the recursive walk records
@@ -43,11 +54,13 @@
   The committed `10^7` scan reports `664,575` tested gaps, `0`
   counterexamples, maximum exact peak offset `60`, and maximum cutoff
   utilization `0.6153846153846154`.
-- **Deterministic prefilter performance remains the practical payoff.** The
-  current production Python path rejects about `91%` of tested odd candidates
-  before Miller-Rabin and produced `2.09x` and `2.82x` end-to-end deterministic
-  RSA key-generation speedups on the curated `2048`-bit and `4096`-bit corpora.
-  See [./prefilter/benchmarks.md](./prefilter/benchmarks.md).
+- **The old Python prefilter remains only as a downstream extracted
+  application.** Its current production path rejects about `91%` of tested odd
+  candidates before Miller-Rabin and produced `2.09x` and `2.82x` end-to-end
+  deterministic RSA key-generation speedups on the curated `2048`-bit and
+  `4096`-bit corpora. That engineering result should not be used to frame the
+  repository as a probabilistic pipeline with `GWR` as a front end. See
+  [./prefilter/benchmarks.md](./prefilter/benchmarks.md).
 - **Pre-proof notes are now archived.** Historical proof-progress material
   lives under
   [./archive/pre-proof-gwr/README.md](./archive/pre-proof-gwr/README.md)

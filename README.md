@@ -7,6 +7,12 @@ This repository now carries two major prime-gap results:
 - a proved local arithmetic winner law inside prime gaps;
 - a frozen hierarchical finite-state engine for reduced prime-gap types.
 
+It should not be summarized as "`GWR` before Miller-Rabin." In this
+repository, `GWR + DNI` is the deterministic prime-gap substrate: the proved
+winner law and exact recursive walk recover the next prime from gap structure
+itself. The older Python prefilter package remains here only as a downstream
+engineering extraction from the same invariant program.
+
 Take the consecutive primes `23` and `29`. The integers between them are
 `24, 25, 26, 27, 28`. Their divisor counts are:
 
@@ -59,6 +65,15 @@ implemented divisor-normalization score picks exactly that same integer in
 every prime gap. The theorem statement is
 [Gap Winner Rule — Hierarchical Local-Dominator Law](gwr/findings/gwr_hierarchical_local_dominator_theorem.md),
 and the proof surface is summarized in [GWR_PROOF.md](GWR_PROOF.md).
+
+In the exact `GWR + DNI` regime, this gap law is the primality mechanism. The
+repository does not test the target integer in isolation. It reads the
+preceding gap, identifies the `GWR` winner, and uses the no-later-simpler
+closure to conclude that the next prime is structurally forced before any
+strictly simpler later composite can appear. The proof object is the gap
+transition itself. The older Python prefilter package is a separate downstream
+engineering artifact and should not be confused with this exact prime-walk
+claim.
 
 ## Prime Gap Generative Engine v1.0
 
@@ -138,11 +153,14 @@ This repository now carries three visible lines of work:
 - the proved GWR theorem and its proof surface;
 - the reduced gap-type engine and pattern results on the persistent reduced
   surface;
-- downstream deterministic DNI-based predictor and prefilter work.
+- downstream deterministic DNI-based predictor work, plus an older extracted
+  Python prefilter artifact.
 
 The GWR theorem remains the theorem anchor. The gap-type engine is the second
-headline prime-gap result. The recursive walk and deterministic filter are
-downstream deterministic instruments built from the same normalization.
+headline prime-gap result. The recursive walk is the direct deterministic
+next-prime instrument built from the same normalization. The Python prefilter
+is not the conceptual frame for the repository and should not be used to
+summarize `GWR` as a front end to probabilistic primality testing.
 
 ## Novel Structures in This Repository
 
@@ -274,6 +292,8 @@ implemented winner appears inside a prime gap, the next prime arrives before
 any later interior composite with strictly smaller divisor count can appear.
 That closure law is what lets the unbounded DNI/GWR walker recover the next
 prime exactly from the ordered divisor structure of the next-gap interior.
+This is the repository's deterministic prime-recovery claim, not a proposal to
+hand a surviving candidate to Miller-Rabin for the real answer.
 
 Given a known prime `q`, the oracle scans divisor counts to the right until the
 first prime boundary, takes the lexicographic minimum over the composite
@@ -388,6 +408,12 @@ Empirically, this extracted Python path produced:
 Those numbers are not a side note. They are the production consequence of the
 same invariant program, carried through a narrow deterministic runtime path
 that rejects many doomed candidates before Miller-Rabin.
+
+But that extracted path is not the theorem-level meaning of `GWR`. The
+prime-gap result in this repository is that the gap structure itself is
+determinative on the current proof and audit surface. The prefilter package is
+an older downstream cryptographic application, not the substrate that explains
+`GWR`.
 
 See [docs/prefilter/benchmarks.md](docs/prefilter/benchmarks.md) and
 [technical-note/technical_note.md](technical-note/technical_note.md).

@@ -1,0 +1,165 @@
+{
+  "compression_source_commit": "6a1f24c3f4b6585d0d70cafb43967f16db3fdd1d",
+  "hidden_state_source_commit": "da9c68df629401549a63d7a4e643884d0e789ae9",
+  "base_model_id": "hidden_state_augmented_rotor",
+  "rule_count": 8,
+  "rules": [
+    {
+      "rule_id": "no_reset",
+      "pooled_window_concentration_l1": 0.02305455008855567,
+      "one_step_concentration": 0.2852492852492852,
+      "two_step_concentration": 0.3354796709593419,
+      "three_step_concentration": 0.4502403507210522,
+      "reset_signature_gain": 0.0,
+      "distinct_reset_phases": 0
+    },
+    {
+      "rule_id": "reset_on_even_winner",
+      "pooled_window_concentration_l1": 0.02249969612476793,
+      "one_step_concentration": 0.2846772846772847,
+      "two_step_concentration": 0.3345146690293381,
+      "three_step_concentration": 0.4144792434377303,
+      "reset_signature_gain": 1.8562419820075347,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_odd_winner",
+      "pooled_window_concentration_l1": 0.019553405844528138,
+      "one_step_concentration": 0.285008285008285,
+      "two_step_concentration": 0.33554467108934216,
+      "three_step_concentration": 0.3970241910725732,
+      "reset_signature_gain": 0.7611220736173557,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_even_semiprime",
+      "pooled_window_concentration_l1": 0.023965625790535683,
+      "one_step_concentration": 0.2848882848882849,
+      "two_step_concentration": 0.33350666701333403,
+      "three_step_concentration": 0.436996310988933,
+      "reset_signature_gain": 2.02469802556618,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_odd_semiprime",
+      "pooled_window_concentration_l1": 0.020259396436458854,
+      "one_step_concentration": 0.2841792841792842,
+      "two_step_concentration": 0.3356906713813428,
+      "three_step_concentration": 0.4046432139296418,
+      "reset_signature_gain": 0.9591545581775907,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_nontriad",
+      "pooled_window_concentration_l1": 0.023668817243680196,
+      "one_step_concentration": 0.2836182836182836,
+      "two_step_concentration": 0.3335716671433343,
+      "three_step_concentration": 0.40210320630961893,
+      "reset_signature_gain": 1.6990871522025701,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_higher_divisor",
+      "pooled_window_concentration_l1": 0.02229241420399608,
+      "one_step_concentration": 0.2841542841542842,
+      "two_step_concentration": 0.3340266680533361,
+      "three_step_concentration": 0.4136342409027227,
+      "reset_signature_gain": 1.9311162622221918,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_best_hidden_state_label",
+      "pooled_window_concentration_l1": 0.02305455008855567,
+      "one_step_concentration": 0.2852492852492852,
+      "two_step_concentration": 0.3354796709593419,
+      "three_step_concentration": 0.4502403507210522,
+      "reset_signature_gain": 0.0,
+      "distinct_reset_phases": 0
+    }
+  ],
+  "ranking": [
+    {
+      "rule_id": "reset_on_odd_winner",
+      "pooled_window_concentration_l1": 0.019553405844528138,
+      "one_step_concentration": 0.285008285008285,
+      "two_step_concentration": 0.33554467108934216,
+      "three_step_concentration": 0.3970241910725732,
+      "reset_signature_gain": 0.7611220736173557,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_odd_semiprime",
+      "pooled_window_concentration_l1": 0.020259396436458854,
+      "one_step_concentration": 0.2841792841792842,
+      "two_step_concentration": 0.3356906713813428,
+      "three_step_concentration": 0.4046432139296418,
+      "reset_signature_gain": 0.9591545581775907,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_higher_divisor",
+      "pooled_window_concentration_l1": 0.02229241420399608,
+      "one_step_concentration": 0.2841542841542842,
+      "two_step_concentration": 0.3340266680533361,
+      "three_step_concentration": 0.4136342409027227,
+      "reset_signature_gain": 1.9311162622221918,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_even_winner",
+      "pooled_window_concentration_l1": 0.02249969612476793,
+      "one_step_concentration": 0.2846772846772847,
+      "two_step_concentration": 0.3345146690293381,
+      "three_step_concentration": 0.4144792434377303,
+      "reset_signature_gain": 1.8562419820075347,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "no_reset",
+      "pooled_window_concentration_l1": 0.02305455008855567,
+      "one_step_concentration": 0.2852492852492852,
+      "two_step_concentration": 0.3354796709593419,
+      "three_step_concentration": 0.4502403507210522,
+      "reset_signature_gain": 0.0,
+      "distinct_reset_phases": 0
+    },
+    {
+      "rule_id": "reset_on_best_hidden_state_label",
+      "pooled_window_concentration_l1": 0.02305455008855567,
+      "one_step_concentration": 0.2852492852492852,
+      "two_step_concentration": 0.3354796709593419,
+      "three_step_concentration": 0.4502403507210522,
+      "reset_signature_gain": 0.0,
+      "distinct_reset_phases": 0
+    },
+    {
+      "rule_id": "reset_on_nontriad",
+      "pooled_window_concentration_l1": 0.023668817243680196,
+      "one_step_concentration": 0.2836182836182836,
+      "two_step_concentration": 0.3335716671433343,
+      "three_step_concentration": 0.40210320630961893,
+      "reset_signature_gain": 1.6990871522025701,
+      "distinct_reset_phases": 1
+    },
+    {
+      "rule_id": "reset_on_even_semiprime",
+      "pooled_window_concentration_l1": 0.023965625790535683,
+      "one_step_concentration": 0.2848882848882849,
+      "two_step_concentration": 0.33350666701333403,
+      "three_step_concentration": 0.436996310988933,
+      "reset_signature_gain": 2.02469802556618,
+      "distinct_reset_phases": 1
+    }
+  ],
+  "best_rule": {
+    "rule_id": "reset_on_odd_winner",
+    "pooled_window_concentration_l1": 0.019553405844528138,
+    "one_step_concentration": 0.285008285008285,
+    "two_step_concentration": 0.33554467108934216,
+    "three_step_concentration": 0.3970241910725732,
+    "reset_signature_gain": 0.7611220736173557,
+    "distinct_reset_phases": 1
+  },
+  "history_seed_present": false,
+  "runtime_seconds": 37.202802749932744
+}

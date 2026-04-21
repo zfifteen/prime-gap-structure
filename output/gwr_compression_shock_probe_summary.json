@@ -1,5 +1,5 @@
 {
-  "hidden_state_source_commit": "da9c68df629401549a63d7a4e643884d0e789ae9",
+  "hidden_state_source_commit": "0ed0651496c3cdfc80ff0a51fcc0275816b067dd",
   "hidden_state_candidate_id": "current_winner_parity+previous_reduced_state",
   "synthetic_length": 1000000,
   "reference_window_length": 256,
@@ -239,5 +239,5 @@
   "shock_winner_model_id": "hidden_state_augmented_rotor",
   "negative_result": null,
   "history_seed_present": false,
-  "runtime_seconds": 32.18758687493391
+  "runtime_seconds": 31.052595333079807
 }

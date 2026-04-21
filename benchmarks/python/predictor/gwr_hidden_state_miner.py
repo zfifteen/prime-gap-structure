@@ -525,6 +525,10 @@ def main(argv: list[str] | None = None) -> int:
     }
     append_jsonl_row(HISTORY_PATH, history_row)
     run_targeted_pytest()
+    run_git("checkout", TASK_BRANCH)
+    current_branch = run_git("branch", "--show-current")
+    if current_branch != TASK_BRANCH:
+        raise RuntimeError(f"hidden-state miner expected branch `{TASK_BRANCH}`, but is on `{current_branch}`")
     stage_commit_push(
         branch_name=TASK_BRANCH,
         artifact_paths=[

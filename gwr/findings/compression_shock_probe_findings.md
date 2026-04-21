@@ -7,7 +7,7 @@ This is real compression, not just machine bloat.
 ## Upstream Hidden State
 
 - candidate id: `current_winner_parity+previous_reduced_state`
-- source commit: `0ed0651496c3cdfc80ff0a51fcc0275816b067dd`
+- source commit: `9a93e245d4b24c11b9028dac78439021753ac37d`
 
 ## Frontier
 

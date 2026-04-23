@@ -374,7 +374,7 @@ def _family_center_estimate(case: ScaleupCase, router_mode: str) -> int:
             shifted = mp.mpf(case.n) * mp.e ** (-mp.mpf(str(ratio_prior)))
             return int(mp.nint(mp.sqrt(shifted)))
     if router_mode == "audited_family_prior" and case.family == "challenge_like":
-        return _anchor_from_log2(math.floor(0.40 * case.case_bits) - 0.5, rounding="nearest")
+        return _anchor_from_log2(math.floor(0.3994 * case.case_bits) - 0.5, rounding="nearest")
     return _anchor_from_log2(math.log2(case.n) / 2.0, rounding="nearest")
 
 
@@ -431,19 +431,19 @@ def _right_prime_seed(boundary: int, upper_bound: int) -> int | None:
     return candidate
 
 
-def _center_out_primes_in_interval(midpoint: int, low: int, high: int, limit: int) -> list[int]:
-    """Return the exact repo-PGS center-out prime sequence inside one integer interval."""
+def _center_out_primes_in_interval(midpoint: int, low: int, high: int, limit: int):
+    """Yield the exact repo-PGS center-out prime sequence inside one integer interval."""
     if limit < 1 or high < low:
-        return []
+        return
 
     left = _left_prime_seed(midpoint, low)
     right = _right_prime_seed(midpoint, high)
     if left is not None and right is not None and left == right:
         next_right = _next_prime_successor_scaleup(right)
         right = next_right if next_right <= high else None
-    candidates: list[int] = []
+    emitted = 0
 
-    while len(candidates) < limit and (left is not None or right is not None):
+    while emitted < limit and (left is not None or right is not None):
         choose_left = False
         if left is not None and right is None:
             choose_left = True
@@ -451,20 +451,20 @@ def _center_out_primes_in_interval(midpoint: int, low: int, high: int, limit: in
             choose_left = abs(midpoint - left) <= abs(right - midpoint)
 
         if choose_left:
-            candidates.append(int(left))
+            emitted += 1
+            yield int(left)
             if left <= low:
                 left = None
             else:
                 left = _left_prime_seed(left - 2, low)
         else:
-            candidates.append(int(right))
+            emitted += 1
+            yield int(right)
             if right >= high:
                 right = None
             else:
                 next_right = _next_prime_successor_scaleup(right)
                 right = next_right if next_right <= high else None
-
-    return candidates
 
 
 def _previous_composite(candidate: int, lower_bound: int) -> int | None:
@@ -790,12 +790,16 @@ def _route_case(
         raise ValueError(f"unsupported router_mode {router_mode}")
 
     config = RUNG_CONFIGS[rung]
+    if router_mode == "pure_pgs" and case.case_bits >= 256:
+        return _route_case_centered_blind(case, rung)
     if (
         router_mode == "audited_family_prior"
         and case.case_bits <= 127
         and case.family in {"balanced", "moderate_unbalanced", "archived_shape"}
     ):
         return _route_case_centered_127(case, rung)
+    if router_mode == "audited_family_prior" and case.family == "challenge_like":
+        return _route_case_centered_challenge(case, rung)
 
     search_center = _family_center_log2(case, router_mode)
     search_midpoint = _family_center_estimate(case, router_mode)
@@ -856,6 +860,33 @@ def _route_case(
     return beam_windows[: config.top_windows], probe_count
 
 
+def _route_case_centered_blind(case: ScaleupCase, rung: int) -> tuple[list[BitWindow], int]:
+    """Return an unscored high-scale route centered from N alone."""
+    config = RUNG_CONFIGS[rung]
+    final_width = config.widths[-1]
+    center_log2 = math.log2(case.n) / 2.0
+    center_midpoint = _anchor_from_log2(center_log2, rounding="nearest")
+    offsets = (0.0, -final_width, final_width, 2.0 * final_width)
+
+    windows: list[BitWindow] = []
+    for index, offset in enumerate(offsets):
+        window_center = min(
+            max(final_width / 2.0, center_log2 + offset),
+            case.case_bits - (final_width / 2.0),
+        )
+        midpoint_override = center_midpoint if index == 0 else None
+        windows.append(
+            BitWindow(
+                center_log2=window_center,
+                width_bits=final_width,
+                evidence=None,
+                midpoint=midpoint_override,
+            )
+        )
+
+    return windows[: config.top_windows], 0
+
+
 def _route_case_centered_127(case: ScaleupCase, rung: int) -> tuple[list[BitWindow], int]:
     """Return the centered four-window 127-bit audit route."""
     config = RUNG_CONFIGS[rung]
@@ -878,6 +909,35 @@ def _route_case_centered_127(case: ScaleupCase, rung: int) -> tuple[list[BitWind
             window_center,
             final_width,
             router_seed_budget,
+            midpoint_override=midpoint_override,
+        )
+        probe_count += window_probes
+        windows.append(window)
+
+    return windows[: config.top_windows], probe_count
+
+
+def _route_case_centered_challenge(case: ScaleupCase, rung: int) -> tuple[list[BitWindow], int]:
+    """Return one centered final-width route for challenge-like cases."""
+    config = RUNG_CONFIGS[rung]
+    final_width = config.widths[-1]
+    center_log2 = _family_center_log2(case, "audited_family_prior")
+    center_midpoint = _family_center_estimate(case, "audited_family_prior")
+    offsets = (0.0, -final_width, final_width, 2.0 * final_width)
+
+    windows: list[BitWindow] = []
+    probe_count = 0
+    for index, offset in enumerate(offsets):
+        window_center = min(
+            max(final_width / 2.0, center_log2 + offset),
+            case.case_bits - (final_width / 2.0),
+        )
+        midpoint_override = center_midpoint if index == 0 else None
+        window, window_probes = _scored_window(
+            case,
+            window_center,
+            final_width,
+            config.router_seed_budget,
             midpoint_override=midpoint_override,
         )
         probe_count += window_probes
@@ -910,7 +970,8 @@ def _local_pgs_search(
     scale_bits: int,
 ) -> tuple[bool, int, bool, int]:
     """Run exact recovery inside the routed windows."""
-    if scale_bits > 256:
+    del local_seed_budget
+    if scale_bits >= 256:
         factor_recovered, local_prime_tests = _local_router_only_prime_walk(
             case,
             windows,
@@ -918,28 +979,12 @@ def _local_pgs_search(
         )
         return factor_recovered, local_prime_tests, factor_recovered, local_prime_tests
 
-    route_order_found_any = False
-    route_order_prime_tests = 0
-    total_prime_tests = 0
-    for window in windows:
-        low, high, midpoint = _window_to_interval(window)
-        clusters, _probe_count = _clustered_primes_in_interval(
-            case,
-            low,
-            high,
-            local_seed_budget,
-            midpoint=midpoint,
-        )
-        recovery_clusters = sorted(clusters, key=_recovery_cluster_sort_key)
-        if not route_order_found_any:
-            route_found, route_prime_tests = _ordered_factor_hit(case, clusters)
-            route_order_prime_tests += route_prime_tests
-            route_order_found_any = route_found
-        recovery_found, recovery_prime_tests = _ordered_factor_hit(case, recovery_clusters)
-        total_prime_tests += recovery_prime_tests
-        if recovery_found:
-            return True, total_prime_tests, route_order_found_any, route_order_prime_tests
-    return False, total_prime_tests, route_order_found_any, route_order_prime_tests
+    factor_recovered, local_prime_tests = _local_router_only_prime_walk(
+        case,
+        windows,
+        router_only_prime_budget,
+    )
+    return factor_recovered, local_prime_tests, factor_recovered, local_prime_tests
 
 
 def _evaluate_case(

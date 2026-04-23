@@ -1,0 +1,28 @@
+{
+  "router": "pgs",
+  "router_mode": "pure_pgs",
+  "scale_bits": 127,
+  "rung": 1,
+  "case_count": 2,
+  "router_top1_recall": 1.0,
+  "router_top4_recall": 1.0,
+  "median_final_window_bits": 1.0,
+  "median_best_window_rank": 1.0,
+  "exact_recovery_recall": 1.0,
+  "route_order_exact_recovery_recall": 1.0,
+  "total_local_prime_tests": 2,
+  "total_local_prime_tests_route_order": 6,
+  "total_router_probe_count": 423,
+  "total_wall_time_ms": 68319.43874899298,
+  "acceptance": {
+    "mode": "research",
+    "router_mode": "pure_pgs",
+    "full_stage_evaluated": false,
+    "recovery_not_worse_than_route_order": true,
+    "archived_case_present": false,
+    "archived_case_factor_present_in_winning_window": null,
+    "archived_case_recovery_rank_improves_route_rank": null,
+    "stage_passed": false
+  },
+  "seed": 0
+}

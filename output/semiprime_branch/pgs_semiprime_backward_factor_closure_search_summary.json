@@ -1,0 +1,82 @@
+{
+  "max_n": 5000,
+  "case_count": 980,
+  "max_steps": 24,
+  "fixed_entry_law": "layered_hybrid_exact_shape_entry_switch",
+  "entry_lane_count": 89,
+  "closure_law_summaries": {
+    "prime_left_boundary_control": {
+      "factor_reach_count": 0,
+      "factor_reach_recall": 0.0,
+      "first_factor_case": null,
+      "median_steps_on_factor_reach": null,
+      "failure_reason_counts": {
+        "no_entry_candidate": 158,
+        "entry_not_lane": 733,
+        "terminal_prime_miss": 89
+      }
+    },
+    "prime_prev_boundary_control": {
+      "factor_reach_count": 0,
+      "factor_reach_recall": 0.0,
+      "first_factor_case": null,
+      "median_steps_on_factor_reach": null,
+      "failure_reason_counts": {
+        "no_entry_candidate": 158,
+        "entry_not_lane": 733,
+        "terminal_prime_miss": 89
+      }
+    },
+    "odd_prev_small_gap_then_left_prime": {
+      "factor_reach_count": 0,
+      "factor_reach_recall": 0.0,
+      "first_factor_case": null,
+      "median_steps_on_factor_reach": null,
+      "failure_reason_counts": {
+        "no_entry_candidate": 158,
+        "entry_not_lane": 733,
+        "terminal_prime_miss": 48,
+        "lane_broken": 41
+      }
+    },
+    "odd_prev_large_offset_then_left_prime": {
+      "factor_reach_count": 0,
+      "factor_reach_recall": 0.0,
+      "first_factor_case": null,
+      "median_steps_on_factor_reach": null,
+      "failure_reason_counts": {
+        "no_entry_candidate": 158,
+        "entry_not_lane": 733,
+        "terminal_prime_miss": 39,
+        "lane_broken": 50
+      }
+    },
+    "odd_prev_winner_then_left_prime": {
+      "factor_reach_count": 0,
+      "factor_reach_recall": 0.0,
+      "first_factor_case": null,
+      "median_steps_on_factor_reach": null,
+      "failure_reason_counts": {
+        "no_entry_candidate": 158,
+        "entry_not_lane": 733,
+        "terminal_prime_miss": 39,
+        "lane_broken": 50
+      }
+    },
+    "odd_containing_large_offset_then_left_prime": {
+      "factor_reach_count": 0,
+      "factor_reach_recall": 0.0,
+      "first_factor_case": null,
+      "median_steps_on_factor_reach": null,
+      "failure_reason_counts": {
+        "no_entry_candidate": 158,
+        "entry_not_lane": 733,
+        "terminal_prime_miss": 40,
+        "lane_broken": 49
+      }
+    }
+  },
+  "best_law": "prime_left_boundary_control",
+  "best_factor_reach_count": 0,
+  "searched_family_falsified": true
+}

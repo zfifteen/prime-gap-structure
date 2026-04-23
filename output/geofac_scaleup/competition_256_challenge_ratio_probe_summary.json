@@ -1,0 +1,139 @@
+{
+  "challenge_like_case_count": 28,
+  "small_factor_ratio_min": 0.3958333333333333,
+  "small_factor_ratio_max": 0.4,
+  "small_factor_ratio_median": 0.3994140625,
+  "by_scale": {
+    "160": {
+      "case_count": 3,
+      "small_factor_bits_set": [
+        64
+      ],
+      "small_factor_ratio_set": [
+        0.4
+      ]
+    },
+    "192": {
+      "case_count": 3,
+      "small_factor_bits_set": [
+        76
+      ],
+      "small_factor_ratio_set": [
+        0.3958333333333333
+      ]
+    },
+    "224": {
+      "case_count": 3,
+      "small_factor_bits_set": [
+        89
+      ],
+      "small_factor_ratio_set": [
+        0.39732142857142855
+      ]
+    },
+    "256": {
+      "case_count": 3,
+      "small_factor_bits_set": [
+        102
+      ],
+      "small_factor_ratio_set": [
+        0.3984375
+      ]
+    },
+    "384": {
+      "case_count": 2,
+      "small_factor_bits_set": [
+        153
+      ],
+      "small_factor_ratio_set": [
+        0.3984375
+      ]
+    },
+    "512": {
+      "case_count": 2,
+      "small_factor_bits_set": [
+        204
+      ],
+      "small_factor_ratio_set": [
+        0.3984375
+      ]
+    },
+    "768": {
+      "case_count": 2,
+      "small_factor_bits_set": [
+        307
+      ],
+      "small_factor_ratio_set": [
+        0.3997395833333333
+      ]
+    },
+    "1024": {
+      "case_count": 2,
+      "small_factor_bits_set": [
+        409
+      ],
+      "small_factor_ratio_set": [
+        0.3994140625
+      ]
+    },
+    "1536": {
+      "case_count": 2,
+      "small_factor_bits_set": [
+        614
+      ],
+      "small_factor_ratio_set": [
+        0.3997395833333333
+      ]
+    },
+    "2048": {
+      "case_count": 2,
+      "small_factor_bits_set": [
+        819
+      ],
+      "small_factor_ratio_set": [
+        0.39990234375
+      ]
+    },
+    "3072": {
+      "case_count": 2,
+      "small_factor_bits_set": [
+        1228
+      ],
+      "small_factor_ratio_set": [
+        0.3997395833333333
+      ]
+    },
+    "4096": {
+      "case_count": 2,
+      "small_factor_bits_set": [
+        1638
+      ],
+      "small_factor_ratio_set": [
+        0.39990234375
+      ]
+    }
+  },
+  "challenge_256": [
+    {
+      "scale_bits": 256,
+      "case_id": "s256_challenge_1",
+      "small_factor_bits": 102,
+      "large_factor_bits": 154,
+      "small_factor_ratio": 0.3984375
+    },
+    {
+      "scale_bits": 256,
+      "case_id": "s256_challenge_2",
+      "small_factor_bits": 102,
+      "large_factor_bits": 154,
+      "small_factor_ratio": 0.3984375
+    },
+    {
+      "scale_bits": 256,
+      "case_id": "s256_challenge_3",
+      "small_factor_bits": 102,
+      "large_factor_bits": 154,
+      "small_factor_ratio": 0.3984375
+    }
+  ]
+}

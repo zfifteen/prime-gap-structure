@@ -1,0 +1,216 @@
+{
+  "detail_csv": "/Users/velocityworks/IdeaProjects/prime-gap-structure/output/gwr_dni_gap_type_catalog_details.csv",
+  "power_range": [
+    12,
+    18
+  ],
+  "transition_count": 1778,
+  "baseline_log_loss": 0.5993080476093358,
+  "phase_budget_label_stats": {
+    "d4_high": {
+      "support": 730,
+      "next_triad_share": 0.6547945205479452
+    },
+    "d4_low": {
+      "support": 691,
+      "next_triad_share": 0.7120115774240231
+    },
+    "non_d4": {
+      "support": 357,
+      "next_triad_share": 0.6638655462184874
+    }
+  },
+  "candidate_metrics": [
+    {
+      "candidate_id": "current_winner_parity",
+      "candidate_cardinality": 2,
+      "candidate_log_loss": 0.5851798659059969,
+      "log_loss_gain": 0.014128181703338849,
+      "per_power_log_loss_gain": {
+        "12": 0.021692604778378755,
+        "13": 0.02059487218324607,
+        "14": 0.02268550824981852,
+        "15": 0.03656851138325462,
+        "16": 0.02049161131779964,
+        "17": 0.024158199114457046,
+        "18": 0.019903184773112703
+      }
+    },
+    {
+      "candidate_id": "phase_budget_bit",
+      "candidate_cardinality": 3,
+      "candidate_log_loss": 0.5715373718612273,
+      "log_loss_gain": 0.02777067574810843,
+      "per_power_log_loss_gain": {
+        "12": 0.019193697065233994,
+        "13": 0.017514072948856096,
+        "14": 0.05141989178848605,
+        "15": 0.005703496592807444,
+        "16": 0.023699699761209114,
+        "17": 0.03065972832837105,
+        "18": 0.013615535915740218
+      }
+    },
+    {
+      "candidate_id": "previous_reduced_state",
+      "candidate_cardinality": 17,
+      "candidate_log_loss": 0.5089595517446006,
+      "log_loss_gain": 0.09034849586473515,
+      "per_power_log_loss_gain": {
+        "12": 0.13813065699679,
+        "13": 0.13674707739908892,
+        "14": 0.08482995166964963,
+        "15": 0.10289353904373932,
+        "16": 0.07016182598158405,
+        "17": 0.08143274099790099,
+        "18": 0.05875048777261371
+      }
+    },
+    {
+      "candidate_id": "current_winner_parity+previous_reduced_state",
+      "candidate_cardinality": 33,
+      "candidate_log_loss": 0.49051900213024313,
+      "log_loss_gain": 0.10878904547909263,
+      "per_power_log_loss_gain": {
+        "12": 0.14038251350025321,
+        "13": 0.14342141406617337,
+        "14": 0.09406805476452912,
+        "15": 0.11409742982553489,
+        "16": 0.07301655468082124,
+        "17": 0.10700752593353191,
+        "18": 0.06221821972372826
+      }
+    },
+    {
+      "candidate_id": "previous_reduced_state+phase_budget_bit",
+      "candidate_cardinality": 49,
+      "candidate_log_loss": 0.47872107290806315,
+      "log_loss_gain": 0.12058697470127261,
+      "per_power_log_loss_gain": {
+        "12": 0.14646035160228765,
+        "13": 0.13564499855671713,
+        "14": 0.10191940562324825,
+        "15": 0.10670468380103354,
+        "16": 0.07822031783035782,
+        "17": 0.10177329202771895,
+        "18": 0.06185486217168468
+      }
+    },
+    {
+      "candidate_id": "current_winner_parity+previous_reduced_state+phase_budget_bit",
+      "candidate_cardinality": 94,
+      "candidate_log_loss": 0.46745222860157193,
+      "log_loss_gain": 0.13185581900776383,
+      "per_power_log_loss_gain": {
+        "12": 0.14322835626736613,
+        "13": 0.14474272483791029,
+        "14": 0.10662009934557981,
+        "15": 0.11399961470743603,
+        "16": 0.07457796028174324,
+        "17": 0.11913273138132452,
+        "18": 0.06510595924790391
+      }
+    }
+  ],
+  "candidate_ranking": [
+    {
+      "candidate_id": "current_winner_parity+previous_reduced_state+phase_budget_bit",
+      "candidate_cardinality": 94,
+      "candidate_log_loss": 0.46745222860157193,
+      "log_loss_gain": 0.13185581900776383,
+      "per_power_log_loss_gain": {
+        "12": 0.14322835626736613,
+        "13": 0.14474272483791029,
+        "14": 0.10662009934557981,
+        "15": 0.11399961470743603,
+        "16": 0.07457796028174324,
+        "17": 0.11913273138132452,
+        "18": 0.06510595924790391
+      }
+    },
+    {
+      "candidate_id": "previous_reduced_state+phase_budget_bit",
+      "candidate_cardinality": 49,
+      "candidate_log_loss": 0.47872107290806315,
+      "log_loss_gain": 0.12058697470127261,
+      "per_power_log_loss_gain": {
+        "12": 0.14646035160228765,
+        "13": 0.13564499855671713,
+        "14": 0.10191940562324825,
+        "15": 0.10670468380103354,
+        "16": 0.07822031783035782,
+        "17": 0.10177329202771895,
+        "18": 0.06185486217168468
+      }
+    },
+    {
+      "candidate_id": "current_winner_parity+previous_reduced_state",
+      "candidate_cardinality": 33,
+      "candidate_log_loss": 0.49051900213024313,
+      "log_loss_gain": 0.10878904547909263,
+      "per_power_log_loss_gain": {
+        "12": 0.14038251350025321,
+        "13": 0.14342141406617337,
+        "14": 0.09406805476452912,
+        "15": 0.11409742982553489,
+        "16": 0.07301655468082124,
+        "17": 0.10700752593353191,
+        "18": 0.06221821972372826
+      }
+    },
+    {
+      "candidate_id": "previous_reduced_state",
+      "candidate_cardinality": 17,
+      "candidate_log_loss": 0.5089595517446006,
+      "log_loss_gain": 0.09034849586473515,
+      "per_power_log_loss_gain": {
+        "12": 0.13813065699679,
+        "13": 0.13674707739908892,
+        "14": 0.08482995166964963,
+        "15": 0.10289353904373932,
+        "16": 0.07016182598158405,
+        "17": 0.08143274099790099,
+        "18": 0.05875048777261371
+      }
+    },
+    {
+      "candidate_id": "phase_budget_bit",
+      "candidate_cardinality": 3,
+      "candidate_log_loss": 0.5715373718612273,
+      "log_loss_gain": 0.02777067574810843,
+      "per_power_log_loss_gain": {
+        "12": 0.019193697065233994,
+        "13": 0.017514072948856096,
+        "14": 0.05141989178848605,
+        "15": 0.005703496592807444,
+        "16": 0.023699699761209114,
+        "17": 0.03065972832837105,
+        "18": 0.013615535915740218
+      }
+    },
+    {
+      "candidate_id": "current_winner_parity",
+      "candidate_cardinality": 2,
+      "candidate_log_loss": 0.5851798659059969,
+      "log_loss_gain": 0.014128181703338849,
+      "per_power_log_loss_gain": {
+        "12": 0.021692604778378755,
+        "13": 0.02059487218324607,
+        "14": 0.02268550824981852,
+        "15": 0.03656851138325462,
+        "16": 0.02049161131779964,
+        "17": 0.024158199114457046,
+        "18": 0.019903184773112703
+      }
+    }
+  ],
+  "parity_previous_phase_overlay": {
+    "used_strata_count": 16,
+    "positive_lift_strata_count": 11,
+    "negative_lift_strata_count": 5,
+    "equal_lift_strata_count": 0,
+    "balanced_weight": 613,
+    "balanced_weighted_lift": 0.04508163857013867
+  },
+  "runtime_seconds": 0.22951341606676579
+}

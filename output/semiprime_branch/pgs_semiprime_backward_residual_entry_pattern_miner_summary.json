@@ -1,0 +1,392 @@
+{
+  "max_n": 5000,
+  "case_count": 980,
+  "target_tighter_law": "exact_shape_entry_switch",
+  "immediate_good_entry_count": 153,
+  "missed_good_entry_count": 69,
+  "selected_shape_counts": [
+    {
+      "shape": [
+        "previous",
+        true,
+        true,
+        6,
+        2
+      ],
+      "count": 8
+    },
+    {
+      "shape": [
+        "previous",
+        true,
+        true,
+        12,
+        2
+      ],
+      "count": 8
+    },
+    {
+      "shape": [
+        "previous",
+        true,
+        true,
+        8,
+        2
+      ],
+      "count": 5
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        18,
+        4
+      ],
+      "count": 4
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        24,
+        2
+      ],
+      "count": 3
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        true,
+        10,
+        4
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        8,
+        4
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        20,
+        2
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        34,
+        2
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        18,
+        16
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        10,
+        4
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        16,
+        10
+      ],
+      "count": 2
+    }
+  ],
+  "top_switch_rows": [
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        12,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        12,
+        6
+      ],
+      "available_count": 7,
+      "alt_lane_success_count": 4,
+      "example_moduli": [
+        215,
+        2947,
+        3295,
+        4115
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        6,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        6,
+        4
+      ],
+      "available_count": 5,
+      "alt_lane_success_count": 4,
+      "example_moduli": [
+        93,
+        453,
+        597,
+        687
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        12,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        12,
+        4
+      ],
+      "available_count": 6,
+      "alt_lane_success_count": 2,
+      "example_moduli": [
+        217,
+        2949
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        8,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        8,
+        6
+      ],
+      "available_count": 4,
+      "alt_lane_success_count": 2,
+      "example_moduli": [
+        3241,
+        4315
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        false,
+        false,
+        8,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        true,
+        true,
+        8,
+        2
+      ],
+      "available_count": 2,
+      "alt_lane_success_count": 2,
+      "example_moduli": [
+        695,
+        2165
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        12,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        12,
+        10
+      ],
+      "available_count": 5,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        2643
+      ]
+    },
+    {
+      "selected_shape": [
+        "containing",
+        true,
+        true,
+        18,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        26,
+        4
+      ],
+      "available_count": 4,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        2517
+      ]
+    },
+    {
+      "selected_shape": [
+        "containing",
+        true,
+        true,
+        18,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        26,
+        6
+      ],
+      "available_count": 4,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        2509
+      ]
+    },
+    {
+      "selected_shape": [
+        "containing",
+        true,
+        true,
+        18,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        26,
+        10
+      ],
+      "available_count": 4,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        2517
+      ]
+    },
+    {
+      "selected_shape": [
+        "containing",
+        true,
+        true,
+        18,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        26,
+        18
+      ],
+      "available_count": 4,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        2515
+      ]
+    },
+    {
+      "selected_shape": [
+        "containing",
+        true,
+        true,
+        18,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        26,
+        20
+      ],
+      "available_count": 4,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        2519
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        12,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        12,
+        8
+      ],
+      "available_count": 4,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        4415
+      ]
+    }
+  ]
+}

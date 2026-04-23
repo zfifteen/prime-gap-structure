@@ -37,19 +37,29 @@ OFFICIAL_127_ROUTER_SEED_BUDGETS = {
     2: 4,
     3: 8,
 }
+ROUTER_MODES = (
+    "audited_family_prior",
+    "pure_pgs",
+)
 ROW_FIELDNAMES = [
     "n",
     "p",
     "q",
     "router",
+    "router_mode",
     "scale_bits",
     "rung",
     "factor_recovered",
+    "factor_recovered_route_order",
     "factor_in_final_window",
     "best_window_rank",
     "final_window_bits",
     "local_prime_tests",
+    "local_prime_tests_route_order",
     "router_probe_count",
+    "winning_window_factor_present",
+    "winning_window_factor_route_rank",
+    "winning_window_factor_recovery_rank",
     "wall_time_ms",
 ]
 
@@ -178,6 +188,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Deterministic seed recorded in the summary.",
     )
     parser.add_argument(
+        "--router-mode",
+        choices=ROUTER_MODES,
+        default="audited_family_prior",
+        help="Router mode to evaluate.",
+    )
+    parser.add_argument(
         "--output-dir",
         type=Path,
         default=DEFAULT_OUTPUT_DIR,
@@ -254,6 +270,22 @@ def _cluster_sort_key(cluster: PrimeCluster) -> tuple[int, float, float, int, in
     )
 
 
+def _route_cluster_sort_key(cluster: PrimeCluster) -> tuple[int, float, float, int, int]:
+    """Return the support-first routing key for recovered-prime clusters."""
+    return _cluster_sort_key(cluster)
+
+
+def _recovery_cluster_sort_key(cluster: PrimeCluster) -> tuple[float, int, float, int, int]:
+    """Return the residue-first recovery key for recovered-prime clusters."""
+    return (
+        cluster.residue_ratio,
+        -cluster.support_count,
+        cluster.median_seed_distance,
+        cluster.recovered_prime,
+        cluster.tie_break_order,
+    )
+
+
 def _window_sort_key(window: BitWindow) -> tuple[int, float, float, int, int, float]:
     """Return the exact deterministic window ranking key."""
     if window.evidence is None:
@@ -313,9 +345,9 @@ def _window_to_interval(window: BitWindow) -> tuple[int, int, int]:
     return low, high, midpoint
 
 
-def _family_center_log2(case: ScaleupCase) -> float:
-    """Return the deterministic family-conditioned center for the initial search band."""
-    return math.log2(_family_center_estimate(case))
+def _family_center_log2(case: ScaleupCase, router_mode: str) -> float:
+    """Return the deterministic center for the initial search band."""
+    return math.log2(_family_center_estimate(case, router_mode))
 
 
 def _family_ratio_prior(case: ScaleupCase) -> float | None:
@@ -329,14 +361,19 @@ def _family_ratio_prior(case: ScaleupCase) -> float | None:
     return None
 
 
-def _family_center_estimate(case: ScaleupCase) -> int:
+def _family_center_estimate(case: ScaleupCase, router_mode: str) -> int:
     """Return the deterministic integer factor-side center for the initial search band."""
-    ratio_prior = _family_ratio_prior(case)
+    if router_mode not in ROUTER_MODES:
+        raise ValueError(f"unsupported router_mode {router_mode}")
+    if router_mode == "audited_family_prior":
+        ratio_prior = _family_ratio_prior(case)
+    else:
+        ratio_prior = None
     if ratio_prior is not None:
         with mp.workdps(100):
             shifted = mp.mpf(case.n) * mp.e ** (-mp.mpf(str(ratio_prior)))
             return int(mp.nint(mp.sqrt(shifted)))
-    if case.family == "challenge_like":
+    if router_mode == "audited_family_prior" and case.family == "challenge_like":
         return _anchor_from_log2(math.floor(0.40 * case.case_bits) - 0.5, rounding="nearest")
     return _anchor_from_log2(math.log2(case.n) / 2.0, rounding="nearest")
 
@@ -626,7 +663,7 @@ def _clustered_primes_in_interval(
             )
         )
 
-    clusters.sort(key=_cluster_sort_key)
+    clusters.sort(key=_route_cluster_sort_key)
     return clusters, probe_count
 
 
@@ -642,15 +679,79 @@ def _ranked_recovered_primes_in_interval(
     return tuple(cluster.recovered_prime for cluster in clusters)
 
 
-def _pgs_seed_recovery_in_interval(case: ScaleupCase, low: int, high: int, budget: int) -> tuple[bool, int]:
-    """Try exact repo PGS seed recovery inside one integer interval."""
-    clusters, _probe_count = _clustered_primes_in_interval(case, low, high, budget)
+def _recovery_ranked_recovered_primes_in_interval(
+    case: ScaleupCase,
+    low: int,
+    high: int,
+    seed_budget: int,
+    midpoint: int | None = None,
+) -> tuple[int, ...]:
+    """Return the residue-first recovered-prime sequence inside one integer interval."""
+    clusters, _probe_count = _clustered_primes_in_interval(case, low, high, seed_budget, midpoint=midpoint)
+    ordered = sorted(clusters, key=_recovery_cluster_sort_key)
+    return tuple(cluster.recovered_prime for cluster in ordered)
+
+
+def _ordered_factor_hit(
+    case: ScaleupCase,
+    clusters: list[PrimeCluster],
+) -> tuple[bool, int]:
+    """Return whether one ordered cluster list recovers a factor and how many prime tests it used."""
     prime_tests = 0
     for cluster in clusters:
         prime_tests += 1
         if case.n % cluster.recovered_prime == 0:
             return True, prime_tests
     return False, prime_tests
+
+
+def _pgs_seed_recovery_in_interval(case: ScaleupCase, low: int, high: int, budget: int) -> tuple[bool, int]:
+    """Try exact repo PGS seed recovery inside one integer interval."""
+    clusters, _probe_count = _clustered_primes_in_interval(case, low, high, budget)
+    ordered = sorted(clusters, key=_recovery_cluster_sort_key)
+    return _ordered_factor_hit(case, ordered)
+
+
+def _cluster_rank(
+    clusters: list[PrimeCluster],
+    target_prime: int,
+) -> int | None:
+    """Return the one-based rank of target_prime inside one ordered cluster list."""
+    for index, cluster in enumerate(clusters, start=1):
+        if cluster.recovered_prime == target_prime:
+            return index
+    return None
+
+
+def _winning_window_diagnostics(
+    case: ScaleupCase,
+    windows: list[BitWindow],
+    local_seed_budget: int,
+) -> dict[str, int | bool | None]:
+    """Return diagnostics for the top-ranked routed window."""
+    if not windows:
+        return {
+            "winning_window_factor_present": None,
+            "winning_window_factor_route_rank": None,
+            "winning_window_factor_recovery_rank": None,
+        }
+
+    low, high, midpoint = _window_to_interval(windows[0])
+    clusters, _probe_count = _clustered_primes_in_interval(
+        case,
+        low,
+        high,
+        local_seed_budget,
+        midpoint=midpoint,
+    )
+    recovery_clusters = sorted(clusters, key=_recovery_cluster_sort_key)
+    route_rank = _cluster_rank(clusters, case.small_factor)
+    recovery_rank = _cluster_rank(recovery_clusters, case.small_factor)
+    return {
+        "winning_window_factor_present": route_rank is not None,
+        "winning_window_factor_route_rank": route_rank,
+        "winning_window_factor_recovery_rank": recovery_rank,
+    }
 
 
 def _scored_window(
@@ -677,15 +778,27 @@ def _scored_window(
     return BitWindow(center_log2=center_log2, width_bits=width_bits, evidence=evidence, midpoint=midpoint), probe_count
 
 
-def _route_case(case: ScaleupCase, rung: int, seed: int) -> tuple[list[BitWindow], int]:
+def _route_case(
+    case: ScaleupCase,
+    rung: int,
+    seed: int,
+    router_mode: str = "audited_family_prior",
+) -> tuple[list[BitWindow], int]:
     """Return the final routed windows for one case and rung."""
     del seed
+    if router_mode not in ROUTER_MODES:
+        raise ValueError(f"unsupported router_mode {router_mode}")
+
     config = RUNG_CONFIGS[rung]
-    if case.case_bits <= 127 and case.family in {"balanced", "moderate_unbalanced", "archived_shape"}:
+    if (
+        router_mode == "audited_family_prior"
+        and case.case_bits <= 127
+        and case.family in {"balanced", "moderate_unbalanced", "archived_shape"}
+    ):
         return _route_case_centered_127(case, rung)
 
-    search_center = _family_center_log2(case)
-    search_midpoint = _family_center_estimate(case)
+    search_center = _family_center_log2(case, router_mode)
+    search_midpoint = _family_center_estimate(case, router_mode)
     search_lo = max(config.widths[0] / 2.0, search_center - (config.widths[0] / 2.0))
     search_hi = min(
         case.case_bits - (config.widths[0] / 2.0),
@@ -747,8 +860,8 @@ def _route_case_centered_127(case: ScaleupCase, rung: int) -> tuple[list[BitWind
     """Return the centered four-window 127-bit audit route."""
     config = RUNG_CONFIGS[rung]
     final_width = config.widths[-1]
-    center_log2 = _family_center_log2(case)
-    center_midpoint = _family_center_estimate(case)
+    center_log2 = _family_center_log2(case, "audited_family_prior")
+    center_midpoint = _family_center_estimate(case, "audited_family_prior")
     offsets = (0.0, -final_width, final_width, 2.0 * final_width)
     router_seed_budget = OFFICIAL_127_ROUTER_SEED_BUDGETS[rung]
 
@@ -795,11 +908,18 @@ def _local_pgs_search(
     local_seed_budget: int,
     router_only_prime_budget: int,
     scale_bits: int,
-) -> tuple[bool, int]:
+) -> tuple[bool, int, bool, int]:
     """Run exact recovery inside the routed windows."""
     if scale_bits > 256:
-        return _local_router_only_prime_walk(case, windows, router_only_prime_budget)
+        factor_recovered, local_prime_tests = _local_router_only_prime_walk(
+            case,
+            windows,
+            router_only_prime_budget,
+        )
+        return factor_recovered, local_prime_tests, factor_recovered, local_prime_tests
 
+    route_order_found_any = False
+    route_order_prime_tests = 0
     total_prime_tests = 0
     for window in windows:
         low, high, midpoint = _window_to_interval(window)
@@ -810,11 +930,16 @@ def _local_pgs_search(
             local_seed_budget,
             midpoint=midpoint,
         )
-        for cluster in clusters:
-            total_prime_tests += 1
-            if case.n % cluster.recovered_prime == 0:
-                return True, total_prime_tests
-    return False, total_prime_tests
+        recovery_clusters = sorted(clusters, key=_recovery_cluster_sort_key)
+        if not route_order_found_any:
+            route_found, route_prime_tests = _ordered_factor_hit(case, clusters)
+            route_order_prime_tests += route_prime_tests
+            route_order_found_any = route_found
+        recovery_found, recovery_prime_tests = _ordered_factor_hit(case, recovery_clusters)
+        total_prime_tests += recovery_prime_tests
+        if recovery_found:
+            return True, total_prime_tests, route_order_found_any, route_order_prime_tests
+    return False, total_prime_tests, route_order_found_any, route_order_prime_tests
 
 
 def _evaluate_case(
@@ -822,11 +947,12 @@ def _evaluate_case(
     scale_bits: int,
     rung: int,
     seed: int,
+    router_mode: str = "audited_family_prior",
 ) -> ScaleupMetrics:
     """Evaluate one case at one rung."""
     started = time.perf_counter()
     config = RUNG_CONFIGS[rung]
-    windows, probe_count = _route_case(case, rung, seed)
+    windows, probe_count = _route_case(case, rung, seed, router_mode=router_mode)
     factor_log2 = case.small_factor_log2
     best_rank = None
     best_width = config.widths[-1]
@@ -838,27 +964,34 @@ def _evaluate_case(
             break
 
     factor_in_final_window = best_rank is not None
-    factor_recovered, local_prime_tests = _local_pgs_search(
+    factor_recovered, local_prime_tests, factor_recovered_route_order, local_prime_tests_route_order = _local_pgs_search(
         case,
         windows,
         config.local_seed_budget,
         config.router_only_prime_budget,
         scale_bits,
     )
+    winning_window_diagnostics = _winning_window_diagnostics(case, windows, config.local_seed_budget)
     elapsed_ms = (time.perf_counter() - started) * 1000.0
     row = {
         "n": case.n,
         "p": case.p,
         "q": case.q,
         "router": "pgs",
+        "router_mode": router_mode,
         "scale_bits": scale_bits,
         "rung": rung,
         "factor_recovered": factor_recovered,
+        "factor_recovered_route_order": factor_recovered_route_order,
         "factor_in_final_window": factor_in_final_window,
         "best_window_rank": best_rank,
         "final_window_bits": best_width,
         "local_prime_tests": local_prime_tests,
+        "local_prime_tests_route_order": local_prime_tests_route_order,
         "router_probe_count": probe_count,
+        "winning_window_factor_present": winning_window_diagnostics["winning_window_factor_present"],
+        "winning_window_factor_route_rank": winning_window_diagnostics["winning_window_factor_route_rank"],
+        "winning_window_factor_recovery_rank": winning_window_diagnostics["winning_window_factor_recovery_rank"],
         "wall_time_ms": elapsed_ms,
         "case_id": case.case_id,
         "family": case.family,
@@ -882,6 +1015,7 @@ def _raw_summary(
     top1_hits = sum(int(row["best_window_rank"] == 1) for row in public_rows)
     top4_hits = sum(int(bool(row["factor_in_final_window"])) for row in public_rows)
     exact_hits = sum(int(bool(row["factor_recovered"])) for row in public_rows)
+    route_order_exact_hits = sum(int(bool(row["factor_recovered_route_order"])) for row in public_rows)
     best_window_ranks = [
         int(row["best_window_rank"])
         for row in public_rows
@@ -889,11 +1023,15 @@ def _raw_summary(
     ]
     final_window_bits = [float(row["final_window_bits"]) for row in public_rows]
     total_local_prime_tests = sum(int(row["local_prime_tests"]) for row in public_rows)
+    total_local_prime_tests_route_order = sum(
+        int(row["local_prime_tests_route_order"]) for row in public_rows
+    )
     total_router_probe_count = sum(int(row["router_probe_count"]) for row in public_rows)
     total_wall_time_ms = sum(float(row["wall_time_ms"]) for row in public_rows)
 
     return {
         "router": "pgs",
+        "router_mode": str(public_rows[0]["router_mode"]) if public_rows else "audited_family_prior",
         "scale_bits": scale_bits,
         "rung": rung,
         "case_count": len(public_rows),
@@ -902,7 +1040,9 @@ def _raw_summary(
         "median_final_window_bits": _median_or_none(final_window_bits),
         "median_best_window_rank": _median_or_none(best_window_ranks),
         "exact_recovery_recall": exact_hits / len(public_rows),
+        "route_order_exact_recovery_recall": route_order_exact_hits / len(public_rows),
         "total_local_prime_tests": total_local_prime_tests,
+        "total_local_prime_tests_route_order": total_local_prime_tests_route_order,
         "total_router_probe_count": total_router_probe_count,
         "total_wall_time_ms": total_wall_time_ms,
     }
@@ -914,7 +1054,35 @@ def _stage_acceptance(
     rows: list[ScaleupMetrics],
 ) -> dict[str, object]:
     """Return the stage acceptance payload for one summary."""
+    router_mode = str(raw_summary.get("router_mode", "audited_family_prior"))
     full_stage_evaluated = len(rows) == len(CORPUS[scale_bits])
+    if router_mode == "pure_pgs":
+        archived_row = next(
+            (metric.row for metric in rows if metric.row.get("case_id") == ARCHIVED_CASE_ID),
+            None,
+        )
+        return {
+            "mode": "research",
+            "router_mode": router_mode,
+            "full_stage_evaluated": full_stage_evaluated,
+            "recovery_not_worse_than_route_order": (
+                float(raw_summary["exact_recovery_recall"])
+                >= float(raw_summary["route_order_exact_recovery_recall"])
+            ),
+            "archived_case_present": archived_row is not None,
+            "archived_case_factor_present_in_winning_window": (
+                None if archived_row is None else archived_row["winning_window_factor_present"]
+            ),
+            "archived_case_recovery_rank_improves_route_rank": (
+                None
+                if archived_row is None
+                or archived_row["winning_window_factor_route_rank"] is None
+                or archived_row["winning_window_factor_recovery_rank"] is None
+                else int(archived_row["winning_window_factor_recovery_rank"])
+                < int(archived_row["winning_window_factor_route_rank"])
+            ),
+            "stage_passed": False,
+        }
     if scale_bits == 127:
         archived_row = next(
             (metric.row for metric in rows if metric.row["case_id"] == ARCHIVED_CASE_ID),
@@ -971,6 +1139,7 @@ def run_scaleup(
     rung: int,
     case_count: int | None,
     seed: int,
+    router_mode: str = "audited_family_prior",
 ) -> tuple[list[ScaleupMetrics], dict[str, object]]:
     """Run the scale-up harness without writing artifacts."""
     cases = _selected_cases(scale_bits, case_count)
@@ -980,6 +1149,7 @@ def run_scaleup(
             scale_bits,
             rung,
             seed,
+            router_mode=router_mode,
         )
         for case in cases
     ]
@@ -1004,6 +1174,7 @@ def run_127_official_audit(seed: int) -> tuple[list[ScaleupMetrics], dict[str, o
                 127,
                 rung,
                 seed,
+                router_mode="audited_family_prior",
             )
             for case in cases
         ]
@@ -1022,6 +1193,41 @@ def run_127_official_audit(seed: int) -> tuple[list[ScaleupMetrics], dict[str, o
 
     summary = dict(selected_summary)
     summary["official_rung"] = official_rung
+    summary["rung_summaries"] = rung_summaries
+    summary["stage_passed"] = bool(summary["acceptance"]["stage_passed"])
+    return selected_rows, summary
+
+
+def run_127_pure_pgs_audit(seed: int) -> tuple[list[ScaleupMetrics], dict[str, object]]:
+    """Run the full 127-bit pure-PGS audit and report all rungs."""
+    cases = _selected_cases(127, None)
+    rung_summaries: dict[str, dict[str, object]] = {}
+    selected_rows: list[ScaleupMetrics] = []
+    selected_summary: dict[str, object] | None = None
+
+    for rung in (1, 2, 3):
+        rows = [
+            _evaluate_case(
+                case,
+                127,
+                rung,
+                seed,
+                router_mode="pure_pgs",
+            )
+            for case in cases
+        ]
+        rung_summary = _raw_summary(127, rung, rows)
+        rung_summary["acceptance"] = _stage_acceptance(127, rung_summary, rows)
+        rung_summary["seed"] = seed
+        rung_summaries[str(rung)] = rung_summary
+        selected_rows = rows
+        selected_summary = rung_summary
+
+    if selected_summary is None:
+        raise AssertionError("127 pure-PGS audit produced no summaries")
+
+    summary = dict(selected_summary)
+    summary["audit_mode"] = "pure_pgs"
     summary["rung_summaries"] = rung_summaries
     summary["stage_passed"] = bool(summary["acceptance"]["stage_passed"])
     return selected_rows, summary
@@ -1046,9 +1252,10 @@ def main(argv: list[str] | None = None) -> int:
         rung=args.rung,
         case_count=args.cases,
         seed=args.seed,
+        router_mode=args.router_mode,
     )
 
-    stem = f"pgs_scale{args.scale_bits}_r{args.rung}"
+    stem = f"pgs_scale{args.scale_bits}_r{args.rung}_{args.router_mode}"
     rows_jsonl_path = args.output_dir / f"{stem}_rows.jsonl"
     summary_path = args.output_dir / f"{stem}_summary.json"
     write_rows_jsonl(rows_jsonl_path, rows)

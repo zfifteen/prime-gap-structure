@@ -141,6 +141,16 @@ def test_pgs_router_places_archived_case_in_top4_by_rung2():
     assert metric.row["factor_recovered"] is True
 
 
+def test_pure_pgs_router_is_deterministic_except_timing():
+    """Pure-PGS routing should reproduce identical rows and summary fields except timing."""
+    module = load_scaleup()
+    rows_a, summary_a = module.run_scaleup(127, 2, 2, 0, router_mode="pure_pgs")
+    rows_b, summary_b = module.run_scaleup(127, 2, 2, 0, router_mode="pure_pgs")
+
+    assert _strip_row_timing(rows_a) == _strip_row_timing(rows_b)
+    assert _strip_summary_timing(summary_a) == _strip_summary_timing(summary_b)
+
+
 def test_scaleup_subset_run_is_deterministic_except_timing():
     """A fixed subset run should reproduce identical rows and summary fields except timing."""
     module = load_scaleup()
@@ -197,6 +207,54 @@ def test_local_pgs_seed_recovery_hits_factor_and_is_deterministic_on_narrow_inte
     assert case.small_factor in ranked_a
 
 
+def test_residue_first_recovery_hits_factor_when_factor_is_already_clustered():
+    """Residue-first recovery should put the exact factor first on the archived winning window."""
+    module = load_scaleup()
+    case = next(
+        candidate for candidate in module.CORPUS[127] if candidate.case_id == module.ARCHIVED_CASE_ID
+    )
+    windows, _probe_count = module._route_case(case, 2, 0, router_mode="pure_pgs")
+    low, high, midpoint = module._window_to_interval(windows[0])
+    ranked = module._recovery_ranked_recovered_primes_in_interval(case, low, high, 1024, midpoint=midpoint)
+
+    assert ranked
+    assert ranked[0] == case.small_factor
+
+
+def test_archived_case_recovery_order_improves_factor_rank_inside_winning_window():
+    """The archived-shape factor rank should improve under residue-first recovery ordering."""
+    module = load_scaleup()
+    case = next(
+        candidate for candidate in module.CORPUS[127] if candidate.case_id == module.ARCHIVED_CASE_ID
+    )
+
+    windows, _probe_count = module._route_case(case, 2, 0, router_mode="pure_pgs")
+    diagnostics = module._winning_window_diagnostics(
+        case,
+        windows,
+        module.RUNG_CONFIGS[2].local_seed_budget,
+    )
+
+    assert diagnostics["winning_window_factor_present"] is True
+    assert diagnostics["winning_window_factor_route_rank"] is not None
+    assert diagnostics["winning_window_factor_recovery_rank"] is not None
+    assert int(diagnostics["winning_window_factor_recovery_rank"]) < int(
+        diagnostics["winning_window_factor_route_rank"]
+    )
+
+
+def test_pure_pgs_summary_keeps_recovery_recall_at_or_above_route_order():
+    """Pure-PGS residue-first recovery should not underperform route-order recovery on the same windows."""
+    module = load_scaleup()
+    rows, summary = module.run_scaleup(127, 2, 2, 0, router_mode="pure_pgs")
+
+    assert len(rows) == 2
+    assert summary["router_mode"] == "pure_pgs"
+    assert summary["exact_recovery_recall"] >= summary["route_order_exact_recovery_recall"]
+    assert summary["acceptance"]["mode"] == "research"
+    assert summary["acceptance"]["recovery_not_worse_than_route_order"] is True
+
+
 def test_official_127_audit_passes_on_first_passing_rung():
     """The official 127 audit should stop at and report the first passing rung."""
     module = load_scaleup()
@@ -216,6 +274,24 @@ def test_official_127_audit_passes_on_first_passing_rung():
         if rung_summary["acceptance"]["stage_passed"] is True
     )
     assert summary["official_rung"] == first_passing_rung
+
+
+def test_pure_pgs_127_audit_reports_separate_research_surface():
+    """The pure-PGS 127 audit should expose a separate mode-tagged research surface."""
+    module = load_scaleup()
+    original_cases = module.CORPUS[127]
+    module.CORPUS[127] = original_cases[:2]
+    try:
+        rows, summary = module.run_127_pure_pgs_audit(0)
+    finally:
+        module.CORPUS[127] = original_cases
+
+    assert len(rows) == 2
+    assert summary["router_mode"] == "pure_pgs"
+    assert summary["audit_mode"] == "pure_pgs"
+    assert summary["acceptance"]["mode"] == "research"
+    assert summary["stage_passed"] is False
+    assert sorted(summary["rung_summaries"].keys()) == ["1", "2", "3"]
 
 
 def test_cli_writes_scaleup_rows_and_summary(tmp_path: Path):
@@ -238,8 +314,8 @@ def test_cli_writes_scaleup_rows_and_summary(tmp_path: Path):
 
     assert exit_code == 0
 
-    rows_path = tmp_path / "pgs_scale127_r1_rows.jsonl"
-    summary_path = tmp_path / "pgs_scale127_r1_summary.json"
+    rows_path = tmp_path / "pgs_scale127_r1_audited_family_prior_rows.jsonl"
+    summary_path = tmp_path / "pgs_scale127_r1_audited_family_prior_summary.json"
     assert rows_path.exists()
     assert summary_path.exists()
 
@@ -247,12 +323,56 @@ def test_cli_writes_scaleup_rows_and_summary(tmp_path: Path):
     assert len(row_lines) == 1
     row = json.loads(row_lines[0])
     assert row["router"] == "pgs"
+    assert row["router_mode"] == "audited_family_prior"
     assert row["scale_bits"] == 127
     assert row["rung"] == 1
 
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     assert summary["router"] == "pgs"
+    assert summary["router_mode"] == "audited_family_prior"
     assert summary["scale_bits"] == 127
     assert summary["case_count"] == 1
     assert "winner_router" not in summary
     assert summary["acceptance"]["stage_passed"] is False
+
+
+def test_cli_router_mode_outputs_do_not_collide(tmp_path: Path):
+    """Audited and pure-PGS CLI runs should write distinct mode-tagged artifacts."""
+    module = load_scaleup()
+    audited_exit = module.main(
+        [
+            "--scale-bits",
+            "127",
+            "--rung",
+            "1",
+            "--cases",
+            "1",
+            "--seed",
+            "0",
+            "--router-mode",
+            "audited_family_prior",
+            "--output-dir",
+            str(tmp_path),
+        ]
+    )
+    pure_exit = module.main(
+        [
+            "--scale-bits",
+            "127",
+            "--rung",
+            "1",
+            "--cases",
+            "1",
+            "--seed",
+            "0",
+            "--router-mode",
+            "pure_pgs",
+            "--output-dir",
+            str(tmp_path),
+        ]
+    )
+
+    assert audited_exit == 0
+    assert pure_exit == 0
+    assert (tmp_path / "pgs_scale127_r1_audited_family_prior_summary.json").exists()
+    assert (tmp_path / "pgs_scale127_r1_pure_pgs_summary.json").exists()

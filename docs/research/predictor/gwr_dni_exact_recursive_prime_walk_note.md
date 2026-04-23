@@ -211,12 +211,26 @@ reports:
 - maximum exact peak offset: `60`;
 - maximum cutoff utilization: `0.6153846153846154`.
 
-The square branch now has its own direct audit too:
-[`square_branch_gap_audit.py`](../../../benchmarks/python/predictor/square_branch_gap_audit.py).
-Through `p <= 10^6`, it tested `78,498` prime squares, found `7,477`
-violations of the old fixed map, observed maximum square offset `246`, and
-records dynamic-cutoff pressure alongside the archived fixed-cutoff failure
-counts.
+The square branch now has two direct instruments:
+
+- the archived fixed-vs-dynamic audit
+  [`square_branch_gap_audit.py`](../../../benchmarks/python/predictor/square_branch_gap_audit.py);
+- the direct dynamic-cutoff search
+  [`square_branch_dynamic_cutoff_search.py`](../../../benchmarks/python/predictor/square_branch_dynamic_cutoff_search.py).
+
+The retained direct square search through `p <= 10^8` is:
+
+- [../../../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json](../../../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_summary.json)
+- [../../../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_frontier.csv](../../../output/gwr_proof/square_branch_dynamic_cutoff_search_1e8/square_branch_dynamic_cutoff_search_frontier.csv)
+
+That search tested `5,761,454` odd prime squares, found no dynamic-cutoff
+counterexample on that finite surface, and recorded maximum square-branch
+utilization `0.8120300751879699` at
+
+- `p = 82,357,433`,
+- `q = prevprime(p^2) = 6,782,746,770,348,949`,
+- square offset `540`,
+- dynamic cutoff `665`.
 
 ## 4. Exactness on the Verified Surface
 
@@ -400,6 +414,13 @@ python3 benchmarks/python/predictor/gwr_dni_recursive_gap_scaling_sweep.py \
 python3 benchmarks/python/predictor/square_branch_gap_audit.py \
   --max-prime 1000000 \
   --output-dir /tmp/square_branch_audit_1e6
+```
+
+```bash
+python3 benchmarks/python/predictor/square_branch_dynamic_cutoff_search.py \
+  --min-prime 3 \
+  --max-prime 100000000 \
+  --output-dir /tmp/square_branch_dynamic_cutoff_search_1e8
 ```
 
 ```bash

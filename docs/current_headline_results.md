@@ -33,6 +33,14 @@
   combined `10^6 + 10^7` next-gap surface, and the recursive walk records
   `664,578 / 664,578` exact consecutive next-prime recoveries from prime `11`
   through prime `10,000,121` with `0` skipped gaps.
+- **The semiprime branch now clears its first full `127`-bit official gate.**
+  The centered `PGS` audit on the committed `12`-case surface passes at rung
+  `2`, with `1.0` top-1 routed-window recall, `1.0` top-4 routed-window
+  recall, `0.75` exact recovery recall, and the archived exact `127`-bit case
+  recovered on the official path. See
+  [./research/semiprime_branch/pgs_127_official_gate_breakthrough.md](./research/semiprime_branch/pgs_127_official_gate_breakthrough.md)
+  and the measured artifact
+  [../output/semiprime_branch/pgs_127_official_audit_summary.json](../output/semiprime_branch/pgs_127_official_audit_summary.json).
 - **The old fixed cutoff theorem is false and stays archived as false.** The
   fixed map `{2:44, 4:60, 6:60}` fails at `q = 24,098,209`.
 - **The live bounded walker is certified on the committed exact surface

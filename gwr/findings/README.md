@@ -49,6 +49,10 @@ language than those anchors.
   Implications of the dominant `d=4` regime.
 - [gap_anatomy_decomposition.md](./gap_anatomy_decomposition.md):
   Hierarchical and local-arrival reading of the gap interior.
+- [earlier_side_two_coordinate_split_findings.md](./earlier_side_two_coordinate_split_findings.md):
+  Refinement showing that direct-score danger and ratio-form tightness are
+  different earlier-side frontiers and should not be collapsed into one scalar
+  bridge load.
 - [gap_type_catalog_through_1e18.md](./gap_type_catalog_through_1e18.md):
   Deterministic catalog of the distinct exact gap types visible on the exact
   `10^6` baseline plus sampled decade windows through `10^18`.

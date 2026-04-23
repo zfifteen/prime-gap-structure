@@ -1,0 +1,52 @@
+{
+  "min_prime": 3,
+  "max_prime": 100000000,
+  "tested_prime_count": 5761454,
+  "first_tested_prime": 3,
+  "last_tested_prime": 99999989,
+  "first_counterexample": null,
+  "max_dynamic_cutoff_utilization": 0.8120300751879699,
+  "max_row": {
+    "p": 82357433,
+    "square": 6782746770349489,
+    "previous_prime": 6782746770348949,
+    "offset": 540,
+    "o_q": 4,
+    "dynamic_cutoff": 665,
+    "dynamic_cutoff_utilization": 0.8120300751879699,
+    "elapsed_seconds": 69.81274104118347
+  },
+  "max_row_by_o_q": {
+    "2": {
+      "p": 1487539,
+      "square": 2212772276521,
+      "previous_prime": 2212772276237,
+      "offset": 284,
+      "o_q": 2,
+      "dynamic_cutoff": 404,
+      "dynamic_cutoff_utilization": 0.7029702970297029,
+      "elapsed_seconds": 1.2272908687591553
+    },
+    "4": {
+      "p": 82357433,
+      "square": 6782746770349489,
+      "previous_prime": 6782746770348949,
+      "offset": 540,
+      "o_q": 4,
+      "dynamic_cutoff": 665,
+      "dynamic_cutoff_utilization": 0.8120300751879699,
+      "elapsed_seconds": 69.81274104118347
+    },
+    "6": {
+      "p": 33701407,
+      "square": 1135784833779649,
+      "previous_prime": 1135784833779203,
+      "offset": 446,
+      "o_q": 6,
+      "dynamic_cutoff": 601,
+      "dynamic_cutoff_utilization": 0.7420965058236273,
+      "elapsed_seconds": 28.419256925582886
+    }
+  },
+  "elapsed_seconds": 84.9145290851593
+}

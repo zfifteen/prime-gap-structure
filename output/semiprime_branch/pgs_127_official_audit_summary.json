@@ -1,0 +1,76 @@
+{
+  "router": "pgs",
+  "scale_bits": 127,
+  "rung": 2,
+  "case_count": 12,
+  "router_top1_recall": 1.0,
+  "router_top4_recall": 1.0,
+  "median_final_window_bits": 0.25,
+  "median_best_window_rank": 1.0,
+  "exact_recovery_recall": 0.75,
+  "total_local_prime_tests": 384,
+  "total_router_probe_count": 182,
+  "total_wall_time_ms": 94361.73095786944,
+  "acceptance": {
+    "mode": "recovery",
+    "full_stage_evaluated": true,
+    "archived_case_present": true,
+    "archived_case_recovered": true,
+    "exact_recovery_threshold_met": true,
+    "router_top4_threshold_met": true,
+    "stage_passed": true
+  },
+  "seed": 0,
+  "official_rung": 2,
+  "rung_summaries": {
+    "1": {
+      "router": "pgs",
+      "scale_bits": 127,
+      "rung": 1,
+      "case_count": 12,
+      "router_top1_recall": 1.0,
+      "router_top4_recall": 1.0,
+      "median_final_window_bits": 1.0,
+      "median_best_window_rank": 1.0,
+      "exact_recovery_recall": 0.6666666666666666,
+      "total_local_prime_tests": 151,
+      "total_router_probe_count": 48,
+      "total_wall_time_ms": 32299.144124612212,
+      "acceptance": {
+        "mode": "recovery",
+        "full_stage_evaluated": true,
+        "archived_case_present": true,
+        "archived_case_recovered": false,
+        "exact_recovery_threshold_met": false,
+        "router_top4_threshold_met": true,
+        "stage_passed": false
+      },
+      "seed": 0
+    },
+    "2": {
+      "router": "pgs",
+      "scale_bits": 127,
+      "rung": 2,
+      "case_count": 12,
+      "router_top1_recall": 1.0,
+      "router_top4_recall": 1.0,
+      "median_final_window_bits": 0.25,
+      "median_best_window_rank": 1.0,
+      "exact_recovery_recall": 0.75,
+      "total_local_prime_tests": 384,
+      "total_router_probe_count": 182,
+      "total_wall_time_ms": 94361.73095786944,
+      "acceptance": {
+        "mode": "recovery",
+        "full_stage_evaluated": true,
+        "archived_case_present": true,
+        "archived_case_recovered": true,
+        "exact_recovery_threshold_met": true,
+        "router_top4_threshold_met": true,
+        "stage_passed": true
+      },
+      "seed": 0
+    }
+  },
+  "stage_passed": true
+}

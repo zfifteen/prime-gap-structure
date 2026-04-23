@@ -1,0 +1,28 @@
+{
+  "method": "hybrid",
+  "regime": "toy_balanced",
+  "case_count": 2,
+  "seed": 7,
+  "budget_primes": 48,
+  "budget_shells": 8,
+  "max_half_width": 1048576,
+  "factor_found_recall": 0.5,
+  "factor_in_budget_recall": 0.5,
+  "median_best_factor_distance": 117571.0,
+  "median_best_factor_rank": 22.5,
+  "median_shell_hit_index": 1.0,
+  "median_prime_tests_before_shell_hit": 1.0,
+  "total_candidate_tests": 49,
+  "total_prime_tests": 49,
+  "candidate_count_reduction_vs_geofac_baseline": 0.4895833333333333,
+  "prime_test_reduction_vs_geofac_baseline": -1.5789473684210527,
+  "total_wall_time_ms": 13.054499868303537,
+  "false_signal_control": {
+    "method": "hybrid",
+    "control_mode": "pseudo_random_rerank",
+    "factor_in_budget_recall": 0.5,
+    "median_best_factor_rank": 24.0,
+    "median_prime_tests_before_shell_hit": 4.0,
+    "survives_false_signal_control": true
+  }
+}

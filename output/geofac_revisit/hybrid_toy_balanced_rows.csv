@@ -1,0 +1,3 @@
+n,p,q,method,regime,seed,factor_found,factor_in_budget,best_factor_distance,best_factor_rank,shell_hit_index,prime_tests,candidate_tests,wall_time_ms,shell_widths_visited
+1073217479,32749,32771,hybrid,toy_balanced,7,True,True,0,1,1,1,1,2.117290860041976,"[109, 218, 436, 872, 1744, 3488, 6976, 13952]"
+169435573207,165707,1022501,hybrid,toy_balanced,7,False,False,235142,44,,48,48,10.937209008261561,"[168, 336, 672, 1344, 2688, 5376, 10752, 21504]"

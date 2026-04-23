@@ -3,6 +3,19 @@
 This note records the analytic bridge used on the earlier side of the
 `Gap Winner Rule` (`GWR`) proof surface.
 
+## Status Note
+
+This note is retained as bridge-era comparison material.
+
+It is not the current public proof-status source of truth for `GWR`, and it is
+not the current proof-critical path described in the repo headline files.
+
+For live theorem status, use:
+
+- [`../../../GWR_PROOF.md`](../../../GWR_PROOF.md)
+- [`../../../docs/current_headline_results.md`](../../../docs/current_headline_results.md)
+- [`../../findings/prime_gap_admissibility_theorem.md`](../../findings/prime_gap_admissibility_theorem.md)
+
 The current explicit picture has two distinct regimes:
 
 - a bounded unconditional bridge from Dusart's explicit prime-gap bound and

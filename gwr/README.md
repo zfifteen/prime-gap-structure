@@ -26,20 +26,20 @@ Any gap where the raw-$Z$ argmax differs from that winner is a counterexample.
 
 ## Current Headline Status
 
-The no-early-spoiler bridge is now closed below the repo's exact finite base
-under BHP's $\theta = 0.525$ and explicit Robin-style divisor-function
-majoration constants.
+`GWR` is proved and closed on the repository's current proof surface.
 
-The exact finite bridge artifact through $p < 20{,}000{,}001$ records
-`1,163,198` gaps, `3,349,874` earlier candidates, `0` bridge failures, and
-maximum realized bridge load `0.05664166714743768`. The analytic bridge
-threshold is `102` under $c=\ln(2)e^\gamma$ and `3,544` under conservative
-`c = 1.5379`, both inside that finite base.
+The public proof-facing summary is:
 
-See
-[`findings/gwr_universal_bridge_closure.md`](./findings/gwr_universal_bridge_closure.md)
-and
-[`experiments/proof/proof_bridge_certificate.py`](./experiments/proof/proof_bridge_certificate.py).
+- [../GWR_PROOF.md](../GWR_PROOF.md)
+- [../docs/current_headline_results.md](../docs/current_headline_results.md)
+
+The live earlier-side route is the local admissibility program plus residual
+class closure and exact no-early-spoiler audit.
+
+Bridge-era BHP/Robin notes and certificate scripts are retained under
+[`experiments/proof/`](./experiments/proof/README.md) as historical comparison
+material. They are not the current proof-critical path for the theorem status
+presented in the repo headline files.
 
 ## Subtree Layout
 

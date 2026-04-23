@@ -30,7 +30,7 @@ Artifacts:
 - tests:
   [tests/python/gap_ridge/test_d4_square_residue_dead_zone_probe.py](../../tests/python/gap_ridge/test_d4_square_residue_dead_zone_probe.py)
 
-The current executed run is an exact scan through `10^6` on the same live
+The current executed run is an exact scan through `10^7` on the same live
 branch used by the earlier obstruction note:
 
 - winner is the earliest interior non-cube `d=4` semiprime,
@@ -39,10 +39,10 @@ branch used by the earlier obstruction note:
 
 Measured counts on that exact surface:
 
-- `r^2 ≡ 1 (mod 30)`: `21,248` rows, minimum observed margin `8`, margin-`6`
-  count `0`
-- `r^2 ≡ 19 (mod 30)`: `23,464` rows, minimum observed margin `6`, margin-`6`
-  count `22`
+- `r^2 ≡ 1 (mod 30)`: `196,581` rows, minimum observed margin `8`,
+  margin-`6` count `0`, margin-`8` count `35`
+- `r^2 ≡ 19 (mod 30)`: `201,377` rows, minimum observed margin `6`,
+  margin-`6` count `45`, margin-`8` count `39`
 
 So the first non-floor margin already separates exactly on the current exact
 surface.

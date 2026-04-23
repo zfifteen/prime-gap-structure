@@ -1,0 +1,522 @@
+{
+  "max_n": 5000,
+  "case_count": 980,
+  "target_refined_law": "containing_if_prev_early_largegap_14",
+  "immediate_good_entry_count": 153,
+  "missed_good_entry_count": 82,
+  "selected_shape_counts": [
+    {
+      "shape": [
+        "previous",
+        true,
+        true,
+        8,
+        2
+      ],
+      "count": 10
+    },
+    {
+      "shape": [
+        "previous",
+        true,
+        true,
+        6,
+        2
+      ],
+      "count": 8
+    },
+    {
+      "shape": [
+        "previous",
+        true,
+        true,
+        12,
+        2
+      ],
+      "count": 8
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        18,
+        4
+      ],
+      "count": 4
+    },
+    {
+      "shape": [
+        "previous",
+        true,
+        true,
+        10,
+        4
+      ],
+      "count": 3
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        24,
+        2
+      ],
+      "count": 3
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        true,
+        10,
+        4
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "previous",
+        true,
+        true,
+        14,
+        2
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        14,
+        2
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        20,
+        2
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        22,
+        4
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        34,
+        2
+      ],
+      "count": 2
+    }
+  ],
+  "good_shape_counts": [
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        14,
+        10
+      ],
+      "count": 5
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        8,
+        4
+      ],
+      "count": 5
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        6,
+        4
+      ],
+      "count": 4
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        12,
+        6
+      ],
+      "count": 4
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        10,
+        8
+      ],
+      "count": 4
+    },
+    {
+      "shape": [
+        "containing",
+        false,
+        false,
+        14,
+        4
+      ],
+      "count": 4
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        12,
+        8
+      ],
+      "count": 3
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        16,
+        8
+      ],
+      "count": 3
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        12,
+        4
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "containing",
+        true,
+        true,
+        10,
+        2
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "previous",
+        false,
+        false,
+        18,
+        6
+      ],
+      "count": 2
+    },
+    {
+      "shape": [
+        "containing",
+        false,
+        false,
+        22,
+        2
+      ],
+      "count": 2
+    }
+  ],
+  "top_switch_rows": [
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        8,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        8,
+        4
+      ],
+      "available_count": 5,
+      "alt_lane_success_count": 5,
+      "example_moduli": [
+        699,
+        1569,
+        2229,
+        2469,
+        4359
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        12,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        12,
+        6
+      ],
+      "available_count": 7,
+      "alt_lane_success_count": 4,
+      "example_moduli": [
+        215,
+        2947,
+        3295,
+        4115
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        6,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        6,
+        4
+      ],
+      "available_count": 5,
+      "alt_lane_success_count": 4,
+      "example_moduli": [
+        93,
+        453,
+        597,
+        687
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        10,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        10,
+        8
+      ],
+      "available_count": 3,
+      "alt_lane_success_count": 3,
+      "example_moduli": [
+        723,
+        1263,
+        1713
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        8,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        8,
+        6
+      ],
+      "available_count": 7,
+      "alt_lane_success_count": 2,
+      "example_moduli": [
+        3241,
+        4315
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        12,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        12,
+        4
+      ],
+      "available_count": 6,
+      "alt_lane_success_count": 2,
+      "example_moduli": [
+        217,
+        2949
+      ]
+    },
+    {
+      "selected_shape": [
+        "containing",
+        true,
+        true,
+        14,
+        2
+      ],
+      "alternative_shape": [
+        "containing",
+        false,
+        false,
+        14,
+        4
+      ],
+      "available_count": 2,
+      "alt_lane_success_count": 2,
+      "example_moduli": [
+        327,
+        4827
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        12,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        12,
+        8
+      ],
+      "available_count": 2,
+      "alt_lane_success_count": 2,
+      "example_moduli": [
+        1803,
+        3063
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        14,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        14,
+        10
+      ],
+      "available_count": 2,
+      "alt_lane_success_count": 2,
+      "example_moduli": [
+        309,
+        3693
+      ]
+    },
+    {
+      "selected_shape": [
+        "previous",
+        true,
+        true,
+        12,
+        2
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        12,
+        10
+      ],
+      "available_count": 5,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        2643
+      ]
+    },
+    {
+      "selected_shape": [
+        "containing",
+        true,
+        true,
+        18,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        26,
+        4
+      ],
+      "available_count": 4,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        2517
+      ]
+    },
+    {
+      "selected_shape": [
+        "containing",
+        true,
+        true,
+        18,
+        4
+      ],
+      "alternative_shape": [
+        "previous",
+        false,
+        false,
+        26,
+        6
+      ],
+      "available_count": 4,
+      "alt_lane_success_count": 1,
+      "example_moduli": [
+        2509
+      ]
+    }
+  ]
+}

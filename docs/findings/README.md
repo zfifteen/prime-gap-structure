@@ -16,6 +16,7 @@ Current findings from this session:
 - [Lexicographic winner-take-all peak rule](./lexicographic_winner_take_all_peak_rule.md)
 - [Meissel-Mertens constant as a computational horizon anchor](./meissel_mertens_horizon_anchor.md)
 - [Residue-modulated ridge orientation](./residue_mod30_ridge_orientation.md)
+- [Square-phase handoff](./square_phase_handoff.md)
 - [$p+2$ wheel-open gate splits early winner arrival](./p2_wheel_open_gate.md)
 
 As new findings are developed, add a new document to this folder rather than

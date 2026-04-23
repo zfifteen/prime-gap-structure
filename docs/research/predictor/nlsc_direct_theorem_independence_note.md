@@ -25,7 +25,7 @@ Define the later simpler threat horizon by
 
 $$T_{<}(w) = \min \{n > w : d(n) < d(w)\}.$$
 
-The direct theorem candidate is:
+The direct theorem statement is:
 
 $$q \le T_{<}(w).$$
 
@@ -54,7 +54,6 @@ References:
 
 - [../../../gwr/findings/claim_hierarchy.md](../../../gwr/findings/claim_hierarchy.md)
 - [../../../gwr/findings/closure_constraint_findings.md](../../../gwr/findings/closure_constraint_findings.md)
-- [../../../gwr/archive/standalone-candidates/no_later_simpler_composite_theorem.md](../../../gwr/archive/standalone-candidates/no_later_simpler_composite_theorem.md)
 
 ## 3. Why Independence Is Not Automatic
 
@@ -145,7 +144,7 @@ The independence question is answered only by one of these outcomes:
 3. a reduction that shows the direct theorem is equivalent to some narrower
    unresolved branch such as the dominant square-threat case.
 
-At present, the repo has strong validation and a clean theorem candidate, but
+At present, the repo has strong validation and a clean open theorem statement, but
 not yet item `1`, `2`, or a finished version of `3`.
 
 ## 8. Bottom Line

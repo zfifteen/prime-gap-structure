@@ -279,3 +279,45 @@ Artifacts:
 `benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `docs/research/algorithmic_frontier_hourly.md`; measured output with `baseline_elapsed = 1.5411759580019861`, `fast_elapsed = 1.134829582995735`, `speedup = 1.3580681902330864`, `baseline_segment_slots = 69248`, `fast_prefix_segment_slots = 12000`, and `saved_segment_fraction = 0.8267097966728281`.
 Next step:
 Thread the same clipped divisor classifier into the standalone exact boundary walk and measure the same `10^12` chain.
+
+## 2026-04-23 03:07 run
+Mechanism:
+Square-phase handoff on the current `d=4` surface: measure how much of the
+winner-to-next-prime-square corridor the current gap uses before closure, then
+test whether that scalar predicts the next gap's return to the odd-semiprime
+triad.
+Why it could help:
+If the next-gap regime is memoryless once current gap width and residue are
+known, this scalar should wash out under matched controls. If it survives,
+there is a real one-gap carryover state that current local labels miss.
+Method:
+Deterministic experiment.
+What was built or tested:
+Patched `benchmarks/python/predictor/gwr_square_phase_handoff_probe.py` to
+carry current residue modulo `30`, added a residue-controlled confirmatory
+matched split, widened the pooled sampled surface to decade windows
+`10^7 .. 10^18`, regenerated the summary and strata artifacts from
+`output/gwr_dni_gap_type_catalog_details.csv`, and added a focused finding note
+plus unit coverage.
+Result:
+On the exact baseline through right prime `<= 10^6`, the residue-controlled
+matched split kept a positive next-triad lift: low-utilization half
+`58.61%`, high-utilization half `56.93%`, lift `1.68` percentage points across
+`507` strata with matched weight `28,346` per side. On the pooled sampled
+windows `10^7 .. 10^18`, the same controlled split strengthened to
+low-utilization half `69.15%`, high-utilization half `62.06%`, lift `7.09`
+points across `55` strata with matched weight `282` per side. The unmatched
+tail split on the sampled surface was larger still at `70.95%` versus
+`59.96%`.
+Status:
+ADVANCE
+Artifacts:
+`benchmarks/python/predictor/gwr_square_phase_handoff_probe.py`;
+`tests/python/predictor/test_gwr_square_phase_handoff_probe.py`;
+`output/gwr_square_phase_handoff_summary.json`;
+`output/gwr_square_phase_handoff_strata.csv`;
+`docs/findings/square_phase_handoff.md`;
+`docs/research/algorithmic_frontier_hourly.md`.
+Next step:
+Test the same square-phase handoff on an exact consecutive surface through
+right prime `<= 10^7` instead of pooled sampled windows.

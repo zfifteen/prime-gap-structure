@@ -97,3 +97,104 @@ def test_matched_split_metrics_controls_for_stratum_mix():
     assert summary["high_next_triad_share"] == 0.5
     assert summary["lift"] == 0.0
     assert len(stratum_rows) == 2
+
+
+def test_population_summary_includes_residue_confirmatory_scheme():
+    """Population summaries should expose the residue-controlled confirmatory split."""
+    module = load_module()
+    rows = [
+        {
+            "current_carrier_family": "odd_semiprime",
+            "current_peak_offset": 2,
+            "current_first_open_offset": 2,
+            "current_gap_width": 6,
+            "current_residue_mod30": 1,
+            "square_phase_utilization": 0.10,
+            "next_is_triad": 1,
+            "next_carrier_family": "odd_semiprime",
+            "next_dmin": 4,
+        },
+        {
+            "current_carrier_family": "odd_semiprime",
+            "current_peak_offset": 2,
+            "current_first_open_offset": 2,
+            "current_gap_width": 6,
+            "current_residue_mod30": 1,
+            "square_phase_utilization": 0.20,
+            "next_is_triad": 1,
+            "next_carrier_family": "odd_semiprime",
+            "next_dmin": 4,
+        },
+        {
+            "current_carrier_family": "odd_semiprime",
+            "current_peak_offset": 2,
+            "current_first_open_offset": 2,
+            "current_gap_width": 6,
+            "current_residue_mod30": 1,
+            "square_phase_utilization": 0.30,
+            "next_is_triad": 1,
+            "next_carrier_family": "odd_semiprime",
+            "next_dmin": 4,
+        },
+        {
+            "current_carrier_family": "odd_semiprime",
+            "current_peak_offset": 2,
+            "current_first_open_offset": 2,
+            "current_gap_width": 6,
+            "current_residue_mod30": 1,
+            "square_phase_utilization": 0.70,
+            "next_is_triad": 0,
+            "next_carrier_family": "higher_divisor_even",
+            "next_dmin": 8,
+        },
+        {
+            "current_carrier_family": "odd_semiprime",
+            "current_peak_offset": 2,
+            "current_first_open_offset": 2,
+            "current_gap_width": 6,
+            "current_residue_mod30": 1,
+            "square_phase_utilization": 0.80,
+            "next_is_triad": 0,
+            "next_carrier_family": "higher_divisor_even",
+            "next_dmin": 8,
+        },
+        {
+            "current_carrier_family": "odd_semiprime",
+            "current_peak_offset": 2,
+            "current_first_open_offset": 2,
+            "current_gap_width": 6,
+            "current_residue_mod30": 1,
+            "square_phase_utilization": 0.90,
+            "next_is_triad": 0,
+            "next_carrier_family": "higher_divisor_even",
+            "next_dmin": 8,
+        },
+    ]
+
+    summary, strata = module.population_summary(
+        rows,
+        base_scheme_keys=(
+            "current_carrier_family",
+            "current_peak_offset",
+            "current_first_open_offset",
+        ),
+        confirm_scheme_keys=(
+            "current_carrier_family",
+            "current_peak_offset",
+            "current_first_open_offset",
+            "current_gap_width",
+        ),
+        residue_confirm_scheme_keys=(
+            "current_carrier_family",
+            "current_peak_offset",
+            "current_first_open_offset",
+            "current_gap_width",
+            "current_residue_mod30",
+        ),
+        min_stratum_count=6,
+    )
+
+    assert "matched_gap_width_residue_confirmatory_scheme" in summary
+    assert summary["matched_gap_width_residue_confirmatory_scheme"]["lift"] == 1.0
+    assert "matched_gap_width_residue_confirmatory_scheme" in strata
+    assert len(strata["matched_gap_width_residue_confirmatory_scheme"]) == 1

@@ -17,7 +17,7 @@ from sympy import nextprime
 ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DETAIL_CSV = ROOT / "output" / "gwr_dni_gap_type_catalog_details.csv"
 DEFAULT_OUTPUT_DIR = ROOT / "output"
-DEFAULT_SAMPLE_MIN_POWER = 12
+DEFAULT_SAMPLE_MIN_POWER = 7
 DEFAULT_SAMPLE_MAX_POWER = 18
 DEFAULT_MIN_STRATUM_COUNT = 8
 TRIAD_STATES = (
@@ -68,13 +68,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--sample-min-power",
         type=int,
         default=DEFAULT_SAMPLE_MIN_POWER,
-        help="Smallest sampled decade power included in the pooled high-scale window surface.",
+        help="Smallest sampled decade power included in the pooled sampled-window surface.",
     )
     parser.add_argument(
         "--sample-max-power",
         type=int,
         default=DEFAULT_SAMPLE_MAX_POWER,
-        help="Largest sampled decade power included in the pooled high-scale window surface.",
+        help="Largest sampled decade power included in the pooled sampled-window surface.",
     )
     parser.add_argument(
         "--min-stratum-count",
@@ -165,6 +165,7 @@ def d4_transition_rows(detail_rows: list[dict[str, object]]) -> list[dict[str, o
                     ),
                     "current_right_prime": int(current_row["current_right_prime"]),
                     "current_gap_width": int(current_row["next_gap_width"]),
+                    "current_residue_mod30": int(current_row["residue_mod30"]),
                     "current_first_open_offset": int(current_row["first_open_offset"]),
                     "current_peak_offset": int(current_row["next_peak_offset"]),
                     "current_carrier_family": str(current_row["carrier_family"]),
@@ -301,6 +302,7 @@ def population_summary(
     *,
     base_scheme_keys: tuple[str, ...],
     confirm_scheme_keys: tuple[str, ...],
+    residue_confirm_scheme_keys: tuple[str, ...],
     min_stratum_count: int,
 ) -> tuple[dict[str, object], dict[str, list[dict[str, object]]]]:
     """Return summary payload plus stratum detail rows for one population."""
@@ -317,6 +319,11 @@ def population_summary(
         stratum_keys=confirm_scheme_keys,
         min_stratum_count=min_stratum_count,
     )
+    residue_confirm_summary, residue_confirm_rows = matched_split_metrics(
+        rows,
+        stratum_keys=residue_confirm_scheme_keys,
+        min_stratum_count=min_stratum_count,
+    )
 
     return (
         {
@@ -324,10 +331,12 @@ def population_summary(
             "tail_quintile": tail_quintile_metrics(rows),
             "matched_base_scheme": base_summary,
             "matched_gap_width_confirmatory_scheme": confirm_summary,
+            "matched_gap_width_residue_confirmatory_scheme": residue_confirm_summary,
         },
         {
             "matched_base_scheme": base_rows,
             "matched_gap_width_confirmatory_scheme": confirm_rows,
+            "matched_gap_width_residue_confirmatory_scheme": residue_confirm_rows,
         },
     )
 
@@ -402,6 +411,13 @@ def summarize_surface_groups(
                 "current_first_open_offset",
                 "current_gap_width",
             ),
+            residue_confirm_scheme_keys=(
+                "current_carrier_family",
+                "current_peak_offset",
+                "current_first_open_offset",
+                "current_gap_width",
+                "current_residue_mod30",
+            ),
             min_stratum_count=min_stratum_count,
         )
 
@@ -415,6 +431,12 @@ def summarize_surface_groups(
                 "current_peak_offset",
                 "current_first_open_offset",
                 "current_gap_width",
+            ),
+            residue_confirm_scheme_keys=(
+                "current_peak_offset",
+                "current_first_open_offset",
+                "current_gap_width",
+                "current_residue_mod30",
             ),
             min_stratum_count=min_stratum_count,
         )

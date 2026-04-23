@@ -1,0 +1,429 @@
+{
+  "max_n": 5000,
+  "case_count": 980,
+  "one_step_best_law": "small_gap_d4_large_offset__same_role_same_offset_winner__same_role_p_left",
+  "two_step_best_law": "small_gap_d4_large_offset__repeat_role_repeat_offset__same_role_p_left",
+  "immediate_good_entry_case_count": 153,
+  "immediate_good_entry_role_counts": {
+    "previous": 133,
+    "containing": 39
+  },
+  "one_step_patterns": {
+    "law_id": "small_gap_d4_large_offset__same_role_same_offset_winner__same_role_p_left",
+    "success_sequences": [
+      {
+        "key": [
+          [
+            "entry",
+            "odd_semiprime",
+            "previous",
+            null
+          ],
+          [
+            "closure",
+            "prime_boundary",
+            "previous",
+            "lane_success_terminal_prime"
+          ]
+        ],
+        "count": 67
+      },
+      {
+        "key": [
+          [
+            "entry",
+            "odd_semiprime",
+            "containing",
+            null
+          ],
+          [
+            "closure",
+            "prime_boundary",
+            "containing",
+            "lane_success_terminal_prime"
+          ]
+        ],
+        "count": 3
+      }
+    ],
+    "failure_endings": [
+      {
+        "key": [
+          "entry",
+          "not_odd_semiprime_lane",
+          "odd_semiprime",
+          "previous"
+        ],
+        "count": 532
+      },
+      {
+        "key": [
+          "entry",
+          "not_odd_semiprime_lane",
+          "odd_semiprime",
+          "containing"
+        ],
+        "count": 220
+      },
+      {
+        "key": [
+          "entry",
+          "terminal_prime_nominee",
+          "prime_boundary",
+          "containing"
+        ],
+        "count": 158
+      }
+    ],
+    "closure_contexts": [
+      {
+        "key": [
+          "p_prev",
+          "previous",
+          "previous",
+          "tight"
+        ],
+        "count": 43
+      },
+      {
+        "key": [
+          "p_prev",
+          "previous",
+          "previous",
+          "mid"
+        ],
+        "count": 17
+      },
+      {
+        "key": [
+          "p_prev",
+          "previous",
+          "previous",
+          "deep"
+        ],
+        "count": 7
+      },
+      {
+        "key": [
+          "p_left",
+          "containing",
+          "containing",
+          "tight"
+        ],
+        "count": 3
+      }
+    ],
+    "miss_entry_patterns": [
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          6,
+          2
+        ],
+        "count": 93
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          8,
+          2
+        ],
+        "count": 62
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          6,
+          4
+        ],
+        "count": 37
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          12,
+          2
+        ],
+        "count": 35
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          10,
+          4
+        ],
+        "count": 33
+      },
+      {
+        "key": [
+          "previous",
+          false,
+          false,
+          6,
+          4
+        ],
+        "count": 24
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          4,
+          2
+        ],
+        "count": 23
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          14,
+          2
+        ],
+        "count": 19
+      },
+      {
+        "key": [
+          "containing",
+          true,
+          true,
+          12,
+          2
+        ],
+        "count": 18
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          10,
+          2
+        ],
+        "count": 18
+      }
+    ],
+    "immediate_good_entry_case_count": 153
+  },
+  "two_step_patterns": {
+    "law_id": "small_gap_d4_large_offset__repeat_role_repeat_offset__same_role_p_left",
+    "success_sequences": [
+      {
+        "key": [
+          [
+            "entry",
+            "odd_semiprime",
+            "previous",
+            null
+          ],
+          [
+            "closure",
+            "prime_boundary",
+            "previous",
+            "lane_success_terminal_prime"
+          ]
+        ],
+        "count": 67
+      },
+      {
+        "key": [
+          [
+            "entry",
+            "odd_semiprime",
+            "containing",
+            null
+          ],
+          [
+            "closure",
+            "prime_boundary",
+            "containing",
+            "lane_success_terminal_prime"
+          ]
+        ],
+        "count": 3
+      }
+    ],
+    "failure_endings": [
+      {
+        "key": [
+          "entry",
+          "not_odd_semiprime_lane",
+          "odd_semiprime",
+          "previous"
+        ],
+        "count": 532
+      },
+      {
+        "key": [
+          "entry",
+          "not_odd_semiprime_lane",
+          "odd_semiprime",
+          "containing"
+        ],
+        "count": 220
+      },
+      {
+        "key": [
+          "entry",
+          "terminal_prime_nominee",
+          "prime_boundary",
+          "containing"
+        ],
+        "count": 158
+      }
+    ],
+    "closure_contexts": [
+      {
+        "key": [
+          "p_prev",
+          "previous",
+          "previous",
+          "tight"
+        ],
+        "count": 43
+      },
+      {
+        "key": [
+          "p_prev",
+          "previous",
+          "previous",
+          "mid"
+        ],
+        "count": 17
+      },
+      {
+        "key": [
+          "p_prev",
+          "previous",
+          "previous",
+          "deep"
+        ],
+        "count": 7
+      },
+      {
+        "key": [
+          "p_left",
+          "containing",
+          "containing",
+          "tight"
+        ],
+        "count": 3
+      }
+    ],
+    "miss_entry_patterns": [
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          6,
+          2
+        ],
+        "count": 93
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          8,
+          2
+        ],
+        "count": 62
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          6,
+          4
+        ],
+        "count": 37
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          12,
+          2
+        ],
+        "count": 35
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          10,
+          4
+        ],
+        "count": 33
+      },
+      {
+        "key": [
+          "previous",
+          false,
+          false,
+          6,
+          4
+        ],
+        "count": 24
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          4,
+          2
+        ],
+        "count": 23
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          14,
+          2
+        ],
+        "count": 19
+      },
+      {
+        "key": [
+          "containing",
+          true,
+          true,
+          12,
+          2
+        ],
+        "count": 18
+      },
+      {
+        "key": [
+          "previous",
+          true,
+          true,
+          10,
+          2
+        ],
+        "count": 18
+      }
+    ],
+    "immediate_good_entry_case_count": 153
+  }
+}

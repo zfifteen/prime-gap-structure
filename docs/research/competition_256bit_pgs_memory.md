@@ -39,6 +39,21 @@
 - Exact prime walks must stream. Precomputing a long center-out prime list
   before divisibility tests wastes runtime even when the factor sits close to
   the routed midpoint.
+- On `s256_balanced_1`, one 256-bit big-int scored route seed cost about
+  `9.45` seconds and returned no recovered-prime evidence. Do not spend the
+  first high-scale blind run on many scored seeds when an unscored route can
+  move directly to divisibility tests.
+- The high-scale pure-PGS blind path now uses an unscored deterministic route
+  centered from `N` alone, followed by centered-window-order prime walking
+  across the routed windows.
+- On held-out `s256_balanced_1`, that patched path recovered the factor in
+  `353` interleaved prime tests using only `N` during routing and recovery;
+  post-run validation showed the small factor was in the first centered
+  `1.0`-bit window at prime rank `89`.
+- On held-out `s256_balanced_2`, the centered-window-order local path recovered
+  the factor in `89` prime tests and `8.925291942432523` ms using only `N`
+  during routing and recovery. This replaces interleaving as the default for
+  the centered high-scale route.
 
 ## Surviving Hypotheses
 
@@ -54,6 +69,13 @@
 - A blind-capable solver may need routed-window prime walking as the live
   local recovery path, with recovered-prime clustering serving mainly as a
   router and diagnostics layer rather than as the final factor test order.
+- Scored big-int PGS routing may still be useful later, but it must earn its
+  cost against the unscored high-scale route. The next blind-capable move
+  should test centered routes and prime budgets before returning to expensive
+  seed-scored routing.
+- For the unscored centered route, test the first centered window before side
+  windows. The center is the strongest blind-valid prior available from `N`
+  alone.
 
 ## Discarded Or Deferred Paths
 
@@ -70,6 +92,8 @@
 - Do not use a blind-capable local rule that tests `window.evidence` as an
   extra prime before the main recovery path. That raised the failed count on
   `s127_moderate_112` from `101` to `105` without recovering the factor.
+- Do not use the old scored 256-bit route as the first heartbeat move on a
+  no-target run. One seed is already too expensive for solver-first iteration.
 
 ## Reusable Files
 
@@ -83,8 +107,9 @@
 ## Next Run Default
 
 If no explicit blind modulus is present, use one held-out non-`challenge_like`
-training case and test whether the streamed routed-window prime walk scales to
-`256` bits without losing the solver-first advantage.
+training case and run the patched high-scale centered blind route. If it
+fails, patch route offsets or prime budget from the post-run validation data
+before returning to scored big-int PGS routing.
 
 ## Closure
 

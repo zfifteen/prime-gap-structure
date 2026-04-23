@@ -1,0 +1,55 @@
+{
+  "public_case": {
+    "case_id": "s256_balanced_2",
+    "family": "balanced",
+    "case_bits": 256,
+    "n": 57896044618658097711785492504343955952566120322525139588585136554122987719313
+  },
+  "router_mode": "pure_pgs",
+  "rung": 1,
+  "router_probe_count": 0,
+  "window_count": 4,
+  "patched_interleaved": {
+    "factor_found": true,
+    "prime_tests": 353
+  },
+  "sequential_baseline_same_windows": {
+    "factor_found": true,
+    "prime_tests": 89
+  },
+  "blind_elapsed_ms": 47.59266693145037,
+  "post_run_validation": {
+    "p_times_q_matches_n": true,
+    "small_factor_bits": 128,
+    "factor_windows": [
+      {
+        "rank": 1,
+        "center_log2": 127.5,
+        "width_bits": 1.0,
+        "contains_small_factor": true,
+        "small_factor_prime_rank_within_budget": 89
+      },
+      {
+        "rank": 2,
+        "center_log2": 126.5,
+        "width_bits": 1.0,
+        "contains_small_factor": false,
+        "small_factor_prime_rank_within_budget": null
+      },
+      {
+        "rank": 3,
+        "center_log2": 128.5,
+        "width_bits": 1.0,
+        "contains_small_factor": false,
+        "small_factor_prime_rank_within_budget": null
+      },
+      {
+        "rank": 4,
+        "center_log2": 129.5,
+        "width_bits": 1.0,
+        "contains_small_factor": false,
+        "small_factor_prime_rank_within_budget": null
+      }
+    ]
+  }
+}

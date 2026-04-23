@@ -790,6 +790,8 @@ def _route_case(
         raise ValueError(f"unsupported router_mode {router_mode}")
 
     config = RUNG_CONFIGS[rung]
+    if router_mode == "pure_pgs" and case.case_bits >= 256:
+        return _route_case_centered_blind(case, rung)
     if (
         router_mode == "audited_family_prior"
         and case.case_bits <= 127
@@ -856,6 +858,33 @@ def _route_case(
             )
 
     return beam_windows[: config.top_windows], probe_count
+
+
+def _route_case_centered_blind(case: ScaleupCase, rung: int) -> tuple[list[BitWindow], int]:
+    """Return an unscored high-scale route centered from N alone."""
+    config = RUNG_CONFIGS[rung]
+    final_width = config.widths[-1]
+    center_log2 = math.log2(case.n) / 2.0
+    center_midpoint = _anchor_from_log2(center_log2, rounding="nearest")
+    offsets = (0.0, -final_width, final_width, 2.0 * final_width)
+
+    windows: list[BitWindow] = []
+    for index, offset in enumerate(offsets):
+        window_center = min(
+            max(final_width / 2.0, center_log2 + offset),
+            case.case_bits - (final_width / 2.0),
+        )
+        midpoint_override = center_midpoint if index == 0 else None
+        windows.append(
+            BitWindow(
+                center_log2=window_center,
+                width_bits=final_width,
+                evidence=None,
+                midpoint=midpoint_override,
+            )
+        )
+
+    return windows[: config.top_windows], 0
 
 
 def _route_case_centered_127(case: ScaleupCase, rung: int) -> tuple[list[BitWindow], int]:
@@ -942,7 +971,7 @@ def _local_pgs_search(
 ) -> tuple[bool, int, bool, int]:
     """Run exact recovery inside the routed windows."""
     del local_seed_budget
-    if scale_bits > 256:
+    if scale_bits >= 256:
         factor_recovered, local_prime_tests = _local_router_only_prime_walk(
             case,
             windows,

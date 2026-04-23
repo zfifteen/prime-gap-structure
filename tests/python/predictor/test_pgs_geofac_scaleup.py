@@ -181,7 +181,7 @@ def test_big_int_prime_traversal_emits_unique_primes_at_4096_scale():
     low = case.small_factor - 10_000
     high = case.small_factor + 10_000
 
-    primes = module._center_out_primes_in_interval(case.small_factor, low, high, 4)
+    primes = list(module._center_out_primes_in_interval(case.small_factor, low, high, 4))
 
     assert len(primes) == 4
     assert len(set(primes)) == 4

@@ -1,5 +1,14 @@
 """Public Python API for the placed PNT/GWR prime predictor helpers."""
 
+from .gpe_boundary_selector import (
+    GPEBoundarySelectorRow,
+    GPEBoundarySelectorState,
+    GPEBoundarySelectorValidation,
+    InsufficientBoundarySelectorStateError,
+    oracle_boundary_selector_row,
+    select_next_boundary_prime,
+    validate_boundary_selector,
+)
 from .gwr_boundary_walk import gwr_next_gap_profile, gwr_next_prime, next_prime_after
 from .predictor import (
     W_d,
@@ -28,6 +37,10 @@ from .semiprime_factor_walk import (
 
 __all__ = [
     "W_d",
+    "GPEBoundarySelectorRow",
+    "GPEBoundarySelectorState",
+    "GPEBoundarySelectorValidation",
+    "InsufficientBoundarySelectorStateError",
     "d4_closure_ceiling",
     "d4_gap_profile",
     "divisor_gap_profile",
@@ -40,6 +53,7 @@ __all__ = [
     "gwr_semiprime_factor_walk",
     "li_inverse",
     "next_prime_after",
+    "oracle_boundary_selector_row",
     "build_factor_progress_pool",
     "orient_semiprime_anchor",
     "placed_prime_from_seed",
@@ -47,6 +61,8 @@ __all__ = [
     "pnt_seed",
     "predict_nth_prime",
     "run_tests",
+    "select_next_boundary_prime",
     "select_factor_progress_candidate",
     "seed_hits_d4_corridor",
+    "validate_boundary_selector",
 ]

@@ -983,3 +983,181 @@ Run the patched high-scale centered-window-order route on the next held-out
 `256`-bit non-`challenge_like` case by file order. If the first centered
 window does not contain the factor in post-run validation, patch the side-window
 offset order or budget before returning to scored big-int PGS routing.
+
+## 2026-04-24
+
+### Active Target Standard
+
+This run used the true blind factorization standard.
+
+- no explicit blind modulus was available in the workspace or thread;
+- `docs/research/competition_256bit_pgs_blind_target.txt` was absent or empty;
+- no committed corpus modulus was treated as the active blind target;
+- one held-out training case was used only as a development check.
+
+### Held-Out Training Case
+
+The selected held-out case was `s256_balanced_1`.
+
+It was selected by the fallback rule: first `256`-bit non-`challenge_like`
+case by file order that was not the most recent held-out case,
+`s256_balanced_2`. Before blind routing and recovery, only these fields were
+used:
+
+- `case_id`
+- `family`
+- `case_bits`
+- `n`
+
+The hidden `p` and `q` fields were read only after recovery for validation.
+
+### Exact Blind-Capable Solver Hypothesis Tested
+
+The hypothesis was:
+
+- the current high-scale unscored route centered from `N` alone should recover
+  the next held-out balanced `256`-bit case without scored big-int PGS routing;
+- centered-window-order local recovery should keep the first centered window
+  as the active blind-valid priority before side windows;
+- if the first centered window still contains the validated factor after
+  post-run inspection, the next solver step should advance to another held-out
+  case rather than patching route offsets.
+
+### Exact Files Changed
+
+- `docs/research/competition_256bit_pgs_progress.md`
+
+### Exact Commands Run
+
+Blind-capable solver execution:
+
+```sh
+python3 -u - <<'PY'
+import json
+import sys
+import time
+from pathlib import Path
+ROOT = Path('/Users/velocityworks/IdeaProjects/prime-gap-structure')
+for p in (ROOT / 'src' / 'python', ROOT / 'benchmarks' / 'python' / 'predictor'):
+    if str(p) not in sys.path:
+        sys.path.insert(0, str(p))
+import pgs_geofac_scaleup as base
+corpus_path = ROOT / 'benchmarks' / 'python' / 'predictor' / 'scaleup_corpus.json'
+rows = json.loads(corpus_path.read_text(encoding='utf-8'))['256']
+last_case_id = 's256_balanced_2'
+eligible = [
+    {
+        'case_id': str(row['case_id']),
+        'family': str(row['family']),
+        'case_bits': int(row['case_bits']),
+        'n': int(row['n']),
+    }
+    for row in rows
+    if row['family'] != 'challenge_like'
+]
+public = next((row for row in eligible if row['case_id'] != last_case_id), eligible[0])
+case = base.ScaleupCase(public['case_id'], public['family'], public['case_bits'], public['n'], 0, 0)
+rung = 1
+router_mode = 'pure_pgs'
+config = base.RUNG_CONFIGS[rung]
+started = time.perf_counter()
+windows, probe_count = base._route_case(case, rung, seed=0, router_mode=router_mode)
+found, prime_tests, route_found, route_prime_tests = base._local_pgs_search(
+    case,
+    windows,
+    config.local_seed_budget,
+    config.router_only_prime_budget,
+    public['case_bits'],
+)
+blind_elapsed_ms = (time.perf_counter() - started) * 1000.0
+validation_row = next(row for row in json.loads(corpus_path.read_text(encoding='utf-8'))['256'] if row['case_id'] == public['case_id'])
+p = int(validation_row['p'])
+q = int(validation_row['q'])
+small = min(p, q)
+factor_windows = []
+for index, window in enumerate(windows, start=1):
+    low, high, midpoint = base._window_to_interval(window)
+    prime_rank = None
+    if low <= small <= high:
+        for rank, prime in enumerate(base._center_out_primes_in_interval(midpoint, low, high, config.router_only_prime_budget), start=1):
+            if prime == small:
+                prime_rank = rank
+                break
+    factor_windows.append({
+        'rank': index,
+        'center_log2': window.center_log2,
+        'width_bits': window.width_bits,
+        'contains_small_factor': low <= small <= high,
+        'small_factor_prime_rank_within_budget': prime_rank,
+    })
+result = {
+    'public_case': public,
+    'router_mode': router_mode,
+    'rung': rung,
+    'router_probe_count': probe_count,
+    'window_count': len(windows),
+    'centered_window_order': {
+        'factor_found': found,
+        'prime_tests': prime_tests,
+        'route_order_factor_found': route_found,
+        'route_order_prime_tests': route_prime_tests,
+    },
+    'blind_elapsed_ms': blind_elapsed_ms,
+    'post_run_validation': {
+        'p_times_q_matches_n': p * q == public['n'],
+        'small_factor_bits': small.bit_length(),
+        'factor_windows': factor_windows,
+    },
+}
+out = ROOT / 'output' / 'geofac_scaleup' / f"pgs_{public['case_id']}_centered_window_order_r1_result.json"
+out.parent.mkdir(parents=True, exist_ok=True)
+out.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+print(json.dumps(result, indent=2))
+PY
+```
+
+Verification:
+
+```sh
+python3 -m py_compile benchmarks/python/predictor/pgs_geofac_scaleup.py
+pytest tests/python/predictor/test_pgs_geofac_scaleup.py::test_big_int_prime_traversal_emits_unique_primes_at_4096_scale -q
+```
+
+### Measured Result
+
+The current centered-window-order route recovered the held-out factor:
+
+- held-out case: `s256_balanced_1`
+- router mode: `pure_pgs`
+- rung: `1`
+- router probe count: `0`
+- routed windows: `4`
+- factor found: `true`
+- prime tests: `89`
+- route-order prime tests: `89`
+- elapsed blind solver time: `9.45912511087954` ms
+- post-run validation: `p * q == n` was `true`
+- validated small factor size: `128` bits
+- the small factor was inside the first centered `1.0`-bit window at prime
+  rank `89`
+
+This improved true blind factorization confidence by confirming that the
+current centered-window-order solver path recovers the next selected held-out
+case using only `N` during routing and recovery. No new code patch was made
+because the current live path satisfied the tested contract.
+
+### Artifacts Changed Or Produced
+
+- `output/geofac_scaleup/pgs_s256_balanced_1_centered_window_order_r1_result.json`
+
+### What Failed
+
+Nothing failed in this run.
+
+### Next Exact Solver Step
+
+Run the patched high-scale centered-window-order route on the next held-out
+`256`-bit non-`challenge_like` case by file order. If the first centered
+window again contains the factor at low prime rank, preserve the route and
+advance to a non-balanced held-out case before returning to scored big-int PGS
+routing.

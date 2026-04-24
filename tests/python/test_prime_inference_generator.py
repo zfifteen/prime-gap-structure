@@ -42,6 +42,9 @@ CARRIER_LOCK_CONDITION_PROBE_PATH = (
 RESIDUAL_AFTER_LOCKED_CEILING_FORENSICS_PATH = (
     MODULE_DIR / "residual_after_locked_ceiling_forensics.py"
 )
+UNRESOLVED_ALTERNATIVE_CLOSURE_FORENSICS_PATH = (
+    MODULE_DIR / "unresolved_alternative_closure_forensics.py"
+)
 
 
 def load_module(path: Path, name: str):
@@ -1264,4 +1267,71 @@ def test_residual_after_locked_ceiling_forensics_reports_taxonomy(tmp_path):
         "rejected_candidate_offsets",
         "remaining_unresolved_reason_counts",
         "which_rule_pruned_what",
+    } <= set(record)
+
+
+def test_unresolved_alternative_closure_forensics_reports_taxonomy(tmp_path):
+    """Unresolved-alternative forensics should classify live alternatives."""
+    module = load_module(
+        UNRESOLVED_ALTERNATIVE_CLOSURE_FORENSICS_PATH,
+        "unresolved_alternative_closure_forensics",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "64",
+                "--witness-bound",
+                "97",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    records_path = tmp_path / "unresolved_alternative_closure_forensics_records.jsonl"
+    summary_path = tmp_path / "unresolved_alternative_closure_forensics_summary.json"
+    assert records_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in records_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    records = [
+        json.loads(line)
+        for line in records_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert records
+    assert summary["mode"] == "offline_unresolved_alternative_closure_forensics"
+    assert summary["boundary_law_005_status"] == "not_approved"
+    assert summary["carrier_lock_predicate"] == "unresolved_alternatives_before_threat"
+    assert "target_row_count" in summary
+    assert "unresolved_alternative_count" in summary
+    assert "before_true_count" in summary
+    assert "after_true_count" in summary
+    assert "single_hole_count" in summary
+    assert "multi_hole_count" in summary
+    assert "missing_witness_bound_distribution" in summary
+    assert "unresolved_reason_pattern_counts" in summary
+
+    record = records[0]
+    assert {
+        "anchor_p",
+        "actual_boundary_offset_label",
+        "unresolved_candidate_offset",
+        "unresolved_candidate_relation_to_true_boundary",
+        "unresolved_reason_counts",
+        "unclosed_open_interior_count",
+        "missing_witness_offsets",
+        "candidate_has_gwr_carrier",
+        "candidate_closure_status",
+        "candidate_threat_status",
+        "candidate_bound_position",
+        "candidate_pruned_by_locked_ceiling_bool",
     } <= set(record)

@@ -10,7 +10,7 @@ For one exact oracle row, the implemented surface records:
 - winner divisor class $d(w)$,
 - exact right boundary $q^+$ from the existing oracle,
 - the branch horizon $S_{+}(w)$ when $d(w)=4$,
-- the NLSC margin $S_{+}(w)-q^+$,
+- the square-ceiling margin $S_{+}(w)-q^+$,
 - and square-phase utilization $(q^+-w)/(S_{+}(w)-w)$ as a measured ratio.
 
 The implementation lives in
@@ -22,39 +22,50 @@ For $d(w)=4$, the row builder computes the validation horizon
 $S_{+}(w)$ using the existing arithmetic definition of the next prime-square
 threat. The branch selector then checks one straight-line contract:
 
-$$q^+=q+\Delta,$$
+$$q^+=S_{+}(w)-M_{\square},$$
 
-where $\Delta$ is an explicit selector-state boundary offset. The selector also
-verifies:
+where $M_{\square}=S_{+}(w)-q^+$ is the explicit selector-state
+square-ceiling margin. The selector also verifies:
 
-$$w<q^+\le S_{+}(w).$$
+$$w<q^+<S_{+}(w).$$
 
-If $\Delta$ is absent, the selector fails explicitly. The NLSC ceiling alone is
-not treated as an exact emission rule.
+If $M_{\square}$ is absent, the selector fails explicitly. The NLSC ceiling
+alone is not treated as an exact emission rule, and the $d=4$ branch no longer
+uses the generic left-boundary offset as its selector state.
 
 The implementation also exposes an executable branch-target audit:
 
 [`../../src/python/z_band_prime_predictor/gpe_nlsc_selector.py`](../../src/python/z_band_prime_predictor/gpe_nlsc_selector.py)
 defines `audit_nlsc_branch_targets(...)`, which groups an oracle validation
 surface by observed $d(w)$ and reports whether each branch has an exact selector
-law or an explicit unresolved target. On the focused branch smoke surface
+law or an explicit unresolved target. It also defines
+`audit_d4_square_margin_collisions(...)`, which groups $d(w)=4$ rows by a
+proposed reduced state key and reports keys that map to multiple
+square-ceiling margins. On the focused branch smoke surface
 `q in {3, 5, 11, 29}`, the observed classes are:
 
 | $d(w)$ | Current status |
 |---:|---|
 | $3$ | unresolved target: define exact $B_3(q,S,w)$ |
-| $4$ | ceiling and guarded selector surface exist; unresolved target: derive $q^+$ inside $(w,S_{+}(w)]$ without `boundary_offset` state |
+| $4$ | ceiling and guarded selector surface exist; unresolved target: derive $M_{\square}=S_{+}(w)-q^+$ from rulebook state |
 | $6$ | unresolved target: define exact $B_6(q,S,w)$ |
 | $8$ | unresolved target: define exact $B_8(q,S,w)$ |
 
+On the known reduced-state collision row pair `q in {13, 73}`, the margin audit
+groups both rows under `(q mod 30, d(w), w-q) = (13, 4, 1)` and reports two
+different square-ceiling margins: `8` and `42`. Therefore this reduced key is
+not a $d=4$ margin selector.
+
 ## Validated Rows
 
-The focused tests validate the first dominant branch examples:
+The focused tests validate the first dominant branch examples and one non-floor
+margin-`6` row:
 
-| $q$ | $w$ | $d(w)$ | $q^+$ | $S_{+}(w)$ |
-|---:|---:|---:|---:|---:|
-| $13$ | $14$ | $4$ | $17$ | $25$ |
-| $73$ | $74$ | $4$ | $79$ | $121$ |
+| $q$ | $w$ | $d(w)$ | $q^+$ | $S_{+}(w)$ | $M_{\square}$ |
+|---:|---:|---:|---:|---:|---:|
+| $13$ | $14$ | $4$ | $17$ | $25$ | $8$ |
+| $73$ | $74$ | $4$ | $79$ | $121$ | $42$ |
+| $27851$ | $27857$ | $4$ | $27883$ | $27889$ | $6$ |
 
 The non-$d(w)=4$ row $q=23$ remains an explicit unresolved branch target:
 
@@ -82,10 +93,9 @@ Milestone 2 is not complete. The unmet requirement is the exact d=4 branch law:
 $$B_4(q,S,w)=q^+.$$
 
 The current code proves only that the validation row is inside the NLSC horizon.
-It does not yet derive $\Delta=q^+-q$ from rulebook state. The next
-highest-leverage step is to replace explicit boundary-offset state on the
-$d(w)=4$ rows with the smallest measured state ingredient that selects the same
-boundary inside $(w,S_{+}(w)]$.
+It does not yet derive $M_{\square}=S_{+}(w)-q^+$ from rulebook state. The
+next highest-leverage step is to split the live $d=4$ rows by square-ceiling
+margin state and prove or report the first unresolved collision family.
 
 The nearest existing branch fact is the square-residue dead zone recorded in
 [`../findings/d4_square_residue_dead_zone.md`](../findings/d4_square_residue_dead_zone.md):

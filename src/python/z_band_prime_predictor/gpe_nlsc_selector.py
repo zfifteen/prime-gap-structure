@@ -7,14 +7,15 @@ that horizon is the next prime-square threat:
 
 This module keeps that ceiling separate from exact boundary selection. The
 oracle row records the exact divisor-field boundary and its NLSC horizon for
-validation. The branch selector only returns a boundary when explicit selector
-state already determines the offset; otherwise it fails directly.
+validation. The branch selector only returns a boundary when explicit
+NLSC-framed selector state determines the square-ceiling margin; otherwise it
+fails directly.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Callable, Iterable
+from typing import Callable, Hashable, Iterable
 
 from .gpe_boundary_selector import (
     GPEBoundarySelectorRow,
@@ -32,8 +33,8 @@ class UndefinedNLSCSelectorBranchError(RuntimeError):
 class GPENLSCSelectorState:
     """Explicit Milestone 2 selector state for one branch row."""
 
-    boundary_offset: int | None = None
     threat_horizon: int | None = None
+    square_ceiling_margin: int | None = None
 
 
 @dataclass(frozen=True)
@@ -83,6 +84,13 @@ class GPENLSCSelectorRow:
             return None
         return self.next_prime - self.winner, self.threat_horizon - self.winner
 
+    @property
+    def square_ceiling_margin(self) -> int | None:
+        """Return the exact distance from the square horizon to the boundary."""
+        if self.threat_horizon is None:
+            return None
+        return self.threat_horizon - self.next_prime
+
 
 @dataclass(frozen=True)
 class GPENLSCSelectorValidation:
@@ -120,8 +128,19 @@ class GPENLSCBranchTarget:
         return self.unresolved_requirement is None
 
 
+@dataclass(frozen=True)
+class GPED4SquareMarginCollision:
+    """One reduced d=4 state key that maps to multiple square-ceiling margins."""
+
+    state_key: tuple[Hashable, ...]
+    observed_margins: tuple[int, ...]
+    row_count: int
+    example_current_primes: tuple[int, ...]
+
+
 NLSCSelector = Callable[[int, GPENLSCSelectorState, int, int], int]
 NLSCStateFactory = Callable[[GPENLSCSelectorRow], GPENLSCSelectorState]
+D4SquareMarginStateKey = Callable[[GPENLSCSelectorRow], tuple[Hashable, ...]]
 
 
 def oracle_nlsc_selector_row(current_prime: int) -> GPENLSCSelectorRow:
@@ -144,7 +163,7 @@ def select_d4_nlsc_boundary_prime(
     winner: int,
     winner_divisor_class: int,
 ) -> int:
-    """Return the d=4 branch boundary when explicit state determines it."""
+    """Return the d=4 branch boundary from square-ceiling margin state."""
     if winner_divisor_class != 4:
         raise UndefinedNLSCSelectorBranchError(
             f"no Milestone 2 selector branch is defined for d(w)={winner_divisor_class}"
@@ -162,19 +181,17 @@ def select_d4_nlsc_boundary_prime(
     if threat_horizon <= winner:
         raise ValueError("threat_horizon must lie strictly to the right of the winner")
 
-    boundary_offset = state.boundary_offset
-    if boundary_offset is None:
+    square_ceiling_margin = state.square_ceiling_margin
+    if square_ceiling_margin is None:
         raise InsufficientBoundarySelectorStateError(
-            "d=4 NLSC branch law does not determine the exact boundary offset"
+            "d=4 NLSC branch law does not determine the square-ceiling margin"
         )
+    if square_ceiling_margin < 1:
+        raise ValueError("square_ceiling_margin must be positive")
 
-    winner_offset = winner - current_prime
-    if boundary_offset <= winner_offset:
-        raise ValueError("boundary_offset must lie strictly to the right of the winner")
-
-    next_prime = current_prime + boundary_offset
-    if next_prime > threat_horizon:
-        raise ValueError("selected boundary exceeds the d=4 NLSC threat horizon")
+    next_prime = threat_horizon - square_ceiling_margin
+    if next_prime <= winner:
+        raise ValueError("selected boundary must lie strictly to the right of the winner")
     return next_prime
 
 
@@ -225,7 +242,7 @@ def audit_nlsc_branch_targets(current_primes: Iterable[int]) -> list[GPENLSCBran
                     selector_name="select_d4_nlsc_boundary_prime",
                     threat_horizon_name="S_+(w)",
                     unresolved_requirement=(
-                        "derive q^+ inside (w, S_+(w)] without boundary_offset state"
+                        "derive the square-ceiling margin S_+(w)-q^+ from rulebook state"
                     ),
                 )
             )
@@ -243,14 +260,54 @@ def audit_nlsc_branch_targets(current_primes: Iterable[int]) -> list[GPENLSCBran
     return targets
 
 
+def audit_d4_square_margin_collisions(
+    current_primes: Iterable[int],
+    state_key_factory: D4SquareMarginStateKey,
+) -> list[GPED4SquareMarginCollision]:
+    """Return reduced d=4 state keys that do not select one square margin."""
+    groups: dict[tuple[Hashable, ...], list[GPENLSCSelectorRow]] = {}
+    for current_prime in current_primes:
+        row = oracle_nlsc_selector_row(current_prime)
+        if row.winner_divisor_class != 4:
+            raise UndefinedNLSCSelectorBranchError(
+                f"margin audit row q={current_prime} has d(w)={row.winner_divisor_class}"
+            )
+        if row.square_ceiling_margin is None:
+            raise InsufficientBoundarySelectorStateError(
+                f"margin audit row q={current_prime} has no square-ceiling margin"
+            )
+        key = state_key_factory(row)
+        groups.setdefault(key, []).append(row)
+
+    collisions: list[GPED4SquareMarginCollision] = []
+    for state_key, rows in groups.items():
+        margins = tuple(sorted({int(row.square_ceiling_margin) for row in rows}))
+        if len(margins) <= 1:
+            continue
+        collisions.append(
+            GPED4SquareMarginCollision(
+                state_key=state_key,
+                observed_margins=margins,
+                row_count=len(rows),
+                example_current_primes=tuple(row.current_prime for row in rows[:4]),
+            )
+        )
+
+    collisions.sort(key=lambda collision: (repr(collision.state_key), collision.observed_margins))
+    return collisions
+
+
 __all__ = [
     "GPENLSCBranchTarget",
+    "GPED4SquareMarginCollision",
     "GPENLSCSelectorRow",
     "GPENLSCSelectorState",
     "GPENLSCSelectorValidation",
+    "D4SquareMarginStateKey",
     "NLSCSelector",
     "NLSCStateFactory",
     "UndefinedNLSCSelectorBranchError",
+    "audit_d4_square_margin_collisions",
     "audit_nlsc_branch_targets",
     "oracle_nlsc_selector_row",
     "select_d4_nlsc_boundary_prime",

@@ -10,11 +10,14 @@ from .gpe_boundary_selector import (
     validate_boundary_selector,
 )
 from .gpe_nlsc_selector import (
+    D4SquareMarginStateKey,
+    GPED4SquareMarginCollision,
     GPENLSCBranchTarget,
     GPENLSCSelectorRow,
     GPENLSCSelectorState,
     GPENLSCSelectorValidation,
     UndefinedNLSCSelectorBranchError,
+    audit_d4_square_margin_collisions,
     audit_nlsc_branch_targets,
     oracle_nlsc_selector_row,
     select_d4_nlsc_boundary_prime,
@@ -48,15 +51,18 @@ from .semiprime_factor_walk import (
 
 __all__ = [
     "W_d",
+    "D4SquareMarginStateKey",
     "GPEBoundarySelectorRow",
     "GPEBoundarySelectorState",
     "GPEBoundarySelectorValidation",
+    "GPED4SquareMarginCollision",
     "GPENLSCBranchTarget",
     "GPENLSCSelectorRow",
     "GPENLSCSelectorState",
     "GPENLSCSelectorValidation",
     "InsufficientBoundarySelectorStateError",
     "UndefinedNLSCSelectorBranchError",
+    "audit_d4_square_margin_collisions",
     "audit_nlsc_branch_targets",
     "d4_closure_ceiling",
     "d4_gap_profile",

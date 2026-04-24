@@ -45,6 +45,9 @@ RESIDUAL_AFTER_LOCKED_CEILING_FORENSICS_PATH = (
 UNRESOLVED_ALTERNATIVE_CLOSURE_FORENSICS_PATH = (
     MODULE_DIR / "unresolved_alternative_closure_forensics.py"
 )
+RESOLVED_BOUNDARY_ABSORPTION_SAFETY_PROBE_PATH = (
+    MODULE_DIR / "resolved_boundary_absorption_safety_probe.py"
+)
 
 
 def load_module(path: Path, name: str):
@@ -1334,4 +1337,71 @@ def test_unresolved_alternative_closure_forensics_reports_taxonomy(tmp_path):
         "candidate_threat_status",
         "candidate_bound_position",
         "candidate_pruned_by_locked_ceiling_bool",
+    } <= set(record)
+
+
+def test_resolved_boundary_absorption_safety_probe_reports_rule_a_gate(tmp_path):
+    """Absorption safety forensics should report Rule A wrongness metrics."""
+    module = load_module(
+        RESOLVED_BOUNDARY_ABSORPTION_SAFETY_PROBE_PATH,
+        "resolved_boundary_absorption_safety_probe",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "64",
+                "--witness-bound",
+                "97",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    records_path = tmp_path / "resolved_boundary_absorption_safety_probe_records.jsonl"
+    summary_path = tmp_path / "resolved_boundary_absorption_safety_probe_summary.json"
+    assert records_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in records_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    records = [
+        json.loads(line)
+        for line in records_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert records
+    assert summary["mode"] == "offline_resolved_boundary_absorption_safety_probe"
+    assert summary["boundary_law_005_status"] == "not_approved"
+    assert summary["prime_emission_status"] == "forbidden"
+    assert summary["carrier_lock_predicate"] == "unresolved_alternatives_before_threat"
+    assert "absorption_pattern_separates_true_from_false" in summary
+    assert "rule_a_wrong_count" in summary
+    assert "false_resolved_candidate_count" in summary
+    assert "would_rule_a_select_false_resolved_survivor_count" in summary
+    assert "would_rule_a_eliminate_true_boundary_candidate_count" in summary
+
+    record = records[0]
+    assert {
+        "anchor_p",
+        "actual_boundary_offset_label",
+        "resolved_candidate_offset",
+        "resolved_candidate_is_true_label",
+        "later_unresolved_candidate_offsets",
+        "resolved_candidate_wheel_open_inside_later_count",
+        "absorbs_all_later_unresolved_bool",
+        "carrier_identity_shared_with_later_bool",
+        "extension_changes_carrier_bool",
+        "extension_reset_evidence_bool",
+        "would_rule_a_select_false_resolved_survivor",
+        "would_rule_a_eliminate_true_boundary_candidate",
+        "candidate_absorption_status",
+        "failure_reason",
     } <= set(record)

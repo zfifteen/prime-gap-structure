@@ -23,6 +23,13 @@ LEGAL_CANDIDATE_HARDENING_PATH = (
     MODULE_DIR / "legal_candidate_hardening_probe.py"
 )
 COMPRESSED_STATE_SEARCH_PATH = MODULE_DIR / "compressed_state_search.py"
+COMPOSITE_EXCLUSION_PROBE_PATH = (
+    MODULE_DIR / "composite_exclusion_boundary_probe.py"
+)
+COMPOSITE_EXCLUSION_UNRESOLVED_FORENSICS_PATH = (
+    MODULE_DIR / "composite_exclusion_unresolved_forensics.py"
+)
+SINGLE_HOLE_CLOSURE_PROBE_PATH = MODULE_DIR / "single_hole_closure_probe.py"
 
 
 def load_module(path: Path, name: str):
@@ -607,3 +614,227 @@ def test_compressed_state_search_reports_collision_compression_frontier(tmp_path
     assert "multiplicity_pressure_histogram" in reports
     assert "multiplicity_pressure_coarse_counts" in reports
     assert reports["multiplicity_pressure_histogram"]["compression_score"] >= 0.0
+
+
+def test_composite_exclusion_boundary_probe_writes_safe_elimination_artifacts(tmp_path):
+    """Composite exclusion should report survivors and post-elimination labels."""
+    module = load_module(
+        COMPOSITE_EXCLUSION_PROBE_PATH,
+        "composite_exclusion_boundary_probe",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "64",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    rows_path = tmp_path / "composite_exclusion_boundary_probe_rows.jsonl"
+    summary_path = tmp_path / "composite_exclusion_boundary_probe_summary.json"
+    assert rows_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in rows_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    rows = [json.loads(line) for line in rows_path.read_text(encoding="utf-8").splitlines()]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert rows
+    assert summary["mode"] == "offline_composite_exclusion_boundary_probe"
+    assert summary["boundary_law_005_status"] == "not_approved"
+    assert summary["row_count"] == len(rows)
+    assert "true_boundary_rejected_count" in summary
+    assert "true_boundary_status_counts" in summary
+    assert "average_rejected_count" in summary
+    assert "average_unresolved_count" in summary
+    assert "average_survives_count" in summary
+    assert "unique_resolved_survivor_count" in summary
+    assert "rule_family_reports" in summary
+    assert "unique_survivor_match_rate" in summary
+
+    row = rows[0]
+    assert {
+        "anchor_p",
+        "candidate_offsets",
+        "candidate_count",
+        "rejected_count",
+        "unresolved_count",
+        "survives_count",
+        "survivor_count",
+        "survivors",
+        "unresolved",
+        "rejection_reasons_by_candidate",
+        "unresolved_reasons_by_candidate",
+        "candidate_status_by_offset",
+        "actual_boundary_offset_label",
+        "true_boundary_status",
+        "unique_resolved_survivor",
+        "unique_survivor_matches_label",
+        "failure_reason",
+    } <= set(row)
+
+    rule_reports = {
+        report["rule_family"]: report for report in summary["rule_family_reports"]
+    }
+    assert "positive_composite_witness_rejection" in rule_reports
+    assert "interior_open_unclosed_rejection" in rule_reports
+    for report in rule_reports.values():
+        assert {
+            "rejected_count",
+            "true_boundary_rejected_count",
+            "average_survivor_count_after_rule",
+            "marginal_rejection_count",
+            "unique_survivor_count_after_rule",
+        } <= set(report)
+
+
+def test_composite_exclusion_eliminator_source_has_no_forbidden_helpers():
+    """The eliminator body should not call classical boundary helpers."""
+    source = COMPOSITE_EXCLUSION_PROBE_PATH.read_text(encoding="utf-8")
+    eliminator_source = source.split("def eliminate_candidates", 1)[1].split(
+        "def label_offsets",
+        1,
+    )[0]
+    forbidden_tokens = (
+        "isprime",
+        "nextprime",
+        "prevprime",
+        "Miller",
+        "divisor_count",
+        "factorint",
+        "gwr_dni_recursive_walk",
+        "divisor_counts_segment",
+    )
+    for token in forbidden_tokens:
+        assert token not in eliminator_source
+
+
+def test_composite_exclusion_unresolved_forensics_reports_missing_evidence(tmp_path):
+    """Unresolved forensics should classify true-boundary unresolved rows."""
+    module = load_module(
+        COMPOSITE_EXCLUSION_UNRESOLVED_FORENSICS_PATH,
+        "composite_exclusion_unresolved_forensics",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "64",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    records_path = tmp_path / "composite_exclusion_unresolved_forensics_records.jsonl"
+    summary_path = tmp_path / "composite_exclusion_unresolved_forensics_summary.json"
+    assert records_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in records_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    records = [
+        json.loads(line)
+        for line in records_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["mode"] == "offline_composite_exclusion_unresolved_forensics"
+    assert summary["boundary_law_005_status"] == "not_approved"
+    assert summary["true_boundary_rejected_count"] == 0
+    assert "missing_evidence_counts" in summary
+    assert "candidate_resolving_rule_counts" in summary
+
+    if records:
+        record = records[0]
+        assert {
+            "anchor_p",
+            "resolved_survivor",
+            "actual_boundary_label",
+            "unresolved_true_boundary_candidate",
+            "why_resolved_survivor_survived",
+            "why_true_boundary_was_unresolved",
+            "which_evidence_was_missing",
+            "which_pgs_rule_would_resolve_it",
+        } <= set(record)
+
+
+def test_single_hole_closure_probe_reports_closure_candidates(tmp_path):
+    """Single-hole probe should report legal closure candidates and diagnostics."""
+    module = load_module(
+        SINGLE_HOLE_CLOSURE_PROBE_PATH,
+        "single_hole_closure_probe",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "64",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    records_path = tmp_path / "single_hole_closure_probe_records.jsonl"
+    summary_path = tmp_path / "single_hole_closure_probe_summary.json"
+    assert records_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in records_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    records = [
+        json.loads(line)
+        for line in records_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["mode"] == "offline_single_hole_closure_probe"
+    assert summary["boundary_law_005_status"] == "not_approved"
+    assert summary["true_boundary_rejected_count"] == 0
+    assert "single_hole_case_count" in summary
+    assert "single_hole_closure_candidate_count" in summary
+    assert "candidate_missing_rule_counts" in summary
+
+    if records:
+        record = records[0]
+        assert {
+            "anchor_p",
+            "actual_boundary_offset_label",
+            "unresolved_open_offset",
+            "unresolved_open_n",
+            "resolved_survivor_offset",
+            "candidate_chamber_width",
+            "known_composite_witnesses_before_hole",
+            "known_composite_witnesses_after_hole",
+            "gwr_carrier_w",
+            "gwr_carrier_offset",
+            "gwr_carrier_divisor_count",
+            "hole_relative_to_carrier",
+            "hole_wheel_residue",
+            "hole_square_status",
+            "hole_power_status",
+            "hole_small_factor_witness_status",
+            "hole_semiprime_pressure",
+            "hole_higher_divisor_pressure",
+            "candidate_missing_rule",
+        } <= set(record)

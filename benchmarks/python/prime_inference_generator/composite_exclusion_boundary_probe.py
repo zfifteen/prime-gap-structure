@@ -44,6 +44,13 @@ SINGLE_HOLE_WITNESS_FACTORS = (
 CANDIDATE_STATUS_RESOLVED_SURVIVOR = "RESOLVED_SURVIVOR"
 CANDIDATE_STATUS_REJECTED = "REJECTED"
 CANDIDATE_STATUS_UNRESOLVED = "UNRESOLVED"
+KNOWN_PRIME_BASIS_PREFIX = (2, 3, 5)
+CARRIER_LOCK_PREDICATE_CHOICES = (
+    "unresolved_alternatives_before_threat",
+    "higher_divisor_pressure_before_threat",
+    "either",
+    "both",
+)
 RULE_FAMILIES = [
     "wheel_closed_rejection",
     "positive_composite_witness_rejection",
@@ -53,6 +60,7 @@ RULE_FAMILIES = [
     "square_pressure_rejection",
     "carrier_absence_rejection",
     "single_hole_positive_witness_closure",
+    "carrier_locked_pressure_ceiling_rejection",
 ]
 
 
@@ -89,6 +97,17 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=31,
         help="Largest factor allowed for opt-in single-hole witness closure.",
+    )
+    parser.add_argument(
+        "--enable-carrier-locked-pressure-ceiling",
+        action="store_true",
+        help="Prune candidates at or beyond an opt-in carrier-locked ceiling.",
+    )
+    parser.add_argument(
+        "--carrier-lock-predicate",
+        choices=CARRIER_LOCK_PREDICATE_CHOICES,
+        default="either",
+        help="Carrier-lock predicate used when the pressure ceiling flag is on.",
     )
     parser.add_argument(
         "--output-dir",
@@ -149,6 +168,103 @@ def power_closure_witness(n: int) -> dict[str, int] | None:
         if root > 1 and root**exponent == n:
             return {"base": root, "exponent": exponent}
     return None
+
+
+def known_basis(witness_bound: int) -> tuple[int, ...]:
+    """Return the explicit small-prime basis available to the ceiling probe."""
+    basis = (
+        *KNOWN_PRIME_BASIS_PREFIX,
+        *COMPOSITE_WITNESS_FACTORS,
+        *SINGLE_HOLE_WITNESS_FACTORS,
+    )
+    return tuple(factor for factor in basis if factor <= witness_bound)
+
+
+def certified_divisor_class(n: int, witness_bound: int) -> dict[str, Any] | None:
+    """Return a positive divisor-class certificate for n, if available."""
+    basis = known_basis(witness_bound)
+    for base in basis:
+        for exponent in range(2, 7):
+            if base**exponent == n:
+                return {
+                    "divisor_class": exponent + 1,
+                    "family": "known_basis_prime_power",
+                    "certificate": {"base": base, "exponent": exponent},
+                }
+
+    for index, left in enumerate(basis):
+        for right in basis[index + 1 :]:
+            if left * right == n:
+                return {
+                    "divisor_class": 4,
+                    "family": "known_basis_semiprime",
+                    "certificate": {"left": left, "right": right},
+                }
+    return None
+
+
+def candidate_pressure_ceiling(
+    anchor_p: int,
+    candidate_bound: int,
+    witness_bound: int,
+) -> dict[str, Any]:
+    """Return a label-free lower-divisor pressure event, if available."""
+    carrier: dict[str, Any] | None = None
+    for offset in range(1, candidate_bound + 1):
+        certificate = certified_divisor_class(anchor_p + offset, witness_bound)
+        if certificate is None:
+            continue
+        carrier = {
+            "carrier_w": anchor_p + offset,
+            "carrier_offset": offset,
+            "carrier_d": certificate["divisor_class"],
+            "carrier_family": certificate["family"],
+            "carrier_certificate": certificate["certificate"],
+        }
+        break
+
+    if carrier is None:
+        return {
+            "ceiling_status": "NO_LEGAL_CARRIER",
+            "applied": False,
+            "carrier_w": None,
+            "carrier_offset": None,
+            "carrier_d": None,
+            "carrier_family": None,
+            "threat_offset": None,
+            "threat_t": None,
+            "threat_d": None,
+            "threat_family": None,
+        }
+
+    carrier_offset = int(carrier["carrier_offset"])
+    carrier_d = int(carrier["carrier_d"])
+    for offset in range(carrier_offset + 1, candidate_bound + 1):
+        certificate = certified_divisor_class(anchor_p + offset, witness_bound)
+        if certificate is None:
+            continue
+        if int(certificate["divisor_class"]) >= carrier_d:
+            continue
+        return {
+            **carrier,
+            "ceiling_status": "CANDIDATE_GWR_PRESSURE_CEILING",
+            "applied": False,
+            "threat_offset": offset,
+            "threat_t": anchor_p + offset,
+            "threat_d": certificate["divisor_class"],
+            "threat_family": certificate["family"],
+            "threat_certificate": certificate["certificate"],
+        }
+
+    return {
+        **carrier,
+        "ceiling_status": "NO_LEGAL_THREAT",
+        "applied": False,
+        "threat_offset": None,
+        "threat_t": None,
+        "threat_d": None,
+        "threat_family": None,
+    }
 
 
 def interior_open_offsets(anchor_p: int, candidate_offset: int) -> list[int]:
@@ -247,23 +363,125 @@ def classify_candidate(
     }
 
 
-def eliminate_candidates(
+def ceiling_lock_components(
     anchor_p: int,
+    candidate_records: list[dict[str, Any]],
+    ceiling: dict[str, Any],
+    witness_bound: int,
+) -> dict[str, bool]:
+    """Return label-free carrier-lock component booleans."""
+    threat_offset = int(ceiling["threat_offset"])
+    carrier_offset = int(ceiling["carrier_offset"])
+    carrier_d = int(ceiling["carrier_d"])
+    unresolved_before_threat = any(
+        int(record["offset"]) < threat_offset
+        and record["status"] == CANDIDATE_STATUS_UNRESOLVED
+        for record in candidate_records
+    )
+    higher_divisor_pressure = False
+    for offset in range(carrier_offset + 1, threat_offset + 1):
+        certificate = certified_divisor_class(anchor_p + offset, witness_bound)
+        if certificate is None:
+            continue
+        if int(certificate["divisor_class"]) > carrier_d:
+            higher_divisor_pressure = True
+            break
+
+    return {
+        "unresolved_alternatives_before_threat": unresolved_before_threat,
+        "higher_divisor_pressure_before_threat": higher_divisor_pressure,
+    }
+
+
+def carrier_lock_selected(
+    predicate: str,
+    components: dict[str, bool],
+) -> bool:
+    """Return whether the requested lock predicate fires."""
+    unresolved = bool(components["unresolved_alternatives_before_threat"])
+    higher = bool(components["higher_divisor_pressure_before_threat"])
+    if predicate == "unresolved_alternatives_before_threat":
+        return unresolved
+    if predicate == "higher_divisor_pressure_before_threat":
+        return higher
+    if predicate == "either":
+        return unresolved or higher
+    if predicate == "both":
+        return unresolved and higher
+    raise ValueError(f"unknown carrier lock predicate: {predicate}")
+
+
+def apply_carrier_locked_pressure_ceiling(
+    anchor_p: int,
+    candidate_records: list[dict[str, Any]],
     candidate_bound: int,
-    enable_single_hole_positive_witness_closure: bool = False,
-    witness_bound: int = 31,
-) -> dict[str, Any]:
-    """Run label-free composite exclusion for one anchor."""
-    offsets = candidate_offsets(anchor_p, candidate_bound)
-    candidate_records = [
-        classify_candidate(
-            anchor_p,
-            offset,
-            enable_single_hole_positive_witness_closure,
-            witness_bound,
-        )
-        for offset in offsets
-    ]
+    witness_bound: int,
+    carrier_lock_predicate: str,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Apply an opt-in label-free carrier-locked pressure ceiling."""
+    ceiling = candidate_pressure_ceiling(anchor_p, candidate_bound, witness_bound)
+    if ceiling["ceiling_status"] != "CANDIDATE_GWR_PRESSURE_CEILING":
+        return candidate_records, {
+            **ceiling,
+            "carrier_lock_predicate": carrier_lock_predicate,
+            "lock_components": {},
+            "lock_selected": False,
+            "pruned_offsets": [],
+        }
+
+    components = ceiling_lock_components(
+        anchor_p,
+        candidate_records,
+        ceiling,
+        witness_bound,
+    )
+    selected = carrier_lock_selected(carrier_lock_predicate, components)
+    if not selected:
+        return candidate_records, {
+            **ceiling,
+            "carrier_lock_predicate": carrier_lock_predicate,
+            "lock_components": components,
+            "lock_selected": False,
+            "pruned_offsets": [],
+        }
+
+    threat_offset = int(ceiling["threat_offset"])
+    updated_records: list[dict[str, Any]] = []
+    pruned_offsets: list[int] = []
+    for record in candidate_records:
+        offset = int(record["offset"])
+        if offset < threat_offset:
+            updated_records.append(record)
+            continue
+        updated = dict(record)
+        previous_status = str(updated["status"])
+        if previous_status != CANDIDATE_STATUS_REJECTED:
+            pruned_offsets.append(offset)
+        updated["status"] = CANDIDATE_STATUS_REJECTED
+        updated["rule_family"] = "carrier_locked_pressure_ceiling_rejection"
+        updated["carrier_locked_pressure_ceiling_rejection"] = True
+        updated["carrier_locked_pressure_ceiling_previous_status"] = previous_status
+        updated["carrier_locked_pressure_ceiling_threat_offset"] = threat_offset
+        updated["rejection_reasons"] = [
+            *list(updated["rejection_reasons"]),
+            f"CARRIER_LOCKED_PRESSURE_CEILING_BEFORE_{threat_offset}",
+        ]
+        updated["unresolved_reasons"] = []
+        updated["unresolved_interior_offsets"] = []
+        updated_records.append(updated)
+
+    return updated_records, {
+        **ceiling,
+        "applied": True,
+        "carrier_lock_predicate": carrier_lock_predicate,
+        "lock_components": components,
+        "lock_selected": True,
+        "pruned_offsets": pruned_offsets,
+    }
+
+
+def candidate_summary(candidate_records: list[dict[str, Any]]) -> dict[str, Any]:
+    """Return candidate lists and status maps after all label-free rules."""
     survivors = [
         int(record["offset"])
         for record in candidate_records
@@ -290,12 +508,7 @@ def eliminate_candidates(
     candidate_status_by_offset = {
         str(record["offset"]): record["status"] for record in candidate_records
     }
-
     return {
-        "anchor_p": anchor_p,
-        "candidate_bound": candidate_bound,
-        "candidate_offsets": offsets,
-        "candidate_count": len(offsets),
         "rejected_count": len(rejected),
         "unresolved_count": len(unresolved),
         "survives_count": len(survivors),
@@ -306,10 +519,61 @@ def eliminate_candidates(
         "rejection_reasons_by_candidate": rejection_reasons,
         "unresolved_reasons_by_candidate": unresolved_reasons,
         "candidate_status_by_offset": candidate_status_by_offset,
+    }
+
+
+def eliminate_candidates(
+    anchor_p: int,
+    candidate_bound: int,
+    enable_single_hole_positive_witness_closure: bool = False,
+    witness_bound: int = 31,
+    enable_carrier_locked_pressure_ceiling: bool = False,
+    carrier_lock_predicate: str = "either",
+) -> dict[str, Any]:
+    """Run label-free composite exclusion for one anchor."""
+    offsets = candidate_offsets(anchor_p, candidate_bound)
+    candidate_records = [
+        classify_candidate(
+            anchor_p,
+            offset,
+            enable_single_hole_positive_witness_closure,
+            witness_bound,
+        )
+        for offset in offsets
+    ]
+    ceiling_report = {
+        "ceiling_status": "DISABLED",
+        "applied": False,
+        "carrier_lock_predicate": carrier_lock_predicate,
+        "lock_components": {},
+        "lock_selected": False,
+        "pruned_offsets": [],
+    }
+    if enable_carrier_locked_pressure_ceiling:
+        candidate_records, ceiling_report = apply_carrier_locked_pressure_ceiling(
+            anchor_p,
+            candidate_records,
+            candidate_bound,
+            witness_bound,
+            carrier_lock_predicate,
+        )
+    summary = candidate_summary(candidate_records)
+
+    return {
+        "anchor_p": anchor_p,
+        "candidate_bound": candidate_bound,
+        "candidate_offsets": offsets,
+        "candidate_count": len(offsets),
+        **summary,
         "candidate_status_records": candidate_records,
         "single_hole_positive_witness_closure_enabled": (
             enable_single_hole_positive_witness_closure
         ),
+        "carrier_locked_pressure_ceiling_enabled": (
+            enable_carrier_locked_pressure_ceiling
+        ),
+        "carrier_lock_predicate": carrier_lock_predicate,
+        "carrier_locked_pressure_ceiling": ceiling_report,
         "witness_bound": witness_bound,
     }
 
@@ -417,6 +681,15 @@ def rule_family_report(rows: list[dict[str, Any]], rule_family: str) -> dict[str
                 row_closure_applied_count += 1
                 if bool(record.get("power_closure_subset")):
                     power_closure_subset_count += 1
+            elif (
+                rule_family == "carrier_locked_pressure_ceiling_rejection"
+                and bool(record.get("carrier_locked_pressure_ceiling_rejection"))
+            ):
+                if (
+                    record.get("carrier_locked_pressure_ceiling_previous_status")
+                    != CANDIDATE_STATUS_REJECTED
+                ):
+                    rejected_offsets.add(offset)
 
         if rule_family == "single_hole_positive_witness_closure":
             survivors_after_rule = row_closure_applied_count
@@ -473,6 +746,16 @@ def aggregate_counts(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "no_survivor_count": no_survivor_count,
         "no_unique_boundary_count": no_unique_count,
         "true_boundary_rejected_count": len(true_boundary_rejected_rows),
+        "true_boundary_unresolved_count": sum(
+            1
+            for row in rows
+            if row["true_boundary_status"] == CANDIDATE_STATUS_UNRESOLVED
+        ),
+        "true_boundary_resolved_survivor_count": sum(
+            1
+            for row in rows
+            if row["true_boundary_status"] == CANDIDATE_STATUS_RESOLVED_SURVIVOR
+        ),
         "unique_survivor_match_count": len(unique_match_rows),
         "unique_survivor_match_rate": (
             0.0 if not unique_rows else len(unique_match_rows) / len(unique_rows)
@@ -522,12 +805,53 @@ def single_hole_closure_report(rows: list[dict[str, Any]]) -> dict[str, int]:
     }
 
 
+def carrier_locked_ceiling_report(rows: list[dict[str, Any]]) -> dict[str, int]:
+    """Return attribution counts for the opt-in carrier-locked ceiling."""
+    applied_count = 0
+    true_boundary_safe_count = 0
+    unsafe_count = 0
+    false_candidate_pruned_count = 0
+    true_boundary_pruned_count = 0
+    for row in rows:
+        ceiling = row["carrier_locked_pressure_ceiling"]
+        if not bool(ceiling.get("applied")):
+            continue
+        applied_count += 1
+        actual = int(row["actual_boundary_offset_label"])
+        threat_offset = int(ceiling["threat_offset"])
+        if actual < threat_offset:
+            true_boundary_safe_count += 1
+        else:
+            unsafe_count += 1
+        for offset in ceiling["pruned_offsets"]:
+            if int(offset) == actual:
+                true_boundary_pruned_count += 1
+            else:
+                false_candidate_pruned_count += 1
+
+    return {
+        "carrier_locked_ceiling_applied_count": applied_count,
+        "carrier_locked_ceiling_true_boundary_safe_count": (
+            true_boundary_safe_count
+        ),
+        "carrier_locked_ceiling_false_candidate_pruned_count": (
+            false_candidate_pruned_count
+        ),
+        "carrier_locked_ceiling_unsafe_count": unsafe_count,
+        "carrier_locked_ceiling_true_boundary_pruned_count": (
+            true_boundary_pruned_count
+        ),
+    }
+
+
 def run_probe(
     start_anchor: int,
     max_anchor: int,
     candidate_bound: int,
     enable_single_hole_positive_witness_closure: bool = False,
     witness_bound: int = 31,
+    enable_carrier_locked_pressure_ceiling: bool = False,
+    carrier_lock_predicate: str = "either",
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """Run label-free elimination, then attach labels for reporting."""
     if candidate_bound < 1:
@@ -536,6 +860,8 @@ def run_probe(
         raise ValueError("max_anchor must be at least start_anchor")
     if witness_bound < max(COMPOSITE_WITNESS_FACTORS):
         raise ValueError("witness_bound must be at least 31")
+    if carrier_lock_predicate not in CARRIER_LOCK_PREDICATE_CHOICES:
+        raise ValueError(f"unknown carrier lock predicate: {carrier_lock_predicate}")
 
     started = time.perf_counter()
     labels = label_offsets(start_anchor, max_anchor, candidate_bound)
@@ -548,6 +874,26 @@ def run_probe(
                     candidate_bound,
                     enable_single_hole_positive_witness_closure=False,
                     witness_bound=max(COMPOSITE_WITNESS_FACTORS),
+                    enable_carrier_locked_pressure_ceiling=False,
+                    carrier_lock_predicate=carrier_lock_predicate,
+                ),
+                label,
+            )
+            for anchor_p, label in labels.items()
+        ]
+    pre_ceiling_rows: list[dict[str, Any]] = []
+    if enable_carrier_locked_pressure_ceiling:
+        pre_ceiling_rows = [
+            attach_label(
+                eliminate_candidates(
+                    anchor_p,
+                    candidate_bound,
+                    enable_single_hole_positive_witness_closure=(
+                        enable_single_hole_positive_witness_closure
+                    ),
+                    witness_bound=witness_bound,
+                    enable_carrier_locked_pressure_ceiling=False,
+                    carrier_lock_predicate=carrier_lock_predicate,
                 ),
                 label,
             )
@@ -562,6 +908,10 @@ def run_probe(
                     enable_single_hole_positive_witness_closure
                 ),
                 witness_bound=witness_bound,
+                enable_carrier_locked_pressure_ceiling=(
+                    enable_carrier_locked_pressure_ceiling
+                ),
+                carrier_lock_predicate=carrier_lock_predicate,
             ),
             label,
         )
@@ -581,7 +931,13 @@ def run_probe(
         if enable_single_hole_positive_witness_closure
         else None
     )
+    pre_ceiling_metrics = (
+        aggregate_counts(pre_ceiling_rows)
+        if enable_carrier_locked_pressure_ceiling
+        else None
+    )
     closure_report = single_hole_closure_report(rows)
+    ceiling_report = carrier_locked_ceiling_report(rows)
 
     summary = {
         "mode": "offline_composite_exclusion_boundary_probe",
@@ -591,15 +947,23 @@ def run_probe(
         "single_hole_positive_witness_closure_enabled": (
             enable_single_hole_positive_witness_closure
         ),
+        "carrier_locked_pressure_ceiling_enabled": (
+            enable_carrier_locked_pressure_ceiling
+        ),
+        "carrier_lock_predicate": carrier_lock_predicate,
         "witness_bound": witness_bound,
         "row_count": len(rows),
         **metrics,
         "before_single_hole_closure_metrics": baseline_metrics,
+        "before_carrier_locked_pressure_ceiling_metrics": pre_ceiling_metrics,
         **closure_report,
+        **ceiling_report,
         "rule_family_reports": rule_reports,
         "first_failure_examples": first_failure_examples,
         "elimination_rule_set": (
-            "composite_exclusion_single_hole_closure_v1"
+            "composite_exclusion_single_hole_carrier_locked_ceiling_v1"
+            if enable_carrier_locked_pressure_ceiling
+            else "composite_exclusion_single_hole_closure_v1"
             if enable_single_hole_positive_witness_closure
             else "composite_exclusion_three_status_v1"
         ),
@@ -640,6 +1004,10 @@ def main(argv: list[str] | None = None) -> int:
             args.enable_single_hole_positive_witness_closure
         ),
         witness_bound=args.witness_bound,
+        enable_carrier_locked_pressure_ceiling=(
+            args.enable_carrier_locked_pressure_ceiling
+        ),
+        carrier_lock_predicate=args.carrier_lock_predicate,
     )
     write_artifacts(rows, summary, args.output_dir)
     return 0

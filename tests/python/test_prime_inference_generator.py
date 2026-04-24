@@ -36,6 +36,9 @@ RESOLVED_SURVIVOR_DOMINANCE_FORENSICS_PATH = (
 RIGHT_BOUNDARY_PRESSURE_CEILING_PROBE_PATH = (
     MODULE_DIR / "right_boundary_pressure_ceiling_probe.py"
 )
+CARRIER_LOCK_CONDITION_PROBE_PATH = (
+    MODULE_DIR / "carrier_lock_condition_probe.py"
+)
 
 
 def load_module(path: Path, name: str):
@@ -747,6 +750,54 @@ def test_composite_exclusion_probe_integrates_single_hole_closure_flag(tmp_path)
     ]
 
 
+def test_composite_exclusion_probe_integrates_carrier_locked_ceiling_flag(tmp_path):
+    """Carrier-locked ceilings should be explicit and separately attributed."""
+    module = load_module(
+        COMPOSITE_EXCLUSION_PROBE_PATH,
+        "composite_exclusion_boundary_probe_with_carrier_locked_ceiling",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "64",
+                "--enable-single-hole-positive-witness-closure",
+                "--witness-bound",
+                "97",
+                "--enable-carrier-locked-pressure-ceiling",
+                "--carrier-lock-predicate",
+                "higher_divisor_pressure_before_threat",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    summary_path = tmp_path / "composite_exclusion_boundary_probe_summary.json"
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["carrier_locked_pressure_ceiling_enabled"] is True
+    assert summary["carrier_lock_predicate"] == "higher_divisor_pressure_before_threat"
+    assert summary["before_carrier_locked_pressure_ceiling_metrics"] is not None
+    assert summary["carrier_locked_ceiling_applied_count"] > 0
+    assert summary["carrier_locked_ceiling_true_boundary_safe_count"] > 0
+    assert summary["carrier_locked_ceiling_false_candidate_pruned_count"] > 0
+    assert summary["carrier_locked_ceiling_unsafe_count"] == 0
+    assert summary["true_boundary_rejected_count"] == 0
+
+    rule_reports = {
+        report["rule_family"]: report for report in summary["rule_family_reports"]
+    }
+    ceiling_report = rule_reports["carrier_locked_pressure_ceiling_rejection"]
+    assert ceiling_report["true_boundary_rejected_count"] == 0
+    assert ceiling_report["marginal_rejection_count"] > 0
+
+
 def test_composite_exclusion_eliminator_source_has_no_forbidden_helpers():
     """The eliminator body should not call classical boundary helpers."""
     source = COMPOSITE_EXCLUSION_PROBE_PATH.read_text(encoding="utf-8")
@@ -1045,3 +1096,107 @@ def test_right_boundary_pressure_ceiling_source_has_no_forbidden_helpers():
     )
     for token in forbidden_tokens:
         assert token not in ceiling_source
+
+
+def test_carrier_lock_condition_probe_reports_lock_candidates(tmp_path):
+    """Carrier-lock search should separate safe ceilings from reset cases."""
+    module = load_module(
+        CARRIER_LOCK_CONDITION_PROBE_PATH,
+        "carrier_lock_condition_probe",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "64",
+                "--witness-bound",
+                "97",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    records_path = tmp_path / "carrier_lock_condition_probe_records.jsonl"
+    summary_path = tmp_path / "carrier_lock_condition_probe_summary.json"
+    assert records_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in records_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    records = [
+        json.loads(line)
+        for line in records_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert records
+    assert summary["mode"] == "offline_carrier_lock_condition_search"
+    assert summary["boundary_law_005_status"] == "not_approved"
+    assert summary["row_count"] == len(records)
+    assert "candidate_lock_observable_counts" in summary
+    assert "lock_rule_reports" in summary
+    assert "candidate_lock_predicates" in summary
+
+    report = summary["lock_rule_reports"][0]
+    assert {
+        "rule_name",
+        "eligible_for_pure_generation",
+        "cases_tested",
+        "safe_ceiling_classified_count",
+        "unsafe_reset_misclassified_as_safe",
+        "abstain_count",
+        "first_unsafe_examples",
+        "passes_zero_wrong_gate",
+        "status",
+    } <= set(report)
+
+    record = records[0]
+    assert {
+        "anchor_p",
+        "carrier_w",
+        "carrier_d",
+        "carrier_family",
+        "carrier_offset",
+        "threat_t",
+        "threat_d",
+        "threat_offset",
+        "threat_family",
+        "actual_boundary_offset_label",
+        "ceiling_safe_bool",
+        "reset_bool",
+        "previous_chamber_state",
+        "carrier_ladder_legal_features",
+        "square_pressure",
+        "higher_divisor_pressure",
+        "semiprime_pressure",
+        "resolved_survivor_pair_status",
+        "extension_preserves_carrier_bool",
+        "extension_changes_carrier_bool",
+    } <= set(record)
+
+
+def test_carrier_lock_condition_source_has_no_forbidden_helpers():
+    """Carrier-lock predicate logic should not call classical boundary helpers."""
+    source = CARRIER_LOCK_CONDITION_PROBE_PATH.read_text(encoding="utf-8")
+    predicate_source = source.split("def lock_rule_selects", 1)[1].split(
+        "def lock_rule_report",
+        1,
+    )[0]
+    forbidden_tokens = (
+        "isprime",
+        "nextprime",
+        "prevprime",
+        "Miller",
+        "divisor_count",
+        "factorint",
+        "gwr_dni_recursive_walk",
+        "divisor_counts_segment",
+    )
+    for token in forbidden_tokens:
+        assert token not in predicate_source

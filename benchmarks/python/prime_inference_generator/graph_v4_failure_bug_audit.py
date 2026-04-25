@@ -22,7 +22,6 @@ try:
         propagate_unresolved_later_domination_v2,
         propagate_unresolved_later_domination_v3,
         propagate_unresolved_later_domination_v5,
-        solve_anchor,
         target_no_carrier_reset_evidence_status,
     )
     from .composite_exclusion_boundary_probe import (
@@ -48,7 +47,6 @@ except ImportError:  # pragma: no cover - direct script execution
         propagate_unresolved_later_domination_v2,
         propagate_unresolved_later_domination_v3,
         propagate_unresolved_later_domination_v5,
-        solve_anchor,
         target_no_carrier_reset_evidence_status,
     )
     from composite_exclusion_boundary_probe import (
@@ -384,17 +382,11 @@ def run_audit(
     )
     phase_snapshots["after_v5"] = snapshot_phase("after_v5", nodes)
 
-    emitted_record, direct_graph_row = solve_anchor(
-        anchor_p,
-        candidate_bound,
-        witness_bound,
-    )
-    emitted_offset = (
-        None if emitted_record is None else int(emitted_record["boundary_offset"])
-    )
-    emitted_q_hat = (
-        None if emitted_record is None else int(emitted_record["inferred_prime_q_hat"])
-    )
+    resolved_after_v5 = active_offsets(nodes, CANDIDATE_STATUS_RESOLVED_SURVIVOR)
+    unresolved_after_v5 = active_offsets(nodes, CANDIDATE_STATUS_UNRESOLVED)
+    solved_after_v5 = len(resolved_after_v5) == 1 and not unresolved_after_v5
+    emitted_offset = int(resolved_after_v5[0]) if solved_after_v5 else None
+    emitted_q_hat = None if emitted_offset is None else anchor_p + emitted_offset
     actual_next_prime = first_prime_after_with_cap(
         anchor_p,
         anchor_p + max(10_000, candidate_bound * 16),
@@ -518,13 +510,17 @@ def run_audit(
             "independent_first_prime_after_anchor_with_cap": actual_next_prime,
             "audit_checks_first_prime_not_just_primality": True,
         },
-        "direct_solve_rejected_offsets": direct_graph_row["rejected_offsets"],
-        "direct_solve_absorbed_offsets": direct_graph_row["absorbed_offsets"],
-        "direct_solve_resolved_offsets": direct_graph_row[
-            "resolved_offsets_after_solve"
+        "direct_solve_rejected_offsets": phase_snapshots["after_v5"][
+            "rejected_offsets"
         ],
-        "direct_solve_unresolved_offsets": direct_graph_row[
-            "unresolved_offsets_after_solve"
+        "direct_solve_absorbed_offsets": phase_snapshots["after_v5"][
+            "absorbed_offsets"
+        ],
+        "direct_solve_resolved_offsets": phase_snapshots["after_v5"][
+            "resolved_offsets"
+        ],
+        "direct_solve_unresolved_offsets": phase_snapshots["after_v5"][
+            "unresolved_offsets"
         ],
     }
     bug_checks = {

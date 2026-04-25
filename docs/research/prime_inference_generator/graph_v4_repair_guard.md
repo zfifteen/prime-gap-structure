@@ -2,9 +2,10 @@
 
 ## Status
 
-This is an offline repair probe for the graph v4 scale failure. It does not
-modify the main solver, add v6, re-enable v4/v5 as a broad default, add pure
-production emission, or integrate 005B.
+This began as an offline repair probe for the graph v4 scale failure. The
+viable guard has now been integrated as graph v6. The integration does not
+re-enable old v4/v5 as a broad default, add pure production emission, or
+integrate 005B.
 
 Classical labels and first-boundary audit are used only after each candidate
 guard has acted.
@@ -133,26 +134,49 @@ each tested surface compared with v3. That is still a valid repair candidate
 because it blocks the known failure and produces zero audited failures on both
 surfaces.
 
-## Next Action
+## v6 Integration
 
 Do not patch anchor `10193`.
 
-The next implementation step is to integrate only this repaired v4 candidate
-behind an explicit graph version or flag, then rerun:
+Graph v6 integrates only this repaired v4 candidate:
 
 ```text
-anchors: 11..10_000
-anchors: 11..100_000
+unresolved_later_domination_target_no_carrier_with_positive_nonboundary_guard
+```
+
+It is v3 plus the repaired relation. It does not run the old v4 or v5
+relations.
+
+Configuration:
+
+```text
 candidate_bound: 128
 witness_bound: 127
 ```
 
-Hard gate:
+Integration results:
 
 ```text
-failed_count: 0
-v4_repair_wrong_count: 0
+11..10_000:
+  graph_solved_count: 212
+  audited_count: 212
+  confirmed_count: 212
+  failed_count: 0
+  v4_relation_applied_count: 0
+  v5_relation_applied_count: 0
+  repaired_relation_solution_count: 1
+  repaired_relation_wrong_count_after_audit: 0
+
+11..100_000:
+  graph_solved_count: 217
+  audited_count: 217
+  confirmed_count: 217
+  failed_count: 0
+  v4_relation_applied_count: 0
+  v5_relation_applied_count: 0
+  repaired_relation_solution_count: 1
+  repaired_relation_wrong_count_after_audit: 0
 ```
 
-Graph v4/v5 remain quarantined outside the last clean surface until the
-repaired guard is integrated and audited.
+Graph v4/v5 remain quarantined outside the last clean surface. Graph v6 is the
+safe repaired solver line, with narrow coverage gain over v3.

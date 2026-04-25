@@ -98,6 +98,9 @@ GRAPH_V4_FAILURE_BUG_AUDIT_PATH = (
 GRAPH_V4_REPAIR_GUARD_PROBE_PATH = (
     MODULE_DIR / "graph_v4_repair_guard_probe.py"
 )
+EXPERIMENTAL_GRAPH_PRIME_GENERATOR_PATH = (
+    MODULE_DIR / "experimental_graph_prime_generator.py"
+)
 
 
 def load_module(path: Path, name: str):
@@ -2617,6 +2620,7 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
     assert summary["record_type"] == "PGS_GRAPH_SOLVER_SUMMARY"
     assert summary["mode"] == "offline_boundary_certificate_graph_solver"
     assert summary["rule_set"] == "005A-R"
+    assert summary["solver_version"] == "v6"
     assert summary["graph_solved_count"] == len(records)
     assert summary["graph_solved_count"] > 0
     assert summary["production_approved"] is False
@@ -2627,7 +2631,7 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
     record = records[0]
     assert record["record_type"] == "PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH"
     assert record["inference_status"] == (
-        "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V5"
+        "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V6"
     )
     assert record["production_approved"] is False
     assert record["cryptographic_use_approved"] is False
@@ -2654,6 +2658,7 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
         "v3_relation_applied_count",
         "v4_relation_applied_count",
         "v5_relation_applied_count",
+        "repaired_relation_applied_count",
     } <= set(record)
     assert "new_relation_applied_count" in summary
     assert "new_relation_solution_count" in summary
@@ -2665,6 +2670,22 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
     assert "v4_relation_solution_count" in summary
     assert "v5_relation_applied_count" in summary
     assert "v5_relation_solution_count" in summary
+    assert "repaired_relation_applied_count" in summary
+    assert "repaired_relation_solution_count" in summary
+    assert summary["v4_relation_applied_count"] == 0
+    assert summary["v5_relation_applied_count"] == 0
+    assert (
+        "unresolved_later_domination_target_no_carrier_with_positive_nonboundary_guard"
+        in summary["accepted_rule_families"]
+    )
+    assert (
+        "unresolved_later_domination_target_no_carrier_reset_discriminator"
+        not in summary["accepted_rule_families"]
+    )
+    assert (
+        "unresolved_later_domination_post_v4_empty_source_carrier_extension"
+        not in summary["accepted_rule_families"]
+    )
 
     assert (
         module.main(
@@ -2694,7 +2715,191 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
     assert "v4_relation_wrong_count_after_audit" in audit_summary
     assert "v5_relation_correct_count_after_audit" in audit_summary
     assert "v5_relation_wrong_count_after_audit" in audit_summary
+    assert "repaired_relation_correct_count_after_audit" in audit_summary
+    assert "repaired_relation_wrong_count_after_audit" in audit_summary
     assert "validation_backend" in audit_summary
+
+
+def test_experimental_graph_prime_generator_writes_and_audits(tmp_path):
+    """Graph generator CLI should expose solver modes and downstream audit."""
+    module = load_module(
+        EXPERIMENTAL_GRAPH_PRIME_GENERATOR_PATH,
+        "experimental_graph_prime_generator",
+    )
+
+    assert (
+        module.main(
+            [
+                "--solver-version",
+                "v6",
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "128",
+                "--witness-bound",
+                "127",
+                "--audit",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    records_path = tmp_path / "experimental_graph_prime_generator_records.jsonl"
+    summary_path = tmp_path / "experimental_graph_prime_generator_summary.json"
+    audit_summary_path = (
+        tmp_path / "experimental_graph_prime_generator_audit_summary.json"
+    )
+    assert records_path.exists()
+    assert summary_path.exists()
+    assert audit_summary_path.exists()
+    assert b"\r\n" not in records_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+    assert b"\r\n" not in audit_summary_path.read_bytes()
+
+    records = [
+        json.loads(line)
+        for line in records_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    audit_summary = json.loads(audit_summary_path.read_text(encoding="utf-8"))
+    assert summary["record_type"] == "PGS_EXPERIMENTAL_GRAPH_GENERATOR_SUMMARY"
+    assert summary["solver_version"] == "v6"
+    assert summary["emitted_count"] == len(records)
+    assert summary["emitted_count"] > 0
+    assert summary["anchors_scanned"] > 0
+    assert summary["abstained_count"] == (
+        summary["anchors_scanned"] - summary["emitted_count"]
+    )
+    assert summary["audit_required"] is True
+    assert summary["audit_confirmed"] == len(records)
+    assert summary["audit_failed"] == 0
+    assert summary["production_approved"] is False
+    assert summary["cryptographic_use_approved"] is False
+    assert audit_summary["confirmed_count"] == len(records)
+    assert audit_summary["failed_count"] == 0
+
+    record = records[0]
+    assert record["record_type"] == "PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH"
+    assert record["solver_version"] == "v6"
+    assert record["inference_status"] == (
+        "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V6"
+    )
+    assert record["production_approved"] is False
+    assert record["cryptographic_use_approved"] is False
+    assert record["audit_required"] is True
+    assert record["classical_audit_status"] == "NOT_RUN"
+
+    for solver_version in ("v3", "risky-v5", "filtered-v5"):
+        mode_dir = tmp_path / solver_version
+        assert (
+            module.main(
+                [
+                    "--solver-version",
+                    solver_version,
+                    "--start-anchor",
+                    "11",
+                    "--max-anchor",
+                    "500",
+                    "--candidate-bound",
+                    "128",
+                    "--witness-bound",
+                    "127",
+                    "--emit-target",
+                    "1",
+                    "--audit",
+                    "--output-dir",
+                    str(mode_dir),
+                ]
+            )
+            == 0
+        )
+        mode_summary = json.loads(
+            (mode_dir / "experimental_graph_prime_generator_summary.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        assert mode_summary["solver_version"] == solver_version
+        assert mode_summary["emitted_count"] >= 1
+        assert mode_summary["audit_failed"] == 0
+        assert "filtered_count" in mode_summary
+        assert "filter_reason_counts" in mode_summary
+
+    filtered_dir = tmp_path / "filtered_10193"
+    assert (
+        module.main(
+            [
+                "--solver-version",
+                "filtered-v5",
+                "--start-anchor",
+                "10193",
+                "--max-anchor",
+                "10193",
+                "--candidate-bound",
+                "128",
+                "--witness-bound",
+                "127",
+                "--audit",
+                "--output-dir",
+                str(filtered_dir),
+            ]
+        )
+        == 0
+    )
+    filtered_summary = json.loads(
+        (
+            filtered_dir / "experimental_graph_prime_generator_summary.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert filtered_summary["solver_version"] == "filtered-v5"
+    assert filtered_summary["risky_input_count"] == 1
+    assert filtered_summary["filtered_count"] == 1
+    assert filtered_summary["emitted_count"] == 0
+    assert filtered_summary["filter_reason_counts"] == {
+        "bounded_composite_witness": 1,
+        "power_witness": 1,
+    }
+    assert filtered_summary["first_filtered_examples"][0]["filter_status"] == (
+        "FILTERED_POSITIVE_NONBOUNDARY_CANDIDATE"
+    )
+
+    filtered_semiprime_dir = tmp_path / "filtered_10399"
+    assert (
+        module.main(
+            [
+                "--solver-version",
+                "filtered-v5",
+                "--start-anchor",
+                "10399",
+                "--max-anchor",
+                "10399",
+                "--candidate-bound",
+                "128",
+                "--witness-bound",
+                "127",
+                "--audit",
+                "--output-dir",
+                str(filtered_semiprime_dir),
+            ]
+        )
+        == 0
+    )
+    filtered_semiprime_summary = json.loads(
+        (
+            filtered_semiprime_dir
+            / "experimental_graph_prime_generator_summary.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert filtered_semiprime_summary["solver_version"] == "filtered-v5"
+    assert filtered_semiprime_summary["risky_input_count"] == 1
+    assert filtered_semiprime_summary["filtered_count"] == 1
+    assert filtered_semiprime_summary["emitted_count"] == 0
+    assert filtered_semiprime_summary["filter_reason_counts"] == {
+        "bounded_composite_witness": 1
+    }
 
 
 def test_boundary_certificate_graph_abstention_analysis_reports_blockers(tmp_path):

@@ -10,6 +10,12 @@ over records that have already been emitted.
 Boundary Law 005 remains candidate-grade. The only live rule family used here
 is 005A-R. Boundary Law 005B remains quarantined.
 
+Graph v6 is the active safe solver version. It is v3 plus one repaired
+no-carrier relation with positive target non-boundary evidence. Graph v4 and
+v5 remain quarantined outside the last clean `11..10_000` development surface
+because v4 absorbed the unresolved true boundary at anchor `10193` during the
+`11..100_000` scale run.
+
 ## Purpose
 
 The previous emitter produced inferred-prime records from a single refined
@@ -37,6 +43,7 @@ pipeline:
 - 005A-R higher-divisor locked absorption with
   `single_hole_closure_used = false`.
 - unresolved-later domination from existing graph facts.
+- repaired no-carrier target domination with positive non-boundary evidence.
 
 It does not use 005B, broad resolved-chamber absorption, earliest-candidate
 dominance, scalar ranking, prime-marker identity, `nextprime`, `isprime`, or
@@ -96,9 +103,10 @@ fact after the source. The single-resolved-source guard is load-bearing; a
 broader empty-carrier version absorbed true boundaries in abstaining
 multiple-resolved graphs during development and was not retained.
 
-## v4 Relation
+## Quarantined v4 Relation
 
-The v4 refinement adds one relation inside unresolved-later domination:
+The quarantined v4 refinement added one relation inside unresolved-later
+domination:
 
 ```text
 unresolved_later_domination_target_no_carrier_reset_discriminator
@@ -116,9 +124,15 @@ no-carrier unresolved target. It abstains on multiple resolved survivors,
 single-hole-dependent sources, targets with legal carriers, positive reset
 evidence, and unknown preconditions.
 
-## v5 Relation
+The relation is quarantined because the `11..100_000` scale run found anchor
+`10193`, where offset `18` is the true boundary and remained unresolved through
+v3. The v4 absence-based no-carrier relation absorbed that target. The failure
+was reproduced in a single-anchor audit and classified as an unsafe relation,
+not a mutation-order, range-order, or audit bug.
 
-The v5 refinement stays inside unresolved-later domination:
+## Quarantined v5 Relation
+
+The quarantined v5 refinement stayed inside unresolved-later domination:
 
 ```text
 unresolved_later_domination_post_v4_empty_source_carrier_extension
@@ -135,12 +149,43 @@ the source.
 This relation does not add broad resolved-chamber absorption. It acts only on
 the nearest later unresolved candidate and repeats on the active graph.
 
+Graph v5 inherits the v4 failure because it depends on the v4 no-carrier
+removals. It is not part of the active v6 solver.
+
+## v6 Relation
+
+Graph v6 does not restore v4 or v5. It is v3 plus one repaired relation:
+
+```text
+unresolved_later_domination_target_no_carrier_with_positive_nonboundary_guard
+```
+
+The repaired relation acts only when all of these graph facts are present:
+
+- the active graph has exactly one resolved survivor;
+- the source is that resolved survivor;
+- the source has no single-hole closure dependency;
+- the target is the nearest later unresolved candidate;
+- the target has no legal carrier under the current witness bound;
+- the active graph contains no positive reset evidence between source and
+  target;
+- the target has positive non-boundary evidence.
+
+The positive non-boundary evidence is label-free. It may come from a bounded
+composite witness, power witness, certified divisor-class certificate,
+wheel-closed target, independently rejected target, or target position beyond
+a selected carrier-locked pressure ceiling.
+
+The relation abstains when the target has no positive non-boundary evidence.
+This is the safety correction from the v4 failure: absence of reset evidence
+alone is not enough to absorb a no-carrier unresolved target.
+
 ## Record Contract
 
 Each emitted JSONL record uses:
 
 - `record_type: PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH`
-- `inference_status: INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V5`
+- `inference_status: INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V6`
 - `production_approved: false`
 - `cryptographic_use_approved: false`
 - `classical_audit_required: true`
@@ -365,6 +410,71 @@ true_boundary_status_counts:
 
 Graph v5 increases experimental graph emissions from 447 to 995 on anchors
 `11..10_000` with zero downstream audit failures on the tested surface.
+
+## v4/v5 Scale Failure
+
+The `11..100_000` scale run exposed a v4 failure:
+
+```text
+anchor_p: 10193
+bad emitted q_hat: 10201
+actual next prime: 10211
+bad emitted offset: 8
+actual boundary offset: 18
+relation_that_absorbed_true_boundary: v4
+```
+
+The audit confirmed first-boundary semantics, not mere primality. The true
+boundary was in the candidate set, remained unresolved through v3, and was
+absorbed by v4. Therefore v4 and v5 are quarantined outside the last clean
+`11..10_000` surface.
+
+## v6 Integration Result
+
+Graph v6 integrates only the repaired v4 candidate. It does not call the old
+v4 or v5 propagation relations.
+
+Configuration:
+
+```text
+candidate_bound: 128
+witness_bound: 127
+```
+
+On anchors `11..10_000`:
+
+```text
+graph_solved_count: 212
+graph_abstain_count: 1013
+audited_count: 212
+confirmed_count: 212
+failed_count: 0
+v4_relation_applied_count: 0
+v5_relation_applied_count: 0
+repaired_relation_applied_count: 64
+repaired_relation_solution_count: 1
+repaired_relation_correct_count_after_audit: 1
+repaired_relation_wrong_count_after_audit: 0
+```
+
+On anchors `11..100_000`:
+
+```text
+graph_solved_count: 217
+graph_abstain_count: 9371
+audited_count: 217
+confirmed_count: 217
+failed_count: 0
+v4_relation_applied_count: 0
+v5_relation_applied_count: 0
+repaired_relation_applied_count: 83
+repaired_relation_solution_count: 1
+repaired_relation_correct_count_after_audit: 1
+repaired_relation_wrong_count_after_audit: 0
+```
+
+Graph v6 is a safe repair over v3 on these surfaces. It is not a restoration
+of the v4/v5 coverage jump.
 
 ## Failure Handling
 

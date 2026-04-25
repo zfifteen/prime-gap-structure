@@ -89,6 +89,9 @@ BOUNDARY_CERTIFICATE_GRAPH_SOLVER_PATH = (
 BOUNDARY_CERTIFICATE_GRAPH_ABSTENTION_ANALYSIS_PATH = (
     MODULE_DIR / "boundary_certificate_graph_abstention_analysis.py"
 )
+BOUNDARY_CERTIFICATE_GRAPH_V4_ABSTENTION_PROFILE_PATH = (
+    MODULE_DIR / "boundary_certificate_graph_v4_abstention_profile.py"
+)
 
 
 def load_module(path: Path, name: str):
@@ -2752,3 +2755,90 @@ def test_boundary_certificate_graph_abstention_analysis_reports_blockers(tmp_pat
             "first_missing_relation_guess",
             "missing_relation_reasons",
         } <= set(record)
+
+
+def test_boundary_certificate_graph_v4_abstention_profile_reports_hints(tmp_path):
+    """v4 abstention profile should write detail rows and relation hints."""
+    module = load_module(
+        BOUNDARY_CERTIFICATE_GRAPH_V4_ABSTENTION_PROFILE_PATH,
+        "boundary_certificate_graph_v4_abstention_profile",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "128",
+                "--witness-bound",
+                "127",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    rows_path = tmp_path / "boundary_certificate_graph_v4_abstention_profile_rows.jsonl"
+    summary_path = (
+        tmp_path / "boundary_certificate_graph_v4_abstention_profile_summary.json"
+    )
+    assert rows_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in rows_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    rows = [
+        json.loads(line)
+        for line in rows_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["mode"] == "offline_boundary_certificate_graph_v4_abstention_profile"
+    assert summary["rule_set"] == "005A-R"
+    assert summary["solver_version"] == "v3"
+    assert summary["pure_emission_added"] is False
+    assert summary["v4_relation_added"] is False
+    assert summary["production_approved"] is False
+    assert summary["cryptographic_use_approved"] is False
+    assert summary["v3_graph_abstain_count"] == len(rows)
+    assert "candidate_v4_relation_hint_counts" in summary
+    assert "recommended_v4_relation" in summary
+    assert "first_20_remaining_later_unresolved_examples" in summary
+    assert summary["recommended_v4_relation"]
+
+    if rows:
+        row = rows[0]
+        assert {
+            "anchor_p",
+            "actual_boundary_offset_label",
+            "resolved_offsets_after_v3",
+            "unresolved_offsets_after_v3",
+            "rejected_offsets_after_v3",
+            "absorbed_offsets_after_v3",
+            "true_boundary_status_after_v3",
+            "abstain_reason_after_v3",
+            "nearest_unresolved_after_true",
+            "nearest_unresolved_after_each_resolved",
+            "source_candidate_offset",
+            "source_candidate_has_carrier",
+            "source_candidate_carrier_offset",
+            "source_candidate_carrier_d",
+            "source_candidate_carrier_family",
+            "source_single_hole_closure_used",
+            "target_candidate_offset",
+            "target_has_carrier",
+            "target_carrier_offset",
+            "target_carrier_d",
+            "target_carrier_family",
+            "carrier_identity_preserved_bool",
+            "target_first_legal_carrier_after_source_bool",
+            "active_reset_evidence_status",
+            "empty_carrier_extension_applicable_bool",
+            "why_v1_abstained",
+            "why_v2_abstained",
+            "why_v3_abstained",
+            "candidate_v4_relation_hint",
+        } <= set(row)

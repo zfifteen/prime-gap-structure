@@ -1,0 +1,4 @@
+scale,failure_count,left_hidden_impostor_count,left_semiprime_shadow_count,true_boundary_outside_chamber_count,right_overstep_count,other_composite_impostor_count,median_true_minus_emitted,within_16_count,within_32_count,within_64_count,within_128_count
+1000000000000,105,0,102,3,0,0,22,36,72,93,102
+1000000000000000,148,12,129,7,0,0,24.0,47,92,127,141
+1000000000000000000,151,21,124,6,0,0,30,53,86,119,145

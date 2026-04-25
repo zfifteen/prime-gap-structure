@@ -1,0 +1,47 @@
+{
+  "decision": "RIGHTWARD_REORIENTATION",
+  "scales": [
+    {
+      "scale": 1000000000000,
+      "failure_count": 105,
+      "left_hidden_impostor_count": 0,
+      "left_semiprime_shadow_count": 102,
+      "true_boundary_outside_chamber_count": 3,
+      "right_overstep_count": 0,
+      "other_composite_impostor_count": 0,
+      "median_true_minus_emitted": 22,
+      "within_16_count": 36,
+      "within_32_count": 72,
+      "within_64_count": 93,
+      "within_128_count": 102
+    },
+    {
+      "scale": 1000000000000000,
+      "failure_count": 148,
+      "left_hidden_impostor_count": 12,
+      "left_semiprime_shadow_count": 129,
+      "true_boundary_outside_chamber_count": 7,
+      "right_overstep_count": 0,
+      "other_composite_impostor_count": 0,
+      "median_true_minus_emitted": 24.0,
+      "within_16_count": 47,
+      "within_32_count": 92,
+      "within_64_count": 127,
+      "within_128_count": 141
+    },
+    {
+      "scale": 1000000000000000000,
+      "failure_count": 151,
+      "left_hidden_impostor_count": 21,
+      "left_semiprime_shadow_count": 124,
+      "true_boundary_outside_chamber_count": 6,
+      "right_overstep_count": 0,
+      "other_composite_impostor_count": 0,
+      "median_true_minus_emitted": 30,
+      "within_16_count": 53,
+      "within_32_count": 86,
+      "within_64_count": 119,
+      "within_128_count": 145
+    }
+  ]
+}

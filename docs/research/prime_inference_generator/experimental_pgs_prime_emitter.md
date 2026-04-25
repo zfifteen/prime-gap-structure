@@ -125,8 +125,41 @@ One failed emitted prime requires immediate autopsy before further expansion.
 
 ## Next Scale Run
 
-The next generator-facing run should increase emitted count while keeping
-downstream audit failures at zero. The narrower scale option is:
+The target-driven run kept the same rule and bounds, started at anchor 11, and
+scanned to the 10,000,000 cap.
+
+```text
+rule_set: 005A-R
+emit_target: 100
+candidate_bound: 128
+witness_bound: 127
+anchor_range: 11..10000000
+max_scan_cap: 10000000
+final_anchor_scanned: 9999991
+max_anchor_scanned: 9999991
+emitted_count: 36
+reason: EMIT_TARGET_NOT_REACHED
+runtime_seconds: 1775.3614568330813
+```
+
+The separate downstream audit confirmed all emitted records:
+
+```text
+audited_count: 36
+confirmed_count: 36
+failed_count: 0
+first_failure: null
+validation_backend: sympy.primerange_first_boundary
+```
+
+The run did not increase coverage. Under the current 005A-R rule and fixed
+bounds, the emission island remains the same 36 records through the 10,000,000
+cap.
+
+The next generator-facing run should therefore add a lawful deduction relation
+or a structurally justified adjacent lock family before attempting another
+larger scan. A shifted-window scale option remains useful after such a relation
+exists:
 
 ```text
 candidate_bound: 128
@@ -134,4 +167,5 @@ witness_bound: 127
 anchors: 1000000..2000000
 ```
 
-That tests post-origin coverage without changing the rule or bounds.
+That tests post-origin coverage without changing the rule or bounds after the
+rule set itself gains a new accepted relation.

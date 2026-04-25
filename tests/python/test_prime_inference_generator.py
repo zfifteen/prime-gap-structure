@@ -83,6 +83,9 @@ OFFLINE_PGS_CERTIFICATE_EMITTER_PATH = (
 EXPERIMENTAL_PGS_PRIME_EMITTER_PATH = (
     MODULE_DIR / "experimental_pgs_prime_emitter.py"
 )
+BOUNDARY_CERTIFICATE_GRAPH_SOLVER_PATH = (
+    MODULE_DIR / "boundary_certificate_graph_solver.py"
+)
 
 
 def load_module(path: Path, name: str):
@@ -2478,6 +2481,10 @@ def test_experimental_pgs_prime_emitter_writes_and_audits(tmp_path):
                 "128",
                 "--witness-bound",
                 "127",
+                "--emit-target",
+                "2",
+                "--max-scan-cap",
+                "500",
                 "--output-dir",
                 str(tmp_path),
             ]
@@ -2500,7 +2507,12 @@ def test_experimental_pgs_prime_emitter_writes_and_audits(tmp_path):
     assert summary["record_type"] == "PGS_EXPERIMENTAL_INFERENCE_SUMMARY"
     assert summary["rule_set"] == "005A-R"
     assert summary["emitted_count"] == len(records)
-    assert summary["emitted_count"] > 0
+    assert summary["emitted_count"] == 2
+    assert summary["emit_target"] == 2
+    assert summary["max_scan_cap"] == 500
+    assert summary["final_anchor_scanned"] <= 500
+    assert summary["max_anchor_scanned"] == summary["final_anchor_scanned"]
+    assert summary["reason"] is None
     assert summary["production_approved"] is False
     assert summary["cryptographic_use_approved"] is False
     assert summary["classical_audit_required"] is True
@@ -2544,6 +2556,100 @@ def test_experimental_pgs_prime_emitter_writes_and_audits(tmp_path):
         == 0
     )
     audit_summary_path = tmp_path / "experimental_pgs_prime_audit_summary.json"
+    assert audit_summary_path.exists()
+    assert b"\r\n" not in audit_summary_path.read_bytes()
+    audit_summary = json.loads(audit_summary_path.read_text(encoding="utf-8"))
+    assert audit_summary["audited_count"] == len(records)
+    assert audit_summary["confirmed_count"] == len(records)
+    assert audit_summary["failed_count"] == 0
+    assert "validation_backend" in audit_summary
+
+
+def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
+    """Graph solver should emit only audit-required experimental records."""
+    module = load_module(
+        BOUNDARY_CERTIFICATE_GRAPH_SOLVER_PATH,
+        "boundary_certificate_graph_solver",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "128",
+                "--witness-bound",
+                "127",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    records_path = tmp_path / "boundary_certificate_graph_solver_records.jsonl"
+    summary_path = tmp_path / "boundary_certificate_graph_solver_summary.json"
+    assert records_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in records_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    records = [
+        json.loads(line)
+        for line in records_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["record_type"] == "PGS_GRAPH_SOLVER_SUMMARY"
+    assert summary["mode"] == "offline_boundary_certificate_graph_solver"
+    assert summary["rule_set"] == "005A-R"
+    assert summary["graph_solved_count"] == len(records)
+    assert summary["graph_solved_count"] > 0
+    assert summary["production_approved"] is False
+    assert summary["cryptographic_use_approved"] is False
+    assert summary["classical_audit_required"] is True
+    assert summary["classical_audit_status"] == "NOT_RUN"
+
+    record = records[0]
+    assert record["record_type"] == "PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH"
+    assert record["inference_status"] == (
+        "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V0"
+    )
+    assert record["production_approved"] is False
+    assert record["cryptographic_use_approved"] is False
+    assert record["classical_audit_required"] is True
+    assert record["classical_audit_status"] == "NOT_RUN"
+    assert {
+        "anchor_p",
+        "inferred_prime_q_hat",
+        "boundary_offset",
+        "rule_path",
+        "absorbed_candidates",
+        "rejected_candidates",
+        "resolved_candidates_after_solve",
+        "unresolved_candidates_after_solve",
+        "candidate_bound",
+        "witness_bound",
+        "gwr_carrier",
+        "gwr_carrier_offset",
+        "gwr_carrier_d",
+        "gwr_carrier_family",
+    } <= set(record)
+
+    assert (
+        module.main(
+            [
+                "--audit-records",
+                str(records_path),
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+    audit_summary_path = tmp_path / "boundary_certificate_graph_solver_audit_summary.json"
     assert audit_summary_path.exists()
     assert b"\r\n" not in audit_summary_path.read_bytes()
     audit_summary = json.loads(audit_summary_path.read_text(encoding="utf-8"))

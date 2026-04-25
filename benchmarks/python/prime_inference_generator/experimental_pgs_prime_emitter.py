@@ -13,9 +13,14 @@ from typing import Any
 try:
     from .offline_pgs_certificate_emitter import (
         RULE_SET,
+        anchor_primes,
         audit_certificates,
+        certificate_from_activation,
         emit_certificates,
+        selected_activation_offsets,
+        unique_resolved_survivor_offset,
     )
+    from .composite_exclusion_boundary_probe import eliminate_candidates
     from .resolved_boundary_lock_separator_probe import jsonable
 except ImportError:  # pragma: no cover - direct script execution
     MODULE_DIR = Path(__file__).resolve().parent
@@ -23,9 +28,14 @@ except ImportError:  # pragma: no cover - direct script execution
         sys.path.insert(0, str(MODULE_DIR))
     from offline_pgs_certificate_emitter import (
         RULE_SET,
+        anchor_primes,
         audit_certificates,
+        certificate_from_activation,
         emit_certificates,
+        selected_activation_offsets,
+        unique_resolved_survivor_offset,
     )
+    from composite_exclusion_boundary_probe import eliminate_candidates
     from resolved_boundary_lock_separator_probe import jsonable
 
 
@@ -64,6 +74,18 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=127,
         help="Largest positive witness factor.",
+    )
+    parser.add_argument(
+        "--emit-target",
+        type=int,
+        default=None,
+        help="Stop after this many emitted experimental records.",
+    )
+    parser.add_argument(
+        "--max-scan-cap",
+        type=int,
+        default=None,
+        help="Inclusive anchor scan cap for target-driven emission.",
     )
     parser.add_argument(
         "--audit-records",
@@ -115,27 +137,92 @@ def emit_experimental_records(
     max_anchor: int,
     candidate_bound: int,
     witness_bound: int,
+    emit_target: int | None = None,
+    max_scan_cap: int | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """Emit experimental inferred-prime records from 005A-R certificates."""
     started = time.perf_counter()
-    certificates, _ = emit_certificates(
-        start_anchor=start_anchor,
-        max_anchor=max_anchor,
-        candidate_bound=candidate_bound,
-        witness_bound=witness_bound,
-    )
-    records = [inferred_record(certificate) for certificate in certificates]
+    scan_cap = max_anchor if max_scan_cap is None else max_scan_cap
+    if emit_target is None:
+        certificates, _ = emit_certificates(
+            start_anchor=start_anchor,
+            max_anchor=scan_cap,
+            candidate_bound=candidate_bound,
+            witness_bound=witness_bound,
+        )
+        records = [inferred_record(certificate) for certificate in certificates]
+        final_anchor_scanned = scan_cap
+    else:
+        records = []
+        seen: set[tuple[int, int]] = set()
+        final_anchor_scanned: int | None = None
+        for anchor_p in anchor_primes(start_anchor, scan_cap):
+            final_anchor_scanned = anchor_p
+            pre_row = eliminate_candidates(
+                anchor_p,
+                candidate_bound,
+                enable_single_hole_positive_witness_closure=True,
+                witness_bound=witness_bound,
+                enable_carrier_locked_pressure_ceiling=True,
+                carrier_lock_predicate="unresolved_alternatives_before_threat",
+                enable_higher_divisor_pressure_locked_absorption=False,
+            )
+            selected_offsets = selected_activation_offsets(pre_row, witness_bound)
+            if not selected_offsets:
+                continue
+            post_row = eliminate_candidates(
+                anchor_p,
+                candidate_bound,
+                enable_single_hole_positive_witness_closure=True,
+                witness_bound=witness_bound,
+                enable_carrier_locked_pressure_ceiling=True,
+                carrier_lock_predicate="unresolved_alternatives_before_threat",
+                enable_higher_divisor_pressure_locked_absorption=True,
+            )
+            unique_offset = unique_resolved_survivor_offset(post_row)
+            for resolved_offset in selected_offsets:
+                if unique_offset != resolved_offset:
+                    continue
+                certificate = certificate_from_activation(
+                    pre_row,
+                    post_row,
+                    resolved_offset,
+                    candidate_bound,
+                    witness_bound,
+                )
+                record = inferred_record(certificate)
+                key = (
+                    int(record["anchor_p"]),
+                    int(record["inferred_prime_q_hat"]),
+                )
+                if key in seen:
+                    continue
+                seen.add(key)
+                records.append(record)
+                if len(records) == emit_target:
+                    break
+            if len(records) == emit_target:
+                break
     summary = {
         "record_type": "PGS_EXPERIMENTAL_INFERENCE_SUMMARY",
         "rule_set": RULE_SET,
-        "anchor_range": f"{start_anchor}..{max_anchor}",
+        "anchor_range": f"{start_anchor}..{scan_cap}",
         "emitted_count": len(records),
+        "emit_target": emit_target,
+        "final_anchor_scanned": final_anchor_scanned,
+        "max_anchor_scanned": final_anchor_scanned,
+        "max_scan_cap": scan_cap,
         "production_approved": False,
         "cryptographic_use_approved": False,
         "classical_audit_required": True,
         "classical_audit_status": "NOT_RUN",
         "candidate_bound": candidate_bound,
         "witness_bound": witness_bound,
+        "reason": (
+            "EMIT_TARGET_NOT_REACHED"
+            if emit_target is not None and len(records) < emit_target
+            else None
+        ),
         "runtime_seconds": time.perf_counter() - started,
     }
     return records, summary
@@ -214,6 +301,8 @@ def main(argv: list[str] | None = None) -> int:
         max_anchor=args.max_anchor,
         candidate_bound=args.candidate_bound,
         witness_bound=args.witness_bound,
+        emit_target=args.emit_target,
+        max_scan_cap=args.max_scan_cap,
     )
     write_emission_artifacts(records, summary, args.output_dir)
     return 0

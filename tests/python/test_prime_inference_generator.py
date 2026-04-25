@@ -2612,10 +2612,19 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
 
     records_path = tmp_path / "boundary_certificate_graph_solver_records.jsonl"
     summary_path = tmp_path / "boundary_certificate_graph_solver_summary.json"
+    entropy_rows_path = tmp_path / "boundary_certificate_graph_entropy_rows.jsonl"
+    entropy_stalls_path = tmp_path / "boundary_certificate_graph_entropy_stalls.jsonl"
+    entropy_summary_path = tmp_path / "boundary_certificate_graph_entropy_summary.json"
     assert records_path.exists()
     assert summary_path.exists()
+    assert entropy_rows_path.exists()
+    assert entropy_stalls_path.exists()
+    assert entropy_summary_path.exists()
     assert b"\r\n" not in records_path.read_bytes()
     assert b"\r\n" not in summary_path.read_bytes()
+    assert b"\r\n" not in entropy_rows_path.read_bytes()
+    assert b"\r\n" not in entropy_stalls_path.read_bytes()
+    assert b"\r\n" not in entropy_summary_path.read_bytes()
 
     records = [
         json.loads(line)
@@ -2632,6 +2641,29 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
     assert summary["cryptographic_use_approved"] is False
     assert summary["classical_audit_required"] is True
     assert summary["classical_audit_status"] == "NOT_RUN"
+    assert summary["entropy_audit_rows"] == "boundary_certificate_graph_entropy_rows.jsonl"
+    assert summary["entropy_audit_stalls"] == (
+        "boundary_certificate_graph_entropy_stalls.jsonl"
+    )
+    assert summary["entropy_audit_summary"] == (
+        "boundary_certificate_graph_entropy_summary.json"
+    )
+
+    entropy_rows = [
+        json.loads(line)
+        for line in entropy_rows_path.read_text(encoding="utf-8").splitlines()
+    ]
+    entropy_summary = json.loads(entropy_summary_path.read_text(encoding="utf-8"))
+    assert entropy_rows
+    assert entropy_summary["anchor_count"] == len(entropy_rows)
+    assert "stage_mean_bit_yields" in entropy_summary
+    entropy_row = entropy_rows[0]
+    assert entropy_row["record_type"] == "PGS_GRAPH_ENTROPY_ROW"
+    assert entropy_row["classical_audit"]["true_boundary_offset"] is None
+    assert entropy_row["classical_audit"]["audit_status"] == "NOT_RUN"
+    assert entropy_row["stages"][0]["stage"] == "initial"
+    assert entropy_row["stages"][-1]["stage"] == "final"
+    assert "solver_error" in entropy_row
 
     record = records[0]
     assert record["record_type"] == "PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH"

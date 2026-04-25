@@ -13,7 +13,7 @@ The strongest current result is the bounded high-coverage experimental mode:
 solver_version: v7-bounded
 surface: anchors 11..100000
 candidate_bound: 128
-witness_bound: 397
+witness_bound: 317
 anchors_scanned: 9588
 emitted_count: 6039
 confirmed_count: 6039
@@ -144,7 +144,7 @@ requires:
 --fail-on-audit-failure
 ```
 
-On the `11..100000`, `candidate_bound = 128`, `witness_bound = 397` surface:
+On the `11..100000`, `candidate_bound = 128`, `witness_bound = 317` surface:
 
 ```text
 risky_input_count: 7391
@@ -156,7 +156,7 @@ generator_status: BOUNDED_ZERO_FAILURE_AUDITED
 ```
 
 For this surface, `ceil_sqrt(max_anchor + candidate_bound) = 317`, so the
-audited `witness_bound = 397` run is above the sieve-complete threshold.
+audited `witness_bound = 317` run is exactly at the sieve-complete threshold.
 
 This mode is materially stronger than v6 in coverage, but it remains bounded
 and experimental. It is not pure production emission.
@@ -286,11 +286,11 @@ python3 benchmarks/python/prime_inference_generator/experimental_graph_prime_gen
   --start-anchor 11 \
   --max-anchor 100000 \
   --candidate-bound 128 \
-  --witness-bound 397 \
+  --witness-bound 317 \
   --audit \
   --fail-on-audit-failure \
   --print-dashboard \
-  --output-dir output/prime_inference_generator/v7_bounded_w397_11_100000
+  --output-dir output/prime_inference_generator/v7_bounded_w317_11_100000
 ```
 
 Expected dashboard:
@@ -336,7 +336,7 @@ The current strongest claim is:
 ```text
 The v7-bounded PGS graph generator emitted 6039 experimental inferred
 next-prime boundary records on anchors 11..100000 with candidate_bound 128 and
-witness_bound 397. A separate downstream first-boundary audit confirmed
+witness_bound 317. A separate downstream first-boundary audit confirmed
 6039 / 6039 records, with 0 failures. Production and cryptographic approvals
 remain false.
 ```

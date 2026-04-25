@@ -72,7 +72,7 @@ nonboundary filter with a declared witness horizon. It requires:
 --fail-on-audit-failure
 ```
 
-On the `11..100_000`, `candidate_bound = 128`, `witness_bound = 397` surface,
+On the `11..100_000`, `candidate_bound = 128`, `witness_bound = 317` surface,
 the required sieve-complete witness bound is `317`. The run emitted `6039`
 records, confirmed `6039`, and failed `0` downstream audit records. It remains
 non-production and non-cryptographic, but it is the current highest-coverage
@@ -212,6 +212,9 @@ first_failure: null
 
 mode: v7-bounded
 anchors_scanned: 9588
+candidate_bound: 128
+witness_bound: 317
+sieve_complete_witness_bound: 317
 risky_input_count: 7391
 filtered_count: 1352
 emitted_count: 6039

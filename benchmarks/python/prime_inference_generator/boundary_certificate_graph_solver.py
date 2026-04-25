@@ -23,6 +23,11 @@ try:
         higher_divisor_pressure_lock_selected,
         power_closure_witness,
     )
+    from .boundary_certificate_graph_entropy_audit import (
+        EntropyAuditWriter,
+        StageRecord,
+        build_entropy_row,
+    )
     from .offline_pgs_certificate_emitter import anchor_primes, first_prime_after
     from .resolved_boundary_lock_separator_probe import jsonable
 except ImportError:  # pragma: no cover - direct script execution
@@ -41,6 +46,11 @@ except ImportError:  # pragma: no cover - direct script execution
         higher_divisor_pressure_lock_selected,
         power_closure_witness,
     )
+    from boundary_certificate_graph_entropy_audit import (
+        EntropyAuditWriter,
+        StageRecord,
+        build_entropy_row,
+    )
     from offline_pgs_certificate_emitter import anchor_primes, first_prime_after
     from resolved_boundary_lock_separator_probe import jsonable
 
@@ -49,6 +59,9 @@ DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
 RECORDS_FILENAME = "boundary_certificate_graph_solver_records.jsonl"
 SUMMARY_FILENAME = "boundary_certificate_graph_solver_summary.json"
 AUDIT_SUMMARY_FILENAME = "boundary_certificate_graph_solver_audit_summary.json"
+ENTROPY_ROWS_FILENAME = "boundary_certificate_graph_entropy_rows.jsonl"
+ENTROPY_STALLS_FILENAME = "boundary_certificate_graph_entropy_stalls.jsonl"
+ENTROPY_SUMMARY_FILENAME = "boundary_certificate_graph_entropy_summary.json"
 RULE_SET = "005A-R"
 SOLVER_VERSION = "v6"
 UNRESOLVED_LATER_DOMINATION_RELATION = (
@@ -867,10 +880,124 @@ def relation_count(
     )
 
 
+def active_offsets_from_records(records: list[dict[str, Any]]) -> list[int]:
+    """Return non-rejected candidate offsets from status records."""
+    return [
+        int(record["offset"])
+        for record in records
+        if record["status"] != CANDIDATE_STATUS_REJECTED
+    ]
+
+
+def stage_record_from_records(
+    stage: str,
+    records: list[dict[str, Any]],
+) -> StageRecord:
+    """Return an entropy stage record from candidate status records."""
+    return StageRecord(
+        stage=stage,
+        active_offsets=active_offsets_from_records(records),
+        rejected_offsets=[
+            int(record["offset"])
+            for record in records
+            if record["status"] == CANDIDATE_STATUS_REJECTED
+        ],
+        resolved_offsets=[
+            int(record["offset"])
+            for record in records
+            if record["status"] == CANDIDATE_STATUS_RESOLVED_SURVIVOR
+        ],
+        unresolved_offsets=[
+            int(record["offset"])
+            for record in records
+            if record["status"] == CANDIDATE_STATUS_UNRESOLVED
+        ],
+    )
+
+
+def stage_record_from_nodes(
+    stage: str,
+    nodes: dict[int, dict[str, Any]],
+) -> StageRecord:
+    """Return an entropy stage record from active graph nodes."""
+    return StageRecord(
+        stage=stage,
+        active_offsets=[
+            offset
+            for offset, node in sorted(nodes.items())
+            if node["status"] != CANDIDATE_STATUS_REJECTED
+            and not bool(node["absorbed"])
+        ],
+        rejected_offsets=[
+            offset
+            for offset, node in sorted(nodes.items())
+            if node["status"] == CANDIDATE_STATUS_REJECTED
+        ],
+        absorbed_offsets=[
+            offset for offset, node in sorted(nodes.items()) if bool(node["absorbed"])
+        ],
+        resolved_offsets=[
+            offset
+            for offset, node in sorted(nodes.items())
+            if node["status"] == CANDIDATE_STATUS_RESOLVED_SURVIVOR
+        ],
+        unresolved_offsets=[
+            offset
+            for offset, node in sorted(nodes.items())
+            if node["status"] == CANDIDATE_STATUS_UNRESOLVED
+            and not bool(node["absorbed"])
+        ],
+    )
+
+
+def entropy_base_stage_records(
+    anchor_p: int,
+    candidate_bound: int,
+    witness_bound: int,
+    ceiling_row: dict[str, Any],
+) -> list[StageRecord]:
+    """Return entropy records for the non-mutating base solver stages."""
+    positive_row = eliminate_candidates(
+        anchor_p,
+        candidate_bound,
+        enable_single_hole_positive_witness_closure=False,
+        witness_bound=witness_bound,
+        enable_carrier_locked_pressure_ceiling=False,
+        enable_higher_divisor_pressure_locked_absorption=False,
+    )
+    single_hole_row = eliminate_candidates(
+        anchor_p,
+        candidate_bound,
+        enable_single_hole_positive_witness_closure=True,
+        witness_bound=witness_bound,
+        enable_carrier_locked_pressure_ceiling=False,
+        enable_higher_divisor_pressure_locked_absorption=False,
+    )
+    return [
+        StageRecord(
+            "initial",
+            active_offsets=list(ceiling_row["candidate_offsets"]),
+        ),
+        stage_record_from_records(
+            "after_positive_composite_rejection",
+            positive_row["candidate_status_records"],
+        ),
+        stage_record_from_records(
+            "after_single_hole_positive_witness_closure",
+            single_hole_row["candidate_status_records"],
+        ),
+        stage_record_from_records(
+            "after_carrier_locked_pressure_ceiling",
+            ceiling_row["candidate_status_records"],
+        ),
+    ]
+
+
 def solve_anchor(
     anchor_p: int,
     candidate_bound: int,
     witness_bound: int,
+    entropy_writer: EntropyAuditWriter | None = None,
 ) -> tuple[dict[str, Any] | None, dict[str, Any]]:
     """Solve one anchor graph without classical validation."""
     row = eliminate_candidates(
@@ -882,17 +1009,35 @@ def solve_anchor(
         carrier_lock_predicate="unresolved_alternatives_before_threat",
         enable_higher_divisor_pressure_locked_absorption=False,
     )
+    stage_records = entropy_base_stage_records(
+        anchor_p,
+        candidate_bound,
+        witness_bound,
+        row,
+    )
     nodes = candidate_nodes(row, witness_bound)
     relations = base_relations(row)
     relations.extend(propagate_005a_r(anchor_p, nodes, witness_bound))
+    stage_records.append(
+        stage_record_from_nodes("after_005A_R_locked_absorption", nodes)
+    )
     relations.extend(
         propagate_unresolved_later_domination(anchor_p, nodes, witness_bound)
+    )
+    stage_records.append(
+        stage_record_from_nodes("after_v1_unresolved_later_domination", nodes)
     )
     relations.extend(
         propagate_unresolved_later_domination_v2(anchor_p, nodes, witness_bound)
     )
+    stage_records.append(
+        stage_record_from_nodes("after_v2_active_graph_reset_refinement", nodes)
+    )
     relations.extend(
         propagate_unresolved_later_domination_v3(anchor_p, nodes, witness_bound)
+    )
+    stage_records.append(
+        stage_record_from_nodes("after_v3_empty_source_extension", nodes)
     )
     relations.extend(
         propagate_unresolved_later_domination_repaired_v4(
@@ -902,6 +1047,23 @@ def solve_anchor(
             witness_bound,
         )
     )
+    stage_records.append(
+        stage_record_from_nodes(
+            "after_repaired_v4_positive_nonboundary_guard",
+            nodes,
+        )
+    )
+    stage_records.append(stage_record_from_nodes("final", nodes))
+
+    if entropy_writer is not None:
+        entropy_writer.write_row(
+            build_entropy_row(
+                anchor_p=anchor_p,
+                candidate_bound=candidate_bound,
+                witness_bound=witness_bound,
+                stage_records=stage_records,
+            )
+        )
 
     rejected_offsets = [
         offset
@@ -1063,13 +1225,19 @@ def solve_range(
     max_anchor: int,
     candidate_bound: int,
     witness_bound: int,
+    entropy_writer: EntropyAuditWriter | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """Solve all anchor graphs in the requested inclusive surface."""
     started = time.perf_counter()
     records: list[dict[str, Any]] = []
     graph_rows: list[dict[str, Any]] = []
     for anchor_p in anchor_primes(start_anchor, max_anchor):
-        record, graph_row = solve_anchor(anchor_p, candidate_bound, witness_bound)
+        record, graph_row = solve_anchor(
+            anchor_p,
+            candidate_bound,
+            witness_bound,
+            entropy_writer=entropy_writer,
+        )
         graph_rows.append(graph_row)
         if record is not None:
             records.append(record)
@@ -1140,6 +1308,9 @@ def solve_range(
         "cryptographic_use_approved": False,
         "classical_audit_required": True,
         "classical_audit_status": "NOT_RUN",
+        "entropy_audit_rows": ENTROPY_ROWS_FILENAME,
+        "entropy_audit_stalls": ENTROPY_STALLS_FILENAME,
+        "entropy_audit_summary": ENTROPY_SUMMARY_FILENAME,
         "accepted_rule_families": [
             "positive_composite_rejection",
             "single_hole_positive_witness_closure",
@@ -1293,12 +1464,14 @@ def main(argv: list[str] | None = None) -> int:
         write_audit_summary(audit_summary, args.output_dir)
         return 0
 
-    records, summary = solve_range(
-        start_anchor=args.start_anchor,
-        max_anchor=args.max_anchor,
-        candidate_bound=args.candidate_bound,
-        witness_bound=args.witness_bound,
-    )
+    with EntropyAuditWriter(args.output_dir) as entropy_writer:
+        records, summary = solve_range(
+            start_anchor=args.start_anchor,
+            max_anchor=args.max_anchor,
+            candidate_bound=args.candidate_bound,
+            witness_bound=args.witness_bound,
+            entropy_writer=entropy_writer,
+        )
     write_solver_artifacts(records, summary, args.output_dir)
     return 0
 

@@ -1,9 +1,8 @@
 # GPE Blocker Resolution
 
-This note keeps the GPE requirements intact and records the exact blockers that
-must be resolved for the specification in
-[`tech_spec_generative_prime_engine.md`](./tech_spec_generative_prime_engine.md)
-to become an implementation contract.
+This note records the historical blockers from the superseded GPE draft. The
+active generator specification is
+[`prime-gen/tech_spec_pgs_prime_generator.md`](./prime-gen/tech_spec_pgs_prime_generator.md).
 
 The milestone roadmap built from these blockers is
 [`gpe_development_roadmap.md`](./gpe_development_roadmap.md).

@@ -101,6 +101,9 @@ GRAPH_V4_REPAIR_GUARD_PROBE_PATH = (
 EXPERIMENTAL_GRAPH_PRIME_GENERATOR_PATH = (
     MODULE_DIR / "experimental_graph_prime_generator.py"
 )
+WITNESS_HORIZON_SEMIPRIME_ANALYSIS_PATH = (
+    MODULE_DIR / "witness_horizon_semiprime_analysis.py"
+)
 
 
 def load_module(path: Path, name: str):
@@ -2900,6 +2903,105 @@ def test_experimental_graph_prime_generator_writes_and_audits(tmp_path):
     assert filtered_semiprime_summary["filter_reason_counts"] == {
         "bounded_composite_witness": 1
     }
+
+
+def test_experimental_graph_prime_generator_prints_dashboard(tmp_path, capsys):
+    """Graph generator CLI should print a concise run dashboard on request."""
+    module = load_module(
+        EXPERIMENTAL_GRAPH_PRIME_GENERATOR_PATH,
+        "experimental_graph_prime_generator_dashboard",
+    )
+
+    assert (
+        module.main(
+            [
+                "--solver-version",
+                "v6",
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "128",
+                "--witness-bound",
+                "127",
+                "--audit",
+                "--print-dashboard",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    output = capsys.readouterr().out
+    assert "PGS experimental graph generator" in output
+    assert "solver_version: v6" in output
+    assert "emitted_count:" in output
+    assert "audit_confirmed:" in output
+    assert "audit_failed: 0" in output
+    assert "production_approved: false" in output
+    assert "cryptographic_use_approved: false" in output
+
+
+def test_witness_horizon_semiprime_analysis_writes_front_metrics(tmp_path):
+    """Witness-horizon analysis should report semiprime-front metrics."""
+    module = load_module(
+        WITNESS_HORIZON_SEMIPRIME_ANALYSIS_PATH,
+        "witness_horizon_semiprime_analysis",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "10193",
+                "--max-anchor",
+                "10399",
+                "--candidate-bound",
+                "128",
+                "--witness-bounds",
+                "127,149",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    rows_path = tmp_path / "witness_horizon_semiprime_analysis_rows.jsonl"
+    summary_path = tmp_path / "witness_horizon_semiprime_analysis_summary.json"
+    assert rows_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in rows_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    rows = [
+        json.loads(line)
+        for line in rows_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["record_type"] == "WITNESS_HORIZON_SEMIPRIME_ANALYSIS_SUMMARY"
+    assert summary["solver_version"] == "filtered-v5"
+    assert summary["witness_bounds"] == [127, 149]
+    assert len(rows) == 2
+    assert "semiprime_front_by_witness_bound" in summary
+    for row in rows:
+        assert "failed_count" in row
+        assert "failure_class_counts" in row
+        assert "semiprime_rate" in row
+        assert "least_factor_delta_min" in row
+        assert "least_factor_delta_median" in row
+        assert "least_factor_delta_max" in row
+        assert "first_20_failures" in row
+        assert row["production_approved"] is False
+        assert row["cryptographic_use_approved"] is False
+    assert summary["production_approved"] is False
+    assert summary["cryptographic_use_approved"] is False
+    assert (
+        summary["classical_factorization_scope"]
+        == "downstream_failure_classification_only"
+    )
 
 
 def test_boundary_certificate_graph_abstention_analysis_reports_blockers(tmp_path):

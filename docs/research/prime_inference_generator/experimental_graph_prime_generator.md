@@ -21,6 +21,7 @@ python3 benchmarks/python/prime_inference_generator/experimental_graph_prime_gen
   --candidate-bound 128 \
   --witness-bound 127 \
   --audit \
+  --print-dashboard \
   --output-dir output/prime_inference_generator
 ```
 
@@ -113,6 +114,20 @@ experimental_graph_prime_generator_audit_summary.json
 
 The audit checks first-boundary semantics: `inferred_prime_q_hat` must be the
 first classical prime after `anchor_p`.
+
+When `--print-dashboard` is supplied, the CLI prints the same generator-facing
+run metrics to stdout:
+
+```text
+solver_version
+anchors_scanned
+emitted_count
+abstained_count
+coverage_rate
+audit_confirmed
+audit_failed
+first_failure
+```
 
 ## Generator Runs
 

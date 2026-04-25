@@ -44,6 +44,12 @@ witness_bound = 197:
 The observed failure front tracks the first unseen semiprime band above the
 active witness horizon.
 
+The companion note
+[`semiprime_shadow_reorientation.md`](semiprime_shadow_reorientation.md)
+records the stronger right-neighborhood finding: on the `witness_bound = 251`
+surface, the semiprime shadows are left-side landmarks before nearby true
+boundaries, not arbitrary false emissions.
+
 ## Definitions
 
 The witness horizon is the active value of `witness_bound` used by the
@@ -84,6 +90,34 @@ risky_input_count: 7391
 ```
 
 ## Reproduction Commands
+
+The automated measurement harness is:
+
+```text
+benchmarks/python/prime_inference_generator/witness_horizon_semiprime_analysis.py
+```
+
+Run the documented horizon sequence:
+
+```bash
+python3 benchmarks/python/prime_inference_generator/witness_horizon_semiprime_analysis.py \
+  --start-anchor 11 \
+  --max-anchor 100000 \
+  --candidate-bound 128 \
+  --witness-bounds 127,149,197,251,307 \
+  --output-dir output/prime_inference_generator/witness_horizon_semiprime_analysis
+```
+
+The harness writes:
+
+```text
+witness_horizon_semiprime_analysis_summary.json
+witness_horizon_semiprime_analysis_rows.jsonl
+```
+
+Each row includes `failed_count`, `semiprime_rate`, `factor_min`,
+`factor_max`, `least_factor_delta_min`, `least_factor_delta_median`, and
+`least_factor_delta_max`.
 
 Run `filtered-v5` with `witness_bound = 149`:
 

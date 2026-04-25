@@ -98,6 +98,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--witness-bound", type=int, default=127)
     parser.add_argument("--emit-target", type=int, default=None)
     parser.add_argument("--audit", action="store_true")
+    parser.add_argument("--print-dashboard", action="store_true")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     return parser
 
@@ -437,6 +438,42 @@ def write_artifacts(
     return paths
 
 
+def dashboard_lines(summary: dict[str, Any]) -> list[str]:
+    """Return concise terminal dashboard lines for one generator run."""
+    lines = [
+        "PGS experimental graph generator",
+        f"solver_version: {summary['solver_version']}",
+        f"anchors_scanned: {summary['anchors_scanned']}",
+        f"emitted_count: {summary['emitted_count']}",
+        f"abstained_count: {summary['abstained_count']}",
+        f"coverage_rate: {summary['coverage_rate']:.6f}",
+        f"audit_required: {str(summary['audit_required']).lower()}",
+        f"audit_confirmed: {summary['audit_confirmed']}",
+        f"audit_failed: {summary['audit_failed']}",
+        "production_approved: false",
+        "cryptographic_use_approved: false",
+    ]
+    if summary["first_failure"] is not None:
+        lines.append(f"first_failure: {json.dumps(jsonable(summary['first_failure']), sort_keys=True)}")
+    else:
+        lines.append("first_failure: null")
+    if summary["solver_version"] == "filtered-v5":
+        lines.extend(
+            [
+                f"risky_input_count: {summary['risky_input_count']}",
+                f"filtered_count: {summary['filtered_count']}",
+                "filter_reason_counts: "
+                + json.dumps(jsonable(summary["filter_reason_counts"]), sort_keys=True),
+            ]
+        )
+    return lines
+
+
+def print_dashboard(summary: dict[str, Any]) -> None:
+    """Print the terminal dashboard for one generator run."""
+    print("\n".join(dashboard_lines(summary)))
+
+
 def main(argv: list[str] | None = None) -> int:
     """Run the experimental graph prime generator."""
     args = build_parser().parse_args(argv)
@@ -455,6 +492,8 @@ def main(argv: list[str] | None = None) -> int:
         summary["audit_failed"] = audit_summary["failed_count"]
         summary["first_failure"] = audit_summary["first_failure"]
     write_artifacts(records, summary, audit_summary, args.output_dir)
+    if args.print_dashboard:
+        print_dashboard(summary)
     return 0
 
 

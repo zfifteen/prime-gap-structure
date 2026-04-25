@@ -2618,7 +2618,7 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
     record = records[0]
     assert record["record_type"] == "PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH"
     assert record["inference_status"] == (
-        "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V0"
+        "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V1"
     )
     assert record["production_approved"] is False
     assert record["cryptographic_use_approved"] is False
@@ -2639,7 +2639,10 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
         "gwr_carrier_offset",
         "gwr_carrier_d",
         "gwr_carrier_family",
+        "new_relation_applied_count",
     } <= set(record)
+    assert "new_relation_applied_count" in summary
+    assert "new_relation_solution_count" in summary
 
     assert (
         module.main(
@@ -2659,6 +2662,8 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
     assert audit_summary["audited_count"] == len(records)
     assert audit_summary["confirmed_count"] == len(records)
     assert audit_summary["failed_count"] == 0
+    assert "new_relation_correct_count_after_audit" in audit_summary
+    assert "new_relation_wrong_count_after_audit" in audit_summary
     assert "validation_backend" in audit_summary
 
 

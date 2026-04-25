@@ -15,6 +15,7 @@ try:
         CANDIDATE_STATUS_REJECTED,
         CANDIDATE_STATUS_RESOLVED_SURVIVOR,
         CANDIDATE_STATUS_UNRESOLVED,
+        certified_divisor_class,
         eliminate_candidates,
         first_legal_carrier,
         higher_divisor_pressure_lock_selected,
@@ -29,6 +30,7 @@ except ImportError:  # pragma: no cover - direct script execution
         CANDIDATE_STATUS_REJECTED,
         CANDIDATE_STATUS_RESOLVED_SURVIVOR,
         CANDIDATE_STATUS_UNRESOLVED,
+        certified_divisor_class,
         eliminate_candidates,
         first_legal_carrier,
         higher_divisor_pressure_lock_selected,
@@ -42,7 +44,10 @@ RECORDS_FILENAME = "boundary_certificate_graph_solver_records.jsonl"
 SUMMARY_FILENAME = "boundary_certificate_graph_solver_summary.json"
 AUDIT_SUMMARY_FILENAME = "boundary_certificate_graph_solver_audit_summary.json"
 RULE_SET = "005A-R"
-SOLVER_VERSION = "v0"
+SOLVER_VERSION = "v1"
+UNRESOLVED_LATER_DOMINATION_RELATION = (
+    "unresolved_later_domination_from_existing_graph_facts"
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -217,6 +222,120 @@ def propagate_005a_r(
     return relations
 
 
+def carrier_identity(carrier: dict[str, Any]) -> tuple[Any, ...]:
+    """Return the comparable identity for one legal carrier."""
+    return (
+        carrier["carrier_offset"],
+        carrier["carrier_d"],
+        carrier["carrier_family"],
+    )
+
+
+def reset_evidence_status(
+    anchor_p: int,
+    source_offset: int,
+    target_offset: int,
+    source_carrier: dict[str, Any],
+    witness_bound: int,
+) -> str:
+    """Return whether existing graph facts show reset evidence in an extension."""
+    source_d = source_carrier["carrier_d"]
+    if source_d is None:
+        return "UNKNOWN"
+
+    target_carrier = first_legal_carrier(anchor_p, target_offset, witness_bound)
+    if carrier_identity(source_carrier) != carrier_identity(target_carrier):
+        return "POSITIVE_RESET_EVIDENCE"
+
+    for offset in range(source_offset + 1, target_offset):
+        certificate = certified_divisor_class(anchor_p + offset, witness_bound)
+        if certificate is None:
+            continue
+        if int(certificate["divisor_class"]) <= int(source_d):
+            return "POSITIVE_RESET_EVIDENCE"
+    return "NO_RESET_EVIDENCE"
+
+
+def propagate_unresolved_later_domination(
+    anchor_p: int,
+    nodes: dict[int, dict[str, Any]],
+    witness_bound: int,
+) -> list[dict[str, Any]]:
+    """Absorb nearest later unresolved candidates under a no-reset graph fact."""
+    relations: list[dict[str, Any]] = []
+    changed = True
+    while changed:
+        changed = False
+        for source_offset in sorted(nodes):
+            source_node = nodes[source_offset]
+            if source_node["status"] != CANDIDATE_STATUS_RESOLVED_SURVIVOR:
+                continue
+            if bool(source_node["single_hole_closure_used"]):
+                continue
+
+            later_unresolved = [
+                target_offset
+                for target_offset, target_node in sorted(nodes.items())
+                if target_offset > source_offset
+                and target_node["status"] == CANDIDATE_STATUS_UNRESOLVED
+                and not bool(target_node["absorbed"])
+            ]
+            for target_offset in later_unresolved:
+                if any(
+                    source_offset < intermediate_offset < target_offset
+                    for intermediate_offset in later_unresolved
+                ):
+                    continue
+                reset_status = reset_evidence_status(
+                    anchor_p,
+                    source_offset,
+                    target_offset,
+                    source_node["carrier"],
+                    witness_bound,
+                )
+                if reset_status != "NO_RESET_EVIDENCE":
+                    continue
+                target_node = nodes[target_offset]
+                target_node["status"] = CANDIDATE_STATUS_REJECTED
+                target_node["absorbed"] = True
+                target_node["absorbed_by"] = source_offset
+                target_node["reset_evidence_status"] = reset_status
+                target_node["rejection_reasons"].append(
+                    "UNRESOLVED_LATER_DOMINATION_BY_"
+                    f"{source_offset}_NO_RESET_EVIDENCE"
+                )
+                target_node["unresolved_reasons"] = []
+                target_node["unresolved_interior_offsets"] = []
+                relations.append(
+                    {
+                        "relation_type": UNRESOLVED_LATER_DOMINATION_RELATION,
+                        "source_offset": source_offset,
+                        "target_offset": target_offset,
+                        "effect": "ABSORBS_NEAREST_LATER_UNRESOLVED_CANDIDATE",
+                        "reset_evidence_status": reset_status,
+                        "reasons": [
+                            "SOURCE_RESOLVED_SURVIVOR",
+                            "SOURCE_SINGLE_HOLE_CLOSURE_USED_FALSE",
+                            "TARGET_NEAREST_LATER_UNRESOLVED",
+                            "CARRIER_IDENTITY_PRESERVED",
+                            "NO_RESET_EVIDENCE_IN_EXISTING_GRAPH_FACTS",
+                        ],
+                    }
+                )
+                changed = True
+    return relations
+
+
+def relation_count(
+    relations: list[dict[str, Any]],
+    relation_type: str,
+) -> int:
+    """Return the count of a relation type in a relation list."""
+    return sum(
+        1 for relation in relations if relation["relation_type"] == relation_type
+    )
+
+
 def solve_anchor(
     anchor_p: int,
     candidate_bound: int,
@@ -235,6 +354,9 @@ def solve_anchor(
     nodes = candidate_nodes(row, witness_bound)
     relations = base_relations(row)
     relations.extend(propagate_005a_r(anchor_p, nodes, witness_bound))
+    relations.extend(
+        propagate_unresolved_later_domination(anchor_p, nodes, witness_bound)
+    )
 
     rejected_offsets = [
         offset
@@ -267,6 +389,10 @@ def solve_anchor(
         "resolved_offsets_after_solve": resolved_offsets,
         "unresolved_offsets_after_solve": unresolved_offsets,
         "solved_bool": len(resolved_offsets) == 1 and not unresolved_offsets,
+        "new_relation_applied_count": relation_count(
+            relations,
+            UNRESOLVED_LATER_DOMINATION_RELATION,
+        ),
     }
     if not graph_row["solved_bool"]:
         return None, graph_row
@@ -275,7 +401,7 @@ def solve_anchor(
     carrier = nodes[boundary_offset]["carrier"]
     record = {
         "record_type": "PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH",
-        "inference_status": "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V0",
+        "inference_status": "INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V1",
         "rule_set": RULE_SET,
         "solver_version": SOLVER_VERSION,
         "anchor_p": anchor_p,
@@ -286,6 +412,7 @@ def solve_anchor(
             "single_hole_positive_witness_closure",
             "carrier_locked_pressure_ceiling",
             "005A_R_locked_absorption",
+            UNRESOLVED_LATER_DOMINATION_RELATION,
         ],
         "absorbed_candidates": absorbed_offsets,
         "rejected_candidates": rejected_offsets,
@@ -302,6 +429,10 @@ def solve_anchor(
         "gwr_carrier_d": carrier["carrier_d"],
         "gwr_carrier_family": carrier["carrier_family"],
         "relation_count": len(relations),
+        "new_relation_applied_count": relation_count(
+            relations,
+            UNRESOLVED_LATER_DOMINATION_RELATION,
+        ),
         "candidate_count": len(nodes),
     }
     return record, graph_row
@@ -333,6 +464,14 @@ def solve_range(
         "witness_bound": witness_bound,
         "graph_solved_count": len(records),
         "abstain_count": len(graph_rows) - len(records),
+        "new_relation_applied_count": sum(
+            int(row["new_relation_applied_count"]) for row in graph_rows
+        ),
+        "new_relation_solution_count": sum(
+            1
+            for record in records
+            if int(record["new_relation_applied_count"]) > 0
+        ),
         "production_approved": False,
         "cryptographic_use_approved": False,
         "classical_audit_required": True,
@@ -342,6 +481,7 @@ def solve_range(
             "single_hole_positive_witness_closure",
             "carrier_locked_pressure_ceiling",
             "005A_R_locked_absorption",
+            UNRESOLVED_LATER_DOMINATION_RELATION,
         ],
         "wrong_count": None,
         "first_failure": None,
@@ -382,15 +522,22 @@ def audit_graph_records(records_path: Path) -> dict[str, Any]:
         if line.strip()
     ]
     confirmed_count = 0
+    new_relation_correct_count = 0
+    new_relation_wrong_count = 0
     first_failure: dict[str, Any] | None = None
     for record in records:
         anchor_p = int(record["anchor_p"])
         inferred_prime_q_hat = int(record["inferred_prime_q_hat"])
         first_after_anchor = first_prime_after(anchor_p, inferred_prime_q_hat)
         confirmed = first_after_anchor == inferred_prime_q_hat
+        used_new_relation = int(record.get("new_relation_applied_count", 0)) > 0
         if confirmed:
             confirmed_count += 1
+            if used_new_relation:
+                new_relation_correct_count += 1
             continue
+        if used_new_relation:
+            new_relation_wrong_count += 1
         if first_failure is None:
             first_failure = {
                 "anchor_p": anchor_p,
@@ -403,6 +550,8 @@ def audit_graph_records(records_path: Path) -> dict[str, Any]:
         "audited_count": audited_count,
         "confirmed_count": confirmed_count,
         "failed_count": failed_count,
+        "new_relation_correct_count_after_audit": new_relation_correct_count,
+        "new_relation_wrong_count_after_audit": new_relation_wrong_count,
         "first_failure": first_failure,
         "validation_backend": "sympy.primerange_first_boundary",
         "runtime_seconds": time.perf_counter() - started,

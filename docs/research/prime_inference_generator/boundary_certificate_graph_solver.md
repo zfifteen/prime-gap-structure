@@ -1,4 +1,4 @@
-# Boundary Certificate Graph Solver v0
+# Boundary Certificate Graph Solver
 
 ## Status
 
@@ -28,7 +28,7 @@ they are composed as a small deduction graph.
 
 ## Accepted Rule Families
 
-The v0 graph uses only rule families already admitted into the experimental
+The graph uses only rule families already admitted into the experimental
 pipeline:
 
 - positive composite witness rejection;
@@ -36,17 +36,34 @@ pipeline:
 - carrier-locked pressure ceiling;
 - 005A-R higher-divisor locked absorption with
   `single_hole_closure_used = false`.
+- unresolved-later domination from existing graph facts.
 
 It does not use 005B, broad resolved-chamber absorption, earliest-candidate
 dominance, scalar ranking, prime-marker identity, `nextprime`, `isprime`, or
 classical labels during solving.
+
+## v1 Relation
+
+The v1 addition is exactly one relation:
+
+```text
+unresolved_later_domination_from_existing_graph_facts
+```
+
+It absorbs only the nearest later unresolved candidate after a resolved source
+when the source has no single-hole closure dependency, the target chamber
+preserves the same first legal carrier, and the existing graph facts contain no
+same-or-lower divisor reset evidence between the source and target.
+
+The relation abstains when reset evidence is positive or unknown. It does not
+use labels, candidate ranking, 005B, or broad resolved-chamber absorption.
 
 ## Record Contract
 
 Each emitted JSONL record uses:
 
 - `record_type: PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH`
-- `inference_status: INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V0`
+- `inference_status: INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V1`
 - `production_approved: false`
 - `cryptographic_use_approved: false`
 - `classical_audit_required: true`
@@ -63,34 +80,45 @@ the first classical prime after `anchor_p`.
 
 Classical validation is therefore downstream evidence, not a rule input.
 
-## Initial Target
-
-The first generator-facing test surface is:
-
-- anchors `11..10_000`;
-- `candidate_bound = 128`;
-- `witness_bound = 127`;
-- rule set `005A-R`;
-- accepted graph rules only.
-
-The desired outcome is `graph_solved_count > 36` with `audit_failed_count = 0`.
-If the solver emits only 36 records, then v0 is operationally equivalent to the
-005A-R emitter on this surface and the next missing relation must be identified
-from graph abstentions.
-
-## Initial Result
+## v0 Result
 
 On anchors `11..10_000` with `candidate_bound = 128` and
 `witness_bound = 127`, v0 emitted 36 experimental graph records.
 
 Separate downstream audit confirmed 36/36 records with 0 failures.
 
-This is safe but not a coverage breakthrough. Under the accepted v0 rule set,
-the graph solver is operationally equivalent to the 005A-R emitter on this
-surface. The next implementation question is therefore not another wrapper
-around the same rules. It is the specific missing graph relation that would let
-the solver eliminate or absorb candidates in the abstained rows without using
-classical labels inside the solver.
+This was safe but not a coverage breakthrough. Under the accepted v0 rule set,
+the graph solver was operationally equivalent to the 005A-R emitter on this
+surface.
+
+## v1 Target
+
+- anchors `11..10_000`;
+- `candidate_bound = 128`;
+- `witness_bound = 127`;
+- rule set `005A-R` plus the single unresolved-later domination relation.
+
+## v1 Result
+
+```text
+graph_solved_count: 42
+graph_abstain_count: 1183
+new_relation_applied_count: 169
+new_relation_solution_count: 6
+```
+
+Separate downstream audit:
+
+```text
+audited_count: 42
+confirmed_count: 42
+failed_count: 0
+new_relation_correct_count_after_audit: 6
+new_relation_wrong_count_after_audit: 0
+```
+
+This is the first graph-solver coverage improvement beyond the 36-record
+005A-R island while keeping downstream audit failures at zero.
 
 ## Failure Handling
 

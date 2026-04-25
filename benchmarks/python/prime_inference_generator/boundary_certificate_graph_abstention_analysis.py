@@ -30,7 +30,7 @@ DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
 SUMMARY_FILENAME = "boundary_certificate_graph_abstention_analysis_summary.json"
 ROWS_FILENAME = "boundary_certificate_graph_abstention_analysis_rows.jsonl"
 RULE_SET = "005A-R"
-SOLVER_VERSION = "v0"
+SOLVER_VERSION = "v1"
 TRUE_BOUNDARY_STATUSES = (
     "RESOLVED",
     "UNRESOLVED",

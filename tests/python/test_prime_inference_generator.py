@@ -74,6 +74,12 @@ ABSORPTION_LOCK_ACTION_POPULATION_AUDIT_PATH = (
     MODULE_DIR / "absorption_lock_action_population_audit.py"
 )
 BOUNDARY_LAW_005A_STRESS_PATH = MODULE_DIR / "boundary_law_005a_stress.py"
+BOUNDARY_LAW_005A_REFINEMENT_PROBE_PATH = (
+    MODULE_DIR / "boundary_law_005a_refinement_probe.py"
+)
+OFFLINE_PGS_CERTIFICATE_EMITTER_PATH = (
+    MODULE_DIR / "offline_pgs_certificate_emitter.py"
+)
 
 
 def load_module(path: Path, name: str):
@@ -1754,9 +1760,12 @@ def test_higher_divisor_pressure_lock_activation_profile_reports_regime(tmp_path
     assert {
         "activation_by_gap_width",
         "activation_by_carrier_family",
+        "activation_by_carrier_d",
         "activation_by_first_open_offset",
         "activation_by_previous_gap_width_class",
         "activation_by_pressure_signature",
+        "activation_by_anchor_range_bucket",
+        "non_unique_activation_count",
     } <= set(summary)
 
     if activations:
@@ -1765,16 +1774,22 @@ def test_higher_divisor_pressure_lock_activation_profile_reports_regime(tmp_path
             "anchor_p",
             "resolved_candidate_offset",
             "actual_boundary_offset_label",
+            "candidate_bound",
+            "witness_bound",
             "carrier_offset",
             "carrier_divisor_count",
             "carrier_family",
             "higher_divisor_pressure_signature",
+            "higher_divisor_pressure_offset",
+            "higher_divisor_pressure_d",
             "higher_divisor_pressure_offsets",
             "previous_gap_width",
             "previous_chamber_type",
             "first_open_offset",
             "single_hole_closure_used",
             "locked_absorption_count",
+            "absorbed_unresolved_offsets",
+            "nearest_unresolved_offsets_before_absorption",
             "unique_resolved_after_absorption_bool",
         } <= set(activation)
 
@@ -2276,3 +2291,167 @@ def test_boundary_law_005a_stress_reports_hard_gate(tmp_path):
         "action_population_match",
         "first_failure_example",
     } <= set(record)
+
+
+def test_boundary_law_005a_refinement_probe_reports_split(tmp_path):
+    """005A refinement probe should report selected and dropped activations."""
+    module = load_module(
+        BOUNDARY_LAW_005A_REFINEMENT_PROBE_PATH,
+        "boundary_law_005a_refinement_probe",
+    )
+
+    assert (
+        module.main(
+            [
+                "--surfaces",
+                "11..500",
+                "1000..2000",
+                "--candidate-bound",
+                "128",
+                "--witness-bound",
+                "127",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    activations_path = tmp_path / "boundary_law_005a_refinement_activations.jsonl"
+    rows_path = tmp_path / "boundary_law_005a_refinement_rows.jsonl"
+    summary_path = tmp_path / "boundary_law_005a_refinement_summary.json"
+    assert activations_path.exists()
+    assert rows_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in activations_path.read_bytes()
+    assert b"\r\n" not in rows_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    rows = [
+        json.loads(line)
+        for line in rows_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["mode"] == "offline_boundary_law_005a_refinement_probe"
+    assert summary["boundary_law_005_status"] == "candidate_grade_only"
+    assert summary["prime_emission_status"] == "forbidden"
+    assert "all_surfaces_hard_passed" in summary
+    assert {
+        "activation_count",
+        "selected_activation_count",
+        "dropped_activation_count",
+        "unique_success_count",
+        "non_unique_activation_count",
+        "wrong_count",
+        "false_selected_count",
+        "true_boundary_rejected_count",
+        "absorption_wrong_count",
+        "safe_abstain_count",
+        "kept_unique_successes",
+        "dropped_unique_successes",
+        "kept_non_unique_activations",
+        "dropped_non_unique_activations",
+    } <= set(summary)
+
+    record = rows[0]
+    assert {
+        "surface",
+        "candidate_bound",
+        "witness_bound",
+        "activation_count",
+        "selected_activation_count",
+        "dropped_activation_count",
+        "hard_passed",
+        "first_failure_example",
+    } <= set(record)
+
+
+def test_offline_pgs_certificate_emitter_writes_and_audits(tmp_path):
+    """Offline certificate emitter should not add pure emission behavior."""
+    module = load_module(
+        OFFLINE_PGS_CERTIFICATE_EMITTER_PATH,
+        "offline_pgs_certificate_emitter",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "128",
+                "--witness-bound",
+                "127",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    certificates_path = tmp_path / "offline_pgs_boundary_certificates.jsonl"
+    summary_path = tmp_path / "offline_pgs_certificate_emitter_summary.json"
+    assert certificates_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in certificates_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    certificates = [
+        json.loads(line)
+        for line in certificates_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["rule_set"] == "005A-R"
+    assert summary["certificate_count"] == len(certificates)
+    assert summary["certificate_count"] > 0
+    assert summary["pure_emission_approved"] is False
+    assert summary["classical_audit_required"] is True
+    assert summary["classical_audit_status"] == "NOT_RUN"
+
+    certificate = certificates[0]
+    assert certificate["record_type"] == "OFFLINE_PGS_BOUNDARY_CERTIFICATE"
+    assert certificate["certificate_status"] == "CANDIDATE_CERTIFICATE"
+    assert certificate["pure_emission_approved"] is False
+    assert certificate["classical_audit_status"] == "NOT_RUN"
+    assert certificate["rule_set"] == "005A-R"
+    assert certificate["single_hole_closure_used"] is False
+    assert {
+        "anchor_p",
+        "candidate_q_hat",
+        "boundary_offset",
+        "gwr_carrier",
+        "gwr_carrier_offset",
+        "gwr_carrier_d",
+        "gwr_carrier_family",
+        "higher_divisor_pressure_lock",
+        "absorbed_alternative_count",
+        "rejected_candidate_count",
+        "unresolved_candidate_count",
+        "resolved_survivor_count",
+        "action_population_audited",
+        "selection_wrong_count",
+        "absorption_wrong_count",
+        "true_boundary_rejected_count",
+    } <= set(certificate)
+
+    assert (
+        module.main(
+            [
+                "--audit-certificates",
+                str(certificates_path),
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+    audit_summary_path = tmp_path / "offline_pgs_certificate_audit_summary.json"
+    assert audit_summary_path.exists()
+    assert b"\r\n" not in audit_summary_path.read_bytes()
+    audit_summary = json.loads(audit_summary_path.read_text(encoding="utf-8"))
+    assert audit_summary["audited_count"] == len(certificates)
+    assert audit_summary["confirmed_count"] == len(certificates)
+    assert audit_summary["failed_count"] == 0
+    assert "validation_backend" in audit_summary

@@ -12,7 +12,10 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from .composite_exclusion_boundary_probe import run_probe
+    from .composite_exclusion_boundary_probe import (
+        certified_divisor_class,
+        run_probe,
+    )
     from .higher_divisor_pressure_lock_hardening import has_higher_divisor_pressure
     from .resolved_boundary_lock_separator_probe import (
         candidate_record_by_offset,
@@ -24,7 +27,10 @@ except ImportError:  # pragma: no cover - direct script execution
     MODULE_DIR = Path(__file__).resolve().parent
     if str(MODULE_DIR) not in sys.path:
         sys.path.insert(0, str(MODULE_DIR))
-    from composite_exclusion_boundary_probe import run_probe
+    from composite_exclusion_boundary_probe import (
+        certified_divisor_class,
+        run_probe,
+    )
     from higher_divisor_pressure_lock_hardening import has_higher_divisor_pressure
     from resolved_boundary_lock_separator_probe import (
         candidate_record_by_offset,
@@ -108,31 +114,68 @@ def pressure_signature(record: dict[str, Any]) -> str:
     return f"H{higher}_R{reset}_S{square}_SP{semiprime}"
 
 
+def anchor_range_bucket(anchor_p: int) -> str:
+    """Return the 100000-wide anchor bucket for one activation."""
+    bucket_start = (anchor_p // 100_000) * 100_000
+    return f"{bucket_start}..{bucket_start + 99_999}"
+
+
+def pressure_offset_class(
+    anchor_p: int,
+    pressure_offsets: list[int],
+    witness_bound: int,
+) -> tuple[int | None, int | None]:
+    """Return the first higher-divisor pressure offset and divisor class."""
+    if not pressure_offsets:
+        return None, None
+    pressure_offset = int(pressure_offsets[0])
+    certificate = certified_divisor_class(anchor_p + pressure_offset, witness_bound)
+    pressure_d = (
+        None if certificate is None else int(certificate["divisor_class"])
+    )
+    return pressure_offset, pressure_d
+
+
 def activation_record(
     pre_row: dict[str, Any],
     post_row: dict[str, Any],
     previous_row: dict[str, Any] | None,
     resolved_offset: int,
+    candidate_bound: int,
     witness_bound: int,
 ) -> dict[str, Any]:
     """Return one activation record."""
     record = resolved_record(pre_row, previous_row, resolved_offset, witness_bound)
     candidate = candidate_record_by_offset(pre_row, resolved_offset)
-    report = post_row["higher_divisor_pressure_locked_absorption"]
+    later_unresolved = [
+        int(offset)
+        for offset in pre_row["unresolved"]
+        if int(offset) > resolved_offset
+    ]
     previous_gap = record["previous_chamber_pressure"]["previous_gap_width"]
-    absorbed_count = (
-        len(report["absorbed_offsets"])
-        if resolved_offset in [int(offset) for offset in report["absorber_offsets"]]
-        else 0
+    pressure_offsets = [
+        int(offset)
+        for offset in record[
+            "higher_divisor_pressure_between_candidate_and_later_unresolved"
+        ]
+    ]
+    pressure_offset, pressure_d = pressure_offset_class(
+        int(pre_row["anchor_p"]),
+        pressure_offsets,
+        witness_bound,
     )
     return {
         "anchor_p": int(pre_row["anchor_p"]),
         "resolved_candidate_offset": resolved_offset,
         "actual_boundary_offset_label": int(pre_row["actual_boundary_offset_label"]),
+        "candidate_bound": candidate_bound,
+        "witness_bound": witness_bound,
         "carrier_offset": record["carrier_offset"],
         "carrier_divisor_count": record["carrier_divisor_count"],
         "carrier_family": record["carrier_family"],
         "higher_divisor_pressure_signature": pressure_signature(record),
+        "higher_divisor_pressure_offset": pressure_offset,
+        "higher_divisor_pressure_d": pressure_d,
         "higher_divisor_pressure_offsets": record[
             "higher_divisor_pressure_between_candidate_and_later_unresolved"
         ],
@@ -141,12 +184,17 @@ def activation_record(
             None if previous_row is None else str(previous_row["true_boundary_status"])
         ),
         "first_open_offset": first_open_offset(int(pre_row["anchor_p"])),
-        "single_hole_closure_used": bool(candidate.get("single_hole_positive_witness_closure")),
-        "locked_absorption_count": absorbed_count,
+        "single_hole_closure_used": bool(
+            candidate.get("single_hole_positive_witness_closure")
+        ),
+        "locked_absorption_count": len(later_unresolved),
+        "absorbed_unresolved_offsets": later_unresolved,
+        "nearest_unresolved_offsets_before_absorption": later_unresolved[:5],
         "unique_resolved_after_absorption_bool": bool(
             post_row["unique_resolved_survivor"]
         ),
         "previous_gap_width_class": gap_width_class(previous_gap),
+        "anchor_range_bucket": anchor_range_bucket(int(pre_row["anchor_p"])),
     }
 
 
@@ -250,6 +298,7 @@ def surface_profile(
                         post_row,
                         previous_row,
                         offset,
+                        candidate_bound,
                         witness_bound,
                     )
                 )
@@ -289,6 +338,7 @@ def aggregate_counts(records: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "activation_by_gap_width": count_by(records, "resolved_candidate_offset"),
         "activation_by_carrier_family": count_by(records, "carrier_family"),
+        "activation_by_carrier_d": count_by(records, "carrier_divisor_count"),
         "activation_by_first_open_offset": count_by(records, "first_open_offset"),
         "activation_by_previous_gap_width_class": count_by(
             records,
@@ -297,6 +347,10 @@ def aggregate_counts(records: list[dict[str, Any]]) -> dict[str, Any]:
         "activation_by_pressure_signature": count_by(
             records,
             "higher_divisor_pressure_signature",
+        ),
+        "activation_by_anchor_range_bucket": count_by(
+            records,
+            "anchor_range_bucket",
         ),
     }
 
@@ -333,6 +387,9 @@ def run_profile(
         "witness_bound": witness_bound,
         "activation_count": len(all_activations),
         "unique_success_count": sum(
+            int(summary["unique_success_count"]) for summary in surface_summaries
+        ),
+        "non_unique_activation_count": len(all_activations) - sum(
             int(summary["unique_success_count"]) for summary in surface_summaries
         ),
         "safe_abstain_count": sum(

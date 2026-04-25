@@ -86,6 +86,9 @@ EXPERIMENTAL_PGS_PRIME_EMITTER_PATH = (
 BOUNDARY_CERTIFICATE_GRAPH_SOLVER_PATH = (
     MODULE_DIR / "boundary_certificate_graph_solver.py"
 )
+BOUNDARY_CERTIFICATE_GRAPH_ABSTENTION_ANALYSIS_PATH = (
+    MODULE_DIR / "boundary_certificate_graph_abstention_analysis.py"
+)
 
 
 def load_module(path: Path, name: str):
@@ -2657,3 +2660,79 @@ def test_boundary_certificate_graph_solver_writes_and_audits(tmp_path):
     assert audit_summary["confirmed_count"] == len(records)
     assert audit_summary["failed_count"] == 0
     assert "validation_backend" in audit_summary
+
+
+def test_boundary_certificate_graph_abstention_analysis_reports_blockers(tmp_path):
+    """Abstention analysis should classify graph solver v0 failures."""
+    module = load_module(
+        BOUNDARY_CERTIFICATE_GRAPH_ABSTENTION_ANALYSIS_PATH,
+        "boundary_certificate_graph_abstention_analysis",
+    )
+
+    assert (
+        module.main(
+            [
+                "--start-anchor",
+                "11",
+                "--max-anchor",
+                "500",
+                "--candidate-bound",
+                "128",
+                "--witness-bound",
+                "127",
+                "--output-dir",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+
+    rows_path = tmp_path / "boundary_certificate_graph_abstention_analysis_rows.jsonl"
+    summary_path = (
+        tmp_path / "boundary_certificate_graph_abstention_analysis_summary.json"
+    )
+    assert rows_path.exists()
+    assert summary_path.exists()
+    assert b"\r\n" not in rows_path.read_bytes()
+    assert b"\r\n" not in summary_path.read_bytes()
+
+    rows = [
+        json.loads(line)
+        for line in rows_path.read_text(encoding="utf-8").splitlines()
+    ]
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert summary["mode"] == (
+        "offline_boundary_certificate_graph_abstention_analysis"
+    )
+    assert summary["rule_set"] == "005A-R"
+    assert summary["pure_emission_added"] is False
+    assert summary["production_approved"] is False
+    assert summary["cryptographic_use_approved"] is False
+    assert summary["graph_abstain_count"] == len(rows)
+    assert "abstain_reason_counts" in summary
+    assert "missing_relation_pattern_counts" in summary
+    assert "recommended_next_relation" in summary
+    assert "first_20_abstain_examples" in summary
+    assert summary["recommended_next_relation"]
+
+    if rows:
+        record = rows[0]
+        assert {
+            "anchor_p",
+            "actual_boundary_offset_label",
+            "graph_solution_status",
+            "resolved_candidates_after_solve",
+            "unresolved_candidates_after_solve",
+            "rejected_candidates_after_solve",
+            "absorbed_candidates_after_solve",
+            "true_boundary_status_after_solve",
+            "false_resolved_candidate_count",
+            "unresolved_after_true_count",
+            "unresolved_before_true_count",
+            "multiple_resolved_survivors_bool",
+            "true_boundary_resolved_but_not_unique_bool",
+            "true_boundary_unresolved_bool",
+            "no_resolved_survivor_bool",
+            "first_missing_relation_guess",
+            "missing_relation_reasons",
+        } <= set(record)

@@ -30,7 +30,7 @@ DEFAULT_OUTPUT_DIR = Path("output/prime_inference_generator")
 SUMMARY_FILENAME = "boundary_certificate_graph_abstention_analysis_summary.json"
 ROWS_FILENAME = "boundary_certificate_graph_abstention_analysis_rows.jsonl"
 RULE_SET = "005A-R"
-SOLVER_VERSION = "v2"
+SOLVER_VERSION = "v3"
 TRUE_BOUNDARY_STATUSES = (
     "RESOLVED",
     "UNRESOLVED",
@@ -86,7 +86,7 @@ RECOMMENDATION_BY_PATTERN = {
 def build_parser() -> argparse.ArgumentParser:
     """Build the graph abstention-analysis CLI."""
     parser = argparse.ArgumentParser(
-        description="Classify Boundary Certificate Graph Solver v0 abstentions.",
+        description="Classify Boundary Certificate Graph Solver abstentions.",
     )
     parser.add_argument(
         "--start-anchor",

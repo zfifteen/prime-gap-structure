@@ -75,12 +75,33 @@ graph contains positive reset evidence or when the reset state is unknown.
 This is not broad resolved-chamber absorption. It is a reset-aware active-graph
 refinement of unresolved-later domination.
 
+## v3 Relation
+
+The v3 refinement remains inside the same relation family:
+
+```text
+unresolved_later_domination_from_existing_graph_facts_v3
+```
+
+It targets active graphs with exactly one resolved survivor. If that resolved
+source has no legal carrier, no single-hole closure dependency, and the
+nearest later unresolved candidate has a first legal carrier after the source,
+v3 absorbs that nearest later unresolved candidate. It then repeats on the
+active graph.
+
+This relation does not say there is no reset in the number-theoretic sense. It
+says the existing active graph has one resolved source, that source is an
+empty-carrier chamber, and the next unresolved extension has a positive carrier
+fact after the source. The single-resolved-source guard is load-bearing; a
+broader empty-carrier version absorbed true boundaries in abstaining
+multiple-resolved graphs during development and was not retained.
+
 ## Record Contract
 
 Each emitted JSONL record uses:
 
 - `record_type: PGS_INFERRED_PRIME_EXPERIMENTAL_GRAPH`
-- `inference_status: INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V2`
+- `inference_status: INFERRED_BY_BOUNDARY_CERTIFICATE_GRAPH_V3`
 - `production_approved: false`
 - `cryptographic_use_approved: false`
 - `classical_audit_required: true`
@@ -165,6 +186,52 @@ v2_relation_wrong_count_after_audit: 0
 
 This is a generator-facing coverage gain from 42 to 130 solved graph records
 without any downstream audit failures.
+
+## v3 Result
+
+On the same surface:
+
+```text
+graph_solved_count: 211
+graph_abstain_count: 1014
+new_relation_applied_count: 2277
+new_relation_solution_count: 175
+v1_relation_applied_count: 169
+v2_relation_applied_count: 1012
+v2_relation_solution_count: 88
+v3_relation_applied_count: 1096
+v3_relation_solution_count: 81
+```
+
+Separate downstream audit:
+
+```text
+audited_count: 211
+confirmed_count: 211
+failed_count: 0
+new_relation_correct_count_after_audit: 175
+new_relation_wrong_count_after_audit: 0
+v2_relation_correct_count_after_audit: 88
+v2_relation_wrong_count_after_audit: 0
+v3_relation_correct_count_after_audit: 81
+v3_relation_wrong_count_after_audit: 0
+```
+
+The follow-up abstention analysis found no true-boundary rejection or
+absorption in the remaining graph states:
+
+```text
+true_boundary_status_counts:
+  RESOLVED: 962
+  UNRESOLVED: 52
+  REJECTED: 0
+  ABSORBED: 0
+  NOT_IN_CANDIDATE_SET: 0
+```
+
+Graph v3 is the first solver version to exceed 200 emitted experimental graph
+records on anchors `11..10_000` while preserving zero downstream audit
+failures on the tested surface.
 
 ## Failure Handling
 

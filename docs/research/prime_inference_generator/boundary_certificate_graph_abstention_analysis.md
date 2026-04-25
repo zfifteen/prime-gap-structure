@@ -138,6 +138,48 @@ TRUE_BOUNDARY_UNRESOLVED: 52
 The dominant missing pattern remains unresolved-later domination, but the
 v2 result shows that active-graph reset awareness is the right refinement path.
 
+## v3 Follow-Up
+
+The v3 refinement stayed inside unresolved-later domination. It added a narrow
+empty-carrier extension relation that fires only when the active graph has
+exactly one resolved survivor, that source has no legal carrier, and the
+nearest later unresolved extension has a first legal carrier after the source.
+
+On the same surface:
+
+```text
+graph_solved_count: 211
+graph_abstain_count: 1014
+graph_confirmed_count: 211
+graph_failed_count: 0
+v3_relation_correct_count_after_audit: 81
+v3_relation_wrong_count_after_audit: 0
+```
+
+The remaining abstention split is:
+
+```text
+TRUE_BOUNDARY_RESOLVED_BUT_UNRESOLVED_LATER_REMAIN: 959
+TRUE_BOUNDARY_RESOLVED_WITH_MULTIPLE_RESOLVED_SURVIVORS: 3
+TRUE_BOUNDARY_UNRESOLVED: 52
+```
+
+The true-boundary status split after v3 is:
+
+```text
+RESOLVED: 962
+UNRESOLVED: 52
+REJECTED: 0
+ABSORBED: 0
+NOT_IN_CANDIDATE_SET: 0
+```
+
+The dominant missing pattern remains:
+
+```text
+NEED_UNRESOLVED_LATER_DOMINATION: 959
+```
+
 ## Interpretation
 
 The main blocker is not false resolved survivors and not candidate-bound
@@ -146,20 +188,20 @@ candidate in most abstentions. It abstains because unresolved candidates after
 that resolved boundary remain live.
 
 The graph still needs a stronger unresolved-later domination discriminator.
-The v1 and v2 relations prove that this path can increase coverage, but most
-later unresolved alternatives remain live. Any next relation must stay
+The v1, v2, and v3 relations prove that this path can increase coverage, but
+most later unresolved alternatives remain live. Any next relation must stay
 label-free and must not become broad resolved-chamber absorption.
 
 ## Next Implementation Step
 
-The next refinement should stay in this family:
+The next refinement should still stay in this family:
 
 ```text
-unresolved_later_domination_from_existing_graph_facts_v3
+unresolved_later_domination_from_existing_graph_facts
 ```
 
 Before integration, define the refinement as a label-free predicate over graph
-facts, then test whether it increases `graph_solved_count` above 130 with:
+facts, then test whether it increases `graph_solved_count` above 211 with:
 
 ```text
 graph_failed_count: 0

@@ -1,0 +1,64 @@
+{
+  "input_rows": "/Users/velocityworks/IdeaProjects/prime-gap-structure/output/simple_pgs_shadow_seed_gwr_solution_probe/rows.jsonl",
+  "scales": [
+    1000000000000,
+    1000000000000000,
+    1000000000000000000
+  ],
+  "candidate_bound": 128,
+  "visible_divisor_bound": 10000,
+  "threat_witness_bound": 97,
+  "event_row_count": 388,
+  "rule_rows": [
+    {
+      "scale": 1000000000000,
+      "rule_id": "T1_last_visible_open_before_low_witness_threat",
+      "shadow_seed_rows": 102,
+      "threat_found_rows": 102,
+      "top1_selected": 29,
+      "top1_correct": 14,
+      "top1_recall": 0.13725490196078433,
+      "would_convert_shadow_recovery_to_pgs": 14,
+      "would_create_audit_failures": 15,
+      "projected_pgs_percent": 65.21739130434783,
+      "promotion_eligible": false,
+      "failure_mode_selected_too_early": 9,
+      "failure_mode_selected_too_late": 6,
+      "failure_mode_no_selection": 73
+    },
+    {
+      "scale": 1000000000000000,
+      "rule_id": "T1_last_visible_open_before_low_witness_threat",
+      "shadow_seed_rows": 141,
+      "threat_found_rows": 141,
+      "top1_selected": 38,
+      "top1_correct": 18,
+      "top1_recall": 0.1276595744680851,
+      "would_convert_shadow_recovery_to_pgs": 18,
+      "would_create_audit_failures": 20,
+      "projected_pgs_percent": 50.602409638554214,
+      "promotion_eligible": false,
+      "failure_mode_selected_too_early": 15,
+      "failure_mode_selected_too_late": 5,
+      "failure_mode_no_selection": 103
+    },
+    {
+      "scale": 1000000000000000000,
+      "rule_id": "T1_last_visible_open_before_low_witness_threat",
+      "shadow_seed_rows": 145,
+      "threat_found_rows": 145,
+      "top1_selected": 48,
+      "top1_correct": 18,
+      "top1_recall": 0.12413793103448276,
+      "would_convert_shadow_recovery_to_pgs": 18,
+      "would_create_audit_failures": 30,
+      "projected_pgs_percent": 49.2,
+      "promotion_eligible": false,
+      "failure_mode_selected_too_early": 24,
+      "failure_mode_selected_too_late": 6,
+      "failure_mode_no_selection": 97
+    }
+  ],
+  "promotion_eligible_rules": [],
+  "strongest_result": "carrier_threat_gate_does_not_promote"
+}

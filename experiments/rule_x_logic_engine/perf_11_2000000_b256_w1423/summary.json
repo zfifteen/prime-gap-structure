@@ -1,0 +1,20 @@
+{
+  "start_anchor": 11,
+  "max_anchor": 2000000,
+  "candidate_bound": 256,
+  "witness_bound": 1423,
+  "shadow_threshold": 2036329,
+  "anchor_count": 148929,
+  "candidate_count": 10108602,
+  "rejected_count": 8013164,
+  "active_unique_count": 32446,
+  "unique_resolved_count": 32446,
+  "unique_resolved_match_count": 32446,
+  "true_boundary_rejected_count": 0,
+  "setup_seconds": 1.9947198331356049,
+  "evaluation_seconds": 15.69880691706203,
+  "write_seconds": 0.26175854192115366,
+  "total_seconds": 18.159459959017113,
+  "anchors_per_second": 8201.180009543677,
+  "candidates_per_second": 556657.633146219
+}

@@ -1,0 +1,16 @@
+{
+  "x0": 1000000,
+  "n": 10000000,
+  "record_count": 4,
+  "champagne_count": 0,
+  "missed_record_count": 1,
+  "missed_champagne_count": 0,
+  "predicted_zone_count": 17,
+  "merged_predicted_zone_count": 1,
+  "predicted_zone_coverage_fraction": 0.1674619813931132,
+  "record_median_mcs_percentile": 50.12783887468457,
+  "champagne_median_mcs_percentile": NaN,
+  "phase_blind_control_hit_rate": 1.0,
+  "phase_blind_coverage_fraction": 0.9859832237796418,
+  "verdict": "falsified_record_miss"
+}

@@ -1,0 +1,14 @@
+{
+  "start_anchor": 11,
+  "max_anchor": 1000000,
+  "candidate_bound": 256,
+  "witness_bound": 1009,
+  "shadow_threshold": 1026169,
+  "anchor_count": 78494,
+  "candidate_count": 5327775,
+  "rejected_count": 4174498,
+  "active_unique_count": 17247,
+  "unique_resolved_count": 17247,
+  "unique_resolved_match_count": 17247,
+  "true_boundary_rejected_count": 0
+}

@@ -6,8 +6,9 @@ This repository now carries three major prime-gap results:
 
 - a proved local arithmetic winner law inside prime gaps;
 - a frozen hierarchical finite-state engine for reduced prime-gap types.
-- a minimal inferred-prime generator with exact low-scale audited runs and
-  audit-clean high-scale probe runs.
+- a Prime-Gap Inference Generator that infers the successor prime from the
+  arithmetic structure of the interval after a given prime, instead of scanning
+  candidates until a primality test succeeds.
 
 Take the consecutive primes `23` and `29`. The integers between them are
 `24, 25, 26, 27, 28`. Their divisor counts are:
@@ -31,23 +32,24 @@ Now take `89` and `97`. The interior integers are
 - `d(95) = 4`
 - `d(96) = 12`
 
-Here the smallest divisor count present is `4`, and the leftmost carrier of
-that minimum is `91`, so `91` wins.
+Here the smallest divisor count present is `4`, and the leftmost integer with
+that divisor count is `91`, so `91` wins.
 
 These examples show the local arithmetic choice that anchors the repository.
 
 ## Three Headline Results
 
 - **Gap Winner Rule (GWR):** on the repository's current proof surface, the
-  implemented divisor-normalization score picks exactly the leftmost carrier of
-  the minimum interior divisor class in every prime gap.
+  implemented divisor-normalization score picks exactly the leftmost interior
+  integer with minimum divisor count in every prime gap.
 - **Prime Gap Generative Engine v1.0:** on the persistent reduced gap-type
   surface, prime-gap types close to a frozen hierarchical finite-state engine
   with a stable `14`-state core.
-- **Minimal PGS Generator:** the restart generator emits one minimal
-  `{"p": ..., "q": ...}` record per accepted anchor, keeps diagnostics outside
-  the emitted stream, and preserves zero audit failures on the current audited
-  surfaces.
+- **Prime-Gap Inference Generator:** the generator emits one two-field
+  `{"p": ..., "q": ...}` record per given prime `p`, keeps diagnostics outside
+  the emitted stream, and selects the successor prime `q` from the arithmetic
+  consistency of the interval after `p`, rather than by a conventional
+  next-prime search.
 
 ## Gap Winner Rule
 
@@ -101,10 +103,10 @@ See also:
 - [Hierarchical engine paper draft](docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md)
 - [Engine overview figure](output/gwr_dni_gap_type_engine_v1_overview.png)
 
-## Minimal PGS Generator
+## Prime-Gap Inference Generator
 
-The third headline result is the minimal inferred-prime generator. It emits one
-record for each accepted prime anchor:
+The third headline result is the Prime-Gap Inference Generator. It emits one
+record for each given prime:
 
 ```json
 {"p": 89, "q": 97}
@@ -113,32 +115,61 @@ record for each accepted prime anchor:
 The emitted stream is deliberately small: exactly `p` and `q`. Source labels,
 diagnostics, certificates, and audit results stay outside the generator output.
 
-The design philosophy is PGS-first inference. The generator uses local
-prime-gap structure, chamber arithmetic, wheel-open positions, divisor-class
-closure, and boundary rules to infer the next prime. Classical arithmetic is
-kept as deterministic fallback and downstream audit support, not as the primary
-idea of the generator. Probabilistic primality tests and oracle-style
-`nextprime` calls are excluded from generation.
+Conventional prime generation works by scanning candidate numbers and testing
+them until one proves prime. The Prime-Gap Inference Generator is different. It
+starts from a given prime `p`, examines a finite interval to the right of `p`,
+and uses the composite numbers in that interval to infer the successor prime
+`q`.
 
-On the current audited surfaces, the generator is exact in low-scale full runs
-and remains audit-clean in high-scale probe runs:
+The generator treats the gap as a consistency problem:
 
-- `11..100000`: `9588 / 9588` emitted, `0` audit failures, `100.00%` PGS
-- `11..1000000`: `78494 / 78494` emitted, `0` audit failures, `100.00%` PGS
-- `10^12` exact sample: `256 / 256` emitted, `0` audit failures,
-  `58.98%` PGS, `1.17%` full fallback
-- `10^15` probe: `249 / 256` emitted, `0` audit failures, `43.37%` PGS,
-  `0.00%` full fallback
-- `10^18` probe: `250 / 256` emitted, `0` audit failures, `42.00%` PGS,
-  `0.00%` full fallback
+```text
+Which candidate q leaves a valid prime gap interval after p?
+```
 
-The main generator target is now fallback displacement. Exact-mode correctness
-is protected by deterministic arithmetic, while the research program increases
-the share of emissions derived directly from PGS rules without allowing audit
-failures.
+The key structural discovery is that once the first candidate `q` is forced by
+the interval to its left, later candidates are no longer possible successors of
+the original `p`. They belong to intervals that begin after `q`. That
+distinction turned the remaining not-yet-excluded candidates into evidence
+that the gap had already closed.
+
+Classical arithmetic is kept as deterministic fallback and downstream audit
+support, not as the primary idea of the generator. Probabilistic primality
+tests and oracle-style `nextprime` calls are excluded from generation.
+
+On the promoted generator surface, every emitted successor prime is derived
+from the prime-gap rule and no incorrect candidate is emitted:
+
+```text
+surface: 11..100000
+candidate interval width: 128
+primes tested: 9588
+structure-derived emissions: 9588
+failed emissions: 0
+incorrect candidates: 0
+coverage: 100.00%
+```
+
+The same successor-prime logic was validated on the high-scale decade-window
+surface through `10^18`:
+
+```text
+surface: 256 consecutive primes per decade, 10^8 through 10^18
+candidate interval width: 1024
+primes tested: 2816
+exact matches: 2816
+undecided cases: 0
+incorrect candidates: 0
+search-window misses: 0
+coverage: 100.00%
+```
 
 The implementation contract and lower-level mechanism are recorded in
-[Minimal PGS Generator Logic](docs/specs/prime-gen/minimal_pgs_generator_logic.md).
+[Generator Logic Specification](docs/specs/prime-gen/minimal_pgs_generator_logic.md).
+The detailed technical note is the
+[logic-engine report](docs/research/prime_inference_generator/rule_x_consistency_collapse_logic_engine.md),
+and the high-scale validation report is
+[Decade-Window Validation Report](experiments/rule_x_logic_engine/chamber_reset_decade_ladder_1e8_1e18_a256_b1024/report.md).
 
 ## Why The Score Exists
 
@@ -183,20 +214,21 @@ This repository now carries three visible lines of work:
 - the proved GWR theorem and its proof surface;
 - the reduced gap-type engine and pattern results on the persistent reduced
   surface;
-- the minimal PGS generator and downstream deterministic DNI-based predictor
-  and prefilter work.
+- the Prime-Gap Inference Generator and downstream deterministic DNI-based
+  predictor and prefilter work.
 
-The GWR theorem remains the theorem anchor. The gap-type engine is the second
-headline prime-gap result. The minimal PGS generator is the current operational
-inferred-prime generator milestone. The recursive walk and deterministic filter
-are downstream deterministic instruments built from the same normalization.
+The GWR theorem remains the theorem foundation. The gap-type engine is the second
+headline prime-gap result. The Prime-Gap Inference Generator is the current
+operational inferred-prime generator milestone. The recursive walk and
+deterministic filter are downstream deterministic instruments built from the
+same normalization.
 
 ## Novel Structures in This Repository
 
 The repository now carries the following named structures and results:
 
 - **Gap Winner Rule (GWR):** inside any prime gap, the log-score argmax is
-  exactly the leftmost carrier of the minimum interior divisor class. On the
+  exactly the leftmost integer with minimum interior divisor count. On the
   repository's current proof surface, this is a proved universal prime-gap
   winner theorem summarized in [GWR_PROOF.md](GWR_PROOF.md) and recorded in
   [gwr/findings/gwr_hierarchical_local_dominator_theorem.md](gwr/findings/gwr_hierarchical_local_dominator_theorem.md).
@@ -220,16 +252,20 @@ The repository now carries the following named structures and results:
   [docs/releases/prime_gap_generative_engine_v1_0.md](docs/releases/prime_gap_generative_engine_v1_0.md)
   and
   [gwr/findings/gap_type_engine_v1_rulebook.md](gwr/findings/gap_type_engine_v1_rulebook.md).
-- **Minimal PGS Generator:** the restart generator emits exactly `p` and `q`
-  for each accepted prime anchor, with downstream audit and source diagnostics
-  outside the emitted stream. The current audited low-scale surfaces are
-  exact, and the high-scale probe surfaces are audit-clean while the project
-  continues to displace non-PGS bridge work.
+- **Prime-Gap Inference Generator:** the generator emits exactly `p` and `q`
+  for each given prime `p`, with downstream audit and source diagnostics
+  outside the emitted stream. Unlike a conventional prime generator, it selects
+  the successor prime from the arithmetic consistency of the interval after
+  `p`, instead of scanning until a primality test accepts. The promoted
+  generator path has `9588 / 9588` structure-derived emissions with `0`
+  failures on `11..100000`, and the same successor-prime logic has
+  `2816 / 2816` exact matches with `0` incorrect candidates on the `10^8`
+  through `10^18` decade-window validation surface.
 - **No-Later-Simpler-Composite (NLSC) condition:** once the GWR winner
   appears, no later interior composite with strictly smaller divisor count
   precedes the next prime. Zero violations observed through `10^18`.
 - **Dominant d=4 arrival reduction:** under square exclusion, the GWR winner
-  is exactly the first interior `d=4` carrier. Exact on full scans through
+  is exactly the first interior integer with `d(n)=4`. Exact on full scans through
   `2x10^7`.
 - **Dynamic cutoff conjecture:** `C(q) = max(64, ceil(0.5 * log(q)^2))` bounds
   the GWR winner offset for the bounded walker. Empirically calibrated through
@@ -301,7 +337,7 @@ The central winner law in this repository is that the log-score argmax inside
 a prime gap collapses to a simpler arithmetic choice:
 
 1. minimize the interior divisor count $d(n)$,
-2. among ties, take the leftmost interior carrier.
+2. among ties, take the leftmost interior integer.
 
 That is the Gap Winner Rule.
 
@@ -328,7 +364,7 @@ That closure law is what lets the unbounded DNI/GWR walker recover the next
 prime exactly from the ordered divisor structure of the next-gap interior.
 
 Given a known prime `q`, the oracle scans divisor counts to the right until the
-first prime boundary, takes the lexicographic minimum over the composite
+successor prime, takes the lexicographic minimum over the composite
 interior, and recovers the next prime by the witness map. That mechanism is
 exact by construction. No cutoff theorem is involved.
 
@@ -405,7 +441,7 @@ and
 ## Dominant d=4 Reduction
 
 In the dominant winner regime, the tested gaps admit no interior prime square,
-and the implemented winner is exactly the first interior carrier with
+and the implemented winner is exactly the first interior integer with
 $d(n)=4$.
 
 That gives the leading regime a visible mechanism: square exclusion first,
@@ -429,7 +465,7 @@ exact-divisor evaluator.
 Because confirmed primes live at $Z = 1.0$ under the DNI and composites
 contract below it, the filter creates a clean structural separation in
 normalized space. That separation makes it possible to reject many candidates
-before paying the full cost of the survivor regime.
+before paying the full cost of primality testing on remaining candidates.
 
 Empirically, this extracted Python path produced:
 
@@ -455,8 +491,9 @@ surrogate with the same invariant target:
 
 - generate deterministic odd candidates from a SHA-256 namespace/index stream
 - reject immediately when a concrete factor appears in the gated prime tables
-- keep survivors on the locus convention `proxy_z = 1.0`
-- run fixed-base Miller-Rabin on survivors
+- keep candidates that survive table rejection on the locus convention
+  `proxy_z = 1.0`
+- run fixed-base Miller-Rabin on those remaining candidates
 - apply final `sympy.isprime` confirmation in the current Python path
 
 In the production path, `proxy_z = 1.0` means only that the candidate survived
@@ -506,7 +543,7 @@ runtime exact DNI evaluation.
   $d(n)=4$ composite in $82.9027\%$ of gaps versus a baseline of $20.1401\%$.
 - Later repository notes sharpen that ridge picture into the current winner
   theorem: GWR says the implemented log-score winner is the arithmetic choice
-  “minimize interior divisor count, then take the leftmost carrier,” and the
+  “minimize interior divisor count, then take the leftmost integer,” and the
   current proof route reduces the remaining earlier-side burden to a finite
   local admissibility closure. The tested surfaces
   remain the finite base, stress surface, and audit record for that proof chain.

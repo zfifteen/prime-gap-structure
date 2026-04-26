@@ -2,6 +2,35 @@
 
 ## Headline
 
+The latest Rule X chamber-reset experiment achieved complete audited coverage
+on a high-scale decade-window ladder:
+
+```text
+surface: 256 consecutive prime anchors per decade, 10^8 through 10^18
+candidate_bound: 1024
+anchors_tested: 2816
+exact_matches: 2816
+coverage: 100.000000%
+unresolved: 0
+false_emissions: 0
+candidate_bound_misses: 0
+```
+
+The result identifies the missing interpretation of the unresolved tail: after
+the first resolved survivor appears, later unresolved candidates are
+post-reset chamber material, not competing boundaries for the original anchor.
+
+The rule has been promoted into the minimal generator path as
+`pgs_chamber_reset_v1`. On the `11..100000`, `candidate_bound = 128` generator
+surface, it emitted `9588 / 9588` records as `PGS` with zero failures.
+
+This result is documented in:
+
+```text
+docs/research/prime_inference_generator/rule_x_consistency_collapse_logic_engine.md
+experiments/rule_x_logic_engine/chamber_reset_decade_ladder_1e8_1e18_a256_b1024/report.md
+```
+
 The PGS Prime Inference Generator now has a working generator-facing CLI that
 emits experimental inferred next-prime boundary records, writes reproducible
 JSONL/JSON artifacts, and audits emitted records downstream against

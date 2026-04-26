@@ -1,0 +1,18 @@
+{
+  "power": 10,
+  "decade_start": 10000000000,
+  "window_anchors": 256,
+  "candidate_bound": 1024,
+  "anchor_count": 256,
+  "old_unique_match_count": 44,
+  "reset_exact_match_count": 256,
+  "reset_false_emit_count": 0,
+  "tail_case_count": 212,
+  "tail_candidate_count": 8049,
+  "candidate_bound_miss_count": 0,
+  "all_unresolved_after_reset_count": 256,
+  "setup_seconds": 0.0029426661785691977,
+  "evaluation_seconds": 0.7896857911255211,
+  "write_seconds": 0.0010867908131331205,
+  "total_seconds": 0.7936334582045674
+}

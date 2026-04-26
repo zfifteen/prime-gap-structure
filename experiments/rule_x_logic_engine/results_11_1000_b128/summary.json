@@ -1,0 +1,13 @@
+{
+  "start_anchor": 11,
+  "max_anchor": 1000,
+  "candidate_bound": 128,
+  "anchor_count": 164,
+  "candidate_count": 5562,
+  "structural_rejection_count": 0,
+  "structural_unique_anchor_count": 0,
+  "exact_rejection_count": 5398,
+  "exact_unique_anchor_count": 164,
+  "exact_unique_match_count": 164,
+  "verdict": "exact_consistency_collapse"
+}

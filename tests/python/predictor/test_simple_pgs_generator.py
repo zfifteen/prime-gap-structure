@@ -15,6 +15,7 @@ if str(SOURCE_DIR) not in sys.path:
 from z_band_prime_predictor.simple_pgs_generator import (  # noqa: E402
     CHAIN_HORIZON_CLOSURE_SOURCE,
     FALLBACK_SOURCE,
+    PGS_CHAMBER_RESET_RULE_ID,
     PGS_SOURCE,
     SHADOW_SEED_RECOVERY_RULE_ID,
     SHADOW_SEED_RECOVERY_SOURCE,
@@ -69,7 +70,7 @@ def test_default_pgs_gap_two_rule_displaces_fallback_when_correct():
     assert record["p"] == 11
     assert record["q"] == 13
     assert record["source"] == PGS_SOURCE
-    assert record["certificate"]["rule_id"] == "pgs_chamber_closure_v2"
+    assert record["certificate"]["rule_id"] == PGS_CHAMBER_RESET_RULE_ID
     assert record["certificate"]["gap_offset"] == 2
     assert record["certificate"]["fallback_agreed"] is True
     assert diagnostic_record(89)["source"] == PGS_SOURCE
@@ -276,7 +277,7 @@ def test_audit_cli_writes_report_outside_generator(tmp_path):
         "chain_fallback_percent": 0.0,
         "fallback_percent": 0.0,
         "generator_status": "PGS_PASS",
-        "pgs_by_rule": {"pgs_chamber_closure_v2": 2},
+        "pgs_by_rule": {PGS_CHAMBER_RESET_RULE_ID: 2},
         "pgs_missing_certificate_count": 0,
         "first_failure": None,
     }
@@ -310,7 +311,7 @@ def test_audit_report_surfaces_fallback_displacement_metrics():
         "chain_fallback_percent": 0.0,
         "fallback_percent": 0.0,
         "generator_status": "PGS_PASS",
-        "pgs_by_rule": {"pgs_chamber_closure_v2": 3},
+        "pgs_by_rule": {PGS_CHAMBER_RESET_RULE_ID: 3},
         "pgs_missing_certificate_count": 0,
         "first_failure": None,
     }
@@ -419,7 +420,7 @@ def test_controller_can_orchestrate_generation_and_audit(tmp_path):
         "chain_fallback_percent": 0.0,
         "fallback_percent": 0.0,
         "generator_status": "PGS_PASS",
-        "pgs_by_rule": {"pgs_chamber_closure_v2": 3},
+        "pgs_by_rule": {PGS_CHAMBER_RESET_RULE_ID: 3},
         "pgs_missing_certificate_count": 0,
         "first_failure": None,
     }

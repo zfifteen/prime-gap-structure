@@ -48,6 +48,7 @@ Promotion requires:
 | `codex/solution-08-seed-pressure-gap` | `uncommitted` | Rejected | Bidirectional right-phase closure selects too early and too late; it adds no safe boundary margin. |
 | `codex/solution-09-seed-distance-closure` | `uncommitted` | Rejected | Seed-distance closure collapses to first-visible-open; the distance predicate is satisfied immediately on every target row. |
 | `codex/solution-10-continued-chamber-ladder` | `uncommitted` | Rejected | Continued-chamber ladders show a weak 4m+2 distance signal but produce audit failures on every tested selector. |
+| `codex/solution-11-carrier-threat-margin` | `uncommitted` | Rejected | Low-witness post-seed “threat” appears on every row but is too early; selecting the last visible-open before it abstains often and creates audit failures. |
 
 ## Solution 1: Full Chamber State Contract
 
@@ -1099,6 +1100,72 @@ This branch rejects the literal Lambert ladder materialization as a boundary
 selector. It does not rule out a seed-carried transition state that uses the
 ladder only as a prior inside a stricter carrier-preservation or reset
 discriminator.
+
+## Solution 11: Carrier Threat Transition Gate
+
+Branch:
+`codex/solution-11-carrier-threat-margin`
+
+Commit: `uncommitted`
+
+Proposed solution:
+
+Treat the first post-seed wheel-open closure with a small divisor witness as a
+PGS-visible carrier-transition event:
+
+- threat = first `n > q0` with `closure_reason(p, n - p)` of the form
+  `divisor_witness:w` with `w <= 97`;
+- select `q_hat` = last anchor-visible-open candidate strictly before the
+  threat.
+
+Test performed:
+
+The probe evaluated the carrier-threat gate on the 388 high-scale shadow rows
+with:
+
+- `candidate_bound=128`
+- `visible_divisor_bound=10_000`
+- `threat_witness_bound=97`
+
+Artifacts:
+
+- [probe script](../../../benchmarks/python/predictor/simple_pgs_solution_11_carrier_threat_margin_probe.py)
+- [summary JSON](../../../output/simple_pgs_solution_11_carrier_threat_margin_probe/summary.json)
+- [rule report CSV](../../../output/simple_pgs_solution_11_carrier_threat_margin_probe/carrier_threat_rule_report.csv)
+- [event rows CSV](../../../output/simple_pgs_solution_11_carrier_threat_margin_probe/carrier_threat_event_rows.csv)
+
+Result:
+
+No rule promoted. A low-witness post-seed threat exists on every shadow row,
+but it typically occurs before any post-seed visible-open candidate, so the
+gate abstains frequently. When the gate does select, it produces audit
+failures via both early and late mis-selections.
+
+| Scale | Selected | Correct | Audit failures if promoted | No selection | Projected PGS |
+|---|---:|---:|---:|---:|---:|
+| $10^{12}$ | 29/102 | 14/102 | 15 | 73 | 65.22% |
+| $10^{15}$ | 38/141 | 18/141 | 20 | 103 | 50.60% |
+| $10^{18}$ | 48/145 | 18/145 | 30 | 97 | 49.20% |
+
+Strength:
+
+The carrier-threat observable is genuinely PGS-visible and does not use audit
+labels or any exact divisor-field classification. It is a concrete attempt to
+turn a post-seed closure witness event into a boundary-margin marker.
+
+Weakness:
+
+The threat is too local and too common. It appears immediately after `q0` on
+all rows, so it does not separate the terminal boundary from visible-open
+impostors and it often leaves no selectable visible-open candidate before the
+threat.
+
+Limitation:
+
+This branch rejects the specific low-witness threat-as-transition
+materialization. It does not rule out a carrier-preservation or reset
+observable that depends on a different post-seed invariant than the first
+small divisor witness.
 
 ## Current Lesson
 

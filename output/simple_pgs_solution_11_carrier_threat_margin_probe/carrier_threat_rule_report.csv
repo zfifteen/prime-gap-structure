@@ -1,0 +1,4 @@
+scale,rule_id,shadow_seed_rows,threat_found_rows,top1_selected,top1_correct,top1_recall,would_convert_shadow_recovery_to_pgs,would_create_audit_failures,projected_pgs_percent,promotion_eligible,failure_mode_selected_too_early,failure_mode_selected_too_late,failure_mode_no_selection
+1000000000000,T1_last_visible_open_before_low_witness_threat,102,102,29,14,0.13725490196078433,14,15,65.21739130434783,False,9,6,73
+1000000000000000,T1_last_visible_open_before_low_witness_threat,141,141,38,18,0.1276595744680851,18,20,50.602409638554214,False,15,5,103
+1000000000000000000,T1_last_visible_open_before_low_witness_threat,145,145,48,18,0.12413793103448276,18,30,49.2,False,24,6,97

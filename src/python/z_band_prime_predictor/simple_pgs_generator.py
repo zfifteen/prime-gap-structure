@@ -14,6 +14,7 @@ CHAIN_HORIZON_CLOSURE_SOURCE = "chain_horizon_closure"
 CHAIN_FALLBACK_SOURCE = "chain_fallback"
 FALLBACK_SOURCE = "fallback"
 FALLBACK_REQUIRED_SOURCE = "fallback_required"
+PGS_CHAMBER_RESET_RULE_ID = "pgs_chamber_reset_v1"
 SHADOW_SEED_RECOVERY_RULE_ID = "shadow_seed_trial_recovery_v1"
 WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
 
@@ -112,6 +113,33 @@ def pgs_chamber_closure_certificate(
         if fallback_q is None or fallback_agreed:
             return certificate
     return None
+
+
+def pgs_chamber_reset_certificate(
+    p: int,
+    candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
+    fallback_q: int | None = None,
+    max_divisor: int | None = None,
+) -> dict[str, object] | None:
+    """Return the first resolved-survivor chamber-reset certificate."""
+    certificate = pgs_chamber_closure_certificate(
+        int(p),
+        int(candidate_bound),
+        fallback_q,
+        max_divisor,
+    )
+    if certificate is None:
+        return None
+    return chamber_reset_fields(certificate)
+
+
+def chamber_reset_fields(certificate: dict[str, object]) -> dict[str, object]:
+    """Attach chamber-reset fields to one certificate."""
+    certificate["rule_id"] = PGS_CHAMBER_RESET_RULE_ID
+    certificate["chamber_reset_offset"] = int(certificate["gap_offset"])
+    certificate["tail_candidates_block_emission"] = False
+    certificate["post_reset_tail_policy"] = "later_chamber_material"
+    return certificate
 
 
 def visible_open_chain_offsets(
@@ -296,14 +324,15 @@ def pgs_boundary_certificate(
     boundary_offset: int | None = None,
     candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
 ) -> dict[str, object] | None:
-    """Return the first fallback-guarded PGS v2 certificate."""
+    """Return the first fallback-guarded chamber-reset certificate."""
     if boundary_offset is not None:
         certificate = pgs_gap_certificate(int(p), int(boundary_offset), candidate_bound)
         if certificate is not None and int(certificate["q"]) == int(fallback_q):
+            chamber_reset_fields(certificate)
             certificate["fallback_agreed"] = True
             return certificate
         return None
-    return pgs_chamber_closure_certificate(
+    return pgs_chamber_reset_certificate(
         int(p),
         candidate_bound,
         int(fallback_q),
@@ -315,8 +344,8 @@ def pgs_probe_certificate(
     candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
     max_divisor: int | None = None,
 ) -> dict[str, object] | None:
-    """Return a PGS v2 certificate without running fallback."""
-    return pgs_chamber_closure_certificate(
+    """Return a chamber-reset certificate without running fallback."""
+    return pgs_chamber_reset_certificate(
         int(p),
         candidate_bound,
         None,
@@ -338,13 +367,15 @@ def resolve_q(
             DEFAULT_VISIBLE_DIVISOR_BOUND,
         )
         if boundary_offset is not None
-        else pgs_chamber_closure_certificate(
+        else pgs_chamber_reset_certificate(
             int(p),
             candidate_bound,
             None,
             DEFAULT_VISIBLE_DIVISOR_BOUND,
         )
     )
+    if certificate is not None and boundary_offset is not None:
+        chamber_reset_fields(certificate)
     if certificate is not None:
         q0 = int(certificate["q"])
         if not has_trial_divisor(q0):

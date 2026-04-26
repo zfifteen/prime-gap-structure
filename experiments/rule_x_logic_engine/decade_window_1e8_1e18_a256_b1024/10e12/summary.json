@@ -1,0 +1,19 @@
+{
+  "power": 12,
+  "decade_start": 1000000000000,
+  "window_anchors": 256,
+  "candidate_bound": 1024,
+  "anchor_count": 256,
+  "candidate_count": 69825,
+  "unique_resolved_count": 51,
+  "unique_resolved_match_count": 51,
+  "true_boundary_rejected_count": 0,
+  "candidate_bound_miss_count": 0,
+  "setup_seconds": 0.003245667088776827,
+  "evaluation_seconds": 1.4384137920569628,
+  "write_seconds": 0.0010858748573809862,
+  "total_seconds": 1.4426967499312013,
+  "anchors_per_second": 177.44546801828452,
+  "candidates_per_second": 48398.944548346546,
+  "factor_cache_size": 34944
+}

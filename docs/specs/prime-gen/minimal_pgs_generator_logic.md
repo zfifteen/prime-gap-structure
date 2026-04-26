@@ -85,14 +85,14 @@ In plain language:
 - `d(w)` is the divisor class of the carrier;
 - `B` chooses the proposed next boundary `q`.
 
-The main PGS object still to derive is the complete form of `B`.
+The main PGS object is the complete form of `B`.
 
 If the available state `S` is sufficient, the generator emits the selected `q`.
 
 If `S` is insufficient, deterministic fallback arithmetic selects the correct
 `q`, and the generator emits that value.
 
-The current PGS selector is chamber closure v2:
+The previous PGS selector was chamber closure v2:
 
 - build chamber offsets through `candidate_bound`;
 - enumerate wheel-admissible proposed boundary offsets in increasing order;
@@ -103,8 +103,48 @@ The current PGS selector is chamber closure v2:
 - in high-scale probe mode, emit only PGS-certified rows and count all
   uncertified anchors as fallback-required.
 
-This converts chamber-certified cases while preserving the total correctness
-contract in exact mode.
+That selector converted chamber-certified cases while preserving the total
+correctness contract in exact mode.
+
+The current research boundary-rule candidate is Rule X with chamber reset:
+
+- build wheel-open candidate boundary hypotheses;
+- reject candidates with positive composite witnesses;
+- preserve semiprime-shadow landmarks as unresolved landmarks instead of
+  promoting them to boundary survivors;
+- lock the GWR carrier only after a resolved survivor exists;
+- apply the lower-divisor threat ceiling after carrier lock;
+- identify the first resolved survivor `r`;
+- reset the chamber at `r`;
+- classify later unresolved candidates as post-reset chamber material;
+- emit `r` as the proposed next boundary.
+
+On the decade-window ladder from `10^8` through `10^18`, using `256`
+consecutive prime anchors per decade and `candidate_bound = 1024`, this
+research rule produced:
+
+```text
+anchors tested: 2816
+exact matches: 2816
+coverage: 100.000000%
+unresolved: 0
+false emissions: 0
+candidate-bound misses: 0
+```
+
+The rule is promoted into the narrow generator module as
+`pgs_chamber_reset_v1`. The high-scale `10^8` through `10^18` result remains a
+decade-window experiment-harness validation surface.
+
+The promoted generator path was audited on `11..100000`,
+`candidate_bound = 128`:
+
+```text
+anchors tested: 9588
+PGS emissions: 9588
+rule_id: pgs_chamber_reset_v1
+failed emissions: 0
+```
 
 ## Stage 5: Emission
 

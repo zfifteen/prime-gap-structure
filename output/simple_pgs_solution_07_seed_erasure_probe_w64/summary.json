@@ -1,0 +1,14 @@
+{
+  "artifacts": {
+    "materialized_contract": "output/simple_pgs_solution_07_seed_erasure_probe_w64/materialized_contract.csv",
+    "selection_rows": "output/simple_pgs_solution_07_seed_erasure_probe_w64/seed_erasure_selection_rows.csv",
+    "summary": "output/simple_pgs_solution_07_seed_erasure_probe_w64/seed_erasure_summary.csv"
+  },
+  "candidate_bound": 128,
+  "eligible_rule_count": 0,
+  "eligible_rules": [],
+  "target_rows": 404,
+  "trace_window": 64,
+  "verdict": "rejected_no_seed_erasure_rule_met_promotion_gate",
+  "visible_divisor_bound": 10000
+}

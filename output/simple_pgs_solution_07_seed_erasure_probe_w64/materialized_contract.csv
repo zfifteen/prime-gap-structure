@@ -1,0 +1,3 @@
+required_object,materialized_in_current_artifacts,probe_handling
+literal seed-erasure trace in current chamber state,False,tested identity baseline; it collapses to first visible-open
+placed-seed influence,False,tested two explicit seed-phase integrations

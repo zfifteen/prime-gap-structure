@@ -41,6 +41,7 @@ Promotion requires:
 | [`codex/solution-01d-gwr-locked-integration`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01d-gwr-locked-integration) | `e81d287` | Not promotable | Fair locked-state integration found no safe replayable boundary-margin key. |
 | [`codex/solution-02-gemini-rst-law`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-02-gemini-rst-law) | `4994dc2` | Rejected | Residual symmetry minimization selects many wrong boundaries. |
 | [`codex/solution-03-meta-frontier-exhaustion`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-03-meta-frontier-exhaustion) | `cba771c` | Rejected | Required mark-stream inputs are absent; materialized proxies are unsafe or abstain. |
+| [`codex/solution-04-deepseek-square-grid-openq`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-04-deepseek-square-grid-openq) | `343616d` | Rejected | The proposed square-grid sequence misses the audited boundary on all 388 shadow rows. |
 
 ## Solution 1: Full Chamber State Contract
 
@@ -491,6 +492,94 @@ Limitation:
 This branch does not falsify a future implementation that explicitly
 materializes `W_p`, `Open(q0)`, and `S_p(t)`. It rejects the submitted test
 against current artifacts and the tested artifact-native approximations.
+
+## Solution 4: Square-Grid `openQ`
+
+Branch:
+[`codex/solution-04-deepseek-square-grid-openq`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-04-deepseek-square-grid-openq)
+
+Commit: `343616d`
+
+Proposed solution:
+
+Generate the square-ceiling grid rooted at `p` and `q0`:
+
+$$q_k = ceil((floor(sqrt(p q0)) + k)^2 / p)$$
+
+Then select the first `q_k > q0` that remains open under the same active wall
+set `W` used by chamber closure:
+
+```text
+openQ(x) = true if x mod w != 0 for every w in W
+```
+
+Test performed:
+
+The exact submitted state is not materialized in current artifacts, so the
+branch tested the square-grid claim directly and evaluated two artifact-native
+`openQ` interpretations:
+
+- materialized visible witnesses from existing candidate rows;
+- all integer walls through `visible_divisor_bound = 10000`.
+
+Both variants were tested with and without a wheel-open filter, under both
+`p + candidate_bound` and `q0 + candidate_bound` windows.
+
+Artifacts:
+
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/benchmarks/python/predictor/simple_pgs_solution_04_square_grid_openq_probe.py)
+- [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/output/simple_pgs_solution_04_square_grid_openq_probe/summary.json)
+- [square-grid summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/output/simple_pgs_solution_04_square_grid_openq_probe/square_grid_summary.csv)
+- [selection rows](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/output/simple_pgs_solution_04_square_grid_openq_probe/square_grid_selection_rows.csv)
+- [materialized contract](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-04-deepseek-square-grid-openq/output/simple_pgs_solution_04_square_grid_openq_probe/materialized_contract.csv)
+
+Result:
+
+No rule promoted. The decisive failure is earlier than `openQ`: the audited
+boundary is not present in the proposed square-grid sequence for any tested
+shadow row.
+
+| Scale | Shadow rows | True boundary not in square grid | Correct selections | No selections |
+|---|---:|---:|---:|---:|
+| $10^{12}$ | 102 | 102 | 0 | 102 |
+| $10^{15}$ | 141 | 141 | 0 | 141 |
+| $10^{18}$ | 145 | 145 | 0 | 145 |
+
+Materialization result:
+
+The exact submitted inputs are not present in current artifacts.
+
+| Required object | Present |
+|---|---|
+| active wall prime set `W` | false |
+| `closed[1..q0]` chamber vector | false |
+| square-grid `q_k` sequence | computable from `p` and `q0` |
+
+Candidate-row materialization is also incomplete for the lower high-scale
+surface:
+
+| Scale | Expected shadow rows | Materialized candidate groups | Coverage |
+|---|---:|---:|---:|
+| $10^{12}$ | 102 | 0 | 0.0% |
+| $10^{15}$ | 141 | 141 | 100.0% |
+| $10^{18}$ | 145 | 145 | 100.0% |
+
+Strength:
+
+The proposal is compact and falsifiable. It names a specific candidate stream
+and a specific chamber-openness predicate.
+
+Weakness:
+
+The central claim that the true boundary lies in the square-grid candidate
+stream fails on the current 388 shadow rows. With the target absent from the
+candidate stream, no `openQ` predicate can recover it.
+
+Limitation:
+
+This branch rejects the submitted square-grid law at `candidate_bound = 128`.
+It does not rule out a different square-derived coordinate that enumerates the
+ordinary rightward candidate stream rather than the submitted `q_k` sequence.
 
 ## Current Lesson
 

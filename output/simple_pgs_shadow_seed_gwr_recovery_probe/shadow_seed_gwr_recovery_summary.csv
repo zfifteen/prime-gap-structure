@@ -1,0 +1,4 @@
+scale,chain_rows,chain_rows_matched,chain_rows_error,false_node_chains,false_node_chains_matched,false_node_chains_error,chain_row_match_percent,false_node_chain_match_percent
+1000000000000,102,102,0,42,42,0,100.0,100.0
+1000000000000000,141,137,4,65,65,0,97.16312056737588,100.0
+1000000000000000000,145,142,3,76,76,0,97.93103448275862,100.0

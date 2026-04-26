@@ -1,0 +1,43 @@
+{
+  "frontier_path": "/Users/velocityworks/IdeaProjects/prime-gap-structure/output/simple_pgs_shadow_chain_horizon_law_probe/least_factor_frontier.csv",
+  "rows_paths": [
+    "/Users/velocityworks/IdeaProjects/prime-gap-structure/output/simple_pgs_chain_horizon_closure_1e12_probe/rows.jsonl",
+    "/Users/velocityworks/IdeaProjects/prime-gap-structure/output/simple_pgs_chain_horizon_closure_high_scale_probe/rows.jsonl"
+  ],
+  "strongest_supported_result": "gwr_from_shadow_seed_recovers_terminal_for_all_false_node_chains",
+  "summary_rows": [
+    {
+      "chain_row_match_percent": 100.0,
+      "chain_rows": 102,
+      "chain_rows_error": 0,
+      "chain_rows_matched": 102,
+      "false_node_chain_match_percent": 100.0,
+      "false_node_chains": 42,
+      "false_node_chains_error": 0,
+      "false_node_chains_matched": 42,
+      "scale": 1000000000000
+    },
+    {
+      "chain_row_match_percent": 97.16312056737588,
+      "chain_rows": 141,
+      "chain_rows_error": 4,
+      "chain_rows_matched": 137,
+      "false_node_chain_match_percent": 100.0,
+      "false_node_chains": 65,
+      "false_node_chains_error": 0,
+      "false_node_chains_matched": 65,
+      "scale": 1000000000000000
+    },
+    {
+      "chain_row_match_percent": 97.93103448275862,
+      "chain_rows": 145,
+      "chain_rows_error": 3,
+      "chain_rows_matched": 142,
+      "false_node_chain_match_percent": 100.0,
+      "false_node_chains": 76,
+      "false_node_chains_error": 0,
+      "false_node_chains_matched": 76,
+      "scale": 1000000000000000000
+    }
+  ]
+}

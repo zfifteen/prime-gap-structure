@@ -39,6 +39,7 @@ Promotion requires:
 | [`codex/solution-01c-grok-gwr-later-side-closure`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01c-grok-gwr-later-side-closure) | `56d131f` | Rejected as drop-in | Existing GWR/NLSC selectors do not select a boundary from only `p` and `q0`. |
 | [`codex/solution-01d-grok-gwr-locked-chamber`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01d-grok-gwr-locked-chamber) | `d5d248d` | Rejected | GWR lock alone does not provide the missing boundary offset. |
 | [`codex/solution-01d-gwr-locked-integration`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01d-gwr-locked-integration) | `e81d287` | Not promotable | Fair locked-state integration found no safe replayable boundary-margin key. |
+| [`codex/solution-02-gemini-rst-law`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-02-gemini-rst-law) | `4994dc2` | Rejected | Residual symmetry minimization selects many wrong boundaries. |
 
 ## Solution 1: Full Chamber State Contract
 
@@ -336,6 +337,74 @@ Limitation:
 
 The probe only tests the current visible-state key families. It does not prove
 that no deeper GWR/DNI state can determine the margin.
+
+## Solution 2: Residual Symmetry Termination
+
+Branch:
+[`codex/solution-02-gemini-rst-law`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-02-gemini-rst-law)
+
+Commit: `4994dc2`
+
+Proposed solution:
+
+Compute a pre-shadow closure-state vector and slide it across the right side of
+the shadow seed. Select the candidate whose right-side vector minimizes the
+Hamming distance from the pre-shadow vector:
+
+```text
+CSR(x) = Hamming(A, B(x))
+q = first argmin_x CSR(x)
+```
+
+Test performed:
+
+The branch regenerated closure-state vectors from current PGS-visible logic
+using `closure_reason(...)`. It tested:
+
+- the literal fixed `128`-integer pre-shadow vector;
+- a chamber-native prefix vector from `p` into `q0`;
+- all integer candidates;
+- visible-open candidate domains only.
+
+Artifacts:
+
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-02-gemini-rst-law/benchmarks/python/predictor/simple_pgs_solution_02_rst_probe.py)
+- [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-02-gemini-rst-law/output/simple_pgs_solution_02_rst_probe/summary.json)
+- [RST summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-02-gemini-rst-law/output/simple_pgs_solution_02_rst_probe/rst_summary.csv)
+- [RST selection rows](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-02-gemini-rst-law/output/simple_pgs_solution_02_rst_probe/rst_selection_rows.csv)
+
+Result:
+
+No RST variant promoted. The visible-open domains produced some correct picks
+and would raise projected PGS over `50%`, but only with many wrong selections.
+
+Best legal-domain results:
+
+| Scale | Vector | Domain | Correct | Audit failures | Projected PGS |
+|---|---|---|---:|---:|---:|
+| $10^{15}$ | anchor prefix | visible-open anchor bound | 52/141 | 89 | 64.26% |
+| $10^{18}$ | anchor prefix | visible-open anchor bound | 47/145 | 98 | 60.80% |
+| $10^{15}$ | fixed 128 | visible-open anchor bound | 41/141 | 100 | 59.84% |
+| $10^{18}$ | fixed 128 | visible-open anchor bound | 27/145 | 118 | 52.80% |
+
+The all-integer domains selected too early almost everywhere.
+
+Strength:
+
+The proposal required no generator change. Both vectors could be regenerated
+from current deterministic closure logic, so the falsification surface was
+clean and cheap after caching.
+
+Weakness:
+
+The Hamming-minimum criterion is not a boundary selector. It frequently picks
+another right-side impostor or overshoots the true boundary.
+
+Limitation:
+
+This branch tested binary closure-state vectors only. It does not rule out a
+more structured residual using richer signed or weighted PGS states, but the
+submitted CSR/Hamming law is not promotable.
 
 ## Current Lesson
 

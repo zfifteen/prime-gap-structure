@@ -1,0 +1,13 @@
+{
+  "artifacts": {
+    "materialized_contract": "output/simple_pgs_solution_06_windowed_stabilization_probe/materialized_contract.csv",
+    "selection_rows": "output/simple_pgs_solution_06_windowed_stabilization_probe/stabilization_selection_rows.csv",
+    "summary": "output/simple_pgs_solution_06_windowed_stabilization_probe/stabilization_summary.csv"
+  },
+  "eligible_rule_count": 0,
+  "eligible_rules": [],
+  "minimum_window": 128,
+  "target_rows": 404,
+  "verdict": "rejected_no_windowed_stabilization_rule_met_promotion_gate",
+  "visible_divisor_bound": 10000
+}

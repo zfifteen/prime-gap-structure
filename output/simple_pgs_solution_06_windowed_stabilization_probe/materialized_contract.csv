@@ -1,0 +1,4 @@
+required_object,materialized_in_current_artifacts,probe_handling
+per-index emitted count / confirmed count,False,not used because confirmed count is downstream audit state
+per-index visible candidate flux,False,synthesized from closure_reason over a local window
+per-index chamber pressure,False,synthesized as closed-position density over a local window

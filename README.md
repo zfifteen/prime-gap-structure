@@ -113,6 +113,13 @@ record for each accepted prime anchor:
 The emitted stream is deliberately small: exactly `p` and `q`. Source labels,
 diagnostics, certificates, and audit results stay outside the generator output.
 
+The design philosophy is PGS-first inference. The generator uses local
+prime-gap structure, chamber arithmetic, wheel-open positions, divisor-class
+closure, and boundary rules to infer the next prime. Classical arithmetic is
+kept as deterministic fallback and downstream audit support, not as the primary
+idea of the generator. Probabilistic primality tests and oracle-style
+`nextprime` calls are excluded from generation.
+
 On the current audited surfaces, the generator is exact in low-scale full runs
 and remains audit-clean in high-scale probe runs:
 

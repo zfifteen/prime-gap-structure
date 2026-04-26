@@ -1,0 +1,7 @@
+scale,interpretation,shadow_seed_rows,correct,correct_percent,audit_failed_if_promoted,selected_too_early,selected_too_late,no_selection,emitted_count,projected_pgs_count,projected_pgs_percent,promotion_eligible
+1000000000000,reanchor_at_seed,102,60,58.82352941176471,42,42,0,0,253,253,100.0,False
+1000000000000,same_anchor_start_after_seed,102,60,58.82352941176471,42,42,0,0,253,253,100.0,False
+1000000000000000,reanchor_at_seed,141,76,53.90070921985816,65,65,0,0,249,249,100.0,False
+1000000000000000,same_anchor_start_after_seed,141,76,53.90070921985816,65,65,0,0,249,249,100.0,False
+1000000000000000000,reanchor_at_seed,145,69,47.58620689655172,76,76,0,0,250,250,100.0,False
+1000000000000000000,same_anchor_start_after_seed,145,69,47.58620689655172,76,76,0,0,250,250,100.0,False

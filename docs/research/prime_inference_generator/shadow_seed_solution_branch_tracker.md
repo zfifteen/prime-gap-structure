@@ -44,6 +44,7 @@ Promotion requires:
 | [`codex/solution-04-deepseek-square-grid-openq`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-04-deepseek-square-grid-openq) | `343616d` | Rejected | The proposed square-grid sequence misses the audited boundary on all 388 shadow rows. |
 | [`codex/solution-05-claude-ssbrl-residue-advance`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-05-claude-ssbrl-residue-advance) | `bfdab74` | Rejected | `q0 + r` never selects the boundary; residue advance repeats the unsafe first-visible-open failure. |
 | [`codex/solution-06-copilot-windowed-stabilization`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-06-copilot-windowed-stabilization) | `fb1f18a` | Rejected | Windowed flux/pressure stabilization abstains on every target row. |
+| [`codex/solution-07-seed-erasure-boundary`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-07-seed-erasure-boundary) | `973b3e3` | Rejected | Literal erasure collapses to first-visible-open; explicit seed-phase walls are unsafe. |
 
 ## Solution 1: Full Chamber State Contract
 
@@ -755,6 +756,106 @@ This branch rejects the submitted flux/pressure law as instantiated from the
 current closure predicate. It does not rule out a different pressure definition
 that is independently materialized as a PGS state rather than synthesized from
 closed-position density.
+
+## Solution 7: Seed-Erasure Boundary Law
+
+Branch:
+[`codex/solution-07-seed-erasure-boundary`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-07-seed-erasure-boundary)
+
+Commit: `973b3e3`
+
+Proposed solution:
+
+Treat the true boundary as the first visible-open candidate after `q0` where
+the rightward chamber trace no longer depends on the placed shadow seed.
+
+```text
+seed_erasure_defect(c) =
+  disagreement count between the right trace with q0 present
+  and the right trace with q0 erased
+```
+
+The selector chooses the first visible-open `c > q0` where the defect is zero,
+or the first stable minimum if zero is too strict.
+
+Test performed:
+
+The current chamber does not materialize a placed-seed influence term. The
+branch therefore tested three concrete interpretations:
+
+- literal re-anchor identity, where no explicit seed influence exists;
+- seed-offset phase wall, using the visible offset `q0 - p`;
+- candidate-margin phase wall, using the visible margin `c - q0`.
+
+Each interpretation was tested with trace windows `128` and `64`.
+
+Artifacts:
+
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/benchmarks/python/predictor/simple_pgs_solution_07_seed_erasure_probe.py)
+- [window 128 summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/output/simple_pgs_solution_07_seed_erasure_probe/summary.json)
+- [window 128 summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/output/simple_pgs_solution_07_seed_erasure_probe/seed_erasure_summary.csv)
+- [window 64 summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/output/simple_pgs_solution_07_seed_erasure_probe_w64/summary.json)
+- [window 64 summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-07-seed-erasure-boundary/output/simple_pgs_solution_07_seed_erasure_probe_w64/seed_erasure_summary.csv)
+
+Result:
+
+No rule promoted. The literal interpretation collapses to the known
+first-visible-open selector. The explicit seed-phase integrations select many
+wrong boundaries.
+
+Window `128`:
+
+| Scale | Rule | Correct | Too early | Too late | Projected PGS |
+|---|---|---:|---:|---:|---:|
+| $10^{12}$ | literal identity | 60/102 | 42 | 0 | 83.40% |
+| $10^{12}$ | seed-offset phase | 35/102 | 23 | 44 | 73.52% |
+| $10^{12}$ | candidate-margin phase | 30/102 | 19 | 53 | 71.54% |
+| $10^{15}$ | literal identity | 76/141 | 65 | 0 | 73.90% |
+| $10^{15}$ | seed-offset phase | 55/141 | 38 | 48 | 65.46% |
+| $10^{15}$ | candidate-margin phase | 36/141 | 36 | 69 | 57.83% |
+| $10^{18}$ | literal identity | 69/145 | 76 | 0 | 69.60% |
+| $10^{18}$ | seed-offset phase | 45/145 | 48 | 52 | 60.00% |
+| $10^{18}$ | candidate-margin phase | 31/145 | 49 | 65 | 54.40% |
+
+Window `64`:
+
+| Scale | Rule | Correct | Too early | Too late | Projected PGS |
+|---|---|---:|---:|---:|---:|
+| $10^{12}$ | literal identity | 60/102 | 42 | 0 | 83.40% |
+| $10^{12}$ | seed-offset phase | 36/102 | 28 | 38 | 73.91% |
+| $10^{12}$ | candidate-margin phase | 37/102 | 28 | 37 | 74.31% |
+| $10^{15}$ | literal identity | 76/141 | 65 | 0 | 73.90% |
+| $10^{15}$ | seed-offset phase | 40/141 | 40 | 61 | 59.44% |
+| $10^{15}$ | candidate-margin phase | 42/141 | 46 | 53 | 60.24% |
+| $10^{18}$ | literal identity | 69/145 | 76 | 0 | 69.60% |
+| $10^{18}$ | seed-offset phase | 51/145 | 46 | 48 | 62.40% |
+| $10^{18}$ | candidate-margin phase | 46/145 | 59 | 40 | 60.40% |
+
+Materialization result:
+
+The required seed-erasure object is not present in current artifacts.
+
+| Required object | Present |
+|---|---|
+| literal seed-erasure trace in current chamber state | false |
+| placed-seed influence term | false |
+
+Strength:
+
+The test showed exactly where the proposed mechanism would need to live: in a
+real, materialized seed influence term. Without that term, erasure is
+mathematically invisible.
+
+Weakness:
+
+The tested seed-phase integrations are not safe selectors. They either reduce
+to the first-visible-open failure or produce mixed early and late errors.
+
+Limitation:
+
+This branch rejects the current explicit seed-erasure integrations. It does
+not rule out a future chamber model where `q0` contributes a real stateful
+influence that can be erased and compared.
 
 ## Current Lesson
 

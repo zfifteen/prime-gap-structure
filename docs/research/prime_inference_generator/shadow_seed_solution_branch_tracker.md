@@ -43,6 +43,7 @@ Promotion requires:
 | [`codex/solution-03-meta-frontier-exhaustion`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-03-meta-frontier-exhaustion) | `cba771c` | Rejected | Required mark-stream inputs are absent; materialized proxies are unsafe or abstain. |
 | [`codex/solution-04-deepseek-square-grid-openq`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-04-deepseek-square-grid-openq) | `343616d` | Rejected | The proposed square-grid sequence misses the audited boundary on all 388 shadow rows. |
 | [`codex/solution-05-claude-ssbrl-residue-advance`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-05-claude-ssbrl-residue-advance) | `bfdab74` | Rejected | `q0 + r` never selects the boundary; residue advance repeats the unsafe first-visible-open failure. |
+| [`codex/solution-06-copilot-windowed-stabilization`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-06-copilot-windowed-stabilization) | `fb1f18a` | Rejected | Windowed flux/pressure stabilization abstains on every target row. |
 
 ## Solution 1: Full Chamber State Contract
 
@@ -670,6 +671,90 @@ Limitation:
 This branch rejects the submitted SSBRL against current artifacts. It does not
 rule out a future chamber-state object that records a different blocking phase
 than the seed's least factor.
+
+## Solution 6: Windowed Flux/Pressure Stabilization
+
+Branch:
+[`codex/solution-06-copilot-windowed-stabilization`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-06-copilot-windowed-stabilization)
+
+Commit: `fb1f18a`
+
+Proposed solution:
+
+Select the terminal boundary as the first rightward index after `q0` where a
+PGS-visible recovery state stabilizes. The proposed recovery state uses:
+
+- visible candidate flux;
+- chamber-closure pressure;
+- a window width `W = max(128, floor(log(p)^2))`;
+- a stability gap `G = ceil(W / 8)`.
+
+Test performed:
+
+The submitted per-index flux and pressure series are not materialized in the
+current sidecars. The branch synthesized them from the current PGS-visible
+closure predicate over a local rightward window and tested:
+
+- literal flux/pressure stabilization;
+- a boundary-open stabilization variant where the selected `r` must be
+  visible-open;
+- the first-visible-open selector as a baseline comparator.
+
+Artifacts:
+
+- [probe script](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/benchmarks/python/predictor/simple_pgs_solution_06_windowed_stabilization_probe.py)
+- [summary JSON](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/output/simple_pgs_solution_06_windowed_stabilization_probe/summary.json)
+- [stabilization summary CSV](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/output/simple_pgs_solution_06_windowed_stabilization_probe/stabilization_summary.csv)
+- [selection rows](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/output/simple_pgs_solution_06_windowed_stabilization_probe/stabilization_selection_rows.csv)
+- [materialized contract](https://github.com/zfifteen/prime-gap-structure/blob/codex/solution-06-copilot-windowed-stabilization/output/simple_pgs_solution_06_windowed_stabilization_probe/materialized_contract.csv)
+
+Result:
+
+No rule promoted. Both stabilization rules abstained on every
+`shadow_seed_recovery` and unresolved row. The first-visible-open baseline
+again shows high projected PGS only by accepting many too-early boundaries.
+
+| Scale | Source | Stabilization correct | Stabilization no selection | First-visible correct | First-visible too early |
+|---|---|---:|---:|---:|---:|
+| $10^{12}$ | shadow seed | 0/102 | 102 | 60/102 | 42 |
+| $10^{15}$ | shadow seed | 0/141 | 141 | 76/141 | 65 |
+| $10^{18}$ | shadow seed | 0/145 | 145 | 69/145 | 76 |
+
+Unresolved rows were also not recovered by stabilization:
+
+| Scale | Unresolved rows | Stabilization selections | First-visible too early |
+|---|---:|---:|---:|
+| $10^{12}$ | 3 | 0 | 3 |
+| $10^{15}$ | 7 | 0 | 7 |
+| $10^{18}$ | 6 | 0 | 6 |
+
+Materialization result:
+
+The exact submitted state is not present in current artifacts.
+
+| Required object | Present |
+|---|---|
+| per-index emitted / confirmed counts | false |
+| per-index visible candidate flux | false |
+| per-index chamber pressure | false |
+
+Strength:
+
+The proposal correctly avoids a flat candidate tag and tries to use a process
+state over a rightward window.
+
+Weakness:
+
+The concrete stabilization criteria are too strict to select any tested
+boundary. When relaxed to the first visible-open comparator, the rule
+collapses into the known unsafe early-selection pattern.
+
+Limitation:
+
+This branch rejects the submitted flux/pressure law as instantiated from the
+current closure predicate. It does not rule out a different pressure definition
+that is independently materialized as a PGS state rather than synthesized from
+closed-position density.
 
 ## Current Lesson
 

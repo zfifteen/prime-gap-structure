@@ -1,0 +1,15 @@
+scale,rule_id,shadow_seed_rows,top1_selected,top1_correct,top1_recall,would_convert_shadow_recovery_to_pgs,would_create_audit_failures,projected_pgs_percent,promotion_eligible,research_candidate,failure_mode_selected_too_early,failure_mode_selected_too_late,failure_mode_no_selection
+1000000000000000,RR1_repeated_signature_break,141,141,76,0.5390070921985816,76,65,73.89558232931726,False,False,65,0,0
+1000000000000000,RR2_visible_open_gap_record,141,18,9,0.06382978723404255,9,9,46.98795180722892,False,False,9,0,123
+1000000000000000,RR3_transition_class_break,141,0,0,0.0,0,0,43.373493975903614,False,False,0,0,141
+1000000000000000,RR4_closure_counts_fixed_point,141,0,0,0.0,0,0,43.373493975903614,False,False,0,0,141
+1000000000000000,RR5_suffix_breaks_prefix_pattern,141,52,0,0.0,0,52,43.373493975903614,False,False,52,0,89
+1000000000000000,RR6_after_visible_open_impostor_run,141,65,32,0.22695035460992907,32,33,56.22489959839358,False,False,33,0,76
+1000000000000000,RR7_new_open_density_regime,141,0,0,0.0,0,0,43.373493975903614,False,False,0,0,141
+1000000000000000000,RR1_repeated_signature_break,145,145,69,0.47586206896551725,69,76,69.6,False,False,76,0,0
+1000000000000000000,RR2_visible_open_gap_record,145,27,9,0.06206896551724138,9,18,45.6,False,False,18,0,118
+1000000000000000000,RR3_transition_class_break,145,0,0,0.0,0,0,42.0,False,False,0,0,145
+1000000000000000000,RR4_closure_counts_fixed_point,145,0,0,0.0,0,0,42.0,False,False,0,0,145
+1000000000000000000,RR5_suffix_breaks_prefix_pattern,145,63,0,0.0,0,63,42.0,False,False,63,0,82
+1000000000000000000,RR6_after_visible_open_impostor_run,145,76,29,0.2,29,47,53.6,False,False,47,0,69
+1000000000000000000,RR7_new_open_density_regime,145,0,0,0.0,0,0,42.0,False,False,0,0,145

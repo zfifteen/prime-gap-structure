@@ -1,0 +1,17 @@
+scale,vector_mode,candidate_domain,shadow_seed_rows,correct,correct_percent,no_selection,selected_too_early,selected_too_late,audit_failed_if_promoted,emitted_count,projected_pgs_count,projected_pgs_percent,promotion_eligible
+1000000000000000,anchor_prefix_to_seed,all_integer_anchor_bound,141,0,0.0,0,141,0,141,249,108,43.373493975903614,False
+1000000000000000,anchor_prefix_to_seed,all_integer_seed_bound,141,0,0.0,0,141,0,141,249,108,43.373493975903614,False
+1000000000000000,anchor_prefix_to_seed,visible_open_anchor_bound,141,52,36.87943262411347,0,53,36,89,249,160,64.2570281124498,False
+1000000000000000,anchor_prefix_to_seed,visible_open_seed_bound,141,49,34.751773049645394,0,51,41,92,249,157,63.05220883534136,False
+1000000000000000,fixed_128_pre_shadow,all_integer_anchor_bound,141,4,2.8368794326241136,0,48,89,137,249,112,44.97991967871486,False
+1000000000000000,fixed_128_pre_shadow,all_integer_seed_bound,141,4,2.8368794326241136,0,45,92,137,249,112,44.97991967871486,False
+1000000000000000,fixed_128_pre_shadow,visible_open_anchor_bound,141,41,29.078014184397162,0,23,77,100,249,149,59.83935742971887,False
+1000000000000000,fixed_128_pre_shadow,visible_open_seed_bound,141,37,26.24113475177305,0,22,82,104,249,145,58.23293172690763,False
+1000000000000000000,anchor_prefix_to_seed,all_integer_anchor_bound,145,0,0.0,0,145,0,145,250,105,42.0,False
+1000000000000000000,anchor_prefix_to_seed,all_integer_seed_bound,145,0,0.0,0,145,0,145,250,105,42.0,False
+1000000000000000000,anchor_prefix_to_seed,visible_open_anchor_bound,145,47,32.41379310344827,0,60,38,98,250,152,60.8,False
+1000000000000000000,anchor_prefix_to_seed,visible_open_seed_bound,145,44,30.344827586206897,0,59,42,101,250,149,59.599999999999994,False
+1000000000000000000,fixed_128_pre_shadow,all_integer_anchor_bound,145,3,2.0689655172413794,0,50,92,142,250,108,43.2,False
+1000000000000000000,fixed_128_pre_shadow,all_integer_seed_bound,145,3,2.0689655172413794,0,42,100,142,250,108,43.2,False
+1000000000000000000,fixed_128_pre_shadow,visible_open_anchor_bound,145,27,18.620689655172416,0,35,83,118,250,132,52.800000000000004,False
+1000000000000000000,fixed_128_pre_shadow,visible_open_seed_bound,145,23,15.862068965517242,0,31,91,122,250,128,51.2,False

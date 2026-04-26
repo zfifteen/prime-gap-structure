@@ -1,0 +1,4 @@
+scale,shadow_rows,rows_with_materialized_candidate_stream,rows_missing_materialized_candidate_stream,materialized_percent
+1000000000000,102,0,102,0.0
+1000000000000000,141,141,0,100.0
+1000000000000000000,145,145,0,100.0

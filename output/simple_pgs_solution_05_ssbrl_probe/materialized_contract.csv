@@ -1,0 +1,4 @@
+required_object,materialized_in_current_artifacts,probe_handling
+seed blocking witness r in chamber_state,False,computed with audit-only factorization for signal tests
+sieve_primes / active wall primes,False,"tested visible prime walls, visible integer walls, and materialized candidate witnesses separately"
+residue vector at q0,False,recomputed residue tests in probe; not promotable as current pure PGS state

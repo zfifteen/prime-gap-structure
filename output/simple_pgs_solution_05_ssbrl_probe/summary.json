@@ -1,0 +1,37 @@
+{
+  "artifacts": {
+    "materialized_contract": "output/simple_pgs_solution_05_ssbrl_probe/materialized_contract.csv",
+    "materialized_coverage": "output/simple_pgs_solution_05_ssbrl_probe/materialized_coverage.csv",
+    "selection_rows": "output/simple_pgs_solution_05_ssbrl_probe/ssbrl_selection_rows.csv",
+    "summary": "output/simple_pgs_solution_05_ssbrl_probe/ssbrl_summary.csv"
+  },
+  "candidate_bound": 128,
+  "eligible_rule_count": 0,
+  "eligible_rules": [],
+  "materialized_coverage": [
+    {
+      "materialized_percent": 0.0,
+      "rows_missing_materialized_candidate_stream": 102,
+      "rows_with_materialized_candidate_stream": 0,
+      "scale": 1000000000000,
+      "shadow_rows": 102
+    },
+    {
+      "materialized_percent": 100.0,
+      "rows_missing_materialized_candidate_stream": 0,
+      "rows_with_materialized_candidate_stream": 141,
+      "scale": 1000000000000000,
+      "shadow_rows": 141
+    },
+    {
+      "materialized_percent": 100.0,
+      "rows_missing_materialized_candidate_stream": 0,
+      "rows_with_materialized_candidate_stream": 145,
+      "scale": 1000000000000000000,
+      "shadow_rows": 145
+    }
+  ],
+  "shadow_rows": 388,
+  "verdict": "rejected_no_ssbrl_rule_met_promotion_gate",
+  "visible_divisor_bound": 10000
+}

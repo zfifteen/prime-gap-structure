@@ -9,6 +9,7 @@ from pathlib import Path
 from sympy import nextprime
 
 from z_band_prime_predictor.simple_pgs_generator import (
+    CHAIN_FALLBACK_SOURCE,
     FALLBACK_SOURCE,
     PGS_SOURCE,
 )
@@ -48,6 +49,9 @@ def audit_report(
                 "actual_q": actual_q,
             }
     pgs_count = sum(1 for record in diagnostics if record["source"] == PGS_SOURCE)
+    chain_fallback_count = sum(
+        1 for record in diagnostics if record["source"] == CHAIN_FALLBACK_SOURCE
+    )
     fallback_count = sum(
         1 for record in diagnostics if record["source"] == FALLBACK_SOURCE
     )
@@ -64,28 +68,37 @@ def audit_report(
         pgs_by_rule[rule_id] = pgs_by_rule.get(rule_id, 0) + 1
     emitted_count = len(records)
     pgs_rate = 0.0 if emitted_count == 0 else pgs_count / emitted_count
+    chain_fallback_rate = (
+        0.0 if emitted_count == 0 else chain_fallback_count / emitted_count
+    )
     fallback_rate = 0.0 if emitted_count == 0 else fallback_count / emitted_count
     audit_failed = emitted_count - confirmed
+    accuracy_status = "PASS" if audit_failed == 0 else "FAIL"
     if audit_failed != 0:
-        generator_status = "FAILING"
-    elif fallback_rate <= 0.25:
-        generator_status = "PGS_PASS"
-    elif fallback_rate <= 0.50:
-        generator_status = "MINIMAL_PASS"
+        pgs_status = "FAILING"
+    elif pgs_rate >= 0.75:
+        pgs_status = "PGS_PASS"
+    elif pgs_rate >= 0.50:
+        pgs_status = "MINIMAL_PASS"
     else:
-        generator_status = "FAILING"
+        pgs_status = "FAILING"
     return {
         "anchors_scanned": len(records),
         "emitted_count": emitted_count,
         "audit_confirmed": confirmed,
         "audit_failed": audit_failed,
+        "accuracy_status": accuracy_status,
+        "pgs_status": pgs_status,
         "pgs_count": pgs_count,
+        "chain_fallback_count": chain_fallback_count,
         "fallback_count": fallback_count,
         "pgs_rate": pgs_rate,
+        "chain_fallback_rate": chain_fallback_rate,
         "fallback_rate": fallback_rate,
         "pgs_percent": pgs_rate * 100.0,
+        "chain_fallback_percent": chain_fallback_rate * 100.0,
         "fallback_percent": fallback_rate * 100.0,
-        "generator_status": generator_status,
+        "generator_status": pgs_status,
         "pgs_by_rule": pgs_by_rule,
         "pgs_missing_certificate_count": missing_certificate,
         "first_failure": first_failure,

@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "scale": 1000000000000000,
+      "sample_size": 256,
+      "emitted_count": 249,
+      "unresolved_count": 7,
+      "unresolved_rate": 0.02734375,
+      "unresolved_percent": 2.734375,
+      "audit_failed": 0,
+      "accuracy_status": "PASS",
+      "pgs_status": "FAILING",
+      "pgs_count": 108,
+      "chain_fallback_count": 141,
+      "fallback_count": 0,
+      "pgs_rate": 0.43373493975903615,
+      "chain_fallback_rate": 0.5662650602409639,
+      "fallback_rate": 0.0,
+      "pgs_percent": 43.373493975903614,
+      "chain_fallback_percent": 56.62650602409639,
+      "fallback_percent": 0.0
+    },
+    {
+      "scale": 1000000000000000000,
+      "sample_size": 256,
+      "emitted_count": 250,
+      "unresolved_count": 6,
+      "unresolved_rate": 0.0234375,
+      "unresolved_percent": 2.34375,
+      "audit_failed": 0,
+      "accuracy_status": "PASS",
+      "pgs_status": "FAILING",
+      "pgs_count": 105,
+      "chain_fallback_count": 145,
+      "fallback_count": 0,
+      "pgs_rate": 0.42,
+      "chain_fallback_rate": 0.58,
+      "fallback_rate": 0.0,
+      "pgs_percent": 42.0,
+      "chain_fallback_percent": 57.99999999999999,
+      "fallback_percent": 0.0
+    }
+  ]
+}

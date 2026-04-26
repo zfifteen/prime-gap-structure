@@ -6,7 +6,10 @@ from math import isqrt
 
 
 DEFAULT_CANDIDATE_BOUND = 128
+DEFAULT_CHAIN_LIMIT = 8
+DEFAULT_VISIBLE_DIVISOR_BOUND = 10_000
 PGS_SOURCE = "PGS"
+CHAIN_FALLBACK_SOURCE = "chain_fallback"
 FALLBACK_SOURCE = "fallback"
 FALLBACK_REQUIRED_SOURCE = "fallback_required"
 WHEEL_OPEN_RESIDUES_MOD30 = frozenset({1, 7, 11, 13, 17, 19, 23, 29})
@@ -108,6 +111,65 @@ def pgs_chamber_closure_certificate(
     return None
 
 
+def visible_open_chain_offsets(
+    p: int,
+    seed_offset: int,
+    candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
+    chain_limit: int = DEFAULT_CHAIN_LIMIT,
+    max_divisor: int | None = None,
+) -> list[int]:
+    """Return visible-open rightward chain offsets after one seed."""
+    offsets = admissible_offsets(int(p), int(candidate_bound))
+    chain: list[int] = []
+    current = int(seed_offset)
+    while len(chain) < int(chain_limit):
+        visible = [
+            offset
+            for offset in offsets
+            if offset > current and closure_reason(int(p), offset, max_divisor) is None
+        ]
+        if not visible:
+            break
+        current = min(visible)
+        chain.append(current)
+    return chain
+
+
+def chain_fallback_result(
+    p: int,
+    seed_offset: int,
+    candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
+    chain_limit: int = DEFAULT_CHAIN_LIMIT,
+    max_divisor: int | None = DEFAULT_VISIBLE_DIVISOR_BOUND,
+) -> tuple[int | None, dict[str, object]]:
+    """Return the first exact chain survivor and chain sidecar fields."""
+    chain_offsets = visible_open_chain_offsets(
+        int(p),
+        int(seed_offset),
+        int(candidate_bound),
+        int(chain_limit),
+        max_divisor,
+    )
+    chain_nodes = [int(p) + offset for offset in chain_offsets]
+    checked_nodes: list[int] = []
+    selected_position: int | None = None
+    selected_q: int | None = None
+    for position, candidate in enumerate(chain_nodes, start=1):
+        checked_nodes.append(candidate)
+        if not has_trial_divisor(candidate):
+            selected_position = position
+            selected_q = candidate
+            break
+    return selected_q, {
+        "chain_seed": int(p) + int(seed_offset),
+        "chain_limit": int(chain_limit),
+        "chain_position_selected": selected_position,
+        "chain_nodes_checked": checked_nodes,
+        "chain_fallback_success": selected_q is not None,
+        "full_fallback_used": False,
+    }
+
+
 def pgs_gap_certificate(
     p: int,
     gap_offset: int,
@@ -186,16 +248,63 @@ def resolve_q(
     candidate_bound: int = DEFAULT_CANDIDATE_BOUND,
 ) -> tuple[int, str, dict[str, object] | None]:
     """Resolve q and return its source."""
-    fallback_q = next_prime_by_trial_division(int(p), candidate_bound)
-    certificate = pgs_boundary_certificate(
-        int(p),
-        fallback_q,
-        boundary_offset,
-        candidate_bound,
+    certificate = (
+        pgs_gap_certificate(
+            int(p),
+            int(boundary_offset),
+            candidate_bound,
+            DEFAULT_VISIBLE_DIVISOR_BOUND,
+        )
+        if boundary_offset is not None
+        else pgs_chamber_closure_certificate(
+            int(p),
+            candidate_bound,
+            None,
+            DEFAULT_VISIBLE_DIVISOR_BOUND,
+        )
     )
-    if certificate is None:
-        return fallback_q, FALLBACK_SOURCE, None
-    return int(certificate["q"]), PGS_SOURCE, certificate
+    if certificate is not None:
+        q0 = int(certificate["q"])
+        if not has_trial_divisor(q0):
+            certificate["fallback_agreed"] = True
+            certificate.update(
+                {
+                    "chain_seed": None,
+                    "chain_limit": DEFAULT_CHAIN_LIMIT,
+                    "chain_position_selected": None,
+                    "chain_nodes_checked": [],
+                    "chain_fallback_success": False,
+                    "full_fallback_used": False,
+                }
+            )
+            return q0, PGS_SOURCE, certificate
+
+        chain_q, chain_fields = chain_fallback_result(
+            int(p),
+            int(certificate["gap_offset"]),
+            candidate_bound,
+            DEFAULT_CHAIN_LIMIT,
+            DEFAULT_VISIBLE_DIVISOR_BOUND,
+        )
+        chain_certificate = dict(certificate)
+        chain_certificate["fallback_agreed"] = False
+        chain_certificate.update(chain_fields)
+        if chain_q is not None:
+            return chain_q, CHAIN_FALLBACK_SOURCE, chain_certificate
+
+        fallback_q = next_prime_by_trial_division(int(p), candidate_bound)
+        chain_certificate["full_fallback_used"] = True
+        return fallback_q, FALLBACK_SOURCE, chain_certificate
+
+    fallback_q = next_prime_by_trial_division(int(p), candidate_bound)
+    return fallback_q, FALLBACK_SOURCE, {
+        "chain_seed": None,
+        "chain_limit": DEFAULT_CHAIN_LIMIT,
+        "chain_position_selected": None,
+        "chain_nodes_checked": [],
+        "chain_fallback_success": False,
+        "full_fallback_used": True,
+    }
 
 
 def emit_record(

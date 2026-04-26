@@ -45,7 +45,7 @@ def generator_status_for_rows(rows: list[dict[str, object]]) -> str:
     if any(int(row["audit_failed"]) != 0 for row in rows):
         return "FAILING"
     if any(
-        row["mode"] == "exact" and float(row["fallback_rate"]) > 0.50
+        row["mode"] == "exact" and float(row["pgs_rate"]) < 0.50
         for row in rows
     ):
         return "FAILING"
@@ -57,7 +57,7 @@ def generator_status_for_rows(rows: list[dict[str, object]]) -> str:
     if all(
         (
             row["mode"] == "exact"
-            and float(row["fallback_rate"]) <= 0.25
+            and float(row["pgs_rate"]) >= 0.75
         )
         or (
             row["mode"] == "pgs_probe"
@@ -117,11 +117,16 @@ def pgs_probe_report(
         "emitted_count": pgs_certified_count,
         "audit_confirmed": report["audit_confirmed"],
         "audit_failed": report["audit_failed"],
+        "accuracy_status": "PASS" if report["audit_failed"] == 0 else "FAIL",
+        "pgs_status": "FAILING",
         "pgs_count": pgs_certified_count,
+        "chain_fallback_count": 0,
         "fallback_count": fallback_required_count,
         "pgs_rate": pgs_certified_rate,
+        "chain_fallback_rate": 0.0,
         "fallback_rate": fallback_required_rate,
         "pgs_percent": pgs_certified_rate * 100.0,
+        "chain_fallback_percent": 0.0,
         "fallback_percent": fallback_required_rate * 100.0,
         "pgs_certified_count": pgs_certified_count,
         "fallback_required_count": fallback_required_count,
@@ -195,6 +200,12 @@ def run_scale(
     records = emit_records(anchors, candidate_bound=candidate_bound)
     diagnostics = diagnostic_records(anchors, candidate_bound=candidate_bound)
     report = audit_report(records, diagnostics)
+    fallback_required_count = (
+        int(report["chain_fallback_count"]) + int(report["fallback_count"])
+    )
+    fallback_required_rate = (
+        0.0 if not anchors else fallback_required_count / len(anchors)
+    )
     return {
         "scale": int(scale),
         "mode": "exact",
@@ -202,11 +213,11 @@ def run_scale(
         "skip_reason": None,
         "max_required_divisor_floor": required_floor,
         "pgs_certified_count": report["pgs_count"],
-        "fallback_required_count": report["fallback_count"],
+        "fallback_required_count": fallback_required_count,
         "pgs_certified_rate": report["pgs_rate"],
-        "fallback_required_rate": report["fallback_rate"],
+        "fallback_required_rate": fallback_required_rate,
         "pgs_certified_percent": report["pgs_percent"],
-        "fallback_required_percent": report["fallback_percent"],
+        "fallback_required_percent": fallback_required_rate * 100.0,
         **report,
     }
 
@@ -258,8 +269,9 @@ def main(argv: list[str] | None = None) -> int:
     for row in rows:
         print(
             "scale={scale} mode={mode} fallback_percent={fallback_percent:.2f}% "
+            "chain_fallback_percent={chain_fallback_percent:.2f}% "
             "pgs_percent={pgs_percent:.2f}% audit_failed={audit_failed} "
-            "status={generator_status}".format(**row)
+            "accuracy_status={accuracy_status} pgs_status={pgs_status}".format(**row)
         )
     print({"generator_status": campaign_status, "rows": rows})
     return 0

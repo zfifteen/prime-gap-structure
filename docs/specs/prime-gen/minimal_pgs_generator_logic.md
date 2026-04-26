@@ -133,6 +133,27 @@ sidecar record may report whether `q` came from the PGS boundary rule or from
 fallback arithmetic. Sidecar diagnostics are not part of the emitted generator
 stream.
 
+The generator uses three source labels in sidecar diagnostics:
+
+- `PGS`: the bounded PGS selector chose `q`, and exact fallback arithmetic
+  confirmed that candidate;
+- `chain_fallback`: the bounded PGS selector chose a composite seed, the
+  visible-open shadow chain narrowed the repair search, and exact fallback
+  arithmetic selected `q` from that chain;
+- `fallback`: full deterministic fallback selected `q`.
+
+`chain_fallback` is not counted as pure PGS. It is an operational bridge that
+reduces full fallback while the terminal PGS stop rule is still incomplete.
+
+For `chain_fallback`, sidecar diagnostics report:
+
+- `chain_seed`;
+- `chain_limit`;
+- `chain_position_selected`;
+- `chain_nodes_checked`;
+- `chain_fallback_success`;
+- `full_fallback_used`.
+
 A separate audit or controller script may also write a fallback-displacement
 report with:
 
@@ -140,13 +161,20 @@ report with:
 - `emitted_count`;
 - `audit_confirmed`;
 - `audit_failed`;
+- `accuracy_status`;
+- `pgs_status`;
 - `pgs_count`;
+- `chain_fallback_count`;
 - `fallback_count`;
 - `pgs_rate`;
+- `chain_fallback_rate`;
 - `fallback_rate`;
-- `generator_status`;
 - `pgs_by_rule`;
 - `first_failure`.
+
+`accuracy_status` is `PASS` only when downstream audit finds zero failed
+emissions. `pgs_status` measures pure PGS progress only; `chain_fallback` does
+not make the pure PGS status pass.
 
 ## Allowed Arithmetic
 

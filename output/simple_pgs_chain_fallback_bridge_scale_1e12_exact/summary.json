@@ -1,0 +1,39 @@
+{
+  "rows": [
+    {
+      "scale": 1000000000000,
+      "mode": "exact",
+      "status": "completed",
+      "skip_reason": null,
+      "max_required_divisor_floor": 999999,
+      "pgs_certified_count": 151,
+      "fallback_required_count": 105,
+      "pgs_certified_rate": 0.58984375,
+      "fallback_required_rate": 0.41015625,
+      "pgs_certified_percent": 58.984375,
+      "fallback_required_percent": 41.015625,
+      "anchors_scanned": 256,
+      "emitted_count": 256,
+      "audit_confirmed": 256,
+      "audit_failed": 0,
+      "accuracy_status": "PASS",
+      "pgs_status": "MINIMAL_PASS",
+      "pgs_count": 151,
+      "chain_fallback_count": 102,
+      "fallback_count": 3,
+      "pgs_rate": 0.58984375,
+      "chain_fallback_rate": 0.3984375,
+      "fallback_rate": 0.01171875,
+      "pgs_percent": 58.984375,
+      "chain_fallback_percent": 39.84375,
+      "fallback_percent": 1.171875,
+      "generator_status": "MINIMAL_PASS",
+      "pgs_by_rule": {
+        "pgs_chamber_closure_v2": 151
+      },
+      "pgs_missing_certificate_count": 0,
+      "first_failure": null
+    }
+  ],
+  "generator_status": "MINIMAL_PASS"
+}

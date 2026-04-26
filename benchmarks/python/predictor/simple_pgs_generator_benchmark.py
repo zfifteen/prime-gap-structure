@@ -64,9 +64,11 @@ def main(argv: list[str] | None = None) -> int:
     )
     print(
         "fallback_percent={fallback_percent:.2f}% "
+        "chain_fallback_percent={chain_fallback_percent:.2f}% "
         "pgs_percent={pgs_percent:.2f}% "
         "audit_failed={audit_failed} "
-        "status={generator_status}".format(**report)
+        "accuracy_status={accuracy_status} "
+        "pgs_status={pgs_status}".format(**report)
     )
     print(report)
     return 0

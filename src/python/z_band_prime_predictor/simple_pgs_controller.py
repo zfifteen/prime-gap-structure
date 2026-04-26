@@ -20,11 +20,18 @@ def diagnostic_record(
 ) -> dict[str, object]:
     """Return one sidecar diagnostic record."""
     q, source, certificate = resolve_q(int(p), boundary_offset, candidate_bound)
+    fields = certificate if isinstance(certificate, dict) else {}
     return {
         "p": int(p),
         "q": q,
         "source": source,
         "certificate": certificate,
+        "chain_seed": fields.get("chain_seed"),
+        "chain_limit": fields.get("chain_limit"),
+        "chain_position_selected": fields.get("chain_position_selected"),
+        "chain_nodes_checked": fields.get("chain_nodes_checked", []),
+        "chain_fallback_success": bool(fields.get("chain_fallback_success", False)),
+        "full_fallback_used": bool(fields.get("full_fallback_used", False)),
     }
 
 

@@ -51,7 +51,7 @@ unresolved cases.
 
 Run:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - candidate bound: `64`
 - rows: `1225`
 
@@ -83,7 +83,7 @@ Candidate resolving-rule counts:
 
 Unresolved interior count distribution:
 
-| Unresolved Interior Count | Anchors |
+| Unresolved Interior Count | Input primes |
 |---:|---:|
 | `1` | `178` |
 | `2` | `37` |
@@ -92,7 +92,7 @@ Unresolved interior count distribution:
 
 Resolved-survivor to actual-endpoint delta:
 
-| Delta | Anchors |
+| Delta | Input primes |
 |---:|---:|
 | `2` | `31` |
 | `4` | `39` |

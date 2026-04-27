@@ -6,7 +6,7 @@ The classical baseline tested the same decade ladder as the Rule X run:
 
 ```text
 decade windows: 11
-anchors tested: 2816
+input primes tested: 2816
 window candidate hypotheses: 768077
 classically tested candidates before first prime: 22685
 exact matches: 2816
@@ -15,12 +15,12 @@ candidate-bound misses: 0
 total runtime: 0.280352 seconds
 ```
 
-The classical method found the next prime for every anchor because it directly
+The classical method found the next prime for every input prime because it directly
 tests rightward candidates for primality and stops at the first prime.
 
 ## Classical Test Definition
 
-For each accepted anchor prime `p`, the baseline enumerates the same wheel-open
+For each input prime `p`, the baseline enumerates the same wheel-open
 candidate offsets used by the Rule X decade ladder:
 
 ```text
@@ -33,7 +33,7 @@ first prime candidate as `q`.
 
 ## Results By Decade
 
-| decade | anchors | window candidates | tested candidates | exact matches | false emits | bound misses | seconds | tested/sec |
+| decade | input primes | window candidates | tested candidates | exact matches | false emits | bound misses | seconds | tested/sec |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | `10^8` | `256` | `69826` | `1204` | `256` | `0` | `0` | `0.018810` | `64008.51` |
 | `10^9` | `256` | `69824` | `1419` | `256` | `0` | `0` | `0.018769` | `75604.06` |
@@ -67,7 +67,7 @@ first prime candidate as `q`.
 
 | Metric | Rule X | Classical |
 |---|---:|---:|
-| Anchors tested | `2816` | `2816` |
+| Input primes tested | `2816` | `2816` |
 | Window candidate hypotheses | `768077` | `768077` |
 | Exact matches | `513` | `2816` |
 | Match rate | `18.217330%` | `100.000000%` |
@@ -83,7 +83,7 @@ direct primality testing to identify the next prime endpoint.
 Rule X is measuring a different quantity: how often the endpoint can be
 selected from local structural consistency without promoting unresolved
 interior landmarks into false endpoints. On this ladder, Rule X resolves
-`513 / 2816` anchors with zero true-next-prime rejections; classical testing
+`513 / 2816` input primes with zero true-next-prime rejections; classical testing
 resolves `2816 / 2816` by directly testing primality.
 
 ## Artifacts

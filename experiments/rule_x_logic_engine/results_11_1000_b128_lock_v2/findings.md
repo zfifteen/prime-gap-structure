@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The updated logic engine tested two selected-integer-lock rules on prime anchors
+The updated logic engine tested two selected-integer-lock rules on input primes
 `11..1000` with candidate offsets up to `128`.
 
 The naive rule is unsafe:
@@ -12,7 +12,7 @@ lock the first selected integer immediately
 ```
 
 It rejected `5072` candidate hypotheses, but it also rejected the true next prime
-for `107 / 164` anchors.
+for `107 / 164` input primes.
 
 The corrected oracle contrast is safe on this surface:
 
@@ -22,7 +22,7 @@ screening
 ```
 
 It rejected `2964` candidate hypotheses, rejected the true next prime `0` times,
-and collapsed `36 / 164` anchors to one survivor.
+and collapsed `36 / 164` input primes to one survivor.
 
 This is the current lesson:
 
@@ -34,9 +34,9 @@ eliminated.
 ## Domain
 
 ```text
-prime anchors: 11..1000
+input primes: 11..1000
 candidate bound: 128
-anchors tested: 164
+input primes tested: 164
 candidate hypotheses: 5562
 ```
 
@@ -54,11 +54,11 @@ structural_unique_anchor_count = 0
 
 ### Naive First-Integer Lock
 
-This rule locks the first composite integer visible after the anchor, then
+This rule locks the first composite integer visible after the input prime, then
 rejects candidate next primes whose proposed interior extends past the first
 later lower-divisor composite.
 
-It is too early. Many anchors begin with a trivial composite near `p`, then the
+It is too early. Many input primes begin with a trivial composite near `p`, then the
 true gap later introduces a simpler integer before the real next prime.
 
 ```text

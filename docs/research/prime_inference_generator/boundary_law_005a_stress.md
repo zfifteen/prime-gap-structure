@@ -28,9 +28,9 @@ The witness basis did not change:
 
 - witness bound: 97
 
-The anchor surface did not change:
+The input prime surface did not change:
 
-- anchors: 11..1000000
+- input primes: 11..1000000
 
 ## Candidate-Bound Stress Metrics
 
@@ -61,9 +61,9 @@ The candidate horizon returned to the prior audited value:
 
 - candidate bound: 64
 
-The anchor surface did not change:
+The input prime surface did not change:
 
-- anchors: 11..1000000
+- input primes: 11..1000000
 
 ## Witness-Bound Stress Metrics
 
@@ -92,10 +92,10 @@ stress:
 - candidate bound: 128
 - witness bound: 97
 
-It changed only the anchor surface:
+It changed only the input prime surface:
 
-- anchors: 100000..200000
-- anchors: 1000000..1100000
+- input primes: 100000..200000
+- input primes: 1000000..1100000
 
 Activation was not required. Safe abstention was acceptable.
 
@@ -112,7 +112,7 @@ The combined-bound origin stress used both previously passed expansions:
 
 - candidate bound: 128
 - witness bound: 127
-- anchors: 11..1000000
+- input primes: 11..1000000
 
 This changed both axes together. It remained an offline stress of the same
 candidate rule, not an emission gate.
@@ -144,8 +144,8 @@ origin surface:
 
 - candidate bound: 128
 - witness bound: 127
-- anchors: 100000..200000
-- anchors: 1000000..1100000
+- input primes: 100000..200000
+- input primes: 1000000..1100000
 
 Activation was not required. Safe abstention was acceptable.
 
@@ -238,7 +238,7 @@ the strongest safe horizon:
 ```text
 candidate_bound: 128
 witness_bound: 127
-anchors: 11..1000000
+input primes: 11..1000000
 ```
 
 Pure emission remains forbidden.

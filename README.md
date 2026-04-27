@@ -35,7 +35,7 @@ Now take `89` and `97`. The interior integers are
 Here the smallest divisor count present is `4`, and the leftmost integer with
 that divisor count is `91`, so `91` wins.
 
-These examples show the local arithmetic choice that anchors the repository.
+These examples show the local arithmetic choice that input primes the repository.
 
 ## Three Headline Results
 

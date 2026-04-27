@@ -1,10 +1,10 @@
-# Next-Prime Law 005B Failure Autopsy: Anchor 3137
+# Next-Prime Law 005B Failure Autopsy: Input Prime 3137
 
 ## Status
 
 Next-Prime Law 005B is quarantined as an absorption rule.
 
-The failure is reproduced at anchor $p = 3137$. The previous-to-current selected-integer shift lock authorizes a false resolved survivor at offset 12, and that false absorber removes the audited true next prime at offset 26.
+The failure is reproduced at input prime $p = 3137$. The previous-to-current selected-integer shift lock authorizes a false resolved survivor at offset 12, and that false absorber removes the audited true next prime at offset 26.
 
 Pure generator emission remains forbidden.
 
@@ -12,8 +12,8 @@ Pure generator emission remains forbidden.
 
 Before 005B absorption, the strongest safe eliminator has:
 
-- anchor: 3137
-- previous anchor: 3121
+- input prime: 3137
+- previous input prime: 3121
 - actual next prime offset: 26
 - actual next prime integer: 3163
 - resolved survivor offsets: 2, 12
@@ -81,7 +81,7 @@ Those offsets are exactly the composite structure that the one-hole closure rule
 
 The hardening probe only evaluated the previous-to-current selected-integer shift lock inside rows where the audited true next prime was already a resolved survivor before absorption.
 
-At anchor 3137:
+At input prime 3137:
 
 - previous row available: true
 - previous chamber signal present: true
@@ -89,16 +89,16 @@ At anchor 3137:
 - higher-divisor pressure lock absent at the true next prime: true
 - actual next prime resolved before absorption: false
 
-So this anchor was outside the hardening population. The hardening result was zero-wrong as a selector in its target population, but direct integration broadened the operational domain and allowed a false resolved survivor to absorb an unresolved true next prime.
+So this input prime was outside the hardening population. The hardening result was zero-wrong as a selector in its target population, but direct integration broadened the operational domain and allowed a false resolved survivor to absorb an unresolved true next prime.
 
 ## Quarantine Conditions
 
-Two label-free conditions would make 005B abstain at anchor 3137:
+Two label-free conditions would make 005B abstain at input prime 3137:
 
 1. Abstain when the proposed absorber endpoint has a positive composite witness under the current witness bound.
 2. Abstain when the proposed absorber depends on single-hole positive witness closure.
 
-Both are structural and label-free at this anchor. Neither is approved as a patch. Each must be tested broadly before 005B can return as an integration candidate.
+Both are structural and label-free at this input prime. Neither is approved as a patch. Each must be tested broadly before 005B can return as an integration candidate.
 
 ## Decision
 

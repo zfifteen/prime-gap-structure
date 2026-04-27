@@ -18,8 +18,8 @@ The current strongest supported claim is:
 
 ```text
 In offline composite-exclusion testing, the higher-divisor pressure lock
-remained zero-wrong through anchors 11..1_000_000, and flagged integration
-produced 25 unique resolved survivors through anchors 11..1_000_000 with zero
+remained zero-wrong through input primes 11..1_000_000, and flagged integration
+produced 25 unique resolved survivors through input primes 11..1_000_000 with zero
 true-next-prime rejections and zero wrong absorptions.
 ```
 
@@ -125,14 +125,14 @@ The candidate was tested with:
 
 Hardening surfaces:
 
-- anchors `11..10_000`
-- anchors `11..100_000`
-- anchors `11..1_000_000`
+- input primes `11..10_000`
+- input primes `11..100_000`
+- input primes `11..1_000_000`
 
 Integration surfaces:
 
-- anchors `11..100_000`
-- anchors `11..1_000_000`
+- input primes `11..100_000`
+- input primes `11..1_000_000`
 - shifted window `100_000..200_000`
 - shifted window `1_000_000..1_100_000`
 

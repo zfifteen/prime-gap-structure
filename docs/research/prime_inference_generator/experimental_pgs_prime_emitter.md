@@ -1,7 +1,7 @@
 # Experimental PGS Prime Emitter
 
 The experimental PGS prime emitter produced 36 inferred next-prime endpoint
-records under 005A-R on anchors 11..1000000. A separate downstream classical
+records under 005A-R on input primes 11..1000000. A separate downstream classical
 audit confirmed 36 out of 36.
 
 This is Milestone 1B evidence. It is not production emission. Cryptographic use
@@ -26,7 +26,7 @@ The emitter uses the 005A-R refined rule:
 rule_set: 005A-R
 candidate_bound: 128
 witness_bound: 127
-anchors: 11..1000000
+input primes: 11..1000000
 ```
 
 The emitted records are generator-facing experimental records, not certificates
@@ -71,7 +71,7 @@ record selection.
 
 ## First Ten Records
 
-| anchor_p | inferred_prime_q_hat | boundary_offset | carrier_family | carrier_d |
+| input_prime_p | inferred_prime_q_hat | boundary_offset | carrier_family | carrier_d |
 |---:|---:|---:|---|---:|
 | 19 | 23 | 4 | known_basis_semiprime | 4 |
 | 23 | 29 | 6 | known_basis_prime_power | 3 |
@@ -86,7 +86,7 @@ record selection.
 
 ## Last Ten Records
 
-| anchor_p | inferred_prime_q_hat | boundary_offset | carrier_family | carrier_d |
+| input_prime_p | inferred_prime_q_hat | boundary_offset | carrier_family | carrier_d |
 |---:|---:|---:|---|---:|
 | 661 | 673 | 12 | known_basis_semiprime | 4 |
 | 677 | 683 | 6 | known_basis_semiprime | 4 |
@@ -102,7 +102,7 @@ record selection.
 ## Supported Claim
 
 The experimental PGS prime emitter produced 36 inferred next-prime endpoint
-records under 005A-R on anchors 11..1000000. A separate downstream classical
+records under 005A-R on input primes 11..1000000. A separate downstream classical
 audit confirmed 36 out of 36.
 
 The supported claim is limited to this experimental regime. The result does not
@@ -125,7 +125,7 @@ One failed emitted prime requires immediate autopsy before further expansion.
 
 ## Next Scale Run
 
-The target-driven run kept the same rule and bounds, started at anchor 11, and
+The target-driven run kept the same rule and bounds, started at input prime 11, and
 scanned to the 10,000,000 cap.
 
 ```text
@@ -164,7 +164,7 @@ exists:
 ```text
 candidate_bound: 128
 witness_bound: 127
-anchors: 1000000..2000000
+input primes: 1000000..2000000
 ```
 
 That tests post-origin coverage without changing the rule or bounds after the

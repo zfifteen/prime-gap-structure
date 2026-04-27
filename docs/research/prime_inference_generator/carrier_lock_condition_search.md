@@ -73,7 +73,7 @@ are not generator predicates.
 
 Run:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - candidate bound: `64`
 - witness bound: `97`
 
@@ -109,7 +109,7 @@ Rejected predicates:
 | `semiprime_carrier_square_threat` | `102` | `5` | rejected |
 | `no_higher_divisor_pressure_before_threat` | `118` | `11` | rejected |
 
-The rejected single-resolved predicates fail at anchor `6883`, where the
+The rejected single-resolved predicates fail at input prime `6883`, where the
 candidate ceiling would select an earlier survivor while the audited endpoint
 is at offset `16`.
 

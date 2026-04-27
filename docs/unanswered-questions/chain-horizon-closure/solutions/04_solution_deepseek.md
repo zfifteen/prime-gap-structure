@@ -112,7 +112,7 @@ However, the terminal decision inside `chain_horizon_closure_result` still calls
 
 - Exceptionally concrete: file names, function signatures, and sampling strategy are all specified.
 - Recognises the need to distinguish between “small‑PGS‑detectable horizons” and “√q‑scale horizons” via a two‑stage factor approach.
-- Proposes a comprehensive set of candidate invariants (anchor size, gap length, residue class, semiprime type, etc.).
+- Proposes a comprehensive set of candidate invariants (input prime size, gap length, residue class, semiprime type, etc.).
 
 **Weaknesses:**
 
@@ -186,7 +186,7 @@ Because direct code execution is not possible in this environment, the following
 ### 4.1 Experimental Design
 
 1. **Data source:** The `chain_horizon_closure_witnesses` already recorded by `chain_horizon_closure_result`.  For every chain that passes through the fallback, we have:
-    - the anchor \(p\),
+    - the input prime \(p\),
     - the seed offset \(s_0\),
     - the list of closed candidates and their divisor witnesses,
     - the final survivor \(q\).

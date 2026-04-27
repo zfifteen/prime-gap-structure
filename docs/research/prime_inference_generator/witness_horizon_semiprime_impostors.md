@@ -77,7 +77,7 @@ production_approved: false
 cryptographic_use_approved: false
 ```
 
-The number of anchors scanned was:
+The number of input primes scanned was:
 
 ```text
 anchors_scanned: 9588
@@ -172,9 +172,9 @@ for line in records_path.read_text(encoding="utf-8").splitlines():
     if not line.strip():
         continue
     record = json.loads(line)
-    anchor = int(record["anchor_p"])
+    input_prime = int(record["input_prime_p"])
     q_hat = int(record["inferred_prime_q_hat"])
-    first = next(primerange(anchor + 1, q_hat + 1), None)
+    first = next(primerange(input prime + 1, q_hat + 1), None)
     if first == q_hat:
         continue
     factorization = factorint(q_hat)
@@ -183,7 +183,7 @@ for line in records_path.read_text(encoding="utf-8").splitlines():
         factors.extend([int(prime)] * int(exponent))
     failures.append(
         {
-            "anchor_p": anchor,
+            "input_prime_p": input prime,
             "inferred_prime_q_hat": q_hat,
             "first_prime_after_anchor": first,
             "factors": factors,
@@ -228,7 +228,7 @@ filter_reason_counts:
   bounded_composite_witness: 463
   power_witness: 25
 first_failure:
-  anchor_p: 17939
+  input_prime_p: 17939
   inferred_prime_q_hat: 17947
   factorization: 131 * 137
 ```
@@ -245,7 +245,7 @@ filter_reason_counts:
   bounded_composite_witness: 690
   power_witness: 25
 first_failure:
-  anchor_p: 24611
+  input_prime_p: 24611
   inferred_prime_q_hat: 24613
   factorization: 151 * 163
 ```
@@ -318,7 +318,7 @@ filter_reason_counts:
   bounded_composite_witness: 1088
   power_witness: 25
 first_failure:
-  anchor_p: 41983
+  input_prime_p: 41983
   inferred_prime_q_hat: 41989
   factorization: 199 * 211
 ```

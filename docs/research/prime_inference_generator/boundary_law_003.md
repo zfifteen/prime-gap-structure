@@ -1,11 +1,11 @@
 # Next-Prime Law 003: First Selected-Integer-Bearing Chamber Certificate
 
-Next-Prime Law 003 moves the first positive target away from the empty anchor-11
+Next-Prime Law 003 moves the first positive target away from the empty input-prime-11
 chamber. The target is a chamber where PGS has actual interior structure: a
 composite interior, a definable GWR-selected integer, a divisor-count selected integer, and a
 closure condition that can be inspected without classical endpoint detection.
 
-This note uses the small chamber from anchor `13` to proposed endpoint `17` as
+This note uses the small chamber from input prime `13` to proposed endpoint `17` as
 the first probe. It does not emit yet. It establishes the selected-integer-bearing
 certificate and identifies the remaining uniqueness gap.
 
@@ -35,7 +35,7 @@ nontrivial selected-integer structure.
 
 ## Allowed Inputs
 
-- externally supplied anchor prime `p = 13`;
+- externally supplied input prime `p = 13`;
 - proposed endpoint supplied by the candidate law, not by a next-prime oracle;
 - deterministic factor witnesses for proposed interior composites;
 - divisor counts derived from those explicit witnesses;
@@ -126,7 +126,7 @@ threat after `17` if the chamber were allowed to continue.
 
 ## Competing Endpoint Analysis
 
-The proposed endpoint `17` is wheel-open from anchor `13` at offset `4`.
+The proposed endpoint `17` is wheel-open from input prime `13` at offset `4`.
 
 Earlier positive offsets are:
 
@@ -163,7 +163,7 @@ That implication is stronger than chamber consistency. It is not proved here.
 
 Next-Prime Law 003 does not yet emit.
 
-For the anchor-13 probe:
+For the input prime-13 probe:
 
 - `closure_status: "carrier_chamber_closed"`
 - `competing_boundary_status: "no_smaller_candidate_inside_chamber"`
@@ -215,12 +215,12 @@ If the uniqueness theorem is missing, emit:
 ## Next Search Direction
 
 Next-Prime Law 003 shows that moving to a selected-integer-bearing chamber fixes the
-degeneracy of the anchor-11 case, but it does not by itself solve endpoint
+degeneracy of the input prime-11 case, but it does not by itself solve endpoint
 uniqueness.
 
 The next proof task is to determine whether GWR/DNI plus no-later-simpler
 closure can force a endpoint, or whether the current certificates only validate
 candidate chambers after a proposed endpoint has already been chosen.
 
-If the latter is true, the missing theorem is not anchor-specific. It is a
+If the latter is true, the missing theorem is not input prime-specific. It is a
 general bridge from chamber consistency to next-prime inference.

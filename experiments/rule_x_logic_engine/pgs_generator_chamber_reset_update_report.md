@@ -24,7 +24,7 @@ existing deterministic arithmetic is cheap and complete:
 ```text
 surface: 11..100000
 candidate_bound: 128
-anchors tested: 9588
+input primes tested: 9588
 PGS emissions: 9588
 rule_id: pgs_chamber_reset_v1
 failed emissions: 0
@@ -38,9 +38,9 @@ through `10^18`:
 
 ```text
 decades: 10^8 through 10^18
-anchors per decade: 256
+input primes per decade: 256
 candidate_bound: 1024
-anchors tested: 2816
+input primes tested: 2816
 exact matches: 2816
 unresolved: 0
 false emissions: 0

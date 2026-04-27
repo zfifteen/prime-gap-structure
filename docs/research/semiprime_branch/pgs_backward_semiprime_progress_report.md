@@ -75,7 +75,7 @@ The sentinel modulus is `121`.
 This milestone established the exact local object that the later backward
 walker would operate on:
 
-- `N` as an anchor on the number line;
+- `N` as an input prime on the number line;
 - the prime gap immediately before `N`;
 - the prime gap containing `N`;
 - the prime gap immediately after `N`;
@@ -90,7 +90,7 @@ modulus from repo `PGS` math alone.
 
 The first backward walker family asked the wrong question.
 
-It treated the walker state as a composite anchor and scored success as a
+It treated the walker state as a composite input prime and scored success as a
 direct factor hit. On the toy surface of all odd distinct semiprimes
 `15 <= N <= 5000`, that family failed completely.
 
@@ -117,7 +117,7 @@ The rebuilt harness changes the experiment in three exact ways.
 
 ### 1. Success is now lane preservation
 
-The harness no longer scores success as “did a composite anchor directly equal
+The harness no longer scores success as “did a composite input prime directly equal
 one factor.”
 
 It now scores whether a trace preserves one hidden factor through a descending
@@ -142,7 +142,7 @@ non-`PGS` side channel.
 ### 3. Prime endpoints are terminal nominees
 
 The walker state remains composite. Prime endpoints are treated as terminal
-nominees rather than recursive anchor states.
+nominees rather than recursive input prime states.
 
 That keeps the experiment narrow:
 
@@ -244,7 +244,7 @@ The backward work now has one concrete shape.
 
 The path that looks dead is:
 
-- composite-only anchors,
+- composite-only input primes,
 - success defined as direct factor hit,
 - memoryless local selected integer chasing.
 

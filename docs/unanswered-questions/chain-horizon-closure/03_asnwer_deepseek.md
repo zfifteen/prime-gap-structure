@@ -16,15 +16,15 @@ The goal is to replace this deterministic fallback with a function `H(p, s0, cha
 Your suggestion to "mine the least-factor frontier of false chain nodes" is apt. The key is to analyze the pattern of divisor witnesses for the false chain nodes that are closed during the chain-horizon process. The steps would be:
 
 1.  **Data Collection**: For each generator step where `chain_horizon_closure` is invoked, record:
-    - The anchor prime `p`.
+    - The input prime `p`.
     - The semiprime shadow seed `s0`.
     - The chain offsets and the corresponding composite candidates.
     - The specific divisor witness `w` that closed each false node.
     - The PGS-visible state at the time of the chain (gap offsets, residues modulo 30, chamber state, etc.).
 
 2.  **Frontier Mining**: Identify the maximum divisor witness required across all false chain nodes for each step. This is the "least-factor frontier" you mentioned. The question is whether this maximum `w_max` can be bounded by a function of PGS-visible parameters, such as:
-    - The anchor `p` or its logarithm.
-    - The seed offset or the gap from the anchor to the seed.
+    - The input prime `p` or its logarithm.
+    - The seed offset or the gap from the input prime to the seed.
     - The residue classes of the nodes in the chain.
     - The local density of semiprime shadows.
 

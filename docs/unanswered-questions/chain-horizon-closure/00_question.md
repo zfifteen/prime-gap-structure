@@ -28,7 +28,7 @@ into PGS-derived output, or at least sharply reduce it.
 
 The sharpest next experiment is not another ranker. It is:
 
-**Mine the least-factor frontier of false chain nodes and determine whether its maximum is governed by a PGS-visible invariant of the anchor, shadow seed, chain gaps, residues, or chamber state.**
+**Mine the least-factor frontier of false chain nodes and determine whether its maximum is governed by a PGS-visible invariant of the input prime, shadow seed, chain gaps, residues, or chamber state.**
 
 Falsifying result: if the required horizon tracks `sqrt(q)` with no smaller PGS-visible bound, then the bridge is operationally good but not compressible into a pure local PGS rule at `candidate_bound=128`.
 

@@ -1,7 +1,7 @@
 # Higher-Divisor Pressure Lock Activation Profile
 
 The higher-divisor pressure lock is safe where it fires, and it fires only in
-the initial anchor surface tested here.
+the initial input prime surface tested here.
 
 This note profiles the activation regime for Next-Prime Law 005 Candidate:
 Higher-Divisor Locked Resolved-Endpoint Absorption. It does not approve pure

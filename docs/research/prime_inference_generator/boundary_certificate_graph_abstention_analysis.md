@@ -12,7 +12,7 @@ produced its graph state, and only for reporting.
 ## Purpose
 
 Candidate-Constraint Graph Solver v0 safely emitted 36 experimental graph
-certificates on anchors `11..10_000`, but did not improve coverage beyond the
+certificates on input primes `11..10_000`, but did not improve coverage beyond the
 005A-R emitter. The abstention analysis identified why the solver stopped and
 which graph relation should be added next.
 
@@ -273,7 +273,7 @@ NEED_FALSE_RESOLVED_SURVIVOR_REJECTION: 3
 ## Interpretation
 
 The main blocker is not false resolved survivors and not candidate-bound
-coverage. After v5, the graph solves 995 of 1225 tested anchors with no audit
+coverage. After v5, the graph solves 995 of 1225 tested input primes with no audit
 failure. In the remaining abstentions, the graph still contains the actual
 endpoint as a resolved candidate in 178 rows and leaves it unresolved in 52
 rows.

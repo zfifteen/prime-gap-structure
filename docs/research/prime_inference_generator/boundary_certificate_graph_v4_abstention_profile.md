@@ -95,7 +95,7 @@ a label-free graph predicate, then audited downstream after graph emission.
 
 ## Interpretation
 
-Graph Solver v3 already solves 211 anchors on this surface. In most remaining
+Graph Solver v3 already solves 211 input primes on this surface. In most remaining
 abstentions, the true next prime is resolved and later unresolved alternatives
 remain live. The nearest unresolved target after the resolved source often has
 no legal integer, which leaves v1 and v2 in an unknown reset state and leaves
@@ -114,7 +114,7 @@ The recommended relation was implemented as:
 unresolved_later_domination_target_no_carrier_reset_discriminator
 ```
 
-On anchors `11..10_000` with `candidate_bound = 128` and
+On input primes `11..10_000` with `candidate_bound = 128` and
 `witness_bound = 127`, Graph Solver v4 produced:
 
 ```text

@@ -38,7 +38,7 @@ row records:
 That reduction produces a finite alphabet that is stable across sampled decades
 from `10^7` through `10^18`.
 
-Three observations anchor the rest of the paper.
+Three observations input prime the rest of the paper.
 
 1. The reduced alphabet closes to `14` persistent states.
 2. Three odd-semiprime lanes dominate the dynamics:

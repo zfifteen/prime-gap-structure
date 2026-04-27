@@ -13,7 +13,7 @@ guard has acted.
 Graph v4 and v5 are quarantined outside the last clean surface:
 
 ```text
-anchors: 11..10_000
+input primes: 11..10_000
 candidate_bound: 128
 witness_bound: 127
 ```
@@ -67,12 +67,12 @@ any label-free positive target evidence is present:
 - independently rejected target;
 - target beyond a selected selected-integer-locked pressure ceiling.
 
-## Anchor 10193 Gate
+## Input prime 10193 Gate
 
-All guards block the known bad absorption at anchor `10193`.
+All guards block the known bad absorption at input prime `10193`.
 
 ```text
-anchor_p: 10193
+input_prime_p: 10193
 actual_next_prime: 10211
 actual_boundary_offset: 18
 bad v4 source_offset: 8
@@ -129,14 +129,14 @@ absence of reset evidence alone is not enough
 positive target non-endpoint evidence is required
 ```
 
-The viable guard is narrow. It recovers only one additional solved anchor on
+The viable guard is narrow. It recovers only one additional solved input prime on
 each tested surface compared with v3. That is still a valid repair candidate
 because it blocks the known failure and produces zero audited failures on both
 surfaces.
 
 ## v6 Integration
 
-Do not patch anchor `10193`.
+Do not patch input prime `10193`.
 
 Graph v6 integrates only this repaired v4 candidate:
 

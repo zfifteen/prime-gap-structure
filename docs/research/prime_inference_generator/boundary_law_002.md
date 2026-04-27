@@ -19,10 +19,10 @@ reason that no smaller admissible endpoint competes with it.
 
 ## Candidate Contract
 
-Given an anchor prime `p` and proposed endpoint `q_hat`, Next-Prime Law 002 may
+Given an input prime `p` and proposed endpoint `q_hat`, Next-Prime Law 002 may
 emit `q_hat` only if it can construct a certificate with:
 
-- anchor prime `p`;
+- input prime `p`;
 - proposed endpoint `q_hat`;
 - interior `I = {p + 1, ..., q_hat - 1}`;
 - verified chamber closure for every integer in `I`;
@@ -35,7 +35,7 @@ If any field is missing or unresolved, the law fails closed.
 
 ## Allowed Inputs
 
-- the externally supplied anchor prime;
+- the externally supplied input prime;
 - a proposed endpoint supplied by a PGS rule, not by a primality oracle;
 - deterministic wheel arithmetic;
 - deterministic composite witnesses for interior values;
@@ -88,9 +88,9 @@ For an empty chamber, the certificate must state that no positive-offset integer
 exists before the proposed endpoint and must identify the theorem that turns
 that empty chamber into a forced endpoint.
 
-## Anchor-11 Probe
+## Input prime-11 Probe
 
-For the first anchor:
+For the first input prime:
 
 $$p = 11$$
 
@@ -119,11 +119,11 @@ no-later-simpler closure machinery has no positive integer to operate on.
 Next-Prime Law 002 has two possible paths:
 
 - prove an empty-chamber base case that forces the first open endpoint;
-- reject this anchor as outside the selected-integer-bearing GWR/DNI regime.
+- reject this input prime as outside the selected-integer-bearing GWR/DNI regime.
 
 The first path would revive Next-Prime Law 001 with a stronger certificate. The
-second path keeps Milestone 1 blocked at anchor `11` and pushes the first
-positive target to a later anchor with a nonempty chamber.
+second path keeps Milestone 1 blocked at input prime `11` and pushes the first
+positive target to a later input prime with a nonempty chamber.
 
 ## Competing Endpoint Requirement
 
@@ -135,7 +135,7 @@ The law must separate three statements:
 
 Only the third statement permits emission.
 
-For anchor `11`, the current certificate proves the first two statements:
+For input prime `11`, the current certificate proves the first two statements:
 
 - `12` is composite by concrete witness;
 - `13` is the first wheel-open admissible candidate.
@@ -147,7 +147,7 @@ possibility that the first open candidate is not forced by PGS structure.
 
 Next-Prime Law 002 does not yet emit.
 
-For the anchor-11 probe:
+For the input prime-11 probe:
 
 - `closure_status: "interior_closed"`
 - `competing_boundary_status: "no_smaller_open_candidate"`
@@ -164,7 +164,7 @@ The missing theorem is:
 
 $$\text{closed minimal chamber plus first open candidate} \Rightarrow \text{forced next prime}$$
 
-For anchor `11`, this reduces to:
+For input prime `11`, this reduces to:
 
 $$12 \text{ closed and } 13 \text{ first open} \Rightarrow 13 \text{ forced as endpoint}$$
 
@@ -208,8 +208,8 @@ non-classical uniqueness theorem, not more admissibility evidence.
 
 The next search should compare two regimes:
 
-- empty-chamber anchors, where a first-open closure theorem would be needed;
-- selected-integer-bearing anchors, where GWR/DNI and no-later-simpler closure may have
+- empty-chamber input primes, where a first-open closure theorem would be needed;
+- selected-integer-bearing input primes, where GWR/DNI and no-later-simpler closure may have
   enough structure to force a endpoint.
 
 The first positive emission should come from whichever regime first supplies a

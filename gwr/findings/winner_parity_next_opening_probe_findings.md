@@ -34,7 +34,7 @@ steering law.
 
 The probe uses one deterministic matched comparison:
 
-1. sample consecutive exact transitions from the decade anchors `10^12`,
+1. sample consecutive exact transitions from the decade input primes `10^12`,
    `10^13`, `10^14`, and `10^15`;
 2. classify the current selected integer parity as even or odd;
 3. stratify by current gap width and current first-open offset;
@@ -53,7 +53,7 @@ and starting-offset imbalance between even-selected integer and odd-selected int
 | `10^14` | `0.7399` | `0.6956` | `+0.0443` |
 | `10^15` | `0.6927` | `0.6698` | `+0.0229` |
 
-The sign is stable across all four sampled anchors for this broader triad
+The sign is stable across all four sampled input primes for this broader triad
 re-entry effect.
 
 The finer lane split inside the triad is weaker:

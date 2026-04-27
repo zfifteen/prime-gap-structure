@@ -1,7 +1,7 @@
 # Higher-Divisor Pressure Lock Activation Profile, Candidate Bound 128, Witness Bound 127
 
 The strongest safe horizon produced 48 higher-divisor pressure lock activations
-on anchors 11..1000000, with 36 unique resolved survivors after absorption and
+on input primes 11..1000000, with 36 unique resolved survivors after absorption and
 0 wrong activations.
 
 This is offline theorem discovery. Next-Prime Law 005A remains candidate-grade
@@ -15,7 +15,7 @@ The profile used the strongest safe horizon:
 ```text
 candidate_bound: 128
 witness_bound: 127
-anchors: 11..1000000
+input primes: 11..1000000
 single_hole_positive_witness_closure: enabled
 carrier_locked_pressure_ceiling: enabled
 carrier_lock_predicate: unresolved_alternatives_before_threat
@@ -26,8 +26,8 @@ carrier_lock_predicate: unresolved_alternatives_before_threat
 The shifted-window comparison used the same horizon on:
 
 ```text
-anchors: 100000..200000
-anchors: 1000000..1100000
+input primes: 100000..200000
+input primes: 1000000..1100000
 ```
 
 ## Record Fields
@@ -35,7 +35,7 @@ anchors: 1000000..1100000
 Each activation record includes:
 
 ```text
-anchor_p
+input_prime_p
 resolved_candidate_offset
 actual_boundary_offset_label
 unique_resolved_after_absorption_bool
@@ -68,8 +68,8 @@ nearest_unresolved_offsets_before_absorption
 | candidate_bound | 128 |
 | witness_bound | 127 |
 
-The activation anchors run from 19 through 6229. Every activation is in the
-0..99999 anchor bucket.
+The activation input primes run from 19 through 6229. Every activation is in the
+0..99999 input prime bucket.
 
 ## Surface Summary
 
@@ -87,9 +87,9 @@ why_lock_did_not_fire: NO_HIGHER_DIVISOR_PRESSURE
 missing_pressure_component: higher_divisor_pressure
 ```
 
-## Activation By Anchor Bucket
+## Activation By Input prime Bucket
 
-| anchor bucket | count |
+| input prime bucket | count |
 |---|---:|
 | 0..99999 | 48 |
 

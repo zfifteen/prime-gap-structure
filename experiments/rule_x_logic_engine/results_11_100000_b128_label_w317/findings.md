@@ -5,7 +5,7 @@
 The next experiment confirms the selected-integer-lock path is real, but only when the
 positive-witness horizon is strong enough to prevent false early survivors.
 
-On prime anchors `11..100000` with candidate offsets up to `128`, the
+On input primes `11..100000` with candidate offsets up to `128`, the
 full-small-scale witness run produced:
 
 ```text
@@ -14,7 +14,7 @@ label_lock_unique_resolved_match_count = 2231 / 9588
 ```
 
 That means the label-free logic engine inferred the exact next prime for
-`2231` anchors and rejected the true next prime zero times on this surface.
+`2231` input primes and rejected the true next prime zero times on this surface.
 
 The lower witness horizons expose the obstruction:
 
@@ -31,10 +31,10 @@ above the current witness bound.
 ## Domain
 
 ```text
-prime anchors: 11..100000
+input primes: 11..100000
 candidate bound: 128
 witness bound: 317
-anchors tested: 9588
+input primes tested: 9588
 candidate hypotheses: 324809
 ```
 
@@ -43,7 +43,7 @@ finite run has a positive factor witness inside the experiment horizon.
 
 ## Main Result
 
-| Layer | Rejections | Unique anchors | True endpoint rejected |
+| Layer | Rejections | Unique input primes | True endpoint rejected |
 |---|---:|---:|---:|
 | GWR/NLSC only | `0` | `0` | `0` |
 | Naive first-integer lock | `297753` | `4162` | `7297` |
@@ -82,7 +82,7 @@ At `witness_bound = 97`, the first failures begin when early composite
 candidates lack a small enough positive witness. Example:
 
 ```text
-anchor p = 10607
+input prime p = 10607
 actual offset = 6
 false resolved survivor = 2
 lock selected-integer offset = 1

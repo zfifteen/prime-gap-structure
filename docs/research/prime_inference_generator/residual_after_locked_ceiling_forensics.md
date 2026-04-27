@@ -14,7 +14,7 @@ Classify the residual failures after the best safe integrated mode:
 - `carrier_lock_predicate: unresolved_alternatives_before_threat`
 - `candidate_bound: 64`
 - `witness_bound: 97`
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 
 The probe does not add a new rule. It only reads the integrated eliminator
 output and reports what remains.

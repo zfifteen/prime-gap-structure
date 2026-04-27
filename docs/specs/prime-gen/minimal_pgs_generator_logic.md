@@ -11,7 +11,7 @@ PGS_GENERATOR_FREEZE_ID = pgs_inference_generator_v1_1_pgs_only
 Release note:
 [PGS Inference Generator v1.1](../../releases/pgs_inference_generator_v1_1_pgs_only.md).
 
-The generator has one job: start from an accepted anchor prime `p` and emit the
+The generator has one job: start from an input prime `p` and emit the
 next prime `q` selected by the PGS next-prime selection rule.
 
 Each emitted line has exactly two fields:
@@ -24,12 +24,12 @@ Each emitted line has exactly two fields:
 audit checks every emitted record after emission. Audit is verification, not
 the mechanism that chooses `q`.
 
-## Stage 1: Anchor
+## Stage 1: Input Prime
 
-The anchor `p` is the current accepted prime. The generator accepts `p` as
+The input prime `p` is the current accepted prime. The generator accepts `p` as
 input. It does not prove `p` during generation.
 
-For every resolved anchor, the generator emits exactly one record. If the PGS
+For every resolved input prime, the generator emits exactly one record. If the PGS
 selector does not resolve inside the supplied chamber bound, the generator
 raises `PGSUnresolvedError`. It does not run a backup prime search.
 
@@ -40,7 +40,7 @@ selector.
 
 Inside the chamber, the generator uses:
 
-- offsets from the anchor;
+- offsets from the input prime;
 - wheel-open positions;
 - exact divisor-count state;
 - GWR-selected integer structure;
@@ -81,7 +81,7 @@ choice single-valued.
 
 ## Stage 5: Emission
 
-For each resolved anchor `p`, the generator emits exactly one line:
+For each resolved input prime `p`, the generator emits exactly one line:
 
 ```json
 {"p": 11, "q": 13}
@@ -104,18 +104,18 @@ emitted.
 Low exact production surfaces:
 
 ```text
-11..1000      anchors 164     PGS 164     failures 0
-11..10000     anchors 1225    PGS 1225    failures 0
-11..100000    anchors 9588    PGS 9588    failures 0
-11..1000000   anchors 78494   PGS 78494   failures 0
+11..1000      input primes 164     PGS 164     failures 0
+11..10000     input primes 1225    PGS 1225    failures 0
+11..100000    input primes 9588    PGS 9588    failures 0
+11..1000000   input primes 78494   PGS 78494   failures 0
 ```
 
 High-scale decade-window surface:
 
 ```text
-surface: 256 consecutive prime anchors per decade, 10^8 through 10^18
+surface: 256 consecutive input primes per decade, 10^8 through 10^18
 candidate_bound: 1024
-anchors tested: 2816
+input primes tested: 2816
 PGS emissions: 2816
 audit failures: 0
 ```
@@ -141,7 +141,7 @@ not live in the generator file and must not choose `q` inside generation.
 
 A complete PGS-only generator satisfies these conditions on a declared surface:
 
-- every accepted anchor on the surface emits exactly one record;
+- every input prime on the surface emits exactly one record;
 - every emitted `q` is the actual next prime after `p`;
 - every record has exactly `p` and `q`;
 - no forbidden tool is used inside generation;

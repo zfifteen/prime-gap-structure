@@ -1,16 +1,16 @@
-# Next-Prime Law 001 Anchor-11 Derivation
+# Next-Prime Law 001 Input prime-11 Derivation
 
-This note tests whether Next-Prime Law 001 closes for the first anchor. The target
+This note tests whether Next-Prime Law 001 closes for the first input prime. The target
 is not to show that `13` is prime. The target is to show, using only allowed PGS
-evidence, that anchor `11` uniquely closes at offset `2`.
+evidence, that input prime `11` uniquely closes at offset `2`.
 
 The derivation does not close yet. It establishes the first-open candidate and
 the empty pre-open chamber, but it does not derive the next-prime uniqueness step.
 The emission status remains `FAILED_CLOSED`.
 
-## Anchor: p = 11
+## Input prime: p = 11
 
-The anchor is the externally supplied known prime:
+The input prime is the externally supplied known prime:
 
 $$p = 11$$
 
@@ -24,20 +24,20 @@ The first wheel-open even offset after `11` is `2`. The candidate next prime is:
 $$q_{hat} = 11 + 2 = 13$$
 
 This statement is only a candidate statement. It says that offset `2` is the
-first admissible wheel-open position after the anchor. It does not by itself say
+first admissible wheel-open position after the input prime. It does not by itself say
 that offset `2` is the uniquely inferred PGS endpoint.
 
 ## Allowed Evidence Only
 
 The allowed evidence is:
 
-- the supplied anchor `p = 11`;
+- the supplied input prime `p = 11`;
 - arithmetic in the fixed mod-30 wheel;
 - deterministic divisibility by the wheel basis for pre-open positions;
 - the absence of a positive-offset open integer before offset `2`;
 - Next-Prime Law 001 as a proposed empty-chamber closure rule.
 
-For anchor `11`, the mod-30 residue is:
+For input prime `11`, the mod-30 residue is:
 
 $$11 \equiv 11 \pmod{30}$$
 
@@ -103,7 +103,7 @@ inside a prime-gap interior. DNI and no-later-simpler closure use that integer
 to constrain where the right endpoint must arrive before a later lower-divisor
 threat overtakes the selected integer.
 
-For the proposed anchor-11 chamber ending at offset `2`, there is no positive
+For the proposed input prime-11 chamber ending at offset `2`, there is no positive
 open composite integer before the candidate next prime. The selection fields are
 therefore null:
 

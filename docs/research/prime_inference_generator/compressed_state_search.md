@@ -12,9 +12,9 @@ Next-Prime Law 005 is not approved by this note.
 ## Objective
 
 The rejected `multiplicity_pressure_without_primality` signal was legal-looking
-and collision-free, but it produced one distinct state per anchor. This probe
+and collision-free, but it produced one distinct state per input prime. This probe
 coarsens that signal and asks whether any compressed version can keep the
-endpoint labels separated while grouping many anchors into reusable buckets.
+endpoint labels separated while grouping many input primes into reusable buckets.
 
 A candidate must satisfy both:
 
@@ -78,7 +78,7 @@ walker.
 
 The first frontier run used:
 
-- anchors: `11..100_000`
+- input primes: `11..100_000`
 - prefix: `32`
 - rows: `9588`
 

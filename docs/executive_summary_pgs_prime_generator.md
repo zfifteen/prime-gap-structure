@@ -39,7 +39,7 @@ generator raises `PGSUnresolvedError`. It does not run a backup prime search.
 The production generator has one execution path:
 
 ```text
-accepted anchor p -> GWR/NLSC chamber-reset selector -> emit {"p": p, "q": q}
+input prime p -> GWR/NLSC chamber-reset selector -> emit {"p": p, "q": q}
 ```
 
 The emitted stream contains only `p` and `q`. Source labels, certificates,
@@ -53,18 +53,18 @@ choose `q` and does not feed back into generation.
 Low exact production surfaces:
 
 ```text
-11..1000      anchors 164     PGS 164     unresolved 0     failures 0
-11..10000     anchors 1225    PGS 1225    unresolved 0     failures 0
-11..100000    anchors 9588    PGS 9588    unresolved 0     failures 0
-11..1000000   anchors 78494   PGS 78494   unresolved 0     failures 0
+11..1000      input primes 164     PGS 164     unresolved 0     failures 0
+11..10000     input primes 1225    PGS 1225    unresolved 0     failures 0
+11..100000    input primes 9588    PGS 9588    unresolved 0     failures 0
+11..1000000   input primes 78494   PGS 78494   unresolved 0     failures 0
 ```
 
 High-scale decade-window surface:
 
 ```text
-surface: 256 consecutive prime anchors per decade, 10^8 through 10^18
+surface: 256 consecutive input primes per decade, 10^8 through 10^18
 candidate_bound: 1024
-anchors tested: 2816
+input primes tested: 2816
 PGS emissions: 2816
 unresolved: 0
 audit failures: 0
@@ -99,7 +99,7 @@ The production next-prime selection rule applies these steps:
 
 ## Non-Goals
 
-- proving the input anchor `p`;
+- proving the input input prime `p`;
 - cryptographic certification inside the generator;
 - primality testing inside the generator;
 - trial-division fallback;

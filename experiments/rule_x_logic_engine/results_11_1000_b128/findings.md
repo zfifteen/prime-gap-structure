@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The tiny logic engine collapses every tested anchor to the true next prime
+The tiny logic engine collapses every tested input prime to the true next prime
 when exact chamber closure is allowed, but GWR/NLSC structural consistency
 alone eliminates zero candidate next primes.
 
@@ -13,7 +13,7 @@ GWR/NLSC consistency annotates candidate chambers.
 It does not, by itself, reject false candidate next primes.
 ```
 
-Exact chamber closure produced one survivor for every anchor:
+Exact chamber closure produced one survivor for every input prime:
 
 ```text
 exact_unique_match_count = 164 / 164
@@ -28,11 +28,11 @@ structural_rejection_count = 0 / 5562
 ## Domain
 
 ```text
-prime anchors: 11..1000
+input primes: 11..1000
 candidate bound: 128
 ```
 
-The engine tested `164` prime anchors and `5562` wheel-open candidate next prime
+The engine tested `164` input primes and `5562` wheel-open candidate next prime
 hypotheses.
 
 ## Rule Sets
@@ -59,25 +59,25 @@ closure facts:
 2. reject the candidate if a prime appears inside `(p, candidate_q)`;
 3. keep the candidate only if the proposed chamber is exactly closed.
 
-This layer left exactly one survivor for every anchor, and every survivor was
+This layer left exactly one survivor for every input prime, and every survivor was
 the audited next prime.
 
 ## Summary Metrics
 
 | Metric | Value |
 |---|---:|
-| Anchors tested | `164` |
+| Input primes tested | `164` |
 | Candidate hypotheses | `5562` |
 | Structural rejections | `0` |
-| Structural unique anchors | `0` |
+| Structural unique input primes | `0` |
 | Exact rejections | `5398` |
-| Exact unique anchors | `164` |
+| Exact unique input primes | `164` |
 | Exact unique matches | `164` |
 | Verdict | `exact_consistency_collapse` |
 
-## Example: Anchor 89
+## Example: Input Prime 89
 
-For anchor `p = 89`, the true next prime is:
+For input prime `p = 89`, the true next prime is:
 
 ```text
 q = 97

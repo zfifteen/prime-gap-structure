@@ -86,7 +86,7 @@ That gives a precise arithmetic endpoint:
 - if `d(n) = 2`, `n` is prime
 - if `d(n) > 2`, `n` is composite
 
-That was the first anchor.
+That was the first input prime.
 
 ## Turn The Prime Condition Into A Centered Quantity
 
@@ -125,7 +125,7 @@ Examples:
 The more divisor structure a number carries, the farther below the prime
 condition it falls.
 
-That was the second anchor.
+That was the second input prime.
 
 ## Bring In Size
 
@@ -155,7 +155,7 @@ This combines two things at once:
 - how much divisor structure the number has
 - how large the number is on multiplicative scale
 
-That was the third anchor.
+That was the third input prime.
 
 ## Build One Load From Those Two Ingredients
 

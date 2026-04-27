@@ -37,7 +37,7 @@ The most important refinement: H should not be asked to certify the terminal nod
 That gives the theorem candidate a sharper form:
 
 Shadow-Chain Horizon Law
-Given anchor p and semiprime-shadow seed s0, construct the visible-open chain
+Given input prime p and semiprime-shadow seed s0, construct the visible-open chain
 C = (s1, s2, ..., sk).
 There exists a PGS-visible horizon H(p, s0, C_i) such that every false chain node
 before the true next prime has a divisor witness <= H, while the true next prime is
@@ -54,7 +54,7 @@ Create a benchmark that only analyzes chain_horizon_closure rows from 10^12, 10^
 Per false chain node, emit:
 
 scale
-anchor_p
+input_prime_p
 seed_s0
 chain_index
 node_n

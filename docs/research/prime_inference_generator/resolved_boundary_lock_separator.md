@@ -17,7 +17,7 @@ endpoints from false resolved survivors before absorption is allowed.
 
 The probe uses the strongest safe eliminator configuration:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - `candidate_bound: 64`
 - `witness_bound: 97`
 - `single_hole_positive_witness_closure: enabled`

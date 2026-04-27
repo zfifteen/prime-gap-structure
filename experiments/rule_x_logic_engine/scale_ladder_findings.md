@@ -8,10 +8,10 @@ The Rule X consistency-collapse logic engine remained audit-clean through
 The highest run was:
 
 ```text
-prime anchors: 11..10000000
+input primes: 11..10000000
 candidate_bound: 256
 witness_bound: 3163
-anchors tested: 664575
+input primes tested: 664575
 candidate hypotheses: 45108041
 exact unique matches: 140984
 true next prime rejections: 0
@@ -23,14 +23,14 @@ the threshold, no-witness candidates are held open instead of promoted to
 resolved survivors.
 
 With a scale-matched witness horizon just above `sqrt(max_anchor +
-candidate_bound)`, the engine resolves about `21%` to `23%` of anchors while
+candidate_bound)`, the engine resolves about `21%` to `23%` of input primes while
 preserving zero true-next-prime rejections on every tested surface.
 
 ## Fixed Witness Horizon
 
 These runs keep `witness_bound = 127` and `candidate_bound = 128`.
 
-| max anchor | anchors | exact unique matches | match rate | true rejected |
+| max input prime | input primes | exact unique matches | match rate | true rejected |
 |---:|---:|---:|---:|---:|
 | `100000` | `9588` | `488` | `5.089695%` | `0` |
 | `200000` | `17980` | `488` | `2.714127%` | `0` |
@@ -46,7 +46,7 @@ landmarks dominate the candidate surface.
 These runs choose a witness bound large enough that the semiprime-shadow
 landmark threshold lies beyond the tested coordinate range.
 
-| max anchor | candidate bound | witness bound | anchors | exact unique matches | match rate | true rejected |
+| max input prime | candidate bound | witness bound | input primes | exact unique matches | match rate | true rejected |
 |---:|---:|---:|---:|---:|---:|---:|
 | `200000` | `128` | `449` | `17980` | `4121` | `22.919911%` | `0` |
 | `500000` | `128` | `709` | `41534` | `9279` | `22.340733%` | `0` |
@@ -63,7 +63,7 @@ It preserves the hard safety condition:
 true_boundary_rejected_count = 0
 ```
 
-through `664575` anchors and `45108041` candidate hypotheses.
+through `664575` input primes and `45108041` candidate hypotheses.
 
 ## Interpretation
 
@@ -75,7 +75,7 @@ but coverage plateaus.
 
 With a scale-matched witness horizon, candidate composites are cleared far
 enough for integer lock and lower-divisor threat ceilings to operate across
-the whole tested domain. Coverage stabilizes near one fifth of anchors while
+the whole tested domain. Coverage stabilizes near one fifth of input primes while
 remaining audit-clean.
 
 The next useful experiment is not another broad search. It is a bounded

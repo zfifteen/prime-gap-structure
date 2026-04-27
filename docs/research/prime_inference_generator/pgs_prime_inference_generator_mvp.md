@@ -19,12 +19,12 @@ paths and separate artifacts.
 
 ## Milestones
 
-Milestone 0 is the purity scaffold. Starting from anchor prime `11`, pure mode
+Milestone 0 is the purity scaffold. Starting from input prime `11`, pure mode
 runs, writes JSONL and summary artifacts, and fails closed with
 `BOUNDARY_LAW_UNAVAILABLE` or `NO_UNIQUE_BOUNDARY` without using forbidden
 helpers.
 
-Milestone 1 is the first positive inference result. Starting from anchor prime
+Milestone 1 is the first positive inference result. Starting from input prime
 `11`, pure mode emits `N` inferred `q_hat` values from a clean PGS next-prime law.
 Only after the emitted JSONL exists does audit mode validate the sequence and
 report `N/N` if every emitted next-prime value is confirmed.

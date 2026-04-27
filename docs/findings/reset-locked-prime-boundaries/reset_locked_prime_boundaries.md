@@ -4,7 +4,7 @@
 Prime gaps do **not** close merely because "nothing simpler appears later." Instead, they close because the GWR-selected integer **w** (leftmost minimal-divisor integer) is quickly followed by a **confirmation/reset composite** m > w with d(m) ≤ d(w). This "double tap of simplicity" locks the endpoint before any lower-divisor threat can overtake it.
 
 **Formal rule for inference**:
-- Locate GWR-selected integer **w** after anchor **p**.
+- Locate GWR-selected integer **w** after input prime **p**.
 - Search forward for the first **reset** T = min{ m > w | d(m) ≤ d(w) }.
 - If T exists within the threat horizon (or a small multiple of log(q)), infer the endpoint shortly after T and emit the PGS-inferred prime.
 - If no such reset appears before a stricter threat, **fail closed** (RESET_UNCONFIRMED). This is the key filter that would have rejected all 282 false survivors from recent probes.

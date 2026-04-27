@@ -1,4 +1,4 @@
-# Meissel-Mertens Constant as a Computational Horizon Anchor
+# Meissel-Mertens Constant as a Computational Horizon Input prime
 
 This note records a cross-cutting implication of the standard prime-reciprocal
 asymptotic for the current `DCI` and `GWR` program in this repository.
@@ -7,7 +7,7 @@ asymptotic for the current `DCI` and `GWR` program in this repository.
 
 The strongest supported claim is:
 
-the prime-reciprocal threshold ladder is anchored by the Meissel-Mertens
+the prime-reciprocal threshold ladder is grounded by the Meissel-Mertens
 constant, while the reachable threshold index grows only like the logarithm of
 the logarithm of total compute.
 
@@ -68,7 +68,7 @@ $$n_{\max}(B) \approx B_{1} + \log((\log B)/\alpha).$$
 
 That is a `log log` law in total compute.
 
-## Why the Constant Is an Anchor
+## Why the Constant Is an Input prime
 
 The threshold ladder is not fixed only by the double exponential. It is also
 positioned by the additive phase $B_{1}$.
@@ -84,7 +84,7 @@ At the `Exceeds 5` horizon:
 - a shift of `+0.10` moves it down by about a factor of `1.09e-5`.
 
 So the Meissel-Mertens constant is not a decorative offset. It is the phase
-anchor that places the entire accessibility ladder.
+input prime that places the entire accessibility ladder.
 
 ## Implication for DCI
 
@@ -160,11 +160,11 @@ So the horizon picture points to the same conclusion as the current executed
 
 ## Project-Level Synthesis
 
-These three anchors now line up cleanly:
+These three input primes now line up cleanly:
 
-- the Meissel-Mertens constant anchors where reciprocal-prime thresholds sit,
-- `FIXED_POINT_V = e^{2}/2` anchors the `DCI` prime fixed-point band,
-- the bridge-load threshold $B(k, w) < 1$ anchors the current `GWR`
+- the Meissel-Mertens constant input primes where reciprocal-prime thresholds sit,
+- `FIXED_POINT_V = e^{2}/2` input primes the `DCI` prime fixed-point band,
+- the bridge-load threshold $B(k, w) < 1$ input primes the current `GWR`
   no-early-spoiler closure certificate.
 
 The shared lesson is that this project advances fastest when it finds the right

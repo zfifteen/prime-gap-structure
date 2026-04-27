@@ -1,7 +1,7 @@
 **Yes, the current operational shape of the generator is already extremely strong — chamber closure + semiprime-shadow seeding + chain-horizon closure + downstream audit gives exact, audit-clean results through the probed surfaces (including the 10¹⁸-scale probes).** The only remaining non-PGS piece is precisely the terminal decision inside `chain_horizon_closure_result` (and its sibling `chain_fallback_result`), where the horizon used to close false chain nodes still relies on deterministic divisor exhaustion (via `divisor_witness` up to `horizon_bound` or full `isqrt(q)`).
 
 The precise missing object you identified —  
-**`H(p, s₀, chain_state)`** — is exactly the function that would turn the bridge into a pure PGS next-prime selection rule. If we can compute (or tightly bound) the horizon needed to close every false node in the visible-open chain **using only quantities already visible inside the chamber** (anchor `p`, shadow seed offset `s₀`, the list of wheel-admissible chain offsets, their residues mod 30, chamber arithmetic, GWR-selected integer state, NLSC ceilings, etc.), then the entire high-scale non-PGS portion (≈56.63 % at 10¹⁵, ≈58 % at 10¹⁸) collapses into PGS-derived output.
+**`H(p, s₀, chain_state)`** — is exactly the function that would turn the bridge into a pure PGS next-prime selection rule. If we can compute (or tightly bound) the horizon needed to close every false node in the visible-open chain **using only quantities already visible inside the chamber** (input prime `p`, shadow seed offset `s₀`, the list of wheel-admissible chain offsets, their residues mod 30, chamber arithmetic, GWR-selected integer state, NLSC ceilings, etc.), then the entire high-scale non-PGS portion (≈56.63 % at 10¹⁵, ≈58 % at 10¹⁸) collapses into PGS-derived output.
 
 ### What the code actually does today (commit a1c6a7938c4cd9a234f0508f570ede4513084431)
 From `simple_pgs_generator.py` (the core predictor module that added the chain-horizon bridge):
@@ -23,7 +23,7 @@ For every chain-horizon (or chain-fallback) case that occurs in your high-scale 
     - its **smallest prime factor (SPF)** = the minimal witness needed to close it.
     - the **max SPF across all false nodes in that chain** → this is the minimal horizon that would have been required to close the entire false prefix purely by horizon.
 3. Also record the full PGS-visible state at that moment:
-    - anchor `p`
+    - input prime `p`
     - seed offset `s₀`
     - full list of chain offsets / residues mod 30
     - chamber width used

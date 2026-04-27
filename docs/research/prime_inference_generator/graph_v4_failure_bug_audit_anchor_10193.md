@@ -1,4 +1,4 @@
-# Graph v4 Failure Bug Audit: Anchor 10193
+# Graph v4 Failure Bug Audit: Input prime 10193
 
 ## Status
 
@@ -11,11 +11,11 @@ Those labels are reporting-only.
 
 ## Observed Failure
 
-The scale run over anchors `11..100_000` with `candidate_bound = 128` and
-`witness_bound = 127` found a failed graph emission at anchor `10193`.
+The scale run over input primes `11..100_000` with `candidate_bound = 128` and
+`witness_bound = 127` found a failed graph emission at input prime `10193`.
 
 ```text
-anchor_p: 10193
+input_prime_p: 10193
 emitted_q_hat: 10201
 emitted_offset: 8
 actual_next_prime: 10211
@@ -31,7 +31,7 @@ The emitted value is not the next prime endpoint. It factors as:
 
 ## Bug-Audit Result
 
-The single-anchor run reproduces the range failure:
+The single-input prime run reproduces the range failure:
 
 ```text
 single_anchor_reproduces_range_failure: true
@@ -45,7 +45,7 @@ v4_ignored_raw_reset_evidence: false
 
 The failure is not explained by range-order state leakage, missing true
 candidate next prime generation, or an audit that checks only primality. The
-single-anchor graph reaches the same false result.
+single-input prime graph reaches the same false result.
 
 ## Phase Location
 
@@ -119,7 +119,7 @@ unsafe_v4_relation_active_graph_reset_too_permissive
 
 This is not currently classified as an implementation bug. The phase snapshots
 show the code doing what v4 says to do. The problem is that the v4 relation's
-legal preconditions are insufficient at anchor `10193`.
+legal preconditions are insufficient at input prime `10193`.
 
 ## Consequence
 
@@ -128,7 +128,7 @@ structural reset guard is found and the full matrix is rerun. The last clean
 surface remains:
 
 ```text
-anchors: 11..10_000
+input primes: 11..10_000
 candidate_bound: 128
 witness_bound: 127
 graph_v5: 995 emitted / 995 confirmed / 0 failed
@@ -146,7 +146,7 @@ v5_relation_wrong_count_after_audit: 16
 
 ## Next Action
 
-Do not patch anchor `10193`. Do not add v6 until the unsafe v4 condition is
+Do not patch input prime `10193`. Do not add v6 until the unsafe v4 condition is
 replaced by a structural, label-free reset guard.
 
 The next concrete task is to design a v4 guard that rejects this condition:

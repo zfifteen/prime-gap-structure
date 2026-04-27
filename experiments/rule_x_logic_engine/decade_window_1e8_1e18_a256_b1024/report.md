@@ -2,14 +2,14 @@
 
 ## Executive Summary
 
-The Rule X decade-window ladder tested `256` consecutive prime anchors at each
+The Rule X decade-window ladder tested `256` consecutive input primes at each
 decade from `10^8` through `10^18`.
 
 Across the full ladder:
 
 ```text
 decade windows: 11
-anchors tested: 2816
+input primes tested: 2816
 candidate hypotheses evaluated: 768077
 exact unique matches: 513
 true next prime rejections: 0
@@ -26,7 +26,7 @@ true_boundary_rejected_count = 0
 The `10^18` window produced:
 
 ```text
-anchors tested: 256
+input primes tested: 256
 candidate hypotheses evaluated: 69819
 exact unique matches: 37
 match rate: 14.453125%
@@ -56,13 +56,13 @@ unique resolved survivor emission
 downstream audit
 ```
 
-Classical labels are used for anchor selection and audit. The reported result
+Classical labels are used for input prime selection and audit. The reported result
 is a decade-window measurement of the logic engine, not a production generator
 claim.
 
 ## Results By Decade
 
-| decade | anchors | candidates | exact unique matches | match rate | true rejected | bound misses | seconds | candidates/sec |
+| decade | input primes | candidates | exact unique matches | match rate | true rejected | bound misses | seconds | candidates/sec |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | `10^8` | `256` | `69826` | `61` | `23.828125%` | `0` | `0` | `0.335441` | `208161.56` |
 | `10^9` | `256` | `69824` | `48` | `18.750000%` | `0` | `0` | `0.475338` | `146893.25` |
@@ -81,7 +81,7 @@ claim.
 | Metric | Value |
 |---|---:|
 | Decade windows | `11` |
-| Anchors tested | `2816` |
+| Input primes tested | `2816` |
 | Candidate hypotheses | `768077` |
 | Exact unique matches | `513` |
 | Aggregate match rate | `18.217330%` |
@@ -95,7 +95,7 @@ The decade ladder supports the high-scale stability of the Rule X
 consistency-collapse mechanism on deterministic windows through `10^18`.
 
 The match rate varies by decade but remains nontrivial at every scale. The
-`10^18` window resolves `37 / 256` anchors while rejecting the true next prime
+`10^18` window resolves `37 / 256` input primes while rejecting the true next prime
 zero times.
 
 Runtime increases with scale because high-scale exact factorization is used to

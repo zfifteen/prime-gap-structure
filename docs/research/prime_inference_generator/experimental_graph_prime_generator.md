@@ -80,7 +80,7 @@ zero-failure experimental mode.
 
 `risky-v5` runs the quarantined v5 line. It is exposed only for research
 comparison. It includes the old v4 no-selected-integer/no-active-reset relation that
-failed at anchor `10193` on the `11..100_000` surface.
+failed at input prime `10193` on the `11..100_000` surface.
 
 `filtered-v5` runs the same internal risky-v5 solve, then applies a
 label-free positive disqualification filter before emitting a record. It does
@@ -230,7 +230,7 @@ confirmed_count: 6039
 failed_count: 1352
 coverage_rate: 0.7708594075928243
 first_failure:
-  anchor_p: 10193
+  input_prime_p: 10193
   inferred_prime_q_hat: 10201
   first_prime_after_anchor: null
 
@@ -246,7 +246,7 @@ filter_reason_counts:
   bounded_composite_witness: 463
   power_witness: 25
 first_failure:
-  anchor_p: 17939
+  input_prime_p: 17939
   inferred_prime_q_hat: 17947
   first_prime_after_anchor: null
 ```

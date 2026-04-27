@@ -8,7 +8,7 @@ Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
-Study anchors where the integrated composite-exclusion eliminator produces at
+Study input primes where the integrated composite-exclusion eliminator produces at
 least one resolved false-endpoint survivor.
 
 The question is:
@@ -34,13 +34,13 @@ The script runs the composite-exclusion probe with:
 - `single_hole_positive_witness_closure`
 - `witness_bound: 97`
 
-It then inspects only anchors with resolved false-endpoint alternatives.
+It then inspects only input primes with resolved false-endpoint alternatives.
 
 ## Surface
 
 Run:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - candidate bound: `64`
 - witness bound: `97`
 
@@ -77,7 +77,7 @@ Summary:
 
 Resolved-survivor count distribution:
 
-| Resolved Survivors | Anchors |
+| Resolved Survivors | Input primes |
 |---:|---:|
 | `2` | `230` |
 

@@ -12,15 +12,15 @@ true_boundary_rejected_count = 0
 The largest timed run was:
 
 ```text
-prime anchors: 11..10000000
+input primes: 11..10000000
 candidate_bound: 256
 witness_bound: 3163
-anchors tested: 664575
+input primes tested: 664575
 candidate hypotheses: 45108041
 exact unique matches: 140984
 total runtime: 85.368115 seconds
 candidate throughput: 528394.49 candidates/second
-anchor throughput: 7784.82 anchors/second
+input-prime throughput: 7784.82 input primes/second
 ```
 
 The timed ladder shows that the engine remains near `0.53M` to `0.76M`
@@ -41,7 +41,7 @@ Each run records:
 - evaluation time: Rule X candidate-hypothesis evaluation;
 - write time: CSV and JSON artifact writing;
 - total time;
-- anchors per second;
+- input primes per second;
 - candidate hypotheses per second.
 
 The runner uses the same Rule X decision layer as the documented engine:
@@ -57,7 +57,7 @@ unique resolved survivor emission
 
 ## Timed Scale Ladder
 
-| max anchor | candidate bound | witness bound | anchors | candidates | exact unique matches | true rejected | total seconds | anchors/sec | candidates/sec |
+| max input prime | candidate bound | witness bound | input primes | candidates | exact unique matches | true rejected | total seconds | input primes/sec | candidates/sec |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | `10000` | `128` | `101` | `1225` | `41502` | `305` | `0` | `0.054571` | `22447.67` | `760508.60` |
 | `100000` | `128` | `317` | `9588` | `324809` | `2231` | `0` | `0.445153` | `21538.66` | `729656.99` |
@@ -70,7 +70,7 @@ unique resolved survivor emission
 
 ## Phase Timing
 
-| max anchor | setup seconds | evaluation seconds | write seconds |
+| max input prime | setup seconds | evaluation seconds | write seconds |
 |---:|---:|---:|---:|
 | `10000` | `0.004372` | `0.047024` | `0.002639` |
 | `100000` | `0.054273` | `0.370573` | `0.016138` |
@@ -93,7 +93,7 @@ writing is small compared with evaluation.
 
 The throughput drop after `10^6` is expected because the ladder raises
 `candidate_bound` from `128` to `256`, roughly doubling candidate hypotheses per
-anchor.
+input prime.
 
 ## Exact Current Claim
 
@@ -103,7 +103,7 @@ On this local timed ladder, Rule X was:
 - fail-closed;
 - audit-clean on every timed surface;
 - fast enough to evaluate tens of millions of candidate hypotheses in minutes;
-- resolving about one fifth of anchors on the scale-matched witness ladder.
+- resolving about one fifth of input primes on the scale-matched witness ladder.
 
 The result is a performance report for the summary experiment runner, not a
 claim that the current Minimal PGS Generator has the same runtime profile.

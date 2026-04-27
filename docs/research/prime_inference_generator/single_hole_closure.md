@@ -84,7 +84,7 @@ semiprime and higher-divisor pressure. They are not closure rules.
 
 Run:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - candidate bound: `64`
 - rows: `1225`
 
@@ -196,7 +196,7 @@ explicit flag:
 
 Surface:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - candidate bound: `64`
 
 Before closure:

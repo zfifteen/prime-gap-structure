@@ -24,7 +24,7 @@ The generator must not ask whether a candidate `q` is prime.
 It may try to prove that other admissible candidates cannot be the right
 endpoint.
 
-For an anchor prime `p`, define a finite candidate set:
+For an input prime `p`, define a finite candidate set:
 
 $$Q_B(p) = \{p + k : 0 < k \le B,\ p + k \text{ is wheel-open}\}$$
 
@@ -53,7 +53,7 @@ Current status:
 
 The exclusion logic may use:
 
-- anchor `p`;
+- input prime `p`;
 - chosen wheel and wheel-open offsets;
 - concrete composite witnesses already legal under the pure contract;
 - wheel closure;
@@ -130,10 +130,10 @@ Milestone 1 still requires external audit after emission.
 The first probe should be theorem discovery, not generation:
 
 - script: `benchmarks/python/prime_inference_generator/composite_exclusion_boundary_probe.py`
-- surface: anchors `11..10_000`
+- surface: input primes `11..10_000`
 - candidate bound: `B = 64`
 
-For each anchor, report:
+For each input prime, report:
 
 - `anchor_p`
 - `candidate_bound`
@@ -166,7 +166,7 @@ A serious Next-Prime Law 005 candidate requires:
 
 - legal exclusion logic;
 - zero forbidden dependencies in the elimination path;
-- `survivor_count == 1` for every anchor on a meaningful exact surface;
+- `survivor_count == 1` for every input prime on a meaningful exact surface;
 - the unique survivor matches the classical label after audit;
 - no table-like candidate encoding;
 - a clear PGS interpretation of every rejection rule.
@@ -181,7 +181,7 @@ The first exploratory success threshold is weaker:
 
 Reject or revise the path if:
 
-- most anchors retain many survivors;
+- most input primes retain many survivors;
 - the true next prime is frequently rejected;
 - exclusion requires prime-marker identity;
 - exclusion becomes trial division primality testing;

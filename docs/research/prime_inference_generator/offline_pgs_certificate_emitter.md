@@ -25,7 +25,7 @@ The emitter uses:
 rule_set: 005A-R
 candidate_bound: 128
 witness_bound: 127
-anchors: 11..1000000
+input primes: 11..1000000
 ```
 
 The 005A-R selection condition is:
@@ -89,7 +89,7 @@ record_type
 certificate_status
 pure_emission_approved
 classical_audit_status
-anchor_p
+input_prime_p
 candidate_q_hat
 boundary_offset
 rule_set
@@ -183,7 +183,7 @@ The next safe gate is an action-population audit for 005A-R as an emitter rule:
 rule_set: 005A-R
 candidate_bound: 128
 witness_bound: 127
-anchors: 11..1000000
+input primes: 11..1000000
 shifted windows:
   100000..200000
   1000000..1100000

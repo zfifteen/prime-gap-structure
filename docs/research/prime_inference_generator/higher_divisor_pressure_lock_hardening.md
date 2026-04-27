@@ -1,7 +1,7 @@
 # Higher-Divisor Pressure Lock Hardening
 
 The higher-divisor pressure lock survives the staged zero-wrong hardening
-surface through anchors `11..1_000_000`.
+surface through input primes `11..1_000_000`.
 
 Next-Prime Law 005 is not approved by this note.
 
@@ -92,8 +92,8 @@ survivors after unresolved alternatives are absorbed.
 
 The candidate has now passed two separate checks:
 
-- lock-separator hardening through anchors `11..1_000_000`;
-- flagged absorption integration through anchors `11..100_000`.
+- lock-separator hardening through input primes `11..1_000_000`;
+- flagged absorption integration through input primes `11..100_000`.
 
 This is candidate material for Next-Prime Law 005, not approval. The current
 candidate shape is:

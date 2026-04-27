@@ -62,7 +62,7 @@ The exact contaminated states are:
 
 The audited components are:
 
-- legal context: anchor residue, first-open offset, previous-gap bucket when
+- legal context: input prime residue, first-open offset, previous-gap bucket when
   present;
 - legal square context when present;
 - illegal higher-divisor context: `high_divisor_count`,
@@ -88,7 +88,7 @@ do not classify an open position as prime when no witness is found.
 
 Surface:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - prefix: `32`
 - rows: `1225`
 
@@ -114,7 +114,7 @@ Legal candidate results:
 
 Surface:
 
-- anchors: `11..100_000`
+- input primes: `11..100_000`
 - prefix: `32`
 - rows: `9588`
 
@@ -138,7 +138,7 @@ The smallest exposed illegal component is therefore:
 
 - `divisor_bucket_ladder`
 
-Legal candidate results on anchors `11..100_000`, prefix `32`:
+Legal candidate results on input primes `11..100_000`, prefix `32`:
 
 - `bounded_composite_witness_pressure`: `0` collisions.
 - `power_signature_pressure`: `0` collisions.
@@ -160,7 +160,7 @@ component is illegal because it contains full divisor buckets and marks `d = 2`
 positions. The previous-square context can reduce the damage after ablation,
 but it does not remove the illegal dependency.
 
-Three legal approximations reached zero collisions on anchors `11..100_000`,
+Three legal approximations reached zero collisions on input primes `11..100_000`,
 prefix `32`:
 
 - bounded composite witnesses;
@@ -170,7 +170,7 @@ prefix `32`:
 These are candidate signals, not a next-prime-forcing theorem. They need a
 separate anti-leakage and anti-table audit before any Next-Prime Law 005 note is
 allowed. In particular, power offsets and bounded witness ladders must be
-checked for disguised anchor identity, hidden primality classification, and
+checked for disguised input prime identity, hidden primality classification, and
 future-endpoint leakage.
 
 ## Status

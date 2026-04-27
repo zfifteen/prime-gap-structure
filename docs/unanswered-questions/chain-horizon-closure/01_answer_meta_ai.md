@@ -1,6 +1,6 @@
 You are right to put the spotlight here. The generator is already correct, but correctness at $10^{15}$ and $10^{18}$ is still bought with a non-PGS payment: divisor exhaustion to close the semiprime-shadow chain. If we can replace that payment with a bound that is visible inside the PGS state, the 56.63% and 58.00% bridge you quote becomes PGS-native.
 
-I dug through the a1c6a79 tree. The README publishes the three anchors we need, but it does not yet publish `chain_horizon_closure` as a named file — the implementation lives in the Minimal PGS Generator path you added, and the public surface still describes it operationally: chamber closure finds the first visible endpoint, semiprime shadows seed a short rightward chain, chain-horizon closure kills false nodes, audit stays clean.
+I dug through the a1c6a79 tree. The README publishes the three input primes we need, but it does not yet publish `chain_horizon_closure` as a named file — the implementation lives in the Minimal PGS Generator path you added, and the public surface still describes it operationally: chamber closure finds the first visible endpoint, semiprime shadows seed a short rightward chain, chain-horizon closure kills false nodes, audit stays clean.
 
 That is enough to frame the missing law.
 
@@ -24,7 +24,7 @@ The false chain nodes you are closing are not random composites. By construction
 
 To decide which node survives today you run deterministic divisor checking up to its least prime factor. That works, but it imports $\sqrt{q}$-scale work that is invisible to PGS.
 
-The missing object $H(p, s_0, \text{chain\_state})$ is the prediction: how far do you need to look for a small factor before you can declare a chain node false, using only the anchor, the shadow seed, and the current 14-state + chamber residue?
+The missing object $H(p, s_0, \text{chain\_state})$ is the prediction: how far do you need to look for a small factor before you can declare a chain node false, using only the input prime, the shadow seed, and the current 14-state + chamber residue?
 
 ## Hypothesis for a pure PGS horizon
 
@@ -32,7 +32,7 @@ Because chamber closure is wheel-based, any candidate that reaches chain seeding
 
 That suggests the least-factor frontier of false nodes is not governed by $\sqrt{q}$ but by the current wheel primorial. Concretely:
 
-- let $W(p)$ be the largest prime whose multiples are eliminated by chamber closure at anchor $p$ (from the code this is at least 7, and grows slowly with the chamber state)
+- let $W(p)$ be the largest prime whose multiples are eliminated by chamber closure at input prime $p$ (from the code this is at least 7, and grows slowly with the chamber state)
 - any false shadow node $n$ must satisfy $\text{lpf}(n) > W(p)$, otherwise it would never have been admitted
 - the chain extends only while residues stay inside the attractor triad, which is a 3-state walk on the 14-state core
 
@@ -48,7 +48,7 @@ The sharp test is exactly what you wrote: mine the least-factor frontier.
 
 You do not need another ranker. You need a table of false nodes from your $10^{15}$ and $10^{18}$ probes.
 
-1. **Extract chain logs.** From the Minimal PGS Generator runs, dump for every anchor $p$ where fallback was used:
+1. **Extract chain logs.** From the Minimal PGS Generator runs, dump for every input prime $p$ where fallback was used:
     - $s_0$ (shadow seed offset and type: o2/o4/o6)
     - chain_state (sequence of gap-types, residues mod 30/210, chamber id)
     - for each false node $n_i$: compute $\text{lpf}(n_i)$ by trial division stopping at first factor

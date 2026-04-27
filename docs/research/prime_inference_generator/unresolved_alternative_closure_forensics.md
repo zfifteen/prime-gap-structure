@@ -17,7 +17,7 @@ The measured mode is:
 - `carrier_lock_predicate: unresolved_alternatives_before_threat`
 - `candidate_bound: 64`
 - `witness_bound: 97`
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 
 The probe does not add a new elimination rule. It reports the unresolved
 alternatives after the strongest safe integrated eliminator.

@@ -26,7 +26,7 @@ Classical generators repeatedly test candidates. The PGS generator attempts to w
 
 The system consists of four conceptual layers:
 
-1. Anchor Layer
+1. Input Prime Layer
     * Starts from a known prime p.
     * The known prime can be supplied externally or taken from a validated seed list.
 2. PGS Inference Layer
@@ -65,7 +65,7 @@ A number emitted by the generator as the inferred next prime endpoint according 
 
 Before external validation, this number should not be called a certified prime.
 
-Anchor Prime
+Input Prime
 
 A known prime from which the generator begins a recursive inference walk.
 
@@ -120,7 +120,7 @@ This preserves the conceptual distinction between:
 
 7. Generator Contract
 
-Given an anchor prime p, the generator attempts to produce an inferred next prime q_hat such that:
+Given an input prime p, the generator attempts to produce an inferred next prime q_hat such that:
 
 1. q_hat > p
 2. All integers between p and q_hat are treated as inferred composite interior under the PGS chamber model.
@@ -221,7 +221,7 @@ The initial design should use the repo’s existing deterministic components in 
 4. Locate the earliest minimum-divisor integer according to GWR logic.
 5. Use no-later-simpler-composite closure to infer the right endpoint before any later simpler composite threat.
 6. Infer the next prime endpoint q_hat.
-7. Emit q_hat and advance the anchor to q_hat.
+7. Emit q_hat and advance the input prime to q_hat.
 8. Repeat.
 
 This strategy may be refined into multiple inference engines, but all engines must obey the generation contract.
@@ -304,7 +304,7 @@ Headline claims must clearly state which level is being reported.
 
 Goal:
 
-Measure whether the generator can infer consecutive primes from a small anchor without classical testing.
+Measure whether the generator can infer consecutive primes from a small input prime without classical testing.
 
 Method:
 
@@ -331,29 +331,29 @@ Failure signal:
 
 * any inferred q_hat that is not the actual next prime after p.
 
-14.2 Large-Anchor Spot Benchmark
+14.2 Large-Input prime Spot Benchmark
 
 Goal:
 
-Test inference from large known anchors.
+Test inference from large known input primes.
 
 Method:
 
-* Select validated anchor primes around 10^12, 10^14, 10^16, and 10^18.
-* Infer the next K primes from each anchor.
+* Select validated input prime primes around 10^12, 10^14, 10^16, and 10^18.
+* Infer the next K primes from each input prime.
 * Validate afterward.
 
 Metrics:
 
 * validated recall,
-* first failure index per anchor,
+* first failure index per input prime,
 * inference time per step,
 * chamber width,
 * threat-margin distribution.
 
 Success threshold:
 
-* 100% validation across the selected committed anchor windows.
+* 100% validation across the selected committed input prime windows.
 
 Failure signal:
 
@@ -493,11 +493,11 @@ The MVP should be intentionally narrow.
 
 MVP Goal
 
-Generate a consecutive list of PGS-inferred primes from a known anchor using no Miller-Rabin, no trial-division primality test, and no sieve-based generation inside the generator.
+Generate a consecutive list of PGS-inferred primes from a known input prime using no Miller-Rabin, no trial-division primality test, and no sieve-based generation inside the generator.
 
 MVP Scope
 
-* Start from a known small anchor prime.
+* Start from a known small input prime.
 * Generate a fixed number of inferred primes.
 * Emit per-step inference metadata.
 * Run classical validation only after the sequence is emitted.
@@ -509,7 +509,7 @@ MVP Success Condition
 
 MVP Failure Condition
 
-The first emitted inferred prime that is not the actual next prime after its anchor.
+The first emitted inferred prime that is not the actual next prime after its input prime.
 
 22. Recommended Next Work Item
 

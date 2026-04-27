@@ -78,7 +78,7 @@ Runtime audit on the promoted low-scale surface:
 ```text
 surface: 11..100000
 candidate_bound: 128
-anchors: 9588
+input primes: 9588
 sources: {"PGS": 9588}
 failures: 0
 ```
@@ -143,7 +143,7 @@ Runtime audit on the same low-scale surface:
 ```text
 surface: 11..100000
 candidate_bound: 128
-anchors: 9588
+input primes: 9588
 sources: {"PGS": 9588}
 failures: 0
 PGS rows: 9588
@@ -164,9 +164,9 @@ and the production PGS path no longer uses the trial-division helper functions.
 High-scale production rerun:
 
 ```text
-surface: 256 consecutive prime anchors per decade, 10^8 through 10^18
+surface: 256 consecutive input primes per decade, 10^8 through 10^18
 candidate_bound: 1024
-anchors tested: 2816
+input primes tested: 2816
 PGS rows: 2816
 fallback rows: 0
 audit failures: 0

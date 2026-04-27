@@ -15,7 +15,7 @@ The strengthened accounting also shows why the probe still cannot emit:
 - `unique_survivor_count: 1225`
 - `unique_resolved_survivor_count: 0`
 
-Every anchor has exactly one resolved survivor, but every anchor also has
+Every input prime has exactly one resolved survivor, but every input prime also has
 unresolved alternatives. That is not a unique endpoint.
 
 Next-Prime Law 005 is not approved by this note.
@@ -25,7 +25,7 @@ Next-Prime Law 005 is not approved by this note.
 Build a safe eliminator before a generator.
 
 The probe does not predict the next prime and does not emit inferred primes. It
-constructs a finite wheel-open candidate set for each anchor, applies legal
+constructs a finite wheel-open candidate set for each input prime, applies legal
 candidate statuses, and attaches the classical next-gap label afterward for
 reporting.
 
@@ -130,7 +130,7 @@ Classical labels are attached after elimination for measurement only.
 
 Run:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - candidate bound: `64`
 - rows: `1225`
 
@@ -152,7 +152,7 @@ Summary:
 
 True-endpoint status counts:
 
-| Status | Anchors |
+| Status | Input primes |
 |---|---:|
 | `RESOLVED_SURVIVOR` | `995` |
 | `UNRESOLVED` | `230` |
@@ -160,13 +160,13 @@ True-endpoint status counts:
 
 Survivor-count distribution:
 
-| Survivor Count | Anchors |
+| Survivor Count | Input primes |
 |---:|---:|
 | `1` | `1225` |
 
 Unresolved-count distribution:
 
-| Unresolved Count | Anchors |
+| Unresolved Count | Input primes |
 |---:|---:|
 | `4` | `3` |
 | `5` | `19` |
@@ -215,8 +215,8 @@ The probe now exposes a stronger structure:
   `9.41`;
 - interior-open accounting prevents unresolved chambers from being counted as
   closed;
-- the combined status model leaves one resolved survivor per anchor, but every
-  anchor still has unresolved alternatives.
+- the combined status model leaves one resolved survivor per input prime, but every
+  input prime still has unresolved alternatives.
 
 The `995` unique-survivor label matches are not generator emissions. They are
 cases where the single resolved survivor equals the classical label while
@@ -240,7 +240,7 @@ The next integrated run enabled:
 
 Surface:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - candidate bound: `64`
 - rows: `1225`
 

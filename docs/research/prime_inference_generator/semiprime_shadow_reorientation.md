@@ -24,7 +24,7 @@ Observed surface:
 solver: filtered-v5
 candidate_bound: 128
 witness_bound: 251
-anchors: 11..100000
+input primes: 11..100000
 ```
 
 Result:
@@ -88,7 +88,7 @@ semiprime shadow, the graph should treat `s` as a landmark, not as the answer.
 Let:
 
 ```text
-p = anchor prime
+p = input prime prime
 s = semiprime shadow candidate
 q = true next prime candidate
 ```

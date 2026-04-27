@@ -364,7 +364,7 @@ That identity is enough to make the relationship precise:
 - RH concerns the zero geometry of the analytic detector recovered from that
   same divisor-normalization envelope.
 
-## Anchor Documents
+## Input prime Documents
 
 For the exact DNI and production path:
 

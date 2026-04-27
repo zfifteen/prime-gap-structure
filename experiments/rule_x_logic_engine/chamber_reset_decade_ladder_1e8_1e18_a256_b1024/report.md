@@ -6,9 +6,9 @@ Rule X with chamber reset produced full coverage on the decade-window ladder.
 
 ```text
 decades: 10^8 through 10^18
-anchors per decade: 256
+input primes per decade: 256
 candidate bound: 1024
-anchors tested: 2816
+input primes tested: 2816
 exact matches: 2816
 coverage: 100.000000%
 unresolved: 0
@@ -17,13 +17,13 @@ candidate-bound misses: 0
 total runtime: 36.951566 seconds
 ```
 
-The previous Rule X emission rule resolved `513 / 2816` anchors. The
+The previous Rule X emission rule resolved `513 / 2816` input primes. The
 chamber-reset rule converted the remaining `2303` tail cases by classifying
 later unresolved candidates as post-endpoint chamber material.
 
 ## Tested Rule
 
-For an accepted anchor `p`, let `r` be the first resolved survivor under the
+For an input prime `p`, let `r` be the first resolved survivor under the
 existing Rule X stack.
 
 The chamber-reset rule is:
@@ -39,7 +39,7 @@ after a survivor has already been resolved.
 
 ## Results By Decade
 
-| Decade | Anchors | Exact matches | Unresolved | False emits | Bound misses | Tail cases | Seconds |
+| Decade | Input primes | Exact matches | Unresolved | False emits | Bound misses | Tail cases | Seconds |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | `10^8` | `256` | `256` | `0` | `0` | `0` | `195` | `0.334307` |
 | `10^9` | `256` | `256` | `0` | `0` | `0` | `208` | `0.473113` |
@@ -57,7 +57,7 @@ after a survivor has already been resolved.
 
 | Metric | Value |
 |---|---:|
-| Anchors tested | `2816` |
+| Input primes tested | `2816` |
 | Exact matches | `2816` |
 | Coverage | `100.000000%` |
 | Unresolved | `0` |
@@ -69,7 +69,7 @@ after a survivor has already been resolved.
 
 ## Interpretation
 
-The unresolved anchors were not missing the endpoint. They already contained
+The unresolved input primes were not missing the endpoint. They already contained
 the endpoint as the first resolved survivor.
 
 The chamber-reset rule resolves the remaining ambiguity:
@@ -85,7 +85,7 @@ audited coverage.
 ## Scope
 
 This is a decade-window experiment, not exhaustive coverage of every prime
-through `10^18`. Classical labels are used for anchor selection and downstream
+through `10^18`. Classical labels are used for input prime selection and downstream
 audit in the experiment harness. The next engineering step is promotion into
 the minimal generator path while preserving the two-field emission contract.
 

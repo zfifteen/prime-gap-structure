@@ -5,7 +5,7 @@ The first legal higher-divisor shadows did not survive the hardening gate.
 The strongest collision result belongs to
 `multiplicity_pressure_without_primality`: it has zero collisions on every
 tested surface below. Its anti-table profile is decisive, however. It produces
-one distinct state for every anchor on every tested surface:
+one distinct state for every input prime on every tested surface:
 
 - `distinct_state_ratio: 1.0`
 - `singleton_bucket_rate: 1.0`
@@ -26,7 +26,7 @@ legalization:
 
 The probe checks both collision behavior and anti-table behavior. A candidate
 must not merely separate labels; it must do so without becoming a near-unique
-anchor fingerprint.
+input prime fingerprint.
 
 ## Instrument
 
@@ -72,16 +72,16 @@ The hardening gate marks a zero-collision candidate as quarantined when
 
 The required hardening surfaces were:
 
-- anchors `11..100_000`, prefix `32`
-- anchors `11..1_000_000`, prefix `32`
-- anchors `11..1_000_000`, prefix `16`
-- anchors `11..1_000_000`, prefix `64`
-- anchors `100_000..200_000`, prefix `32`
-- anchors `1_000_000..1_100_000`, prefix `32`
+- input primes `11..100_000`, prefix `32`
+- input primes `11..1_000_000`, prefix `32`
+- input primes `11..1_000_000`, prefix `16`
+- input primes `11..1_000_000`, prefix `64`
+- input primes `100_000..200_000`, prefix `32`
+- input primes `1_000_000..1_100_000`, prefix `32`
 
 ## Results
 
-### Anchors 11..100,000, Prefix 32
+### Input Primes 11..100,000, Prefix 32
 
 Rows: `9588`
 
@@ -93,7 +93,7 @@ Rows: `9588`
 
 Hardening survivors: none.
 
-### Anchors 11..1,000,000, Prefix 32
+### Input Primes 11..1,000,000, Prefix 32
 
 Rows: `78494`
 
@@ -105,7 +105,7 @@ Rows: `78494`
 
 Hardening survivors: none.
 
-### Anchors 11..1,000,000, Prefix 16
+### Input Primes 11..1,000,000, Prefix 16
 
 Rows: `78494`
 
@@ -117,7 +117,7 @@ Rows: `78494`
 
 Hardening survivors: none.
 
-### Anchors 11..1,000,000, Prefix 64
+### Input Primes 11..1,000,000, Prefix 64
 
 Rows: `78494`
 
@@ -129,7 +129,7 @@ Rows: `78494`
 
 Hardening survivors: none.
 
-### Anchors 100,000..200,000, Prefix 32
+### Input primes 100,000..200,000, Prefix 32
 
 Rows: `8392`
 
@@ -141,7 +141,7 @@ Rows: `8392`
 
 Hardening survivors: none.
 
-### Anchors 1,000,000..1,100,000, Prefix 32
+### Input primes 1,000,000..1,100,000, Prefix 32
 
 Rows: `7216`
 

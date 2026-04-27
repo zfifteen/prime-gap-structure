@@ -272,7 +272,7 @@ exact while feeding its own output forward over a long consecutive chain.
 The scaling sweep is
 [`gwr_dni_recursive_gap_scaling_sweep.py`](../../../benchmarks/python/predictor/gwr_dni_recursive_gap_scaling_sweep.py).
 
-It starts at the first prime at or above each decade anchor $10^m$ and runs a
+It starts at the first prime at or above each decade input prime $10^m$ and runs a
 deterministic exact walk budget in that regime:
 
 - $100$ steps for $10^2$ through $10^7$,

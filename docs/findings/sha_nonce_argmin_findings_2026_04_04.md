@@ -38,9 +38,9 @@ The full `sigma0 = ROTR7 ^ ROTR18 ^ SHR3` model does not match that same compone
 
 So the supported conclusion is narrow and exact: the observed `k = 7` component aligns with direct `ROTR7`, not with full `sigma0`.
 
-### 3. The aligned spectrum contains a strong 14-anchored family
+### 3. The aligned spectrum contains a strong 14-grounded family
 
-The dominant harmonic in the observed mean reset-centered profile is `k = 27`, but the aligned spectrum also contains a strong anchor at `k = 14` and several other high-power terms near a `14n - 1` line.
+The dominant harmonic in the observed mean reset-centered profile is `k = 27`, but the aligned spectrum also contains a strong input prime at `k = 14` and several other high-power terms near a `14n - 1` line.
 
 For the aligned reset-centered profile, the strongest harmonics are:
 
@@ -70,7 +70,7 @@ k    nearest 14n   delta
 97      98         -1
 ```
 
-That is enough to say the 14-anchor is real and that a candidate `14n - 1` family exists. It is not enough to call it a closed law, because `71` and `86` are genuine departures.
+That is enough to say the 14-input prime is real and that a candidate `14n - 1` family exists. It is not enough to call it a closed law, because `71` and `86` are genuine departures.
 
 ## Where Mechanism Attribution Ran Ahead of the Data
 
@@ -85,7 +85,7 @@ That means the following are still hypotheses, not findings:
 The correct current statement is simpler:
 
 - `k = 7` has a supported direct `ROTR7` explanation
-- `k = 14` is a real aligned-spectrum anchor
+- `k = 14` is a real aligned-spectrum input prime
 - `k = 27` is the dominant observed harmonic
 - the schedule-path mechanism for `k = 14`, `k = 27`, and the surrounding family is still open
 
@@ -110,7 +110,7 @@ The minimum tracked set is:
 
 The sweep matters because it can answer a question the current dataset cannot:
 
-- do `k = 7` and the 14-anchored family move together under word-position changes, or do they travel through different schedule paths?
+- do `k = 7` and the 14-grounded family move together under word-position changes, or do they travel through different schedule paths?
 
 That is the first planned experiment that can materially discriminate between the current mechanism candidates.
 
@@ -120,7 +120,7 @@ The honest state of the project at this point is:
 
 - one confirmed positional leakage channel: the reset-centered argmin-position channel
 - one confirmed subcomponent identification: `k = 7` aligns with direct `ROTR7`
-- one strong structural observation: a 14-anchored family exists in the aligned spectrum
+- one strong structural observation: a 14-grounded family exists in the aligned spectrum
 - one dominant unexplained harmonic: `k = 27`
 - one pre-registered next probe that can separate findings from mechanism stories
 

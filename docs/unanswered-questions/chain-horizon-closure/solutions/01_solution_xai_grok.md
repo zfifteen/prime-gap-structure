@@ -34,7 +34,7 @@ All answers correctly restate the problem and converge on the *exact* experiment
 **03_asnwer_deepseek.md**
 **Strengths**: Precise reference to lines in simple_pgs_generator.py and divisor_witness fallback; clean data-collection steps; balanced falsifying/confirming criteria.
 **Weaknesses**: Most generic — no specific invariants or pseudocode for H.
-**Experiment results**: Matches exactly what the simulation collected (anchor, s₀, witnesses, PGS state). **Finding**: Solid scaffolding, but would need the concrete features from other answers to turn data into a theorem. Useful reference, not the strongest standalone plan.
+**Experiment results**: Matches exactly what the simulation collected (input prime, s₀, witnesses, PGS state). **Finding**: Solid scaffolding, but would need the concrete features from other answers to turn data into a theorem. Useful reference, not the strongest standalone plan.
 
 **04_answer_copilot.md**
 **Strengths**: *Best practical engineering plan* — two-stage factoring (small B then wheel-sieve), stratified sampling, concrete functional forms for H (linear-log, polylog, residue-based, wheel-limited), full JSON schema, statistical metrics (false-negative rate, tightness, bootstrap CIs).

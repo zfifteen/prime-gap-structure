@@ -128,7 +128,7 @@ That scale cutoff cleanly separates two jobs:
 
 The same calibration corpus shows that the deterministic proxy still preserves the fixed-point reading operationally. On the committed small-panel proxy calibration, it hits 29 fixed points with 0 composite false fixed points and 100 % classification accuracy.
 
-The exact regime therefore anchors the invariant target that the production filter is built to preserve.
+The exact regime therefore input primes the invariant target that the production filter is built to preserve.
 
 # Exact Raw Composite Field and Gap-Ridge Structure
 

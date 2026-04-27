@@ -77,7 +77,7 @@ proof-program target.
 ![GWR validation surface: every reported tested regime remains at match rate 1.0](./plots/figure_02_match_rate_surface.png)
 
 The figure above shows the current ladder of reported validation regimes. The
-line stays at match rate $1.0$ throughout. The anchor table beneath it keeps
+line stays at match rate $1.0$ throughout. The input prime table beneath it keeps
 the gap counts readable without overloading the chart.
 
 So the headline is not “the log-score often agrees with a simpler rule.” The

@@ -54,13 +54,13 @@ A state is ineligible if it uses:
 
 Previous-chamber pressure is treated as conditionally legal for recursive
 generation because a prior accepted endpoint can carry previous-gap context
-forward. It is not a first-anchor endpoint theorem by itself.
+forward. It is not a first-input prime endpoint theorem by itself.
 
 ## Initial Surface
 
 The first approved surface is:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - prefix: `8`
 
 If no eligible zero-collision pressure state appears on that surface, Endpoint
@@ -68,7 +68,7 @@ Law 005 remains blocked.
 
 ## Initial Result
 
-The first run used anchors `11..10_000` with prefix `8`.
+The first run used input primes `11..10_000` with prefix `8`.
 
 No eligible zero-collision pressure state appeared:
 
@@ -98,8 +98,8 @@ The next run tested combined previous-chamber states:
 
 Surfaces:
 
-- anchors `11..10_000`, prefix `8`
-- anchors `11..100_000`, prefixes `8, 12, 16, 24, 32`
+- input primes `11..10_000`, prefix `8`
+- input primes `11..100_000`, prefixes `8, 12, 16, 24, 32`
 
 The legal candidate did not close:
 

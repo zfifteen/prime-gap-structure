@@ -24,18 +24,18 @@ PGS_GENERATOR_FREEZE_ID = pgs_inference_generator_v1_1_pgs_only
 Low exact production surfaces:
 
 ```text
-11..1000      anchors 164     PGS 164     unresolved 0     failures 0
-11..10000     anchors 1225    PGS 1225    unresolved 0     failures 0
-11..100000    anchors 9588    PGS 9588    unresolved 0     failures 0
-11..1000000   anchors 78494   PGS 78494   unresolved 0     failures 0
+11..1000      input primes 164     PGS 164     unresolved 0     failures 0
+11..10000     input primes 1225    PGS 1225    unresolved 0     failures 0
+11..100000    input primes 9588    PGS 9588    unresolved 0     failures 0
+11..1000000   input primes 78494   PGS 78494   unresolved 0     failures 0
 ```
 
 High-scale decade-window surface:
 
 ```text
-surface: 256 consecutive prime anchors per decade, 10^8 through 10^18
+surface: 256 consecutive input primes per decade, 10^8 through 10^18
 candidate_bound: 1024
-anchors tested: 2816
+input primes tested: 2816
 PGS emissions: 2816
 unresolved: 0
 audit failures: 0
@@ -72,7 +72,7 @@ next-prime selection rule: GWR/NLSC chamber-reset state
 The key chamber-reset interpretation is:
 
 After the first resolved survivor appears, later unresolved candidates are
-post-reset chamber material, not competing endpoints for the original anchor.
+post-reset chamber material, not competing endpoints for the original input prime.
 
 That converts the remaining candidate set into a consistency-collapse problem:
 the endpoint is the first resolved survivor that leaves the earlier chamber
@@ -94,7 +94,7 @@ state coherent under GWR and NLSC.
 ## Scope
 
 This is a production-generator result on the declared validation surfaces. It
-is not yet a theorem for every future anchor at every scale.
+is not yet a theorem for every future input prime at every scale.
 
 The current accomplishment is concrete: the generator emits exact
 successor-prime records on the tested low and high-scale surfaces with no trial

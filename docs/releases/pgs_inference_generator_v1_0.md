@@ -8,7 +8,7 @@ This release is superseded by
 which removes the displaced trial-division and fallback code paths from the
 generator.
 
-The frozen generator starts from an accepted anchor prime `p` and emits exactly
+The frozen generator starts from an input prime `p` and emits exactly
 one minimal record:
 
 ```json
@@ -46,7 +46,7 @@ not counted as `PGS`.
 
 Low exact production surfaces:
 
-| Surface | Bound | Anchors | PGS | Fallback | Audit failures |
+| Surface | Bound | Input primes | PGS | Fallback | Audit failures |
 |---|---:|---:|---:|---:|---:|
 | `11..1000` | `128` | `164` | `164` | `0` | `0` |
 | `11..10000` | `128` | `1225` | `1225` | `0` | `0` |
@@ -55,11 +55,11 @@ Low exact production surfaces:
 
 High-scale decade-window production surface:
 
-| Surface | Bound | Anchors | PGS | Fallback | Audit failures |
+| Surface | Bound | Input primes | PGS | Fallback | Audit failures |
 |---|---:|---:|---:|---:|---:|
 | `10^8` through `10^18` | `1024` | `2816` | `2816` | `0` | `0` |
 
-The high-scale surface uses `256` consecutive prime anchors per decade.
+The high-scale surface uses `256` consecutive input primes per decade.
 
 ## Trial-Division Audit
 
@@ -99,7 +99,7 @@ Current result:
 
 This is a production-generator freeze for the tested surfaces above.
 
-The freeze does not claim a proof that every future anchor at every scale is
+The freeze does not claim a proof that every future input prime at every scale is
 covered by the current bounded selector. It records the exact generator
 iteration, the exact rule id, the exact source accounting, and the exact
 validation surfaces that are audit-clean at freeze time.

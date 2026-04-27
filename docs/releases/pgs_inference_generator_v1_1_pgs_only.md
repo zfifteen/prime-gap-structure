@@ -2,7 +2,7 @@
 
 PGS Inference Generator v1.1 is the PGS-only production iteration.
 
-The generator starts from an accepted anchor prime `p` and emits exactly one
+The generator starts from an input prime `p` and emits exactly one
 minimal record when the PGS selector resolves:
 
 ```json
@@ -26,7 +26,7 @@ Version `1.1` removes those paths from the generator. The generator now has one
 execution path:
 
 ```text
-accepted anchor p -> GWR/NLSC chamber-reset selector -> emit {"p": p, "q": q}
+input prime p -> GWR/NLSC chamber-reset selector -> emit {"p": p, "q": q}
 ```
 
 If the selector does not resolve inside the supplied chamber bound, generation
@@ -56,7 +56,7 @@ Downstream audit remains external.
 
 Low exact production surfaces:
 
-| Surface | Bound | Anchors | PGS | Audit failures |
+| Surface | Bound | Input primes | PGS | Audit failures |
 |---|---:|---:|---:|---:|
 | `11..1000` | `128` | `164` | `164` | `0` |
 | `11..10000` | `128` | `1225` | `1225` | `0` |
@@ -65,11 +65,11 @@ Low exact production surfaces:
 
 High-scale decade-window production surface:
 
-| Surface | Bound | Anchors | PGS | Audit failures |
+| Surface | Bound | Input primes | PGS | Audit failures |
 |---|---:|---:|---:|---:|
 | `10^8` through `10^18` | `1024` | `2816` | `2816` | `0` |
 
-The high-scale surface uses `256` consecutive prime anchors per decade.
+The high-scale surface uses `256` consecutive input primes per decade.
 
 ## Validation Command
 
@@ -86,5 +86,5 @@ Current result:
 ## Scope
 
 This is a production-generator refactor for the tested surfaces above. It does
-not claim a proof that every future anchor at every scale is covered by the
+not claim a proof that every future input prime at every scale is covered by the
 current bounded selector.

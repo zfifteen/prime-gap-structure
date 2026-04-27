@@ -126,8 +126,8 @@ Test performed:
 
 The branch tested two literal interpretations:
 
-- re-anchor chamber closure at `q0`;
-- keep anchor `p` and restart closure after `q0`.
+- re-input prime chamber closure at `q0`;
+- keep input prime `p` and restart closure after `q0`.
 
 Artifacts:
 
@@ -391,10 +391,10 @@ Best legal-domain results:
 
 | Scale | Vector | Domain | Correct | Audit failures | Projected PGS |
 |---|---|---|---:|---:|---:|
-| $10^{15}$ | anchor prefix | visible-open anchor bound | 52/141 | 89 | 64.26% |
-| $10^{18}$ | anchor prefix | visible-open anchor bound | 47/145 | 98 | 60.80% |
-| $10^{15}$ | fixed 128 | visible-open anchor bound | 41/141 | 100 | 59.84% |
-| $10^{18}$ | fixed 128 | visible-open anchor bound | 27/145 | 118 | 52.80% |
+| $10^{15}$ | input prime prefix | visible-open input prime bound | 52/141 | 89 | 64.26% |
+| $10^{18}$ | input prime prefix | visible-open input prime bound | 47/145 | 98 | 60.80% |
+| $10^{15}$ | fixed 128 | visible-open input prime bound | 41/141 | 100 | 59.84% |
+| $10^{18}$ | fixed 128 | visible-open input prime bound | 27/145 | 118 | 52.80% |
 
 The all-integer domains selected too early almost everywhere.
 
@@ -787,7 +787,7 @@ Test performed:
 The current chamber does not materialize a placed-seed influence term. The
 branch therefore tested three concrete interpretations:
 
-- literal re-anchor identity, where no explicit seed influence exists;
+- literal re-input prime identity, where no explicit seed influence exists;
 - seed-offset phase wall, using the visible offset `q0 - p`;
 - candidate-margin phase wall, using the visible margin `c - q0`.
 
@@ -871,7 +871,7 @@ Commit: `uncommitted`
 Proposed solution:
 
 Treat each visible-open candidate after `q0` as a proposed right endpoint, not
-only as a point in the anchor-framed rightward scan. Earlier visible-open
+only as a point in the input prime-framed rightward scan. Earlier visible-open
 impostors that are open from `p` should close from the proposed endpoint side
 if the candidate is the real terminal next prime.
 
@@ -879,7 +879,7 @@ The tested selector computes a right-phase defect:
 
 ```text
 right_phase_defect(c) =
-  count of earlier anchor-visible-open nodes n
+  count of earlier input-prime-visible-open nodes n
   whose distance c - n is also right-phase open
 ```
 
@@ -926,7 +926,7 @@ Strength:
 
 The probe tests a genuinely different chamber interpretation. It asks whether
 the endpoint is the first point that closes its own left shadow, rather than
-the first point that remains open from the anchor.
+the first point that remains open from the input prime.
 
 Weakness:
 
@@ -949,8 +949,8 @@ Commit: `uncommitted`
 
 Proposed solution:
 
-Treat each anchor-visible-open candidate after `q0` as a proposed right
-endpoint. Require that every prior anchor-visible-open point (including the
+Treat each input-prime-visible-open candidate after `q0` as a proposed right
+endpoint. Require that every prior input-prime-visible-open point (including the
 seed itself) is *visibly closed* by the distance to the candidate, using the
 same PGS-visible `closure_reason(0, delta)` predicate (wheel + bounded divisor
 witnesses).
@@ -958,7 +958,7 @@ witnesses).
 The tested selector is:
 
 ```text
-Pick the first anchor-visible-open candidate c after q0
+Pick the first input-prime-visible-open candidate c after q0
 such that for every prior visible-open node n <= c,
 closure_reason(0, c - n) is not None.
 ```
@@ -1115,7 +1115,7 @@ PGS-visible integer-transition event:
 
 - threat = first `n > q0` with `closure_reason(p, n - p)` of the form
   `divisor_witness:w` with `w <= 97`;
-- select `q_hat` = last anchor-visible-open candidate strictly before the
+- select `q_hat` = last input-prime-visible-open candidate strictly before the
   threat.
 
 Test performed:

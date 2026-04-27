@@ -13,7 +13,7 @@ is 005A-R. Next-Prime Law 005B remains quarantined.
 Graph v6 is the active safe solver version. It is v3 plus one repaired
 no-selected-integer relation with positive target non-endpoint evidence. Graph v4 and
 v5 remain quarantined outside the last clean `11..10_000` development surface
-because v4 absorbed the unresolved true next prime at anchor `10193` during the
+because v4 absorbed the unresolved true next prime at input prime `10193` during the
 `11..100_000` scale run.
 
 ## Purpose
@@ -22,7 +22,7 @@ The previous emitter produced inferred-prime records from a single refined
 activation rule. The graph solver keeps the same accepted rule set but changes
 the implementation shape:
 
-1. build candidate next prime nodes for an anchor prime;
+1. build candidate next prime nodes for an input prime;
 2. attach accepted PGS facts to each node;
 3. attach rule relations between nodes;
 4. propagate accepted eliminations until stable;
@@ -124,10 +124,10 @@ no-selected-integer unresolved target. It abstains on multiple resolved survivor
 single-hole-dependent sources, targets with legal integers, positive reset
 evidence, and unknown preconditions.
 
-The relation is quarantined because the `11..100_000` scale run found anchor
+The relation is quarantined because the `11..100_000` scale run found input prime
 `10193`, where offset `18` is the true next prime and remained unresolved through
 v3. The v4 absence-based no-selected-integer relation absorbed that target. The failure
-was reproduced in a single-anchor audit and classified as an unsafe relation,
+was reproduced in a single-input prime audit and classified as an unsafe relation,
 not a mutation-order, range-order, or audit bug.
 
 ## Quarantined v5 Relation
@@ -204,7 +204,7 @@ Classical validation is therefore downstream evidence, not a rule input.
 
 ## v0 Result
 
-On anchors `11..10_000` with `candidate_bound = 128` and
+On input primes `11..10_000` with `candidate_bound = 128` and
 `witness_bound = 127`, v0 emitted 36 experimental graph records.
 
 Separate downstream audit confirmed 36/36 records with 0 failures.
@@ -215,7 +215,7 @@ surface.
 
 ## v1 Target
 
-- anchors `11..10_000`;
+- input primes `11..10_000`;
 - `candidate_bound = 128`;
 - `witness_bound = 127`;
 - rule set `005A-R` plus the single unresolved-later domination relation.
@@ -314,7 +314,7 @@ true_boundary_status_counts:
 ```
 
 Graph v3 is the first solver version to exceed 200 emitted experimental graph
-records on anchors `11..10_000` while preserving zero downstream audit
+records on input primes `11..10_000` while preserving zero downstream audit
 failures on the tested surface.
 
 ## v4 Result
@@ -360,7 +360,7 @@ true_boundary_status_counts:
   NOT_IN_CANDIDATE_SET: 0
 ```
 
-Graph v4 increases experimental graph emissions from 211 to 447 on anchors
+Graph v4 increases experimental graph emissions from 211 to 447 on input primes
 `11..10_000` with zero downstream audit failures on the tested surface.
 
 ## v5 Result
@@ -408,7 +408,7 @@ true_boundary_status_counts:
   NOT_IN_CANDIDATE_SET: 0
 ```
 
-Graph v5 increases experimental graph emissions from 447 to 995 on anchors
+Graph v5 increases experimental graph emissions from 447 to 995 on input primes
 `11..10_000` with zero downstream audit failures on the tested surface.
 
 ## v4/v5 Scale Failure
@@ -416,7 +416,7 @@ Graph v5 increases experimental graph emissions from 447 to 995 on anchors
 The `11..100_000` scale run exposed a v4 failure:
 
 ```text
-anchor_p: 10193
+input_prime_p: 10193
 bad emitted q_hat: 10201
 actual next prime: 10211
 bad emitted offset: 8
@@ -441,7 +441,7 @@ candidate_bound: 128
 witness_bound: 127
 ```
 
-On anchors `11..10_000`:
+On input primes `11..10_000`:
 
 ```text
 graph_solved_count: 212
@@ -457,7 +457,7 @@ repaired_relation_correct_count_after_audit: 1
 repaired_relation_wrong_count_after_audit: 0
 ```
 
-On anchors `11..100_000`:
+On input primes `11..100_000`:
 
 ```text
 graph_solved_count: 217

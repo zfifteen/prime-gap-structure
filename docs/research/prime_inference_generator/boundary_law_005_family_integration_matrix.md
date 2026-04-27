@@ -12,7 +12,7 @@ Pure generator emission remains forbidden.
 
 The integration matrix used the strongest safe eliminator configuration before absorption:
 
-- anchors: 11..100000, 11..1000000, 100000..200000, 1000000..1100000
+- input primes: 11..100000, 11..1000000, 100000..200000, 1000000..1100000
 - candidate bound: 64
 - witness bound: 97
 - single-hole positive witness closure: enabled
@@ -53,7 +53,7 @@ The first hard-gate failure is:
 
 - mode: 005B only
 - surface: 11..100000
-- anchor: 3137
+- input prime: 3137
 - actual next prime offset: 26
 - false absorber offset: 12
 - absorbed offsets: 26, 30, 32, 44, 50, 54
@@ -69,7 +69,7 @@ The previous-to-current selected-integer shift lock hardened as a zero-wrong sel
 
 Those are not the same regime.
 
-The hardening population required the true next prime to already be a resolved survivor with later unresolved alternatives and no active higher-divisor pressure lock. The direct integration path cannot use the true next prime label, so it can fire earlier on false resolved survivors. Anchor 3137 shows that failure mode explicitly.
+The hardening population required the true next prime to already be a resolved survivor with later unresolved alternatives and no active higher-divisor pressure lock. The direct integration path cannot use the true next prime label, so it can fire earlier on false resolved survivors. Input Prime 3137 shows that failure mode explicitly.
 
 ## Decision
 

@@ -41,7 +41,7 @@ The integration uses:
 
 Run:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - candidate bound: `64`
 - witness bound: `97`
 
@@ -94,7 +94,7 @@ The ceiling also performs real pruning:
 The stronger operational predicate is `unresolved_alternatives_before_threat`,
 but it is a certificate-state condition, not a standalone number-theoretic
 law. The cleaner structural predicate is `higher_divisor_pressure_before_threat`,
-but it applies to only `10` anchors here.
+but it applies to only `10` input primes here.
 
 Neither predicate resolves the remaining core blocker. True-endpoint unresolved
 count stays at `52`, and multiple resolved survivors remain possible.

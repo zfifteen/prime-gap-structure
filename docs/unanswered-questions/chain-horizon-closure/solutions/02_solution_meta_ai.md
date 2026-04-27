@@ -44,7 +44,7 @@ I evaluated all six files against three criteria: (1) correct problem framing, (
 
 Because the high-scale probes are not downloadable, I replicated the exact logic described in answers 05 and 06 on a controlled dataset that mirrors the chain conditions:
 
-- **Setup:** simulate false chain nodes that survive `visible_divisor_bound=10,000` (as in the code) and are within `candidate_bound=128` of anchor $p$. These are precisely the nodes that currently force fallback to $\sqrt{q}$.
+- **Setup:** simulate false chain nodes that survive `visible_divisor_bound=10,000` (as in the code) and are within `candidate_bound=128` of input prime $p$. These are precisely the nodes that currently force fallback to $\sqrt{q}$.
 - **Method:** generate 200 composites that are products of two primes just above 10,000 (the smallest possible survivors of the visible bound). Compute their smallest prime factor (SPF), which equals the horizon needed to close them.
 - **Results:**
     - sample size: 200 false nodes

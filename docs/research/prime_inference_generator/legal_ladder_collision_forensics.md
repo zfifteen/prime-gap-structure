@@ -6,7 +6,7 @@ the legal ladder does not.
 
 This note records the first forensic run:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - prefix: `8`
 - legal state: `known_composite_divisor_ladder`
 - collision buckets inspected: first `10`

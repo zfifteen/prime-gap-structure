@@ -2,7 +2,7 @@
 
 Next-Prime Law 001 is the first candidate law for Milestone 1 of the PGS Prime
 Inference Generator. Its target is deliberately small: produce one lawful
-emission from anchor prime `11` without classical primality testing or
+emission from input prime `11` without classical primality testing or
 next-prime lookup inside the generation loop.
 
 This note is a design note, not a positive result. The law must not be installed
@@ -13,7 +13,7 @@ inference rather than by external validation.
 
 First Open Chamber Closure.
 
-The chamber after anchor `11` has one closed integer before the first wheel-open
+The chamber after input prime `11` has one closed integer before the first wheel-open
 offset. Next-Prime Law 001 asks whether that first open offset can be inferred as
 the right endpoint from PGS chamber structure alone.
 
@@ -21,11 +21,11 @@ the right endpoint from PGS chamber structure alone.
 
 - `anchor_prime_p = 11`
 - deterministic mod-30 wheel residues
-- first wheel-open even offset after the anchor
+- first wheel-open even offset after the input prime
 - PGS chamber metadata derived without primality testing
 - rule-set version `boundary_law_001`
 
-For the first anchor:
+For the first input prime:
 
 - `11 mod 30 = 11`
 - offset `1` gives `12`, a wheel-closed integer
@@ -53,7 +53,7 @@ this chamber.
 
 ## Candidate Inference Steps
 
-1. Read anchor prime `p = 11`.
+1. Read input prime `p = 11`.
 2. Compute the first wheel-open even offset after `p` under the mod-30 wheel.
 3. Record the pre-open chamber segment from offsets `1` through
    `first_open_offset - 1`.
@@ -66,7 +66,7 @@ this chamber.
 
 ## Endpoint Uniqueness Condition
 
-For anchor `11`, the rule must show from PGS chamber metadata alone that the
+For input prime `11`, the rule must show from PGS chamber metadata alone that the
 first wheel-open position is the right endpoint rather than merely the first
 admissible candidate next prime.
 
@@ -97,7 +97,7 @@ If the law resolves the endpoint, pure mode emits:
 - `inference_status: "inferred"`
 - `failure_reason: null`
 
-The null selection fields are intentional for this first anchor. The chamber has
+The null selection fields are intentional for this first input prime. The chamber has
 no positive-offset open composite integer before the inferred right endpoint.
 
 ## Failure Contract
@@ -113,17 +113,17 @@ Milestone 0 behavior silently.
 
 ## Why This Is PGS Inference
 
-The law is PGS inference only if the emitted next-prime value follows from the anchor,
+The law is PGS inference only if the emitted next-prime value follows from the input prime,
 the wheel-closed pre-open chamber, and the explicit empty-chamber closure rule.
 The external audit may later confirm the emitted `q_hat`, but that confirmation
 cannot participate in the generation step.
 
-## First Test Anchor
+## First Test Input Prime
 
-The first test anchor is `11`.
+The first test input prime is `11`.
 
 Milestone 1 succeeds at the first hard target when pure mode emits one
-`boundary_law_001` record from anchor `11`, and external audit afterward
+`boundary_law_001` record from input prime `11`, and external audit afterward
 confirms that emitted next-prime value.
 
 The stretch target is `N > 1` consecutive inferred next primes. That target

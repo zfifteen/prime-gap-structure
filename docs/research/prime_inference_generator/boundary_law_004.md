@@ -12,7 +12,7 @@ generation contract. It does not emit. Its status is
 
 First Endpoint-Forcing Predicate.
 
-The law asks for a deterministic PGS predicate that takes anchor and chamber
+The law asks for a deterministic PGS predicate that takes input prime and chamber
 state and returns a unique `q_hat` without primality testing, next-prime lookup,
 or next-prime discovery by scanning to `d(n) = 2`.
 
@@ -20,7 +20,7 @@ or next-prime discovery by scanning to `d(n) = 2`.
 
 A next-prime-forcing predicate must:
 
-- start from an externally supplied anchor prime `p`;
+- start from an externally supplied input prime `p`;
 - use only PGS-computable chamber state;
 - identify a unique next-prime offset;
 - distinguish a forced endpoint from an admissible candidate;
@@ -53,7 +53,7 @@ Statement:
 After a GWR-selected integer is established, the first admissible open offset satisfying
 local closure constraints is forced as the right endpoint.
 
-Anchor-13 probe:
+Input-prime-13 probe:
 
 - integer: `w = 14`;
 - divisor class: `d(w) = 4`;
@@ -138,7 +138,7 @@ What remains missing:
 
 - the actual invariant equation or transition law that returns one offset;
 - proof that the returned offset is unique;
-- a worked anchor where the returned offset is derived without using a known
+- a worked input prime where the returned offset is derived without using a known
   prime endpoint.
 
 Status:

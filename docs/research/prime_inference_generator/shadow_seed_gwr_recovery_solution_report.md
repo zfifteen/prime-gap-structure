@@ -2,7 +2,7 @@
 
 The Minimal PGS Generator blocker was the high-scale semiprime-shadow lane. At
 low scale, chamber closure already emitted the next prime for every tested
-anchor. At high scale, the same chamber rule often selected a composite
+input prime. At high scale, the same chamber rule often selected a composite
 left-side shadow inside the gap. Earlier bridge logic could recover from those
 rows, but the source accounting did not separate pure PGS selection from
 exact arithmetic recovery.
@@ -127,7 +127,7 @@ p < q0 < q
 
 where:
 
-- `p` is the accepted anchor prime;
+- `p` is the input prime;
 - `q0` is the chamber-selected composite shadow;
 - `q` is the true next prime after `p`.
 
@@ -178,7 +178,7 @@ The exact low-scale reports are:
 - [`output/simple_pgs_shadow_seed_gwr_solution_1e5/report.json`](../../../output/simple_pgs_shadow_seed_gwr_solution_1e5/report.json)
 - [`output/simple_pgs_shadow_seed_gwr_solution_1e6/report.json`](../../../output/simple_pgs_shadow_seed_gwr_solution_1e6/report.json)
 
-| Surface | Anchors scanned | Emitted | Confirmed | Audit failures | PGS | Fallback | Status |
+| Surface | Input primes scanned | Emitted | Confirmed | Audit failures | PGS | Fallback | Status |
 |---|---:|---:|---:|---:|---:|---:|---|
 | `11..100000` | 9,588 | 9,588 | 9,588 | 0 | 100.00% | 0.00% | `PGS_PASS` |
 | `11..1000000` | 78,494 | 78,494 | 78,494 | 0 | 100.00% | 0.00% | `PGS_PASS` |

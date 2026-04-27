@@ -39,12 +39,12 @@ candidate_bound = 128
 chain_limit = 8
 visible_divisor_bound = 10000
 scales = 10^12, 10^15, 10^18
-sample_size = 16 anchors per scale
+sample_size = 16 input primes per scale
 factor_bound = 100000
 
 This is a bounded pilot, not a full theorem result. It tests whether small, obvious horizon candidates already explain the false chain nodes.
 
-For each sampled anchor, I rebuilt:
+For each sampled input prime, I rebuilt:
 
 PGS chamber-closure candidate q0
 visible-open shadow chain
@@ -126,7 +126,7 @@ Usefulness: high as a sanity check
 
 04_answer_copilot
 
-Copilot gives the most detailed engineering plan: add a least-factor frontier logger, run stratified probes, test polylog, residue-based, wheel-limited, and anchor-gap combined bounds.  ￼
+Copilot gives the most detailed engineering plan: add a least-factor frontier logger, run stratified probes, test polylog, residue-based, wheel-limited, and input prime-gap combined bounds.  ￼
 
 The pilot directly supports Copilot’s caution. Simple polylog and low wheel-like bounds did not close the false chain nodes. A fixed 100000 bound only closed a lower-bound 39.39% of false nodes in the pilot. This means the full collector is necessary before any theorem claim.
 
@@ -220,7 +220,7 @@ horizon_law_summary.json
 Per false chain node, emit:
 
 scale
-anchor_p
+input_prime_p
 seed_s0
 chain_index
 node_n

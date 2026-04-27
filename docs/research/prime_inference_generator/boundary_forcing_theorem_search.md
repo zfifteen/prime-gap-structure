@@ -31,7 +31,7 @@ Claim form:
 
 $$closed\ preopen\ chamber \Rightarrow first\ wheel-open\ candidate\ is\ endpoint$$
 
-This is the theorem family behind Next-Prime Law 001 and the empty anchor-11
+This is the theorem family behind Next-Prime Law 001 and the empty input-prime-11
 probe.
 
 Current status:
@@ -45,7 +45,7 @@ candidate to be the next prime.
 
 Kill condition:
 
-Any known anchor where the first wheel-open candidate is composite kills the
+Any known input prime where the first wheel-open candidate is composite kills the
 unqualified theorem. A surviving version would need additional PGS conditions
 that do more than wheel admissibility.
 
@@ -55,7 +55,7 @@ Claim form:
 
 $$GWR\ integer + no\ later\ lower-divisor\ threat\ up\ to\ candidate\ q \Rightarrow q\ is\ endpoint$$
 
-This is the theorem family behind Next-Prime Law 003 and the anchor-13 integer
+This is the theorem family behind Next-Prime Law 003 and the input prime-13 integer
 probe.
 
 Current status:
@@ -80,7 +80,7 @@ Claim form:
 $$S(p) \Rightarrow g(p)$$
 
 Here `S(p)` is a PGS state vector computed from allowed local or recursive
-structure around anchor `p`, and `g(p)` is the next prime offset.
+structure around input prime `p`, and `g(p)` is the next prime offset.
 
 This is the most promising family because endpoint force may live between
 chambers rather than inside one proposed chamber.
@@ -105,7 +105,7 @@ longer memory, larger deterministic state, or a different invariant.
 
 The transition-state search should test deterministic state vectors built from:
 
-- anchor residue modulo the wheel;
+- input prime residue modulo the wheel;
 - first-open offset;
 - first selected-integer family;
 - first selected divisor count;
@@ -145,7 +145,7 @@ because it is theorem discovery.
 The probe must:
 
 1. Walk known validated prime gaps on a finite surface.
-2. Compute candidate PGS state vectors for each anchor.
+2. Compute candidate PGS state vectors for each input prime.
 3. Attach the classical next gap width as a label.
 4. Group rows by state vector.
 5. Report collisions where one state maps to multiple next-prime offsets.
@@ -191,7 +191,7 @@ separate from lawful generation.
 
 ## Current Legal Ladder Result
 
-The first legal ladder expansion tested anchors `11..200`, `11..10_000`, and
+The first legal ladder expansion tested input primes `11..200`, `11..10_000`, and
 `11..100_000` across prefixes `8, 12, 16, 24, 32`.
 
 The contaminated `carrier_ladder` and `previous_gap_ladder` states keep zero

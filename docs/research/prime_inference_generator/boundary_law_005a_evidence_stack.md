@@ -87,7 +87,7 @@ Staged hardening results:
 | 11..100000 | 7431 | 4354 | 31 | 0 | 0 |
 | 11..1000000 | 49019 | 46286 | 31 | 0 | 0 |
 
-The selector safety gate passed through anchors 11..1000000:
+The selector safety gate passed through input primes 11..1000000:
 
 ```text
 higher_divisor_pressure_lock_false_selected: 0
@@ -163,7 +163,7 @@ The shifted windows safely abstained. That is acceptable for candidate safety, b
 
 005A has narrow coverage.
 
-Across the origin surface through anchors 11..1000000:
+Across the origin surface through input primes 11..1000000:
 
 - selected true resolved candidates: 31
 - unique resolved survivors produced by integration: 25
@@ -210,7 +210,7 @@ Recommended first expansion:
 ```text
 candidate_bound: 128
 witness_bound: 97
-surface: anchors 11..1000000
+surface: input primes 11..1000000
 ```
 
 This changes the candidate horizon while preserving the witness basis.
@@ -220,7 +220,7 @@ Alternative expansion:
 ```text
 candidate_bound: 64
 witness_bound: 127
-surface: anchors 11..1000000
+surface: input primes 11..1000000
 ```
 
 This changes the witness basis while preserving the candidate horizon.

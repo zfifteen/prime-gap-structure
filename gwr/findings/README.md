@@ -8,7 +8,7 @@ refer directly to an older artifact whose title or filename already uses it.
 
 ## Proof-Status Precedence
 
-The live proof-status anchors for this surface are:
+The live proof-status input primes for this surface are:
 
 - [../../README.md](../../README.md)
 - [../../GWR_PROOF.md](../../GWR_PROOF.md)
@@ -18,7 +18,7 @@ The live proof-status anchors for this surface are:
 
 Explanatory notes in this directory may expand consequences, measurements, and
 interpretations, but they must not restate weaker or older proof-status
-language than those anchors.
+language than those input primes.
 
 ## Primary Surface
 

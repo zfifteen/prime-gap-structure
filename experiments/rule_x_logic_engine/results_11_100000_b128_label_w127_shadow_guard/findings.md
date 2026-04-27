@@ -34,10 +34,10 @@ The same surfaces before the guard had true-next-prime rejections:
 ## Domain
 
 ```text
-prime anchors: 11..100000
+input primes: 11..100000
 candidate bound: 128
 witness bounds tested: 97, 127
-anchors tested: 9588
+input primes tested: 9588
 candidate hypotheses: 324809
 ```
 
@@ -91,7 +91,7 @@ The complete small-scale rule stack is now:
    alternatives remain.
 ```
 
-This produces exact next-prime inference for a nontrivial subset of anchors with
+This produces exact next-prime inference for a nontrivial subset of input primes with
 zero true-next-prime rejections on the tested surface.
 
 The result is program-advancing because the guard directly explains the earlier

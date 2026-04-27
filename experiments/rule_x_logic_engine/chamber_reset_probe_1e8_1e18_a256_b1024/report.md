@@ -8,7 +8,7 @@ ladder.
 Across the same `10^8` through `10^18` windows:
 
 ```text
-anchors tested: 2816
+input primes tested: 2816
 old unique Rule X matches: 513
 chamber-reset exact matches: 2816
 chamber-reset false emissions: 0
@@ -17,15 +17,15 @@ tail cases converted: 2303
 tail candidates excluded by reset: 77457
 ```
 
-Every previously unresolved anchor had one resolved survivor followed by a
+Every previously unresolved input prime had one resolved survivor followed by a
 later unresolved tail. Under the chamber-reset rule, the first resolved
 survivor closes the current chamber, so later unresolved candidates are
-assigned to later chambers and excluded from the current anchor's endpoint
+assigned to later chambers and excluded from the current input prime's endpoint
 choice.
 
 ## Tested Rule
 
-For an accepted anchor `p`, let `r` be the first resolved survivor under the
+For an input prime `p`, let `r` be the first resolved survivor under the
 existing Rule X stack.
 
 The tested chamber-reset rule is:
@@ -52,7 +52,7 @@ exclude later unresolved candidates as post-reset chamber material
 
 ## Results By Decade
 
-| decade | anchors | old matches | reset matches | false emits | tail cases | tail candidates | seconds |
+| decade | input primes | old matches | reset matches | false emits | tail cases | tail candidates | seconds |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | `10^8` | `256` | `61` | `256` | `0` | `195` | `10416` | `0.335062` |
 | `10^9` | `256` | `48` | `256` | `0` | `208` | `9744` | `0.472654` |
@@ -68,7 +68,7 @@ exclude later unresolved candidates as post-reset chamber material
 
 ## Interpretation
 
-The unresolved anchors were not missing the endpoint. They already contained
+The unresolved input primes were not missing the endpoint. They already contained
 the endpoint as the first resolved survivor.
 
 The previous emission rule treated later unresolved candidates as competing

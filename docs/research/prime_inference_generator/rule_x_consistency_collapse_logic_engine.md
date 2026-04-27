@@ -3,7 +3,7 @@
 ## Executive Summary
 
 The Rule X logic engine is a finite candidate-elimination engine for next-prime
-next-prime inference from an accepted anchor prime `p`.
+next-prime inference from an input prime `p`.
 
 It does not score candidate primes. It does not search until the next prime. It
 builds candidate next-prime hypotheses and eliminates the hypotheses whose
@@ -13,9 +13,9 @@ On the current high-scale chamber-reset surface:
 
 ```text
 decade windows: 10^8 through 10^18
-anchors per decade: 256
+input primes per decade: 256
 candidate bound: 1024
-anchors tested: 2816
+input primes tested: 2816
 ```
 
 the current rule stack produced:
@@ -23,7 +23,7 @@ the current rule stack produced:
 ```text
 exact next-prime matches: 2816 / 2816
 coverage: 100.000000%
-unresolved anchors: 0
+unresolved input primes: 0
 false emissions: 0
 candidate-bound misses: 0
 ```
@@ -31,7 +31,7 @@ candidate-bound misses: 0
 The result is significant because the engine now distinguishes current-chamber
 endpoint evidence from later-chamber tail evidence. Once the first resolved
 survivor appears, later unresolved candidates are assigned to later chambers
-and no longer block emission for the original anchor.
+and no longer block emission for the original input prime.
 
 The earlier semiprime-shadow landmark hold remains necessary. It prevents
 two-factor witness-horizon landmarks from being promoted into false endpoints.
@@ -40,7 +40,7 @@ later unresolved tails as post-endpoint chamber material.
 
 ## Core Object
 
-For an accepted anchor prime `p`, define a finite set of candidate right
+For an input prime `p`, define a finite set of candidate right
 endpoints:
 
 $$C(p, H) = \{p + h : 1 \leq h \leq H,\ p + h \in W_{30}\}.$$
@@ -118,7 +118,7 @@ closes the current chamber.
 
 Before chamber reset, unresolved alternatives block emission. After the first
 resolved survivor, later unresolved alternatives belong to a later chamber and
-do not compete with the current anchor's endpoint.
+do not compete with the current input prime's endpoint.
 
 ### Semiprime-Shadow Landmark
 
@@ -172,7 +172,7 @@ The engine rejects later candidate next primes that extend beyond this threat.
 
 ### Chamber Reset
 
-A chamber reset occurs at the first resolved survivor `r` after anchor `p`.
+A chamber reset occurs at the first resolved survivor `r` after input prime `p`.
 
 The observable state is:
 
@@ -188,7 +188,7 @@ The reset rule is:
 ```text
 once r is resolved, r closes the p-chamber;
 later unresolved candidates u are post-reset chamber material;
-u is not a competing endpoint for anchor p.
+u is not a competing endpoint for input prime p.
 ```
 
 This rule does not promote arbitrary candidates. It activates only after the
@@ -263,7 +263,7 @@ rule_x_unique_anchor_count = 4162
 rule_x_true_boundary_rejected_count = 7297
 ```
 
-The rule locked too early. Many anchors begin with a small composite near
+The rule locked too early. Many input primes begin with a small composite near
 `p + 1`, but the true gap later introduces the actual integer before the prime
 endpoint. Locking the first integer converts real reset structure into a false
 contradiction.
@@ -312,9 +312,9 @@ the previous Rule X and classical comparisons:
 
 ```text
 decades: 10^8 through 10^18
-anchors per decade: 256
+input primes per decade: 256
 candidate bound: 1024
-anchors tested: 2816
+input primes tested: 2816
 ```
 
 The aggregate result:
@@ -322,7 +322,7 @@ The aggregate result:
 ```text
 exact matches: 2816
 coverage: 100.000000%
-unresolved anchors: 0
+unresolved input primes: 0
 false emissions: 0
 candidate-bound misses: 0
 tail cases converted by reset: 2303
@@ -332,7 +332,7 @@ total runtime: 36.951566 seconds
 
 Per-decade result:
 
-| Decade | Anchors | Exact matches | Unresolved | False emits | Bound misses |
+| Decade | Input primes | Exact matches | Unresolved | False emits | Bound misses |
 |---:|---:|---:|---:|---:|---:|
 | `10^8` | `256` | `256` | `0` | `0` | `0` |
 | `10^9` | `256` | `256` | `0` | `0` | `0` |
@@ -351,7 +351,7 @@ This is a decade-window result, not exhaustive coverage of every prime through
 
 ### Tested Runs
 
-| Run | Anchors | Candidate bound | Witness bound | Unique matches | True rejected |
+| Run | Input primes | Candidate bound | Witness bound | Unique matches | True rejected |
 |---|---:|---:|---:|---:|---:|
 | label-free lock before landmark hold | `11..100000` | `128` | `97` | `2107` | `507` |
 | label-free lock before landmark hold | `11..100000` | `128` | `127` | `2144` | `331` |
@@ -462,7 +462,7 @@ the documented `11..100000`, `candidate_bound = 128` surface for
 true_boundary_rejected_count = 0
 ```
 
-Before chamber reset, it did not resolve every anchor:
+Before chamber reset, it did not resolve every input prime:
 
 ```text
 witness_bound = 97:  311 / 9588 exact unique matches
@@ -488,7 +488,7 @@ Current production generator check:
 ```text
 surface: 11..100000
 candidate_bound: 128
-anchors tested: 9588
+input primes tested: 9588
 PGS emissions: 9588
 failed emissions: 0
 ```
@@ -496,9 +496,9 @@ failed emissions: 0
 High-scale production check:
 
 ```text
-surface: 256 consecutive prime anchors per decade, 10^8 through 10^18
+surface: 256 consecutive input primes per decade, 10^8 through 10^18
 candidate_bound: 1024
-anchors tested: 2816
+input primes tested: 2816
 PGS emissions: 2816
 failed emissions: 0
 ```

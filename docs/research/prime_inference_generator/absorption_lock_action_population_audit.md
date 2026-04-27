@@ -75,9 +75,9 @@ The 005A hardening population covers every absorber that 005A can trigger in int
 - wrong_absorption_count: 1
 - true_boundary_rejected_count: 1
 
-The wrong action is the known anchor 3137 failure:
+The wrong action is the known input prime 3137 failure:
 
-- anchor: 3137
+- input prime: 3137
 - false absorber offset: 12
 - actual next prime offset: 26
 - absorbed offsets: 26, 30, 32, 44, 50, 54

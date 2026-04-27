@@ -1,6 +1,6 @@
 # Pressure Collision Forensics
 
-The first pressure-state probe found no eligible zero-collision state on anchors
+The first pressure-state probe found no eligible zero-collision state on input primes
 `11..10_000`, prefix `8`. The closest legal signal was
 `previous_chamber_pressure_state`, with `30` collision buckets.
 
@@ -9,7 +9,7 @@ instead of adding new state families blindly.
 
 ## Target
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - prefix: `8`
 - state: `previous_chamber_pressure_state`
 - collision buckets: all
@@ -43,7 +43,7 @@ the meaningful surface.
 
 ## Result
 
-The run over anchors `11..10_000`, prefix `8`, state
+The run over input primes `11..10_000`, prefix `8`, state
 `previous_chamber_pressure_state` found:
 
 - `row_count: 1225`

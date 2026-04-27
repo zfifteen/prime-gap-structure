@@ -8,7 +8,7 @@ I read the committed question (00_question.md) and all six potential answers in 
 
 **I conducted a controlled simulation experiment** (saved as `/home/workdir/artifacts/pgs_horizon_experiment.py` + `pgs_horizon_experiment_results.json`) that directly executes the “sharpest next experiment” you defined:
 
-- Sampled 120 anchors across scales 10³–10⁶ (feasible proxy for high-scale behavior).
+- Sampled 120 input primes across scales 10³–10⁶ (feasible proxy for high-scale behavior).
 - Simulated semiprime-shadow seeding + visible-open chains inside `candidate_bound=128`.
 - Used small `visible_divisor_bound=64` (PGS-local chamber value) to model the realistic high-scale regime where visible closure does **not** catch every false node.
 - Computed true **least-factor frontier** = max SPF of pre-terminal false nodes.
@@ -47,7 +47,7 @@ This is a **strong confirming result** for the missing theorem. Below is the per
 - **Verdict**: Solid but less specific on functional form than Grok or Meta. Good for formal theorem statement.
 
 ### 4. Copilot (04_answer_copilot.md) — Most Detailed Implementation Plan
-**Analysis**: Outstanding engineering depth. Gives exact JSON schema for frontier records, stratified sampling by gap-type/attractor, two-stage least-factor computation (small B then wheel-sieved), candidate functional forms (polylog, residue-based, wheel-limited, anchor-gap combined), statistical metrics (empirical CDF, tail behavior, false-negative rate, compression gain), and decision thresholds. Proposes new module `src/python/analysis/least_factor_frontier.py`.
+**Analysis**: Outstanding engineering depth. Gives exact JSON schema for frontier records, stratified sampling by gap-type/attractor, two-stage least-factor computation (small B then wheel-sieved), candidate functional forms (polylog, residue-based, wheel-limited, input prime-gap combined), statistical metrics (empirical CDF, tail behavior, false-negative rate, compression gain), and decision thresholds. Proposes new module `src/python/analysis/least_factor_frontier.py`.
 
 **Experiment results**:
 - Copilot_polylog: good coverage.

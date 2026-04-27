@@ -10,7 +10,7 @@ Next-Prime Law 005 is not approved by this note.
 
 Test the squeeze architecture:
 
-1. start from a known anchor prime $p$;
+1. start from a known input prime $p$;
 2. identify legal GWR-style selected-integer evidence to the right;
 3. find a later certified lower-divisor pressure event;
 4. use that event as a proposed ceiling $T$;
@@ -63,7 +63,7 @@ The rule is deliberately marked as a candidate pressure ceiling, not as a law.
 
 Run:
 
-- anchors: `11..10_000`
+- input primes: `11..10_000`
 - candidate bound: `64`
 - witness bound: `97`
 
@@ -106,7 +106,7 @@ The hard safety gate fails:
 
 ## Concrete Failure
 
-One failure occurs at anchor `6883`.
+One failure occurs at input prime `6883`.
 
 The candidate ceiling records:
 

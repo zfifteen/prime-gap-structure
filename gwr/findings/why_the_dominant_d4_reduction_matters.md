@@ -18,12 +18,12 @@ clearly what those tables change.
 
 The supported dominant-case reading is:
 
-- if a tested prime gap has winner class $d(w)=4$, then the gap contains no
+- if a tested prime gap has selected divisor-count class $d(w)=4$, then the gap contains no
   interior prime square;
-- once no interior prime square is present, the winner is the first interior
+- once no interior prime square is present, the selected integer is the first interior
   $d=4$ carrier.
 
-This is narrower than full GWR, but it covers the dominant winner class on the
+This is narrower than full GWR, but it covers the dominant selected divisor-count class on the
 current surface.
 
 The stricter semiprime-only slogan is already false. The surviving statement is
@@ -45,14 +45,14 @@ actually true.
 Before the GWR proof closure, the strongest repo story was:
 
 - a divisor-weighted log-score is computed across each gap interior,
-- and its winner matches a simple arithmetic rule on the tested surface.
+- and its selected integer matches a simple arithmetic rule on the tested surface.
 
 That was already interesting, but it still left the main effect looking like a
 global score optimization.
 
 The dominant $d=4$ reduction changes that.
 
-For most tested winner gaps, the mechanism now reads:
+For most tested selected integer gaps, the mechanism now reads:
 
 - the gap fails to admit any interior prime square,
 - then the first interior $d=4$ carrier wins.
@@ -64,7 +64,7 @@ That is a local exclusion-and-arrival law, not a full gap-wide search story.
 The current repo structure is now cleaner:
 
 - the divisor-normalized field defines the score surface,
-- GWR gives the proved universal winner theorem on the current proof surface,
+- GWR gives the proved universal maximizer theorem on the current proof surface,
 - the dominant $d=4$ reduction explains why most of that surface collapses so
   cleanly,
 - the No-Later-Simpler-Composite condition gives the closure consequence.
@@ -73,20 +73,20 @@ This is a better scientific shape than one isolated empirical identity. The
 project now has:
 
 - a field,
-- a winner law,
+- a maximizer rule,
 - a dominant mechanism,
 - and a closure law.
 
 ### 3. The follow-on explanation narrows
 
-The dominant proof target is no longer “prove the whole winner rule at once.”
+The dominant proof target is no longer “prove the whole selection rule at once.”
 GWR is already closed on the current proof surface.
 The remaining dominant-regime target is an independent local explanation of the
-largest winner class.
+largest selected divisor-count class.
 
 The dominant $d=4$ regime splits into two cleaner questions:
 
-- why do prime gaps with $d=4$ winners avoid interior prime squares?
+- why do prime gaps with $d=4$ selected integers avoid interior prime squares?
 - once no interior prime square is present, why does the first interior
   $d=4$ carrier always win?
 
@@ -101,14 +101,14 @@ story.
 
 It would have been tempting to say:
 
-- the winner is the first semiprime.
+- the selected integer is the first semiprime.
 
 The exact $2 \times 10^7$ run already shows that this is not true. A thin
 prime-cube exception family survives.
 
 So the project can now state, with precision:
 
-- the right low-complexity winner class is $d=4$,
+- the right low-complexity selected divisor-count class is $d=4$,
 - not “semiprimes” as a factorization type.
 
 That is an important calibration point for every future explanatory and
@@ -124,17 +124,17 @@ This project is now isolating a different kind of structure:
 
 - whether a prime square enters the interior,
 - where the first $d=4$ carrier appears,
-- and how that local divisor profile determines the winner.
+- and how that local divisor profile determines the selected integer.
 
 If this continues to hold and eventually gets proved, then prime gaps will not
 look only like empty stretches between consecutive primes. They will also have
 an internal arithmetic structure whose first low-divisor events matter.
 
-### 2. The dominant winner regime looks more like exclusion than optimization
+### 2. The dominant selected-integer regime looks more like exclusion than optimization
 
 The reduction changes the conceptual picture.
 
-The winner does not primarily look like:
+The selected integer does not primarily look like:
 
 - the point that survives a complicated continuous competition across the whole
   interior.
@@ -165,7 +165,7 @@ That is a much more recognizable target.
 
 It does not mean the follow-on explanation is easy. It does mean the project is
 no longer asking number theory to explain an unfamiliar scoring rule all at
-once. GWR supplies the proved winner theorem; the dominant-regime work asks for
+once. GWR supplies the proved maximizer theorem; the dominant-regime work asks for
 a more concrete local ordering explanation.
 
 ### 4. The project is isolating a candidate local law of gap termination
@@ -174,7 +174,7 @@ Combined with the No-Later-Simpler-Composite condition, the dominant reduction
 points toward this picture:
 
 - prime squares govern whether the $d=3$ layer can intrude,
-- the first interior $d=4$ carrier governs the dominant winner layer,
+- the first interior $d=4$ carrier governs the dominant selected integer layer,
 - and the next prime closes the gap before a later strictly simpler threat can
   appear.
 
@@ -198,8 +198,8 @@ current deterministic artifact surface:
 
 On that current surface:
 
-- every tested $d=4$ winner gap contained no interior prime square,
-- every such gap had the first interior $d=4$ carrier as its true winner,
+- every tested $d=4$ selected integer gap contained no interior prime square,
+- every such gap had the first interior $d=4$ carrier as its true selected integer,
 - the semiprime-only version failed, but only through a very thin prime-cube
   exception family.
 
@@ -208,18 +208,18 @@ part of the documented record.
 
 The next step is to decide which explanatory or analytic target comes next:
 
-- a tighter exclusion account for prime-square absence in $d=4$ winner gaps,
+- a tighter exclusion account for prime-square absence in $d=4$ selected integer gaps,
 - a clearer local arrival account for first-`d=4` dominance,
 - or a stronger bridge from the dominant reduction into the rest of the proved
   `GWR` surface.
 
 ## Safe Summary
 
-The dominant $d=4$ reduction matters because it turns the main winner surface
+The dominant $d=4$ reduction matters because it turns the main selected integer surface
 from a mysterious global score identity into a local arithmetic mechanism that
 already holds on the current documented exact-and-band ladder through
 $10^{18}$.
 
 That does not replace the main `GWR` proof summary. It identifies the dominant
-regime, the right winner class, the main exception family, and a much sharper
+regime, the right selected divisor-count class, the main exception family, and a much sharper
 local follow-on explanation target than the project had before.

@@ -1,6 +1,6 @@
 # GWR Experiments
 
-This directory tracks the executable and artifact surface for the `Gap Winner
+This directory tracks the executable and artifact surface for the `Gap Selected integer
 Rule`.
 
 ## Proof Pursuit
@@ -15,7 +15,7 @@ Rule`.
 - [`benchmarks/python/gap_ridge/lexicographic_peak_validation.py`](../../benchmarks/python/gap_ridge/lexicographic_peak_validation.py)
   Legacy validation script for the committed tested surface.
 - [`benchmarks/python/gap_ridge/lexicographic_rule_revalidation.py`](../../benchmarks/python/gap_ridge/lexicographic_rule_revalidation.py)
-  Extended revalidation script with explicit winner comparisons, new sampled
+  Extended revalidation script with explicit selected integer comparisons, new sampled
   windows, enrichment statistics, and alternative score probes.
 
 ## Current Outputs
@@ -43,5 +43,5 @@ Rule`.
 ## Working Rule
 
 For this subtree, a tested regime validates `GWR` if and only if it contains
-zero counterexample gaps where the raw-`Z` winner differs from the
-minimum-divisor leftmost winner.
+zero counterexample gaps where the raw-`Z` selected integer differs from the
+leftmost minimum-divisor integer.

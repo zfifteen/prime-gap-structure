@@ -97,7 +97,7 @@ If the law resolves the endpoint, pure mode emits:
 - `inference_status: "inferred"`
 - `failure_reason: null`
 
-The null winner fields are intentional for this first anchor. The chamber has
+The null selection fields are intentional for this first anchor. The chamber has
 no positive-offset open composite carrier before the inferred right endpoint.
 
 ## Failure Contract

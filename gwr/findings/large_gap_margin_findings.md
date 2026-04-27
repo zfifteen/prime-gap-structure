@@ -40,8 +40,8 @@ surface therefore supports the same reading in a different coordinate system:
 The smallest realized critical-ratio margin among the top `100` largest gaps is
 about `0.9999998973`, at the gap `(3851459, 3851587)` of length `128`, with:
 
-- winner `3851473`,
-- winner class `d_{\min} = 4`,
+- selected integer `3851473`,
+- selected divisor-count class `d_{\min} = 4`,
 - earlier candidate `3851467`,
 - earlier class `d = 6`.
 

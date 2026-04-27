@@ -33,7 +33,7 @@ Artifacts:
 The current executed run is an exact scan through `10^7` on the same live
 branch used by the earlier obstruction note:
 
-- winner is the earliest interior non-cube `d=4` semiprime,
+- selected integer is the earliest interior non-cube `d=4` semiprime,
 - floor package `r^2 - 2` is filtered out by direct primality check,
 - the remaining non-floor rows are split by `r^2 mod 30`.
 
@@ -49,7 +49,7 @@ surface.
 
 ## Why The Split Happens
 
-Let `s = r^2` be the next prime square above the live winner `w`.
+Let `s = r^2` be the next prime square above the live selected integer `w`.
 
 On the non-floor branch, `s - 2` is composite by construction. For odd primes
 `r > 5`, prime squares satisfy

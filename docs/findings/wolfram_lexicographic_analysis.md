@@ -25,7 +25,7 @@ Equivalently, if
 [
 m=\min_{n\in \mathcal I(p,p')} d(n),
 ]
-then the winner is
+then the selected integer is
 [
 n_\ast=\min{n\in \mathcal I(p,p') : d(n)=m}.
 ]
@@ -34,13 +34,13 @@ This is not merely a heuristic summary of the plots. The reference implementatio
 [
 \Bigl(1-\frac{d(n)}2\Bigr)\log n
 ]
-for every interior composite and then selects the maximizer with `np.argmax`, while simultaneously recording the winning position, its edge distance, and whether the winner has (d(n)=4). The relevant core line is the exact score computation
+for every interior composite and then selects the maximizer with `np.argmax`, while simultaneously recording the winning position, its edge distance, and whether the selected integer has (d(n)=4). The relevant core line is the exact score computation
 [
 \texttt{scores = (1.0 - gap_divisors/2.0) * log_values[...]},
 ]
 followed by the extraction of the maximizing offset. The same file also defines the observed (d(n)=4) share, the edge-distance-(2) share, and the left/right/center positional shares.
 
-The uploaded validation note states the test criterion explicitly: the rule is declared validated on the tested surface iff every tested regime contains zero counterexample gaps in which the exact raw-(Z) peak differs from the lexicographic winner.
+The uploaded validation note states the test criterion explicitly: the rule is declared validated on the tested surface iff every tested regime contains zero counterexample gaps in which the exact raw-(Z) peak differs from the leftmost minimizer.
 
 The JSON artifact then reports exactly that outcome. Across 13 regimes—full exact runs at (10^6) and (10^7), and deterministic even-window sampled runs from (10^8) through (10^{18})—every regime has
 [
@@ -55,7 +55,7 @@ with zero recorded mismatches. The decision field in the JSON states exactly tha
 So one may state rigorously:
 
 [
-\boxed{\text{On the tested surface of }4{,}423{,}459\text{ prime gaps, the exact raw-}Z\text{ maximizer equals the lexicographic winner in every case.}}
+\boxed{\text{On the tested surface of }4{,}423{,}459\text{ prime gaps, the exact raw-}Z\text{ maximizer equals the leftmost minimizer in every case.}}
 ]
 
 A small but important numerical caveat is that the JSON’s reported minimum log-score margin is strictly positive in lower regimes, then rounds to (0.0) in the highest sampled regimes. Thus the computational evidence establishes non-negativity at machine precision there, not a symbolic lower bound. That does not weaken the identity itself, because the identity is certified by the direct zero-counterexample search, not by the margin field alone.
@@ -78,11 +78,11 @@ which is tiny in a short gap at large scale. The computation shows that this coe
 
 **2. Why the Result Is Non-Trivial**
 
-This identity is surprising because the standard probabilistic pictures of the primes do not naturally predict such a rigid winner-selection law. In the Cramér model, primes are replaced by independent Bernoulli events of probability about (1/\log n), so local gap interiors are treated as random-looking finite configurations rather than as structures expected to obey a deterministic lexicographic optimization rule. ([arXiv][1])
+This identity is surprising because the standard probabilistic pictures of the primes do not naturally predict such a rigid selected integer-selection law. In the Cramér model, primes are replaced by independent Bernoulli events of probability about (1/\log n), so local gap interiors are treated as random-looking finite configurations rather than as structures expected to obey a deterministic lexicographic optimization rule. ([arXiv][1])
 
 Likewise, Maier’s work and the later literature on primes in short intervals teach that prime distribution in short windows exhibits irregularities beyond naive random expectations. That literature makes one cautious about extrapolating smooth averaged heuristics to fine local geometry. Balog and Wooley explicitly frame their work as detecting multiplicative structure in consecutive prime gaps, and they do so against the background of Maier-type phenomena.
 
-A second source of non-triviality is the divisor side. Classical divisor-distribution theory gives average information, density information, and interval-divisor statistics, but it does not suggest that in each individual prime gap a simple lexicographic ordering should identify the unique raw-(Z) maximizer with zero failures across millions of cases. Ford–Tenenbaum-type results control how often integers possess divisors in a specified interval, or how many such divisors they typically have, but that is a very different question from exact winner-take-all selection inside every prime-free interval. ([arXiv][2])
+A second source of non-triviality is the divisor side. Classical divisor-distribution theory gives average information, density information, and interval-divisor statistics, but it does not suggest that in each individual prime gap a simple lexicographic ordering should identify the unique raw-(Z) maximizer with zero failures across millions of cases. Ford–Tenenbaum-type results control how often integers possess divisors in a specified interval, or how many such divisors they typically have, but that is a very different question from exact selected integer-take-all selection inside every prime-free interval. ([arXiv][2])
 
 The surprise, then, is not merely that low-(d(n)) values matter. That would be plausible. The surprise is that the full optimization problem appears, on the tested surface, to collapse to a two-step discrete rule with no exceptions:
 [
@@ -114,7 +114,7 @@ This has a conceptual consequence: prime gaps seem to encode a strong preference
 
 **4. Explained Gap-Edge Phenomena**
 
-The measurements in `runs.py` record three previously observed phenomena: dominance of winners with (d(n)=4), a strict left-edge bias, and enrichment at edge-distance (2). The lexicographic rule explains all three at once.
+The measurements in `runs.py` record three previously observed phenomena: dominance of selected integers with (d(n)=4), a strict left-edge bias, and enrichment at edge-distance (2). The lexicographic rule explains all three at once.
 
 First, why (d(n)=4) dominates. In most prime gaps, the minimal interior divisor count is expected to be (4), because (d(n)=3) requires a prime square and is very sparse, while (d(n)=2) is impossible in the interior. So the winning class is usually the (d=4) layer:
 [
@@ -124,7 +124,7 @@ with the generic case being semiprimes. Once (d=4) is present anywhere in the ga
 [
 L(n)=\Bigl(1-\frac{d(n)}2\Bigr)\log n.
 ]
-Thus the winner usually comes from the (d=4) population.
+Thus the selected integer usually comes from the (d=4) population.
 
 Second, why the bias is to the left. For a fixed divisor count (k), the score is
 [
@@ -158,7 +158,7 @@ The second link is to Grimm’s conjecture. Grimm proposed that if
 n+1,\dots,n+k
 ]
 are consecutive composite numbers, then one can assign distinct primes (P_i) with (P_i\mid n+i). ([Queen's Math and Stats][3])
-Grimm is stronger than merely saying “each interior point is composite”; it says a full prime-labeling exists across the block. If Grimm holds for a gap, then the interior carries a kind of distinct-prime skeletal decomposition. The lexicographic rule is compatible with this picture: the raw-(Z) winner should often be the earliest site whose factorization uses the fewest prime incidences, often a semiprime. A counterexample to your rule would not refute Grimm, but it would show that the earliest least-complex site need not control the raw-(Z) extremum.
+Grimm is stronger than merely saying “each interior point is composite”; it says a full prime-labeling exists across the block. If Grimm holds for a gap, then the interior carries a kind of distinct-prime skeletal decomposition. The lexicographic rule is compatible with this picture: the raw-(Z) selected integer should often be the earliest site whose factorization uses the fewest prime incidences, often a semiprime. A counterexample to your rule would not refute Grimm, but it would show that the earliest least-complex site need not control the raw-(Z) extremum.
 
 The third link is to smooth gaps and multiplicative structure in prime differences. Balog and Wooley proved that gaps between consecutive primes are infinitely often smooth in the sense of having only small prime divisors, and they emphasize that their methods detect multiplicative properties of prime differences more generally.
 That is conceptually adjacent to your observation: both point to multiplicative organization inside prime-gap phenomena rather than purely additive randomness. Your statistic does not inspect the gap length (p'-p) directly, but the winning interior point reflects how small-prime factors populate the gap’s sites.
@@ -191,7 +191,7 @@ over
 [
 p<n<p'
 ]
-is the lexicographic winner
+is the leftmost minimizer
 [
 n_\ast=\min{n\in(p,p'): d(n)=\min_{p<m<p'}d(m)}.
 ]
@@ -209,7 +209,7 @@ with (4{,}423{,}459) tested gaps and zero counterexamples.
 
 A counterexample above (10^{18}) would be mathematically interesting in either of two ways.
 
-If the counterexample has the same minimum (d) attained at several sites but the winner is not leftmost, then the failure would contradict the exact monotonicity in equal-(d) classes, which cannot happen. So that form of counterexample is impossible.
+If the counterexample has the same minimum (d) attained at several sites but the selected integer is not leftmost, then the failure would contradict the exact monotonicity in equal-(d) classes, which cannot happen. So that form of counterexample is impossible.
 
 Therefore any genuine counterexample must have this shape: there exist (a<b) in the gap with
 [
@@ -262,7 +262,7 @@ and then smaller (n) is always better. This explains the tie-breaking law exactl
 
 In short, the raw-(Z) functional is designed so that divisor complexity enters as the coefficient of (\log n), while spatial position enters only through the slow variation of (\log n) itself. That asymmetry makes the optimization almost purely combinatorial: first pick the least complex composite, then the earliest one.
 
-This also clarifies why the smallest reported margins shrink with scale. The left-right (\log)-difference across nearby integers behaves like (1/x), so distinct scores among same-(d) neighbors naturally become extremely close at high scale. The JSON’s minimum log-score margins decrease accordingly and eventually round to (0.0) in floating point, while the winner identity still remains exact in the discrete search.
+This also clarifies why the smallest reported margins shrink with scale. The left-right (\log)-difference across nearby integers behaves like (1/x), so distinct scores among same-(d) neighbors naturally become extremely close at high scale. The JSON’s minimum log-score margins decrease accordingly and eventually round to (0.0) in floating point, while the selected integer identity still remains exact in the discrete search.
 
 **8. Limitations, Open Questions, and Future Directions**
 

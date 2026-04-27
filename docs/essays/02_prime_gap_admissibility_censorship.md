@@ -87,17 +87,17 @@ They are being squeezed into a small low-divisor part of the problem.
 ## The Exact Earlier-Candidate Check Is Not Barely True. It Has Room To Spare
 
 The
-[note on exact earlier-versus-winner margins](../../gwr/findings/no_early_spoiler_margin_findings.md)
+[note on exact earlier-versus-selected integer margins](../../gwr/findings/no_early_spoiler_margin_findings.md)
 and the matching output file
-[exact earlier-versus-winner scan through 2 × 10^7](../../output/gwr_proof/no_early_spoiler_margin_scan_2e7.json)
-compare every earlier interior candidate with the actual winner on the full
+[exact earlier-versus-selected integer scan through 2 × 10^7](../../output/gwr_proof/no_early_spoiler_margin_scan_2e7.json)
+compare every earlier interior candidate with the actual selected integer on the full
 exact range through `2 × 10^7`.
 
 That record reports:
 
 - `1163198` prime gaps with composite interior,
-- `3349874` earlier interior candidates before the true winner,
-- `0` earlier interior candidates beating that winner.
+- `3349874` earlier interior candidates before the true selected integer,
+- `0` earlier interior candidates beating that selected integer.
 
 The hardest cases are still safely on the winning side.
 
@@ -107,7 +107,7 @@ The same note reports:
   $L(w) - L(k) \approx 0.9808292530$
   at the gap `(7, 11)`,
 - smallest ratio margin about `0.0714285168`
-  at the gap `(2486509, 2486513)` with winner divisor count `30`
+  at the gap `(2486509, 2486513)` with selected integer divisor count `30`
   and earlier divisor count `32`.
 
 So the exact checked range is not only free of counterexamples.
@@ -187,7 +187,7 @@ reports zero observed later-side failures on:
 The strongest public output file there is
 [later-side checks through `10^18`](../../output/gwr_closure_constraint_even_bands_through_1e18.json).
 
-In the common case where the winner has four divisors, that note reports:
+In the common case where the selected integer has four divisors, that note reports:
 
 - positive margin against the next prime-square threat on every checked range,
 - minimum margin `2` on every listed deterministic range,
@@ -199,9 +199,9 @@ pushes that one step further.
 
 On the documented four-divisor ranges:
 
-- the mean distance from the winner to the next prime stays only about `12.07`
+- the mean distance from the selected integer to the next prime stays only about `12.07`
   at exact `10^6` and about `20.12` near `10^18`,
-- the mean distance from the winner to the next prime square grows from about
+- the mean distance from the selected integer to the next prime square grows from about
   `5869.6` to about `3595291803.7`,
 - so the share of the available room that gets used falls from about
   `2.06e-3` to about `5.60e-9`.
@@ -215,7 +215,7 @@ This is the point where the object of study changes.
 
 A simple first reading of the project would be:
 
-- there is a winner claim,
+- there is a selected integer claim,
 - there is a hard comparison inequality behind it,
 - and the task is to find a stronger inequality.
 
@@ -284,7 +284,7 @@ Because GWR is proved on the repository's current proof surface,
 the winning interior number also defines a later point that the next prime must
 beat.
 
-In the common case where the winner has four divisors:
+In the common case where the selected integer has four divisors:
 
 $$q \le S_{+}(w).$$
 
@@ -292,7 +292,7 @@ So the same picture has two sides:
 
 - only a small part of the paper possibilities seem to occur inside real prime
   gaps,
-- and once the actual interior winner is fixed, the next prime also has a
+- and once the actual interior selected integer is fixed, the next prime also has a
   local bound.
 
 ## What This Essay Does Not Claim
@@ -364,13 +364,13 @@ The closest supporting notes and output files are:
 - [note on the infinite unresolved divisor-count family](../../gwr/findings/current_spoiler_bound_no_finite_remainder.md)
 - [note on the large-prime reduction](../../gwr/findings/large_prime_reducer_findings.md)
 - [note on exact earlier-candidate collapse](../../gwr/findings/earlier_spoiler_local_dominator_findings.md)
-- [note on exact earlier-versus-winner margins](../../gwr/findings/no_early_spoiler_margin_findings.md)
+- [note on exact earlier-versus-selected integer margins](../../gwr/findings/no_early_spoiler_margin_findings.md)
 - [note on the tightest exact ratio cases](../../gwr/findings/no_early_spoiler_ratio_frontier_findings.md)
 - [note on large-gap margins](../../gwr/findings/large_gap_margin_findings.md)
 - [note on the normalized failure ratio](../../gwr/findings/asymptotic_bridge_load_findings.md)
 - [note on later-side checks](../../gwr/findings/closure_constraint_findings.md)
 - [note on the local bound for the next prime](../../gwr/findings/prime_boundary_placement_finding.md)
-- [exact earlier-versus-winner scan through 2 × 10^7](../../output/gwr_proof/no_early_spoiler_margin_scan_2e7.json)
+- [exact earlier-versus-selected integer scan through 2 × 10^7](../../output/gwr_proof/no_early_spoiler_margin_scan_2e7.json)
 - [normalized-ratio scan through 2 × 10^7](../../output/gwr_proof/asymptotic_bridge_load_scan_2e7.json)
 - [exact earlier-candidate scan through 2 × 10^7](../../output/gwr_proof/earlier_spoiler_local_dominator_scan_2e7.json)
 - [later-side checks through `10^18`](../../output/gwr_closure_constraint_even_bands_through_1e18.json)

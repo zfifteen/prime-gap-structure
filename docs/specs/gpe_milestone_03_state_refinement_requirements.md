@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Milestone 3 resolves the fact that the current reduced 14-state winner type is
+Milestone 3 resolves the fact that the current reduced 14-state selected integer type is
 not sufficient to emit the exact next prime.
 
 The state must be sharpened until the next-prime selector is single-valued:
@@ -11,10 +11,10 @@ $$B(q,S,w,d(w))=q^+$$
 
 ## Known Collision
 
-The committed catalog surface contains rows with the same reduced winner type
+The committed catalog surface contains rows with the same reduced selected integer type
 and different next-prime offsets:
 
-| $q$ | $w$ | reduced winner type | $q^+$ | gap |
+| $q$ | $w$ | reduced selected integer type | $q^+$ | gap |
 |---:|---:|---|---:|---:|
 | $13$ | $14$ | `o4_d4_a1_even_semiprime` | $17$ | $4$ |
 | $73$ | $74$ | `o4_d4_a1_even_semiprime` | $79$ | $6$ |

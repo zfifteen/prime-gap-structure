@@ -21,7 +21,7 @@ does closure at $r^2 - 4$ ever occur on the same earliest-`d=4` branch?
 
 ## 1. Branch Setup
 
-Let $(p, q)$ be a prime gap whose implemented raw-$Z$ winner $w$ satisfies:
+Let $(p, q)$ be a prime gap whose implemented raw-$Z$ maximizer $w$ satisfies:
 
 - $d(w)=4$,
 - $w$ is not a prime cube,
@@ -83,7 +83,7 @@ The exact non-floor scan in
 records:
 
 - exact scan through $10^8$,
-- earliest non-cube `d=4` semiprime winners only,
+- earliest non-cube `d=4` semiprime selected integers only,
 - filter to cases where $r^2 - 2$ is composite,
 - `3,570,693` such gaps on the exact scanned surface,
 - zero observed margins `3`, `4`, or `5`,
@@ -145,7 +145,7 @@ It does isolate `r^2 - 4` as the live theorem bottleneck.
 
 The candidate local admissibility lemma for this branch is:
 
-> Let $(p, q)$ be a prime gap whose implemented winner $w$ is the earliest
+> Let $(p, q)$ be a prime gap whose implemented score maximizer $w$ is the earliest
 > non-cube `d=4` semiprime after $p$, and let $r$ be the smallest prime with
 > $r^2 > w$. Then closure at $r^2 - 4$ does not occur.
 

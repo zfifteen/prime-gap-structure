@@ -4,7 +4,7 @@
 
 This repository now carries three major prime-gap results:
 
-- a proved local arithmetic winner law inside prime gaps;
+- a proved local arithmetic selection law inside prime gaps;
 - a frozen hierarchical finite-state engine for reduced prime-gap types.
 - a Prime-Gap Inference Generator that infers the successor prime from the
   arithmetic structure of the interval after a given prime, instead of scanning
@@ -60,7 +60,7 @@ The **Gap Winner Rule (GWR)** says:
 2. if more than one interior composite has that divisor count, take the
    leftmost one.
 
-That chosen interior integer is the winner of the gap.
+That chosen interior integer is the selected integer of the gap.
 
 The headline mathematical result carried by the repository is that the
 implemented divisor-normalization score picks exactly that same integer in
@@ -185,7 +185,7 @@ cases.
 
 Divisor count already tells part of the story: fewer divisors means less
 factor structure. But divisor count alone does not give one scalar quantity for
-the whole gap, and it does not explain what the winner is winning relative to.
+the whole gap, and it does not explain what the selected integer is winning relative to.
 
 The divisor-normalization program builds that scalar by using primes as the
 reference class. Its purpose is to answer one concrete question:
@@ -193,7 +193,7 @@ reference class. Its purpose is to answer one concrete question:
 > Which composite in the gap comes closest to the prime baseline?
 
 The normalization is built so that every prime lands at the same fixed point,
-`Z = 1.0`, while composites fall below that point. That makes the winner easy
+`Z = 1.0`, while composites fall below that point. That makes the selected integer easy
 to interpret: it is the interior composite closest to the prime fixed point
 under the normalization.
 
@@ -209,7 +209,7 @@ $$
 L(n) = \ln Z_{\mathrm{raw}}(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
 $$
 
-Maximizing `Z_raw(n)` and maximizing `L(n)` pick the same winner. The score is
+Maximizing `Z_raw(n)` and maximizing `L(n)` pick the same selected integer. The score is
 there to turn the gap interior into one exact competition, not to decorate the
 rule with jargon.
 
@@ -236,7 +236,7 @@ The repository now carries the following named structures and results:
 - **Gap Winner Rule (GWR):** inside any prime gap, the log-score argmax is
   exactly the leftmost integer with minimum interior divisor count. On the
   repository's current proof surface, this is a proved universal prime-gap
-  winner theorem summarized in [GWR_PROOF.md](GWR_PROOF.md) and recorded in
+  maximizer theorem summarized in [GWR_PROOF.md](GWR_PROOF.md) and recorded in
   [gwr/findings/gwr_hierarchical_local_dominator_theorem.md](gwr/findings/gwr_hierarchical_local_dominator_theorem.md).
 - **Divisor Normalization Identity (DNI):** `Z(n) = n^(1 - d(n)/2)` is an
   exact arithmetic identity collapsing all primes to `Z = 1.0`.
@@ -267,14 +267,14 @@ The repository now carries the following named structures and results:
   with `0` failures on `11..100000`, and
   `2816 / 2816` exact PGS emissions with `0` incorrect candidates on the `10^8`
   through `10^18` decade-window validation surface.
-- **No-Later-Simpler-Composite (NLSC) condition:** once the GWR winner
+- **No-Later-Simpler-Composite (NLSC) condition:** once the GWR-selected integer
   appears, no later interior composite with strictly smaller divisor count
   precedes the next prime. Zero violations observed through `10^18`.
-- **Dominant d=4 arrival reduction:** under square exclusion, the GWR winner
+- **Dominant d=4 arrival reduction:** under square exclusion, the GWR-selected integer
   is exactly the first interior integer with `d(n)=4`. Exact on full scans through
   `2x10^7`.
 - **Dynamic cutoff conjecture:** `C(q) = max(64, ceil(0.5 * log(q)^2))` bounds
-  the GWR winner offset for the bounded walker. Empirically calibrated through
+  the GWR-selected integer offset for the bounded walker. Empirically calibrated through
   `p <= 10^6`. The fixed map `{2:44, 4:60, 6:60}` is falsified at
   `q = 24,098,209`.
 
@@ -339,7 +339,7 @@ deterministic filter.
 
 ## GWR Proof Surface
 
-The central winner law in this repository is that the log-score argmax inside
+The central maximizer rule in this repository is that the log-score argmax inside
 a prime gap collapses to a simpler arithmetic choice:
 
 1. minimize the interior divisor count $d(n)$,
@@ -364,7 +364,7 @@ See [gwr/story/README.md](gwr/story/README.md),
 ## Exact Recursive Prime Walk
 
 The most jarring combined predictor result in the repository is this: once the
-implemented winner appears inside a prime gap, the next prime arrives before
+implemented score maximizer appears inside a prime gap, the next prime arrives before
 any later interior composite with strictly smaller divisor count can appear.
 That closure law is what lets the unbounded DNI/GWR walker recover the next
 prime exactly from the ordered divisor structure of the next-gap interior.
@@ -412,15 +412,15 @@ and
 ## No-Later-Simpler-Composite
 
 The strongest closure consequence currently documented in the repository is
-this: once the implemented winner appears inside a prime gap, the next prime
+this: once the implemented score maximizer appears inside a prime gap, the next prime
 arrives before any later interior composite with strictly smaller divisor
 count can appear.
 
-This is the closure law behind the exact recursive walk. After the winner
+This is the closure law behind the exact recursive walk. After the selected integer
 appears, the gap interior does not later produce a simpler composite before
 the next prime closes the interval.
 
-In symbols, if $w$ is the implemented log-score winner in the gap $(p, q)$ and
+In symbols, if $w$ is the implemented log-score maximizer in the gap $(p, q)$ and
 
 $$
 T_{<}(w) = \min \{\, n > w : d(n) < d(w) \,\},
@@ -446,8 +446,8 @@ and
 
 ## Dominant d=4 Reduction
 
-In the dominant winner regime, the tested gaps admit no interior prime square,
-and the implemented winner is exactly the first interior integer with
+In the dominant selected-integer regime, the tested gaps admit no interior prime square,
+and the implemented score maximizer is exactly the first interior integer with
 $d(n)=4$.
 
 That gives the leading regime a visible mechanism: square exclusion first,
@@ -547,15 +547,15 @@ runtime exact DNI evaluation.
   $Z$ value inside a prime gap lands at edge-distance $2$ in $43.6006\%$ of
   gaps versus an exact within-gap baseline of $22.1859\%$, and is carried by a
   $d(n)=4$ composite in $82.9027\%$ of gaps versus a baseline of $20.1401\%$.
-- Later repository notes sharpen that ridge picture into the current winner
-  theorem: GWR says the implemented log-score winner is the arithmetic choice
+- Later repository notes sharpen that ridge picture into the current selected integer
+  theorem: GWR says the implemented log-score maximizer is the arithmetic choice
   “minimize interior divisor count, then take the leftmost integer,” and the
   current proof route reduces the remaining earlier-side burden to a finite
   local admissibility closure. The tested surfaces
   remain the finite base, stress surface, and audit record for that proof chain.
 - The dedicated closure study then strengthens the right-edge reading further:
   on the current documented even-band ladder through $10^{18}$, once the
-  winner appears, no later strictly simpler composite is observed before the
+  selected integer appears, no later strictly simpler composite is observed before the
   next prime closes the gap.
 
 See [docs/gap_ridge/raw_composite_z_gap_edge.md](docs/gap_ridge/raw_composite_z_gap_edge.md),

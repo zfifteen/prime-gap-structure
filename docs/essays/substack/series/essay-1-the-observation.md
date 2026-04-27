@@ -1,4 +1,4 @@
-# Every Prime Gap Has a Winner
+# Every Prime Gap Has a Selected integer
 
 *Essay 1 in a series about a pattern hiding inside prime numbers. No advanced number theory required. Start with consecutive primes, count divisors, and the pattern appears.*
 
@@ -20,7 +20,7 @@ That gives a very concrete question:
 
 On the tested surface behind this project, the answer is yes.
 
-And the rule that picks the winner is simpler than it has any obvious right to be.
+And the rule that picks the selected integer is simpler than it has any obvious right to be.
 
 ---
 
@@ -48,7 +48,7 @@ It has only 3 divisors because it is a prime square: 5 squared. Prime squares ar
 
 So in this gap, the smallest divisor count is 3, and 25 carries it.
 
-That makes 25 the winner.
+That makes 25 the selected integer.
 
 ---
 
@@ -72,9 +72,9 @@ This time the minimum divisor count is 4, and several integers carry it:
 
 91, 93, 94, 95.
 
-The winner is the leftmost one.
+The selected integer is the leftmost one.
 
-So the winner of this gap is 91.
+So the selected integer of this gap is 91.
 
 At this point the rule looks almost too plain:
 
@@ -84,9 +84,9 @@ That is the whole selection rule.
 
 ---
 
-## What "winner" means
+## What "selected integer" means
 
-The word "winner" is not decorative. It comes from an exact score.
+The word "selected integer" is not decorative. It comes from an exact score.
 
 For each interior integer `n`, define
 
@@ -98,7 +98,7 @@ For primes, `d(n) = 2`, so the score is exactly 0.
 
 For composites, `d(n) > 2`, so the coefficient `(1 - d(n)/2)` is negative. That makes the score negative.
 
-So inside a prime gap, every interior number has a negative score, and the winner is the integer with the score closest to zero.
+So inside a prime gap, every interior number has a negative score, and the selected integer is the integer with the score closest to zero.
 
 In the gap from 23 to 29:
 
@@ -127,7 +127,7 @@ The score mixes two different things:
 - divisor count, which measures factor structure
 - logarithm, which measures size
 
-There is no obvious reason in advance that the winner should always be selected by such a clean lexicographic rule:
+There is no obvious reason in advance that the selected integer should always be selected by such a clean lexicographic rule:
 
 1. minimize divisor count
 2. break ties by taking the leftmost carrier
@@ -142,7 +142,7 @@ The complicated-looking score collapses to a very simple local decision.
 
 This is not based on a few nice examples.
 
-In the current public repository, the rule matches the exact score winner on
+In the current public repository, the rule matches the exact score maximizer on
 
 - exact scans through `10^6`
 - exact scans through `10^7`
@@ -152,7 +152,7 @@ That adds up to **4,423,459 tested prime gaps** with **0 counterexamples observe
 
 So the strongest supported claim is:
 
-**On the current tested surface, every checked prime gap has a canonical interior winner, and the winner is exactly the leftmost carrier of the smallest divisor count present in the gap.**
+**On the current tested surface, every checked prime gap has a canonical interior selected integer, and the selected integer is exactly the leftmost carrier of the smallest divisor count present in the gap.**
 
 That is finite evidence, not an unconditional theorem for all primes. But it is already much stronger than a handful of numerical coincidences.
 
@@ -168,9 +168,9 @@ It says each tested gap contains a distinguished composite landmark: one interio
 
 Once you see the rule, several visible features of the data start to line up:
 
-- winners are usually near the left edge of the gap
-- winners are often low-divisor composites
-- the winner is not found by a floating-point optimization first, but by a discrete divisor hierarchy
+- selected integers are usually near the left edge of the gap
+- selected integers are often low-divisor composites
+- the selected integer is not found by a floating-point optimization first, but by a discrete divisor hierarchy
 
 So this is not just a curiosity about one formula. It is a claim that prime-gap interiors carry an unexpectedly rigid local ordering.
 

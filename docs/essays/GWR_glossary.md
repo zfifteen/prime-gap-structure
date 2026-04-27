@@ -62,15 +62,15 @@ Example:
 form, because `GWR` is about what happens inside the interval bounded by one
 prime and the next.
 
-### Winner
+### Selected integer
 
 **Plain language:** The interior composite that “wins” under the repo’s score.
 
-**In this repo:** The winner is the interior integer that maximizes the
+**In this repo:** The selected integer is the interior integer that maximizes the
 implemented log-score
 `L(n) = (1 - d(n)/2) ln(n)`.
 
-Under `GWR`, that winner is exactly the leftmost interior integer with the
+Under `GWR`, that selected integer is exactly the leftmost interior integer with the
 smallest divisor count present in the gap.
 
 ### Carrier
@@ -84,7 +84,7 @@ divisor class shows up.
 Examples:
 
 - “first `d=4` carrier” means the first interior integer with `d(n)=4`,
-- “winner carrier” means the actual integer that wins the score.
+- “selected integer carrier” means the actual integer that wins the score.
 
 ### Divisor Count
 
@@ -124,14 +124,14 @@ divisor class for that gap is `4`.
 
 ### Dominant `d=4` Regime
 
-**Plain language:** The most common winner regime on the tested surface.
+**Plain language:** The most common selected-integer regime on the tested surface.
 
-**In this repo:** Many tested gaps have winners with divisor count `4`, so the
+**In this repo:** Many tested gaps have selected integers with divisor count `4`, so the
 repo often studies that case separately.
 
 This matters because:
 
-- `d=4` is the common winner class,
+- `d=4` is the common selected divisor-count class,
 - the next strictly smaller composite class is then `d=3`,
 - and `d=3` corresponds exactly to prime squares.
 
@@ -149,7 +149,7 @@ It says:
 
 - find the smallest divisor count present in the gap interior,
 - then take the leftmost interior integer with that divisor count,
-- and that integer is exactly the score winner.
+- and that integer is exactly the score maximizer.
 
 ### Leftmost Tie-Break
 
@@ -162,32 +162,32 @@ the left prime wins.
 
 ### Left Flank
 
-**Plain language:** The part of the gap before the winner.
+**Plain language:** The part of the gap before the selected integer.
 
 **In this repo:** Usually means all interior integers `n < w`, where `w` is
-the winner.
+the selected integer.
 
 ### Right Flank
 
-**Plain language:** The part of the gap after the winner.
+**Plain language:** The part of the gap after the selected integer.
 
 **In this repo:** Usually means all interior integers `n > w` and still
 strictly less than the right prime.
 
 ### Left-Prefix Exclusion
 
-**Plain language:** Before the winner appears, the gap is not allowed to
+**Plain language:** Before the selected integer appears, the gap is not allowed to
 contain anything equally simple or simpler.
 
-**In this repo:** If `GWR` holds and the winner has divisor count `δ`, then
+**In this repo:** If `GWR` holds and the selected integer has divisor count `δ`, then
 every earlier interior integer must satisfy `d(n) > δ`.
 
 ### Right-Suffix Exclusion
 
-**Plain language:** After the winner appears, the gap is not allowed to
+**Plain language:** After the selected integer appears, the gap is not allowed to
 contain anything strictly simpler.
 
-**In this repo:** If `GWR` holds and the winner has divisor count `δ`, then
+**In this repo:** If `GWR` holds and the selected integer has divisor count `δ`, then
 every later interior integer must satisfy `d(n) >= δ`.
 
 ### Divisor-Profile Admission Condition
@@ -199,7 +199,7 @@ every later interior integer must satisfy `d(n) >= δ`.
 
 `>δ, >δ, ..., >δ, δ, >=δ, >=δ, ..., >=δ`
 
-where `δ` is the winner’s divisor count.
+where `δ` is the selected integer’s divisor count.
 
 It means the endpoint primes are only allowed to bound interiors with that
 general structure.
@@ -208,23 +208,23 @@ general structure.
 
 ### Spoiler
 
-**Plain language:** A candidate that could beat the intended winner.
+**Plain language:** A candidate that could beat the intended selected integer.
 
 **In this repo:** A spoiler is usually an earlier interior integer that might
 have a larger score than the actual `GWR` carrier.
 
-If such a candidate really beat the winner, `GWR` would fail on that gap.
+If such a candidate really beat the selected integer, `GWR` would fail on that gap.
 
 ### Earlier Spoiler
 
-**Plain language:** A spoiler that appears before the winner inside the gap.
+**Plain language:** A spoiler that appears before the selected integer inside the gap.
 
 **In this repo:** This was the hard direction in the proof program. The
 explicit bridge certificate and closure artifacts now close it on the current
 proof surface.
 
 The right side is easier because later simpler candidates are ruled out by the
-winner law and the dominance theorem. The difficult side is the earlier
+maximizer rule and the dominance theorem. The difficult side is the earlier
 higher-divisor candidates.
 
 ### Spoiler Candidate
@@ -259,7 +259,7 @@ possible dangerous class pattern.
 than at the level of one specific gap.
 
 **In this repo:** This usually means talking about a pair like
-“winner class `30`, earlier class `32`” rather than one single pair of
+“selected divisor-count class `30`, earlier class `32`” rather than one single pair of
 integers.
 
 ### Spoiler Threshold
@@ -414,7 +414,7 @@ condition being tested.
 
 ### No-Later-Simpler-Composite
 
-**Plain language:** Once the winner appears, no later interior integer should
+**Plain language:** Once the selected integer appears, no later interior integer should
 be strictly simpler before the next prime arrives.
 
 **In this repo:** This is both a conditional corollary of `GWR` and a theorem
@@ -426,7 +426,7 @@ candidate in its own right.
 candidate could appear.
 
 **In this repo:** Written as `T_<(w)` in general. In the dominant `d=4`
-regime, it becomes the next prime square after the winner.
+regime, it becomes the next prime square after the selected integer.
 
 ### Prime-Arrival Margin
 
@@ -438,7 +438,7 @@ Positive means the prime arrived in time.
 
 ### Square-Phase Clock
 
-**Plain language:** The countdown from a `d=4` winner to the next prime square.
+**Plain language:** The countdown from a `d=4` selected integer to the next prime square.
 
 **In this repo:** This is the repo’s way of making the dominant `d=4` closure
 law concrete.
@@ -527,7 +527,7 @@ by consecutive primes.
 
 **Plain language:** Where the bounding primes are allowed to sit.
 
-**In this repo:** A key newer reading is that the interior winner law does not
+**In this repo:** A key newer reading is that the interior maximizer rule does not
 only rank composites. It also constrains where the right endpoint prime can
 appear.
 
@@ -544,12 +544,12 @@ ranking.
 **Plain language:** The interval inside which the next prime has to arrive for
 the gap to stay valid.
 
-**In this repo:** Informal language for the interval between the winner and the
+**In this repo:** Informal language for the interval between the selected integer and the
 later threat horizon.
 
-### Winner As A Clock
+### Selected integer As A Clock
 
-**Plain language:** The winner determines a later time or position at which a
+**Plain language:** The selected integer determines a later time or position at which a
 more dangerous simpler candidate could appear.
 
 **In this repo:** This is especially concrete in the dominant `d=4` regime,
@@ -603,7 +603,7 @@ When a note feels unreadable, try this translation rule:
 
 - “surface” means “the cases we measured,”
 - “frontier” means “the hardest measured cases,”
-- “spoiler” means “a candidate that could beat the winner,”
+- “spoiler” means “a candidate that could beat the selected integer,”
 - “bridge load” means “how close that candidate comes,”
 - “closure” means “whether the next prime arrives in time,”
 - “admissibility” means “whether a pattern can actually happen in a real gap.”
@@ -611,4 +611,4 @@ When a note feels unreadable, try this translation rule:
 If you want only one sentence to keep in your head, use this one:
 
 `GWR` says that prime gaps do not allow arbitrary composite interiors: the
-raw-$Z$ winner is the leftmost carrier of the minimum divisor class in the gap.
+raw-$Z$ maximizer is the leftmost carrier of the minimum divisor class in the gap.

@@ -7,13 +7,13 @@ behind the Gap Winner Rule.
 
 The broad dominant-case claim is:
 
-1. if the implemented winner in a prime gap has divisor count $d(w)=4$, then
+1. if the implemented score maximizer in a prime gap has divisor count $d(w)=4$, then
    the gap contains no interior prime square;
 2. if a prime gap contains no interior prime square and does contain at least
-   one interior integer with $d(n)=4$, then the implemented winner is the
+   one interior integer with $d(n)=4$, then the implemented score maximizer is the
    first such interior $d=4$ carrier.
 
-The implementation defines the winner from the log-score
+The implementation defines the selected integer from the log-score
 
 $$
 L(n)=\left(1-\frac{d(n)}{2}\right)\ln(n)
@@ -25,7 +25,7 @@ tautological restatement of GWR.
 The stricter semiprime-only wording was tested separately:
 
 - stronger claim:
-  every $d=4$ winner is a semiprime;
+  every $d=4$ selected integer is a semiprime;
 - competing possibility:
   a thin prime-cube exception family survives inside the broader $d=4$ class.
 
@@ -60,7 +60,7 @@ small exact scans plus a fixed even-band ladder at higher scales.
 
 The broad dominant-case reduction held exactly on the full documented surface.
 
-| Scale | Gap count | $d=4$ winner gaps | Interior-square violations | First-$d=4$ matches | Prime-cube winners |
+| Scale | Gap count | $d=4$ selected integer gaps | Interior-square violations | First-$d=4$ matches | Prime-cube selected integers |
 |---|---:|---:|---:|---:|---:|
 | exact $10^6$ | 70,327 | 58,303 | 0 | 58,303 | 7 |
 | exact $2 \times 10^7$ | 1,163,198 | 959,730 | 0 | 959,730 | 15 |
@@ -78,8 +78,8 @@ The broad dominant-case reduction held exactly on the full documented surface.
 
 The strongest supported statement on the current surface is therefore:
 
-For every tested gap whose winner has $d(w)=4$, no interior prime square
-appears anywhere in the gap, and the winner is exactly the first interior
+For every tested gap whose selected integer has $d(w)=4$, no interior prime square
+appears anywhere in the gap, and the selected integer is exactly the first interior
 $d=4$ carrier.
 
 The `first-$d=4$` rate is $1.0$ on every documented regime above.
@@ -88,12 +88,12 @@ The `first-$d=4$` rate is $1.0$ on every documented regime above.
 
 The semiprime-only wording is false.
 
-The exact scan to $2 \times 10^7$ recorded $15$ $d=4$ winners that are prime
+The exact scan to $2 \times 10^7$ recorded $15$ $d=4$ selected integers that are prime
 cubes rather than semiprimes. The first explicit counterexample is:
 
 - gap $(6857, 6863)$,
-- winner $6859 = 19^3$,
-- winner offset $2$.
+- selected integer $6859 = 19^3$,
+- selected-integer offset $2$.
 
 So the supported dominant-case reduction is:
 
@@ -122,13 +122,13 @@ the dominant $d=4$ regime now reads:
 - if not, where is the first interior $d=4$ carrier?
 
 On the current documented surface, that local mechanism already recovers the
-true winner exactly for every tested $d=4$ winner gap.
+true selected integer exactly for every tested $d=4$ selected integer gap.
 
 ## Implications For The Project
 
 ### 1. The dominant regime now has a visible mechanism
 
-Most of the winner surface is carried by $d=4$ winners. On the current exact
+Most of the selected integer surface is carried by $d=4$ selected integers. On the current exact
 and even-band runs, that dominant regime no longer needs to be described as a
 full gap-wide score search. It can be described as:
 
@@ -142,7 +142,7 @@ That is a much cleaner internal explanation of why GWR looks so rigid.
 The main follow-on explanation for the dominant regime now splits naturally
 into two questions:
 
-- why do prime gaps with $d=4$ winners avoid interior prime squares?
+- why do prime gaps with $d=4$ selected integers avoid interior prime squares?
 - once no interior prime square is present, why does the first interior
   $d=4$ carrier always win?
 
@@ -162,9 +162,9 @@ not factorization-type-based:
 
 - first interior semiprime.
 
-### 4. $d=4$ winner dominance looks structural
+### 4. $d=4$ selected integer dominance looks structural
 
-The exact $2 \times 10^7$ run recorded $959{,}730$ $d=4$ winners out of
+The exact $2 \times 10^7$ run recorded $959{,}730$ $d=4$ selected integers out of
 $1{,}163{,}198$ tested gaps, a share of about $0.8251$. At the same time, the
 prime-cube exceptions stayed thin:
 
@@ -189,7 +189,7 @@ prime-cube family is on a full surface.
 
 This note documents the dominant $d=4$ arrival reduction only. It does not
 replace the main `GWR` proof summary, and it does not claim that every
-non-`d=4` winner class admits an equally simple local reduction. What it does
+non-`d=4` selected divisor-count class admits an equally simple local reduction. What it does
 support is narrower and still strong:
 
 On the current documented surface, the dominant $d=4$ GWR regime is exactly

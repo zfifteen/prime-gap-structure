@@ -91,7 +91,7 @@ Narration intent:
 "If several interior composites share the minimum divisor count, GWR takes the
 first one from left to right."
 
-## Scene 5 - Raw-Z Winner Collapses Onto GWR
+## Scene 5 - Raw-Z Selected integer Collapses Onto GWR
 
 Observable state:
 
@@ -103,7 +103,7 @@ Because the logarithm is order-preserving, the implemented comparison can use
 
 $$L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).$$
 
-For the prime gap from $23$ to $29$, the score winner is the same block selected
+For the prime gap from $23$ to $29$, the score maximizer is the same block selected
 by GWR: $25$.
 
 Screen action:
@@ -115,9 +115,9 @@ not as the first visual element.
 Narration intent:
 
 "The surprise is not that the score often leans left. The surprise is that the
-score winner is the same integer selected by this discrete rule."
+score maximizer is the same integer selected by this discrete rule."
 
-## Scene 6 - Interior Winner Versus Next Prime
+## Scene 6 - Interior Selected integer Versus Next Prime
 
 Observable state:
 
@@ -127,14 +127,14 @@ automatically the next prime. The identity $q = w + 1$ is not a general rule.
 Screen action:
 
 The selected interior integer remains gold. The next prime endpoint remains a
-separate marked block at the right. A short caption says: "interior winner is
+separate marked block at the right. A short caption says: "interior selected integer is
 not the prime endpoint."
 
 Narration intent:
 
 "GWR is a rule about the interior composites of a prime gap. It identifies an
-interior winner; it does not by itself say that the next prime is one more than
-that winner."
+interior selected integer; it does not by itself say that the next prime is one more than
+that selected integer."
 
 ## Flaming Horse Notes
 

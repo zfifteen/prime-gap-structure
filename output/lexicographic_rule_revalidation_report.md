@@ -3,16 +3,16 @@
 ## Overview
 
 Inside each prime gap `(p, q)`, the raw-`Z` carrier is the interior composite that maximizes `(1 - d(n) / 2) * ln(n)`.
-The lexicographic winner-take-all rule says the same carrier is obtained by a simpler order: minimize `d(n)` over the interior, then choose the leftmost carrier of that minimum.
+The leftmost minimizer-take-all rule says the same carrier is obtained by a simpler order: minimize `d(n)` over the interior, then choose the leftmost carrier of that minimum.
 This revalidation extended the committed surface from `10^6`, `10^7`, `10^8`, `10^9`, `10^10`, `10^11`, `10^12`, `10^13`, `10^14`, `10^15`, `10^16`, `10^17`, `10^18` into a new exact run, new sampled multi-seed windows, and a small alternative-score probe. No counterexamples were found on any new tested surface.
 
 ## Methods
 
 The implementation follows the existing gap-ridge machinery in [`runs.py`](../src/python/z_band_prime_gap_ridge/runs.py), which computes divisor counts on an exact interval, identifies primes as `d(n) = 2`, enumerates adjacent-prime gaps, and scores each interior integer with raw-`Z` using `np.argmax` on `(1 - d/2) * log(n)`.
 The rule statement and previously committed findings come from [`lexicographic_winner_take_all_peak_rule.md`](../docs/findings/lexicographic_winner_take_all_peak_rule.md), and the prior validation surface comes from [`lexicographic_peak_validation.json`](../benchmarks/output/python/gap_ridge/lexicographic_peak_validation/lexicographic_peak_validation.json).
-For each gap with at least one interior composite (`gap >= 4`), the revalidation code computed `best_n_z`, `best_d_z`, `best_n_lex`, and `best_d_lex`. A counterexample is any gap where either `best_n` or `best_d` differs between the raw-`Z` argmax and the lexicographic winner.
+For each gap with at least one interior composite (`gap >= 4`), the revalidation code computed `best_n_z`, `best_d_z`, `best_n_lex`, and `best_d_lex`. A counterexample is any gap where either `best_n` or `best_d` differs between the raw-`Z` argmax and the leftmost minimizer.
 Sampled windows used two deterministic placement families: evenly spaced starts from `build_even_window_starts`, and fixed-seed starts from `build_seeded_window_starts` with seeds `20260331` and `20260401`. The sampled window size was `2,000,000` and the window count was `4` per regime.
-Experiment A used one new exact full range up to `20,000,000`. Experiment B used sampled scales `10^8`, `10^9`, `10^10`, `10^11`, and `10^12`. Experiment C reused the `10^9` even-window regime to measure winner enrichment. Experiment D probed three score factors on a smaller surface: baseline `log(n)`, `log(n + 1)`, and `log(n) + 0.001 * n^(-1/2)`.
+Experiment A used one new exact full range up to `20,000,000`. Experiment B used sampled scales `10^8`, `10^9`, `10^10`, `10^11`, and `10^12`. Experiment C reused the `10^9` even-window regime to measure selected integer enrichment. Experiment D probed three score factors on a smaller surface: baseline `log(n)`, `log(n + 1)`, and `log(n) + 0.001 * n^(-1/2)`.
 
 ## Results
 
@@ -61,13 +61,13 @@ Experiment A used one new exact full range up to `20,000,000`. Experiment B used
 
 ## Discussion
 
-No counterexamples were found in any new experiment. The raw-`Z` argmax and the lexicographic winner agreed on every tested gap.
+No counterexamples were found in any new experiment. The raw-`Z` argmax and the leftmost minimizer agreed on every tested gap.
 The new exact run extended the committed exact surface from `10^7` to `2 * 10^7`, covering 1,163,198 interior prime gaps with zero disagreements.
 The sampled multi-seed runs also stayed at match rate `1.0` across every tested scale and seed. Changing window placement changed the sampled gap counts and local maximum gaps, but it did not produce a single disagreement.
-On the `10^9` enrichment probe, winner carriers were `d(n)=4` in 82.465% of tested gaps versus a baseline interior `d(n)=4` share of 18.022%. Winners landed in the left half in 76.228% of gaps and at edge-distance `2` in 36.867% of gaps, with edge-distance `2` enriched by a factor of 3.517.
+On the `10^9` enrichment probe, selected integer carriers were `d(n)=4` in 82.465% of tested gaps versus a baseline interior `d(n)=4` share of 18.022%. Selected integers landed in the left half in 76.228% of gaps and at edge-distance `2` in 36.867% of gaps, with edge-distance `2` enriched by a factor of 3.517.
 The alternative-score probe also stayed at match rate `1.0` on the tested smaller surfaces, which supports the prediction that the divisor-order term dominates modest smooth perturbations of the logarithmic factor.
 The prior committed surface already reported zero counterexamples on scales through `10^18`, with prior gap counts `10^6`: 70,327, `10^7`: 605,597, `10^8`: 444,133, `10^9`: 411,157, `10^10`: 384,721, `10^11`: 362,773, `10^12`: 344,454, `10^13`: 328,342, `10^14`: 315,617, `10^15`: 303,475, `10^16`: 293,408, `10^17`: 283,989, `10^18`: 275,466. This revalidation did not attempt a larger exact full scan than `2 * 10^7`, and it did not exhaustively resample every scale above `10^12`.
-The prior surface already reached floating-point margin collapse to `0.0` at scales `10^15`, `10^16`, `10^17`, `10^18`. Those zero margins are numerical resolution limits in `float64`, not logical counterexamples, because the raw-`Z` argmax and lexicographic winner still agreed exactly.
+The prior surface already reached floating-point margin collapse to `0.0` at scales `10^15`, `10^16`, `10^17`, `10^18`. Those zero margins are numerical resolution limits in `float64`, not logical counterexamples, because the raw-`Z` argmax and leftmost minimizer still agreed exactly.
 
 ## Reproduction Appendix
 

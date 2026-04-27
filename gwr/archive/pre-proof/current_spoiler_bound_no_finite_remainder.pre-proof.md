@@ -87,7 +87,7 @@ bound.
 
 This is weaker than a failure of the whole former finite-reduction route.
 
-The script does **not** build an actual prime gap or an actual later winner
+The script does **not** build an actual prime gap or an actual later selected integer
 value $w$.
 
 So it does **not** prove that the whole finite-reduction route is impossible.

@@ -18,11 +18,11 @@ Milestone 1 remains blocked.
 
 The strongest supported result is:
 
-PGS chamber certificates can certify interior closure, GWR winners,
+PGS chamber certificates can certify interior closure, GWR-selected integers,
 leftmost-minimum carriers, and local no-later-simpler consistency. They do not
 yet force a unique next prime.
 
-This means GWR is currently an interior winner law. It is not yet a endpoint
+This means GWR is currently an interior maximizer rule. It is not yet a endpoint
 generation law.
 
 ## Theorem Family 1: First-Open Endpoint Theorem

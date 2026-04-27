@@ -78,7 +78,7 @@ This is the normalized quantity measured directly by
 
 Let $g(p) = q - p$ denote the prime gap.
 
-For any earlier candidate $k$ and winner $w$ in the gap interior,
+For any earlier candidate $k$ and selected integer $w$ in the gap interior,
 
 $$w - k \le g(p).$$
 

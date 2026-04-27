@@ -1,4 +1,4 @@
-# $p+2$ Wheel-Open Gate Splits Early Winner Arrival
+# $p+2$ Wheel-Open Gate Splits Early Selected integer Arrival
 
 This note records one residue-conditioned refinement of the gap-ridge result.
 
@@ -7,12 +7,12 @@ This note records one residue-conditioned refinement of the gap-ridge result.
 On the tested surface, whether the first odd interior site $p+2$ is already
 coprime to $30$ splits the ridge into two early-arrival regimes.
 
-If $p+2$ is wheel-open, the gap winner lands much earlier and much more often
+If $p+2$ is wheel-open, the selected interior integer lands much earlier and much more often
 at edge distance $2$. If $p+2$ is blocked by $3$ or $5$, early left arrival is
 materially delayed.
 
 This is best read as an early-arrival gate, not as a full replacement for the
-lexicographic winner rule. On the tested surface, the binary split between
+leftmost minimizer rule. On the tested surface, the binary split between
 "$p+2$ open" and "$p+2$ blocked" is stronger than the finer first-open offset
 ladder for right-edge share.
 
@@ -73,4 +73,4 @@ That is why this finding is best described as an early-arrival law:
 ## Related Notes
 
 - [Residue-modulated ridge orientation](./residue_mod30_ridge_orientation.md)
-- [Lexicographic winner-take-all peak rule](./lexicographic_winner_take_all_peak_rule.md)
+- [Leftmost minimizer-take-all peak rule](./lexicographic_winner_take_all_peak_rule.md)

@@ -21,7 +21,7 @@ $$L(n) = \left(1 - \frac{d(n)}{2}\right)\ln n,$$
 
 which interior number wins?
 
-The Gap Winner Rule (GWR) theorem says that the winner is always the first
+The Gap Winner Rule (GWR) theorem says that the selected integer is always the first
 interior number with the smallest divisor count that appears in the gap, under
 the recorded BHP/Robin assumptions.
 
@@ -29,7 +29,7 @@ Because GWR is conditionally proved for every prime gap, it does more than
 identify one special composite inside the gap. It also puts a limit on where the
 next prime can be. In the common case where the winning interior number has
 exactly four divisors, the next prime must arrive before the next prime square
-after that winner.
+after that selected integer.
 
 This paper explains that statement in ordinary English. It separates three
 things clearly:
@@ -125,7 +125,7 @@ present in the gap.
 
 The main theorem studied in this repository is:
 
-> the number `w` is always the score winner inside the gap.
+> the number `w` is always the score maximizer inside the gap.
 
 In other words, the first interior number with the smallest divisor count is
 the number that maximizes `L(n)` across the gap under the conditional GWR proof.
@@ -144,7 +144,7 @@ corollaries of that theorem.
 
 ### 3.1 Nothing Earlier Can Be Equally Simple Or Simpler
 
-Suppose the winner is `w`, and let
+Suppose the selected integer is `w`, and let
 
 $$\delta = d(w).$$
 
@@ -155,12 +155,12 @@ $$d(n) > \delta.$$
 Why?
 
 Because if some earlier interior number had fewer than `δ` divisors, then the
-winner would not have the smallest divisor count in the gap.
+selected integer would not have the smallest divisor count in the gap.
 And if some earlier interior number had exactly `δ` divisors, then `w` would
 not be the first such number.
 
-So before the winner appears, the gap must avoid all divisor counts less than
-or equal to the winner's divisor count.
+So before the selected integer appears, the gap must avoid all divisor counts less than
+or equal to the selected integer's divisor count.
 
 ### 3.2 Nothing Later Can Be Simpler
 
@@ -171,9 +171,9 @@ $$d(n) \ge \delta.$$
 Why?
 
 Because if some later interior number had fewer than `δ` divisors, then the
-winner would not have the smallest divisor count in the gap.
+selected integer would not have the smallest divisor count in the gap.
 
-So once the winner appears, the rest of the gap cannot contain a strictly
+So once the selected integer appears, the rest of the gap cannot contain a strictly
 simpler interior number.
 
 ### 3.3 The Interior Has A Forced Shape
@@ -185,10 +185,10 @@ $$>\delta,\ >\delta,\ \ldots,\ >\delta,\ \delta,\ \ge \delta,\ \ge \delta,\ \ldo
 
 That is the cleanest plain statement of the consequence:
 
-- before the winner, every interior number is more complicated in divisor
+- before the selected integer, every interior number is more complicated in divisor
   count,
-- at the winner, the smallest divisor count appears for the first time,
-- after the winner, nothing simpler ever appears before the gap closes.
+- at the selected integer, the smallest divisor count appears for the first time,
+- after the selected integer, nothing simpler ever appears before the gap closes.
 
 This is already more than a statement about one interior composite.
 It is a statement about what kinds of interiors the bounding primes are allowed
@@ -198,9 +198,9 @@ to leave behind.
 
 ## 4. Why This Becomes A Statement About The Next Prime
 
-The previous section tells us something about the numbers **after** the winner.
+The previous section tells us something about the numbers **after** the selected integer.
 
-Once the winner appears, the next prime has to arrive before any later
+Once the selected integer appears, the next prime has to arrive before any later
 interior number with fewer divisors can appear.
 
 To write this carefully, define
@@ -208,7 +208,7 @@ To write this carefully, define
 $$T_{<}(w) = \min\{n > w : d(n) < d(w)\}.$$
 
 This is the first later integer whose divisor count is strictly smaller than
-the winner's divisor count.
+the selected integer's divisor count.
 
 By GWR on the gap `(p, q)`, the next prime must
 satisfy
@@ -225,9 +225,9 @@ arrive before the first later number that is strictly simpler.
 
 ---
 
-## 5. The Common Case Where The Winner Has Four Divisors
+## 5. The Common Case Where The Selected integer Has Four Divisors
 
-In the tested ranges in this repository, the most common winner has exactly
+In the tested ranges in this repository, the most common selected integer has exactly
 four divisors.
 
 That case is especially concrete.
@@ -246,7 +246,7 @@ $$q \le S_+(w).$$
 
 This is the clearest consequence for the next prime:
 
-> in the common case where the winner has four divisors, the next prime must arrive before the next
+> in the common case where the selected integer has four divisors, the next prime must arrive before the next
 > prime square after the winning interior number.
 
 That is a very unusual statement.
@@ -262,7 +262,7 @@ This section records the finite base and stress surface behind the proof chain.
 It is not the whole proof by itself; the universal closure also uses the
 analytic bridge and certificate.
 
-### 6.1 The Finite Winner Surface
+### 6.1 The Finite Selected integer Surface
 
 The repository reports zero counterexamples in its current set of validation
 runs,
@@ -280,17 +280,17 @@ The hardest part of the proof is not the later side of the gap.
 It is the earlier side.
 
 The exact scan file in `output/gwr_proof/` checks every earlier interior
-candidate against the actual winner on the full exact range through
+candidate against the actual selected integer on the full exact range through
 `2 × 10^7`.
 
 That file reports:
 
 - `1163198` prime gaps with composite interior,
-- `3349874` earlier interior candidates before the winner,
-- `0` exact earlier candidates beating the winner.
+- `3349874` earlier interior candidates before the selected integer,
+- `0` exact earlier candidates beating the selected integer.
 
 So on that full exact range, every earlier interior candidate already loses to
-the actual winner.
+the actual selected integer.
 
 ### 6.3 How Close The Hardest Earlier Cases Come
 
@@ -329,17 +329,17 @@ scale effect that simply gets worse and worse as numbers grow.
 
 ### 6.5 The Common Four-Divisor Case Remains Clean At High Scale
 
-The closure checks for the common case where the winner has four divisors
+The closure checks for the common case where the selected integer has four divisors
 extend through the checked sequence of runs to `10^18`.
 
 The closure-check file in `output/` reports zero closure failures on that
 checked sequence.
 
-In the common case where the winner has four divisors, the repository records:
+In the common case where the selected integer has four divisors, the repository records:
 
-- the mean distance from the winner to the next prime stays only about `12`
+- the mean distance from the selected integer to the next prime stays only about `12`
   at exact `10^6` and about `20` near `10^18`,
-- while the mean distance from the winner to the next prime square grows from
+- while the mean distance from the selected integer to the next prime square grows from
   about `5869.6` to about `3595291803.7`.
 
 So in the checked large-scale runs, the next prime is arriving far earlier than
@@ -369,13 +369,13 @@ This says something simple about order:
 - if the earlier composite has no more divisors than the later one,
 - then the earlier composite has the larger score.
 
-This already settles the later side of the gap once the winner appears.
+This already settles the later side of the gap once the selected integer appears.
 
 Why?
 
-Because after the winner, every later interior number has divisor count at
-least as large as the winner's divisor count.
-So this proved ordering result already forces the winner to beat every
+Because after the selected integer, every later interior number has divisor count at
+least as large as the selected integer's divisor count.
+So this proved ordering result already forces the selected integer to beat every
 later interior competitor.
 
 The earlier side is closed by the committed bridge chain:
@@ -437,7 +437,7 @@ product of where the primes happened to land.
 It would say that once the winning interior number is fixed, the next prime is
 also constrained.
 
-In the common case where the winner has four divisors, that would mean:
+In the common case where the selected integer has four divisors, that would mean:
 
 > the next prime must appear before the next prime square after the winning
 > interior number.
@@ -459,7 +459,7 @@ The remaining tasks are now narrower than proving GWR itself.
 1. Strengthen or replace the conditional BHP/Robin bridge if an unconditional
    GWR proof is desired.
 
-2. Explain why the common case where the winner has four divisors stays so far away from the next
+2. Explain why the common case where the selected integer has four divisors stays so far away from the next
    prime-square threat in the checked high-scale runs.
 
 3. Explain why the hardest checked cases seem to live in tiny local patterns
@@ -488,8 +488,8 @@ composite.
 
 It also tells us something about where the next prime can be.
 
-In the common case where the winner has four divisors, the next prime must
-arrive before the next prime square after that winner.
+In the common case where the selected integer has four divisors, the next prime must
+arrive before the next prime square after that selected integer.
 
 The repository has checked this picture on exact finite ranges and checked runs
 at large scale, and those artifacts now feed the finite side of the proof chain.
@@ -508,7 +508,7 @@ files already present in this repository.
 
 The main sources are:
 
-- the gap-winner notes in `gwr/findings/`
+- the gap-selected integer notes in `gwr/findings/`
 - the notes on exact consequences for later interior numbers and for the next
   prime in `gwr/findings/`
 - the notes that summarize exact scans, large-scale checks, and hardest

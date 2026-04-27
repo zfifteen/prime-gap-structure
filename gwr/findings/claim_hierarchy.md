@@ -30,15 +30,15 @@ Primary note:
 
 - [lexicographic_raw_z_dominance_theorem.md](./lexicographic_raw_z_dominance_theorem.md)
 
-## 2. Prime-Gap Winner Law
+## 2. Prime-Gap Selected integer Law
 
 **Gap Winner Rule (`GWR`)**
 
-`GWR` is the proved universal prime-gap winner theorem carried by the current
+`GWR` is the proved universal prime-selected interior integer theorem carried by the current
 repo proof surface.
 
-Inside a prime gap, the raw-$Z$ winner among interior composites is exactly the
-lexicographic winner:
+Inside a prime gap, the raw-$Z$ maximizer among interior composites is exactly the
+leftmost minimizer:
 
 1. minimal divisor count $d(n)$,
 2. then leftmost interior integer.
@@ -59,7 +59,7 @@ The visible proof chain is:
 
 ## 3. Exact Corollaries And Direct Consequences
 
-These follow from the proved winner law or are presented as direct consequence
+These follow from the proved maximizer rule or are presented as direct consequence
 notes in the repo:
 
 - [prime_gap_exclusion_consequences.md](./prime_gap_exclusion_consequences.md)
@@ -71,9 +71,9 @@ These are measured consequences of the proved law on the committed surfaces:
 
 - [closure_constraint_findings.md](./closure_constraint_findings.md)
 - [dominant_d4_arrival_reduction_findings.md](./dominant_d4_arrival_reduction_findings.md)
-- $d(n)=4$ winner dominance,
-- left-half winner dominance,
-- frequent edge-distance-`2` winners,
+- $d(n)=4$ selected integer dominance,
+- left-half selected integer dominance,
+- frequent edge-distance-`2` selected integers,
 - exact recursive walk hit rate `1.0` on the committed tested ladders.
 
 ## 5. Robustness Claims

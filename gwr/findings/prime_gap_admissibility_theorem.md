@@ -132,6 +132,6 @@ side of `GWR`.
 
 Combined with the exact later-side closure from
 [lexicographic_raw_z_dominance_theorem.md](./lexicographic_raw_z_dominance_theorem.md),
-this yields the proved universal winner law stated in
+this yields the proved universal maximizer rule stated in
 [gwr_hierarchical_local_dominator_theorem.md](./gwr_hierarchical_local_dominator_theorem.md)
 and summarized in [../../GWR_PROOF.md](../../GWR_PROOF.md).

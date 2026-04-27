@@ -23,13 +23,13 @@ More concretely:
   `odd_semiprime`, `even_semiprime`, `higher_divisor_even`, and
   `higher_divisor_odd` variants;
 - no new first-open offsets appear beyond `2, 4, 6`;
-- the largest observed winner offset on the catalog surface is `50`;
+- the largest observed selected-integer offset on the catalog surface is `50`;
 - the largest observed minimum divisor class on the catalog surface is `560`.
 
 So the clean current reading is:
 
 the exact type list keeps growing mainly because the arrival offset `a` and the
-winner class `d` still admit new high-scale combinations, but the structural
+selected divisor-count class `d` still admit new high-scale combinations, but the structural
 categories themselves look stable.
 
 ## Artifacts
@@ -58,7 +58,7 @@ In ordinary language:
 - `o` records the first wheel-open even offset after the current right prime;
 - `d` records the minimum divisor class that actually wins in the next gap;
 - `a` records the leftmost offset where that winning class first appears;
-- `family` records what kind of carrier that winner is.
+- `family` records what kind of carrier that selected integer is.
 
 That means one exact type is not just a family label. It is a full local gap
 signature.
@@ -86,32 +86,32 @@ the catalog surface above.
 On the current surface, the natural category split is:
 
 1. **Prime-square intrusion types**
-   These are the `d = 3` winners, all inside the `prime_square` family.
+   These are the `d = 3` selected integers, all inside the `prime_square` family.
    They are real on the exact baseline, but they do not create new families at
    higher sampled decades.
 
 2. **Prime-cube types**
-   These are `d = 4` winners whose carrier is exactly a prime cube.
+   These are `d = 4` selected integers whose carrier is exactly a prime cube.
    They are extremely rare on the current surface and stay rare enough that the
    high-decade windows did not add new cube families.
 
 3. **Even-semiprime types**
-   These are `d = 4` winners carried by an even semiprime.
+   These are `d = 4` selected integers carried by an even semiprime.
    They remain part of the cross-scale scaffold, but their share falls with
    scale on the sampled windows.
 
 4. **Odd-semiprime types**
-   These are `d = 4` winners carried by an odd semiprime.
+   These are `d = 4` selected integers carried by an odd semiprime.
    This is the dominant family on every sampled decade window and becomes more
    dominant by `10^18`.
 
 5. **Higher-divisor even types**
-   These are winners with `d >= 6` on an even carrier.
+   These are selected integers with `d >= 6` on an even carrier.
    They persist at every sampled scale and account for many of the new
    high-scale exact types.
 
 6. **Higher-divisor odd types**
-   These are winners with `d >= 6` on an odd carrier.
+   These are selected integers with `d >= 6` on an odd carrier.
    They also persist at every sampled scale and pick up new late-arrival
    variants at high decades.
 
@@ -167,7 +167,7 @@ Among post-baseline new exact types:
 - `23` have `d = 4`;
 - `6` have `d = 8`;
 - `6` have `d = 16`;
-- the remainder are sparse higher classes, including single new winners at
+- the remainder are sparse higher classes, including single new selected integers at
   `d = 224, 240, 256, 288, 384, 432, 512, 560`.
 
 This again says the growth is not mainly a new-family story. It is a new
@@ -200,7 +200,7 @@ Concrete examples of exact types first seen above the `10^6` baseline include:
 These examples make the mechanism visible:
 
 - some growth comes from much later semiprime arrival offsets;
-- some growth comes from rare higher-divisor winners that were absent from the
+- some growth comes from rare higher-divisor selected integers that were absent from the
   `10^6` baseline;
 - none of that required a seventh family.
 

@@ -5,7 +5,7 @@ closure-constraint reading of the Gap Winner Rule.
 
 ## Statement Tested
 
-For each prime gap $(p, q)$, let $w$ be the implemented log-score winner on the
+For each prime gap $(p, q)$, let $w$ be the implemented log-score maximizer on the
 interior composites. The tested closure constraint is:
 
 $$
@@ -96,23 +96,23 @@ every tested regime.
 | seeded $10^8$, seed $20260401$ | 206,515 | 0 | 1.0 | 164 |
 | seeded $10^9$, seed $20260401$ | 184,649 | 0 | 1.0 | 186 |
 
-## Threat-Horizon Summary For $d=4$ Winners
+## Threat-Horizon Summary For $d=4$ Selected integers
 
-For the dominant winner class $d(w) = 4$, the first later strictly simpler
+For the dominant selected divisor-count class $d(w) = 4$, the first later strictly simpler
 composite must have $d = 3$. That means the first possible later threat is the
-next prime square after the winner.
+next prime square after the selected integer.
 
-For each $d=4$ winner, the run recorded:
+For each $d=4$ selected integer, the run recorded:
 
 - threat distance:
-  the distance from the winner to the next prime square,
+  the distance from the selected integer to the next prime square,
 - prime-arrival margin:
   the distance from the right prime $q$ to that next prime square.
 
 A positive margin means the gap closed before the first later $d=3$ threat
 could appear.
 
-| Regime | $d=4$ winner share | Mean threat distance | Mean prime-arrival margin | Min margin |
+| Regime | $d=4$ selected-integer share | Mean threat distance | Mean prime-arrival margin | Min margin |
 |---|---:|---:|---:|---:|
 | exact $10^6$ | 0.8290 | 5,869.6 | 5,857.5 | 2 |
 | even $10^8$ | 0.8256 | 89,705.6 | 89,690.6 | 2 |
@@ -123,13 +123,13 @@ could appear.
 | seeded $10^9$, seed $20260401$ | 0.8228 | 207,755.0 | 207,735.3 | 2 |
 
 These margins are all positive on the tested surface. In the current run, every
-observed $d=4$ winner was followed by a right prime before the first later
+observed $d=4$ selected integer was followed by a right prime before the first later
 prime-square threat.
 
 On the extended even-band ladder, the same pattern persists through $10^{18}$.
 Selected rows:
 
-| Scale | $d=4$ winner share | Mean threat distance | Mean prime-arrival margin | Min margin |
+| Scale | $d=4$ selected-integer share | Mean threat distance | Mean prime-arrival margin | Min margin |
 |---|---:|---:|---:|---:|
 | $10^{10}$ | 0.8271 | 522,403.0 | 522,386.5 | 2 |
 | $10^{12}$ | 0.8257 | 2,371,908.1 | 2,371,890.4 | 2 |
@@ -137,9 +137,9 @@ Selected rows:
 | $10^{16}$ | 0.8273 | 393,506,966.3 | 393,506,946.9 | 2 |
 | $10^{18}$ | 0.8273 | 3,595,291,803.7 | 3,595,291,783.5 | 2 |
 
-The tracked $d=3$ winners are rare throughout the ladder. At $10^{18}$, the
-even-band run recorded $222$ such winners across $180{,}447$ tested gaps, a
-share of about $0.00123$. So the dominance of $d=4$ winners remains a large-
+The tracked $d=3$ selected integers are rare throughout the ladder. At $10^{18}$, the
+even-band run recorded $222$ such selected integers across $180{,}447$ tested gaps, a
+share of about $0.00123$. So the dominance of $d=4$ selected integers remains a large-
 scale structural feature on the tested surface rather than a small-number
 artifact.
 
@@ -147,15 +147,15 @@ artifact.
 
 These findings support the closure reading of GWR:
 
-- once the score winner appears, the gap closes before any later strictly
+- once the score maximizer appears, the gap closes before any later strictly
   simpler composite arrives;
-- for the dominant $d=4$ winner class, the next-prime closure occurs well
+- for the dominant $d=4$ selected divisor-count class, the next-prime closure occurs well
   before the first later $d=3$ threat on every tested regime;
 - the gap appears to be locally terminated before a strictly simpler late
   challenger can enter the interior.
 
 This is the measured form of the exact `GWR` corollary tracked by the
-recursive-walk surface: once the winner is fixed, the gap closes before any
+recursive-walk surface: once the selected integer is fixed, the gap closes before any
 later strictly simpler interior composite appears.
 
 ## Status Note For The $d=4$ Case
@@ -163,8 +163,8 @@ later strictly simpler interior composite appears.
 When $d(w)=4$, the first later strictly simpler threat is the next prime
 square, so this measured closure surface reduces to comparing:
 
-- the distance from the winner to the next prime square, and
-- the distance from the winner to the next prime.
+- the distance from the selected integer to the next prime square, and
+- the distance from the selected integer to the next prime.
 
 That makes the $d=4$ case a concrete analytic observable on the tested surface.
 What this note adds is margin data, not a competing proof-status claim. The
@@ -177,8 +177,8 @@ including the even-band ladder through $10^{18}$.
 
 This note documents the current closure-constraint runs only. It does not
 replace the main proof summary, and it does not claim a separate asymptotic
-prime-distribution theorem beyond the proved winner law. The $d=4$ threat
-summary is exact for the dominant $d=4$ winner class because the next lower
+prime-distribution theorem beyond the proved maximizer rule. The $d=4$ threat
+summary is exact for the dominant $d=4$ selected divisor-count class because the next lower
 divisor class is $d=3$, which occurs at prime squares. More general threat
-summaries for other winner classes remain follow-on measurement work rather
+summaries for other selected divisor-count classes remain follow-on measurement work rather
 than headline proof-status claims.

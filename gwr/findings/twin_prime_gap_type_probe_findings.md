@@ -21,7 +21,7 @@ So the current probe supports a weaker reading:
 ## Why The Probe Uses Outer Gaps
 
 For a twin pair `(p, p + 2)`, the middle gap has width `2`, so it has no
-interior composite and therefore no `GWR` winner type.
+interior composite and therefore no `GWR` selected integer type.
 
 The meaningful typed object is therefore the **outer pair**:
 

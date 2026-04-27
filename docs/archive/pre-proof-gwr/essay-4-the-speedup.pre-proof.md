@@ -107,7 +107,7 @@ The exact benchmark corpus, the timing data, and the Miller-Rabin reduction meas
 
 This repository carries two linked results from the same arithmetic identity.
 
-The first is mathematical: inside every prime gap, the Divisor Normalization Identity selects a unique winner by a simple two-step rule, with zero known exceptions across 42 million prime gaps through one billion. The proof is mostly complete.
+The first is mathematical: inside every prime gap, the Divisor Normalization Identity selects a unique selected integer by a simple two-step rule, with zero known exceptions across 42 million prime gaps through one billion. The proof is mostly complete.
 
 The second is engineering: a prefilter derived from the same identity eliminates 91% of composite candidates before Miller-Rabin, producing a 2x to 2.8x end-to-end speedup in RSA key generation at standard bit sizes. The benchmark is fully reproducible.
 

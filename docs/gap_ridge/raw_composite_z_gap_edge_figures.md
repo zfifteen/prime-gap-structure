@@ -24,7 +24,7 @@ The strongest supported statement from the current committed runs is:
 - the left edge remains the dominant side of the ridge throughout the tested regimes.
 
 The current theorem statement strengthens that tested-surface identity: GWR
-says the exact raw-`Z` peak matches the lexicographic winner obtained by first
+says the exact raw-`Z` peak matches the leftmost minimizer obtained by first
 minimizing interior divisor count and then taking the leftmost carrier of that
 minimum.
 

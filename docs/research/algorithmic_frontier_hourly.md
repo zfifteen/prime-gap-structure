@@ -192,7 +192,7 @@ Test the same transition law again only with a fixed next-gap DNI prefix if it c
 
 ## 2026-04-12 daily run
 Mechanism:
-Winner-location prediction from the locked 12-offset prefix: after the fixed prefix scan yields `delta <= 3`, no later composite can undercut that divisor class, so the lex-min state `(delta, omega)` already identifies an interior witness `W = q + omega`, and `nextprime(W - 1)` recovers the exact endpoint.
+Selected integer-location prediction from the locked 12-offset prefix: after the fixed prefix scan yields `delta <= 3`, no later composite can undercut that divisor class, so the lex-min state `(delta, omega)` already identifies an interior witness `W = q + omega`, and `nextprime(W - 1)` recovers the exact endpoint.
 Why it could help:
 It replaces the remaining divisor-count walk to the endpoint with one fast next-prime recovery call once the prefix lock holds.
 Method:
@@ -206,29 +206,29 @@ ADVANCE
 Artifacts:
 `benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `docs/research/algorithmic_frontier_hourly.md`; in-shell verification output with old bounded call counts `26` and `30`, live prefix-path divisor-count calls `12` and `12`, and exact recovered endpoints `229459` and `1026197`.
 Next step:
-Derive an exact `delta = 4` sub-condition from the Z-band invariants that certifies when the same winner-location prediction can fire without any extended scan.
+Derive an exact `delta = 4` sub-condition from the Z-band invariants that certifies when the same selected integer-location prediction can fire without any extended scan.
 
 ## 2026-04-12 20:17 run
 Mechanism:
-Winner-anchored tail scan: once the DNI/GWR lex-min localizer has identified the leftmost minimum-divisor carrier at offset `omega`, recover the next-prime endpoint by scanning only from `q + omega + 1` forward instead of from `q + 1`.
+Selected integer-anchored tail scan: once the DNI/GWR lex-min localizer has identified the leftmost minimum-divisor carrier at offset `omega`, recover the next-prime endpoint by scanning only from `q + omega + 1` forward instead of from `q + 1`.
 Why it could help:
 It removes the left prefix `[q + 1, q + omega]` from the exact divisor-field endpoint search. Because the lex-min carrier stays near the left edge on the tested surface, that cuts pure DNI/GWR search width before any classical machinery enters.
 Method:
 Deterministic experiment.
 What was built or tested:
-An in-shell Python experiment used `benchmarks/python/predictor/gwr_dni_recursive_walk.py:exact_next_gap_profile` to collect `5,000` consecutive exact next-gap profiles starting at `q = 10000000000037`, then timed the same exact divisor-field endpoint scan twice on that chain: once from `q + 1`, and once from the exact winner anchor `q + omega + 1`.
+An in-shell Python experiment used `benchmarks/python/predictor/gwr_dni_recursive_walk.py:exact_next_gap_profile` to collect `5,000` consecutive exact next-gap profiles starting at `q = 10000000000037`, then timed the same exact divisor-field endpoint scan twice on that chain: once from `q + 1`, and once from the exact selected integer anchor `q + omega + 1`.
 Result:
-The winner-anchored scan matched the same `5,000` next primes with `0` mismatches. Mean exact gap width was `29.6308`, mean winner offset was `5.9066`, and the exact search width after the winner was `23.7242`, so the DNI/GWR anchor removed `19.93%` of the pure endpoint-search width. In the current `64`-wide block implementation that reduced divisor-field reads from `356,736` to `347,264` (`2.66%`) and improved endpoint-scan wall time from `11.0483 s` to `10.7264 s` (`1.0300x`).
+The selected integer-anchored scan matched the same `5,000` next primes with `0` mismatches. Mean exact gap width was `29.6308`, mean selected-integer offset was `5.9066`, and the exact search width after the selected integer was `23.7242`, so the DNI/GWR anchor removed `19.93%` of the pure endpoint-search width. In the current `64`-wide block implementation that reduced divisor-field reads from `356,736` to `347,264` (`2.66%`) and improved endpoint-scan wall time from `11.0483 s` to `10.7264 s` (`1.0300x`).
 Status:
 ADVANCE
 Artifacts:
 `docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `steps = 5000`, `search_width_saved_fraction_exact = 0.19933987607489503`, `baseline_integers_read = 356736`, `anchor_integers_read = 347264`, and `elapsed_speedup = 1.0300109322761077`.
 Next step:
-Inline the same winner-anchored tail scan into the exact recursive walker after lex-min localization and re-measure the end-to-end pure DNI/GWR step gain.
+Inline the same selected integer-anchored tail scan into the exact recursive walker after lex-min localization and re-measure the end-to-end pure DNI/GWR step gain.
 
 ## 2026-04-12 21:10 run
 Mechanism:
-Current-lex-min clipped divisor classification: in a pure DNI/GWR exact next-prime walk, evaluate each new interior candidate only up to the current winning divisor class `delta - 1`, and stop the factor work as soon as the candidate is forced above that threshold.
+Current-lex-min clipped divisor classification: in a pure DNI/GWR exact next-prime walk, evaluate each new interior candidate only up to the current selected divisor-count class `delta - 1`, and stop the factor work as soon as the candidate is forced above that threshold.
 Why it could help:
 Once the walk has already seen a candidate with divisor class `delta`, no later value with `d(n) >= delta` can change the lex-min state. That means most later composites do not need full divisor evaluation.
 Method:

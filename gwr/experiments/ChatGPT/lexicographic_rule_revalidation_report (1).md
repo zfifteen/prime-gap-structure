@@ -2,7 +2,7 @@
 
 ## Overview
 
-This report reproduces the uploaded raw-Z gap-ridge workflow and extends the explicit lexicographic-winner check onto new exact and sampled surfaces. The rule under test is simple: inside each eligible prime gap, choose the interior integer with the smallest divisor count `d(n)`, then break ties by taking the leftmost carrier. The claim is that this lexicographic winner is exactly the same integer selected by the raw-Z argmax with score `(1 - d(n)/2) * log(n)` on every tested gap. Sources from the workspace are cited below as [A1], [A2], and [A3].
+This report reproduces the uploaded raw-Z gap-ridge workflow and extends the explicit lexicographic-selected integer check onto new exact and sampled surfaces. The rule under test is simple: inside each eligible prime gap, choose the interior integer with the smallest divisor count `d(n)`, then break ties by taking the leftmost carrier. The claim is that this leftmost minimizer is exactly the same integer selected by the raw-Z argmax with score `(1 - d(n)/2) * log(n)` on every tested gap. Sources from the workspace are cited below as [A1], [A2], and [A3].
 
 ## Phase 1: Audit of the uploaded artifacts
 
@@ -22,9 +22,9 @@ The uploaded `_analyze_interval` implementation [A1] does the following, gap by 
 4. skip gaps shorter than `4`,
 5. score the interior composites by `(1 - d/2) * log(n)`,
 6. choose the best carrier with `np.argmax`, and
-7. summarize edge-distance-2, `d(n)=4`, and left/right/center winner shares.
+7. summarize edge-distance-2, `d(n)=4`, and left/right/center selected-integer shares.
 
-The natural-language note [A2] states the exact winner rule, the zero-counterexample validation criterion, and the qualitative explanation for `d(n)=4` dominance, left-edge dominance, and frequent edge-distance-2 peaks. The prior JSON artifact [A3] records the already-tested surface:
+The natural-language note [A2] states the exact selection rule, the zero-counterexample validation criterion, and the qualitative explanation for `d(n)=4` dominance, left-edge dominance, and frequent edge-distance-2 peaks. The prior JSON artifact [A3] records the already-tested surface:
 
 - exact 1,000,000: 70,327 / 70,327, max gap 114
 - exact 10,000,000: 605,597 / 605,597, max gap 154
@@ -42,7 +42,7 @@ The natural-language note [A2] states the exact winner rule, the zero-counterexa
 
 That prior surface totals 4,423,459 prime gaps with validation status `validated_on_tested_surface` and decision rule:
 
-> validated on the tested surface if and only if every tested regime contains zero counterexample gaps where the exact raw-Z peak differs from the lexicographic winner: smallest d(n), then leftmost
+> validated on the tested surface if and only if every tested regime contains zero counterexample gaps where the exact raw-Z peak differs from the leftmost minimizer: smallest d(n), then leftmost
 
 ## Methods
 
@@ -50,9 +50,9 @@ I recreated the missing `z_band_prime_composite_field.divisor_counts_segment` he
 
 For the explicit lexicographic comparison layer, I wrote `validate_lexicographic_rule_on_interval(...)`. On each eligible gap it computes:
 
-- `best_n_z`, `best_d_z`: the winner selected by the raw-Z argmax,
-- `best_n_lex`, `best_d_lex`: the winner selected by “minimum divisor count, then leftmost”,
-- `is_counterexample`: whether those two winners disagree.
+- `best_n_z`, `best_d_z`: the selected integer selected by the raw-Z argmax,
+- `best_n_lex`, `best_d_lex`: the selected integer selected by “minimum divisor count, then leftmost”,
+- `is_counterexample`: whether those two selected integers disagree.
 
 The same routine also records `max_gap`, the smallest observed score margin between the top two interior scores on the tested surface, and the same enrichment statistics used in `runs.py`.
 
@@ -101,7 +101,7 @@ The direct `runs.py` baseline run up to `10^6` completed successfully and produc
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1,000,000,000 | 1,156,866 | 0.823936 | 0.152624 | 5.441864 | 0.765648 | 0.161702 | 1.991244 |
 
-On the `10^9` mixed-window union used for Experiment C, the winner divisor-count profile was dominated by `d=4`. The top observed winner classes were: d=4: 953,183, d=8: 129,830, d=6: 36,049, d=16: 17,493, d=12: 15,269.
+On the `10^9` mixed-window union used for Experiment C, the selected integer divisor-count profile was dominated by `d=4`. The top observed selected divisor-count classes were: d=4: 953,183, d=8: 129,830, d=6: 36,049, d=16: 17,493, d=12: 15,269.
 
 ### Experiment D: robustness to small score perturbations
 
@@ -116,14 +116,14 @@ On the `10^9` mixed-window union used for Experiment C, the winner divisor-count
 
 ## Discussion
 
-No true counterexamples were found in any experiment: **true**. In every new exact and sampled regime, the raw-Z argmax matched the lexicographic winner exactly.
+No true counterexamples were found in any experiment: **true**. In every new exact and sampled regime, the raw-Z argmax matched the leftmost minimizer exactly.
 
 The main predictions were confirmed on the new tested surfaces:
 
 - zero-counterexample continuation held in the new exact run and in every new sampled window regime,
-- `d(n)=4` winners remained strongly enriched relative to the interior baseline,
-- winners remained strongly left-biased relative to right-side winners,
-- edge-distance-2 winners stayed enriched relative to their positional baseline,
+- `d(n)=4` selected integers remained strongly enriched relative to the interior baseline,
+- selected integers remained strongly left-biased relative to right-side selected integers,
+- edge-distance-2 selected integers stayed enriched relative to their positional baseline,
 - modest smooth perturbations of `log(n)` did not introduce any counterexamples on the tested subset.
 
 A numerical caution remains the same as in the uploaded prior JSON [A3]: score margins shrink with scale, so very small reported margins should be read as float64 resolution limits, not as logical evidence against the rule. In the present experiments the smallest margins on the new `10^8` through `10^12` sampled surfaces stayed positive, but they were already down near machine-resolution-sensitive territory by the top end of the prior surface in [A3].

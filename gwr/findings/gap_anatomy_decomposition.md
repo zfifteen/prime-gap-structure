@@ -7,7 +7,7 @@ The strongest supported finding is:
 `GWR` currently looks less like a full gap-wide score optimization and more
 like a layered first-arrival law.
 
-On one exact session probe through $10^6$, every observed winner class matched
+On one exact session probe through $10^6$, every observed selected divisor-count class matched
 the first carrier of the smallest divisor class present in the gap interior.
 On two deterministic exploratory windows of width $2 \times 10^6$ near
 $10^{12}$, the dominant `d=4` first-arrival offsets stayed small while the
@@ -15,7 +15,7 @@ $10^{12}$, the dominant `d=4` first-arrival offsets stayed small while the
 next prime square.
 
 That does not replace the current validated surface in the repo notes. It does
-give a better decomposition of what the current winner and closure laws may be
+give a better decomposition of what the current selected integer and closure laws may be
 measuring.
 
 ## Scope
@@ -65,7 +65,7 @@ offset as
 
 $$A_{\delta}(p, q) = \min \{r \ge 1 : d(p + r) = \delta\}.$$
 
-The implemented winner is
+The implemented score maximizer is
 
 $$w = \arg\max_{p < n < q} L(n), \quad L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).$$
 
@@ -98,7 +98,7 @@ wins."
 
 ### Exact $10^6$ Session Probe
 
-On the exact probe through $10^6$, the observed winner classes were:
+On the exact probe through $10^6$, the observed selected divisor-count classes were:
 
 - `d=3`: `167`
 - `d=4`: `58,303`
@@ -115,7 +115,7 @@ On the exact probe through $10^6$, the observed winner classes were:
 - `d=24`: `16`
 - `d=32`: `5`
 
-On that exact surface, every observed winner matched the first carrier of the
+On that exact surface, every observed selected integer matched the first carrier of the
 smallest divisor class present:
 
 - `167 / 167` first-`d=3` matches,
@@ -125,7 +125,7 @@ smallest divisor class present:
 - and the same exact match for every rarer observed class above.
 
 So the hierarchical reading is not only a `d=4` story on that probe. It held
-class by class across the whole observed winner surface.
+class by class across the whole observed selected integer surface.
 
 ## Early-Arrival Law
 
@@ -138,9 +138,9 @@ when a `d=4` carrier is present.
 The current probes suggest that once the `d=3` layer is absent, the decisive
 `d=4` layer appears very early.
 
-### Exact $10^6$ Probe, `d=4` Winner Gaps
+### Exact $10^6$ Probe, `d=4` Selected integer Gaps
 
-Among the `58,303` gaps whose winner had `d(w)=4`:
+Among the `58,303` gaps whose selected integer had `d(w)=4`:
 
 - median first-`d=4` offset: `3`,
 - `90`th percentile: `6`,
@@ -150,7 +150,7 @@ Among the `58,303` gaps whose winner had `d(w)=4`:
 ### Exploratory Window Near $10^{12}$
 
 On the deterministic window
-`[10^12 + 2, 10^12 + 2,000,002)`, among `56,732` `d=4` winner gaps:
+`[10^12 + 2, 10^12 + 2,000,002)`, among `56,732` `d=4` selected integer gaps:
 
 - median first-`d=4` offset: `6`,
 - `90`th percentile: `12`,
@@ -158,7 +158,7 @@ On the deterministic window
 - maximum observed first-`d=4` offset: `50`.
 
 On the matched window of the same width ending at the prime square
-$1000003^2 = 1000006000009$, among `56,792` `d=4` winner gaps:
+$1000003^2 = 1000006000009$, among `56,792` `d=4` selected integer gaps:
 
 - median first-`d=4` offset: `6`,
 - `90`th percentile: `12`,
@@ -177,8 +177,8 @@ and more like "an early low-divisor arrival that usually never gets overturned."
 In the dominant `d=4` regime, the first strictly simpler class is `d=3`, and
 that class occurs exactly at prime squares.
 
-So the next later threat to a `d=4` winner is the next prime square after the
-winner. Write that quantity as $\Sigma_{+}(w)$.
+So the next later threat to a `d=4` selected integer is the next prime square after the
+selected integer. Write that quantity as $\Sigma_{+}(w)$.
 
 This introduces one hidden variable:
 
@@ -188,7 +188,7 @@ It is useful to separate two quantities:
 
 $$\Phi_{\square}(w) = \Sigma_{+}(w) - w,$$
 
-the winner's remaining distance to the next prime square, and
+the selected integer's remaining distance to the next prime square, and
 
 $$M_{\square}(w, q) = \Sigma_{+}(w) - q,$$
 
@@ -221,8 +221,8 @@ It is the gap's location inside the current prime-square chamber.
 
 The dominant reduction already says:
 
-- if the winner class is `d=4`, then the gap contains no interior prime square;
-- once no interior prime square is present, the winner is the first interior
+- if the selected divisor-count class is `d=4`, then the gap contains no interior prime square;
+- once no interior prime square is present, the selected integer is the first interior
   `d=4` carrier.
 
 In that regime, `No-Later-Simpler-Composite` becomes
@@ -244,7 +244,7 @@ The quantitative form is:
 
 ### Exact $10^6$ Margin Snapshot
 
-Among the `58,303` exact `d=4` winner gaps through $10^6$:
+Among the `58,303` exact `d=4` selected integer gaps through $10^6$:
 
 - minimum observed closure margin: `2`,
 - median observed closure margin: `4,118`,
@@ -260,7 +260,7 @@ On the matched window ending at $1000003^2$:
 
 - minimum observed closure margin: `66`,
 - median observed closure margin: `1,001,190`,
-- only `28 / 56,792` `d=4` winner gaps had margin `<= 1000`,
+- only `28 / 56,792` `d=4` selected integer gaps had margin `<= 1000`,
 - only about `1.76 \times 10^{-5}` had margin `<= 100`.
 
 So even in a deliberately dangerous square-phase placement, the genuinely tight
@@ -272,7 +272,7 @@ an independent global mechanism.
 
 ## What This Changes
 
-This decomposition suggests a cleaner internal anatomy for the current winner
+This decomposition suggests a cleaner internal anatomy for the current selected integer
 surface.
 
 ### 1. `GWR` may be layered rather than globally optimized
@@ -334,7 +334,7 @@ as one undifferentiated score law.
 
 The leading picture is:
 
-- the winner is the first carrier of the smallest divisor class present,
+- the selected integer is the first carrier of the smallest divisor class present,
 - the dominant `d=4` regime is driven by early `d=4` arrival once the `d=3`
   layer is absent,
 - and the dominant `NLCT` margin is controlled mainly by square phase.

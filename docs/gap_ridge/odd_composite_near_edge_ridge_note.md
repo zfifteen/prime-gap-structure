@@ -85,9 +85,9 @@ The tested structure is therefore not:
 
 The surviving structure is narrower:
 
-- the raw-`Z` winner inside a prime gap is strongly pulled toward the first odd
+- the raw-`Z` selected integer inside a prime gap is strongly pulled toward the first odd
   interior positions,
-- that winner is usually carried by a `d(n) = 4` composite,
+- that selected integer is usually carried by a `d(n) = 4` composite,
 - the effect is a local near-edge ridge in the raw DNI field.
 
 That is why the narrower name is better.

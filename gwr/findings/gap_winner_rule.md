@@ -9,7 +9,7 @@ $$
 Z_{\mathrm{raw}}(n) = n^{\,1 - d(n)/2}.
 $$
 
-For winner comparisons, the implementation uses the equivalent log-score
+For selected integer comparisons, the implementation uses the equivalent log-score
 
 $$
 L(n) = \ln Z_{\mathrm{raw}}(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
@@ -21,7 +21,7 @@ argmax, is exactly the interior integer selected by this arithmetic order:
 1. choose the smallest interior divisor count $d(n)$,
 2. among interiors with that minimum, choose the leftmost one.
 
-Equivalently, the log-score winner and the lexicographic winner are the same
+Equivalently, the log-score maximizer and the leftmost minimizer are the same
 carrier.
 
 ## Legacy Name
@@ -63,11 +63,11 @@ The historical validation summaries remain useful as audit record:
 
 ## Immediate Consequences
 
-`GWR` compresses several observed features into one exact winner law:
+`GWR` compresses several observed features into one exact maximizer rule:
 
-- $d(n)=4$ winner dominance,
-- left-half winner dominance,
-- frequent edge-distance $2$ winners.
+- $d(n)=4$ selected integer dominance,
+- left-half selected integer dominance,
+- frequent edge-distance $2$ selected integers.
 
 Those observations are not separate rules in the current interpretation. They
-are consequences of the proved winner law.
+are consequences of the proved maximizer rule.

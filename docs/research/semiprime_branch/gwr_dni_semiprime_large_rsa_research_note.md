@@ -29,12 +29,12 @@ So distinct semiprimes occupy an exact arithmetic shell directly below the prime
 
 ## Why Semiprimes Matter Here
 
-The current GWR surface already says the dominant winner regime is a `d=4` regime.
+The current GWR surface already says the dominant selected-integer regime is a `d=4` regime.
 
 Live repo finding:
 
-- when the implemented winner has `d(w)=4`, the tested surface shows no interior prime square
-- under that square exclusion, the winner is exactly the first interior `d=4` carrier
+- when the implemented score maximizer has `d(w)=4`, the tested surface shows no interior prime square
+- under that square exclusion, the selected integer is exactly the first interior `d=4` carrier
 
 This is the main bridge from GWR/DNI to semiprimes.
 
@@ -116,7 +116,7 @@ The branch succeeds only if at least one semiprime-layer-aware deterministic fro
 
 Build a note with:
 
-- distinct semiprime winner share
+- distinct semiprime selected-integer share
 - prime-cube residue share
 - first-`d=4` arrival offsets
 - square-exclusion conditional counts
@@ -145,7 +145,7 @@ with explicit false-survivor and false-reject audits.
 The branch is worth pursuing because the current repo already supports all three legs needed for a real systems claim:
 
 1. an exact arithmetic identity that isolates the semiprime-dominant `d=4` layer
-2. a live prime-gap result showing that the dominant winner regime is first-`d=4` arrival under square exclusion
+2. a live prime-gap result showing that the dominant selected-integer regime is first-`d=4` arrival under square exclusion
 3. practical benchmark evidence that deterministic early composite rejection already produces large RSA savings
 
 So the research program is not speculative in the weak sense.

@@ -25,7 +25,7 @@ language than those anchors.
 - [gap_winner_rule.md](./gap_winner_rule.md): Canonical statement of the rule
   under the current name.
 - [gwr_hierarchical_local_dominator_theorem.md](./gwr_hierarchical_local_dominator_theorem.md):
-  Formal theorem statement of the proved winner law.
+  Formal theorem statement of the proved maximizer rule.
 - [lexicographic_raw_z_dominance_theorem.md](./lexicographic_raw_z_dominance_theorem.md):
   Exact ordered-dominance theorem closing the later side.
 - [prime_gap_admissibility_theorem.md](./prime_gap_admissibility_theorem.md):
@@ -37,11 +37,11 @@ language than those anchors.
 
 - [prime_gap_exclusion_consequences.md](./prime_gap_exclusion_consequences.md):
   Local exclusion reading of what GWR says prime gaps cannot contain before the
-  winner.
+  selected integer.
 - [prime_boundary_placement_finding.md](./prime_boundary_placement_finding.md):
-  Endpoint-placement reading of the winner law.
+  Endpoint-placement reading of the maximizer rule.
 - [closure_constraint_findings.md](./closure_constraint_findings.md):
-  Measured closure surface and recursive-walk consequence of the proved winner
+  Measured closure surface and recursive-walk consequence of the proved selected integer
   law.
 - [dominant_d4_arrival_reduction_findings.md](./dominant_d4_arrival_reduction_findings.md):
   Dominant `d=4` regime and its exact validation surface.

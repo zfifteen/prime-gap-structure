@@ -26,8 +26,8 @@ emit `q_hat` only if it can construct a certificate with:
 - proposed endpoint `q_hat`;
 - interior `I = {p + 1, ..., q_hat - 1}`;
 - verified chamber closure for every integer in `I`;
-- GWR-compatible winner data, or an explicit empty-chamber base case;
-- no-later-simpler closure for the active winner regime;
+- GWR-compatible selected integer data, or an explicit empty-chamber base case;
+- no-later-simpler closure for the active selected-integer regime;
 - no unresolved competing chamber with smaller admissible endpoint;
 - an explicit reason `q_hat` is forced rather than merely allowed.
 
@@ -41,7 +41,7 @@ If any field is missing or unresolved, the law fails closed.
 - deterministic composite witnesses for interior values;
 - PGS carrier metadata inside the proposed chamber;
 - GWR/DNI ordering of interior carriers;
-- no-later-simpler threat metadata when the chamber has a winner carrier;
+- no-later-simpler threat metadata when the chamber has a selected integer carrier;
 - a named empty-chamber base case, if such a base case is proved.
 
 ## Forbidden Inputs
@@ -113,7 +113,7 @@ establish that `13` is forced as the endpoint.
 ## GWR/DNI Relevance
 
 For `p = 11` and `q_hat = 13`, the proposed interior contains no open composite
-carrier. The GWR winner fields are null. Therefore the standard GWR carrier and
+carrier. The GWR-selected integer fields are null. Therefore the standard GWR carrier and
 no-later-simpler closure machinery has no positive carrier to operate on.
 
 Next-Prime Law 002 has two possible paths:

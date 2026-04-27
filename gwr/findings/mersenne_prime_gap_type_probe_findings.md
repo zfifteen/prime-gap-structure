@@ -14,7 +14,7 @@ More concretely:
 
 - the tested exact surface contains the known Mersenne primes
   `2^p - 1` with `p in {2, 3, 5, 7, 13, 17, 19, 31, 61}`;
-- for every tested Mersenne prime with `p >= 5`, the **following** gap winner
+- for every tested Mersenne prime with `p >= 5`, the **following** selected interior integer
   is an odd-semiprime `d = 4` carrier;
 - those `7` following gaps collapse to only `2` exact type signatures:
   `o6_d4_a2_odd_semiprime` (`4` cases) and
@@ -142,7 +142,7 @@ The measured statement is:
 
 Known tractable Mersenne primes through exponent `61` show a one-sided
 following-gap regularity: after the small edge cases `3` and `7`, every tested
-Mersenne prime is followed by an odd-semiprime `d = 4` winner gap, but the
+Mersenne prime is followed by an odd-semiprime `d = 4` selected integer gap, but the
 preceding side stays heterogeneous.
 
 ## Conclusion

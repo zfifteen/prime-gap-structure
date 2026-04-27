@@ -34,7 +34,7 @@ The system consists of four conceptual layers:
     * Infers the next prime endpoint q without classical primality testing.
 3. Emission Layer
     * Emits q as a PGS-inferred prime.
-    * Records the inference path, gap interior evidence, winner carrier, divisor-class logic, and confidence metadata.
+    * Records the inference path, gap interior evidence, selected integer carrier, divisor-class logic, and confidence metadata.
 4. External Validation Layer
     * Runs after generation.
     * Uses classical methods only to audit the generated output.
@@ -79,7 +79,7 @@ In the generator, the future right endpoint q is not assumed known. The inferenc
 
 GWR Carrier
 
-The leftmost carrier of the minimum divisor-count class present in a gap interior. Under the GWR framing, this carrier is the raw-Z/log-Z winner inside the gap.
+The leftmost carrier of the minimum divisor-count class present in a gap interior. Under the GWR framing, this carrier is the raw-Z/log-Z selected integer inside the gap.
 
 Raw-Z / Log-Z Score
 
@@ -95,7 +95,7 @@ The rule that after the GWR carrier appears, the next prime endpoint arrives bef
 
 Threat Margin
 
-For a proposed winner w, define the first later lower-divisor threat:
+For a proposed selected integer w, define the first later lower-divisor threat:
 
 T_<(w) = min {m > w : d(m) < d(w)}
 
@@ -103,7 +103,7 @@ The threat margin is:
 
 T_<(w) - q
 
-A nonnegative margin means the inferred right prime endpoint arrives before the lower-divisor threat overtakes the winner.
+A nonnegative margin means the inferred right prime endpoint arrives before the lower-divisor threat overtakes the selected integer.
 
 6. Design Principle
 

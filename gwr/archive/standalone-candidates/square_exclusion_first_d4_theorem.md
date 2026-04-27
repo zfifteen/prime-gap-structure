@@ -4,15 +4,15 @@ This note records the theorem-shaped form of the dominant $d=4$ reduction.
 
 The core idea is:
 
-in the dominant winner regime, a prime gap first has to avoid admitting any
-interior prime square, and then the winner is the first interior carrier with
+in the dominant selected-integer regime, a prime gap first has to avoid admitting any
+interior prime square, and then the selected integer is the first interior carrier with
 $d(n)=4$.
 
 That idea can be stated at two different levels.
 
 ## 1. Exact Conditional Corollary of GWR
 
-Let $(p, q)$ be a prime gap, and let $w$ be the implemented log-score winner on
+Let $(p, q)$ be a prime gap, and let $w$ be the implemented log-score maximizer on
 the interior composites:
 
 $$w = \arg\max_{p < n < q} L(n).$$
@@ -47,21 +47,21 @@ $$w = u.$$
 
 In words:
 
-if the GWR winner has divisor class $4$, then the winner is exactly the first
+if the GWR-selected integer has divisor class $4$, then the selected integer is exactly the first
 interior $d=4$ carrier, and no prime square appears anywhere inside the gap.
 
 ### Why This Is Immediate
 
-Under GWR, the winner is the leftmost interior carrier with minimal divisor
+Under GWR, the selected integer is the leftmost interior carrier with minimal divisor
 count.
 
 If some interior prime square existed, then some interior integer would have
-$d(n)=3<4$, so a $d=4$ carrier could not be the GWR winner.
+$d(n)=3<4$, so a $d=4$ carrier could not be the GWR-selected integer.
 
 If some earlier interior integer had $d(n)=4$, then the leftmost tie-break
 would force that earlier carrier to win instead.
 
-So once a GWR winner has divisor count $4$, the whole gap is forced into the
+So once a GWR-selected integer has divisor count $4$, the whole gap is forced into the
 shape:
 
 $$>4,\ >4,\ \ldots,\ >4,\ 4,\ \ge 4,\ \ge 4,\ \ldots,\ \ge 4.$$
@@ -82,7 +82,7 @@ Let $(p, q)$ be a prime gap. Suppose:
 1. the interior of the gap contains no prime square;
 2. the interior of the gap contains at least one integer with $d(n)=4$.
 
-Then the implemented log-score winner on the interior composites is the first
+Then the implemented log-score maximizer on the interior composites is the first
 interior integer with divisor count $4$.
 
 Equivalently, if
@@ -95,37 +95,37 @@ $$u = \arg\max_{p < n < q} L(n).$$
 
 In plain language:
 
-once the gap excludes prime squares, the dominant winner law collapses to first
+once the gap excludes prime squares, the dominant maximizer rule collapses to first
 arrival in the $d=4$ class.
 
 ## Why This Is Interesting
 
-This candidate is narrower than full GWR, but it captures the dominant winner
+This candidate is narrower than full GWR, but it captures the dominant selected integer
 regime on the current tested surface.
 
 It does not say:
 
-- that every gap winner has divisor count $4$,
+- that every selected interior integer has divisor count $4$,
 - that full GWR is proved,
 - or that semiprimes alone explain the dominant regime.
 
 It says one precise thing:
 
-in the no-interior-prime-square regime, the implemented winner is the first
+in the no-interior-prime-square regime, the implemented score maximizer is the first
 interior $d=4$ carrier.
 
-That turns most of the observed winner surface from a global-looking score
+That turns most of the observed selected integer surface from a global-looking score
 optimization into a local exclusion-and-arrival law.
 
 ## Why The Class Has To Be $d=4$
 
 The stricter semiprime-only wording is false.
 
-The current exact surface already contains $d=4$ winners that are prime cubes,
+The current exact surface already contains $d=4$ selected integers that are prime cubes,
 for example:
 
 - gap $(6857, 6863)$,
-- winner $6859 = 19^3$.
+- selected integer $6859 = 19^3$.
 
 So the correct formulation is about the divisor class $d=4$, not about
 semiprimes as a factorization type.
@@ -144,21 +144,21 @@ On the current documented surface:
 
 the observed dominant-case result was:
 
-- zero tested $d=4$ winner gaps containing an interior prime square,
+- zero tested $d=4$ selected integer gaps containing an interior prime square,
 - first-$d=4$ match rate exactly $1.0$ on every documented regime,
-- thin prime-cube exception family inside the broader $d=4$ winner class.
+- thin prime-cube exception family inside the broader $d=4$ selected divisor-count class.
 
 At the top of the current even-band ladder:
 
 - scale $10^{18}$,
 - `180,447` gaps tested,
-- `149,279` $d=4$ winner gaps,
+- `149,279` $d=4$ selected integer gaps,
 - `0` interior-prime-square violations,
 - `149,279 / 149,279` first-$d=4$ matches.
 
 So the current status is:
 
-- exact corollary of GWR when the winner class is $4$,
+- exact corollary of GWR when the selected divisor-count class is $4$,
 - evidence-backed dominant-case law on the current tested surface,
 - theorem candidate if stated independently as a direct prime-gap law.
 
@@ -182,9 +182,9 @@ It also gives the proof program a cleaner form:
 
 The safest way to state the candidate is:
 
-If GWR holds on a gap and its winner has divisor class $4$, then the gap
-contains no interior prime square and the winner is the first interior
+If GWR holds on a gap and its selected integer has divisor class $4$, then the gap
+contains no interior prime square and the selected integer is the first interior
 $d=4$ carrier. Independently of that corollary, the same dominant reduction can
 be treated as a standalone theorem candidate: in prime gaps with no interior
-prime square and at least one interior $d=4$ carrier, the implemented winner is
+prime square and at least one interior $d=4$ carrier, the implemented score maximizer is
 the first such $d=4$ carrier.

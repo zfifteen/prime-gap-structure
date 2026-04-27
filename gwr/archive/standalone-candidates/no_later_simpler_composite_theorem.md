@@ -4,14 +4,14 @@ This note records a theorem-shaped version of the closure intuition.
 
 The core idea is:
 
-Once the score winner appears inside a prime gap, the next prime arrives before
+Once the score maximizer appears inside a prime gap, the next prime arrives before
 any later strictly simpler composite can appear.
 
 That idea can be stated at two different levels.
 
 ## 1. Exact Conditional Corollary of GWR
 
-Let $(p, q)$ be a prime gap, and let $w$ be the implemented log-score winner on
+Let $(p, q)$ be a prime gap, and let $w$ be the implemented log-score maximizer on
 the interior composites:
 
 $$w = \arg\max_{p < n < q} L(n).$$
@@ -37,7 +37,7 @@ There is no interior integer $n$ with $w < n < q$ and $d(n) < d(w)$.
 This is an exact corollary of GWR, not a new theorem.
 
 The reason is immediate: if some later interior integer had strictly smaller
-divisor count than the winner, then the winner would not be the minimal-divisor
+divisor count than the selected integer, then the selected integer would not be the minimal-divisor
 carrier of the gap and GWR would fail on that gap.
 
 ## 2. The Actual Theorem Candidate
@@ -47,7 +47,7 @@ prime-gap law.
 
 ## No-Later-Simpler-Composite Theorem Candidate
 
-For every prime gap $(p, q)$, let $w$ be the implemented log-score winner on
+For every prime gap $(p, q)$, let $w$ be the implemented log-score maximizer on
 the interior composites. Then
 
 $$q \le T_{<}(w),$$
@@ -58,7 +58,7 @@ there is no later interior composite $n$ with $w < n < q$ and $d(n) < d(w)$.
 
 In plain language:
 
-Once the score winner appears, the next prime closes the gap before any later
+Once the score maximizer appears, the next prime closes the gap before any later
 strictly simpler composite can enter the interior.
 
 ## Why This Is Interesting
@@ -68,8 +68,8 @@ plot-level observation.
 
 It does not say:
 
-- where the winner must occur,
-- that the winner is always the leftmost minimal-divisor carrier,
+- where the selected integer must occur,
+- that the selected integer is always the leftmost minimal-divisor carrier,
 - or that the full gap interior is lexicographically ordered.
 
 It says only one thing:
@@ -77,12 +77,12 @@ It says only one thing:
 the right endpoint of the prime gap is bounded above by the first later
 strictly simpler divisor-class threat.
 
-That is already theorem-sized because it turns a winner statement into a prime
+That is already theorem-sized because it turns a selected integer statement into a prime
 placement statement.
 
 ## The $d=4$ Specialization
 
-For the dominant winner class $d(w)=4$, the first strictly smaller divisor
+For the dominant selected divisor-count class $d(w)=4$, the first strictly smaller divisor
 class is $d=3$.
 
 Among composite integers, $d(n)=3$ occurs exactly at prime squares.
@@ -125,7 +125,7 @@ This framing introduces a concrete observable:
 
 $$T_{<}(w) - w,$$
 
-the distance from the winner to the first later strictly simpler threat.
+the distance from the selected integer to the first later strictly simpler threat.
 
 The prime gap then has a companion closure margin:
 
@@ -139,8 +139,8 @@ That converts the intuition into a measurable object rather than just a slogan.
 
 The safest way to state the candidate is:
 
-If the Gap Winner Rule is the full interior winner law, then the
+If the Gap Winner Rule is the full interior maximizer rule, then the
 No-Later-Simpler-Composite condition is an exact corollary. Independently of that,
 the same closure condition can be treated as a standalone theorem candidate
-about prime-gap termination: once the score winner appears, the next prime
+about prime-gap termination: once the score maximizer appears, the next prime
 arrives before any later strictly simpler composite does.

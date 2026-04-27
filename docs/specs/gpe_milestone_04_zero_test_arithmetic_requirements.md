@@ -27,7 +27,7 @@ The GPE runtime path must not use:
 
 ## Required Arithmetic Replacement
 
-The implementation must compute winner and endpoint placement from rulebook
+The implementation must compute selected integer and endpoint placement from rulebook
 arithmetic:
 
 - fixed GPE state,

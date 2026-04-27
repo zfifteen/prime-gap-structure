@@ -65,19 +65,19 @@ $10^9 < p < 5 \times 10^9$.
     alone keeps that family unresolved forever.
 - [`earlier_spoiler_local_dominator_scan.py`](./earlier_spoiler_local_dominator_scan.py):
   exact prime-gap admissibility scan that
-  - takes each actual earlier spoiler candidate before the `GWR` winner,
+  - takes each actual earlier spoiler candidate before the `GWR` selected integer,
   - finds the first later interior composite that beats it exactly,
   - and records the offset law and per-class offset frontier.
 - [`no_early_spoiler_margin_scan.py`](./no_early_spoiler_margin_scan.py):
   exact no-early-spoiler scan that
   - compares every earlier interior candidate directly to the actual `GWR`
     carrier,
-  - records the smallest winner-minus-earlier log-score margin,
+  - records the smallest selected integer-minus-earlier log-score margin,
   - and records the smallest critical-ratio slack in the exact spoiler
     inequality.
 - [`no_early_spoiler_ratio_frontier.py`](./no_early_spoiler_ratio_frontier.py):
   exact pair-frontier extractor that
-  - finds the tightest realized case for each winner/earlier divisor-class
+  - finds the tightest realized case for each selected integer/earlier divisor-class
     pair,
   - ranks those pairs by critical-ratio slack,
   - and emits the current ratio-form frontier of the no-early-spoiler

@@ -6,9 +6,9 @@ That is enough to frame the missing law.
 
 ## What the repo already gives us
 
-- **DNI fixed point:** $Z(n)=n^{1-d(n)/2}$ collapses primes to 1.0. The winner is the interior composite closest to that point.
-- **GWR:** the winner is exactly leftmost minimum $d(n)$.
-- **NLSC:** once the winner appears, $q \le T_{<}(w)$. No later strictly simpler composite appears before the prime.
+- **DNI fixed point:** $Z(n)=n^{1-d(n)/2}$ collapses primes to 1.0. The selected integer is the interior composite closest to that point.
+- **GWR:** the selected integer is exactly leftmost minimum $d(n)$.
+- **NLSC:** once the selected integer appears, $q \le T_{<}(w)$. No later strictly simpler composite appears before the prime.
 - **Semiprime Wheel Attractor:** on the persistent reduced gap-type surface the dominant object is the triad `o2_odd_semiprime|d<=4`, `o4_odd_semiprime|d<=4`, `o6_odd_semiprime|d<=4` inside a frozen 14-state core.
 - **Dynamic cutoff:** current empirical bound $C(q)=\max(64,\lceil0.5\log(q)^2\rceil)$ already replaces the falsified fixed map.
 
@@ -58,7 +58,7 @@ You do not need another ranker. You need a table of false nodes from your $10^{1
 
 3. **Join PGS-visible predictors:**
     - $g = q-p$ (true gap, known from audit)
-    - $w-p$ (winner offset)
+    - $w-p$ (selected-integer offset)
     - $\text{res}(p) \bmod 30$, $\bmod 210$
     - attractor phase (which of o2/o4/o6 seeded)
     - 14-state core id at $p$

@@ -17,7 +17,7 @@ The branch order is fixed:
 
 1. Solve the dominant $d(w)=4$ branch.
 2. Solve the $d(w)=3$ branch.
-3. Solve higher-divisor winner branches in increasing observed pressure order.
+3. Solve higher-divisor selection branches in increasing observed pressure order.
 
 The first branch uses the concrete invariant:
 
@@ -54,7 +54,7 @@ The $d(w)=4$ branch is complete when:
 
 ## Full Milestone Acceptance Gate
 
-Milestone 2 is complete when every observed winner class has a branch selector
+Milestone 2 is complete when every observed selected divisor-count class has a branch selector
 or an explicit unresolved theorem target.
 
 The milestone is not complete if the only result is a smaller search interval.

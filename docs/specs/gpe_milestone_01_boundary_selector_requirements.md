@@ -16,8 +16,8 @@ The selector receives:
 
 - $q$: the current known prime,
 - $S$: the current GPE state,
-- $w$: the GWR winner for the next gap,
-- $d(w)$: the divisor class of the winner.
+- $w$: the GWR-selected integer for the next gap,
+- $d(w)$: the divisor class of the selected integer.
 
 The selector returns:
 
@@ -31,7 +31,7 @@ The selector returns:
 3. The selector must fail explicitly when the required state is insufficient.
 4. The selector must preserve one deterministic execution path.
 5. The selector interface must be narrow enough to audit from a single current
-   prime, state, winner, and winner divisor class.
+   prime, state, selected integer, and selected divisor-count class.
 
 ## Validation Surface
 

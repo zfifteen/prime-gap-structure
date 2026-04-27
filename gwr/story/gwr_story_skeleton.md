@@ -16,7 +16,7 @@ The story should move in this order:
 
 1. start from the raw-$Z$ score inside prime gaps,
 2. describe the original visual impression: a near-edge ridge,
-3. present the surprise: the winner collapses to a simple arithmetic rule,
+3. present the surprise: the selected integer collapses to a simple arithmetic rule,
 4. show that this one rule explains several separate-looking phenomena,
 5. show the theorem temptation and the correction,
 6. end on the bridge certificate that closes the main mathematical question
@@ -40,13 +40,13 @@ We began with a score on composite interiors of prime gaps that looked like a
 - prime gaps have composite interiors,
 - each interior composite gets a raw-$Z$ score,
 - the original visual effect looked like a near-edge ridge rather than a
-  discrete winner law.
+  discrete maximizer rule.
 
 ### Figure needs
 
 - one introductory exemplar gap plot showing raw-$Z$ across the interior of a
   prime gap,
-- winner highlighted.
+- selected integer highlighted.
 
 ## 2. What The Score Seemed To Be Doing
 
@@ -62,7 +62,7 @@ inside the gap in a smooth way.
 ### Points to cover
 
 - raw-$Z$ depends on both $d(n)$ and $\ln(n)$,
-- visually the winner often sits near the left edge,
+- visually the selected integer often sits near the left edge,
 - this initially looks like a geometric field effect rather than a simple law.
 
 ### Figure needs
@@ -70,7 +70,7 @@ inside the gap in a smooth way.
 - a small panel of exemplar gaps at different scales,
 - optional divisor-color overlay to show low-`d` carriers.
 
-## 3. The Surprise: The Winner Collapses
+## 3. The Surprise: The Selected integer Collapses
 
 ### Purpose
 
@@ -79,8 +79,8 @@ State `GWR` cleanly and early as the central surprise.
 ### Main claim
 
 On the tested prime-gap surface, and under the recorded BHP/Robin bridge
-closure, the raw-$Z$ winner is always the same as the minimum-divisor leftmost
-winner.
+closure, the raw-$Z$ maximizer is always the same as the minimum-divisor leftmost
+selected integer.
 
 ### Points to cover
 
@@ -90,7 +90,7 @@ winner.
 
 ### Figure needs
 
-- identity plot of raw-$Z$ winner versus GWR winner,
+- identity plot of raw-$Z$ maximizer versus GWR-selected integer,
 - match-rate-by-regime summary plot.
 
 ## 4. One Rule, Several Consequences
@@ -103,18 +103,18 @@ Show that `GWR` compresses multiple previously separate observations.
 
 $d(n)=4$ dominance, left-edge dominance, and edge-distance-$2$ enrichment are
 not separate mysteries on the tested surface. They are consequences of the same
-winner law.
+maximizer rule.
 
 ### Points to cover
 
-- winner divisor histogram versus baseline interior histogram,
-- normalized winner position versus baseline,
+- selected integer divisor histogram versus baseline interior histogram,
+- normalized selected-integer position versus baseline,
 - edge-distance distribution versus baseline.
 
 ### Figure needs
 
 - divisor-count enrichment plot,
-- normalized winner-position plot,
+- normalized selected integer-position plot,
 - edge-distance plot.
 
 ## 5. The Stronger Theorem We Wanted
@@ -183,7 +183,7 @@ theorem.
 
 ### Figure needs
 
-- a gap-level map or heatmap showing winner concentration by normalized position
+- a gap-level map or heatmap showing selected integer concentration by normalized position
   and divisor count.
 
 ## Proposed Plot Inventory
@@ -191,28 +191,28 @@ theorem.
 These are the initial figures to generate after the skeleton is approved.
 
 1. `figure_01_exemplar_gap_profiles`
-   Raw-$Z$ profiles for selected prime gaps with raw-$Z$ and GWR winners marked.
+   Raw-$Z$ profiles for selected prime gaps with raw-$Z$ and GWR-selected integers marked.
 
 2. `figure_02_winner_identity`
-   Raw-`Z` winner versus GWR winner identity check.
+   Raw-`Z` selected integer versus GWR-selected integer identity check.
 
 3. `figure_03_match_rate_surface`
    Match rate by tested regime with annotations for gap counts.
 
 4. `figure_04_divisor_enrichment`
-   Winner divisor-count histogram or enrichment versus baseline.
+   Selected integer divisor-count histogram or enrichment versus baseline.
 
 5. `figure_05_normalized_position`
-   Winner normalized position versus baseline interior positions.
+   Selected integer normalized position versus baseline interior positions.
 
 6. `figure_06_edge_distance`
-   Winner edge-distance distribution versus baseline.
+   Selected integer edge-distance distribution versus baseline.
 
 7. `figure_07_counterexample_pair`
    Small schematic or table for the unrestricted-theorem counterexample.
 
 8. `figure_08_winner_heatmap`
-   Winner concentration in `(normalized position, divisor count)` space.
+   Selected integer concentration in `(normalized position, divisor count)` space.
 
 ## Writing Standard
 

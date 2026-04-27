@@ -22,7 +22,7 @@ More precisely:
 The strongest supported interpretation is that the exact raw composite `Z` field forms a near-edge low-divisor ridge inside prime gaps rather than a midpoint ridge.
 
 On the current tested surface, that ridge can be stated more sharply: the
-gap-local raw-`Z` maximum matches the lexicographic winner obtained by first
+gap-local raw-`Z` maximum matches the leftmost minimizer obtained by first
 minimizing interior divisor count `d(n)` and then taking the leftmost carrier
 of that minimum.
 
@@ -72,7 +72,7 @@ Gap-size split:
 The current repository evidence now supports an exact tested ordering law for
 the gap-local peak.
 
-On the tested surface, the raw-`Z` winner is selected by:
+On the tested surface, the raw-`Z` selected integer is selected by:
 
 1. smallest interior divisor count,
 2. then leftmost position among those minima.
@@ -81,7 +81,7 @@ That discrete ordering explains why:
 
 - `d(n) = 4` carriers dominate the peak,
 - left-edge wins dominate right-edge wins,
-- edge-distance `2` appears so often as the winner location.
+- edge-distance `2` appears so often as the selected integer location.
 
 This remains an empirical repository result rather than a proof for every
 possible gap, but it is stronger than a descriptive field metaphor alone.

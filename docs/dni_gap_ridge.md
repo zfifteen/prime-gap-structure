@@ -93,7 +93,7 @@ The current repository now promotes the lexicographic peak rule to the proved
 Gap Winner Rule theorem on the repo's current proof surface.
 
 Across the tested regimes, the exact raw-$Z$ peak inside each prime gap matches
-the lexicographic winner:
+the leftmost minimizer:
 
 1. choose the smallest interior divisor count $d(n)$,
 2. if several interior composites share that minimum divisor count, choose the
@@ -146,7 +146,7 @@ The focused result note for the exact $10^6$ run is [docs/gap_ridge/raw_composit
 
 The figure note for the broader rendered regime surface is [docs/gap_ridge/raw_composite_z_gap_edge_figures.md](./gap_ridge/raw_composite_z_gap_edge_figures.md).
 
-The session finding note for the winner rule is [docs/findings/lexicographic_winner_take_all_peak_rule.md](./findings/lexicographic_winner_take_all_peak_rule.md).
+The session finding note for the selection rule is [docs/findings/lexicographic_winner_take_all_peak_rule.md](./findings/lexicographic_winner_take_all_peak_rule.md).
 
 To reproduce the exact $10^6$ gap-edge study, run:
 

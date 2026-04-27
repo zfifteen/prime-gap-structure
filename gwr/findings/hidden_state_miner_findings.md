@@ -4,7 +4,7 @@ The strongest hidden-state candidate on the current `10^12..10^15` surface is `c
 
 This looks like a genuinely new hidden state.
 
-## Current Winner
+## Current Selected integer
 
 - best candidate: `current_winner_parity+previous_reduced_state`
 - primitive count: `2`
@@ -28,7 +28,7 @@ This looks like a genuinely new hidden state.
 
 ## Reading
 
-The main question after this run is whether the best candidate survives once current winner offset is added as a direct control inside the parity probe itself, rather than only as a hidden-state label.
+The main question after this run is whether the best candidate survives once current selected-integer offset is added as a direct control inside the parity probe itself, rather than only as a hidden-state label.
 
 ## Artifacts
 

@@ -29,7 +29,7 @@ divisor buckets:
 - `17<=d<=64`
 - `d>64`
 
-This keeps the state definition local to the exact winner and uses only fields
+This keeps the state definition local to the exact selected integer and uses only fields
 already present in the gap-type catalog detail CSV.
 
 ## Measured Surface
@@ -46,7 +46,7 @@ The one-step improvement from the divisor bucket is small:
 - `<=10^6`: `0.2597 -> 0.2631`
 - `10^18`: `0.3373 -> 0.3412`
 
-So the next-gap grammar is not being driven mainly by the current winner's
+So the next-gap grammar is not being driven mainly by the current selected integer's
 coarse divisor band.
 
 The two-step view is different. Once the previous reduced state is included,

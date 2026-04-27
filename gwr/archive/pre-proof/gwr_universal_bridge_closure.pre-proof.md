@@ -73,5 +73,5 @@ the analytic closure.
 The ordered dominance theorem eliminates every later candidate after the
 leftmost minimum-divisor carrier. The bridge load eliminates every earlier
 higher-divisor candidate before that carrier. Together with the exact finite
-base and the explicit large-$p$ constants, the prime-gap winner law closes
+base and the explicit large-$p$ constants, the prime-selected interior integer law closes
 under the stated assumptions.

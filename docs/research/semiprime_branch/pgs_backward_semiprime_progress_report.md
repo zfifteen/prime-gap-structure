@@ -66,7 +66,7 @@ Its job is narrow and exact:
 - place `N` on the number line without using `sqrt(N)`;
 - identify the previous gap, the containing gap, and the following gap;
 - write the full interior divisor structure of each gap;
-- record the exact `GWR` winner and local `d=3` / `d=4` structure for each gap.
+- record the exact `GWR` selected integer and local `d=3` / `d=4` structure for each gap.
 
 The focused regression surface is
 [../../../tests/python/predictor/test_pgs_modulus_gap_orientation.py](../../../tests/python/predictor/test_pgs_modulus_gap_orientation.py).
@@ -79,7 +79,7 @@ walker would operate on:
 - the prime gap immediately before `N`;
 - the prime gap containing `N`;
 - the prime gap immediately after `N`;
-- the exact interior divisor field and `GWR` winner in each of those gaps.
+- the exact interior divisor field and `GWR` selected integer in each of those gaps.
 
 That orientation artifact closed the first conceptual gap in the program. The
 branch no longer had to speak abstractly about “working backward from the
@@ -204,7 +204,7 @@ Its sort key is:
 5. smaller `n` as the terminal tie break.
 
 That means the strongest current pure-`PGS` signal is not “go to the exact gap
-winner” in the abstract.
+selected integer” in the abstract.
 
 It is more specific:
 
@@ -246,7 +246,7 @@ The path that looks dead is:
 
 - composite-only anchors,
 - success defined as direct factor hit,
-- memoryless local winner chasing.
+- memoryless local selected integer chasing.
 
 The path that looks alive is:
 

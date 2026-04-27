@@ -13,7 +13,7 @@ candidate primality tests.
 
 | Milestone | Blocker Resolved | Requirement Document | Required Outcome |
 |---:|---|---|---|
-| 1 | Winner is not the endpoint | [Endpoint Selector Requirements](./gpe_milestone_01_boundary_selector_requirements.md) | Replace `winner + 1` with an explicit exact endpoint-selector contract. |
+| 1 | Selected integer is not the endpoint | [Endpoint Selector Requirements](./gpe_milestone_01_boundary_selector_requirements.md) | Replace `winner + 1` with an explicit exact endpoint-selector contract. |
 | 2 | NLSC gives a ceiling, not a selector | [NLSC Selector Requirements](./gpe_milestone_02_nlsc_selector_requirements.md) | Refine the NLSC threat horizon into branch-specific exact next-prime selection. |
 | 3 | Reduced state is not deterministic enough | [State Refinement Requirements](./gpe_milestone_03_state_refinement_requirements.md) | Find the minimal state needed to make the next-prime selector single-valued. |
 | 4 | Exact DNI evaluation uses the divisor field | [Zero-Test Arithmetic Requirements](./gpe_milestone_04_zero_test_arithmetic_requirements.md) | Replace hidden divisor-field or primality-test dependence with rulebook arithmetic. |

@@ -32,7 +32,7 @@ This is a **strong confirming result** for the missing theorem. Below is the per
 - **Verdict**: Best high-level derivation. The wheel + attractor + C(q) form is directly implementable and matches the repo’s existing dynamic cutoff logic (`square_branch_gap_audit.py`).
 
 ### 2. Grok (02_asnwer_grok.md) — Most Practical & Infrastructure-Aware
-**Analysis**: My own prior response. Correctly maps the repo’s existing mining scripts (`simple_pgs_recursive_shadow_chain_state_mine.py`, `simple_pgs_shadow_chain_terminal_certificate_mine.py`, pgs_semiprime_backward_* miners) as already doing 80% of the work. Proposes concrete `H` forms (2×max_chain_gap + residue_constant; visible_divisor_bound from GWR winner). Emphasizes fixed `candidate_bound=128` chamber makes everything local. Notes projected PGS gain to >90%.
+**Analysis**: My own prior response. Correctly maps the repo’s existing mining scripts (`simple_pgs_recursive_shadow_chain_state_mine.py`, `simple_pgs_shadow_chain_terminal_certificate_mine.py`, pgs_semiprime_backward_* miners) as already doing 80% of the work. Proposes concrete `H` forms (2×max_chain_gap + residue_constant; visible_divisor_bound from GWR-selected integer). Emphasizes fixed `candidate_bound=128` chamber makes everything local. Notes projected PGS gain to >90%.
 
 **Experiment results**:
 - Grok_2maxgap_residue: 80.83% bounding rate, **best tightness** (avg H/√q = **0.0707** — the smallest ratio of any proposal).
@@ -77,7 +77,7 @@ This is a **strong confirming result** for the missing theorem. Below is the per
     1. Grok’s `2 × max_chain_gap + residue_constant`
     2. Meta’s `C(q)` or wheel × attractor
     3. ChatGPT’s H1 (`visible_divisor_bound + max_chain_gap`)
-- **Implementation path** (synthesized from Copilot + ChatGPT + Grok): Add diagnostic collector to `chain_horizon_closure_result`, run on existing 10¹⁵/10¹⁸ probe rows, fit the top 2–3 H forms, promote the winner if false-negative rate < 0.1% and H/√q < 0.01.
+- **Implementation path** (synthesized from Copilot + ChatGPT + Grok): Add diagnostic collector to `chain_horizon_closure_result`, run on existing 10¹⁵/10¹⁸ probe rows, fit the top 2–3 H forms, promote the selected integer if false-negative rate < 0.1% and H/√q < 0.01.
 
 ### Final Recommendation (Actionable)
 **Implement `H(p, s0, chain_state) = visible_divisor_bound + 2 × max_chain_gap`** (or the already-proven `C(q)`) inside `chain_horizon_closure_result` as a pure PGS check:

@@ -16,13 +16,13 @@ $$
 Z(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
 $$
 
-The `Gap Winner Rule` says the raw-$Z$ winner is exactly the lexicographic
-winner:
+The `Gap Winner Rule` says the raw-$Z$ maximizer is exactly the lexicographic
+selected integer:
 
 1. minimize the interior divisor count $d(n)$,
 2. among ties, choose the leftmost interior integer.
 
-Any gap where the raw-$Z$ argmax differs from that winner is a counterexample.
+Any gap where the raw-$Z$ argmax differs from that selected integer is a counterexample.
 
 ## Current Headline Status
 

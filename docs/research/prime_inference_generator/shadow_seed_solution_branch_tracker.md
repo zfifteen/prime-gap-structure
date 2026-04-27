@@ -205,7 +205,7 @@ contracts do not select a endpoint from only `p` and `q0`.
 Strength:
 
 The proposal points at the correct theorem neighborhood. GWR later-side
-closure and NLSC are relevant constraints after a placed winner.
+closure and NLSC are relevant constraints after a placed selected integer.
 
 Weakness:
 
@@ -227,7 +227,7 @@ Commit: `d5d248d`
 Proposed solution:
 
 Add a probe-only `gwr_winner=q0` lock and resume chamber enumeration with the
-shadow seed fixed as the winner:
+shadow seed fixed as the selected integer:
 
 ```python
 q = pgs_chamber_closure_v2(p, start=q0, gwr_winner=q0)
@@ -263,7 +263,7 @@ no next-prime signal.
 Strength:
 
 The lock expresses a real constraint: `q0` should remain the placed interior
-winner rather than allowing later candidates to become new winners.
+selected integer rather than allowing later candidates to become new selected integers.
 
 Weakness:
 
@@ -272,7 +272,7 @@ is the endpoint.
 
 Limitation:
 
-The missing variable is still the endpoint margin. Locking the winner does not
+The missing variable is still the endpoint margin. Locking the selected integer does not
 derive that margin.
 
 ## Solution 1d Integration: Locked-State Margin Probe
@@ -1172,7 +1172,7 @@ small divisor witness.
 The strongest common finding across these branches is:
 
 `q0` is useful as a placed interior seed, but neither visible chamber restart,
-GWR later-side dominance, nor a locked winner condition currently determines
+GWR later-side dominance, nor a locked selected integer condition currently determines
 the next-prime offset.
 
 The missing object remains:

@@ -5,7 +5,7 @@ This note records the strongest gap-ridge finding developed in this session.
 ## Finding
 
 On the tested surface, the exact raw-$Z$ peak inside every tested prime gap is
-identical to the lexicographic winner:
+identical to the leftmost minimizer:
 
 1. choose the smallest interior divisor count $d(n)$,
 2. if several interiors share that minimum divisor count, choose the leftmost
@@ -19,7 +19,7 @@ in every tested regime.
 The rule was evaluated with a direct counterexample search:
 
 - validate on the tested surface if and only if every tested regime contains
-  zero gaps where the exact raw-$Z$ peak differs from the lexicographic winner,
+  zero gaps where the exact raw-$Z$ peak differs from the leftmost minimizer,
 - falsify immediately if even one such counterexample appears.
 
 ## Visual Evidence
@@ -57,14 +57,14 @@ The validation run found zero counterexamples in:
 
 That list is the current committed execution surface.
 
-The smallest observed winning margin in log-score remained positive in every
+The smallest observed score margin in log-score remained positive in every
 tested regime, though it shrank with scale as expected.
 
 ## Plain Reading
 
 The near-edge ridge is not only a visual field effect on the tested surface.
 
-Its winner is fully determined by a simple arithmetic ordering rule:
+Its selected integer is fully determined by a simple arithmetic ordering rule:
 
 - first minimize divisor count,
 - then take the leftmost carrier of that minimum.

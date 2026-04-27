@@ -120,7 +120,7 @@ So the horizon reading reinforces the repo's invariant-first posture:
 
 The same horizon reading also sharpens the `GWR` proof program.
 
-`GWR` says that inside a prime gap, the implemented raw-$Z$ log-score winner
+`GWR` says that inside a prime gap, the implemented raw-$Z$ log-score maximizer
 collapses to a simpler arithmetic law:
 
 - minimize the interior divisor count,

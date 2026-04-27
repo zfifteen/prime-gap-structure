@@ -3,9 +3,9 @@
 The strongest supported claim from the new exact probe is:
 
 On the full consecutive prime-gap surface through $10^6$, every gap that
-contains an interior prime square hands the winner offset exactly to that
+contains an interior prime square hands the selected-integer offset exactly to that
 square's offset. When no interior prime square is present, the gap falls into
-an early $d=4$ winner regime most of the time, but not always.
+an early $d=4$ selected-integer regime most of the time, but not always.
 
 That is close to the structural handoff you proposed, but it sharpens the
 scope in two important ways:
@@ -29,9 +29,9 @@ That produced `78,497` nonempty gaps.
 On that exact surface:
 
 - `168 / 168` square-present gaps had
-  $$\text{winner offset} = \text{first interior prime-square offset};$$
-- every one of those square-present winners had divisor class `d=3`;
-- the square branch winner-offset distribution had median `6`, `p90 = 18`,
+  $$\text{selected-integer offset} = \text{first interior prime-square offset};$$
+- every one of those square-present selected integers had divisor class `d=3`;
+- the square branch selected integer-offset distribution had median `6`, `p90 = 18`,
   `p99 = 38`, and maximum `48`;
 - after the interior square appears, the gap closes soon after on this
   surface: the remaining distance from the square to the right prime had
@@ -44,11 +44,11 @@ surface it is locked to the first interior prime square.
 
 Among the `78,329` square-free gaps:
 
-- `58,305` had winner class `d=4`, which is `74.44%` of the square-free
+- `58,305` had selected divisor-count class `d=4`, which is `74.44%` of the square-free
   surface;
-- those square-free `d=4` winners arrived early, with median offset `3`,
+- those square-free `d=4` selected integers arrived early, with median offset `3`,
   `p90 = 6`, `p99 = 10`, and maximum `22`;
-- among those `d=4` winners, the family split was:
+- among those `d=4` selected integers, the family split was:
   `45,268` odd semiprimes,
   `13,030` even semiprimes,
   `7` prime cubes.
@@ -56,52 +56,52 @@ Among the `78,329` square-free gaps:
 So the square-free branch is strongly concentrated in the early `d=4` regime,
 and the odd-semiprime lane is its largest family. But the stricter sentence
 
-> before a square appears in the interior, the winner is always a semiprime
+> before a square appears in the interior, the selected integer is always a semiprime
 > with four divisors
 
 is too strong on this exact surface.
 
 There are two separate reasons:
 
-- `20,024` square-free gaps had winner class other than `d=4`;
-- even inside the square-free `d=4` branch, the winner is not always an odd
+- `20,024` square-free gaps had selected divisor-count class other than `d=4`;
+- even inside the square-free `d=4` branch, the selected integer is not always an odd
   semiprime.
 
 The right repo-safe version is:
 
-- if an interior prime square appears, the winner offset locks to it;
+- if an interior prime square appears, the selected-integer offset locks to it;
 - if no interior prime square appears, the dominant branch is an early `d=4`
-  winner, usually but not exclusively an odd semiprime.
+  selected integer, usually but not exclusively an odd semiprime.
 
 ## What The Figure Says
 
 The right-hand panel is the clean part: every square-present row sits on the
-diagonal, so the winner offset and square offset coincide exactly on the full
+diagonal, so the selected-integer offset and square offset coincide exactly on the full
 through-$10^6$ surface.
 
 The left-hand panel is more nuanced. It does show a split in shape:
 
-- square-free `d=4` winners are packed tightly near the left prime;
-- square-present winners have a longer late-offset tail.
+- square-free `d=4` selected integers are packed tightly near the left prime;
+- square-present selected integers have a longer late-offset tail.
 
 But it is not yet a clean unconditional two-peak histogram. The square-present
 branch is only about `0.214%` of all nonempty gaps on this surface, and many
 of its offsets still overlap the early `d=4` band.
 
-So the strongest exact conclusion is not "winner offset alone detects square
+So the strongest exact conclusion is not "selected-integer offset alone detects square
 presence." It is:
 
-- the local square clock determines the winner exactly when it fires;
+- the local square clock determines the selected integer exactly when it fires;
 - otherwise the dominant survivor law is early `d=4` arrival.
 
 ## Better Theorem Target
 
-The promising next claim is not a universal scalar cutoff on winner offset.
+The promising next claim is not a universal scalar cutoff on selected-integer offset.
 The better target is a branch law:
 
-1. if the gap contains an interior prime square at offset $s$, then the winner
+1. if the gap contains an interior prime square at offset $s$, then the selected integer
    offset is exactly $s$;
-2. if the gap contains no interior prime square, then the dominant winner
+2. if the gap contains no interior prime square, then the dominant selected integer
    branch is early `d=4` arrival.
 
 Attached to your actual scope, that is where the novelty looks strongest.

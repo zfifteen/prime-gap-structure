@@ -9,25 +9,25 @@ The milestone roadmap built from these blockers is
 
 ## Strongest Current Fact
 
-The current repository proves and validates the GWR winner surface. Given a
+The current repository proves and validates the GWR-selected integer surface. Given a
 known left endpoint prime $q$, the exact DNI/GWR oracle recovers:
 
-- the next-gap interior winner $w$,
-- the winner divisor class $d(w)$,
+- the next-gap interior selected integer $w$,
+- the selected divisor-count class $d(w)$,
 - and the right endpoint prime $q^+$ by scanning the divisor field until
   $d(n)=2$.
 
 That is not yet the same as a primality-free generative prime engine. The
 missing object is an exact next-prime selector.
 
-## Blocker 1: Winner Is Not The Endpoint
+## Blocker 1: Selected integer Is Not The Endpoint
 
 The relation $$q^+=w+1$$ is false.
 
 The first small obstruction is:
 
 - left endpoint prime: $q=23$,
-- GWR winner: $w=25$,
+- GWR-selected integer: $w=25$,
 - right endpoint prime: $q^+=29$.
 
 So the implementation skeleton cannot emit `winner + 1`.
@@ -42,8 +42,8 @@ where:
 
 - $q$ is the current prime,
 - $S$ is the full GPE state,
-- $w$ is the GWR winner,
-- $d(w)$ is the winner divisor class,
+- $w$ is the GWR-selected integer,
+- $d(w)$ is the selected divisor-count class,
 - and $B$ returns the exact next prime without Miller-Rabin, trial division of
   the gap interior, candidate sieving lists, or Eratosthenes marking.
 
@@ -93,7 +93,7 @@ example:
 | $13$ | $14$ | $17$ | $4$ |
 | $73$ | $74$ | $79$ | $6$ |
 
-Both rows have the same reduced winner type, but different next-prime offsets.
+Both rows have the same reduced selected integer type, but different next-prime offsets.
 Therefore the current reduced state alone cannot emit the exact prime sequence.
 
 ### Resolution Contract
@@ -115,7 +115,7 @@ requirement of zero traditional primality tests and no candidate sieving lists.
 
 Tier 1 must either:
 
-- compute the winner and endpoint by rulebook arithmetic without divisor-field
+- compute the selected integer and endpoint by rulebook arithmetic without divisor-field
   scanning, or
 - remain explicitly outside the zero-test GPE contract.
 
@@ -128,7 +128,7 @@ described as zero-test.
 The next executable target is not a broader framework. It is the smallest
 possible endpoint-selector theorem:
 
-Given a known prime $q$ and the exact GWR winner $w$ for the next gap, construct
+Given a known prime $q$ and the exact GWR-selected integer $w$ for the next gap, construct
 a deterministic arithmetic rule $B(q,S,w,d(w))$ that returns $q^+$ exactly and
 does not test candidate primality.
 
@@ -141,4 +141,4 @@ The unresolved selector problem is the exact location of $q^+$ inside the
 interval: $$w < q^+ \le S_{+}(w).$$
 
 Once this branch has a collision-free rule on the committed exact surface, the
-same test should be repeated for $d(w)=3$ and for higher-divisor winner classes.
+same test should be repeated for $d(w)=3$ and for higher-divisor selected divisor-count classes.

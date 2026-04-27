@@ -10,7 +10,7 @@ near-edge ridge, and that ridge is usually carried by semiprime-class
 `d(n)=4` composites.
 
 This is narrower than saying prime-gap edges are globally simple. It says the
-raw-`Z` winner is strongly pulled toward the first odd interior positions.
+raw-`Z` selected integer is strongly pulled toward the first odd interior positions.
 
 ## Context
 
@@ -29,6 +29,6 @@ The number line did not support a broad simple-edge law.
 
 It did support a narrower and still interesting law-like pattern:
 
-- near-edge raw-`Z` winners are real,
+- near-edge raw-`Z` selected integers are real,
 - odd-composite carriers matter,
 - and `d(n)=4` composites usually carry that peak.

@@ -10,7 +10,7 @@ meant to answer.
 Question:
 
 What does the raw-`Z` landscape inside an individual prime gap actually look
-like, and where does the `GWR` winner sit?
+like, and where does the `GWR` selected integer sit?
 
 Data:
 
@@ -21,8 +21,8 @@ Data:
 
 Question:
 
-How far has the zero-counterexample identity between raw-`Z` winners and `GWR`
-winners been validated?
+How far has the zero-counterexample identity between raw-`Z` selected integers and `GWR`
+selected integers been validated?
 
 Data:
 
@@ -33,7 +33,7 @@ Data:
 
 Question:
 
-Which divisor-count classes are over-selected as winners relative to their
+Which divisor-count classes are over-selected as selected integers relative to their
 baseline availability?
 
 Data:
@@ -44,7 +44,7 @@ Data:
 
 Question:
 
-How concentrated are winners near the left side of a gap compared with the
+How concentrated are selected integers near the left side of a gap compared with the
 interior baseline?
 
 Data:
@@ -55,7 +55,7 @@ Data:
 
 Question:
 
-How strongly are winners concentrated near the edges, especially at
+How strongly are selected integers concentrated near the edges, especially at
 edge-distance `2`?
 
 Data:
@@ -76,7 +76,7 @@ Data:
 
 Question:
 
-Where do winners live jointly in normalized gap position and divisor-count
+Where do selected integers live jointly in normalized gap position and divisor-count
 space?
 
 Data:

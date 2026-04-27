@@ -94,13 +94,13 @@ $$
 d(n_i) \le d(n_j)
 $$
 
-for the winner $n_i$ against every later candidate $n_j$.
+for the selected integer $n_i$ against every later candidate $n_j$.
 
 Then $n_i$ is the unique maximizer of $Z$ on $S$.
 
 In particular, if the interior composites of a prime gap satisfy this ordered
-divisor condition relative to the lexicographic winner, then the raw-$Z$
-winner is exactly the Gap Winner Rule winner.
+divisor condition relative to the leftmost minimizer, then the raw-$Z$
+selected integer is exactly the Gap Winner Rule selected integer.
 
 ## Remark
 
@@ -126,4 +126,4 @@ divisor count wins only when it also occurs at the earlier integer.
 
 This keeps the theorem narrow and correct. The separate prime-gap question is
 whether the interior divisor profile of a prime gap always places the
-lexicographic winner in precisely that ordered-dominance regime.
+leftmost minimizer in precisely that ordered-dominance regime.

@@ -32,8 +32,8 @@ Prime gaps admit a deterministic reduced typing on the current surface. Each
 row records:
 
 - the first open even offset after the current prime;
-- the carrier family of the gap winner;
-- a divisor bucket for the winner.
+- the carrier family of the selected interior integer;
+- a divisor bucket for the selected integer.
 
 That reduction produces a finite alphabet that is stable across sampled decades
 from `10^7` through `10^18`.

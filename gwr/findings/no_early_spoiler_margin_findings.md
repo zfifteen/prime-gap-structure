@@ -55,11 +55,11 @@ The scan also records the current tightest margins on that surface:
 
 - smallest direct log-score margin:
   $$L(w) - L(k) \approx 0.9808292530$$
-  at the gap $(7, 11)$ with earlier candidate $8$ and winner $9$;
+  at the gap $(7, 11)$ with earlier candidate $8$ and selected integer $9$;
 - smallest critical-ratio margin:
   $$\frac{d(k) - 2}{d_{\min} - 2} - \frac{\ln w}{\ln k} \approx 0.0714285168$$
   at the gap $(2486509, 2486513)$ with earlier candidate
-  $2486510$, winner $2486512$, winner class $d_{\min}=30$, and earlier class
+  $2486510$, selected integer $2486512$, selected divisor-count class $d_{\min}=30$, and earlier class
   $d=32$.
 
 So the smallest direct score slack and the smallest ratio-form slack come from
@@ -74,7 +74,7 @@ candidate eventually loses to some later admissible composite.
 
 This margin scan is stronger in the direction that matters for `GWR`:
 
-- it compares every earlier candidate directly to the actual winner carrier
+- it compares every earlier candidate directly to the actual selected integer carrier
   $w$,
 - it records the tightest direct log-score slack,
 - and it records the tightest critical-ratio slack in the exact spoiler

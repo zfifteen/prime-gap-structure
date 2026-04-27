@@ -20,7 +20,7 @@ $$
 Here $d(n)$ means the number of positive divisors of $n$. In the project notes,
 this is the raw-$Z$ quantity.
 
-The implementation compares winners using its logarithm,
+The implementation compares selected integers using its logarithm,
 
 $$
 L(n) = \ln Z_{\mathrm{raw}}(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).
@@ -29,7 +29,7 @@ $$
 Because the logarithm is strictly increasing on positive inputs, maximizing
 $L(n)$ is equivalent to maximizing raw-$Z$.
 
-At the beginning, I was not looking for a simple winner rule.
+At the beginning, I was not looking for a simple selection rule.
 I was only trying to understand a repeated visual pattern: when I plotted this
 log-score across the interior of many prime gaps, the peak kept leaning toward
 the left side of the gap.
@@ -43,23 +43,23 @@ look like a profile. Some carriers sit high, some collapse deep negative, and
 the peak often leans toward the left side of the gap. That is exactly why the
 result was surprising once it appeared.
 
-The key local fact is visible in exemplar gaps: the log-score winner and the
-minimum-divisor leftmost winner land on the same carrier.
+The key local fact is visible in exemplar gaps: the log-score maximizer and the
+leftmost minimum-divisor integer land on the same carrier.
 
-![Exemplar prime gaps: the log-score winner and the GWR winner coincide](./plots/figure_01_exemplar_gap_profiles.png)
+![Exemplar prime gaps: the log-score maximizer and the GWR-selected integer coincide](./plots/figure_01_exemplar_gap_profiles.png)
 
 The top-left panel shows the smallest nontrivial eligible gap. The lower panels
 show tighter-margin examples where several interiors compete more closely. Even
-there, the black star marking the log-score winner sits exactly on the red ring
-marking the Gap Winner Rule winner.
+there, the black star marking the log-score maximizer sits exactly on the red ring
+marking the Gap Winner Rule selected integer.
 
 That identity is the main discovery.
 
-## The surprise was not that the winner leaned left
+## The surprise was not that the selected integer leaned left
 
-The surprise was that the winner collapsed completely.
+The surprise was that the selected integer collapsed completely.
 
-On the repository's current proof surface, the implemented log-score winner is
+On the repository's current proof surface, the implemented log-score maximizer is
 exactly the same as the integer
 selected by the simple rule:
 
@@ -71,7 +71,7 @@ That is the Gap Winner Rule (GWR).
 The important point is that GWR is not a loose summary. It was first an exact
 identity on the validation ladder, from exact runs at $10^6$ and
 $2 \times 10^7$ through sampled higher-scale windows out to $10^{12}$. The
-current repo proof surface closes that winner law rather than leaving it as a
+current repo proof surface closes that maximizer rule rather than leaving it as a
 proof-program target.
 
 ![GWR validation surface: every reported tested regime remains at match rate 1.0](./plots/figure_02_match_rate_surface.png)
@@ -81,49 +81,49 @@ line stays at match rate $1.0$ throughout. The anchor table beneath it keeps
 the gap counts readable without overloading the chart.
 
 So the headline is not “the log-score often agrees with a simpler rule.” The
-headline is: the log-score winner and the rule winner are the same point, and
-the repository now presents that winner law as closed.
+headline is: the log-score maximizer and the rule selection are the same point, and
+the repository now presents that maximizer rule as closed.
 
-## One winner law explains several separate-looking phenomena
+## One maximizer rule explains several separate-looking phenomena
 
 Before GWR, several observations looked like distinct facts:
 
-- $d(n)=4$ winners appeared unusually often,
-- winners appeared unusually often in the left half of the gap,
+- $d(n)=4$ selected integers appeared unusually often,
+- selected integers appeared unusually often in the left half of the gap,
 - edge-distance $2$ showed up again and again.
 
 Once GWR is in view, those observations compress into one mechanism.
 
-The divisor-count effect becomes clear when winners are compared against the
+The divisor-count effect becomes clear when selected integers are compared against the
 baseline availability of divisor classes across all interior composites.
 
-![Winner selection is strongly enriched toward low divisor-count classes](./plots/figure_03_divisor_enrichment.png)
+![Selected integer selection is strongly enriched toward low divisor-count classes](./plots/figure_03_divisor_enrichment.png)
 
 This plot is not showing raw counts. It is showing selection pressure. A bar
 above $1$ means that divisor class is chosen more often than its baseline
-availability would predict. The dominant winner classes are the lowest ones
+availability would predict. The dominant selected divisor-count classes are the lowest ones
 available, especially $d(n)=3$ and $d(n)=4$. On the tested prime-gap surface,
-the frequent winner class is $d(n)=4$ because it is the first abundant low-
+the frequent selected divisor-count class is $d(n)=4$ because it is the first abundant low-
 divisor class that regularly appears in gap interiors.
 
-The left-edge effect shows up just as clearly if winner positions are compared
+The left-edge effect shows up just as clearly if selected-integer positions are compared
 with the baseline distribution of all interior positions.
 
-![Winners cluster toward the left side of the gap](./plots/figure_04_normalized_position.png)
+![Selected integers cluster toward the left side of the gap](./plots/figure_04_normalized_position.png)
 
 The gray histogram is what you would get from all interior positions. The blue
-histogram is where the winners actually land. The winner mass is pulled left.
+histogram is where the selected integers actually land. The selected-integer mass is pulled left.
 
 The edge-distance view isolates this even more sharply.
 
-![Edge-distance 2 is heavily overrepresented among winners](./plots/figure_05_edge_distance.png)
+![Edge-distance 2 is heavily overrepresented among selected integers](./plots/figure_05_edge_distance.png)
 
 Edge-distance $2$ stands out immediately. That is not a separate law. It is one
-of the visible consequences of the same winner rule when low-divisor carriers
+of the visible consequences of the same selection rule when low-divisor carriers
 appear near the left endpoint of the gap.
 
 So the right reading is not that I discovered several unrelated regularities.
-The right reading is that one exact winner law explains them together.
+The right reading is that one exact maximizer rule explains them together.
 
 ## The first theorem temptation was stronger than the truth
 
@@ -166,7 +166,7 @@ everywhere.” It is “lower-or-equal divisor count wins when it occurs earlier
 
 That surviving statement is still powerful, because it suggests the prime-gap
 question is no longer about proving a score identity from nothing. The question
-becomes: why do prime-gap interiors appear always to place the winner inside
+becomes: why do prime-gap interiors appear always to place the selected integer inside
 that ordered-dominance regime?
 
 ## The proof bridge now lands
@@ -188,26 +188,26 @@ no-early-spoiler bridge eliminates every earlier higher-divisor candidate. The
 committed certificate puts the analytic bridge threshold below the exact
 finite base through $p < 20{,}000{,}001$.
 
-The heatmap below shows where the winners actually live on the tested prime-gap
+The heatmap below shows where the selected integers actually live on the tested prime-gap
 surface.
 
-![Winner mass concentrates in the low-divisor, left-side corner](./plots/figure_07_winner_heatmap.png)
+![Selected integer mass concentrates in the low-divisor, left-side corner](./plots/figure_07_winner_heatmap.png)
 
-The winner mass sits heavily in the low-divisor, left-side corner. That picture
+The selected-integer mass sits heavily in the low-divisor, left-side corner. That picture
 captures the whole story in one frame. The log-score looks continuous. The
-winner law looks discrete. The tested prime-gap interiors land in the corner
+maximizer rule looks discrete. The tested prime-gap interiors land in the corner
 where the discrete law wins.
 
 That is why GWR matters.
 
 It does not merely say that a geometric-looking score often peaks near the left
-edge. It says that the implemented log-score winner, equivalently the raw-$Z$
-winner, is governed by a simpler arithmetic law than the formula first
+edge. It says that the implemented log-score maximizer, equivalently the raw-$Z$
+selected integer, is governed by a simpler arithmetic law than the formula first
 suggests.
 
 The strongest supported statement at this stage is therefore:
 
-The Gap Winner Rule is a proved universal winner theorem in this repository,
+The Gap Winner Rule is a proved universal maximizer theorem in this repository,
 and it compresses several previously separate-looking observations into one
 selection rule.
 

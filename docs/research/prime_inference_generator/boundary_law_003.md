@@ -2,7 +2,7 @@
 
 Next-Prime Law 003 moves the first positive target away from the empty anchor-11
 chamber. The target is a chamber where PGS has actual interior structure: a
-composite interior, a definable GWR carrier, a divisor-count winner, and a
+composite interior, a definable GWR carrier, a divisor-count selected integer, and a
 closure condition that can be inspected without classical endpoint detection.
 
 This note uses the small chamber from anchor `13` to proposed endpoint `17` as
@@ -84,7 +84,7 @@ The leftmost carrier of that class is:
 
 $$w = 14$$
 
-The winner metadata is:
+The selection metadata is:
 
 - `winner_carrier_w: 14`
 - `winner_offset: 1`
@@ -109,10 +109,10 @@ by itself prove that the chamber endpoint is forced at `17`.
 
 ## No-Later-Simpler Closure
 
-Inside the proposed chamber after the winner:
+Inside the proposed chamber after the selected integer:
 
-- `15` has divisor count `4`, not lower than the winner;
-- `16` has divisor count `5`, not lower than the winner.
+- `15` has divisor count `4`, not lower than the selected integer;
+- `16` has divisor count `5`, not lower than the selected integer.
 
 There is no later lower-divisor interior threat before the proposed endpoint.
 
@@ -139,7 +139,7 @@ Therefore no smaller candidate next prime remains inside the proposed chamber.
 This establishes:
 
 - the proposed interior is closed;
-- the proposed chamber has a GWR winner;
+- the proposed chamber has a GWR-selected integer;
 - no smaller offset in the proposed chamber can be the endpoint.
 
 It does not establish that the first position after the closed carrier-bearing
@@ -179,7 +179,7 @@ fails to prove that the chamber structure forces the right endpoint.
 Pure mode may emit under `boundary_law_003` only when:
 
 1. the proposed interior has deterministic composite certificates;
-2. the proposed interior has a GWR-compatible winner;
+2. the proposed interior has a GWR-compatible selected integer;
 3. later lower-divisor threats are excluded or bounded by PGS structure;
 4. all smaller proposed endpoint positions are closed;
 5. a carrier-bearing uniqueness theorem forces `q_hat`.
@@ -188,7 +188,7 @@ Until those five conditions hold, pure mode must emit a failure record.
 
 ## Failure Contract
 
-If the carrier winner cannot be established, emit:
+If the carrier selected integer cannot be established, emit:
 
 - `rule_set_version: "boundary_law_003"`
 - `inference_status: "failed_closed"`

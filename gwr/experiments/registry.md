@@ -9,7 +9,7 @@ machine-readable outputs remain in the linked scripts and JSON artifacts.
 ## Decision Rule
 
 A tested regime validates `GWR` if and only if it contains zero counterexample
-gaps where the raw-`Z` winner differs from the minimum-divisor leftmost winner.
+gaps where the raw-`Z` selected integer differs from the leftmost minimum-divisor integer.
 
 ## Registered Surfaces
 

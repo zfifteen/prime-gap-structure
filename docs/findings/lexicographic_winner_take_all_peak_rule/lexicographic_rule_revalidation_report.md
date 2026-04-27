@@ -14,7 +14,7 @@ The Lexicographic Winner-Take-All Peak Rule states that inside every prime gap (
 Z(n) = (1 - d(n)/2) \cdot \ln(n)
 \\]
 
-is identical to the "lexicographic winner": the interior integer with the smallest divisor count d(n), and among ties, the leftmost (smallest n). The rule predicts zero counterexamples across all tested prime gaps.
+is identical to the "leftmost minimizer": the interior integer with the smallest divisor count d(n), and among ties, the leftmost (smallest n). The rule predicts zero counterexamples across all tested prime gaps.
 
 This report describes an independent reproduction and extension of the original validation. The prior tested surface comprised 4,423,459 gaps (exact at 10^6 and 10^7, sampled windows up to 10^18) with zero counterexamples.
 
@@ -45,12 +45,12 @@ semiprime, using the upgraded exact interval path now committed in the main
 repo. The implementation was validated against SymPy's `divisor_count` at
 multiple scales, including a near-`10^18` unit check.
 
-### Lexicographic winner comparison
+### Leftmost minimizer comparison
 
 For each prime gap with length >= 4, the validation layer independently computes:
 
 1. **Raw-Z argmax** (`best_n_z`, `best_d_z`): the interior integer maximizing the score array
-2. **Lexicographic winner** (`best_n_lex`, `best_d_lex`): min d(n) among interior integers, then leftmost among ties
+2. **Leftmost minimizer** (`best_n_lex`, `best_d_lex`): min d(n) among interior integers, then leftmost among ties
 
 A gap is flagged as a counterexample if `best_n_z != best_n_lex` or `best_d_z != best_d_lex`.
 
@@ -80,7 +80,7 @@ Full enumeration of all prime gaps from 2 up to new limits not present in the or
 
 The 5M limit is a new range not in the original validation JSON. The 10M run reproduces the original 10^7 result exactly (605,597 gaps, max gap 154, min margin ~1e-07), confirming pipeline correctness.
 
-**Tightest margin at 5M:** Gap (4999889, 4999913), length 24. Winner n = 4999894, d = 4. Margin = 2.00e-07.
+**Tightest margin at 5M:** Gap (4999889, 4999913), length 24. Selected integer n = 4999894, d = 4. Margin = 2.00e-07.
 
 ### Experiment B: Sampled Higher-Scale Validations
 
@@ -123,11 +123,11 @@ Enrichment statistics computed at three scales using even-window mode (4 windows
 
 **Key findings:**
 
-- **d(n)=4 dominance:** ~82.5% of raw-Z winners have exactly 4 divisors across all tested scales, compared to a ~15-18% baseline rate among interior integers. The enrichment ratio grows from 4.6x at 10^7 to 5.4x at 10^11, reflecting the declining baseline frequency of d=4 integers at larger scales while the winner share remains stable.
+- **d(n)=4 dominance:** ~82.5% of raw-Z maximizers have exactly 4 divisors across all tested scales, compared to a ~15-18% baseline rate among interior integers. The enrichment ratio grows from 4.6x at 10^7 to 5.4x at 10^11, reflecting the declining baseline frequency of d=4 integers at larger scales while the selected-integer share remains stable.
 
-- **Left-edge dominance:** 75-77% of winners fall in the left half of their gap, with only ~16% in the right half. This is consistent with the lexicographic tie-breaking rule (leftmost among minimal-d carriers).
+- **Left-edge dominance:** 75-77% of selected integers fall in the left half of their gap, with only ~16% in the right half. This is consistent with the lexicographic tie-breaking rule (leftmost among minimal-d carriers).
 
-- **Edge-distance-2 enrichment:** Winners appear at edge-distance 2 roughly 2x more often than the baseline expectation, stable across all scales. This follows from the fact that p+2 is the first available odd composite position after a prime p.
+- **Edge-distance-2 enrichment:** Selected integers appear at edge-distance 2 roughly 2x more often than the baseline expectation, stable across all scales. This follows from the fact that p+2 is the first available odd composite position after a prime p.
 
 ### Experiment D: Alternative Scoring Functions
 
@@ -150,7 +150,7 @@ All three scoring functions produce zero counterexamples. This confirms that the
 
 ### Counterexample status
 
-**No counterexamples were found in any experiment.** Across all four experiments, 8,336,508 prime gaps were tested with three window selection strategies, at scales from 2 through 10^12, under three different scoring functions. Every tested gap produced an exact match between the raw-Z argmax and the lexicographic winner.
+**No counterexamples were found in any experiment.** Across all four experiments, 8,336,508 prime gaps were tested with three window selection strategies, at scales from 2 through 10^12, under three different scoring functions. Every tested gap produced an exact match between the raw-Z argmax and the leftmost minimizer.
 
 Combined with the original validation surface of 4,423,459 gaps (up to sampled windows at 10^18), the total tested surface now comprises **12,759,967 prime gaps with zero counterexamples**.
 
@@ -160,8 +160,8 @@ Combined with the original validation surface of 4,423,459 gaps (up to sampled w
 |:-----------|:-------|
 | Zero counterexamples on new ranges | Confirmed |
 | Zero counterexamples with different window seeds | Confirmed |
-| d(n)=4 enrichment in winners (>>baseline) | Confirmed (4.6-5.4x enrichment) |
-| Left-edge dominance of winners | Confirmed (75-77% left share) |
+| d(n)=4 enrichment in selected integers (>>baseline) | Confirmed (4.6-5.4x enrichment) |
+| Left-edge dominance of selected integers | Confirmed (75-77% left share) |
 | Edge-distance-2 enrichment | Confirmed (~2.0x stable across scales) |
 | Robustness to small perturbations of f(n) | Confirmed (zero CX under log(n+1) and log(n)+eps*n^(-1/2)) |
 

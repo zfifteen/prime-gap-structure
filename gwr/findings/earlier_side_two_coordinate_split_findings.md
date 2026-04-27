@@ -62,13 +62,13 @@ The current exact leader recorded in
 is:
 
 - gap `(7, 11)`,
-- winner `w = 9` with `d(w) = 3`,
+- selected integer `w = 9` with `d(w) = 3`,
 - earlier candidate `k = 8` with `d(k) = 4`,
 - direct margin
   $L(w) - L(k) \approx 0.9808292530$.
 
 So the smallest direct slack currently observed is controlled by the smallest
-winner classes together with tiny offsets and the minimal divisor jump
+selected divisor-count classes together with tiny offsets and the minimal divisor jump
 `delta = 1`.
 
 That is exactly the kind of regime already handled by the live local
@@ -97,7 +97,7 @@ is led instead by adjacent higher divisor classes such as:
 The exact current leader is:
 
 - gap `(2486509, 2486513)`,
-- winner `w = 2486512` with `d(w) = 30`,
+- selected integer `w = 2486512` with `d(w) = 30`,
 - earlier candidate `k = 2486510` with `d(k) = 32`,
 - critical-ratio margin about `0.0714285168`,
 - direct margin about `14.7263794181`.
@@ -129,7 +129,7 @@ specific claim `D0 = 8`, `eta = 6`:
 ### Example 1
 
 - gap `(439, 443)`,
-- winner `w = 442` with `d(w) = 8`,
+- selected integer `w = 442` with `d(w) = 8`,
 - earlier candidate `k = 441` with `d(k) = 9`.
 
 Then
@@ -145,7 +145,7 @@ This is positive, but it is already well below `6`.
 ### Example 2
 
 - gap `(149767, 149771)`,
-- winner `w = 149769` with `d(w) = 15`,
+- selected integer `w = 149769` with `d(w) = 15`,
 - earlier candidate `k = 149768` with `d(k) = 16`.
 
 Then
@@ -189,7 +189,7 @@ by itself does not move the inequality in the right direction for a uniform
 positive lower bound.
 
 To prove a universal high-class margin theorem of this type, one would also
-need an effective upper control on `d(w)` in the winner population.
+need an effective upper control on `d(w)` in the selected integer population.
 
 The current explicit tools do not supply that to infinity without reintroducing
 the same bounded-regime obstruction that already limited the old bridge.
@@ -197,7 +197,7 @@ the same bounded-regime obstruction that already limited the old bridge.
 In particular:
 
 - Dusart's explicit gap bound gives only a bounded unconditional window;
-- universal divisor majoration still lets the winner class grow;
+- universal divisor majoration still lets the selected divisor-count class grow;
 - so the naive analytic route does not yield one infinite-range constant
   `eta(D0)` from a lower bound on `d(w)` alone.
 
@@ -236,7 +236,7 @@ earlier side:
 Use the existing local admissibility theorem and the residual low-class closure
 artifacts for the only regime where absolute score danger is real.
 
-This is already the live exact closure mechanism for the small winner classes.
+This is already the live exact closure mechanism for the small selected divisor-count classes.
 
 ### 2. Capped-Class Margin Lemma
 
@@ -274,7 +274,7 @@ The current evidence says those questions are answered by different families.
 So the cleaner architecture is:
 
 - local exact closure for genuine danger,
-- bounded-band margin control for moderate winner classes,
+- bounded-band margin control for moderate selected divisor-count classes,
 - reducer logic for the unbounded tail.
 
 That is a better scientific shape than forcing one bridge load to carry all
@@ -291,7 +291,7 @@ The immediate next probes suggested by this split are:
 3. Can the observed ratio-tight high-class population be explained by a local
    censorship law about which adjacent divisor-class patterns can actually
    occur in prime-gap interiors?
-4. Is there a sharper reducer that uses actual winner occurrence constraints,
+4. Is there a sharper reducer that uses actual selected integer occurrence constraints,
    not only minimal integers with a given divisor count?
 
 ## Safe Summary

@@ -59,7 +59,7 @@ One controller reaches the pooled-window target. A different controller reaches
 the stationary three-step target. No single tested controller reaches both at
 once.
 
-## The Pooled-Window Winner
+## The Pooled-Window Selected integer
 
 The best pooled-window controller is the event-lock controller with `L = 3`.
 
@@ -86,7 +86,7 @@ Its stationary walk improves materially as well:
 That is much better than the hybrid baseline `0.4966`, but still below the
 `0.62` stationary target.
 
-## The Stationary Winner
+## The Stationary Selected integer
 
 The best stationary controller in the tested family is the event-lock
 controller with `L = 6`.

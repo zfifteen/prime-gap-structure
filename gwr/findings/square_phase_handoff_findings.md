@@ -1,6 +1,6 @@
 # Square-Phase Underuse Predicts Next-Triad Return
 
-This note records a new one-step handoff finding for the `d = 4` winner
+This note records a new one-step handoff finding for the `d = 4` selected integer
 surface.
 
 The strongest supported result is:
@@ -8,7 +8,7 @@ The strongest supported result is:
 current `d = 4` square-phase utilization is not only a endpoint observable of
 the current gap. It is also a next-gap handoff variable.
 
-When current `d = 4` gaps are matched by the same local winner geometry, the
+When current `d = 4` gaps are matched by the same local selected integer geometry, the
 lower-utilization half returns the next gap to the odd-semiprime triad more
 often than the higher-utilization half does.
 
@@ -18,7 +18,7 @@ $$U_{\square}(w, q) = \frac{q - w}{S_{+}(w) - w},$$
 
 where:
 
-- $w$ is the current `d = 4` winner,
+- $w$ is the current `d = 4` selected integer,
 - $q$ is the right endpoint prime of that same gap,
 - and $S_{+}(w)$ is the next prime square after $w$.
 
@@ -39,19 +39,19 @@ Artifacts:
   [`../../output/gwr_square_phase_handoff_strata.csv`](../../output/gwr_square_phase_handoff_strata.csv)
 
 The current executed surface uses the already-committed gap-type catalog detail
-CSV and extracts only transitions whose current gap has `d = 4` winner:
+CSV and extracts only transitions whose current gap has `d = 4` selected integer:
 
 - exact baseline through `current_right_prime <= 10^6`,
 - pooled sampled decade windows from `10^12` through `10^18`.
 
 ## Main Controlled Readout
 
-The primary matched comparison keeps current carrier family, current winner
+The primary matched comparison keeps current carrier family, current selected integer
 offset, and current first-open offset fixed, then compares the lower-
 utilization half of each stratum against the higher-utilization half of the
 same stratum.
 
-### All Current `d = 4` Winners
+### All Current `d = 4` Selected integers
 
 | Surface | Matched half-pairs | Low-utilization next-triad share | High-utilization next-triad share | Lift |
 |---|---:|---:|---:|---:|
@@ -71,14 +71,14 @@ Adding current gap width to the same stratum key leaves the sign unchanged:
 | pooled windows `10^12..10^18` | `134` | `0.7164` | `0.6567` | `+0.0597` |
 
 So the effect is not removed by conditioning on width in addition to family,
-winner offset, and first-open offset.
+selected-integer offset, and first-open offset.
 
 ## Odd-Semiprime-Only Check
 
 The dominant family shows the same sign after removing the family mixture
 entirely.
 
-Match only on current winner offset and current first-open offset inside the
+Match only on current selected-integer offset and current first-open offset inside the
 odd-semiprime `d = 4` population:
 
 | Surface | Matched half-pairs | Low-utilization next-triad share | High-utilization next-triad share | Lift |
@@ -131,7 +131,7 @@ closure.
 ## Decision Rule
 
 For current `d = 4` gaps, if two rows share the same current carrier family,
-current winner offset, and current first-open offset, predict the row with
+current selected-integer offset, and current first-open offset, predict the row with
 smaller `U_square(w, q)` to return the next gap to the odd-semiprime triad
 more often than the row with larger `U_square(w, q)`.
 

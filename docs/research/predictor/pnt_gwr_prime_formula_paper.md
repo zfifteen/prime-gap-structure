@@ -70,31 +70,31 @@ where d(n) is the number of divisors of n. The equivalent log-score is
 
 giving L(a) > L(b). QED.
 
-**Corollary.** Among an ordered set of composites, the L-maximizer is the earliest composite with the smallest divisor count. This is called the **lexicographic winner**.
+**Corollary.** Among an ordered set of composites, the L-maximizer is the earliest composite with the smallest divisor count. This is called the **leftmost minimizer**.
 
 ### 2.3 The Gap Winner Rule
 
-**Definition.** For a prime gap (p, q) with at least one composite interior, the **Gap Winner Rule (GWR)** asserts that the L-score argmax over interior composites is identical to the lexicographic winner: the leftmost interior composite with minimum divisor count.
+**Definition.** For a prime gap (p, q) with at least one composite interior, the **Gap Winner Rule (GWR)** asserts that the L-score argmax over interior composites is identical to the leftmost minimizer: the leftmost interior composite with minimum divisor count.
 
     w = argmax L(n) for p < n < q
       = min{ n in (p,q) : d(n) = d_min(p,q) }
 
 where d_min(p,q) = min{ d(n) : p < n < q, n composite }.
 
-**Repo status.** `GWR` is the proved universal winner theorem on the repository's current proof surface. The measured validation ladder reports zero counterexamples on the full tested surface: exact scan to `2 * 10^7`, deterministic even-band windows at every decade from `10^8` through `10^18`.
+**Repo status.** `GWR` is the proved universal maximizer theorem on the repository's current proof surface. The measured validation ladder reports zero counterexamples on the full tested surface: exact scan to `2 * 10^7`, deterministic even-band windows at every decade from `10^8` through `10^18`.
 
 ### 2.4 The Dominant d=4 Regime
 
 Among all prime gaps on the tested surface:
 
-- 82.5% of gaps have a winner with d(w) = 4 at scale 2*10^7.
-- The d=4 winner share stabilizes near 82.7% through 10^18.
-- When d(w) = 4, the winner is always the **first** interior d=4 composite.
-- No interior prime square appears in any d=4 winner gap on the tested surface.
+- 82.5% of gaps have a selected integer with d(w) = 4 at scale 2*10^7.
+- The d=4 selected-integer share stabilizes near 82.7% through 10^18.
+- When d(w) = 4, the selected integer is always the **first** interior d=4 composite.
+- No interior prime square appears in any d=4 selected integer gap on the tested surface.
 
 The dominant regime reduces GWR to a local rule: **no interior prime square, then first interior d=4 wins.**
 
-The d=4 composites are exactly the semiprimes (n = p*q, distinct primes) and prime cubes (n = p^3). Prime-cube winners are rare (approximately 1.56*10^-5 of d=4 winners) but do occur; the first example is 6859 = 19^3 in gap (6857, 6863).
+The d=4 composites are exactly the semiprimes (n = p*q, distinct primes) and prime cubes (n = p^3). Prime-cube selected integers are rare (approximately 1.56*10^-5 of d=4 selected integers) but do occur; the first example is 6859 = 19^3 in gap (6857, 6863).
 
 ### 2.5 The No-Later-Simpler-Composite Closure Corollary
 
@@ -102,7 +102,7 @@ The d=4 composites are exactly the semiprimes (n = p*q, distinct primes) and pri
 
     T_<(w) = min{ n > w : d(n) < d(w) }.
 
-**Corollary.** For every prime gap (p, q) with GWR winner w:
+**Corollary.** For every prime gap (p, q) with GWR-selected integer w:
 
     q <= T_<(w).
 
@@ -154,7 +154,7 @@ This is computable in O(ln p_n) steps since d=4 composites have density approxim
 
     nextprime( W( S*(n) ) ) = p_n  exactly.
 
-**Proof sketch.** Since S*(n) > p_{n-1}, the witness W(S*(n)) is the first d_min composite in (p_{n-1}, p_n), which by GWR is the gap winner w_n. Since w_n in (p_{n-1}, p_n), the next prime after w_n is p_n. QED.
+**Proof sketch.** Since S*(n) > p_{n-1}, the witness W(S*(n)) is the first d_min composite in (p_{n-1}, p_n), which by GWR is the selected interior integer w_n. Since w_n in (p_{n-1}, p_n), the next prime after w_n is p_n. QED.
 
 **What this means.** There are no correction terms. No residual. The structure does all the work. This is categorically different from every Cipolla-family formula, which takes the form
 
@@ -164,7 +164,7 @@ and always retains nonzero residual from truncating the asymptotic series.
 
 ### 3.3 The Closure Bound
 
-For any gap with a d=4 winner, the prime satisfies:
+For any gap with a d=4 selected integer, the prime satisfies:
 
     p_n <= S_+(W(S*(n))).
 
@@ -368,10 +368,10 @@ print(f"d=4 gaps tested: {count}, violations: {len(v)}")  # Expected: 0
 **C1 (Zero-Residual Property).** For every prime gap (p_{n-1}, p_n) and any seed s in (p_{n-1}, p_n): nextprime(W_{d_min}(s)) = p_n exactly.
 *Status: zero violations, 63,064 gaps tested, all gap types.*
 
-**C2 (GWR Dominant Regime).** In approximately 82.7% of prime gaps at scale, the GWR winner has d(w) = 4 and equals the first interior d=4 composite.
+**C2 (GWR Dominant Regime).** In approximately 82.7% of prime gaps at scale, the GWR-selected integer has d(w) = 4 and equals the first interior d=4 composite.
 *Status: zero violations, 2*10^7 exact, even-band ladder to 10^18.*
 
-**C3 (Closure Ceiling).** For every d=4 winner gap, p_n <= S_+(w). Minimum observed margin is 2, at every scale from 10^6 through 10^18.
+**C3 (Closure Ceiling).** For every d=4 selected integer gap, p_n <= S_+(w). Minimum observed margin is 2, at every scale from 10^6 through 10^18.
 *Status: zero violations.*
 
 **C4 (Formula Architecture).** The formula p_n = nextprime(W(S*(n))) is exact when the placement condition holds, requires no additive correction terms, and is computationally efficient.

@@ -86,9 +86,9 @@ Failure reason:
 Statement:
 
 The endpoint must occur before the first later lower-divisor threat overtakes
-the GWR winner.
+the GWR-selected integer.
 
-For a winner `w`, define:
+For a selected integer `w`, define:
 
 $$T_{<}(w) = \min \{m > w : d(m) < d(w)\}$$
 
@@ -210,7 +210,7 @@ No candidate predicate in this note currently forces a endpoint.
 
 The strongest supported result is:
 
-PGS chamber certificates can establish interior closure, GWR winners,
+PGS chamber certificates can establish interior closure, GWR-selected integers,
 leftmost-minimum carriers, and local no-later-simpler consistency. They do not
 yet imply a unique next prime.
 

@@ -27,7 +27,7 @@ For every chain-horizon (or chain-fallback) case that occurs in your high-scale 
     - seed offset `s₀`
     - full list of chain offsets / residues mod 30
     - chamber width used
-    - GWR carrier (winner) location & divisor class in the chamber
+    - GWR carrier (selected integer) location & divisor class in the chamber
     - any NLSC-derived ceilings or visible divisor-class relations already computed
 
 Then ask:

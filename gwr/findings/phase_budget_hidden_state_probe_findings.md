@@ -10,7 +10,7 @@ On this pooled surface, the three-value label
 - `d4_low`,
 - `d4_high`,
 
-beats current winner parity as a next-triad predictor, and it still adds pooled signal after parity and previous reduced state are already present.
+beats current selected integer parity as a next-triad predictor, and it still adds pooled signal after parity and previous reduced state are already present.
 
 ## Phase-Budget Definition
 
@@ -21,7 +21,7 @@ $$U_{\square}(w, q) = \frac{q - w}{S_{+}(w) - w}.$$
 Then, inside each current local-geometry cell
 
 - carrier family,
-- winner offset,
+- selected-integer offset,
 - first-open offset,
 
 split rows at the exact pooled median of $U_{\square}(w, q)$.
@@ -55,7 +55,7 @@ So on the retained pooled surface, the low-budget and high-budget `d = 4` halves
 
 Restrict to populated `d = 4` strata keyed only by:
 
-- current winner parity,
+- current selected integer parity,
 - previous reduced state.
 
 Inside those already-existing hidden-state cells:
@@ -70,7 +70,7 @@ the budget split keeps working inside the parity-plus-previous-state cells thems
 
 ## Reading
 
-The existing hidden-state story says the next gap remembers where it came from and whether the current winner is even or odd.
+The existing hidden-state story says the next gap remembers where it came from and whether the current selected integer is even or odd.
 
 The new readout says that is still incomplete. The current row also carries a one-bit record of how much of its local square budget it used before closure. That budget bit is pooled, measurable, and predictive on top of the current hidden-state candidate.
 
@@ -78,7 +78,7 @@ This is a bounded pooled-window claim, not yet a theorem and not yet a per-power
 
 ## Decision Rule
 
-On retained high-scale windows, do not treat two rows with the same current winner parity and the same previous reduced state as equivalent when one is `d4_low` and the other is `d4_high`.
+On retained high-scale windows, do not treat two rows with the same current selected integer parity and the same previous reduced state as equivalent when one is `d4_low` and the other is `d4_high`.
 
 Score the `d4_low` row as more likely to return the next gap to the odd-semiprime triad.
 

@@ -9,7 +9,7 @@ as a theorem independent of `GWR` is still open.
 That is the exact independence question:
 
 Can the right-flank closure law be proved directly as a prime-gap theorem,
-without first proving the full winner law?
+without first proving the full maximizer rule?
 
 ## 1. Exact Statement
 
@@ -17,7 +17,7 @@ Let $(p, q)$ be a prime gap and let
 
 $$w = \arg\max_{p < n < q} L(n)$$
 
-be the implemented raw-$Z$ log-score winner on the interior composites, where
+be the implemented raw-$Z$ log-score maximizer on the interior composites, where
 
 $$L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).$$
 
@@ -31,7 +31,7 @@ $$q \le T_{<}(w).$$
 
 In ordinary language:
 
-once the score winner appears, the next prime closes the gap before any later
+once the score maximizer appears, the next prime closes the gap before any later
 strictly simpler composite can appear.
 
 ## 2. What Is Already Closed
@@ -39,9 +39,9 @@ strictly simpler composite can appear.
 On the current repo proof surface, this statement is already an exact
 corollary of `GWR`.
 
-If `GWR` holds on the gap, then the winner is the leftmost carrier of the
+If `GWR` holds on the gap, then the selected integer is the leftmost carrier of the
 minimal divisor class present in the gap. A later interior composite with
-strictly smaller divisor count would contradict that winner description
+strictly smaller divisor count would contradict that selected integer description
 immediately.
 
 So the logical status is:
@@ -79,7 +79,7 @@ already-closed left-flank theorem.
 
 ## 4. The Right Object
 
-The direct theorem should be read as a prime-placement law, not as a winner
+The direct theorem should be read as a prime-placement law, not as a selected integer
 ranking law.
 
 The quantity that matters is the closure margin
@@ -96,7 +96,7 @@ class can enter.
 
 ## 5. Dominant Reduction
 
-On the measured surface, the dominant winner class is $d(w)=4$.
+On the measured surface, the dominant selected divisor-count class is $d(w)=4$.
 
 In that regime, the next strictly smaller divisor class is $d=3$, and among
 composites that means prime squares exactly. So the threat horizon becomes
@@ -124,14 +124,14 @@ full statement that $w$ is the leftmost minimum-divisor carrier of the gap.
 
 The narrow program is:
 
-1. Fix the score winner $w$ directly from the implemented score.
+1. Fix the score maximizer $w$ directly from the implemented score.
 2. Control the first later lower-divisor arrival $T_{<}(w)$.
 3. Show that the prime endpoint $q$ must occur before that threat horizon.
 
 For the dominant $d=4$ branch, step 2 is explicit because the threat is the
 next prime square. So the first serious direct theorem target is:
 
-$$q \le S_{+}(w) \quad \text{for every gap whose score winner has } d(w)=4.$$
+$$q \le S_{+}(w) \quad \text{for every gap whose score maximizer has } d(w)=4.$$
 
 If that branch closes independently, the remaining work becomes a sparse
 low-class residual problem rather than the whole theorem at once.
@@ -155,7 +155,7 @@ content of its own.
 
 It already holds exactly as a corollary of `GWR`. What remains open is whether
 prime gaps force that same closure law directly, without first proving the full
-interior winner theorem.
+interior maximizer theorem.
 
 That is the clean hierarchical gap still left in the current prime-gap
 structure program.

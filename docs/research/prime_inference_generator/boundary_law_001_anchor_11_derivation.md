@@ -101,10 +101,10 @@ endpoint.
 GWR normally identifies the leftmost carrier of the minimum divisor-count class
 inside a prime-gap interior. DNI and no-later-simpler closure use that carrier
 to constrain where the right endpoint must arrive before a later lower-divisor
-threat overtakes the winner.
+threat overtakes the selected integer.
 
 For the proposed anchor-11 chamber ending at offset `2`, there is no positive
-open composite carrier before the candidate next prime. The winner fields are
+open composite carrier before the candidate next prime. The selection fields are
 therefore null:
 
 - `winner_carrier_w: null`

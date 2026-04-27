@@ -2,7 +2,7 @@
 
 This note records one cross-file conclusion from the current repository.
 
-The key point is not only that the main winner claim keeps surviving checked
+The key point is not only that the main selected integer claim keeps surviving checked
 runs.
 
 The stronger point is this:
@@ -27,7 +27,7 @@ In ordinary language:
 
 - divisor counts alone leave many unresolved patterns,
 - actual prime gaps seem to block most of those patterns from appearing,
-- so the remaining burden behind the winner claim is likely a theorem about
+- so the remaining burden behind the selected integer claim is likely a theorem about
   which interior divisor-count patterns real prime gaps can contain.
 
 That is stronger than saying only that no counterexample has been found.
@@ -78,15 +78,15 @@ On the exact run through `2 × 10^7`:
 So the hard cases are not drifting into a long high-divisor tail.
 They are being squeezed into a small low-divisor part of the problem.
 
-### 3. The exact earlier-versus-winner check stays safely away from failure
+### 3. The exact earlier-versus-selected integer check stays safely away from failure
 
 The
-[note on exact earlier-versus-winner margins](./no_early_spoiler_margin_findings.md)
-records the exact comparison that matters most for the winner claim:
+[note on exact earlier-versus-selected integer margins](./no_early_spoiler_margin_findings.md)
+records the exact comparison that matters most for the selected integer claim:
 
 - `1163198` prime gaps with composite interior,
-- `3349874` earlier interior candidates before the true winner,
-- `0` earlier interior candidates beating that winner.
+- `3349874` earlier interior candidates before the true selected integer,
+- `0` earlier interior candidates beating that selected integer.
 
 The same note records:
 
@@ -94,7 +94,7 @@ The same note records:
   $L(w) - L(k) \approx 0.9808292530$
   at the gap `(7, 11)`,
 - smallest ratio margin about `0.0714285168`
-  at the gap `(2486509, 2486513)` with winner divisor count `30`
+  at the gap `(2486509, 2486513)` with selected integer divisor count `30`
   and earlier divisor count `32`.
 
 So the exact checked range is not merely free of counterexamples.
@@ -120,7 +120,7 @@ On the full exact run through `2 × 10^7`, the repository records:
   $B_{\max} \approx 0.0566416671$.
 
 That largest value occurs at the tiny gap `(7, 11)`, with earlier candidate
-`8` and winner `9`.
+`8` and selected integer `9`.
 
 So the hardest exact checked case currently uses only about `5.66%` of what
 would be needed to fail.
@@ -155,7 +155,7 @@ records zero observed later-side failures on:
 - deterministic even-band windows at every decade from `10^8` through
   `10^18`.
 
-In the common case where the winner has four divisors, that same note records
+In the common case where the selected integer has four divisors, that same note records
 positive margin against the next prime-square threat on every tested range.
 
 So the later side does not show a scale-driven collapse on the checked ranges.
@@ -251,7 +251,7 @@ It is whether actual prime-gap interiors obey stricter local rules than
 divisor-count algebra alone can see.
 
 If so, the deeper theorem would say which divisor-count patterns consecutive
-primes are allowed to leave behind before the winner and before the gap ends.
+primes are allowed to leave behind before the selected integer and before the gap ends.
 
 ## Testable Predictions
 
@@ -287,7 +287,7 @@ The infinite unresolved families from divisor-count algebra should continue to
 fail as broad sources of actual prime-gap counterexamples.
 
 If one of those abstract families begins to appear repeatedly as actual
-winner-versus-earlier geometry inside checked gaps, this reading is directly
+selected integer-versus-earlier geometry inside checked gaps, this reading is directly
 threatened.
 
 ### Prediction 4: searches based on local structure should outperform searches based only on scale
@@ -309,7 +309,7 @@ finding the hardest cases, this reading weakens.
 
 This note does not claim:
 
-- a proof of the main winner claim for all prime gaps,
+- a proof of the main selected integer claim for all prime gaps,
 - a proof that every unresolved divisor-count family is impossible in actual
   prime gaps,
 - a global theorem about prime counts,
@@ -328,10 +328,10 @@ express.
 
 The safest strong statement is:
 
-the repository now supports a new proof-facing reading of the winner claim:
+the repository now supports a new proof-facing reading of the selected integer claim:
 the main missing ingredient may be a theorem about which divisor-count patterns
 can actually occur inside real gaps between consecutive primes.
 
-If that reading is right, then the deeper theorem behind the current winner
+If that reading is right, then the deeper theorem behind the current selected integer
 picture is not only about which composite wins. It is also about which gap
 interiors are possible at all.

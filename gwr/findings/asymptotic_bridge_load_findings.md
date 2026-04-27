@@ -36,9 +36,9 @@ On the exact through-$2 \cdot 10^7$ surface:
 
 That maximum normalized load occurs at the gap $(7, 11)$ with:
 
-- winner $w = 9$,
+- selected integer $w = 9$,
 - earlier candidate $k = 8$,
-- winner class $d_{\min} = 3$,
+- selected divisor-count class $d_{\min} = 3$,
 - earlier class $d = 4$.
 
 So on the current exact surface, even the hardest normalized case uses only

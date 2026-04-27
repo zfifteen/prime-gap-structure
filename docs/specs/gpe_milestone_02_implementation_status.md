@@ -6,8 +6,8 @@ branch validation surface, not as a completed selector theorem.
 For one exact oracle row, the implemented surface records:
 
 - current prime $q$,
-- GWR winner $w$,
-- winner divisor class $d(w)$,
+- GWR-selected integer $w$,
+- selected divisor-count class $d(w)$,
 - exact right endpoint $q^+$ from the existing oracle,
 - the branch horizon $S_{+}(w)$ when $d(w)=4$,
 - the square-ceiling margin $S_{+}(w)-q^+$,
@@ -98,7 +98,7 @@ The non-$d(w)=4$ row $q=23$ remains an explicit unresolved branch target:
 
 The committed catalog at
 [`../../output/gwr_dni_gap_type_catalog_details.csv`](../../output/gwr_dni_gap_type_catalog_details.csv)
-contains `81,569` rows. Its observed winner classes include many non-$4$
+contains `81,569` rows. Its observed selected divisor-count classes include many non-$4$
 branches, and its $d(w)=4$ surface contains `60,726` rows.
 
 On that surface, reduced $d(w)=4$ type keys are not next-prime selectors. For

@@ -4,7 +4,7 @@ I think there is one real terminology issue here, and fixing it makes the
 theorem easier to see. Low-divisor carriers are not highly composite numbers in
 the standard sense. Composite just means not prime. Highly composite means a
 record-setting number of divisors among all smaller integers. The dominant
-winner layer in these gaps is usually divisor-count four, which is low-divisor,
+selected integer layer in these gaps is usually divisor-count four, which is low-divisor,
 not highly composite.
 
 ![Term clarity schematic separating composite, low-divisor, and highly composite](./term_clarity_schematic.png)
@@ -21,16 +21,16 @@ The theorem also has to control what happens before that point and after it.
 
 ---
 
-The actual theorem is gap-local and three-part. First, the winner is the first
+The actual theorem is gap-local and three-part. First, the selected integer is the first
 appearance of the lowest divisor class present in the gap. Second, every
 earlier spoiler is beaten by some later admissible composite. Third, no later
 strictly simpler composite appears before the gap closes. Those three facts
-together force the score winner. That is stronger than saying the score leans
+together force the score maximizer. That is stronger than saying the score leans
 left or that numbers near primes are composite-rich.
 
-![Three-part theorem structure that forces the winner](./theorem_structure_schematic.png)
+![Three-part theorem structure that forces the selected integer](./theorem_structure_schematic.png)
 
-![Example gaps where the score winner and the arithmetic winner coincide](./exemplar_gap_profiles.png)
+![Example gaps where the score maximizer and the arithmetic selection coincide](./exemplar_gap_profiles.png)
 
 ---
 

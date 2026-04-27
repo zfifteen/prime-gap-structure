@@ -10,9 +10,9 @@ exact arithmetic recovery.
 The implemented solution changes the role of that shadow. The composite
 candidate is no longer treated as a failed answer. It is treated as a placed
 seed inside the current gap. From that seed, the generator performs a
-deterministic rightward recovery and emits the first boundary it reaches. That
+deterministic rightward recovery and emits the first endpoint it reaches. That
 recovery is an operational bridge because the terminal selection still uses
-exact divisor arithmetic. It is not yet a pure PGS boundary rule. The emitted
+exact divisor arithmetic. It is not yet a pure PGS next-prime selection rule. The emitted
 stream remains exactly:
 
 ```json
@@ -41,7 +41,7 @@ This worked completely on the exact low-scale surfaces:
 | `11..1000000` | 78,494 | 78,494 | 0 | 100.00% | 0.00% |
 
 At high scale, the same rule exposed a repeatable failure mode. The selected
-candidate was usually a composite to the left of the true boundary. Those rows
+candidate was usually a composite to the left of the true next prime. Those rows
 were not random misses; they were semiprime-shadow rows. The chain bridge made
 them operationally correct, but the bridge did not solve the PGS displacement
 target because it still depended on a non-PGS terminal decision.
@@ -75,7 +75,7 @@ sqrt-adjacent lane
 ```
 
 That was a real diagnostic improvement, but the half-square-root closure was a
-generic two-sided divisor-search comparator, not a PGS boundary law.
+generic two-sided divisor-search comparator, not a PGS next-prime law.
 
 The decisive shift was to stop asking which chain node looked terminal and to
 ask what the false chamber candidate actually represented. The false candidate
@@ -101,7 +101,7 @@ Generation order is now:
    `pgs_chamber_closure_v2`.
 4. If `q0` is composite, treat `q0` as the shadow seed.
 5. Run `shadow_seed_gwr_recovery_result(p, q0 - p, candidate_bound)`.
-6. Emit the recovered boundary under `shadow_seed_recovery`, with rule id
+6. Emit the recovered endpoint under `shadow_seed_recovery`, with rule id
    `shadow_seed_trial_recovery_v1`.
 7. Preserve the old chain and full fallback paths as guards after this step.
 
@@ -134,7 +134,7 @@ where:
 The old interpretation treated `q0` as a wrong terminal answer. The new
 interpretation treats it as a placed gap-interior seed. Because `q0` lies to
 the right of `p` and to the left of `q`, rightward recovery from `q0` lands on
-the same boundary `q`.
+the same endpoint `q`.
 
 That converts the high-scale blocker from:
 
@@ -145,7 +145,7 @@ find terminal node among chain candidates
 into:
 
 ```text
-recover boundary from placed shadow seed
+recover endpoint from placed shadow seed
 ```
 
 The probe results show that this recovers every emitted high-scale row without
@@ -219,14 +219,14 @@ The new model is:
 
 ```text
 shadow = placed interior seed
-rightward recovery = boundary recovery
+rightward recovery = endpoint recovery
 terminal node search = unnecessary for these rows
 ```
 
 That is the bridge milestone. The high-scale lane was not solved by deriving a
 static terminal-node label. It was made operationally recoverable by
 reinterpreting the shadow as a seed with enough positional information to
-recover the right boundary through exact arithmetic.
+recover the right endpoint through exact arithmetic.
 
 ## Remaining Engineering Work
 

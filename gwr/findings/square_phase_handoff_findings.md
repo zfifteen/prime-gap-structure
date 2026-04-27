@@ -5,7 +5,7 @@ surface.
 
 The strongest supported result is:
 
-current `d = 4` square-phase utilization is not only a boundary observable of
+current `d = 4` square-phase utilization is not only a endpoint observable of
 the current gap. It is also a next-gap handoff variable.
 
 When current `d = 4` gaps are matched by the same local winner geometry, the
@@ -22,7 +22,7 @@ where:
 - $q$ is the right endpoint prime of that same gap,
 - and $S_{+}(w)$ is the next prime square after $w$.
 
-This ratio was introduced earlier as a boundary-placement coordinate. The new
+This ratio was introduced earlier as a endpoint-placement coordinate. The new
 result is that it also carries one-step transition information.
 
 ## Probe Surface

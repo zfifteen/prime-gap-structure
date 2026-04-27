@@ -13,7 +13,7 @@ The finding is reproducible from the generator-facing CLI:
 benchmarks/python/prime_inference_generator/experimental_graph_prime_generator.py
 ```
 
-Classical factorization and first-boundary validation are used only after
+Classical factorization and first-endpoint validation are used only after
 emission, as downstream audit and failure classification. They are not solver
 inputs.
 
@@ -48,14 +48,14 @@ The companion note
 [`semiprime_shadow_reorientation.md`](semiprime_shadow_reorientation.md)
 records the stronger right-neighborhood finding: on the `witness_bound = 251`
 surface, the semiprime shadows are left-side landmarks before nearby true
-boundaries, not arbitrary false emissions.
+endpoints, not arbitrary false emissions.
 
 ## Definitions
 
 The witness horizon is the active value of `witness_bound` used by the
 experimental graph generator and its positive nonboundary filter.
 
-A semiprime impostor is a false emitted boundary candidate whose emitted value
+A semiprime impostor is a false emitted next-prime value candidate whose emitted value
 is composite with exactly two prime factors, while the generator has not seen
 positive nonboundary evidence for those factors under the current witness
 horizon.
@@ -152,7 +152,7 @@ The same command with `--witness-bound 127` reproduces the lower-horizon run.
 ## Failure Factor Analysis
 
 Use this downstream-only script after a generator run. It reads emitted records,
-audits each emitted `inferred_prime_q_hat` against first-boundary semantics, and
+audits each emitted `inferred_prime_q_hat` against first-endpoint semantics, and
 factors only the records that fail audit.
 
 ```bash
@@ -409,11 +409,11 @@ This shows a witness-front effect:
 PGS graph inference + finite witness horizon
 ```
 
-The current generator can emit many correct boundaries, but the risky-v5
+The current generator can emit many correct endpoints, but the risky-v5
 relation also emits semiprime impostors when their factors are beyond the
 active witness horizon.
 
-## Safety Boundary
+## Safety Endpoint
 
 This finding does not approve filtered-v5 for generator status. Filtered-v5
 still fails downstream audit at every horizon documented here.

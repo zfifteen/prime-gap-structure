@@ -12,7 +12,7 @@ decade windows: 11
 anchors tested: 2816
 candidate hypotheses evaluated: 768077
 exact unique matches: 513
-true boundary rejections: 0
+true next prime rejections: 0
 candidate-bound misses: 0
 total runtime: 36.020993 seconds
 ```
@@ -30,7 +30,7 @@ anchors tested: 256
 candidate hypotheses evaluated: 69819
 exact unique matches: 37
 match rate: 14.453125%
-true boundary rejections: 0
+true next prime rejections: 0
 runtime: 12.167169 seconds
 ```
 
@@ -85,7 +85,7 @@ claim.
 | Candidate hypotheses | `768077` |
 | Exact unique matches | `513` |
 | Aggregate match rate | `18.217330%` |
-| True boundary rejections | `0` |
+| True endpoint rejections | `0` |
 | Candidate-bound misses | `0` |
 | Total runtime | `36.020993` seconds |
 
@@ -95,7 +95,7 @@ The decade ladder supports the high-scale stability of the Rule X
 consistency-collapse mechanism on deterministic windows through `10^18`.
 
 The match rate varies by decade but remains nontrivial at every scale. The
-`10^18` window resolves `37 / 256` anchors while rejecting the true boundary
+`10^18` window resolves `37 / 256` anchors while rejecting the true next prime
 zero times.
 
 Runtime increases with scale because high-scale exact factorization is used to

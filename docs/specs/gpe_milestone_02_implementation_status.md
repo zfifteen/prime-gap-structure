@@ -8,7 +8,7 @@ For one exact oracle row, the implemented surface records:
 - current prime $q$,
 - GWR winner $w$,
 - winner divisor class $d(w)$,
-- exact right boundary $q^+$ from the existing oracle,
+- exact right endpoint $q^+$ from the existing oracle,
 - the branch horizon $S_{+}(w)$ when $d(w)=4$,
 - the square-ceiling margin $S_{+}(w)-q^+$,
 - and square-phase utilization $(q^+-w)/(S_{+}(w)-w)$ as a measured ratio.
@@ -31,7 +31,7 @@ $$w<q^+<S_{+}(w).$$
 
 If $M_{\square}$ is absent, the selector fails explicitly. The NLSC ceiling
 alone is not treated as an exact emission rule, and the $d=4$ branch no longer
-uses the generic left-boundary offset as its selector state.
+uses the generic left-next-prime offset as its selector state.
 
 The implementation also exposes an executable branch-target audit:
 
@@ -101,7 +101,7 @@ The committed catalog at
 contains `81,569` rows. Its observed winner classes include many non-$4$
 branches, and its $d(w)=4$ surface contains `60,726` rows.
 
-On that surface, reduced $d(w)=4$ type keys are not boundary selectors. For
+On that surface, reduced $d(w)=4$ type keys are not next-prime selectors. For
 example, `o4_d4_a1_even_semiprime` maps to multiple exact gap widths, including
 `4`, `6`, `10`, `16`, `12`, `24`, `18`, `22`, `30`, and `28` among its most
 common observed targets. The exact selector therefore cannot be the existing
@@ -125,4 +125,4 @@ The nearest existing branch fact is the square-residue dead zone recorded in
 after the floor package $q^+=S_{+}(w)-2$ fails on the live earliest-$d=4$
 semiprime branch, $S_{+}(w)-4$ is wheel-forbidden, and the first admissible
 non-floor margin splits by $S_{+}(w) \bmod 30$. That fact narrows the branch,
-but it still does not select the deeper tail boundary in every row.
+but it still does not select the deeper tail endpoint in every row.

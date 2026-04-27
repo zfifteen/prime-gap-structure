@@ -1,17 +1,17 @@
-# Pressure-State Boundary Probe
+# Pressure-State Endpoint Probe
 
 The legal ladder collision forensics showed that direct ladder recovery is
 blocked by missing prime-marker structure. The next theorem-search target is a
 different class of observable: pressure states.
 
 The pressure-state probe is offline theorem discovery. It does not change the
-pure generator and does not authorize Boundary Law 005.
+pure generator and does not authorize Next-Prime Law 005.
 
 ## Objective
 
-Find a PGS-native pressure observable that can separate boundary offsets without
-using prime-marker identity, next-prime lookup, future boundary offset, or a
-hidden boundary scan.
+Find a PGS-native pressure observable that can separate next-prime offsets without
+using prime-marker identity, next-prime lookup, future next-prime offset, or a
+hidden endpoint scan.
 
 ## Tested State Families
 
@@ -45,7 +45,7 @@ discovery probes, but they are not automatically legal for pure generation.
 
 A state is ineligible if it uses:
 
-- future boundary offset;
+- future next-prime offset;
 - current gap width;
 - prime-marker identity or `d = 2`;
 - stop-at-first-prime behavior;
@@ -53,8 +53,8 @@ A state is ineligible if it uses:
 - exact factorization not available as a PGS-native observable.
 
 Previous-chamber pressure is treated as conditionally legal for recursive
-generation because a prior accepted boundary can carry previous-gap context
-forward. It is not a first-anchor boundary theorem by itself.
+generation because a prior accepted endpoint can carry previous-gap context
+forward. It is not a first-anchor endpoint theorem by itself.
 
 ## Initial Surface
 
@@ -63,7 +63,7 @@ The first approved surface is:
 - anchors: `11..10_000`
 - prefix: `8`
 
-If no eligible zero-collision pressure state appears on that surface, Boundary
+If no eligible zero-collision pressure state appears on that surface, Endpoint
 Law 005 remains blocked.
 
 ## Initial Result
@@ -84,7 +84,7 @@ The exact semiprime, higher-divisor, and threat-schedule states also collided,
 and they are ineligible as pure-generation states because they use exact
 factorization, `d = 2`, `isprime`, or equivalent non-pure information.
 
-Boundary Law 005 remains blocked.
+Next-Prime Law 005 remains blocked.
 
 ## Combined-State Result
 
@@ -120,6 +120,6 @@ signals:
 - `previous_chamber_plus_square_and_higher_pressure_state`, `11..100_000`,
   prefix `32`: `0` collisions.
 
-Those states are not Boundary Law 005 candidates because they use exact
+Those states are not Next-Prime Law 005 candidates because they use exact
 divisor/prime-marker internals. They indicate that higher-divisor pressure may
 be the next observable to legalize.

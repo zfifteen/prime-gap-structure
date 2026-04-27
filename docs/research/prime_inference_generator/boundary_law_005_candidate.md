@@ -1,6 +1,6 @@
-# Boundary Law 005 Candidate: Higher-Divisor Locked Resolved-Boundary Absorption
+# Next-Prime Law 005 Candidate: Higher-Divisor Locked Resolved-Endpoint Absorption
 
-Boundary Law 005 is a candidate law, not a theorem.
+Next-Prime Law 005 is a candidate law, not a theorem.
 
 The pure generator must remain fail-closed. This note does not approve prime
 emission.
@@ -11,7 +11,7 @@ Current status:
 
 - Milestone 0: accepted.
 - Milestone 1: blocked for pure generator emission.
-- Boundary Law 005: candidate draft approved.
+- Next-Prime Law 005: candidate draft approved.
 - Pure emission: forbidden.
 
 The current strongest supported claim is:
@@ -20,33 +20,33 @@ The current strongest supported claim is:
 In offline composite-exclusion testing, the higher-divisor pressure lock
 remained zero-wrong through anchors 11..1_000_000, and flagged integration
 produced 25 unique resolved survivors through anchors 11..1_000_000 with zero
-true-boundary rejections and zero wrong absorptions.
+true-next-prime rejections and zero wrong absorptions.
 ```
 
 ## Problem Statement
 
 Composite exclusion can safely reject some impossible chambers, but safe
-rejection alone did not force a unique boundary.
+rejection alone did not force a unique endpoint.
 
 Resolved-chamber absorption alone also failed. It absorbed later unresolved
-alternatives for true resolved boundaries, but it also absorbed later
+alternatives for true resolved endpoints, but it also absorbed later
 alternatives for false resolved survivors. Therefore:
 
 ```text
 resolved chamber => absorbs extensions
 ```
 
-is false as a boundary law.
+is false as a next-prime law.
 
 The missing ingredient is a lock condition that separates true resolved
-boundaries from false resolved survivors before absorption is allowed.
+endpoints from false resolved survivors before absorption is allowed.
 
 ## Candidate Law
 
 Candidate statement:
 
 ```text
-If a proposed right boundary has a fully resolved chamber certificate and
+If a proposed right endpoint has a fully resolved chamber certificate and
 satisfies the higher-divisor pressure lock, then later unresolved extension
 candidates may be absorbed in the offline eliminator, provided no legal reset
 certificate supersedes the lock.
@@ -54,7 +54,7 @@ certificate supersedes the lock.
 
 On the tested surfaces, this candidate rule selected true resolved candidates
 with zero false selections and produced unique resolved survivors under flagged
-integration without rejecting the true boundary.
+integration without rejecting the true next prime.
 
 This does not prove that the emitted candidate is prime. It only states that,
 under the measured offline eliminator, a narrow PGS-native lock condition
@@ -80,11 +80,11 @@ The candidate law must not use:
 - `nextprime`;
 - `prime` sequence lookup inside generation;
 - prime marker identity;
-- actual future boundary offset inside the rule;
+- actual future next-prime offset inside the rule;
 - future gap width;
 - old recursive walker logic;
 - full forbidden divisor ladders;
-- scan-to-first-prime boundary detection.
+- scan-to-first-prime endpoint detection.
 
 Offline labels are allowed only for measuring whether the candidate selected
 true or false resolved candidates after the label-free records already exist.
@@ -183,7 +183,7 @@ Shifted-window integration:
 | `1_000_000..1_100_000` | `7216` | `0` | `0` | `0` | `0` | `0` | `0` |
 
 The shifted windows passed the safety gate but abstained. They produced no
-wrong absorption and no true-boundary rejection, but also no applications and no
+wrong absorption and no true-next-prime rejection, but also no applications and no
 unique resolved survivors.
 
 ## Why This Is Not Yet Generator Emission
@@ -218,7 +218,7 @@ Also quarantine the candidate if the lock depends on any forbidden mechanism:
 - prime markers;
 - next-prime lookup;
 - primality testing;
-- actual future boundary labels;
+- actual future endpoint labels;
 - hidden old-walker imports;
 - full forbidden divisor ladders.
 
@@ -231,7 +231,7 @@ Before this can touch the pure generator:
    helpers.
 3. Expand integration hardening beyond the current abstaining shifted windows.
 4. Preserve abstention as the default behavior when the lock does not fire.
-5. Keep pure generation fail-closed unless exactly one boundary is inferred
+5. Keep pure generation fail-closed unless exactly one endpoint is inferred
    under an approved rule.
 
 Candidate-law language may now be used for this rule. Generator language may

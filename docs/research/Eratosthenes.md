@@ -133,7 +133,7 @@ $$
 L(n) = \ln Z(n) = \left(1 - \frac{d(n)}{2}\right)\ln n
 $$
 
-which is negative for composites (since $d(n) \geq 4$), negative-approaching-zero for composites with small $d(n)$, and exactly zero for primes ($d(p) = 2$). The primes are the fixed-point locus $Z = 1.0$ of the DNI field. Every composite in a gap interior receives a score strictly below the prime boundary -- and the **Gap Winner Rule (GWR)** identifies which composite comes closest.
+which is negative for composites (since $d(n) \geq 4$), negative-approaching-zero for composites with small $d(n)$, and exactly zero for primes ($d(p) = 2$). The primes are the fixed-point locus $Z = 1.0$ of the DNI field. Every composite in a gap interior receives a score strictly below the prime endpoint -- and the **Gap Winner Rule (GWR)** identifies which composite comes closest.
 
 ## The GWR Statement and Its Two-Sided Closure
 
@@ -169,7 +169,7 @@ where $\theta$ comes from Baker-Harman-Pintz (BHP, 2001) and $c$ comes from Robi
 
 ## The Finite Verification Base
 
-The exact scan commits 1,163,198 prime gaps with composite interior and exhaustively checks every earlier interior candidate against the true lexicographic winner, producing 3,349,874 candidate comparisons with exactly 0 bridge failures. The maximum realized bridge load across all those comparisons is $B_{\max} \approx 0.0566416671$, occurring at the tiny gap $(7, 11)$ with earlier candidate 8 and winner 9. This means the hardest verified case used only about 5.66% of what would be needed to fail. The hardest exact score margin is $L(w) - L(k) \approx 0.9808$ at the same gap. The hardest ratio frontier is led by nearby low-divisor pairs such as $(d=30,\, d=32)$, $(d=15,\, d=16)$, and $(d=22,\, d=24)$ -- not by very large gaps, confirming that the failure boundary is local and thin, not scale-driven.
+The exact scan commits 1,163,198 prime gaps with composite interior and exhaustively checks every earlier interior candidate against the true lexicographic winner, producing 3,349,874 candidate comparisons with exactly 0 bridge failures. The maximum realized bridge load across all those comparisons is $B_{\max} \approx 0.0566416671$, occurring at the tiny gap $(7, 11)$ with earlier candidate 8 and winner 9. This means the hardest verified case used only about 5.66% of what would be needed to fail. The hardest exact score margin is $L(w) - L(k) \approx 0.9808$ at the same gap. The hardest ratio frontier is led by nearby low-divisor pairs such as $(d=30,\, d=32)$, $(d=15,\, d=16)$, and $(d=22,\, d=24)$ -- not by very large gaps, confirming that the failure endpoint is local and thin, not scale-driven.
 
 ## The Square-Exclusion First-d=4 Theorem
 

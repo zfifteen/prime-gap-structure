@@ -1,13 +1,13 @@
 # Unresolved Alternative Closure Forensics
 
 After locked-ceiling integration, the remaining live alternatives are all
-post-boundary alternatives on the tested surface.
+post-endpoint alternatives on the tested surface.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
-Classify unresolved alternatives in rows where the true boundary is already
+Classify unresolved alternatives in rows where the true next prime is already
 resolved but cannot be emitted because unresolved alternatives remain live.
 
 The measured mode is:
@@ -107,7 +107,7 @@ Missing witness distribution:
 ## Interpretation
 
 The residual unresolved alternatives are not premature candidates. On the audit
-surface, every unresolved alternative lies after the actual boundary label.
+surface, every unresolved alternative lies after the actual next prime label.
 
 That changes the next target. Multi-hole positive witness closure is not the
 immediate completion rule, because no unresolved alternative has every open
@@ -117,21 +117,21 @@ witness closure.
 
 The unresolved alternatives remain live because their proposed interiors include
 open positions that the pure eliminator cannot lawfully close as composites.
-After audit, those positions are post-boundary prime positions in many records,
+After audit, those positions are post-endpoint prime positions in many records,
 which means positive composite evidence cannot be expected to close them.
 
-The blocker is now post-boundary alternative elimination:
+The blocker is now post-endpoint alternative elimination:
 
 - pressure ceilings that cut off after-true alternatives earlier;
-- extension or absorption logic that marks post-boundary chambers as dominated;
+- extension or absorption logic that marks post-endpoint chambers as dominated;
 - a legal rule that prevents later unresolved alternatives from staying live
-  after the true boundary chamber is already resolved.
+  after the true next prime chamber is already resolved.
 
 ## Status
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The current evidence does not support prime emission. The next rule search
 should target after-true unresolved alternatives, not broader positive witness

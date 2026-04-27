@@ -3,20 +3,20 @@
 The previous-to-current carrier shift lock remained zero-wrong on all tested
 surfaces and abstained on both shifted windows.
 
-This note hardens the leading Boundary Law 005B candidate. It does not approve
+This note hardens the leading Next-Prime Law 005B candidate. It does not approve
 integration and does not approve pure generator emission.
 
 ## Status
 
 Current status:
 
-- Boundary Law 005A: higher-divisor pressure lock, candidate-grade only.
-- Boundary Law 005B lead: previous-to-current carrier shift lock.
+- Next-Prime Law 005A: higher-divisor pressure lock, candidate-grade only.
+- Next-Prime Law 005B lead: previous-to-current carrier shift lock.
 - Milestone 1: blocked for generator output.
 - Pure emission: forbidden.
 
 Previous-chamber evidence is history-dependent. A pure generator may use it only
-after the previous boundary and previous chamber certificate are already trusted.
+after the previous endpoint and previous chamber certificate are already trusted.
 
 ## Tested Configuration
 
@@ -34,7 +34,7 @@ previous_to_current_carrier_shift_lock: selector only
 The lock was evaluated on the previous-chamber near-miss target population:
 
 ```text
-true boundary is resolved
+true next prime is resolved
 later unresolved alternatives remain
 higher_divisor_pressure_lock does not activate
 previous_chamber_signal is present
@@ -97,7 +97,7 @@ origin-scaled surfaces: 21 selections
 shifted windows: 0 selections
 ```
 
-This resembles Boundary Law 005A: safe where it fires, but sparse.
+This resembles Next-Prime Law 005A: safe where it fires, but sparse.
 
 ## Integration Gate
 
@@ -139,7 +139,7 @@ One false selection kills generator eligibility.
 
 ## Current Conclusion
 
-Boundary Law 005B is hardened as a narrow candidate lead:
+Next-Prime Law 005B is hardened as a narrow candidate lead:
 
 ```text
 safety: zero false selections on tested surfaces

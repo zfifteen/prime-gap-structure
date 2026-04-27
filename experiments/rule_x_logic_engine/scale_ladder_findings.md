@@ -14,7 +14,7 @@ witness_bound: 3163
 anchors tested: 664575
 candidate hypotheses: 45108041
 exact unique matches: 140984
-true boundary rejections: 0
+true next prime rejections: 0
 ```
 
 With a fixed witness horizon `B = 127`, coverage plateaus after the
@@ -24,7 +24,7 @@ resolved survivors.
 
 With a scale-matched witness horizon just above `sqrt(max_anchor +
 candidate_bound)`, the engine resolves about `21%` to `23%` of anchors while
-preserving zero true-boundary rejections on every tested surface.
+preserving zero true-next-prime rejections on every tested surface.
 
 ## Fixed Witness Horizon
 
@@ -38,7 +38,7 @@ These runs keep `witness_bound = 127` and `candidate_bound = 128`.
 | `1000000` | `78494` | `488` | `0.621704%` | `0` |
 
 The fixed-horizon ladder validates the semiprime-shadow landmark hold. It does
-not reject the true boundary, but it stops gaining coverage once unresolved
+not reject the true next prime, but it stops gaining coverage once unresolved
 landmarks dominate the candidate surface.
 
 ## Scale-Matched Witness Horizon

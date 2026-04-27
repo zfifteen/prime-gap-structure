@@ -1,19 +1,19 @@
 # Resolved Survivor Dominance Forensics
 
-The integrated eliminator now resolves more true-boundary chambers, but it also
-creates competing resolved false-boundary chambers. The dominance forensics test
+The integrated eliminator now resolves more true-next-prime chambers, but it also
+creates competing resolved false-endpoint chambers. The dominance forensics test
 shows that no tested ordering rule is safe.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
 Study anchors where the integrated composite-exclusion eliminator produces at
-least one resolved false-boundary survivor.
+least one resolved false-endpoint survivor.
 
 The question is:
 
-Which PGS-native dominance rule can select the true boundary from multiple
+Which PGS-native dominance rule can select the true next prime from multiple
 resolved survivor candidates without using primality labels?
 
 A rule may abstain. A rule with any wrong selection is rejected.
@@ -34,7 +34,7 @@ The script runs the composite-exclusion probe with:
 - `single_hole_positive_witness_closure`
 - `witness_bound: 97`
 
-It then inspects only anchors with resolved false-boundary alternatives.
+It then inspects only anchors with resolved false-endpoint alternatives.
 
 ## Surface
 
@@ -90,9 +90,9 @@ Candidate dominance observable counts:
 | `true_boundary_not_resolved` | `52` |
 | `true_requires_closure` | `178` |
 
-The `52` cases where the true boundary is not resolved are still outside
-dominance selection. The other `178` are the cases where the true boundary and
-one false boundary are both resolved.
+The `52` cases where the true next prime is not resolved are still outside
+dominance selection. The other `178` are the cases where the true next prime and
+one false endpoint are both resolved.
 
 ## Dominance Rules Tested
 
@@ -111,10 +111,10 @@ No tested rule passes the hard gate:
 
 ## Interpretation
 
-The false resolved survivor is usually earlier than the true boundary. That
-kills earliest-boundary and minimal-width dominance outright.
+The false resolved survivor is usually earlier than the true next prime. That
+kills earliest-endpoint and minimal-width dominance outright.
 
-The true boundary often requires the single-hole closure rule, while the false
+The true next prime often requires the single-hole closure rule, while the false
 survivor requires less closure support. That kills minimal-closure dominance in
 this surface.
 
@@ -128,13 +128,13 @@ Previous-chamber transition compatibility is also not safe:
 
 The current blocker is not chamber closure. The blocker is resolved-chamber
 dominance. Multiple resolved certificates can coexist, and the tested local
-ordering rules do not select the true boundary safely.
+ordering rules do not select the true next prime safely.
 
 ## Status
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The next admissible work should focus on why the false earlier resolved
 survivor remains structurally plausible. A safe dominance rule must either

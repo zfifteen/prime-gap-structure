@@ -1,8 +1,8 @@
 # Composite-Exclusion Unresolved Forensics
 
-The unresolved-boundary forensics show a tight failure mode.
+The unresolved-endpoint forensics show a tight failure mode.
 
-All `230` cases where the true boundary remained `UNRESOLVED` share the same
+All `230` cases where the true next prime remained `UNRESOLVED` share the same
 missing-evidence pattern:
 
 - unclosed wheel-open interior evidence;
@@ -10,12 +10,12 @@ missing-evidence pattern:
 - chamber closure not certified;
 - unresolved alternatives not dominated by the resolved survivor.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
 Study the cases where the composite-exclusion probe did not reject the true
-boundary, but also did not resolve it.
+endpoint, but also did not resolve it.
 
 The probe focuses only on rows with:
 
@@ -44,7 +44,7 @@ Artifacts:
 - `composite_exclusion_unresolved_forensics_summary.json`
 
 The script is offline theorem discovery. It runs the label-free eliminator,
-then attaches classical labels only to select and inspect true-boundary
+then attaches classical labels only to select and inspect true-next-prime
 unresolved cases.
 
 ## Surface
@@ -90,7 +90,7 @@ Unresolved interior count distribution:
 | `3` | `13` |
 | `4` | `2` |
 
-Resolved-survivor to actual-boundary delta:
+Resolved-survivor to actual-endpoint delta:
 
 | Delta | Anchors |
 |---:|---:|
@@ -112,31 +112,31 @@ Resolved-survivor to actual-boundary delta:
 
 ## Interpretation
 
-The `230` unresolved true-boundary cases are not scattered. They all fail for
+The `230` unresolved true-next-prime cases are not scattered. They all fail for
 the same structural reason:
 
-- the proposed true-boundary chamber contains one or more wheel-open interior
+- the proposed true-next-prime chamber contains one or more wheel-open interior
   offsets that the active bounded witness set cannot close.
 
-Most of the unresolved true-boundary chambers are close to resolution:
+Most of the unresolved true-next-prime chambers are close to resolution:
 
 - `178 / 230` have exactly one unresolved interior offset.
 
-The current resolved survivor is therefore not an inferred boundary. It is a
+The current resolved survivor is therefore not an inferred next prime. It is a
 candidate with no unresolved interior under the active bounded witness set.
-When the actual boundary is farther right, the true chamber often needs one
+When the actual next prime is farther right, the true chamber often needs one
 additional legal composite closure certificate before it can compete.
 
 ## Next Lemma Shape
 
-The next theorem target is not a direct boundary law. It is an unresolved
+The next theorem target is not a direct next-prime law. It is an unresolved
 alternative bridge:
 
 If one candidate is a resolved survivor and another candidate is unresolved
 only because of unclosed wheel-open interior offsets, then either:
 
 - a legal composite closure certificate resolves those offsets; or
-- a domination rule proves the unresolved alternative cannot be the boundary.
+- a domination rule proves the unresolved alternative cannot be the endpoint.
 
 Until that bridge exists, pure generation must fail closed whenever unresolved
 alternatives remain.
@@ -145,7 +145,7 @@ alternatives remain.
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The next admissible experiment should focus on legal closure certificates for
 the unresolved interior offsets, beginning with the `178` one-offset cases.

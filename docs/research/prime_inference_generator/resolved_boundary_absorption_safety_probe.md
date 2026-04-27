@@ -1,14 +1,14 @@
-# Resolved Boundary Absorption Safety Probe
+# Resolved Next Prime Absorption Safety Probe
 
 Resolved-chamber absorption is not selective on the tested surface.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
 Test the offline hypothesis:
 
-> If $q_1$ is a resolved chamber boundary and $q_2 > q_1$ is unresolved, then
+> If $q_1$ is a resolved chamber endpoint and $q_2 > q_1$ is unresolved, then
 > $q_2$ is absorbed by $q_1$.
 
 This is Rule A. The probe tests Rule A as forensics only. It does not add a
@@ -86,7 +86,7 @@ Rule A fails the safety gate.
 
 Every true resolved candidate absorbs all later unresolved alternatives, but
 every false resolved survivor does the same. Absorption alone does not
-distinguish true resolved boundaries from false resolved survivors.
+distinguish true resolved endpoints from false resolved survivors.
 
 The fatal counts are:
 
@@ -95,7 +95,7 @@ The fatal counts are:
 
 Those counts reject direct resolved-chamber absorption as a generator rule. A
 locally resolved chamber cannot absorb later unresolved alternatives unless an
-additional legal lock condition separates true resolved boundaries from false
+additional legal lock condition separates true resolved endpoints from false
 resolved survivors.
 
 The carrier/reset features also do not provide an immediate separator. Both
@@ -107,7 +107,7 @@ but none of the measured single features licenses Rule A.
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 Prime emission remains forbidden.
 

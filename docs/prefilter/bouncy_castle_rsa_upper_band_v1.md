@@ -270,7 +270,7 @@ The successful BC patch still follows the same invariant-first method, but it do
 
 - the repository supplied the screening philosophy,
 - BC's square-bound rule supplied the exact doomed slice,
-- the modification moved that exact slice boundary earlier.
+- the modification moved that exact slice endpoint earlier.
 
 This is why the patch belongs to the same mathematical program without pretending that the DNI itself directly generates the upper-band formula.
 

@@ -10,7 +10,7 @@ The generator's logic, as implemented in `chain_horizon_closure_result` (lines 6
 This means the high-scale terminal decision is not yet predominantly PGS-derived; it depends on the full divisor exhaustion fallback.
 
 ### 2. The Core of the Question
-The goal is to replace this deterministic fallback with a function `H(p, s0, chain_state)` that predicts the necessary divisor horizon. This horizon would be the minimum divisor bound needed to close all false semiprime-shadow chain nodes, allowing the true boundary to be identified using only PGS-visible quantities. The missing theorem is whether such a horizon can be derived from PGS structure alone.
+The goal is to replace this deterministic fallback with a function `H(p, s0, chain_state)` that predicts the necessary divisor horizon. This horizon would be the minimum divisor bound needed to close all false semiprime-shadow chain nodes, allowing the true next prime to be identified using only PGS-visible quantities. The missing theorem is whether such a horizon can be derived from PGS structure alone.
 
 ### 3. Proposed Approach to Derive the Horizon Law
 Your suggestion to "mine the least-factor frontier of false chain nodes" is apt. The key is to analyze the pattern of divisor witnesses for the false chain nodes that are closed during the chain-horizon process. The steps would be:
@@ -40,4 +40,4 @@ Based on your falsifying and confirming results:
 ### 5. Next Steps in the Repository
 The code already contains the instrumentation needed for this mining in `chain_horizon_closure_result`. The function returns `chain_horizon_closure_witnesses`, which records the divisor witnesses for closed nodes. By running the generator in a diagnostic mode that collects these witnesses alongside PGS state, you can gather the data to test the hypothesis.
 
-The result of this analysis will determine whether the `chain_horizon_closure` can indeed be turned into a pure PGS boundary rule, fulfilling the generator's design philosophy.
+The result of this analysis will determine whether the `chain_horizon_closure` can indeed be turned into a pure PGS next-prime selection rule, fulfilling the generator's design philosophy.

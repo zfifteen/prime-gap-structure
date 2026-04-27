@@ -1,4 +1,4 @@
-# Composite-Exclusion Boundary Probe
+# Composite-Exclusion Endpoint Probe
 
 The composite-exclusion probe now has three-status candidate accounting:
 
@@ -16,9 +16,9 @@ The strengthened accounting also shows why the probe still cannot emit:
 - `unique_resolved_survivor_count: 0`
 
 Every anchor has exactly one resolved survivor, but every anchor also has
-unresolved alternatives. That is not a unique boundary.
+unresolved alternatives. That is not a unique endpoint.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
@@ -93,7 +93,7 @@ The summary reports these rule families:
 Only two families are active in this probe:
 
 1. `positive_composite_witness_rejection`
-   - Rejects a candidate boundary if the candidate itself has a bounded
+   - Rejects a candidate next prime if the candidate itself has a bounded
      positive composite witness.
 2. `interior_open_unclosed_rejection`
    - Marks a candidate `UNRESOLVED` if a wheel-open interior offset lacks a
@@ -119,7 +119,7 @@ The eliminator does not use:
 - `nextprime`
 - Miller-Rabin
 - actual gap width
-- future boundary offset
+- future next-prime offset
 - scan-to-first-prime behavior
 - the old recursive walker
 - full divisor-count ladders
@@ -150,7 +150,7 @@ Summary:
 - `average_unresolved_count: 8.406530612244898`
 - `average_survives_count: 1.0` for resolved survivors
 
-True-boundary status counts:
+True-endpoint status counts:
 
 | Status | Anchors |
 |---|---:|
@@ -207,7 +207,7 @@ this probe.
 
 The first safety gate still succeeds:
 
-- the true boundary is never `REJECTED`.
+- the true next prime is never `REJECTED`.
 
 The probe now exposes a stronger structure:
 
@@ -226,7 +226,7 @@ unresolved alternatives remain. Pure generation cannot emit from that state.
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The next admissible step is to add one legal exclusion rule at a time and keep
 `true_boundary_rejected_count = 0` as the primary safety gate.
@@ -267,14 +267,14 @@ Rule attribution:
 - `single_hole_positive_witness_false_boundary_closures: 52`
 - `power_closure_subset_count: 13`
 
-The rule improved true-boundary resolution:
+The rule improved true-next-prime resolution:
 
-- unresolved true boundaries fell from `230` to `52`;
-- resolved true boundaries rose from `995` to `1173`;
-- no true boundary was rejected.
+- unresolved true next primes fell from `230` to `52`;
+- resolved true next primes rose from `995` to `1173`;
+- no true next prime was rejected.
 
-It did not produce unique resolved boundaries. The integrated rule also closes
-`52` false-boundary candidates, so the resolved-survivor count rises from `1.0`
+It did not produce unique resolved endpoints. The integrated rule also closes
+`52` false-candidate next primes, so the resolved-survivor count rises from `1.0`
 to `1.1877551020408164` on average. The eliminator remains fail-closed.
 
-Boundary Law 005 is still not approved.
+Next-Prime Law 005 is still not approved.

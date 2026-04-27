@@ -1,7 +1,7 @@
 # Single-Hole Chamber Closure
 
 The single-hole probe found legal closure candidates for every one-hole
-unresolved true-boundary case on the tested surface.
+unresolved true-next-prime case on the tested surface.
 
 Result:
 
@@ -9,12 +9,12 @@ Result:
 - `single_hole_closure_candidate_count: 178`
 - `true_boundary_rejected_count: 0`
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
 The composite-exclusion unresolved forensics found `230` cases where the true
-boundary remained `UNRESOLVED`. In `178` of those cases, the true-boundary
+endpoint remained `UNRESOLVED`. In `178` of those cases, the true-next-prime
 candidate had exactly one unresolved wheel-open interior offset.
 
 This probe asks whether that one hole has a legal closure candidate.
@@ -156,7 +156,7 @@ Extended witness-factor distribution:
 
 The one-hole failure mode is not mathematically scattered.
 
-Every one-hole true-boundary case is closable by a positive bounded witness
+Every one-hole true-next-prime case is closable by a positive bounded witness
 extension through `97`. The `13` power cases are a subset of those closures.
 The exact offline diagnostics show the holes are:
 
@@ -177,7 +177,7 @@ ablation. The safety gate remains:
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The next admissible implementation is an ablation run that incorporates this
 closure rule into the eliminator and measures whether:
@@ -224,9 +224,9 @@ Rule attribution:
 The integration produced a real completion gain without violating the safety
 gate:
 
-- the true-boundary unresolved count fell from `230` to `52`;
-- true-boundary rejection stayed at `0`.
+- the true-next-prime unresolved count fell from `230` to `52`;
+- true-next-prime rejection stayed at `0`.
 
-It did not create unique resolved boundary certificates. Because `52`
-false-boundary alternatives were also closed, the eliminator still has
+It did not create unique resolved next prime certificates. Because `52`
+false-endpoint alternatives were also closed, the eliminator still has
 unresolved or competing alternatives and remains fail-closed.

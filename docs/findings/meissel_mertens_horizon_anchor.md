@@ -168,9 +168,9 @@ These three anchors now line up cleanly:
   no-early-spoiler closure certificate.
 
 The shared lesson is that this project advances fastest when it finds the right
-invariant boundary and then measures ratios against that boundary.
+invariant endpoint and then measures ratios against that endpoint.
 
-For prime-reciprocal thresholds, that boundary is a computational horizon.
+For prime-reciprocal thresholds, that endpoint is a computational horizon.
 For `DCI`, it is the fixed-point band.
 For `GWR`, it is the normalized spoiler budget.
 

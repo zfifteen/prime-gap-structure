@@ -2,14 +2,14 @@
 
 ## Purpose
 
-Milestone 2 resolves the gap between an NLSC ceiling and an exact boundary
+Milestone 2 resolves the gap between an NLSC ceiling and an exact endpoint
 selector.
 
 NLSC gives:
 
 $$q^+ \le T_{<}(w)$$
 
-That is a hard upper boundary. It is not yet an exact emission rule.
+That is a hard upper endpoint. It is not yet an exact emission rule.
 
 ## Required Branch Order
 
@@ -35,7 +35,7 @@ where $d=d(w)$.
 
 The selector must:
 
-- return the exact right boundary prime,
+- return the exact right endpoint prime,
 - remain inside the NLSC threat horizon,
 - avoid candidate primality testing,
 - use only explicitly named state and arithmetic ingredients,
@@ -46,10 +46,10 @@ The selector must:
 The $d(w)=4$ branch is complete when:
 
 - the selector returns exact $q^+$ on the committed exact surface,
-- no selected boundary exceeds $S_{+}(w)$,
+- no selected endpoint exceeds $S_{+}(w)$,
 - every collision is either eliminated by a documented state ingredient or
   reported as an unresolved blocker,
-- and the proof note states why the chosen ingredients select the boundary
+- and the proof note states why the chosen ingredients select the endpoint
   rather than merely bounding it.
 
 ## Full Milestone Acceptance Gate
@@ -58,7 +58,7 @@ Milestone 2 is complete when every observed winner class has a branch selector
 or an explicit unresolved theorem target.
 
 The milestone is not complete if the only result is a smaller search interval.
-The required outcome is exact boundary selection.
+The required outcome is exact next-prime selection.
 
 ## Non-Goals
 

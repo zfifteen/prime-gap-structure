@@ -21,14 +21,14 @@ is accepted as prime. The PGS generator does not do that.
 
 It examines the finite arithmetic interval immediately to the right of `p`,
 uses exact divisor-count state to orient the local prime-gap structure, and
-selects the next boundary by the GWR/NLSC chamber-reset rule.
+selects the next prime by the GWR/NLSC chamber-reset rule.
 
 The production selector is:
 
 ```text
 rule_id: pgs_chamber_reset_v1
 state input: exact divisor-count field
-boundary rule: GWR/NLSC chamber-reset state
+next-prime selection rule: GWR/NLSC chamber-reset state
 ```
 
 If the selector does not resolve inside the supplied chamber bound, the
@@ -83,11 +83,11 @@ Release note:
 Logic spec:
 [Minimal PGS Generator Logic](specs/prime-gen/minimal_pgs_generator_logic.md).
 
-## Boundary Rule
+## Endpoint Rule
 
-The production boundary rule applies these steps:
+The production next-prime selection rule applies these steps:
 
-- build wheel-open candidate boundary hypotheses;
+- build wheel-open candidate next-prime hypotheses;
 - reject candidates with composite divisor-count state;
 - preserve semiprime-shadow landmarks as unresolved landmarks;
 - lock the GWR carrier only after a resolved survivor exists;

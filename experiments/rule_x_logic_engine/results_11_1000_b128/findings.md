@@ -2,15 +2,15 @@
 
 ## Executive Summary
 
-The tiny logic engine collapses every tested anchor to the true next boundary
+The tiny logic engine collapses every tested anchor to the true next prime
 when exact chamber closure is allowed, but GWR/NLSC structural consistency
-alone eliminates zero candidate boundaries.
+alone eliminates zero candidate next primes.
 
 This is the key result:
 
 ```text
 GWR/NLSC consistency annotates candidate chambers.
-It does not, by itself, reject false candidate boundaries.
+It does not, by itself, reject false candidate next primes.
 ```
 
 Exact chamber closure produced one survivor for every anchor:
@@ -32,7 +32,7 @@ prime anchors: 11..1000
 candidate bound: 128
 ```
 
-The engine tested `164` prime anchors and `5562` wheel-open candidate boundary
+The engine tested `164` prime anchors and `5562` wheel-open candidate next prime
 hypotheses.
 
 ## Rule Sets
@@ -111,4 +111,4 @@ must either preserve that carrier or provide a legal reset certificate.
 ```
 
 The next probe should test whether that lock/reset rule eliminates false later
-candidates without rejecting the true boundary.
+candidates without rejecting the true next prime.

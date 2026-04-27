@@ -1,6 +1,6 @@
 Recommendation: implement the least-factor frontier probe now. Do not promote any H law yet.
 
-The best answer is 05_answer_chatgpt, with useful support from 03_answer_deepseek, 04_answer_copilot, and 06_answer_xai_grok. The central reason: the right theorem target is not “prove the terminal node is prime.” The right theorem target is “derive a PGS-visible horizon that closes every false shadow-chain node before the terminal boundary.” That matches the actual repo gap: chain_horizon_closure_result(..., horizon_bound=None) still lets divisor_witness fall through to complete divisor exhaustion, while DEFAULT_VISIBLE_DIVISOR_BOUND = 10000 only builds the visible-open chain.  ￼
+The best answer is 05_answer_chatgpt, with useful support from 03_answer_deepseek, 04_answer_copilot, and 06_answer_xai_grok. The central reason: the right theorem target is not “prove the terminal node is prime.” The right theorem target is “derive a PGS-visible horizon that closes every false shadow-chain node before the terminal next prime.” That matches the actual repo gap: chain_horizon_closure_result(..., horizon_bound=None) still lets divisor_witness fall through to complete divisor exhaustion, while DEFAULT_VISIBLE_DIVISOR_BOUND = 10000 only builds the visible-open chain.  ￼
 
 The current unanswered question is framed correctly: can chain_horizon_closure become pure PGS by deriving H(p, s0, chain_state) rather than using fallback divisor exhaustion?  ￼ The answer after review and pilot testing is:
 

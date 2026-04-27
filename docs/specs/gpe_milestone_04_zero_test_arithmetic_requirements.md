@@ -5,7 +5,7 @@
 Milestone 4 resolves the dependency between the exact DNI/GWR oracle and the
 current divisor field.
 
-The present exact path detects the right boundary by scanning until:
+The present exact path detects the right endpoint by scanning until:
 
 $$d(n)=2$$
 
@@ -20,14 +20,14 @@ The GPE runtime path must not use:
 - probabilistic primality tests,
 - `sympy.isprime`,
 - `sympy.nextprime`,
-- `gmpy2.is_prime` as a hidden boundary detector,
+- `gmpy2.is_prime` as a hidden endpoint detector,
 - trial division of gap interiors,
 - candidate sieving lists,
 - full Eratosthenes-style marking.
 
 ## Required Arithmetic Replacement
 
-The implementation must compute winner and boundary placement from rulebook
+The implementation must compute winner and endpoint placement from rulebook
 arithmetic:
 
 - fixed GPE state,
@@ -43,7 +43,7 @@ tool, not as part of the final GPE runtime contract.
 
 During development, validation may compare against the existing exact
 divisor-field oracle. The production GPE path must not call that oracle to
-decide the boundary.
+decide the endpoint.
 
 The code must keep these paths separate:
 
@@ -65,4 +65,4 @@ Milestone 4 is complete when:
 ## Non-Goals
 
 This milestone does not add fallback paths, retries, or safety modes. If the
-zero-test arithmetic path cannot decide a boundary, it fails explicitly.
+zero-test arithmetic path cannot decide a endpoint, it fails explicitly.

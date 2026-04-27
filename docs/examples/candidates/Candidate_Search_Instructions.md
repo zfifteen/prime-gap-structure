@@ -90,7 +90,7 @@ methods documented in this project.
 - The prime-handling code is in one or a few files, not deeply scattered.
 - The software can be exercised through a small wrapper, fixture, or extracted
   benchmark harness.
-- The language boundary is manageable from the current implementation base.
+- The language interface is manageable from the current implementation base.
 - A Python proof-of-concept is possible even if the eventual target is C, C++,
   Rust, or Java.
 - The software does not require invasive architectural changes just to test the

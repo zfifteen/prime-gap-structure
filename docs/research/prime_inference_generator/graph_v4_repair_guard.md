@@ -7,7 +7,7 @@ viable guard has now been integrated as graph v6. The integration does not
 re-enable old v4/v5 as a broad default, add pure production emission, or
 integrate 005B.
 
-Classical labels and first-boundary audit are used only after each candidate
+Classical labels and first-endpoint audit are used only after each candidate
 guard has acted.
 
 Graph v4 and v5 are quarantined outside the last clean surface:
@@ -26,7 +26,7 @@ target has no legal carrier
 => target may be absorbed
 ```
 
-Future no-carrier target domination requires positive non-boundary evidence.
+Future no-carrier target domination requires positive non-endpoint evidence.
 
 ## Probe Target
 
@@ -79,7 +79,7 @@ bad v4 source_offset: 8
 bad v4 target_offset: 18
 ```
 
-The true boundary target does not satisfy the positive non-boundary guard.
+The true next prime target does not satisfy the positive non-endpoint guard.
 
 ## Surface Results
 
@@ -126,7 +126,7 @@ The repair probe confirms the safety correction:
 
 ```text
 absence of reset evidence alone is not enough
-positive target non-boundary evidence is required
+positive target non-endpoint evidence is required
 ```
 
 The viable guard is narrow. It recovers only one additional solved anchor on

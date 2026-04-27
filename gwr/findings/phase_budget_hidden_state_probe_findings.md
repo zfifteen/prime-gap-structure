@@ -2,7 +2,7 @@
 
 The strongest supported claim on the retained `10^12..10^18` catalog window surface is:
 
-the current parity-plus-previous-state hidden model is missing one boundary-budget bit.
+the current parity-plus-previous-state hidden model is missing one endpoint-budget bit.
 
 On this pooled surface, the three-value label
 

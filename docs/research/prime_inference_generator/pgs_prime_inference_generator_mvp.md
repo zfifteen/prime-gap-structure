@@ -5,13 +5,13 @@ validation. The generator emits PGS-inferred primes. It does not certify them.
 Classical validation reads the emitted trace afterward and audits the result.
 
 This scaffold is not yet a positive prime-inference result; it is the purity
-harness required before adding the first boundary-inference law.
+harness required before adding the first endpoint-inference law.
 
-## Claim Boundary
+## Claim Limit
 
 Pure generation must not call Miller-Rabin, `nextprime`, `isprime`, `prime`,
 trial-division primality testing, sieve-backed divisor counting, or a helper
-whose job is to find the next prime boundary.
+whose job is to find the next prime endpoint.
 
 The pure generation phase records what PGS inference emits. The audit phase
 records what classical validation confirms. Those two phases are separate code
@@ -25,9 +25,9 @@ runs, writes JSONL and summary artifacts, and fails closed with
 helpers.
 
 Milestone 1 is the first positive inference result. Starting from anchor prime
-`11`, pure mode emits `N` inferred `q_hat` values from a clean PGS boundary law.
+`11`, pure mode emits `N` inferred `q_hat` values from a clean PGS next-prime law.
 Only after the emitted JSONL exists does audit mode validate the sequence and
-report `N/N` if every emitted boundary is confirmed.
+report `N/N` if every emitted next-prime value is confirmed.
 
 ## Artifact Contract
 

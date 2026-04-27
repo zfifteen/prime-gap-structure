@@ -151,7 +151,7 @@ The exact `GWR`/`DNI` program already shows that prime location is tightly tied
 to local gap structure. It is therefore reasonable to ask whether special prime
 subfamilies inherit a correspondingly special local type environment.
 
-What this twin-prime probe adds is a boundary on that idea:
+What this twin-prime probe adds is a endpoint on that idea:
 
 - **supported:** twin primes live in a typed outer-gap corridor;
 - **not supported here:** a narrow twin-specific outer-type collapse;

@@ -1,4 +1,4 @@
-**Recommendation: Yes — `chain_horizon_closure` *can* be turned into a pure PGS boundary rule. Implement the least-factor frontier miner *immediately* (synthesized from the strongest elements across all answers); small-scale simulation + repo structure + zero-failure audits give overwhelming evidence for the confirming result. The bridge (56–58 % at 10¹⁵/10¹⁸) will collapse into PGS-derived output.**
+**Recommendation: Yes — `chain_horizon_closure` *can* be turned into a pure PGS next-prime selection rule. Implement the least-factor frontier miner *immediately* (synthesized from the strongest elements across all answers); small-scale simulation + repo structure + zero-failure audits give overwhelming evidence for the confirming result. The bridge (56–58 % at 10¹⁵/10¹⁸) will collapse into PGS-derived output.**
 
 ### Overview of Evaluation Process
 I read the exact question (commit b731383e58c42488e8116eedc4625bb5bcc1b41a) and all six LLM answers verbatim.

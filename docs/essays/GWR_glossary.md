@@ -201,7 +201,7 @@ every later interior integer must satisfy `d(n) >= δ`.
 
 where `δ` is the winner’s divisor count.
 
-It means the boundary primes are only allowed to bound interiors with that
+It means the endpoint primes are only allowed to bound interiors with that
 general structure.
 
 ## Spoiler Terms
@@ -264,7 +264,7 @@ integers.
 
 ### Spoiler Threshold
 
-**Plain language:** The boundary between safe and unsafe cases.
+**Plain language:** The endpoint between safe and unsafe cases.
 
 **In this repo:** For bridge load, the spoiler threshold is `B(k, w) = 1`.
 Below `1` is safe. At or above `1` would be dangerous.
@@ -521,9 +521,9 @@ gaps.
 **In this repo:** Same idea as above, stated at the level of interiors bounded
 by consecutive primes.
 
-## Boundary Terms
+## Endpoint Terms
 
-### Boundary Placement
+### Endpoint Placement
 
 **Plain language:** Where the bounding primes are allowed to sit.
 
@@ -531,7 +531,7 @@ by consecutive primes.
 only rank composites. It also constrains where the right endpoint prime can
 appear.
 
-### Boundary-Placement Law
+### Endpoint-Placement Law
 
 **Plain language:** A rule about allowed prime endpoints, not just interior
 ranking.

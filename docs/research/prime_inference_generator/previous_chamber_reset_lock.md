@@ -1,7 +1,7 @@
 # Previous-Chamber Reset Lock Probe
 
 Previous-chamber memory produced zero-wrong lock candidates in the abstention
-regime left by Boundary Law 005A.
+regime left by Next-Prime Law 005A.
 
 This note documents offline theorem discovery only. It does not approve pure
 generator emission and does not integrate a new absorption rule.
@@ -12,12 +12,12 @@ Current status:
 
 - Milestone 0: accepted.
 - Milestone 1: blocked for generator output.
-- Boundary Law 005A: higher-divisor pressure lock, candidate-grade only.
-- Boundary Law 005B: previous-chamber reset lock, candidate lead found.
+- Next-Prime Law 005A: higher-divisor pressure lock, candidate-grade only.
+- Next-Prime Law 005B: previous-chamber reset lock, candidate lead found.
 - Pure emission: forbidden.
 
 The previous-chamber signal is legal for a future pure walk only if the prior
-boundary has already been emitted and accepted in the generator's trust chain.
+endpoint has already been emitted and accepted in the generator's trust chain.
 In this probe, labels are used only after record construction to classify true
 and false resolved candidates.
 
@@ -26,7 +26,7 @@ and false resolved candidates.
 The probe targets rows where:
 
 ```text
-true boundary is resolved
+true next prime is resolved
 later unresolved alternatives remain
 higher_divisor_pressure_lock does not activate
 previous_chamber_signal is present
@@ -139,17 +139,17 @@ rule.
 ## Pure-Rule Dependency Caveat
 
 Previous-chamber evidence is available to a pure generator only if the previous
-boundary is already trusted. A pure implementation would need an explicit
+endpoint is already trusted. A pure implementation would need an explicit
 history contract:
 
 ```text
-accepted previous boundary
+accepted previous endpoint
 accepted previous chamber certificate
 current resolved candidate
 previous-to-current carrier shift
 ```
 
-Without that prior-boundary trust chain, previous-chamber memory is offline
+Without that prior-endpoint trust chain, previous-chamber memory is offline
 evidence, not pure-generation evidence.
 
 ## Falsification Condition

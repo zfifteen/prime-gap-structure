@@ -1,34 +1,34 @@
-# Boundary Law 002: Minimal Closed Chamber Certificate
+# Next-Prime Law 002: Minimal Closed Chamber Certificate
 
-Boundary Law 002 is the next candidate after Boundary Law 001 failed to close.
-The change is the standard of evidence. The law does not infer a boundary from
+Next-Prime Law 002 is the next candidate after Next-Prime Law 001 failed to close.
+The change is the standard of evidence. The law does not infer a endpoint from
 first wheel-open admissibility alone. It requires a complete PGS chamber
-certificate that forces the proposed boundary.
+certificate that forces the proposed endpoint.
 
 This is a design note, not an emitting implementation. If the certificate cannot
-force a unique boundary without classical primality lookup, pure mode must remain
+force a unique endpoint without classical primality lookup, pure mode must remain
 failed closed.
 
 ## Name
 
 Minimal Closed Chamber Certificate.
 
-The law asks whether a proposed boundary can be emitted only after the generator
+The law asks whether a proposed endpoint can be emitted only after the generator
 has a closed chamber certificate for the interval before it and a deterministic
-reason that no smaller admissible boundary competes with it.
+reason that no smaller admissible endpoint competes with it.
 
 ## Candidate Contract
 
-Given an anchor prime `p` and proposed boundary `q_hat`, Boundary Law 002 may
+Given an anchor prime `p` and proposed endpoint `q_hat`, Next-Prime Law 002 may
 emit `q_hat` only if it can construct a certificate with:
 
 - anchor prime `p`;
-- proposed boundary `q_hat`;
+- proposed endpoint `q_hat`;
 - interior `I = {p + 1, ..., q_hat - 1}`;
 - verified chamber closure for every integer in `I`;
 - GWR-compatible winner data, or an explicit empty-chamber base case;
 - no-later-simpler closure for the active winner regime;
-- no unresolved competing chamber with smaller admissible boundary;
+- no unresolved competing chamber with smaller admissible endpoint;
 - an explicit reason `q_hat` is forced rather than merely allowed.
 
 If any field is missing or unresolved, the law fails closed.
@@ -36,7 +36,7 @@ If any field is missing or unresolved, the law fails closed.
 ## Allowed Inputs
 
 - the externally supplied anchor prime;
-- a proposed boundary supplied by a PGS rule, not by a primality oracle;
+- a proposed endpoint supplied by a PGS rule, not by a primality oracle;
 - deterministic wheel arithmetic;
 - deterministic composite witnesses for interior values;
 - PGS carrier metadata inside the proposed chamber;
@@ -46,14 +46,14 @@ If any field is missing or unresolved, the law fails closed.
 
 ## Forbidden Inputs
 
-Boundary Law 002 must not use:
+Next-Prime Law 002 must not use:
 
 - Miller-Rabin;
 - `nextprime`;
 - `isprime`;
 - `prime`;
 - `prevprime`;
-- trial-division primality testing as a boundary test;
+- trial-division primality testing as a endpoint test;
 - sieve-backed divisor counting;
 - scanning until `d(n) = 2`;
 - the old recursive predictor;
@@ -62,11 +62,11 @@ Boundary Law 002 must not use:
 
 Interior compositeness evidence is allowed only when it is a concrete
 deterministic witness for an interior integer. It must not become a search for
-the next prime boundary.
+the next prime endpoint.
 
 ## Certificate Shape
 
-A Boundary Law 002 certificate should record:
+A Next-Prime Law 002 certificate should record:
 
 - `anchor_prime_p`;
 - `proposed_boundary_q_hat`;
@@ -85,8 +85,8 @@ A Boundary Law 002 certificate should record:
 - `failure_reason`, if unresolved.
 
 For an empty chamber, the certificate must state that no positive-offset carrier
-exists before the proposed boundary and must identify the theorem that turns
-that empty chamber into a forced boundary.
+exists before the proposed endpoint and must identify the theorem that turns
+that empty chamber into a forced endpoint.
 
 ## Anchor-11 Probe
 
@@ -94,7 +94,7 @@ For the first anchor:
 
 $$p = 11$$
 
-The tempting proposed boundary is:
+The tempting proposed endpoint is:
 
 $$q_{hat} = 13$$
 
@@ -108,7 +108,7 @@ The integer `12` has concrete composite witnesses from the wheel basis:
 - `12 = 3 * 4`
 
 This establishes that the chamber interior before `13` is closed. It does not
-establish that `13` is forced as the boundary.
+establish that `13` is forced as the endpoint.
 
 ## GWR/DNI Relevance
 
@@ -116,22 +116,22 @@ For `p = 11` and `q_hat = 13`, the proposed interior contains no open composite
 carrier. The GWR winner fields are null. Therefore the standard GWR carrier and
 no-later-simpler closure machinery has no positive carrier to operate on.
 
-Boundary Law 002 has two possible paths:
+Next-Prime Law 002 has two possible paths:
 
-- prove an empty-chamber base case that forces the first open boundary;
+- prove an empty-chamber base case that forces the first open endpoint;
 - reject this anchor as outside the carrier-bearing GWR/DNI regime.
 
-The first path would revive Boundary Law 001 with a stronger certificate. The
+The first path would revive Next-Prime Law 001 with a stronger certificate. The
 second path keeps Milestone 1 blocked at anchor `11` and pushes the first
 positive target to a later anchor with a nonempty chamber.
 
-## Competing Boundary Requirement
+## Competing Endpoint Requirement
 
 The law must separate three statements:
 
 - the interior before `q_hat` is closed;
-- `q_hat` is an admissible boundary candidate;
-- `q_hat` is the unique inferred boundary.
+- `q_hat` is an admissible candidate next prime;
+- `q_hat` is the unique inferred next prime.
 
 Only the third statement permits emission.
 
@@ -145,7 +145,7 @@ possibility that the first open candidate is not forced by PGS structure.
 
 ## Current Status
 
-Boundary Law 002 does not yet emit.
+Next-Prime Law 002 does not yet emit.
 
 For the anchor-11 probe:
 
@@ -155,18 +155,18 @@ For the anchor-11 probe:
 - `inference_status: "failed_closed"`
 - `failure_reason: "MISSING_UNIQUENESS_IMPLICATION"`
 
-The law improves the evidence standard over Boundary Law 001, but the same
+The law improves the evidence standard over Next-Prime Law 001, but the same
 mathematical bridge remains missing for the empty-chamber case.
 
 ## Exact Missing Theorem
 
 The missing theorem is:
 
-$$\text{closed minimal chamber plus first open candidate} \Rightarrow \text{forced next boundary}$$
+$$\text{closed minimal chamber plus first open candidate} \Rightarrow \text{forced next prime}$$
 
 For anchor `11`, this reduces to:
 
-$$12 \text{ closed and } 13 \text{ first open} \Rightarrow 13 \text{ forced as boundary}$$
+$$12 \text{ closed and } 13 \text{ first open} \Rightarrow 13 \text{ forced as endpoint}$$
 
 That implication is stronger than admissibility. It is not proved here.
 
@@ -175,9 +175,9 @@ That implication is stronger than admissibility. It is not proved here.
 Pure mode may emit under `boundary_law_002` only when:
 
 1. every interior integer has a deterministic composite certificate;
-2. the proposed boundary comes from a PGS rule rather than a primality oracle;
-3. all smaller candidate boundaries are ruled out by the chamber certificate;
-4. a PGS uniqueness theorem forces `q_hat` as the next boundary.
+2. the proposed endpoint comes from a PGS rule rather than a primality oracle;
+3. all smaller candidate next primes are ruled out by the chamber certificate;
+4. a PGS uniqueness theorem forces `q_hat` as the next prime.
 
 Until those four conditions hold, pure mode must emit a failure record.
 
@@ -203,14 +203,14 @@ If a competing smaller admissible chamber remains unresolved, emit:
 
 ## Next Search Direction
 
-Boundary Law 002 identifies the same blocker more sharply: the project needs a
+Next-Prime Law 002 identifies the same blocker more sharply: the project needs a
 non-classical uniqueness theorem, not more admissibility evidence.
 
 The next search should compare two regimes:
 
 - empty-chamber anchors, where a first-open closure theorem would be needed;
 - carrier-bearing anchors, where GWR/DNI and no-later-simpler closure may have
-  enough structure to force a boundary.
+  enough structure to force a endpoint.
 
 The first positive emission should come from whichever regime first supplies a
-complete uniqueness bridge without classical boundary detection.
+complete uniqueness bridge without classical endpoint detection.

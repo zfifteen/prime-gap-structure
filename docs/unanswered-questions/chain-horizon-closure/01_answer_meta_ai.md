@@ -1,6 +1,6 @@
 You are right to put the spotlight here. The generator is already correct, but correctness at $10^{15}$ and $10^{18}$ is still bought with a non-PGS payment: divisor exhaustion to close the semiprime-shadow chain. If we can replace that payment with a bound that is visible inside the PGS state, the 56.63% and 58.00% bridge you quote becomes PGS-native.
 
-I dug through the a1c6a79 tree. The README publishes the three anchors we need, but it does not yet publish `chain_horizon_closure` as a named file — the implementation lives in the Minimal PGS Generator path you added, and the public surface still describes it operationally: chamber closure finds the first visible boundary, semiprime shadows seed a short rightward chain, chain-horizon closure kills false nodes, audit stays clean.
+I dug through the a1c6a79 tree. The README publishes the three anchors we need, but it does not yet publish `chain_horizon_closure` as a named file — the implementation lives in the Minimal PGS Generator path you added, and the public surface still describes it operationally: chamber closure finds the first visible endpoint, semiprime shadows seed a short rightward chain, chain-horizon closure kills false nodes, audit stays clean.
 
 That is enough to frame the missing law.
 

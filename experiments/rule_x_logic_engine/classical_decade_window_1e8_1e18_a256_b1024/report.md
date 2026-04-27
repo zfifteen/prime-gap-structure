@@ -78,12 +78,12 @@ first prime candidate as `q`.
 ## Interpretation
 
 The classical baseline is faster and complete on this benchmark because it uses
-direct primality testing to identify the next prime boundary.
+direct primality testing to identify the next prime endpoint.
 
-Rule X is measuring a different quantity: how often the boundary can be
+Rule X is measuring a different quantity: how often the endpoint can be
 selected from local structural consistency without promoting unresolved
-interior landmarks into false boundaries. On this ladder, Rule X resolves
-`513 / 2816` anchors with zero true-boundary rejections; classical testing
+interior landmarks into false endpoints. On this ladder, Rule X resolves
+`513 / 2816` anchors with zero true-next-prime rejections; classical testing
 resolves `2816 / 2816` by directly testing primality.
 
 ## Artifacts

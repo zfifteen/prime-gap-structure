@@ -1,11 +1,11 @@
 # Higher-Divisor Pressure Legalization
 
-The exact higher-divisor pressure states separated boundary offsets on the
+The exact higher-divisor pressure states separated next-prime offsets on the
 tested surface, but they are not lawful generator states. They use exact divisor
 buckets across the prefix, and those buckets include `d = 2` prime-marker
 identity.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
@@ -13,7 +13,7 @@ Recover a legal shadow of the higher-divisor signal without using:
 
 - exact factorization;
 - prime markers;
-- future boundary offset;
+- future next-prime offset;
 - scan-to-first-prime behavior;
 - `d = 2` recognition;
 - full divisor-count ladders;
@@ -167,17 +167,17 @@ prefix `32`:
 - integer power signature;
 - fixed-small-factor multiplicity without primality.
 
-These are candidate signals, not a boundary-forcing theorem. They need a
-separate anti-leakage and anti-table audit before any Boundary Law 005 note is
+These are candidate signals, not a next-prime-forcing theorem. They need a
+separate anti-leakage and anti-table audit before any Next-Prime Law 005 note is
 allowed. In particular, power offsets and bounded witness ladders must be
 checked for disguised anchor identity, hidden primality classification, and
-future-boundary leakage.
+future-endpoint leakage.
 
 ## Status
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The next admissible work item is a focused legality stress test for the three
 zero-collision eligible candidates:

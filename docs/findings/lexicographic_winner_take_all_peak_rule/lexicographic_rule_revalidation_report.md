@@ -63,7 +63,7 @@ For sampled runs at large scales:
 
 ### Prime detection
 
-Primes are identified as integers with d(n) = 2 within each sieved segment. Consecutive primes in the segment define the gap boundaries.
+Primes are identified as integers with d(n) = 2 within each sieved segment. Consecutive primes in the segment define the gap endpoints.
 
 ---
 

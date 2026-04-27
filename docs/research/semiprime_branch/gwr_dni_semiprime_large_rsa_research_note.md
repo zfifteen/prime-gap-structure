@@ -70,7 +70,7 @@ That is already plausible from current repo artifacts because the production pat
 
 The branch hypothesis is that explicit modeling of the `d=4` / semiprime-dominant layer may strengthen that advantage.
 
-## Claim Boundary
+## Claim Limit
 
 ### In scope
 

@@ -1,24 +1,24 @@
 # Compressed Legal State Search
 
-The first compression search did not produce a Boundary Law 005 candidate.
+The first compression search did not produce a Next-Prime Law 005 candidate.
 
 The result is a clean frontier:
 
 - zero-collision compressed states still have no bucket reuse;
-- states with measurable compression introduce boundary-offset collisions.
+- states with measurable compression introduce endpoint-offset collisions.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
 The rejected `multiplicity_pressure_without_primality` signal was legal-looking
 and collision-free, but it produced one distinct state per anchor. This probe
 coarsens that signal and asks whether any compressed version can keep the
-boundary labels separated while grouping many anchors into reusable buckets.
+endpoint labels separated while grouping many anchors into reusable buckets.
 
 A candidate must satisfy both:
 
-- low or zero boundary-offset collisions;
+- low or zero endpoint-offset collisions;
 - nontrivial state compression.
 
 ## Instrument
@@ -71,7 +71,7 @@ The probe starts from the legal multiplicity ladder and tests:
 - `multiplicity_pressure_low_medium_high`
 
 No candidate uses prime markers, full divisor counts, exact factorization,
-future boundary offset, scan-to-first-prime behavior, or the old recursive
+future next-prime offset, scan-to-first-prime behavior, or the old recursive
 walker.
 
 ## Surface
@@ -122,13 +122,13 @@ immediately. The two most compressed candidates are:
 Both fail the collision gate.
 
 This does not falsify the transition-state approach. It does reject this first
-local multiplicity-compression family as a Boundary Law 005 candidate.
+local multiplicity-compression family as a Next-Prime Law 005 candidate.
 
 ## Status
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The next admissible search should not add richer state. It should either:
 

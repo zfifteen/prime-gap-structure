@@ -1,17 +1,17 @@
-# Boundary Certificate Graph Abstention Analysis
+# Candidate-Constraint Graph Abstention Analysis
 
 ## Status
 
 This is offline graph-solver analysis. It is not pure production emission and
 does not approve cryptographic use.
 
-Boundary Law 005 remains candidate-grade. Boundary Law 005B remains
+Next-Prime Law 005 remains candidate-grade. Next-Prime Law 005B remains
 quarantined. Classical labels are used only after the graph solver has already
 produced its graph state, and only for reporting.
 
 ## Purpose
 
-Boundary Certificate Graph Solver v0 safely emitted 36 experimental graph
+Candidate-Constraint Graph Solver v0 safely emitted 36 experimental graph
 certificates on anchors `11..10_000`, but did not improve coverage beyond the
 005A-R emitter. The abstention analysis identified why the solver stopped and
 which graph relation should be added next.
@@ -43,7 +43,7 @@ graph_failed_count: 0
 
 ## Dominant Abstention Structure
 
-The graph solver usually has already resolved the true boundary, but it cannot
+The graph solver usually has already resolved the true next prime, but it cannot
 emit because later unresolved alternatives remain live.
 
 ```text
@@ -51,7 +51,7 @@ TRUE_BOUNDARY_RESOLVED_BUT_UNRESOLVED_LATER_REMAIN: 1137
 TRUE_BOUNDARY_UNRESOLVED: 52
 ```
 
-The true-boundary status split is:
+The true-next-prime status split is:
 
 ```text
 RESOLVED: 1137
@@ -61,7 +61,7 @@ ABSORBED: 0
 NOT_IN_CANDIDATE_SET: 0
 ```
 
-No true boundary was rejected or absorbed by the accepted v0 graph rules.
+No true next prime was rejected or absorbed by the accepted v0 graph rules.
 
 ## Missing Relation Patterns
 
@@ -164,7 +164,7 @@ TRUE_BOUNDARY_RESOLVED_WITH_MULTIPLE_RESOLVED_SURVIVORS: 3
 TRUE_BOUNDARY_UNRESOLVED: 52
 ```
 
-The true-boundary status split after v3 is:
+The true-next-prime status split after v3 is:
 
 ```text
 RESOLVED: 962
@@ -208,7 +208,7 @@ TRUE_BOUNDARY_RESOLVED_WITH_MULTIPLE_RESOLVED_SURVIVORS: 3
 TRUE_BOUNDARY_UNRESOLVED: 52
 ```
 
-The true-boundary status split after v4 is:
+The true-next-prime status split after v4 is:
 
 ```text
 RESOLVED: 726
@@ -252,7 +252,7 @@ TRUE_BOUNDARY_RESOLVED_WITH_MULTIPLE_RESOLVED_SURVIVORS: 3
 TRUE_BOUNDARY_UNRESOLVED: 52
 ```
 
-The true-boundary status split after v5 is:
+The true-next-prime status split after v5 is:
 
 ```text
 RESOLVED: 178
@@ -275,13 +275,13 @@ NEED_FALSE_RESOLVED_SURVIVOR_REJECTION: 3
 The main blocker is not false resolved survivors and not candidate-bound
 coverage. After v5, the graph solves 995 of 1225 tested anchors with no audit
 failure. In the remaining abstentions, the graph still contains the actual
-boundary as a resolved candidate in 178 rows and leaves it unresolved in 52
+endpoint as a resolved candidate in 178 rows and leaves it unresolved in 52
 rows.
 
 The graph still needs a stronger unresolved-later domination discriminator.
 The v1 through v5 relations prove that this path can increase coverage, but
 175 rows still retain later unresolved alternatives after a resolved true
-boundary. Any next relation must stay label-free and must not become broad
+endpoint. Any next relation must stay label-free and must not become broad
 resolved-chamber absorption.
 
 ## Next Implementation Step

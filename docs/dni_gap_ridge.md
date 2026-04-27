@@ -32,7 +32,7 @@ Two measurements then matter:
 - how far that peak sits from the nearest edge of the gap,
 - which divisor count carries that peak.
 
-The edge-distance question tells us whether the field rises toward the boundary or toward the midpoint. The carrier question tells us which divisor class most often supports the peak. In the current exact runs, the answers are near-edge position and $d(n) = 4$ carrier dominance.
+The edge-distance question tells us whether the field rises toward the endpoint or toward the midpoint. The carrier question tells us which divisor class most often supports the peak. In the current exact runs, the answers are near-edge position and $d(n) = 4$ carrier dominance.
 
 ## Why This Is A Separate Concern
 

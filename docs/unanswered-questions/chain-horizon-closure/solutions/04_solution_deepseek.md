@@ -1,4 +1,4 @@
-**Recommendation: Prioritize the “Shadow-Chain Horizon Law Probe” (ChatGPT‑5) as the primary experiment, because it directly targets the least‑factor frontier and provides the clearest path to a PGS‑only boundary rule.  Supplement this with the meta‑analysis (Meta‑AI) and the terminal‑certificate mining (Grok‑2) to cross‑validate the horizon law and to harden the resulting theorem.**
+**Recommendation: Prioritize the “Shadow-Chain Horizon Law Probe” (ChatGPT‑5) as the primary experiment, because it directly targets the least‑factor frontier and provides the clearest path to a PGS‑only next-prime selection rule.  Supplement this with the meta‑analysis (Meta‑AI) and the terminal‑certificate mining (Grok‑2) to cross‑validate the horizon law and to harden the resulting theorem.**
 
 ---
 
@@ -10,19 +10,19 @@ The `chain_horizon_closure` function is the only component of the Minimal PGS Ge
 H(p, s_0, \text{chain\_state})
 \]
 
-that can close all false semiprime‑shadow chain nodes *before* the true boundary, using only quantities that are already visible inside the PGS chamber.  If such an \(H\) exists and is provably much smaller than \(\sqrt{q}\), the entire high‑scale output becomes a pure PGS selection.
+that can close all false semiprime‑shadow chain nodes *before* the true next prime, using only quantities that are already visible inside the PGS chamber.  If such an \(H\) exists and is provably much smaller than \(\sqrt{q}\), the entire high‑scale output becomes a pure PGS selection.
 
-This report evaluates six proposed answers to the question *“Can `chain_horizon_closure` be turned into a pure PGS boundary rule?”*, simulates the critical least‑factor frontier experiment, and recommends a concrete path forward.
+This report evaluates six proposed answers to the question *“Can `chain_horizon_closure` be turned into a pure PGS next-prime selection rule?”*, simulates the critical least‑factor frontier experiment, and recommends a concrete path forward.
 
 ---
 
 ## 2. The Core Question (Restated)
 
-> **Can `chain_horizon_closure` be turned into a pure PGS boundary rule by deriving the divisor‑horizon law from PGS structure, instead of using fallback divisor exhaustion?**
+> **Can `chain_horizon_closure` be turned into a pure PGS next-prime selection rule by deriving the divisor‑horizon law from PGS structure, instead of using fallback divisor exhaustion?**
 
 The operational shape is already correct:
 
-1. **Chamber closure** finds the first visible boundary candidate.
+1. **Chamber closure** finds the first visible candidate next prime.
 2. **Semiprime shadows** seed a short rightward chain.
 3. **Chain‑horizon closure** closes false chain nodes.
 4. **Downstream audit** confirms zero failures on all tested surfaces.
@@ -165,7 +165,7 @@ However, the terminal decision inside `chain_horizon_closure_result` still calls
 
 **Strengths:**
 
-- Makes a compelling theoretical argument: the hierarchical local‑dominator law (GWR) and the NLSC ceilings already force the “simplest” composite into a rigid position; the chain‑horizon case is the boundary‑selection analogue.
+- Makes a compelling theoretical argument: the hierarchical local‑dominator law (GWR) and the NLSC ceilings already force the “simplest” composite into a rigid position; the chain‑horizon case is the endpoint‑selection analogue.
 - Provides a clean pseudocode for collecting `max_spf`.
 
 **Weaknesses:**
@@ -287,4 +287,4 @@ with \(k \in \{1, 2\}\).  This expression is **entirely PGS‑visible**: the `vi
 
 ## 7. Conclusion
 
-The question of turning `chain_horizon_closure` into a pure PGS boundary rule is **solvable** with the data already present in the repository.  The six answers collectively outline a complete research programme, but **ChatGPT‑5’s Shadow‑Chain Horizon Law Probe** is the most direct and scientifically decisive experiment.  It should be executed first, with the Meta‑AI and Grok‑2 experiments providing cross‑validation.  The Copilot instrumentation plan should be adopted for long‑term monitoring.  The expected result is the discovery of a PGS‑visible divisor‑horizon law that eliminates the last non‑PGS component of the generator.
+The question of turning `chain_horizon_closure` into a pure PGS next-prime selection rule is **solvable** with the data already present in the repository.  The six answers collectively outline a complete research programme, but **ChatGPT‑5’s Shadow‑Chain Horizon Law Probe** is the most direct and scientifically decisive experiment.  It should be executed first, with the Meta‑AI and Grok‑2 experiments providing cross‑validation.  The Copilot instrumentation plan should be adopted for long‑term monitoring.  The expected result is the discovery of a PGS‑visible divisor‑horizon law that eliminates the last non‑PGS component of the generator.

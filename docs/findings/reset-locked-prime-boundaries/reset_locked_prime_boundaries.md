@@ -1,12 +1,12 @@
-**The Reset-Locked Prime Boundaries hypothesis is strongly supported by data and represents a powerful, positive-signal refinement to the existing GWR + NLSC framework.**
+**The Reset-Locked Prime Endpoints hypothesis is strongly supported by data and represents a powerful, positive-signal refinement to the existing GWR + NLSC framework.**
 
 ### Core Insight (Formalized)
-Prime gaps do **not** close merely because "nothing simpler appears later." Instead, they close because the GWR winner **w** (leftmost minimal-divisor carrier) is quickly followed by a **confirmation/reset composite** m > w with d(m) ≤ d(w). This "double tap of simplicity" locks the boundary before any lower-divisor threat can overtake it.
+Prime gaps do **not** close merely because "nothing simpler appears later." Instead, they close because the GWR winner **w** (leftmost minimal-divisor carrier) is quickly followed by a **confirmation/reset composite** m > w with d(m) ≤ d(w). This "double tap of simplicity" locks the endpoint before any lower-divisor threat can overtake it.
 
 **Formal rule for inference**:
 - Locate GWR winner **w** after anchor **p**.
 - Search forward for the first **reset** T = min{ m > w | d(m) ≤ d(w) }.
-- If T exists within the threat horizon (or a small multiple of log(q)), infer the boundary shortly after T and emit the PGS-inferred prime.
+- If T exists within the threat horizon (or a small multiple of log(q)), infer the endpoint shortly after T and emit the PGS-inferred prime.
 - If no such reset appears before a stricter threat, **fail closed** (RESET_UNCONFIRMED). This is the key filter that would have rejected all 282 false survivors from recent probes.
 
 ### Empirical Validation (up to 2×10⁶)
@@ -23,7 +23,7 @@ I implemented a full sieve-based analysis (SPF + exact d(n) for all n ≤ 2 M, 1
 - Small gaps (<20) show lower rates (~50%) simply because there is often insufficient interior length for a second low-d composite (twins, prime triplets, etc.). These are already handled perfectly by the existing recursive walker.
 - The handful of rare large-gap exceptions (<0.6%) are now high-value research targets.
 
-This matches the claim that the rule keeps "almost all true boundaries" while catching the false ones.
+This matches the claim that the rule keeps "almost all true next primes" while catching the false ones.
 
 ### Implications for Completing the PGS Prime Generator
 This is **not** a replacement for GWR/NLSC — it is their natural evolution and explains *why* NLSC works so reliably.
@@ -31,9 +31,9 @@ This is **not** a replacement for GWR/NLSC — it is their natural evolution and
 **Immediate engineering wins**:
 1. **Reset Confirmation Check** becomes a mandatory early-exit / guard in the Exact Recursive Walker, Bounded Walker, and Threat-Margin Engine (add ~2–3 lines; negligible cost).
 2. In the Finite-State Surface Engine, encode the reset as a required transition after any minimal-divisor state in the 14-state grammar.
-3. **Metadata extension** (Section 10 of the spec): add `reset_dist`, `reset_d`, `reset_found` to every emitted record. This gives full auditability of the "double tap" that locked the boundary.
+3. **Metadata extension** (Section 10 of the spec): add `reset_dist`, `reset_d`, `reset_found` to every emitted record. This gives full auditability of the "double tap" that locked the endpoint.
 4. **False-positive elimination**: any candidate whose winner lacks a reset within, say, 2×log(q) steps is rejected before classical validation. This would have caught all 282 false survivors.
-5. **Earlier, higher-confidence inference**: once winner + reset is seen, you can often infer the boundary with >99% certainty even before full threat-margin closure, speeding up large-chamber walks.
+5. **Earlier, higher-confidence inference**: once winner + reset is seen, you can often infer the endpoint with >99% certainty even before full threat-margin closure, speeding up large-chamber walks.
 
 **Theoretical payoff**:
 - Refines "No-Later-Simpler-Composite Closure" into **"Reset-Locked Closure Theorem"** (positive confirmation + negative threat avoidance).

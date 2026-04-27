@@ -104,7 +104,7 @@ carrier. On this corrected exact corridor metric, the result is stronger:
 whenever the target gap contains $d=4$ carriers at all, the current PNT seed is
 still blocked by a pre-gap spoiler. The remaining problem is therefore not
 witness recovery inside the target gap. It is crossing the lower exclusion
-boundary.
+endpoint.
 
 ## Practical Consequence
 

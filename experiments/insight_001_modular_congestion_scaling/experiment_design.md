@@ -340,7 +340,7 @@ The design attacks these failure modes directly:
 | Phase-blind control matches local MCS | `not_distinguished_from_average_density` |
 | All primary criteria pass | `finite_validated` |
 
-## Exact Claim Boundary
+## Exact Claim Limit
 
 A `finite_validated` result supports this bounded statement:
 

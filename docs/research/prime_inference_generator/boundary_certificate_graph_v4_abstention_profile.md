@@ -1,4 +1,4 @@
-# Boundary Certificate Graph v4 Abstention Profile
+# Candidate-Constraint Graph v4 Abstention Profile
 
 ## Status
 
@@ -6,7 +6,7 @@ This is offline graph-solver analysis. It does not add a v4 relation, pure
 production emission, cryptographic approval, 005B, broad resolved-chamber
 absorption, earliest-candidate dominance, or scalar ranking.
 
-Boundary Law 005 remains candidate-grade. Classical labels are used only after
+Next-Prime Law 005 remains candidate-grade. Classical labels are used only after
 Graph Solver v3 has already produced its graph state, and only for reporting.
 
 ## Target Surface
@@ -39,7 +39,7 @@ TRUE_BOUNDARY_RESOLVED_WITH_MULTIPLE_RESOLVED_SURVIVORS: 3
 TRUE_BOUNDARY_UNRESOLVED: 52
 ```
 
-The true-boundary status split remains safe:
+The true-next-prime status split remains safe:
 
 ```text
 RESOLVED: 962
@@ -96,7 +96,7 @@ a label-free graph predicate, then audited downstream after graph emission.
 ## Interpretation
 
 Graph Solver v3 already solves 211 anchors on this surface. In most remaining
-abstentions, the true boundary is resolved and later unresolved alternatives
+abstentions, the true next prime is resolved and later unresolved alternatives
 remain live. The nearest unresolved target after the resolved source often has
 no legal carrier, which leaves v1 and v2 in an unknown reset state and leaves
 v3 without its target-carrier condition.
@@ -135,4 +135,4 @@ v4_relation_wrong_count_after_audit: 0
 ```
 
 The relation remains experimental graph logic. It is not production pure
-emission and does not approve Boundary Law 005 as a final generator law.
+emission and does not approve Next-Prime Law 005 as a final generator law.

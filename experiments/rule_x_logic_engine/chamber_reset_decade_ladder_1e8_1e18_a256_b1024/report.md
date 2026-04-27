@@ -19,7 +19,7 @@ total runtime: 36.951566 seconds
 
 The previous Rule X emission rule resolved `513 / 2816` anchors. The
 chamber-reset rule converted the remaining `2303` tail cases by classifying
-later unresolved candidates as post-boundary chamber material.
+later unresolved candidates as post-endpoint chamber material.
 
 ## Tested Rule
 
@@ -69,14 +69,14 @@ after a survivor has already been resolved.
 
 ## Interpretation
 
-The unresolved anchors were not missing the boundary. They already contained
-the boundary as the first resolved survivor.
+The unresolved anchors were not missing the endpoint. They already contained
+the endpoint as the first resolved survivor.
 
 The chamber-reset rule resolves the remaining ambiguity:
 
 ```text
 p ... first_resolved_survivor ... later_unresolved_tail
-      ^ current boundary         ^ later chamber material
+      ^ current endpoint         ^ later chamber material
 ```
 
 Within this decade-window regime, Rule X plus chamber reset reaches complete

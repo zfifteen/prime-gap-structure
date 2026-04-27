@@ -4,7 +4,7 @@ Technical Specification: PGS Prime Inference Generator
 
 This specification defines a new deterministic prime-generation architecture based on Prime Gap Structure (PGS). The generator does not use Miller-Rabin, probabilistic primality testing, trial division primality testing, or classical sieve-based generation as part of its generation logic.
 
-Instead, it uses deterministic PGS structure to infer prime boundaries from the internal arithmetic structure of prime-gap interiors.
+Instead, it uses deterministic PGS structure to infer prime endpoints from the internal arithmetic structure of prime-gap interiors.
 
 The generator emits PGS-inferred primes. Classical primality methods may be applied afterward as an external validation layer, but they are not part of the generator itself.
 
@@ -16,7 +16,7 @@ Is this candidate prime?
 
 The PGS Prime Inference Generator asks:
 
-Given a known prime boundary and the deterministic structure of the following composite chamber, where is the next prime boundary inferred to be?
+Given a known prime endpoint and the deterministic structure of the following composite chamber, where is the next prime endpoint inferred to be?
 
 This inverts the usual workflow.
 
@@ -31,7 +31,7 @@ The system consists of four conceptual layers:
     * The known prime can be supplied externally or taken from a validated seed list.
 2. PGS Inference Layer
     * Uses deterministic repo rules such as DNI, GWR, raw-Z/log-Z scoring, divisor-class arrival, no-later-simpler-composite closure, and recursive gap-walker logic.
-    * Infers the next prime boundary q without classical primality testing.
+    * Infers the next prime endpoint q without classical primality testing.
 3. Emission Layer
     * Emits q as a PGS-inferred prime.
     * Records the inference path, gap interior evidence, winner carrier, divisor-class logic, and confidence metadata.
@@ -61,7 +61,7 @@ It generates primes by deterministic PGS inference, then allows classical valida
 
 PGS-Inferred Prime
 
-A number emitted by the generator as the inferred next prime boundary according to deterministic PGS rules.
+A number emitted by the generator as the inferred next prime endpoint according to deterministic PGS rules.
 
 Before external validation, this number should not be called a certified prime.
 
@@ -75,7 +75,7 @@ For consecutive primes p < q, the gap interior is:
 
 I = {p + 1, ..., q - 1}
 
-In the generator, the future right boundary q is not assumed known. The inference layer attempts to infer it.
+In the generator, the future right endpoint q is not assumed known. The inference layer attempts to infer it.
 
 GWR Carrier
 
@@ -91,7 +91,7 @@ where d(n) is the divisor count.
 
 No-Later-Simpler-Composite Closure
 
-The rule that after the GWR carrier appears, the next prime boundary arrives before any later composite with strictly lower divisor count can appear inside the same gap.
+The rule that after the GWR carrier appears, the next prime endpoint arrives before any later composite with strictly lower divisor count can appear inside the same gap.
 
 Threat Margin
 
@@ -103,7 +103,7 @@ The threat margin is:
 
 T_<(w) - q
 
-A nonnegative margin means the inferred right prime boundary arrives before the lower-divisor threat overtakes the winner.
+A nonnegative margin means the inferred right prime endpoint arrives before the lower-divisor threat overtakes the winner.
 
 6. Design Principle
 
@@ -219,8 +219,8 @@ The initial design should use the repo’s existing deterministic components in 
 2. Build or scan the candidate chamber immediately to the right of p using PGS-compatible structure.
 3. Identify admissible composite carriers and their divisor classes.
 4. Locate the earliest minimal-divisor carrier according to GWR logic.
-5. Use no-later-simpler-composite closure to infer the right boundary before any later simpler composite threat.
-6. Infer the next prime boundary q_hat.
+5. Use no-later-simpler-composite closure to infer the right endpoint before any later simpler composite threat.
+6. Infer the next prime endpoint q_hat.
 7. Emit q_hat and advance the anchor to q_hat.
 8. Repeat.
 
@@ -248,7 +248,7 @@ Best for:
 * scalability experiments,
 * failure-bound discovery.
 
-Must emit explicit failure if the inferred boundary cannot be uniquely resolved within the bound.
+Must emit explicit failure if the inferred next prime cannot be uniquely resolved within the bound.
 
 12.3 Threat-Margin Engine
 
@@ -257,7 +257,7 @@ Uses lower-divisor threat margins to infer safe closure of the chamber.
 Best for:
 
 * formalizing no-later-simpler closure,
-* identifying boundary cases,
+* identifying endpoint cases,
 * building the next theorem candidate.
 
 12.4 Finite-State Surface Engine
@@ -268,7 +268,7 @@ Best for:
 
 * long-run structure experiments,
 * compressed symbolic inference,
-* testing whether the reduced engine can support prime-boundary inference rather than only gap-type modeling.
+* testing whether the reduced engine can support prime-endpoint inference rather than only gap-type modeling.
 
 This should be treated as experimental until it achieves exact recovery benchmarks.
 
@@ -357,7 +357,7 @@ Success threshold:
 
 Failure signal:
 
-* any missed or skipped prime boundary.
+* any missed or skipped prime endpoint.
 
 14.3 Speed Benchmark Against Classical Generation
 
@@ -387,7 +387,7 @@ The most important number is pure inference speed, but the honest deployment num
 
 The generator must fail closed.
 
-If the inference engine cannot identify a unique next boundary, it must emit a structured failure rather than guessing.
+If the inference engine cannot identify a unique next prime, it must emit a structured failure rather than guessing.
 
 Failure types:
 
@@ -430,7 +430,7 @@ Possible names:
 * PGS Recursive Prime Walker
 * DNI-GWR Prime Inference Engine
 * Structural Prime Inference Generator
-* Prime Boundary Inference Walker
+* Prime Endpoint Inference Walker
 
 Recommended public name:
 
@@ -462,7 +462,7 @@ Avoid saying:
 
 Strong but defensible phrasing:
 
-This separates prime generation from prime validation. The generator proposes the next prime boundary from deterministic gap structure; classical methods then audit the generated stream.
+This separates prime generation from prime validation. The generator proposes the next prime endpoint from deterministic gap structure; classical methods then audit the generated stream.
 
 19. Security Position
 
@@ -479,13 +479,13 @@ The research breakthrough is in generation logic, not in bypassing security cert
 20. Open Questions
 
 1. Can the exact recursive walker be converted into a generation-only interface with no hidden classical primality dependency?
-2. What is the smallest deterministic metadata set needed to infer a unique next boundary?
+2. What is the smallest deterministic metadata set needed to infer a unique next prime?
 3. Does the bounded walker remain exact beyond the committed 10^7 surface?
 4. Can threat-margin closure provide the formal bridge for large-scale inference?
 5. Can the Semiprime Wheel Attractor help predict or compress inference steps without sacrificing exactness?
 6. What is the first scale where inference becomes faster than classical candidate testing, excluding validation?
 7. What is the first scale where inference remains faster including validation?
-8. What are the boundary cases where inference is ambiguous?
+8. What are the endpoint cases where inference is ambiguous?
 
 21. Smallest Useful MVP
 
@@ -535,7 +535,7 @@ The PGS Prime Inference Generator is a new architecture for prime generation.
 
 It does not test candidates for primality during generation.
 
-It uses deterministic PGS rules to infer the next prime boundary from gap-interior structure.
+It uses deterministic PGS rules to infer the next prime endpoint from gap-interior structure.
 
 It emits inferred primes with complete inference traces.
 

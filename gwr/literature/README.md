@@ -20,7 +20,7 @@ The safe current statement is:
 - novelty search memos,
 - candidate prior-art notes,
 - citations that are safe to use in reports,
-- explicit boundaries between proved repo claims and broader novelty claims.
+- explicit distinctions between proved repo claims and broader novelty claims.
 
 ## Existing Inputs
 

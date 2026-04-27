@@ -1,8 +1,8 @@
-# Boundary Law 005A Evidence Stack
+# Next-Prime Law 005A Evidence Stack
 
 ## Status
 
-Boundary Law 005A is the sole live Boundary Law 005 candidate.
+Next-Prime Law 005A is the sole live Next-Prime Law 005 candidate.
 
 Current project status:
 
@@ -10,17 +10,17 @@ Current project status:
 - Milestone 0: accepted
 - Milestone 1 positive emission: blocked
 - pure prime emission: forbidden
-- Boundary Law 005A: candidate-grade, action-population audit passed, safe so far, narrow
-- Boundary Law 005B: quarantined
+- Next-Prime Law 005A: candidate-grade, action-population audit passed, safe so far, narrow
+- Next-Prime Law 005B: quarantined
 - PGS-inferred prime emission: not approved
 
 This note is offline theorem discovery. It consolidates evidence for 005A. It does not approve pure generation, prime emission, or theorem status.
 
 ## Candidate Statement
 
-A proposed right boundary has a resolved chamber certificate. Later candidate chambers remain unresolved because they extend past that resolved candidate.
+A proposed right endpoint has a resolved chamber certificate. Later candidate chambers remain unresolved because they extend past that resolved candidate.
 
-Boundary Law 005A adds one lock condition:
+Next-Prime Law 005A adds one lock condition:
 
 ```text
 resolved chamber
@@ -61,7 +61,7 @@ Classical labels may be attached only after the rule acts, for audit.
 - Miller-Rabin
 - prime marker identity
 - scan-to-first-prime logic
-- actual future boundary offset inside the rule
+- actual future next-prime offset inside the rule
 - future gap width
 - old recursive walker output
 - full forbidden divisor ladders
@@ -107,7 +107,7 @@ higher_divisor_pressure_lock_wrong_count: 0
 
 Integration results:
 
-| surface | unique resolved survivors | true boundary rejected | absorption correct | absorption wrong | false survivor absorbed |
+| surface | unique resolved survivors | true next prime rejected | absorption correct | absorption wrong | false survivor absorbed |
 |---|---:|---:|---:|---:|---:|
 | 11..100000 | 25 | 0 | 31 | 0 | 0 |
 | 11..1000000 | 25 | 0 | 31 | 0 | 0 |
@@ -128,13 +128,13 @@ false_resolved_survivor_absorbed_count: 0
 
 Action-population audit results:
 
-| lock | hardening candidates | integration actions | missed actions | wrong absorptions | true boundary rejected |
+| lock | hardening candidates | integration actions | missed actions | wrong absorptions | true next prime rejected |
 |---|---:|---:|---:|---:|---:|
 | 005A higher_divisor_pressure_lock | 114222 | 31 | 0 | 0 | 0 |
 
 Surface detail:
 
-| surface | hardening candidates | integration actions | missed actions | wrong absorptions | true boundary rejected |
+| surface | hardening candidates | integration actions | missed actions | wrong absorptions | true next prime rejected |
 |---|---:|---:|---:|---:|---:|
 | 11..1000000 | 95305 | 31 | 0 | 0 | 0 |
 | 100000..200000 | 10163 | 0 | 0 | 0 | 0 |
@@ -152,12 +152,12 @@ This removes the specific population-mismatch risk that killed 005B. It does not
 
 005A was tested on shifted windows:
 
-| surface | unique resolved survivors | true boundary rejected | applied | wrong |
+| surface | unique resolved survivors | true next prime rejected | applied | wrong |
 |---|---:|---:|---:|---:|
 | 100000..200000 | 0 | 0 | 0 | 0 |
 | 1000000..1100000 | 0 | 0 | 0 | 0 |
 
-The shifted windows safely abstained. That is acceptable for candidate safety, but it shows the lock is sparse and not a general boundary-forcing theorem.
+The shifted windows safely abstained. That is acceptable for candidate safety, but it shows the lock is sparse and not a general next-prime-forcing theorem.
 
 ## Coverage Limitation
 
@@ -230,7 +230,7 @@ Only one axis should change at a time. The same gates must pass:
 ```text
 selector false selections: 0
 integration wrong absorptions: 0
-true boundary rejections: 0
+true next prime rejections: 0
 missed action candidates: 0
 ```
 

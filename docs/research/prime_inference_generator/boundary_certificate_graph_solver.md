@@ -1,19 +1,19 @@
-# Boundary Certificate Graph Solver
+# Candidate-Constraint Graph Solver
 
 ## Status
 
-The boundary certificate graph solver is an offline experimental inference
+The candidate-constraint graph solver is an offline experimental inference
 artifact. It is not production pure emission. It does not approve
 cryptographic use. Classical validation remains a separate downstream audit
 over records that have already been emitted.
 
-Boundary Law 005 remains candidate-grade. The only live rule family used here
-is 005A-R. Boundary Law 005B remains quarantined.
+Next-Prime Law 005 remains candidate-grade. The only live rule family used here
+is 005A-R. Next-Prime Law 005B remains quarantined.
 
 Graph v6 is the active safe solver version. It is v3 plus one repaired
-no-carrier relation with positive target non-boundary evidence. Graph v4 and
+no-carrier relation with positive target non-endpoint evidence. Graph v4 and
 v5 remain quarantined outside the last clean `11..10_000` development surface
-because v4 absorbed the unresolved true boundary at anchor `10193` during the
+because v4 absorbed the unresolved true next prime at anchor `10193` during the
 `11..100_000` scale run.
 
 ## Purpose
@@ -22,14 +22,14 @@ The previous emitter produced inferred-prime records from a single refined
 activation rule. The graph solver keeps the same accepted rule set but changes
 the implementation shape:
 
-1. build candidate boundary nodes for an anchor prime;
+1. build candidate next prime nodes for an anchor prime;
 2. attach accepted PGS facts to each node;
 3. attach rule relations between nodes;
 4. propagate accepted eliminations until stable;
 5. emit only when one resolved candidate remains and no unresolved alternatives
    remain.
 
-The solver asks whether the existing PGS facts already force a boundary when
+The solver asks whether the existing PGS facts already force a endpoint when
 they are composed as a small deduction graph.
 
 ## Accepted Rule Families
@@ -43,7 +43,7 @@ pipeline:
 - 005A-R higher-divisor locked absorption with
   `single_hole_closure_used = false`.
 - unresolved-later domination from existing graph facts.
-- repaired no-carrier target domination with positive non-boundary evidence.
+- repaired no-carrier target domination with positive non-endpoint evidence.
 
 It does not use 005B, broad resolved-chamber absorption, earliest-candidate
 dominance, scalar ranking, prime-marker identity, `nextprime`, `isprime`, or
@@ -100,7 +100,7 @@ This relation does not say there is no reset in the number-theoretic sense. It
 says the existing active graph has one resolved source, that source is an
 empty-carrier chamber, and the next unresolved extension has a positive carrier
 fact after the source. The single-resolved-source guard is load-bearing; a
-broader empty-carrier version absorbed true boundaries in abstaining
+broader empty-carrier version absorbed true next primes in abstaining
 multiple-resolved graphs during development and was not retained.
 
 ## Quarantined v4 Relation
@@ -125,7 +125,7 @@ single-hole-dependent sources, targets with legal carriers, positive reset
 evidence, and unknown preconditions.
 
 The relation is quarantined because the `11..100_000` scale run found anchor
-`10193`, where offset `18` is the true boundary and remained unresolved through
+`10193`, where offset `18` is the true next prime and remained unresolved through
 v3. The v4 absence-based no-carrier relation absorbed that target. The failure
 was reproduced in a single-anchor audit and classified as an unsafe relation,
 not a mutation-order, range-order, or audit bug.
@@ -169,14 +169,14 @@ The repaired relation acts only when all of these graph facts are present:
 - the target has no legal carrier under the current witness bound;
 - the active graph contains no positive reset evidence between source and
   target;
-- the target has positive non-boundary evidence.
+- the target has positive non-endpoint evidence.
 
-The positive non-boundary evidence is label-free. It may come from a bounded
+The positive non-endpoint evidence is label-free. It may come from a bounded
 composite witness, power witness, certified divisor-class certificate,
 wheel-closed target, independently rejected target, or target position beyond
 a selected carrier-locked pressure ceiling.
 
-The relation abstains when the target has no positive non-boundary evidence.
+The relation abstains when the target has no positive non-endpoint evidence.
 This is the safety correction from the v4 failure: absence of reset evidence
 alone is not enough to absorb a no-carrier unresolved target.
 
@@ -194,7 +194,7 @@ Each emitted JSONL record uses:
 The inferred value is emitted as an experimental graph certificate. It is not a
 production prime-generation result.
 
-## Audit Boundary
+## Audit Endpoint
 
 The solver writes graph records without classical validation. The audit mode
 reads the emitted JSONL later and confirms whether `inferred_prime_q_hat` is
@@ -301,7 +301,7 @@ v3_relation_correct_count_after_audit: 81
 v3_relation_wrong_count_after_audit: 0
 ```
 
-The follow-up abstention analysis found no true-boundary rejection or
+The follow-up abstention analysis found no true-next-prime rejection or
 absorption in the remaining graph states:
 
 ```text
@@ -348,7 +348,7 @@ v4_relation_correct_count_after_audit: 236
 v4_relation_wrong_count_after_audit: 0
 ```
 
-The follow-up abstention analysis found no true-boundary rejection or
+The follow-up abstention analysis found no true-next-prime rejection or
 absorption in the remaining graph states:
 
 ```text
@@ -396,7 +396,7 @@ v5_relation_correct_count_after_audit: 548
 v5_relation_wrong_count_after_audit: 0
 ```
 
-The follow-up abstention analysis found no true-boundary rejection or
+The follow-up abstention analysis found no true-next-prime rejection or
 absorption in the remaining graph states:
 
 ```text
@@ -420,12 +420,12 @@ anchor_p: 10193
 bad emitted q_hat: 10201
 actual next prime: 10211
 bad emitted offset: 8
-actual boundary offset: 18
+actual next prime offset: 18
 relation_that_absorbed_true_boundary: v4
 ```
 
-The audit confirmed first-boundary semantics, not mere primality. The true
-boundary was in the candidate set, remained unresolved through v3, and was
+The audit confirmed first-endpoint semantics, not mere primality. The true
+endpoint was in the candidate set, remained unresolved through v3, and was
 absorbed by v4. Therefore v4 and v5 are quarantined outside the last clean
 `11..10_000` surface.
 

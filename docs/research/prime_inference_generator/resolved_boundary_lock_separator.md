@@ -1,17 +1,17 @@
-# Resolved Boundary Lock Separator
+# Resolved Next Prime Lock Separator
 
 Higher-divisor pressure is the first zero-wrong lock separator on the tested
 absorption surface.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
-Resolved-chamber absorption alone failed because true resolved boundaries and
+Resolved-chamber absorption alone failed because true resolved endpoints and
 false resolved survivors both absorb later unresolved alternatives.
 
 This probe asks whether any legal lock/reset feature separates true resolved
-boundaries from false resolved survivors before absorption is allowed.
+endpoints from false resolved survivors before absorption is allowed.
 
 ## Measured Mode
 
@@ -100,8 +100,8 @@ The one zero-wrong predicate on this surface is:
 higher_divisor_pressure_lock
 ```
 
-It selects `31` true resolved boundaries and `0` false resolved survivors.
-That is not Boundary Law 005. It is a candidate lock separator worth hardening.
+It selects `31` true resolved endpoints and `0` false resolved survivors.
+That is not Next-Prime Law 005. It is a candidate lock separator worth hardening.
 
 The observed shape is:
 
@@ -112,14 +112,14 @@ resolved chamber
 ```
 
 The next test is scale and anti-leakage hardening for this predicate. It must
-survive larger surfaces and shifted windows before it can become a Boundary Law
+survive larger surfaces and shifted windows before it can become a Next-Prime Law
 005 candidate.
 
 ## Status
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 Prime emission remains forbidden.
 

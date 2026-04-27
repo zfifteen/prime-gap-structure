@@ -59,23 +59,23 @@ Removed from the production generator:
 - chain fallback;
 - inline validation of emitted `q`.
 
-## Boundary Rule
+## Endpoint Rule
 
 The production selector is:
 
 ```text
 rule_id: pgs_chamber_reset_v1
 state input: exact divisor-count field
-boundary rule: GWR/NLSC chamber-reset state
+next-prime selection rule: GWR/NLSC chamber-reset state
 ```
 
 The key chamber-reset interpretation is:
 
 After the first resolved survivor appears, later unresolved candidates are
-post-reset chamber material, not competing boundaries for the original anchor.
+post-reset chamber material, not competing endpoints for the original anchor.
 
 That converts the remaining candidate set into a consistency-collapse problem:
-the boundary is the first resolved survivor that leaves the earlier chamber
+the endpoint is the first resolved survivor that leaves the earlier chamber
 state coherent under GWR and NLSC.
 
 ## Repository Links

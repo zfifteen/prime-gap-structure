@@ -1,8 +1,8 @@
-# Boundary Law 005 Family Integration Matrix
+# Next-Prime Law 005 Family Integration Matrix
 
 ## Status
 
-Boundary Law 005A remains candidate-grade. Boundary Law 005B is not integration-approved.
+Next-Prime Law 005A remains candidate-grade. Next-Prime Law 005B is not integration-approved.
 
 The flagged offline integration matrix found that 005A remains zero-wrong on the tested surfaces, but direct 005B absorption fails the hard gate on the origin surface. The combined modes inherit the same failure.
 
@@ -28,7 +28,7 @@ The four tested modes were:
 
 ## Results
 
-| mode | surface | unique resolved survivors | true boundary rejected | correct absorptions | wrong absorptions | false survivor absorptions | 005A applied | 005B applied | hard gate |
+| mode | surface | unique resolved survivors | true next prime rejected | correct absorptions | wrong absorptions | false survivor absorptions | 005A applied | 005B applied | hard gate |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | 005A only | 11..100000 | 25 | 0 | 31 | 0 | 0 | 31 | 0 | pass |
 | 005A only | 11..1000000 | 25 | 0 | 31 | 0 | 0 | 31 | 0 | pass |
@@ -54,11 +54,11 @@ The first hard-gate failure is:
 - mode: 005B only
 - surface: 11..100000
 - anchor: 3137
-- actual boundary offset: 26
+- actual next prime offset: 26
 - false absorber offset: 12
 - absorbed offsets: 26, 30, 32, 44, 50, 54
 
-The false resolved survivor at offset 12 absorbs the true boundary candidate at offset 26. That violates both required gates:
+The false resolved survivor at offset 12 absorbs the true next prime candidate at offset 26. That violates both required gates:
 
 - true_boundary_rejected_count must remain 0
 - absorption_wrong_count must remain 0
@@ -69,7 +69,7 @@ The previous-to-current carrier shift lock hardened as a zero-wrong selector ins
 
 Those are not the same regime.
 
-The hardening population required the true boundary to already be a resolved survivor with later unresolved alternatives and no active higher-divisor pressure lock. The direct integration path cannot use the true boundary label, so it can fire earlier on false resolved survivors. Anchor 3137 shows that failure mode explicitly.
+The hardening population required the true next prime to already be a resolved survivor with later unresolved alternatives and no active higher-divisor pressure lock. The direct integration path cannot use the true next prime label, so it can fire earlier on false resolved survivors. Anchor 3137 shows that failure mode explicitly.
 
 ## Decision
 
@@ -90,7 +90,7 @@ The hardening population required the true boundary to already be a resolved sur
 
 005B can only return as an integration candidate if a label-free activation guard reproduces the hardening population without using:
 
-- actual boundary labels
+- actual next prime labels
 - prime markers
 - future gap width
 - scan-to-first-prime logic

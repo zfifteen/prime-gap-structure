@@ -11,9 +11,9 @@ one distinct state for every anchor on every tested surface:
 - `singleton_bucket_rate: 1.0`
 - `max_bucket_size: 1`
 
-That is not acceptable boundary-law evidence. It is a table-like state.
+That is not acceptable endpoint-law evidence. It is a table-like state.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
@@ -155,7 +155,7 @@ Hardening survivors: none.
 
 ## Interpretation
 
-The collision evidence did not promote a Boundary Law 005 candidate.
+The collision evidence did not promote a Next-Prime Law 005 candidate.
 
 `power_signature_pressure` and `bounded_composite_witness_pressure` fail the
 collision gate on the full `11..1_000_000` surface for at least one tested
@@ -167,13 +167,13 @@ a reusable transition law. Its zero-collision result is quarantined as
 table-like evidence.
 
 The legal candidate family therefore remains useful as a diagnostic signal, but
-not as a boundary-forcing law.
+not as a next-prime-forcing law.
 
 ## Status
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The next admissible search should reduce state dimensionality before testing
 new mathematics. A lower-resolution multiplicity or witness-pressure state

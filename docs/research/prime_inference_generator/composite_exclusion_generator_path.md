@@ -1,6 +1,6 @@
 # Composite-Exclusion Generator Path
 
-Local state-vector search has not produced a compact boundary-forcing law.
+Local state-vector search has not produced a compact next-prime-forcing law.
 
 The current evidence is consistent across the failed paths:
 
@@ -9,20 +9,20 @@ The current evidence is consistent across the failed paths:
 - legal ladder and pressure states can classify local structure;
 - high-resolution legal states can separate labels, but they become
   table-like;
-- compressed legal states reuse buckets, but then boundary-offset collisions
+- compressed legal states reuse buckets, but then endpoint-offset collisions
   appear.
 
 The next generator path should not add richer local fingerprints. It should
-attempt constructive boundary isolation by eliminating inadmissible candidates.
+attempt constructive endpoint isolation by eliminating inadmissible candidates.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Core Idea
 
 The generator must not ask whether a candidate `q` is prime.
 
 It may try to prove that other admissible candidates cannot be the right
-boundary.
+endpoint.
 
 For an anchor prime `p`, define a finite candidate set:
 
@@ -33,7 +33,7 @@ Each candidate `q_hat` proposes a chamber:
 $$I(p, q\_hat) = \{p + 1,\ldots,q\_hat - 1\}$$
 
 The exclusion process rejects a candidate only when legal PGS evidence
-contradicts that proposed chamber. It emits a boundary only if exactly one
+contradicts that proposed chamber. It emits a endpoint only if exactly one
 candidate remains.
 
 If zero or multiple candidates remain, pure generation fails closed.
@@ -63,7 +63,7 @@ The exclusion logic may use:
 - no-later-simpler closure when all ingredients are legal;
 - square and threat pressure when expressed without primality recognition;
 - previous accepted chamber metadata, if the generator has lawfully emitted the
-  previous boundary.
+  previous endpoint.
 
 Positive composite evidence is allowed. Absence of a factor must not be treated
 as primality evidence.
@@ -88,7 +88,7 @@ The exclusion logic must not use:
 - a table of known prime gaps.
 
 The offline probe may attach classical labels after elimination in order to
-measure whether the survivor matches the actual next boundary. Those labels are
+measure whether the survivor matches the actual next prime. Those labels are
 not part of the elimination state.
 
 ## Candidate Rejection Rules
@@ -98,13 +98,13 @@ For each `q_hat` in `Q_B(p)`, form the proposed interior `I(p, q_hat)`.
 Reject `q_hat` if any legal rule proves the proposed chamber invalid:
 
 1. An interior wheel-open offset has a concrete composite witness inconsistent
-   with being an open boundary candidate under the proposed chamber model.
+   with being an open candidate next prime under the proposed chamber model.
 2. A required interior position remains unresolved when the rule requires full
    legal closure of the chamber interior.
 3. The chamber lacks a valid GWR carrier when the active exclusion model
    requires one.
 4. A legal lower-divisor or lower-complexity threat appears after the proposed
-   carrier and before the proposed boundary.
+   carrier and before the proposed endpoint.
 5. Square, power, or threat pressure contradicts the proposed chamber closure.
 6. A smaller admissible candidate remains unresolved under the same evidence.
 7. A deterministic PGS chamber rule rejects the proposed transition.
@@ -162,7 +162,7 @@ must be inspectable without labels.
 
 ## Success Threshold
 
-A serious Boundary Law 005 candidate requires:
+A serious Next-Prime Law 005 candidate requires:
 
 - legal exclusion logic;
 - zero forbidden dependencies in the elimination path;
@@ -182,7 +182,7 @@ The first exploratory success threshold is weaker:
 Reject or revise the path if:
 
 - most anchors retain many survivors;
-- the true boundary is frequently rejected;
+- the true next prime is frequently rejected;
 - exclusion requires prime-marker identity;
 - exclusion becomes trial division primality testing;
 - unique survivors appear only because the candidate set is table-like;
@@ -193,14 +193,14 @@ Reject or revise the path if:
 Composite exclusion changes the search target.
 
 The failed state-vector path asked for a compact map from local features to the
-next boundary offset. Composite exclusion asks whether legal PGS evidence can
+next prime offset. Composite exclusion asks whether legal PGS evidence can
 remove every other admissible candidate.
 
 This is closer to a generator contract:
 
 - generation does not certify primality;
 - generation does not look up the next prime;
-- generation emits only when deterministic PGS rules leave a unique boundary
+- generation emits only when deterministic PGS rules leave a unique endpoint
   candidate;
 - validation remains a separate audit.
 

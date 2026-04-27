@@ -120,7 +120,7 @@ The edge-distance view isolates this even more sharply.
 
 Edge-distance $2$ stands out immediately. That is not a separate law. It is one
 of the visible consequences of the same winner rule when low-divisor carriers
-appear near the left boundary of the gap.
+appear near the left endpoint of the gap.
 
 So the right reading is not that I discovered several unrelated regularities.
 The right reading is that one exact winner law explains them together.

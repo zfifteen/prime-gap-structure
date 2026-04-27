@@ -81,7 +81,7 @@ This already tells us something deep and clean about primes.
 A prime is not just a number that "feels indivisible." A prime is exactly a
 number with divisor count `2`.
 
-That gives a precise arithmetic boundary:
+That gives a precise arithmetic endpoint:
 
 - if `d(n) = 2`, `n` is prime
 - if `d(n) > 2`, `n` is composite

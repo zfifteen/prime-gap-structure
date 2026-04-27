@@ -1,10 +1,10 @@
-# Right-Boundary Pressure Ceiling Probe
+# Right-Endpoint Pressure Ceiling Probe
 
-The first tested right-boundary pressure ceiling is not safe. A later certified
+The first tested right-endpoint pressure ceiling is not safe. A later certified
 lower-divisor composite can be a carrier reset, not a proof that the prime
-boundary occurred earlier.
+endpoint occurred earlier.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
@@ -14,14 +14,14 @@ Test the squeeze architecture:
 2. identify legal GWR-style carrier evidence to the right;
 3. find a later certified lower-divisor pressure event;
 4. use that event as a proposed ceiling $T$;
-5. run composite exclusion only on boundary candidates below $T$;
+5. run composite exclusion only on candidate next primes below $T$;
 6. attach classical labels only afterward for audit.
 
 The intended inference shape is:
 
-- GWR pressure says the boundary cannot extend past $T$;
-- composite exclusion eliminates non-boundary candidates before $T$;
-- if exactly one candidate remains, it becomes a candidate inferred boundary.
+- GWR pressure says the endpoint cannot extend past $T$;
+- composite exclusion eliminates non-candidate next primes before $T$;
+- if exactly one candidate remains, it becomes a candidate inferred next prime.
 
 The tested rule does not satisfy the first line.
 
@@ -116,18 +116,18 @@ The candidate ceiling records:
 - threat divisor class: $d=3$
 - proposed ceiling offset: `T = 6`
 
-The audited next boundary is:
+The audited next prime is:
 
-- actual boundary offset: `16`
+- actual next prime offset: `16`
 
-So the proposed ceiling would exclude the true boundary. The later lower-divisor
+So the proposed ceiling would exclude the true next prime. The later lower-divisor
 event is not proof that the chamber ended before it. In this case it can act as
 a carrier reset.
 
 ## Interpretation
 
 The user intuition remains structurally right: if a carrier is already locked,
-then a later lower-divisor composite would force a right-boundary ceiling.
+then a later lower-divisor composite would force a right-endpoint ceiling.
 
 The probe shows the missing condition:
 
@@ -142,10 +142,10 @@ with the chamber.
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The next theorem target is a carrier-lock condition:
 
 If PGS evidence establishes that a carrier $w$ is the active chamber carrier,
-then the first later certified lower-divisor composite gives a right-boundary
+then the first later certified lower-divisor composite gives a right-endpoint
 ceiling. Without that lock, the event is only pressure evidence.

@@ -12,7 +12,7 @@ This note records the first forensic run:
 - collision buckets inspected: first `10`
 
 The run is offline theorem discovery. It does not change the pure generator and
-does not authorize Boundary Law 005.
+does not authorize Next-Prime Law 005.
 
 ## Result
 
@@ -44,9 +44,9 @@ The current legal ladder does not merely need more collision testing. It needs a
 PGS-native observable that can replace the separating power of prime-marker
 positions without identifying primes.
 
-## Boundary Law 005 Status
+## Next-Prime Law 005 Status
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 Current status:
 

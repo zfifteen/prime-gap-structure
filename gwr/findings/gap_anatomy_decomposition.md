@@ -182,7 +182,7 @@ winner. Write that quantity as $\Sigma_{+}(w)$.
 
 This introduces one hidden variable:
 
-the gap's position relative to that next prime-square boundary.
+the gap's position relative to that next prime-square endpoint.
 
 It is useful to separate two quantities:
 

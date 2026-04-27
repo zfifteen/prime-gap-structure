@@ -79,7 +79,7 @@ That is the current breakthrough:
 - the archived exact case is recovered on that same official path
 - the stage closes at rung `2`, not only on an isolated sentinel case
 
-## Boundary
+## Endpoint
 
 This result is a `127`-bit known-factor audit result.
 

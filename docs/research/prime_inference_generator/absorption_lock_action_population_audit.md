@@ -4,7 +4,7 @@
 
 This is offline theorem discovery.
 
-Boundary Law 005 remains candidate-grade only. Pure generator emission remains forbidden. Classical labels are attached only after the tested rule action is computed, for audit and forensics.
+Next-Prime Law 005 remains candidate-grade only. Pure generator emission remains forbidden. Classical labels are attached only after the tested rule action is computed, for audit and forensics.
 
 ## Purpose
 
@@ -14,7 +14,7 @@ The required invariant is:
 
 $$\text{missed action candidates} = 0$$
 
-If a lock can act on a candidate that was not represented in its hardening population, the hardening result is incomplete. If that missed action is wrong or rejects the true boundary, the lock is quarantined as integration logic.
+If a lock can act on a candidate that was not represented in its hardening population, the hardening result is incomplete. If that missed action is wrong or rejects the true next prime, the lock is quarantined as integration logic.
 
 ## Configuration
 
@@ -39,14 +39,14 @@ Locks audited:
 
 ## Summary
 
-| lock | hardening candidates | integration actions | missed actions | missed false absorbers | missed with true boundary unresolved | wrong absorptions | true boundary rejected | status |
+| lock | hardening candidates | integration actions | missed actions | missed false absorbers | missed with true next prime unresolved | wrong absorptions | true next prime rejected | status |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | 005A higher_divisor_pressure_lock | 114222 | 31 | 0 | 0 | 0 | 0 | 0 | candidate-grade, action-covered |
 | 005B previous_to_current_carrier_shift_lock | 50941 | 43 | 22 | 1 | 1 | 1 | 1 | quarantined |
 
 ## Surface Rows
 
-| lock | surface | hardening candidates | integration actions | missed actions | wrong absorptions | true boundary rejected |
+| lock | surface | hardening candidates | integration actions | missed actions | wrong absorptions | true next prime rejected |
 |---|---:|---:|---:|---:|---:|---:|
 | 005A | 11..1000000 | 95305 | 31 | 0 | 0 | 0 |
 | 005A | 100000..200000 | 10163 | 0 | 0 | 0 | 0 |
@@ -79,10 +79,10 @@ The wrong action is the known anchor 3137 failure:
 
 - anchor: 3137
 - false absorber offset: 12
-- actual boundary offset: 26
+- actual next prime offset: 26
 - absorbed offsets: 26, 30, 32, 44, 50, 54
 
-The hardening population did not cover this action because the true boundary was unresolved before absorption. That is exactly the mismatch the audit was designed to expose.
+The hardening population did not cover this action because the true next prime was unresolved before absorption. That is exactly the mismatch the audit was designed to expose.
 
 ## Decision
 
@@ -90,7 +90,7 @@ The hardening population did not cover this action because the true boundary was
 
 - action-population covered
 - zero wrong actions
-- zero true-boundary rejections
+- zero true-next-prime rejections
 - narrow coverage
 - no pure emission
 
@@ -99,7 +99,7 @@ The hardening population did not cover this action because the true boundary was
 - action-population mismatch
 - missed false absorber
 - wrong absorption
-- true-boundary rejection
+- true-next-prime rejection
 
 Combined 005A/005B modes remain rejected because they inherit the 005B action failure.
 
@@ -107,6 +107,6 @@ Combined 005A/005B modes remain rejected because they inherit the 005B action fa
 
 Profile adjacent 005A-like lock regimes only after preserving the same action-population audit requirement:
 
-$$\text{missed action candidates} = 0,\quad \text{wrong absorptions} = 0,\quad \text{true boundary rejections} = 0$$
+$$\text{missed action candidates} = 0,\quad \text{wrong absorptions} = 0,\quad \text{true next prime rejections} = 0$$
 
 Do not revisit 005B as integration logic until a structural guard is proposed and tested across the full matrix.

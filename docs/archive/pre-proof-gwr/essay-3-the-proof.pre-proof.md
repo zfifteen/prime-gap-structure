@@ -42,7 +42,7 @@ Here is why this case closes cleanly. Every earlier composite *k* has at least 4
 
 > score(k) = (1 - d(k)/2) * ln(k) ≤ -ln(k)
 
-And the winner *w = r²* is a prime square. Because there are no primes inside the gap, the left boundary prime *p* is the nearest prime below *r²*. By a classical theorem (Bertrand's postulate), there is always a prime between *r* and *2r*, which means the prime *p* lies above *r*. So every earlier interior composite satisfies *k > p > r = √w*, which gives:
+And the winner *w = r²* is a prime square. Because there are no primes inside the gap, the left endpoint prime *p* is the nearest prime below *r²*. By a classical theorem (Bertrand's postulate), there is always a prime between *r* and *2r*, which means the prime *p* lies above *r*. So every earlier interior composite satisfies *k > p > r = √w*, which gives:
 
 > score(k) ≤ -ln(k) < -ln(√w) = -(1/2)ln(w) = score(w)
 
@@ -58,9 +58,9 @@ In this case, every earlier composite has at least 5 divisors, giving it a score
 
 The winner *u* with 4 divisors has score -ln(u). So the question reduces to: is -(3/2)*ln(k) < -ln(u), equivalently, is k^(3/2) > u?
 
-Since k > p (every interior composite is greater than the left boundary prime), it is enough to ask whether p^(3/2) > p + 128. This holds for every prime p ≥ 31. The finitely many gaps with p < 31 can be checked directly by hand.
+Since k > p (every interior composite is greater than the left endpoint prime), it is enough to ask whether p^(3/2) > p + 128. This holds for every prime p ≥ 31. The finitely many gaps with p < 31 can be checked directly by hand.
 
-The "128" is not arbitrary. It is the measured exact frontier: on both the 20-million scan and the billion-scale scan, every hard case in this branch has the winner arriving within the first 128 positions after the left boundary. The scan confirms this ceiling with zero exceptions.
+The "128" is not arbitrary. It is the measured exact frontier: on both the 20-million scan and the billion-scale scan, every hard case in this branch has the winner arriving within the first 128 positions after the left endpoint. The scan confirms this ceiling with zero exceptions.
 
 So once the first 4-divisor integer appears within 128 positions, the earlier side is closed for that gap. Closed. Fully proved.
 

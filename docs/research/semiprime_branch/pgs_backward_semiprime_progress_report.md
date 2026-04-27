@@ -25,7 +25,7 @@ The strongest results now in hand are:
   semiprime surface;
 - the rebuilt pure-`PGS` backward lane harness is not dead: on the full toy
   surface `<= 5000`, the best law reaches `32 / 980` lane successes while the
-  prime-boundary control remains `0 / 980`.
+  prime-endpoint control remains `0 / 980`.
 
 Those four facts define the present state of the branch.
 
@@ -133,21 +133,21 @@ or the analogous `q`-side lane.
 
 At each step the harness allows only:
 
-- local prime boundaries from the previous and containing neighborhoods;
+- local prime endpoints from the previous and containing neighborhoods;
 - lower odd-semiprime interior carriers from those same two gaps.
 
 It does not use residue scores. It does not use `sqrt(N)`. It does not use a
 non-`PGS` side channel.
 
-### 3. Prime boundaries are terminal nominees
+### 3. Prime endpoints are terminal nominees
 
-The walker state remains composite. Prime boundaries are treated as terminal
+The walker state remains composite. Prime endpoints are treated as terminal
 nominees rather than recursive anchor states.
 
 That keeps the experiment narrow:
 
 - odd semiprimes carry the lane;
-- prime boundaries terminate the current local descent;
+- prime endpoints terminate the current local descent;
 - the trace is judged by whether it stayed on one hidden-factor lane until
   termination.
 
@@ -179,7 +179,7 @@ The headline result is:
 - lane success count: `32 / 980`
 - lane success recall: `0.0326530612244898`
 - factor reach count: `0 / 980`
-- prime-boundary control lane success count: `0 / 980`
+- prime-endpoint control lane success count: `0 / 980`
 
 That is the first positive surface for the backward line.
 
@@ -197,7 +197,7 @@ The current best law is `odd_prev_d4_large_offset`.
 
 Its sort key is:
 
-1. odd semiprime before prime boundary,
+1. odd semiprime before prime endpoint,
 2. previous gap before containing gap,
 3. first `d=4` before later `d=4`,
 4. larger offset before smaller offset,
@@ -211,9 +211,9 @@ It is more specific:
 - prefer lower odd-semiprime carriers;
 - prefer the previous gap;
 - prefer the first `d=4` entrance into that local odd-semiprime corridor;
-- then move deeper into that corridor rather than hugging the boundary.
+- then move deeper into that corridor rather than hugging the endpoint.
 
-The control law that simply nominates the left prime boundary does nothing on
+The control law that simply nominates the left prime endpoint does nothing on
 the same surface. That matters. It means the lane signal is not coming from a
 trivial “always pick the nearest prime” rule.
 
@@ -252,7 +252,7 @@ The path that looks alive is:
 
 - exact modulus gap orientation first,
 - odd semiprimes as hidden-factor lane carriers,
-- prime boundaries as terminal nominees,
+- prime endpoints as terminal nominees,
 - pure-`PGS` ranking laws over the local previous and containing gaps.
 
 That is not yet enough to reach `p` or `q`.

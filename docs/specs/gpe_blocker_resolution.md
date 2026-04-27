@@ -10,31 +10,31 @@ The milestone roadmap built from these blockers is
 ## Strongest Current Fact
 
 The current repository proves and validates the GWR winner surface. Given a
-known left boundary prime $q$, the exact DNI/GWR oracle recovers:
+known left endpoint prime $q$, the exact DNI/GWR oracle recovers:
 
 - the next-gap interior winner $w$,
 - the winner divisor class $d(w)$,
-- and the right boundary prime $q^+$ by scanning the divisor field until
+- and the right endpoint prime $q^+$ by scanning the divisor field until
   $d(n)=2$.
 
 That is not yet the same as a primality-free generative prime engine. The
-missing object is an exact boundary selector.
+missing object is an exact next-prime selector.
 
-## Blocker 1: Winner Is Not The Boundary
+## Blocker 1: Winner Is Not The Endpoint
 
 The relation $$q^+=w+1$$ is false.
 
 The first small obstruction is:
 
-- left boundary prime: $q=23$,
+- left endpoint prime: $q=23$,
 - GWR winner: $w=25$,
-- right boundary prime: $q^+=29$.
+- right endpoint prime: $q^+=29$.
 
 So the implementation skeleton cannot emit `winner + 1`.
 
 ### Resolution Contract
 
-Replace `winner + 1` with a deterministic boundary selector:
+Replace `winner + 1` with a deterministic next-prime selector:
 
 $$q^+=B(q,S,w,d(w)),$$
 
@@ -64,13 +64,13 @@ $$q^+ \le S_{+}(w),$$
 
 where $S_{+}(w)$ is the next prime square after $w$.
 
-This resolves the upper boundary of the search interval, not the exact boundary
+This resolves the upper endpoint of the search interval, not the exact endpoint
 inside it. The exact selector still has to identify which admissible integer in
 $(w,T_{<}(w)]$ is $q^+$.
 
 ### Resolution Contract
 
-The boundary selector must refine the NLSC ceiling into an equality:
+The next-prime selector must refine the NLSC ceiling into an equality:
 
 $$B(q,S,w,d(w)) = q^+.$$
 
@@ -81,11 +81,11 @@ proof obligation is exact equality with the next prime.
 
 The frozen v1.0 rulebook closes a reduced gap-type surface. Its laws are stated
 as measured transition shares and concentration improvements, not as exact
-single-successor boundary rules.
+single-successor next-prime selection rules.
 
 A reduced state such as `o4_d4_a1_even_semiprime`
 
-occurs with multiple right-boundary gaps on the committed catalog surface. For
+occurs with multiple right-endpoint gaps on the committed catalog surface. For
 example:
 
 | $q$ | $w$ | $q^+$ | gap |
@@ -93,19 +93,19 @@ example:
 | $13$ | $14$ | $17$ | $4$ |
 | $73$ | $74$ | $79$ | $6$ |
 
-Both rows have the same reduced winner type, but different boundary offsets.
+Both rows have the same reduced winner type, but different next-prime offsets.
 Therefore the current reduced state alone cannot emit the exact prime sequence.
 
 ### Resolution Contract
 
 The GPE state $S$ must be enlarged or sharpened only as much as needed to make
-the boundary selector single-valued: $$B(q,S,w,d(w))$$ must have no collisions
+the next-prime selector single-valued: $$B(q,S,w,d(w))$$ must have no collisions
 on the validation surface, and the proof target must explain why the
 collision-free property persists outside the tested surface.
 
 ## Blocker 4: Exact DNI Evaluation Currently Uses The Divisor Field
 
-The current exact oracle evaluates divisor counts and detects the boundary by
+The current exact oracle evaluates divisor counts and detects the endpoint by
 the condition $d(n)=2$.
 
 That is valid for the existing DNI/GWR oracle. It does not satisfy the GPE
@@ -115,7 +115,7 @@ requirement of zero traditional primality tests and no candidate sieving lists.
 
 Tier 1 must either:
 
-- compute the winner and boundary by rulebook arithmetic without divisor-field
+- compute the winner and endpoint by rulebook arithmetic without divisor-field
   scanning, or
 - remain explicitly outside the zero-test GPE contract.
 
@@ -126,7 +126,7 @@ described as zero-test.
 ## Immediate Proof Target
 
 The next executable target is not a broader framework. It is the smallest
-possible boundary-selector theorem:
+possible endpoint-selector theorem:
 
 Given a known prime $q$ and the exact GWR winner $w$ for the next gap, construct
 a deterministic arithmetic rule $B(q,S,w,d(w))$ that returns $q^+$ exactly and

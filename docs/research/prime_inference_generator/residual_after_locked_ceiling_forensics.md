@@ -3,7 +3,7 @@
 After the strongest safe carrier-locked ceiling mode, the remaining blocker is
 mostly unresolved alternatives, not unsafe pruning.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
@@ -65,7 +65,7 @@ the certificate.
 
 The largest residual class is:
 
-- true boundary is resolved;
+- true next prime is resolved;
 - only one resolved survivor remains;
 - unresolved alternatives still exist.
 
@@ -74,7 +74,7 @@ the next target.
 
 The second residual class has:
 
-- true boundary resolved;
+- true next prime resolved;
 - multiple resolved survivors;
 - unresolved alternatives still exist.
 
@@ -83,7 +83,7 @@ is not enough while unresolved alternatives remain live.
 
 The smallest residual class has:
 
-- true boundary still unresolved.
+- true next prime still unresolved.
 
 Those rows are chamber-completion failures. They need additional legal closure
 evidence before any dominance rule can help.
@@ -92,7 +92,7 @@ evidence before any dominance rule can help.
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 The next target should be residual unresolved-alternative closure or domination.
 The current evidence does not support prime emission.

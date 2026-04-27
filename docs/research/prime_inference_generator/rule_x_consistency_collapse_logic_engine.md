@@ -3,10 +3,10 @@
 ## Executive Summary
 
 The Rule X logic engine is a finite candidate-elimination engine for next-prime
-boundary inference from an accepted anchor prime `p`.
+next-prime inference from an accepted anchor prime `p`.
 
 It does not score candidate primes. It does not search until the next prime. It
-builds candidate boundary hypotheses and eliminates the hypotheses whose
+builds candidate next-prime hypotheses and eliminates the hypotheses whose
 proposed chambers contradict available PGS evidence.
 
 On the current high-scale chamber-reset surface:
@@ -21,7 +21,7 @@ anchors tested: 2816
 the current rule stack produced:
 
 ```text
-exact boundary matches: 2816 / 2816
+exact next-prime matches: 2816 / 2816
 coverage: 100.000000%
 unresolved anchors: 0
 false emissions: 0
@@ -29,19 +29,19 @@ candidate-bound misses: 0
 ```
 
 The result is significant because the engine now distinguishes current-chamber
-boundary evidence from later-chamber tail evidence. Once the first resolved
+endpoint evidence from later-chamber tail evidence. Once the first resolved
 survivor appears, later unresolved candidates are assigned to later chambers
 and no longer block emission for the original anchor.
 
 The earlier semiprime-shadow landmark hold remains necessary. It prevents
-two-factor witness-horizon landmarks from being promoted into false boundaries.
+two-factor witness-horizon landmarks from being promoted into false endpoints.
 The chamber-reset rule then closes the remaining coverage gap by classifying
-later unresolved tails as post-boundary chamber material.
+later unresolved tails as post-endpoint chamber material.
 
 ## Core Object
 
 For an accepted anchor prime `p`, define a finite set of candidate right
-boundaries:
+endpoints:
 
 $$C(p, H) = \{p + h : 1 \leq h \leq H,\ p + h \in W_{30}\}.$$
 
@@ -59,11 +59,11 @@ $$I(p, c) = \{p+1, p+2, \dots, c-1\}.$$
 The engine asks one question:
 
 ```text
-If c were the next prime boundary, can the proposed chamber remain consistent
+If c were the next prime endpoint, can the proposed chamber remain consistent
 with the current PGS evidence?
 ```
 
-The boundary is inferred by consistency collapse followed by chamber reset:
+The endpoint is inferred by consistency collapse followed by chamber reset:
 
 ```text
 all impossible candidate chambers are removed;
@@ -75,9 +75,9 @@ the first resolved survivor is emitted as q_hat.
 
 ## Rule Vocabulary
 
-### Candidate Boundary Hypothesis
+### Candidate Endpoint Hypothesis
 
-A candidate boundary hypothesis is one proposed statement:
+A candidate next-prime hypothesis is one proposed statement:
 
 ```text
 q_hat = p + h
@@ -91,7 +91,7 @@ A positive composite witness is a deterministic factor `r <= B` such that:
 
 $$r \mid n.$$
 
-If a candidate boundary has a positive composite witness, that candidate is
+If a candidate next prime has a positive composite witness, that candidate is
 rejected.
 
 If an interior wheel-open position has no positive witness, that interior
@@ -118,7 +118,7 @@ closes the current chamber.
 
 Before chamber reset, unresolved alternatives block emission. After the first
 resolved survivor, later unresolved alternatives belong to a later chamber and
-do not compete with the current anchor's boundary.
+do not compete with the current anchor's endpoint.
 
 ### Semiprime-Shadow Landmark
 
@@ -138,7 +138,7 @@ $$n \geq s^2$$
 is held open as a semiprime-shadow landmark.
 
 This is not a rejection. The semiprime-shadow landmark is load-bearing PGS
-evidence. The engine does not promote it to a resolved boundary survivor until
+evidence. The engine does not promote it to a resolved next prime survivor until
 it is cleared by additional evidence.
 
 ### Carrier Lock
@@ -152,7 +152,7 @@ only after a resolved survivor exists.
 In logic-puzzle language:
 
 ```text
-the chamber story cannot become binding until the proposed boundary has earned
+the chamber story cannot become binding until the proposed endpoint has earned
 resolved-survivor status.
 ```
 
@@ -165,10 +165,10 @@ $$t > w,\ d(t) < d(w).$$
 
 Under GWR/NLSC, a locked carrier cannot be followed inside the same prime gap
 by a strictly simpler composite. Therefore, once the carrier is legitimately
-locked, the first certified lower-divisor threat becomes a right-boundary
+locked, the first certified lower-divisor threat becomes a right-endpoint
 ceiling.
 
-The engine rejects later candidate boundaries that extend beyond this threat.
+The engine rejects later candidate next primes that extend beyond this threat.
 
 ### Chamber Reset
 
@@ -188,7 +188,7 @@ The reset rule is:
 ```text
 once r is resolved, r closes the p-chamber;
 later unresolved candidates u are post-reset chamber material;
-u is not a competing boundary for anchor p.
+u is not a competing endpoint for anchor p.
 ```
 
 This rule does not promote arbitrary candidates. It activates only after the
@@ -200,13 +200,13 @@ the later tail. It does not create the first survivor.
 The current Rule X chamber-reset stack is:
 
 ```text
-1. Build wheel-open candidate boundary hypotheses.
+1. Build wheel-open candidate next-prime hypotheses.
 2. Reject candidate composites with positive composite witnesses.
 3. Hold candidate chambers with unresolved wheel-open interiors.
 4. Hold semiprime-shadow landmarks open instead of treating them as resolved q.
 5. Lock the carrier only after a resolved survivor exists.
 6. Find the first certified lower-divisor threat after the locked carrier.
-7. Reject candidate boundaries beyond that threat.
+7. Reject candidate next primes beyond that threat.
 8. Identify the first resolved survivor r.
 9. Reset the chamber at r.
 10. Exclude later unresolved candidates as post-reset chamber material.
@@ -215,15 +215,15 @@ The current Rule X chamber-reset stack is:
 ```
 
 The decisive safety rule is step `4`. Before this rule, semiprime-shadow
-landmarks were incorrectly promoted to resolved boundary survivors. That caused
-premature carrier locks and true-boundary rejection. After the hold-open rule,
-the tested `11..100000` surface has zero true-boundary rejections for witness
+landmarks were incorrectly promoted to resolved next prime survivors. That caused
+premature carrier locks and true-next-prime rejection. After the hold-open rule,
+the tested `11..100000` surface has zero true-next-prime rejections for witness
 bounds `97` and `127`.
 
 The decisive coverage rule is step `9`. Before this rule, the engine found the
-true boundary as the first resolved survivor but refused to emit when later
+true next prime as the first resolved survivor but refused to emit when later
 unresolved tail candidates remained. After chamber reset, those tail candidates
-are assigned to later chambers and no longer block the current boundary.
+are assigned to later chambers and no longer block the current endpoint.
 
 ## Why GWR/NLSC Alone Did Not Collapse Candidates
 
@@ -265,13 +265,13 @@ rule_x_true_boundary_rejected_count = 7297
 
 The rule locked too early. Many anchors begin with a small composite near
 `p + 1`, but the true gap later introduces the actual carrier before the prime
-boundary. Locking the first carrier converts real reset structure into a false
+endpoint. Locking the first carrier converts real reset structure into a false
 contradiction.
 
 ## Why The Semiprime-Shadow Landmark Hold Is Necessary
 
 The failed label-free runs revealed a single obstruction family. At
-`witness_bound = 97`, the true-boundary rejections were caused by candidates
+`witness_bound = 97`, the true-next-prime rejections were caused by candidates
 with no witness at or below `97` that were actually:
 
 ```text
@@ -291,7 +291,7 @@ Examples:
 
 These are semiprime-shadow landmarks. They mark the two-factor layer just
 beyond the current witness horizon. The error was not their existence. The
-error was treating them as resolved prime-boundary survivors.
+error was treating them as resolved prime-endpoint survivors.
 
 The hold-open rule fixes this by preserving the landmark state:
 
@@ -361,7 +361,7 @@ This is a decade-window result, not exhaustive coverage of every prime through
 
 The `317` run is a finite full-witness control for this surface because
 `317 > sqrt(100128)`. It shows the carrier-lock pressure rule is safe when
-false boundary promotion is removed by complete small-scale witness coverage.
+false endpoint promotion is removed by complete small-scale witness coverage.
 
 The semiprime-shadow landmark hold gives the same zero true-rejection safety
 without full witness coverage, at the cost of holding more candidate chambers
@@ -394,16 +394,16 @@ The chamber-reset logic engine may emit when all of these hold:
 ```text
 first_resolved_survivor exists
 semiprime-shadow landmarks before that survivor are not promoted
-positive composite witnesses reject closed candidate boundaries
+positive composite witnesses reject closed candidate next primes
 carrier lock and lower-divisor threat rules do not reject the survivor
-true-boundary labels have not been consulted
+true-next-prime labels have not been consulted
 ```
 
 Later unresolved candidates do not block emission after chamber reset:
 
 ```text
 p ... first_resolved_survivor ... later_unresolved_tail
-      ^ emit this boundary       ^ classify as later chamber material
+      ^ emit this endpoint       ^ classify as later chamber material
 ```
 
 The emitted experimental record should remain minimal if promoted into a
@@ -416,7 +416,7 @@ generator-style path:
 All rule status, carrier lock, landmark, threat, and audit fields belong in
 sidecar records.
 
-## Audit Boundary
+## Audit Endpoint
 
 Classical labels are downstream audit only. The rule engine must not use:
 
@@ -440,17 +440,17 @@ It is related to these earlier lines of work:
 
 - `positive_composite_witness_rejection`;
 - carrier-locked pressure ceilings;
-- boundary certificate graph solving;
+- candidate-constraint graph solving;
 - semiprime-shadow recovery;
 - unresolved candidate holds.
 
 The first new contribution is the semiprime-shadow landmark hold before carrier
 lock. It prevents unresolved two-factor landmarks from being promoted to
-boundary survivors.
+endpoint survivors.
 
 The second new contribution is chamber reset at the first resolved survivor.
-It converts the later unresolved tail from apparent boundary competition into
-post-boundary chamber structure.
+It converts the later unresolved tail from apparent endpoint competition into
+post-endpoint chamber structure.
 
 ## Current Status
 

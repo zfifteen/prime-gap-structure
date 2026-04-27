@@ -36,7 +36,7 @@ This figure shows that the edge-distance-`2` enrichment remains stable near `2x`
 
 ## Peak Position by Edge Distance
 
-This figure compares the observed location of the gap-local raw-`Z` maximum against the exact within-gap baseline. The observed peak mass is concentrated much closer to the prime boundaries than baseline predicts.
+This figure compares the observed location of the gap-local raw-`Z` maximum against the exact within-gap baseline. The observed peak mass is concentrated much closer to the prime endpoints than baseline predicts.
 
 ![Observed versus baseline edge-distance distribution](../../benchmarks/output/python/gap_ridge/raw_z_gap_edge/edge_distance_distribution_2d.svg)
 
@@ -48,7 +48,7 @@ This figure compares the divisor count of the composite carrying the gap-local r
 
 ## Representative Gap Slice
 
-This figure shows one exact prime-gap slice from the `10^6` regime. The profile is not midpoint-centered. The local maximum rises close to the boundary at an edge distance of `2`, and the peak carrier is a `d(n) = 4` composite.
+This figure shows one exact prime-gap slice from the `10^6` regime. The profile is not midpoint-centered. The local maximum rises close to the endpoint at an edge distance of `2`, and the peak carrier is a `d(n) = 4` composite.
 
 ![Representative prime-gap raw-Z profile](../../benchmarks/output/python/gap_ridge/raw_z_gap_edge/representative_gap_profile_2d.svg)
 

@@ -1,6 +1,6 @@
 # Offline PGS Certificate Emitter
 
-The offline certificate emitter produced 36 PGS boundary certificate records
+The offline certificate emitter produced 36 PGS endpoint certificate records
 from the 005A-R candidate rule. A separate downstream audit confirmed all 36.
 
 This is Milestone 1A evidence. It is not pure generator emission. Pure emission

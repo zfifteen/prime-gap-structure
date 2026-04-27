@@ -154,7 +154,7 @@ plus no larger divisor count implies larger raw-$Z$.
 ### Points to cover
 
 - state the `Lexicographic Raw-Z Dominance Theorem`,
-- explain why prime squares matter for the boundary,
+- explain why prime squares matter for the endpoint,
 - connect the theorem to the prime-gap corollary carefully.
 
 ### Figure needs

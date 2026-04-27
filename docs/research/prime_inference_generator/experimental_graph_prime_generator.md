@@ -59,7 +59,7 @@ extension relation. It is the broad safe baseline before the repaired v4 guard.
 unresolved_later_domination_target_no_carrier_with_positive_nonboundary_guard
 ```
 
-This is the safe repaired relation. It requires positive target non-boundary
+This is the safe repaired relation. It requires positive target non-endpoint
 evidence and does not run the old v4 or v5 absence-based propagation.
 
 `v7-bounded` runs the risky-v5 graph internally, then applies the positive
@@ -141,7 +141,7 @@ When `--audit` is supplied, the CLI also writes:
 experimental_graph_prime_generator_audit_summary.json
 ```
 
-The audit checks first-boundary semantics: `inferred_prime_q_hat` must be the
+The audit checks first-endpoint semantics: `inferred_prime_q_hat` must be the
 first classical prime after `anchor_p`.
 
 When `--fail-on-audit-failure` is supplied with `--audit`, the CLI still writes

@@ -37,7 +37,7 @@ raises `PGSUnresolvedError`. It does not run a backup prime search.
 ```text
 rule_id: pgs_chamber_reset_v1
 state input: exact divisor-count field
-boundary rule: GWR/NLSC chamber-reset state
+next-prime selection rule: GWR/NLSC chamber-reset state
 emitted record: p, q only
 ```
 

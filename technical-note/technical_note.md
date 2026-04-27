@@ -121,7 +121,7 @@ Under exact divisor counting, the DNI is algebraically exact and numerically cle
 
 The exact DNI is the derivation surface and the calibration oracle. Exact divisor counting still uses $O(\sqrt{n})$ enumeration in the current executable path. For arbitrary 2048-bit candidates the benchmark report describes the implied worst-case trial space as about $2^{1024}$ divisibility checks per candidate.
 
-That scale boundary cleanly separates two jobs:
+That scale cutoff cleanly separates two jobs:
 
 - the exact path establishes the law and the calibration locus,
 - the production path exploits that law without pretending exact divisor counting is the right runtime mechanism at cryptographic scale.
@@ -159,7 +159,7 @@ On the full exact run up to $10^6$:
 
 The strongest tested reading is therefore local and arithmetic:
 
-- the raw composite peak is pulled toward the boundary of the gap,
+- the raw composite peak is pulled toward the endpoint of the gap,
 - the peak carrier is usually the first composite divisor layer $d(n)=4$,
 - and the field does not build a midpoint ridge on the tested surface.
 

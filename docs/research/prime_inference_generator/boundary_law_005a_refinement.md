@@ -1,9 +1,9 @@
-# Boundary Law 005A-R Refinement Probe
+# Next-Prime Law 005A-R Refinement Probe
 
 The 005A refinement kept all 36 unique successes, dropped all 12 non-unique
 activations, and selected 0 wrong cases on the tested surfaces.
 
-This is offline theorem discovery. Boundary Law 005A-R remains candidate-grade
+This is offline theorem discovery. Next-Prime Law 005A-R remains candidate-grade
 only. Pure generator emission remains forbidden. Classical labels are external
 audit only.
 
@@ -58,7 +58,7 @@ carrier_lock_predicate: unresolved_alternatives_before_threat
 
 ## Surface Rows
 
-| surface | activations | selected | dropped | kept unique | kept non-unique | wrong | true boundary rejected | safe abstains |
+| surface | activations | selected | dropped | kept unique | kept non-unique | wrong | true next prime rejected | safe abstains |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | 11..1000000 | 48 | 36 | 12 | 36 | 0 | 0 | 0 | 95269 |
 | 100000..200000 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 10163 |

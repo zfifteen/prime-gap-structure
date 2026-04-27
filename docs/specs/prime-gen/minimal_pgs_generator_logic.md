@@ -12,7 +12,7 @@ Release note:
 [PGS Inference Generator v1.1](../../releases/pgs_inference_generator_v1_1_pgs_only.md).
 
 The generator has one job: start from an accepted anchor prime `p` and emit the
-next prime `q` selected by the PGS boundary rule.
+next prime `q` selected by the PGS next-prime selection rule.
 
 Each emitted line has exactly two fields:
 
@@ -45,38 +45,38 @@ Inside the chamber, the generator uses:
 - exact divisor-count state;
 - GWR carrier structure;
 - no-later-simpler-composite ceilings;
-- chamber-reset boundary state.
+- chamber-reset next-prime state.
 
 The chamber is not a place to ask a primality oracle which number is prime. It
-is the local arithmetic region where the PGS rule decides the next boundary.
+is the local arithmetic region where the PGS rule decides the next prime.
 
 ## Stage 3: Carrier
 
 GWR identifies the simplest leftmost carrier `w` inside the chamber.
 
-The carrier is not the boundary. It is a landmark that orients the local PGS
+The carrier is not the endpoint. It is a landmark that orients the local PGS
 state. The rule `q = w + 1` is false as a general rule and is forbidden.
 
-## Stage 4: Boundary Rule
+## Stage 4: Endpoint Rule
 
-The production boundary rule is Rule X with chamber reset:
+The production next-prime selection rule is Rule X with chamber reset:
 
-- build wheel-open candidate boundary hypotheses;
+- build wheel-open candidate next-prime hypotheses;
 - reject candidates with composite divisor-count state;
 - preserve semiprime-shadow landmarks as unresolved landmarks instead of
-  promoting them to boundary survivors;
+  promoting them to endpoint survivors;
 - lock the GWR carrier only after a resolved survivor exists;
 - apply the lower-divisor threat ceiling after carrier lock;
 - identify the first resolved survivor `r`;
 - reset the chamber at `r`;
 - classify later unresolved candidates as post-reset chamber material;
-- emit `r` as the proposed next boundary.
+- emit `r` as the proposed next prime.
 
 In compact form:
 
 $$q = B(p, S, w, d(w))$$
 
-where `S` is the exact divisor-count chamber state needed to make the boundary
+where `S` is the exact divisor-count chamber state needed to make the endpoint
 choice single-valued.
 
 ## Stage 5: Emission

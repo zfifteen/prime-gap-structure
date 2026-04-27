@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1400" viewBox="0 0 1600 1400">
+  <defs>
+    <style>
+      .bg { fill: #10141c; }
+      .panel { fill: #171d28; stroke: #2b3548; stroke-width: 2; rx: 18; }
+      .title { fill: #f4f0df; font-family: Arial, Helvetica, sans-serif; font-size: 32px; font-weight: 700; }
+      .panel-title { fill: #f4f0df; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 700; }
+      .label { fill: #d8deea; font-family: Arial, Helvetica, sans-serif; font-size: 18px; }
+      .small { fill: #aeb9cc; font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+      .math { fill: #e8dcc0; font-family: Arial, Helvetica, sans-serif; font-size: 17px; }
+      .prime { fill: #253044; stroke: #7b879c; stroke-width: 2; }
+      .block { fill: #2c374a; stroke: #4b5a73; stroke-width: 2; }
+      .dim { fill: #232b39; stroke: #39465a; stroke-width: 2; opacity: 0.82; }
+      .scan { fill: #25c7d9; stroke: #9ef6ff; stroke-width: 2; }
+      .winner { fill: #f2b84b; stroke: #ffe2a0; stroke-width: 3; }
+      .reject { fill: #303744; stroke: #505b6d; stroke-width: 2; }
+      .endpoint { fill: #443047; stroke: #d98bd4; stroke-width: 3; }
+      .bracket { stroke: #25c7d9; stroke-width: 4; fill: none; stroke-linecap: round; }
+      .gold-line { stroke: #f2b84b; stroke-width: 4; fill: none; stroke-linecap: round; }
+      .cyan-line { stroke: #25c7d9; stroke-width: 3; fill: none; stroke-linecap: round; }
+      .muted-line { stroke: #69758a; stroke-width: 2; fill: none; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="1400"/>
+  <text class="title" x="70" y="62">GWR Explainer - Static Storyboard Mockup</text>
+  <text class="small" x="70" y="92">Style pass: integer blocks, exact divisor counts, selected interior integer, raw-Z agreement, prime endpoint separation.</text>
+
+  <!-- panel geometry -->
+  <rect class="panel" x="60" y="130" width="700" height="360"/>
+  <rect class="panel" x="840" y="130" width="700" height="360"/>
+  <rect class="panel" x="60" y="530" width="700" height="360"/>
+  <rect class="panel" x="840" y="530" width="700" height="360"/>
+  <rect class="panel" x="60" y="930" width="700" height="360"/>
+  <rect class="panel" x="840" y="930" width="700" height="360"/>
+
+  <!-- Scene 1 -->
+  <text class="panel-title" x="95" y="178">1. A Prime Gap And Its Interior</text>
+  <text class="small" x="95" y="207">Consecutive primes 23 and 29. Compare the composite integers between them.</text>
+  <g transform="translate(100,260)">
+    <rect class="prime" x="0" y="40" width="70" height="70" rx="8"/>
+    <rect class="block" x="82" y="40" width="70" height="70" rx="8"/>
+    <rect class="block" x="164" y="40" width="70" height="70" rx="8"/>
+    <rect class="block" x="246" y="40" width="70" height="70" rx="8"/>
+    <rect class="block" x="328" y="40" width="70" height="70" rx="8"/>
+    <rect class="block" x="410" y="40" width="70" height="70" rx="8"/>
+    <rect class="endpoint" x="492" y="40" width="70" height="70" rx="8"/>
+    <text class="label" x="25" y="82">23</text>
+    <text class="label" x="107" y="82">24</text>
+    <text class="label" x="189" y="82">25</text>
+    <text class="label" x="271" y="82">26</text>
+    <text class="label" x="353" y="82">27</text>
+    <text class="label" x="435" y="82">28</text>
+    <text class="label" x="517" y="82">29</text>
+    <path class="bracket" d="M82,22 L82,8 L480,8 L480,22"/>
+    <text class="small" x="202" y="-7">gap interior</text>
+    <text class="small" x="0" y="136">left endpoint</text>
+    <text class="small" x="487" y="136">right endpoint</text>
+  </g>
+
+  <!-- Scene 2 -->
+  <text class="panel-title" x="875" y="178">2. Divisor Counts Become The Field</text>
+  <text class="small" x="875" y="207">Each interior composite receives exact d(n).</text>
+  <g transform="translate(890,255)">
+    <rect class="block" x="0" y="105" width="78" height="70" rx="8"/>
+    <rect class="block" x="96" y="105" width="78" height="70" rx="8"/>
+    <rect class="block" x="192" y="105" width="78" height="70" rx="8"/>
+    <rect class="block" x="288" y="105" width="78" height="70" rx="8"/>
+    <rect class="block" x="384" y="105" width="78" height="70" rx="8"/>
+    <rect x="12" y="25" width="54" height="80" fill="#4c5c72" opacity="0.85"/>
+    <rect x="108" y="75" width="54" height="30" fill="#25c7d9" opacity="0.95"/>
+    <rect x="204" y="65" width="54" height="40" fill="#6fe0bd" opacity="0.9"/>
+    <rect x="300" y="65" width="54" height="40" fill="#6fe0bd" opacity="0.9"/>
+    <rect x="396" y="45" width="54" height="60" fill="#8390a5" opacity="0.85"/>
+    <text class="label" x="22" y="146">24</text>
+    <text class="label" x="118" y="146">25</text>
+    <text class="label" x="214" y="146">26</text>
+    <text class="label" x="310" y="146">27</text>
+    <text class="label" x="406" y="146">28</text>
+    <text class="small" x="20" y="14">d=8</text>
+    <text class="small" x="116" y="64">d=3</text>
+    <text class="small" x="212" y="54">d=4</text>
+    <text class="small" x="308" y="54">d=4</text>
+    <text class="small" x="404" y="34">d=6</text>
+    <path class="muted-line" d="M-10,105 L475,105"/>
+    <text class="small" x="0" y="212">Concrete data: 24:8, 25:3, 26:4, 27:4, 28:6.</text>
+  </g>
+
+  <!-- Scene 3 -->
+  <text class="panel-title" x="95" y="578">3. Minimum Divisor Count</text>
+  <text class="small" x="95" y="607">GWR first selects the smallest divisor count present.</text>
+  <g transform="translate(100,665)">
+    <path class="cyan-line" d="M70,70 L555,70"/>
+    <text class="small" x="560" y="75">threshold: min d(n)=3</text>
+    <rect class="dim" x="0" y="120" width="78" height="70" rx="8"/>
+    <rect class="winner" x="96" y="120" width="78" height="70" rx="8"/>
+    <rect class="dim" x="192" y="120" width="78" height="70" rx="8"/>
+    <rect class="dim" x="288" y="120" width="78" height="70" rx="8"/>
+    <rect class="dim" x="384" y="120" width="78" height="70" rx="8"/>
+    <text class="label" x="22" y="151">24</text>
+    <text class="label" x="118" y="151">25</text>
+    <text class="label" x="214" y="151">26</text>
+    <text class="label" x="310" y="151">27</text>
+    <text class="label" x="406" y="151">28</text>
+    <text class="small" x="21" y="176">d=8</text>
+    <text class="small" x="117" y="176">d=3</text>
+    <text class="small" x="213" y="176">d=4</text>
+    <text class="small" x="309" y="176">d=4</text>
+    <text class="small" x="405" y="176">d=6</text>
+    <path class="gold-line" d="M135,115 L135,80"/>
+    <text class="math" x="76" y="45">selected integer = 25</text>
+    <text class="small" x="0" y="230">Only the minimum divisor-count integer remains active.</text>
+  </g>
+
+  <!-- Scene 4 -->
+  <text class="panel-title" x="875" y="578">4. Leftmost Tie Rule</text>
+  <text class="small" x="875" y="607">When several blocks share min d(n), scan from left to right.</text>
+  <g transform="translate(875,673)">
+    <rect class="reject" x="0" y="94" width="66" height="64" rx="8"/>
+    <rect class="winner" x="78" y="94" width="66" height="64" rx="8"/>
+    <rect class="reject" x="156" y="94" width="66" height="64" rx="8"/>
+    <rect class="scan" x="234" y="94" width="66" height="64" rx="8"/>
+    <rect class="scan" x="312" y="94" width="66" height="64" rx="8"/>
+    <rect class="scan" x="390" y="94" width="66" height="64" rx="8"/>
+    <rect class="reject" x="468" y="94" width="66" height="64" rx="8"/>
+    <text class="label" x="20" y="132">90</text>
+    <text class="label" x="98" y="132">91</text>
+    <text class="label" x="176" y="132">92</text>
+    <text class="label" x="254" y="132">93</text>
+    <text class="label" x="332" y="132">94</text>
+    <text class="label" x="410" y="132">95</text>
+    <text class="label" x="488" y="132">96</text>
+    <text class="small" x="15" y="181">12</text>
+    <text class="small" x="99" y="181">4</text>
+    <text class="small" x="177" y="181">6</text>
+    <text class="small" x="255" y="181">4</text>
+    <text class="small" x="333" y="181">4</text>
+    <text class="small" x="411" y="181">4</text>
+    <text class="small" x="489" y="181">12</text>
+    <path class="cyan-line" d="M78,55 L456,55"/>
+    <path class="cyan-line" d="M78,55 L92,47 M78,55 L92,63"/>
+    <text class="small" x="110" y="42">tied min d=4 blocks; first one wins</text>
+    <text class="math" x="70" y="226">w = 91, not 93, 94, or 95</text>
+  </g>
+
+  <!-- Scene 5 -->
+  <text class="panel-title" x="95" y="978">5. Raw-Z Winner Collapses Onto GWR</text>
+  <text class="small" x="95" y="1007">The score profile peaks on the same interior integer.</text>
+  <g transform="translate(100,1065)">
+    <rect class="dim" x="0" y="150" width="78" height="60" rx="8"/>
+    <rect class="winner" x="96" y="150" width="78" height="60" rx="8"/>
+    <rect class="dim" x="192" y="150" width="78" height="60" rx="8"/>
+    <rect class="dim" x="288" y="150" width="78" height="60" rx="8"/>
+    <rect class="dim" x="384" y="150" width="78" height="60" rx="8"/>
+    <text class="label" x="22" y="187">24</text>
+    <text class="label" x="118" y="187">25</text>
+    <text class="label" x="214" y="187">26</text>
+    <text class="label" x="310" y="187">27</text>
+    <text class="label" x="406" y="187">28</text>
+    <path d="M39,80 C82,115 96,45 135,40 C174,42 198,95 231,105 C280,118 330,105 423,138" fill="none" stroke="#e8dcc0" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="135" cy="40" r="13" fill="#f2b84b" stroke="#ffe2a0" stroke-width="3"/>
+    <path class="gold-line" d="M135,55 L135,145"/>
+    <text class="math" x="0" y="20">Z_raw(n) = n^(1 - d(n)/2)</text>
+    <text class="small" x="205" y="45">score winner = GWR selection</text>
+    <text class="small" x="0" y="248">The formula appears after the gap-interior mechanics are visible.</text>
+  </g>
+
+  <!-- Scene 6 -->
+  <text class="panel-title" x="875" y="978">6. Interior Winner Versus Next Prime</text>
+  <text class="small" x="875" y="1007">GWR selects an interior composite, not the next prime endpoint.</text>
+  <g transform="translate(885,1060)">
+    <rect class="prime" x="0" y="135" width="70" height="65" rx="8"/>
+    <rect class="dim" x="85" y="135" width="70" height="65" rx="8"/>
+    <rect class="winner" x="170" y="135" width="70" height="65" rx="8"/>
+    <rect class="dim" x="255" y="135" width="70" height="65" rx="8"/>
+    <rect class="dim" x="340" y="135" width="70" height="65" rx="8"/>
+    <rect class="dim" x="425" y="135" width="70" height="65" rx="8"/>
+    <rect class="endpoint" x="510" y="135" width="70" height="65" rx="8"/>
+    <text class="label" x="25" y="174">23</text>
+    <text class="label" x="110" y="174">24</text>
+    <text class="label" x="195" y="174">25</text>
+    <text class="label" x="280" y="174">26</text>
+    <text class="label" x="365" y="174">27</text>
+    <text class="label" x="450" y="174">28</text>
+    <text class="label" x="535" y="174">29</text>
+    <path class="gold-line" d="M205,128 L205,80 L335,80"/>
+    <text class="math" x="255" y="72">interior winner</text>
+    <path class="cyan-line" d="M545,128 L545,72"/>
+    <text class="math" x="475" y="60">next prime q</text>
+    <text class="small" x="125" y="236">Do not draw q = w + 1 as a general rule.</text>
+    <rect x="136" y="15" width="310" height="36" rx="6" fill="#202837" stroke="#53617a"/>
+    <text class="math" x="157" y="39">{&quot;p&quot;: 23, &quot;q&quot;: 29}</text>
+  </g>
+</svg>

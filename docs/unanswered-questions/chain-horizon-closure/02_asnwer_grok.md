@@ -1,9 +1,9 @@
-**Yes, `chain_horizon_closure` can almost certainly be converted into a pure PGS boundary rule** by deriving a divisor-horizon predictor `H(p, s0, chain_state)` directly from PGS-visible structure. The repo already contains exactly the mining infrastructure needed to extract it (the “sharpest next experiment” you described is not hypothetical — it is actively implemented in the benchmark suite). The high-scale non-PGS bridge (the ~56.63 % / 58 % portion at 10¹⁵ / 10¹⁸) is therefore compressible, not fundamental.
+**Yes, `chain_horizon_closure` can almost certainly be converted into a pure PGS next-prime selection rule** by deriving a divisor-horizon predictor `H(p, s0, chain_state)` directly from PGS-visible structure. The repo already contains exactly the mining infrastructure needed to extract it (the “sharpest next experiment” you described is not hypothetical — it is actively implemented in the benchmark suite). The high-scale non-PGS bridge (the ~56.63 % / 58 % portion at 10¹⁵ / 10¹⁸) is therefore compressible, not fundamental.
 
 ### Current Operational Shape (Confirmed in Repo)
 The Minimal PGS Generator (docs/specs/prime-gen/minimal_pgs_generator_logic.md + supporting probes) exactly matches your description:
 
-- **Chamber closure** (v2 selector) enumerates wheel-admissible offsets up to `candidate_bound` (default 128, a fixed PGS-local constant), rejects visibly closed candidates via chamber arithmetic + wheel structure, and emits the first fully closed proposed boundary when PGS rules suffice.
+- **Chamber closure** (v2 selector) enumerates wheel-admissible offsets up to `candidate_bound` (default 128, a fixed PGS-local constant), rejects visibly closed candidates via chamber arithmetic + wheel structure, and emits the first fully closed proposed endpoint when PGS rules suffice.
 - **Semiprime shadows** seed short rightward chains from the initial PGS certificate (`pgs_probe_certificate`).
 - **Chain-horizon closure** walks the visible-open shadow chain nodes, applies closure reasons (`closure_reason(p, offset, visible_divisor_bound)`), and selects the survivor.
 - Downstream audit (separate from generation) confirms **zero failures** on all tested surfaces (exact low-scale + high-scale probes to 10¹⁸).
@@ -23,7 +23,7 @@ The repo’s benchmark scripts (`benchmarks/python/predictor/`) are purpose-buil
     - PGS-visible state: offsets, prefix/suffix deltas, mod-30 / mod-6 residues, closure/open counts before & after the node, `visible_boundary_score` (4-tuple penalizing opens before the node and rewarding closure after), local signatures, ranker scores.
     - Ground-truth label `is_terminal_for_audit_only` (matches true `q`).
 - False nodes = all non-terminal nodes before the true `q`.
-- It then applies heuristic selectors (`rule_b_best_ranker_b`, `rule_d_post_visible_open_drop`, `rule_f_low_exact_terminal_signature` extracted from true low-boundary PGS terminals, etc.) and measures `top1_recall`, `would_create_audit_failures`, and `projected_pgs_percent` (how many chain-fallback cases could become pure PGS if the rule were trusted).
+- It then applies heuristic selectors (`rule_b_best_ranker_b`, `rule_d_post_visible_open_drop`, `rule_f_low_exact_terminal_signature` extracted from true low-endpoint PGS terminals, etc.) and measures `top1_recall`, `would_create_audit_failures`, and `projected_pgs_percent` (how many chain-fallback cases could become pure PGS if the rule were trusted).
 
 Parallel backward-law miners (`pgs_semiprime_backward_factor_closure_search.py`, `pgs_semiprime_backward_law_search.py`, `pgs_semiprime_backward_pattern_miner.py`, `pgs_semiprime_backward_*_transition_law_search.py`, etc.) traverse semiprime “lanes” using exactly the same PGS invariants (GWR winner / first-d₄ / first-d_min carriers, gap widths, large negative offsets, lane-factor intersection with the semiprime’s prime factors, chamber-style three-gap neighborhoods). They record step counts to factor reach and failure modes (lane broken, max_steps exhausted).
 
@@ -36,9 +36,9 @@ All of these scripts operate inside the **fixed `candidate_bound=128`** chamber 
 - No evidence that the required horizon tracks `√q`. All exploration is bounded by the fixed PGS chamber (128) and small divisor visibility bound — the opposite of quadratic dependence.
 
 **Falsifying result** (horizon tracks `√q` with no smaller PGS-visible bound) is **not supported** by the existing data or code structure.  
-**Confirming result** (horizon bounded by a deterministic PGS-visible expression ≪ `√q`) is **strongly suggested** by the architecture and the success of the low-exact-terminal-signature rule (which pulls signatures directly from verified PGS boundaries).
+**Confirming result** (horizon bounded by a deterministic PGS-visible expression ≪ `√q`) is **strongly suggested** by the architecture and the success of the low-exact-terminal-signature rule (which pulls signatures directly from verified PGS endpoints).
 
-### Path to the Pure PGS Boundary Rule
+### Path to the Pure PGS Endpoint Rule
 1. **Extend / run the terminal-certificate miner** (or add a new `least_factor_frontier_miner.py`):
     - For every chain, compute `required_horizon = max{ spf(n) for false nodes n before true q }`.
     - Output per-chain: `required_horizon`, `p`, `s0`, `chain_length`, `max_delta`, `open_density_prefix`, `residue_vector`, `carrier_d4_offset`, `chamber_width`, etc.
@@ -62,4 +62,4 @@ All of these scripts operate inside the **fixed `candidate_bound=128`** chamber 
 ### Bottom Line
 The repo has already done the hard empirical work: the generator is correct, the mining tools exist and are running on exactly the false-chain-node frontier, and the structural invariants (deltas, residues, closure vectors, low-exact-terminal signatures, GWR carriers) are rich enough to support a small deterministic `H`. The only remaining step is to **explicitly mine and publish the least-factor frontier statistics** (max spf of false nodes vs PGS state) and close the loop with a derived horizon law.
 
-That single derivation converts the last major non-PGS bridge into a theorem-level PGS boundary rule — exactly the “missing theorem” you identified. The infrastructure is there; the confirming result is the expected outcome.
+That single derivation converts the last major non-PGS bridge into a theorem-level PGS next-prime selection rule — exactly the “missing theorem” you identified. The infrastructure is there; the confirming result is the expected outcome.

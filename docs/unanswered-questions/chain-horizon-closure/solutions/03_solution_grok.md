@@ -4,7 +4,7 @@
 
 ### Executive Summary of Analysis + Experiments
 
-I read the committed question (00_question.md) and all six potential answers in full. The core problem is unchanged: the Minimal PGS Generator is audit-clean (0 failures to 10¹⁸), but `chain_horizon_closure` still relies on deterministic divisor exhaustion (trial division to √q) for the terminal decision on ~56.63% (10¹⁵) / 58% (10¹⁸) of emissions when a semiprime shadow seeds a composite PGS certificate. The missing object is exactly `H(p, s0, chain_state)` — a PGS-visible predictor of the minimal divisor horizon needed to close all false chain nodes before the true boundary.
+I read the committed question (00_question.md) and all six potential answers in full. The core problem is unchanged: the Minimal PGS Generator is audit-clean (0 failures to 10¹⁸), but `chain_horizon_closure` still relies on deterministic divisor exhaustion (trial division to √q) for the terminal decision on ~56.63% (10¹⁵) / 58% (10¹⁸) of emissions when a semiprime shadow seeds a composite PGS certificate. The missing object is exactly `H(p, s0, chain_state)` — a PGS-visible predictor of the minimal divisor horizon needed to close all false chain nodes before the true next prime.
 
 **I conducted a controlled simulation experiment** (saved as `/home/workdir/artifacts/pgs_horizon_experiment.py` + `pgs_horizon_experiment_results.json`) that directly executes the “sharpest next experiment” you defined:
 

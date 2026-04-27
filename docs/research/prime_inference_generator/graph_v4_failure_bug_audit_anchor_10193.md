@@ -23,7 +23,7 @@ actual_boundary_offset: 18
 emitted_matches_actual_bool: false
 ```
 
-The emitted value is not the next prime boundary. It factors as:
+The emitted value is not the next prime endpoint. It factors as:
 
 ```text
 10201 = 101^2
@@ -44,12 +44,12 @@ v4_ignored_raw_reset_evidence: false
 ```
 
 The failure is not explained by range-order state leakage, missing true
-boundary candidate generation, or an audit that checks only primality. The
+candidate next prime generation, or an audit that checks only primality. The
 single-anchor graph reaches the same false result.
 
 ## Phase Location
 
-The true boundary offset `18` has this status by phase:
+The true next prime offset `18` has this status by phase:
 
 ```text
 base: UNRESOLVED
@@ -75,7 +75,7 @@ after_v5: RESOLVED_SURVIVOR
 
 ## v4 Absorption Event
 
-v4 directly absorbs the true boundary:
+v4 directly absorbs the true next prime:
 
 ```text
 relation: unresolved_later_domination_target_no_carrier_reset_discriminator
@@ -91,11 +91,11 @@ target_no_carrier_reset_status: NO_ACTIVE_RESET_EVIDENCE
 The target was unresolved, not resolved, when v4 absorbed it. So the bug audit
 does not show a status-mutation error where v4 accidentally targeted a resolved
 candidate. It shows v4's predicate authorizing absorption of an unresolved true
-boundary.
+endpoint.
 
 ## Reset Evidence Check
 
-For the interval from source offset `8` to true boundary offset `18`, the audit
+For the interval from source offset `8` to true next prime offset `18`, the audit
 found:
 
 ```text

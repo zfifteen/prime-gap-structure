@@ -39,7 +39,7 @@ language than those anchors.
   Local exclusion reading of what GWR says prime gaps cannot contain before the
   winner.
 - [prime_boundary_placement_finding.md](./prime_boundary_placement_finding.md):
-  Boundary-placement reading of the winner law.
+  Endpoint-placement reading of the winner law.
 - [closure_constraint_findings.md](./closure_constraint_findings.md):
   Measured closure surface and recursive-walk consequence of the proved winner
   law.
@@ -78,7 +78,7 @@ language than those anchors.
   between local-window fidelity and stationary-walk concentration.
 - [gap_type_engine_v1_freeze.md](./gap_type_engine_v1_freeze.md):
   Frozen `v1.0` definition of the hierarchical gap-type engine, including the
-  reference operating profiles and the current frontier boundary.
+  reference operating profiles and the current frontier endpoint.
 - [gap_type_engine_v1_rulebook.md](./gap_type_engine_v1_rulebook.md):
   Minimal readable rulebook for the frozen `v1.0` engine on the persistent
   `14`-state reduced surface.

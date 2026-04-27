@@ -1,4 +1,4 @@
-# Fixed-Table Rejection Is a Number-Theory Boundary
+# Fixed-Table Rejection Is a Number-Theory Endpoint
 
 This note records the finding that the current `~91%` prefilter rejection rate
 is not primarily an engineering plateau. It is the measured small-factor layer
@@ -9,7 +9,7 @@ available to the current fixed odd-prime table depth.
 The strongest supported claim is:
 
 the current fixed-table prefilter is already sitting near the finite-regime
-boundary set by the density of odd integers carrying at least one covered small
+endpoint set by the density of odd integers carrying at least one covered small
 odd-prime factor.
 
 On the current deterministic table-depth surface, deeper tables do increase
@@ -44,14 +44,14 @@ The corresponding structural rejection ceiling is
 
 $$R(L)=1-S(L).$$
 
-That product is the invariant boundary for this mechanism at one fixed table
+That product is the invariant endpoint for this mechanism at one fixed table
 depth. Implementation quality can change the time required to evaluate the
 table. It cannot make the same table reject candidates that have no covered
 small odd-prime factor.
 
 The product does not converge to a positive survivor floor as $L$ tends to
 infinity. Formally, $S(L)$ keeps drifting downward and $R(L)$ tends toward
-`100%`. The operational boundary here is finite-regime, not infinite-regime:
+`100%`. The operational endpoint here is finite-regime, not infinite-regime:
 near the repo's current table depths, the remaining numerator has already
 shrunk enough that ordinary table widening is not a route to a new rejection
 regime.
@@ -63,7 +63,7 @@ before Miller-Rabin and end-to-end deterministic RSA speedups of `2.09x` at
 `2048` bits and `2.82x` at `4096` bits. See
 [prefilter benchmarks](../prefilter/benchmarks.md).
 
-The table-depth structural sweep already measures the same boundary:
+The table-depth structural sweep already measures the same endpoint:
 
 - covered odd primes through `300,007`: theory `91.096550%`;
 - covered odd primes through `1,000,003`: theory `91.872366%`;
@@ -89,7 +89,7 @@ consumed most of the small-factor density layer available at this depth.
 That changes the next design question. To push rejection materially above the
 current `~91%` to `~92%` finite-table regime, the mechanism must change.
 Wider tables, faster lookups, and deeper sieves are refinements inside the same
-boundary.
+endpoint.
 
 A different mechanism would change the candidate stream before the fixed table
 runs. In this repository's vocabulary, the live candidate is a deterministic
@@ -108,7 +108,7 @@ This framing makes a concrete prediction:
 - doubling the covered odd-prime table depth from the current deep-table regime
   should produce less than `1` percentage point of additional rejection;
 - a reproducible gain of `2` or more percentage points from table doubling
-  alone would falsify the finite-regime boundary reading;
+  alone would falsify the finite-regime endpoint reading;
 - a gain of `2` or more percentage points at fixed table depth would point to a
   mechanism shift in candidate generation, not to ordinary table deepening.
 

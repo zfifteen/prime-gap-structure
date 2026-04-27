@@ -1,19 +1,19 @@
 # Carrier-Lock Condition Search
 
-The naive right-boundary ceiling failed because a later lower-divisor composite
-can reset the active carrier instead of proving that the boundary occurred
+The naive right-endpoint ceiling failed because a later lower-divisor composite
+can reset the active carrier instead of proving that the endpoint occurred
 earlier. The carrier-lock search found two zero-wrong safety separators on the
 tested surface, but neither is an emission rule.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
-Start from the candidate pressure ceilings found by the rejected right-boundary
+Start from the candidate pressure ceilings found by the rejected right-endpoint
 ceiling rule and classify them into:
 
-- `safe_ceiling`: the audited next boundary is before the pressure event;
-- `unsafe_reset`: the audited next boundary is at or after the pressure event.
+- `safe_ceiling`: the audited next prime is before the pressure event;
+- `unsafe_reset`: the audited next prime is at or after the pressure event.
 
 Then compare label-free PGS metadata between the two classes and test
 conservative lock predicates.
@@ -33,7 +33,7 @@ Artifacts:
 - `carrier_lock_condition_probe_summary.json`
 
 The probe consumes the same integrated composite-exclusion surface as the
-right-boundary pressure ceiling probe:
+right-endpoint pressure ceiling probe:
 
 - `single_hole_positive_witness_closure`
 - `witness_bound: 97`
@@ -66,7 +66,7 @@ Each candidate ceiling record includes:
 - `extension_preserves_carrier_bool`
 - `extension_changes_carrier_bool`
 
-The `extension_*` fields use the audited boundary and are diagnostic only. They
+The `extension_*` fields use the audited endpoint and are diagnostic only. They
 are not generator predicates.
 
 ## Surface
@@ -110,7 +110,7 @@ Rejected predicates:
 | `no_higher_divisor_pressure_before_threat` | `118` | `11` | rejected |
 
 The rejected single-resolved predicates fail at anchor `6883`, where the
-candidate ceiling would select an earlier survivor while the audited boundary
+candidate ceiling would select an earlier survivor while the audited endpoint
 is at offset `16`.
 
 ## Observable Split
@@ -134,7 +134,7 @@ The inverse observations are not safe:
 
 ## Interpretation
 
-The first separator does not produce a boundary emission. It says that when
+The first separator does not produce a endpoint emission. It says that when
 unresolved alternatives remain before the pressure event, the event has been
 safe as a ceiling on this surface. The generator still cannot emit because the
 same unresolved alternatives remain to be closed or dominated.
@@ -152,9 +152,9 @@ does not imply a locked carrier.
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
-The right-boundary squeeze path is still live, but the next step is not prime
+The right-endpoint squeeze path is still live, but the next step is not prime
 emission. The next step is to harden the two candidate lock predicates on larger
 surfaces and then ask whether they reduce unresolved alternatives enough to
 support unique inference.

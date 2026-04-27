@@ -13,14 +13,14 @@ candidate primality tests.
 
 | Milestone | Blocker Resolved | Requirement Document | Required Outcome |
 |---:|---|---|---|
-| 1 | Winner is not the boundary | [Boundary Selector Requirements](./gpe_milestone_01_boundary_selector_requirements.md) | Replace `winner + 1` with an explicit exact boundary-selector contract. |
-| 2 | NLSC gives a ceiling, not a selector | [NLSC Selector Requirements](./gpe_milestone_02_nlsc_selector_requirements.md) | Refine the NLSC threat horizon into branch-specific exact boundary selection. |
-| 3 | Reduced state is not deterministic enough | [State Refinement Requirements](./gpe_milestone_03_state_refinement_requirements.md) | Find the minimal state needed to make the boundary selector single-valued. |
+| 1 | Winner is not the endpoint | [Endpoint Selector Requirements](./gpe_milestone_01_boundary_selector_requirements.md) | Replace `winner + 1` with an explicit exact endpoint-selector contract. |
+| 2 | NLSC gives a ceiling, not a selector | [NLSC Selector Requirements](./gpe_milestone_02_nlsc_selector_requirements.md) | Refine the NLSC threat horizon into branch-specific exact next-prime selection. |
+| 3 | Reduced state is not deterministic enough | [State Refinement Requirements](./gpe_milestone_03_state_refinement_requirements.md) | Find the minimal state needed to make the next-prime selector single-valued. |
 | 4 | Exact DNI evaluation uses the divisor field | [Zero-Test Arithmetic Requirements](./gpe_milestone_04_zero_test_arithmetic_requirements.md) | Replace hidden divisor-field or primality-test dependence with rulebook arithmetic. |
 
 ## Development Order
 
-### Milestone 1: Boundary Selector Contract
+### Milestone 1: Endpoint Selector Contract
 
 The current skeleton cannot emit `winner + 1`. The first milestone defines the
 exact function shape:
@@ -47,7 +47,7 @@ with the dominant $d(w)=4$ branch.
 
 ### Milestone 3: State Refinement
 
-The current 14-state reduced type is not enough to determine the next boundary
+The current 14-state reduced type is not enough to determine the next prime
 offset. This milestone identifies the smallest additional state variables that
 make the selector collision-free on the committed validation surface.
 
@@ -56,7 +56,7 @@ auditable state that makes $B(q,S,w,d(w))$ single-valued.
 
 ### Milestone 4: Zero-Test Arithmetic Path
 
-The existing exact oracle reads the divisor field and detects the prime boundary
+The existing exact oracle reads the divisor field and detects the prime endpoint
 with $d(n)=2$. The GPE target forbids hiding that dependency inside a new name.
 
 The fourth milestone replaces the divisor-field dependency with deterministic
@@ -68,7 +68,7 @@ contract failure.
 The roadmap is complete only when all four milestone requirement documents are
 satisfied together:
 
-- the emitted boundary is exact,
+- the emitted next-prime value is exact,
 - the selector is single-valued under the chosen state,
 - the NLSC ceiling is refined into equality,
 - and the implementation path contains no hidden primality test, trial division

@@ -16,7 +16,7 @@ detector before it can become solver logic.
 
 In the filtered-v5 PGS graph runs, semiprime false emissions are not random
 errors. They appear as deterministic left-side landmarks immediately before the
-true prime boundary regime.
+true prime endpoint regime.
 
 Observed surface:
 
@@ -43,18 +43,18 @@ true_boundary_after_risky_v5: REJECTED in 66 / 66
 
 A semiprime shadow is not merely a false positive.
 
-It is a boundary-like composite whose factor obstruction lies just beyond the
+It is a endpoint-like composite whose factor obstruction lies just beyond the
 active witness horizon. Because that obstruction is hidden, the graph treats
-the semiprime as a prematurely resolved boundary. The true boundary then
+the semiprime as a prematurely resolved next prime. The true next prime then
 appears nearby to the right.
 
 The observed deterministic structure is:
 
 ```text
 horizon-hidden semiprime
-  -> false resolved boundary surrogate
+  -> false resolved next prime surrogate
   -> absorbs unresolved right-side candidates
-  -> true boundary is among the absorbed right-side candidates
+  -> true next prime is among the absorbed right-side candidates
 ```
 
 ## Operational Lesson
@@ -76,7 +76,7 @@ The future generator-facing behavior to investigate is:
 semiprime shadow detected
 => mark shadow as left-side landmark
 => inspect right-neighborhood chamber
-=> search for first lawful right-side boundary transition
+=> search for first lawful right-side endpoint transition
 => emit only if a label-free rightward certificate is found
 ```
 
@@ -90,7 +90,7 @@ Let:
 ```text
 p = anchor prime
 s = semiprime shadow candidate
-q = true boundary candidate
+q = true next prime candidate
 ```
 
 Observed relation:
@@ -99,7 +99,7 @@ Observed relation:
 p < s < q
 q - s is usually small
 q was unresolved before risky absorption
-q was rejected or absorbed by the false shadow boundary
+q was rejected or absorbed by the false shadow endpoint
 ```
 
 This suggests a future graph relation family:
@@ -111,14 +111,14 @@ SEMIPRIME_SHADOW_RIGHTWARD_REORIENTATION
 Possible shape:
 
 ```text
-If a boundary-like candidate has shadow structure,
+If a endpoint-like candidate has shadow structure,
 and the graph has unresolved candidates to its right,
 then the shadow cannot authorize final emission.
 Instead, the graph must re-open the right-neighborhood and look for a
-right-side boundary certificate.
+right-side endpoint certificate.
 ```
 
-## Safety Boundary
+## Safety Endpoint
 
 This is not yet a pure generator rule.
 
@@ -158,7 +158,7 @@ semiprime detected by factorization => search right
 The needed PGS-native rule is:
 
 ```text
-boundary-like candidate with hidden-obstruction signature
+endpoint-like candidate with hidden-obstruction signature
 => rightward reorientation required
 ```
 
@@ -167,10 +167,10 @@ boundary-like candidate with hidden-obstruction signature
 The semiprime failure mode is not dead weight. It is a navigation signal.
 
 The graph should treat semiprime shadows as deterministic markers that it has
-arrived just before the true boundary, then use local gap structure to the
-right to recover the boundary without broad absorption.
+arrived just before the true next prime, then use local gap structure to the
+right to recover the endpoint without broad absorption.
 
 The next generator-facing implementation should not put factorization into the
 solver. It should build a deterministic right-neighborhood inspection path over
 already emitted filtered-v5 shadow failures, then look for label-free PGS facts
-that distinguish the true right-side boundary from the shadow surrogate.
+that distinguish the true right-side endpoint from the shadow surrogate.

@@ -1,0 +1,77 @@
+{
+  "title": "The Gap Winner Rule Inside a Prime Gap",
+  "description": "A static-plan draft for a GWR explainer that shows integer blocks in a prime gap, exact divisor counts on the composite interior, minimum-divisor selection, leftmost tie resolution, raw-Z agreement, and the distinction between the selected interior integer and the next prime endpoint.",
+  "target_duration_seconds": 240,
+  "scenes": [
+    {
+      "title": "A Prime Gap And Its Interior",
+      "description": "Introduce two consecutive primes and the composite integers in the interior of the prime gap.",
+      "estimated_duration_seconds": 30,
+      "visual_ideas": [
+        "Use Rectangle mobjects as integer blocks for 23 through 29 on a NumberLine.",
+        "Color 23 and 29 as the prime endpoints and bracket 24 through 28 as the gap interior.",
+        "Keep the right prime endpoint visually present while the rule compares only the interior composite integers."
+      ]
+    },
+    {
+      "title": "Divisor Counts On The Interior",
+      "description": "Show exact divisor counts on each interior composite in the prime gap from 23 to 29.",
+      "estimated_duration_seconds": 35,
+      "visual_ideas": [
+        "Transform each integer block label into a two-line label with n and d(n).",
+        "Use vertical bar height or brightness to encode divisor count values 8, 3, 4, 4, and 6.",
+        "Add a compact table-like overlay only after the block labels are visible."
+      ]
+    },
+    {
+      "title": "Minimum Divisor Count",
+      "description": "Evaluate the first GWR clause: choose the minimum divisor count among the interior composites.",
+      "estimated_duration_seconds": 30,
+      "visual_ideas": [
+        "Animate a horizontal threshold line down to d(n)=3.",
+        "Fade all blocks with divisor count greater than 3.",
+        "Highlight 25 as the selected GWR integer for this prime gap."
+      ]
+    },
+    {
+      "title": "Leftmost Tie Rule",
+      "description": "Use the prime gap from 89 to 97 to show the second GWR clause when multiple interior composites share the minimum divisor count.",
+      "estimated_duration_seconds": 40,
+      "visual_ideas": [
+        "Display blocks 90 through 96 with divisor counts 12, 4, 6, 4, 4, 4, and 12.",
+        "Light all d(n)=4 blocks in cyan as tied minimizers.",
+        "Move a scan cursor left to right and lock 91 as the leftmost minimizer of d(n)."
+      ]
+    },
+    {
+      "title": "Raw-Z Winner Collapses Onto GWR",
+      "description": "Introduce raw-Z after the mechanical rule is visible, then show that its score winner lands on the same interior integer.",
+      "estimated_duration_seconds": 45,
+      "visual_ideas": [
+        "Draw a smooth score profile over the 24 through 28 blocks.",
+        "Place a peak marker above 25 and align it with the existing GWR highlight.",
+        "Show the formula Z_raw(n)=n^(1-d(n)/2) as a small caption under the gap interior."
+      ]
+    },
+    {
+      "title": "Interior Winner Versus Next Prime",
+      "description": "Preserve the mathematical distinction that GWR selects an interior composite integer, not the next prime endpoint.",
+      "estimated_duration_seconds": 35,
+      "visual_ideas": [
+        "Keep the GWR-selected interior integer gold and keep the next prime endpoint as a separate marked block.",
+        "Do not draw q=w+1 as a general rule.",
+        "End with the prime gap endpoints 23 and 29 visually separate from the selected interior integer 25."
+      ]
+    },
+    {
+      "title": "Recap",
+      "description": "Restate the rule in one visual pass: measure divisor counts, choose the minimum, break ties leftmost, and keep the selected interior integer distinct from the next prime endpoint.",
+      "estimated_duration_seconds": 25,
+      "visual_ideas": [
+        "Stack four compact icons: prime gap, divisor counts, leftmost minimum, selected interior integer versus next prime endpoint.",
+        "Reuse the same colors from the earlier scenes.",
+        "Avoid new examples in the recap."
+      ]
+    }
+  ]
+}

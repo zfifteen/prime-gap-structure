@@ -131,7 +131,7 @@ The frontier CSV records each new exact extremum together with:
 
 - $(o(q), d_{\min})$,
 - the exact peak offset,
-- the gap boundary offset,
+- the gap endpoint offset,
 - and the full divisor ladder through the peak.
 
 That means the proof does not have to reason from scratch about all prime gaps.

@@ -38,7 +38,7 @@ square pressure, the next probe should combine those with previous-chamber
 state. If they require exact semiprime or exact divisor pressure, the result is
 useful but not yet pure-eligible.
 
-Boundary Law 005 remains blocked until a legal state reaches zero collisions on
+Next-Prime Law 005 remains blocked until a legal state reaches zero collisions on
 the meaningful surface.
 
 ## Result
@@ -61,9 +61,9 @@ Candidate missing observable counts:
 
 The strongest legal next candidate is `previous_chamber_plus_square_pressure`.
 It varies in every collision bucket and does not require prime-marker identity,
-future boundary offset, or exact factorization. Exact semiprime, carrier, and
+future next-prime offset, or exact factorization. Exact semiprime, carrier, and
 threat-schedule variants also separate the collisions, but they are not
 pure-eligible in their current form.
 
-Boundary Law 005 remains blocked until the combined state is tested and reaches
+Next-Prime Law 005 remains blocked until the combined state is tested and reaches
 zero collisions on the meaningful surface.

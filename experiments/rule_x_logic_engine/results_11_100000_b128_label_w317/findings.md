@@ -13,8 +13,8 @@ label_lock_true_boundary_rejected_count = 0
 label_lock_unique_resolved_match_count = 2231 / 9588
 ```
 
-That means the label-free logic engine inferred the exact next boundary for
-`2231` anchors and rejected the true boundary zero times on this surface.
+That means the label-free logic engine inferred the exact next prime for
+`2231` anchors and rejected the true next prime zero times on this surface.
 
 The lower witness horizons expose the obstruction:
 
@@ -43,7 +43,7 @@ finite run has a positive factor witness inside the experiment horizon.
 
 ## Main Result
 
-| Layer | Rejections | Unique anchors | True boundary rejected |
+| Layer | Rejections | Unique anchors | True endpoint rejected |
 |---|---:|---:|---:|
 | GWR/NLSC only | `0` | `0` | `0` |
 | Naive first-carrier lock | `297753` | `4162` | `7297` |
@@ -52,7 +52,7 @@ finite run has a positive factor witness inside the experiment horizon.
 
 The label-free full-witness lock gives the strongest useful result in this
 experiment: more exact unique inferences than the oracle survivor-lock contrast,
-with the same zero true-boundary rejection count.
+with the same zero true-next-prime rejection count.
 
 ## Interpretation
 
@@ -70,7 +70,7 @@ horizon large enough to certify every composite on this small surface. But it
 does identify the missing condition precisely:
 
 ```text
-the lock is safe when no false early survivor can masquerade as a boundary.
+the lock is safe when no false early survivor can masquerade as a endpoint.
 ```
 
 The next target is a bounded PGS-visible witness horizon that preserves the
@@ -91,7 +91,7 @@ threat offset = 3
 
 The false offset `2` survives because its composite factor is outside the
 `97` witness horizon. The engine locks too early, then the lower-divisor threat
-incorrectly rejects the true boundary.
+incorrectly rejects the true next prime.
 
 Increasing the witness horizon to `317` removes this class of premature lock
 on the tested surface.

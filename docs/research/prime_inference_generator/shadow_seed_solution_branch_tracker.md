@@ -36,16 +36,16 @@ Promotion requires:
 |---|---:|---|---|
 | [`codex/solution-01-grok-shadow-state-contract`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01-grok-shadow-state-contract) | `c7a0456` | Rejected | Required state objects are absent from current artifacts. |
 | [`codex/solution-01b-grok-reinvoke-closure`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01b-grok-reinvoke-closure) | `e07d776` | Rejected | Re-invoking chamber closure from `q0` selects too early on many rows. |
-| [`codex/solution-01c-grok-gwr-later-side-closure`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01c-grok-gwr-later-side-closure) | `56d131f` | Rejected as drop-in | Existing GWR/NLSC selectors do not select a boundary from only `p` and `q0`. |
-| [`codex/solution-01d-grok-gwr-locked-chamber`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01d-grok-gwr-locked-chamber) | `d5d248d` | Rejected | GWR lock alone does not provide the missing boundary offset. |
-| [`codex/solution-01d-gwr-locked-integration`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01d-gwr-locked-integration) | `e81d287` | Not promotable | Fair locked-state integration found no safe replayable boundary-margin key. |
-| [`codex/solution-02-gemini-rst-law`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-02-gemini-rst-law) | `4994dc2` | Rejected | Residual symmetry minimization selects many wrong boundaries. |
+| [`codex/solution-01c-grok-gwr-later-side-closure`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01c-grok-gwr-later-side-closure) | `56d131f` | Rejected as drop-in | Existing GWR/NLSC selectors do not select a endpoint from only `p` and `q0`. |
+| [`codex/solution-01d-grok-gwr-locked-chamber`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01d-grok-gwr-locked-chamber) | `d5d248d` | Rejected | GWR lock alone does not provide the missing next-prime offset. |
+| [`codex/solution-01d-gwr-locked-integration`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01d-gwr-locked-integration) | `e81d287` | Not promotable | Fair locked-state integration found no safe replayable next-prime-margin key. |
+| [`codex/solution-02-gemini-rst-law`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-02-gemini-rst-law) | `4994dc2` | Rejected | Residual symmetry minimization selects many wrong endpoints. |
 | [`codex/solution-03-meta-frontier-exhaustion`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-03-meta-frontier-exhaustion) | `cba771c` | Rejected | Required mark-stream inputs are absent; materialized proxies are unsafe or abstain. |
-| [`codex/solution-04-deepseek-square-grid-openq`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-04-deepseek-square-grid-openq) | `343616d` | Rejected | The proposed square-grid sequence misses the audited boundary on all 388 shadow rows. |
-| [`codex/solution-05-claude-ssbrl-residue-advance`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-05-claude-ssbrl-residue-advance) | `bfdab74` | Rejected | `q0 + r` never selects the boundary; residue advance repeats the unsafe first-visible-open failure. |
+| [`codex/solution-04-deepseek-square-grid-openq`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-04-deepseek-square-grid-openq) | `343616d` | Rejected | The proposed square-grid sequence misses the audited endpoint on all 388 shadow rows. |
+| [`codex/solution-05-claude-ssbrl-residue-advance`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-05-claude-ssbrl-residue-advance) | `bfdab74` | Rejected | `q0 + r` never selects the endpoint; residue advance repeats the unsafe first-visible-open failure. |
 | [`codex/solution-06-copilot-windowed-stabilization`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-06-copilot-windowed-stabilization) | `fb1f18a` | Rejected | Windowed flux/pressure stabilization abstains on every target row. |
-| [`codex/solution-07-seed-erasure-boundary`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-07-seed-erasure-boundary) | `973b3e3` | Rejected | Literal erasure collapses to first-visible-open; explicit seed-phase walls are unsafe. |
-| `codex/solution-08-seed-pressure-gap` | `uncommitted` | Rejected | Bidirectional right-phase closure selects too early and too late; it adds no safe boundary margin. |
+| [`codex/solution-07-seed-erasure-endpoint`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-07-seed-erasure-boundary) | `973b3e3` | Rejected | Literal erasure collapses to first-visible-open; explicit seed-phase walls are unsafe. |
+| `codex/solution-08-seed-pressure-gap` | `uncommitted` | Rejected | Bidirectional right-phase closure selects too early and too late; it adds no safe endpoint margin. |
 | `codex/solution-09-seed-distance-closure` | `uncommitted` | Rejected | Seed-distance closure collapses to first-visible-open; the distance predicate is satisfied immediately on every target row. |
 | `codex/solution-10-continued-chamber-ladder` | `uncommitted` | Rejected | Continued-chamber ladders show a weak 4m+2 distance signal but produce audit failures on every tested selector. |
 | `codex/solution-11-carrier-threat-margin` | `uncommitted` | Rejected | Low-witness post-seed “threat” appears on every row but is too early; selecting the last visible-open before it abstains often and creates audit failures. |
@@ -59,7 +59,7 @@ Commit: `c7a0456`
 
 Proposed solution:
 
-Compute the boundary from a full chamber state:
+Compute the endpoint from a full chamber state:
 
 - `S`, the chamber state;
 - `gs`, a gap signature;
@@ -94,7 +94,7 @@ The solution is not testable as stated against the current minimal generator.
 Strength:
 
 The proposal identifies a plausible missing object: a richer chamber-state
-transition system could, in principle, carry the boundary state.
+transition system could, in principle, carry the next-prime state.
 
 Weakness:
 
@@ -191,15 +191,15 @@ Artifacts:
 Result:
 
 The claimed drop-in function is not implemented, and the existing selector
-contracts do not select a boundary from only `p` and `q0`.
+contracts do not select a endpoint from only `p` and `q0`.
 
 | Scale | Selector | Shadow rows | Correct | No selection | Projected PGS |
 |---|---|---:|---:|---:|---:|
-| $10^{12}$ | boundary selector without offset | 102 | 0 | 102 | 59.68% |
+| $10^{12}$ | next-prime selector without offset | 102 | 0 | 102 | 59.68% |
 | $10^{12}$ | d4 NLSC without margin | 102 | 0 | 102 | 59.68% |
-| $10^{15}$ | boundary selector without offset | 141 | 0 | 141 | 43.37% |
+| $10^{15}$ | next-prime selector without offset | 141 | 0 | 141 | 43.37% |
 | $10^{15}$ | d4 NLSC without margin | 141 | 0 | 141 | 43.37% |
-| $10^{18}$ | boundary selector without offset | 145 | 0 | 145 | 42.00% |
+| $10^{18}$ | next-prime selector without offset | 145 | 0 | 145 | 42.00% |
 | $10^{18}$ | d4 NLSC without margin | 145 | 0 | 145 | 42.00% |
 
 Strength:
@@ -210,11 +210,11 @@ closure and NLSC are relevant constraints after a placed winner.
 Weakness:
 
 The documented GWR later-side closure is a dominance and ceiling condition. It
-does not itself return the boundary.
+does not itself return the endpoint.
 
 Limitation:
 
-The missing variable remains the exact boundary offset or square-ceiling
+The missing variable remains the exact next-prime offset or square-ceiling
 margin.
 
 ## Solution 1d: GWR-Locked Chamber
@@ -250,7 +250,7 @@ Artifacts:
 Result:
 
 The weak executable reading selected too early. The strict locked readings had
-no boundary signal.
+no next-prime signal.
 
 | Scale | Selector | Correct | No selection | Audit failures if promoted | Projected PGS |
 |---|---|---:|---:|---:|---:|
@@ -268,11 +268,11 @@ winner rather than allowing later candidates to become new winners.
 Weakness:
 
 The lock is not a terminal selector. It does not identify which later candidate
-is the boundary.
+is the endpoint.
 
 Limitation:
 
-The missing variable is still the boundary margin. Locking the winner does not
+The missing variable is still the endpoint margin. Locking the winner does not
 derive that margin.
 
 ## Solution 1d Integration: Locked-State Margin Probe
@@ -340,7 +340,7 @@ Weakness:
 
 The tested visible keys either do not replay or replay with audit failures.
 Row-unique keys describe individual chambers but do not generalize into a
-boundary-margin law.
+next-prime-margin law.
 
 Limitation:
 
@@ -406,8 +406,8 @@ clean and cheap after caching.
 
 Weakness:
 
-The Hamming-minimum criterion is not a boundary selector. It frequently picks
-another right-side impostor or overshoots the true boundary.
+The Hamming-minimum criterion is not a next-prime selector. It frequently picks
+another right-side impostor or overshoots the true next prime.
 
 Limitation:
 
@@ -543,10 +543,10 @@ Artifacts:
 Result:
 
 No rule promoted. The decisive failure is earlier than `openQ`: the audited
-boundary is not present in the proposed square-grid sequence for any tested
+endpoint is not present in the proposed square-grid sequence for any tested
 shadow row.
 
-| Scale | Shadow rows | True boundary not in square grid | Correct selections | No selections |
+| Scale | Shadow rows | True endpoint not in square grid | Correct selections | No selections |
 |---|---:|---:|---:|---:|
 | $10^{12}$ | 102 | 102 | 0 | 102 |
 | $10^{15}$ | 141 | 141 | 0 | 141 |
@@ -578,7 +578,7 @@ and a specific chamber-openness predicate.
 
 Weakness:
 
-The central claim that the true boundary lies in the square-grid candidate
+The central claim that the true next prime lies in the square-grid candidate
 stream fails on the current 388 shadow rows. With the target absent from the
 candidate stream, no `openQ` predicate can recover it.
 
@@ -588,7 +588,7 @@ This branch rejects the submitted square-grid law at `candidate_bound = 128`.
 It does not rule out a different square-derived coordinate that enumerates the
 ordinary rightward candidate stream rather than the submitted `q_k` sequence.
 
-## Solution 5: Shadow Seed Boundary Recovery Law
+## Solution 5: Shadow Seed Endpoint Recovery Law
 
 Branch:
 [`codex/solution-05-claude-ssbrl-residue-advance`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-05-claude-ssbrl-residue-advance)
@@ -631,7 +631,7 @@ Result:
 No rule promoted.
 
 The direct `q0 + r` claim is false on the tested surface. The seed least factor
-is always larger than the boundary distance from the seed:
+is always larger than the next-prime distance from the seed:
 
 | Scale | Shadow rows | median `r` | median `q - q0` | `r = q - q0` |
 |---|---:|---:|---:|---:|
@@ -666,8 +666,8 @@ candidate.
 Weakness:
 
 The proposed witness step points in the wrong direction. The least factor of
-the seed is far outside the actual seed-to-boundary distance, so `q0 + r` and
-`q0 + k r` cannot select the boundary under the current chamber window.
+the seed is far outside the actual seed-to-next-prime distance, so `q0 + r` and
+`q0 + k r` cannot select the endpoint under the current chamber window.
 Residue advance without the least-factor step reproduces the known unsafe
 first-visible-open behavior.
 
@@ -686,7 +686,7 @@ Commit: `fb1f18a`
 
 Proposed solution:
 
-Select the terminal boundary as the first rightward index after `q0` where a
+Select the terminal next prime as the first rightward index after `q0` where a
 PGS-visible recovery state stabilizes. The proposed recovery state uses:
 
 - visible candidate flux;
@@ -701,7 +701,7 @@ current sidecars. The branch synthesized them from the current PGS-visible
 closure predicate over a local rightward window and tested:
 
 - literal flux/pressure stabilization;
-- a boundary-open stabilization variant where the selected `r` must be
+- a next-prime-open stabilization variant where the selected `r` must be
   visible-open;
 - the first-visible-open selector as a baseline comparator.
 
@@ -717,7 +717,7 @@ Result:
 
 No rule promoted. Both stabilization rules abstained on every
 `shadow_seed_recovery` and unresolved row. The first-visible-open baseline
-again shows high projected PGS only by accepting many too-early boundaries.
+again shows high projected PGS only by accepting many too-early endpoints.
 
 | Scale | Source | Stabilization correct | Stabilization no selection | First-visible correct | First-visible too early |
 |---|---|---:|---:|---:|---:|
@@ -751,7 +751,7 @@ state over a rightward window.
 Weakness:
 
 The concrete stabilization criteria are too strict to select any tested
-boundary. When relaxed to the first visible-open comparator, the rule
+endpoint. When relaxed to the first visible-open comparator, the rule
 collapses into the known unsafe early-selection pattern.
 
 Limitation:
@@ -761,16 +761,16 @@ current closure predicate. It does not rule out a different pressure definition
 that is independently materialized as a PGS state rather than synthesized from
 closed-position density.
 
-## Solution 7: Seed-Erasure Boundary Law
+## Solution 7: Seed-Erasure Next-Prime Law
 
 Branch:
-[`codex/solution-07-seed-erasure-boundary`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-07-seed-erasure-boundary)
+[`codex/solution-07-seed-erasure-endpoint`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-07-seed-erasure-boundary)
 
 Commit: `973b3e3`
 
 Proposed solution:
 
-Treat the true boundary as the first visible-open candidate after `q0` where
+Treat the true next prime as the first visible-open candidate after `q0` where
 the rightward chamber trace no longer depends on the placed shadow seed.
 
 ```text
@@ -805,7 +805,7 @@ Result:
 
 No rule promoted. The literal interpretation collapses to the known
 first-visible-open selector. The explicit seed-phase integrations select many
-wrong boundaries.
+wrong endpoints.
 
 Window `128`:
 
@@ -870,10 +870,10 @@ Commit: `uncommitted`
 
 Proposed solution:
 
-Treat each visible-open candidate after `q0` as a proposed right boundary, not
+Treat each visible-open candidate after `q0` as a proposed right endpoint, not
 only as a point in the anchor-framed rightward scan. Earlier visible-open
-impostors that are open from `p` should close from the proposed boundary side
-if the candidate is the real terminal boundary.
+impostors that are open from `p` should close from the proposed endpoint side
+if the candidate is the real terminal next prime.
 
 The tested selector computes a right-phase defect:
 
@@ -883,13 +883,13 @@ right_phase_defect(c) =
   whose distance c - n is also right-phase open
 ```
 
-The branch tests whether the true boundary is the first visible-open candidate
+The branch tests whether the true next prime is the first visible-open candidate
 with zero defect, the leftmost minimum-defect candidate, or the first candidate
-whose full left-open interior is closed by the right boundary phase.
+whose full left-open interior is closed by the right endpoint phase.
 
 Test performed:
 
-The probe tested right-boundary phase closure under mod `30` and mod `210` on
+The probe tested right-endpoint phase closure under mod `30` and mod `210` on
 the current high-scale shadow rows:
 
 - `B0_first_visible_open_baseline`;
@@ -911,7 +911,7 @@ Result:
 
 No rule promoted. The right-phase closure signal is real and measurable, but
 it does not identify the terminal margin. It often chooses a later candidate
-past the true boundary, while still choosing too early on many rows.
+past the true next prime, while still choosing too early on many rows.
 
 | Scale | Rule family | Correct | Too early | Too late | No selection | Projected PGS |
 |---|---|---:|---:|---:|---:|---:|
@@ -925,19 +925,19 @@ past the true boundary, while still choosing too early on many rows.
 Strength:
 
 The probe tests a genuinely different chamber interpretation. It asks whether
-the boundary is the first point that closes its own left shadow, rather than
+the endpoint is the first point that closes its own left shadow, rather than
 the first point that remains open from the anchor.
 
 Weakness:
 
 The current right-phase definition has no carrier memory. It can describe a
-balanced interior phase after the real boundary as easily as a terminal
-boundary, which creates many too-late selections.
+balanced interior phase after the real next prime as easily as a terminal
+endpoint, which creates many too-late selections.
 
 Limitation:
 
 This branch rejects mod-`30` and mod-`210` right-phase closure as currently
-materialized. It does not rule out a right-boundary state that carries the
+materialized. It does not rule out a right-endpoint state that carries the
 placed seed or GWR carrier as an active term.
 
 ## Solution 9: Seed-Distance Closure
@@ -950,7 +950,7 @@ Commit: `uncommitted`
 Proposed solution:
 
 Treat each anchor-visible-open candidate after `q0` as a proposed right
-boundary. Require that every prior anchor-visible-open point (including the
+endpoint. Require that every prior anchor-visible-open point (including the
 seed itself) is *visibly closed* by the distance to the candidate, using the
 same PGS-visible `closure_reason(0, delta)` predicate (wheel + bounded divisor
 witnesses).
@@ -980,7 +980,7 @@ Artifacts:
 
 Result:
 
-No rule promoted. The distance-closure gate does not separate true boundaries
+No rule promoted. The distance-closure gate does not separate true next primes
 from visible-open impostors: it is satisfied by the first visible-open
 candidate on every target row, so it collapses to the known first-visible-open
 baseline.
@@ -1031,7 +1031,7 @@ seed-to-candidate distance:
 lambert_step(distance) := distance >= 2 and (distance - 2) mod 4 == 0
 ```
 
-The probe tests whether the true boundary tends to lie on this distance ladder
+The probe tests whether the true next prime tends to lie on this distance ladder
 or on a related ladder in the seed-framed closure prefix count, and whether
 either ladder yields an audit-clean selector on shadow-seed rows.
 
@@ -1074,7 +1074,7 @@ Aggregate across all scales:
 | `first_closed_prefix_on_4m_plus_2` | 54 | 53 |
 | `first_both_ladders` | 16 | 10 |
 
-Observed true-boundary membership on the distance ladder:
+Observed true-next-prime membership on the distance ladder:
 
 | Scale | q on 4m+2 distance ladder |
 |---|---:|
@@ -1084,19 +1084,19 @@ Observed true-boundary membership on the distance ladder:
 
 Strength:
 
-The ladder property is real and measurable. The true boundary is more likely
+The ladder property is real and measurable. The true next prime is more likely
 than not to satisfy the `4m+2` distance predicate from the seed on these
 surfaces.
 
 Weakness:
 
-The property is not selective enough to identify the terminal boundary. Many
+The property is not selective enough to identify the terminal next prime. Many
 visible-open impostors also lie on the ladder, so selecting on ladder
 membership produces audit failures.
 
 Limitation:
 
-This branch rejects the literal Lambert ladder materialization as a boundary
+This branch rejects the literal Lambert ladder materialization as a endpoint
 selector. It does not rule out a seed-carried transition state that uses the
 ladder only as a prior inside a stricter carrier-preservation or reset
 discriminator.
@@ -1151,12 +1151,12 @@ Strength:
 
 The carrier-threat observable is genuinely PGS-visible and does not use audit
 labels or any exact divisor-field classification. It is a concrete attempt to
-turn a post-seed closure witness event into a boundary-margin marker.
+turn a post-seed closure witness event into a next-prime-margin marker.
 
 Weakness:
 
 The threat is too local and too common. It appears immediately after `q0` on
-all rows, so it does not separate the terminal boundary from visible-open
+all rows, so it does not separate the terminal next prime from visible-open
 impostors and it often leaves no selectable visible-open candidate before the
 threat.
 
@@ -1173,18 +1173,18 @@ The strongest common finding across these branches is:
 
 `q0` is useful as a placed interior seed, but neither visible chamber restart,
 GWR later-side dominance, nor a locked winner condition currently determines
-the boundary offset.
+the next-prime offset.
 
 The missing object remains:
 
 ```text
-boundary margin = q - q0
+endpoint margin = q - q0
 ```
 
 or equivalently:
 
 ```text
-boundary offset = q - p
+next-prime offset = q - p
 ```
 
 The next useful proposal should identify that margin from PGS-visible state, or

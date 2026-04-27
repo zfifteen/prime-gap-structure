@@ -3,11 +3,11 @@
 The higher-divisor pressure lock survives the staged zero-wrong hardening
 surface through anchors `11..1_000_000`.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
-The resolved-boundary lock separator probe found one zero-wrong candidate:
+The resolved-endpoint lock separator probe found one zero-wrong candidate:
 
 ```text
 higher_divisor_pressure_lock
@@ -95,7 +95,7 @@ The candidate has now passed two separate checks:
 - lock-separator hardening through anchors `11..1_000_000`;
 - flagged absorption integration through anchors `11..100_000`.
 
-This is candidate material for Boundary Law 005, not approval. The current
+This is candidate material for Next-Prime Law 005, not approval. The current
 candidate shape is:
 
 ```text
@@ -113,6 +113,6 @@ surface is established.
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 Prime emission remains forbidden.

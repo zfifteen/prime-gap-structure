@@ -266,14 +266,14 @@ local theorem.
 A thin family of small local patterns is exactly where a sharp local theorem
 might live.
 
-## Why This Also Fits The Prime-Boundary View
+## Why This Also Fits The Prime-Endpoint View
 
 This reading also fits the newer work on where the next prime can occur.
 
 If GWR were only a statement about which composite wins after the fact, then it
-would not naturally tell us much about where the boundary primes can sit.
+would not naturally tell us much about where the endpoint primes can sit.
 
-But once we read the gap interior as a restricted local pattern, the boundary
+But once we read the gap interior as a restricted local pattern, the endpoint
 statement becomes natural.
 
 The

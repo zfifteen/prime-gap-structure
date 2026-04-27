@@ -1,6 +1,6 @@
 # Experimental PGS Prime Emitter
 
-The experimental PGS prime emitter produced 36 inferred next-prime boundary
+The experimental PGS prime emitter produced 36 inferred next-prime endpoint
 records under 005A-R on anchors 11..1000000. A separate downstream classical
 audit confirmed 36 out of 36.
 
@@ -101,7 +101,7 @@ record selection.
 
 ## Supported Claim
 
-The experimental PGS prime emitter produced 36 inferred next-prime boundary
+The experimental PGS prime emitter produced 36 inferred next-prime endpoint
 records under 005A-R on anchors 11..1000000. A separate downstream classical
 audit confirmed 36 out of 36.
 

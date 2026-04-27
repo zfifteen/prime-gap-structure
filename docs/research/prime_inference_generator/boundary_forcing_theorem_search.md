@@ -1,13 +1,13 @@
-# Boundary Forcing Theorem Search
+# Endpoint Forcing Theorem Search
 
-Boundary Laws 001 through 004 isolate the live blocker for the PGS Prime
+Endpoint Laws 001 through 004 isolate the live blocker for the PGS Prime
 Inference Generator. The pure scaffold is clean. The chamber certificates are
 real. The missing ingredient is a theorem that turns PGS chamber data into a
-unique next boundary.
+unique next prime.
 
 The theorem search target is:
 
-$$PGS\ chamber\ data \Rightarrow unique\ next\ boundary$$
+$$PGS\ chamber\ data \Rightarrow unique\ next\ endpoint$$
 
 No candidate in this note is installed as a generator rule. The work here is
 offline theorem discovery.
@@ -20,18 +20,18 @@ The strongest supported result is:
 
 PGS chamber certificates can certify interior closure, GWR winners,
 leftmost-minimum carriers, and local no-later-simpler consistency. They do not
-yet force a unique next boundary.
+yet force a unique next prime.
 
-This means GWR is currently an interior winner law. It is not yet a boundary
+This means GWR is currently an interior winner law. It is not yet a endpoint
 generation law.
 
-## Theorem Family 1: First-Open Boundary Theorem
+## Theorem Family 1: First-Open Endpoint Theorem
 
 Claim form:
 
-$$closed\ preopen\ chamber \Rightarrow first\ wheel-open\ candidate\ is\ boundary$$
+$$closed\ preopen\ chamber \Rightarrow first\ wheel-open\ candidate\ is\ endpoint$$
 
-This is the theorem family behind Boundary Law 001 and the empty anchor-11
+This is the theorem family behind Next-Prime Law 001 and the empty anchor-11
 probe.
 
 Current status:
@@ -41,7 +41,7 @@ Current status:
 Reason:
 
 First wheel-open admissibility identifies a candidate. It does not force that
-candidate to be the next boundary.
+candidate to be the next prime.
 
 Kill condition:
 
@@ -49,13 +49,13 @@ Any known anchor where the first wheel-open candidate is composite kills the
 unqualified theorem. A surviving version would need additional PGS conditions
 that do more than wheel admissibility.
 
-## Theorem Family 2: Carrier-Lock Boundary Theorem
+## Theorem Family 2: Carrier-Lock Endpoint Theorem
 
 Claim form:
 
-$$GWR\ carrier + no\ later\ lower-divisor\ threat\ up\ to\ candidate\ q \Rightarrow q\ is\ boundary$$
+$$GWR\ carrier + no\ later\ lower-divisor\ threat\ up\ to\ candidate\ q \Rightarrow q\ is\ endpoint$$
 
-This is the theorem family behind Boundary Law 003 and the anchor-13 carrier
+This is the theorem family behind Next-Prime Law 003 and the anchor-13 carrier
 probe.
 
 Current status:
@@ -65,24 +65,24 @@ Current status:
 Reason:
 
 The carrier-lock certificate proves coherence inside a proposed chamber. It
-does not prove that the proposed chamber must stop at the candidate boundary.
+does not prove that the proposed chamber must stop at the candidate next prime.
 
 Kill condition:
 
-Two different admissible candidate boundaries with internally coherent carrier
+Two different admissible candidate next primes with internally coherent carrier
 certificates kill the unqualified theorem. A surviving version must identify
 which candidate is forced and why.
 
-## Theorem Family 3: Transition-State Boundary Theorem
+## Theorem Family 3: Transition-State Endpoint Theorem
 
 Claim form:
 
 $$S(p) \Rightarrow g(p)$$
 
 Here `S(p)` is a PGS state vector computed from allowed local or recursive
-structure around anchor `p`, and `g(p)` is the next boundary offset.
+structure around anchor `p`, and `g(p)` is the next prime offset.
 
-This is the most promising family because boundary force may live between
+This is the most promising family because endpoint force may live between
 chambers rather than inside one proposed chamber.
 
 Current status:
@@ -97,7 +97,7 @@ surfaces before it can become a theorem candidate.
 
 Kill condition:
 
-The same allowed PGS state mapping to multiple next-boundary offsets kills that
+The same allowed PGS state mapping to multiple next-next-prime offsets kills that
 state vector. If all reasonable local state vectors collide, the theorem needs
 longer memory, larger deterministic state, or a different invariant.
 
@@ -110,14 +110,14 @@ The transition-state search should test deterministic state vectors built from:
 - first carrier family;
 - first carrier divisor count;
 - first carrier offset;
-- early divisor ladder shape excluding prime-boundary detection;
+- early divisor ladder shape excluding prime-endpoint detection;
 - lower-divisor threat schedule;
 - previous gap state;
 - previous GWR carrier type;
 - semiprime-wheel attractor state.
 
 The initial probe should start small. A state collision is not a failure of the
-project. It is information about which data cannot force a boundary.
+project. It is information about which data cannot force a endpoint.
 
 ## Legal Ladder State Vectors
 
@@ -148,7 +148,7 @@ The probe must:
 2. Compute candidate PGS state vectors for each anchor.
 3. Attach the classical next gap width as a label.
 4. Group rows by state vector.
-5. Report collisions where one state maps to multiple boundary offsets.
+5. Report collisions where one state maps to multiple next-prime offsets.
 6. Report the first tested state vector with zero collisions, if one exists.
 
 Output fields:
@@ -171,15 +171,15 @@ Output fields:
 - `zero_collision_and_eligible`
 
 This does not violate the pure generator contract. It is offline theorem
-search. Any candidate found here must still be turned into a pure boundary law
+search. Any candidate found here must still be turned into a pure next-prime law
 before generation can emit.
 
 ## Leakage Audit Gate
 
 Zero collisions are not enough. A state vector is disqualified as a pure
-generation candidate if it includes the boundary offset, the current gap width,
+generation candidate if it includes the next-prime offset, the current gap width,
 prime-marker tokens, stop-at-first-prime behavior, `nextprime`, `isprime`, or an
-equivalent boundary-discovery mechanism.
+equivalent endpoint-discovery mechanism.
 
 For now, any state vector that uses `d = 2` or a masked prime-position token
 inside the prefix is marked:
@@ -198,7 +198,7 @@ The contaminated `carrier_ladder` and `previous_gap_ladder` states keep zero
 collisions on these surfaces, but they remain ineligible because they use
 prime-marker masking.
 
-The legal shadow states do not yet supply a Boundary Law 005 candidate:
+The legal shadow states do not yet supply a Next-Prime Law 005 candidate:
 
 - `11..200`, prefix `12`: `known_composite_divisor_ladder` has zero collisions;
 - `11..10_000`, all tested prefixes: no eligible zero-collision state;
@@ -213,12 +213,12 @@ This indicates that the currently perfect ladder signal depends on illegal
 prime-marker information. The legal shadow of that signal has not yet been
 found.
 
-## Next Boundary Law Candidate
+## Next Next-Prime Law Candidate
 
 If the transition-state probe finds a zero-collision state vector on a meaningful
 surface, the next candidate is:
 
-Boundary Law 005: Finite Transition Boundary Law.
+Next-Prime Law 005: Finite Transition Next-Prime Law.
 
 That law would still need to prove that the state vector is structurally valid
 and not just fitted to classical labels.
@@ -227,9 +227,9 @@ and not just fitted to classical labels.
 
 The next work is theorem discovery, not positive emission.
 
-Milestone 1 remains blocked until the project finds a boundary-forcing theorem:
+Milestone 1 remains blocked until the project finds a next-prime-forcing theorem:
 
 $$S(p) \Rightarrow g(p)$$
 
-where `S(p)` is non-classical PGS state and `g(p)` is the unique next boundary
+where `S(p)` is non-classical PGS state and `g(p)` is the unique next prime
 offset.

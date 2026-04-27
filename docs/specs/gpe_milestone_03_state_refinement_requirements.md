@@ -5,14 +5,14 @@
 Milestone 3 resolves the fact that the current reduced 14-state winner type is
 not sufficient to emit the exact next prime.
 
-The state must be sharpened until the boundary selector is single-valued:
+The state must be sharpened until the next-prime selector is single-valued:
 
 $$B(q,S,w,d(w))=q^+$$
 
 ## Known Collision
 
 The committed catalog surface contains rows with the same reduced winner type
-and different boundary offsets:
+and different next-prime offsets:
 
 | $q$ | $w$ | reduced winner type | $q^+$ | gap |
 |---:|---:|---|---:|---:|
@@ -44,7 +44,7 @@ For any proposed state $S$, the audit must group validation rows by:
 
 $$q,S,w,d(w)$$
 
-and verify that each group maps to one boundary $q^+$.
+and verify that each group maps to one endpoint $q^+$.
 
 Since $q$ itself is unique, the practical audit must also report reduced keys
 with $q$ removed, so the state compression is visible rather than tautological.
@@ -53,7 +53,7 @@ with $q$ removed, so the state compression is visible rather than tautological.
 
 Milestone 3 is complete when:
 
-- the proposed state has no boundary-selector collisions on the validation
+- the proposed state has no endpoint-selector collisions on the validation
   surface,
 - each state ingredient has a documented reason for inclusion,
 - dropping any accepted ingredient reintroduces a measured collision or fails a

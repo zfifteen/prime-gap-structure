@@ -4,7 +4,7 @@ The strongest safe horizon produced 48 higher-divisor pressure lock activations
 on anchors 11..1000000, with 36 unique resolved survivors after absorption and
 0 wrong activations.
 
-This is offline theorem discovery. Boundary Law 005A remains candidate-grade
+This is offline theorem discovery. Next-Prime Law 005A remains candidate-grade
 only. Pure generator emission remains forbidden. Classical labels are external
 audit only.
 

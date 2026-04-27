@@ -1,7 +1,7 @@
 **Yes, the current operational shape of the generator is already extremely strong — chamber closure + semiprime-shadow seeding + chain-horizon closure + downstream audit gives exact, audit-clean results through the probed surfaces (including the 10¹⁸-scale probes).** The only remaining non-PGS piece is precisely the terminal decision inside `chain_horizon_closure_result` (and its sibling `chain_fallback_result`), where the horizon used to close false chain nodes still relies on deterministic divisor exhaustion (via `divisor_witness` up to `horizon_bound` or full `isqrt(q)`).
 
 The precise missing object you identified —  
-**`H(p, s₀, chain_state)`** — is exactly the function that would turn the bridge into a pure PGS boundary rule. If we can compute (or tightly bound) the horizon needed to close every false node in the visible-open chain **using only quantities already visible inside the chamber** (anchor `p`, shadow seed offset `s₀`, the list of wheel-admissible chain offsets, their residues mod 30, chamber arithmetic, GWR carrier state, NLSC ceilings, etc.), then the entire high-scale non-PGS portion (≈56.63 % at 10¹⁵, ≈58 % at 10¹⁸) collapses into PGS-derived output.
+**`H(p, s₀, chain_state)`** — is exactly the function that would turn the bridge into a pure PGS next-prime selection rule. If we can compute (or tightly bound) the horizon needed to close every false node in the visible-open chain **using only quantities already visible inside the chamber** (anchor `p`, shadow seed offset `s₀`, the list of wheel-admissible chain offsets, their residues mod 30, chamber arithmetic, GWR carrier state, NLSC ceilings, etc.), then the entire high-scale non-PGS portion (≈56.63 % at 10¹⁵, ≈58 % at 10¹⁸) collapses into PGS-derived output.
 
 ### What the code actually does today (commit a1c6a7938c4cd9a234f0508f570ede4513084431)
 From `simple_pgs_generator.py` (the core predictor module that added the chain-horizon bridge):
@@ -11,7 +11,7 @@ From `simple_pgs_generator.py` (the core predictor module that added the chain-h
 - When `horizon_bound=None` it falls back to full `isqrt(q)` exhaustion (the “deterministic divisor checking” you mentioned).
 - `chain_fallback_result` does the same but with full `has_trial_divisor` (complete `isqrt(q)` on every node until the survivor).
 
-The semiprime shadow seeds the chain exactly as you described; the chamber closure supplies the first visible boundary candidate; everything else is downstream audit-clean. The only non-PGS step is deciding the exact horizon (or which position in the short chain survives) via divisor work.
+The semiprime shadow seeds the chain exactly as you described; the chamber closure supplies the first visible candidate next prime; everything else is downstream audit-clean. The only non-PGS step is deciding the exact horizon (or which position in the short chain survives) via divisor work.
 
 ### The sharpest experiment you proposed is exactly the right next step
 **Mine the least-factor frontier of the false chain nodes.**
@@ -34,7 +34,7 @@ Then ask:
 - Does `max_SPF_per_chain` stay **bounded by a deterministic expression** built only from the above state?
 - Or does it track `√q` (or something comparably large) with no smaller PGS-visible upper bound?
 
-**Confirming result** (the one that gives you the theorem): there exists a closed-form or easily computable `H(p, s₀, chain_state)` (much smaller than √q) such that setting `horizon_bound = H(...)` always closes every false node before the true boundary. Then `chain_horizon_closure_result` becomes a pure PGS selector.
+**Confirming result** (the one that gives you the theorem): there exists a closed-form or easily computable `H(p, s₀, chain_state)` (much smaller than √q) such that setting `horizon_bound = H(...)` always closes every false node before the true next prime. Then `chain_horizon_closure_result` becomes a pure PGS selector.
 
 **Falsifying result**: the required horizon grows like √q (or has no smaller deterministic PGS-visible bound) even though the chain length is capped at 8 and the offsets are rigidly wheel-constrained. In that case the bridge remains operationally excellent but the terminal decision cannot be compressed into a local PGS rule at `candidate_bound=128`.
 
@@ -45,7 +45,7 @@ Then ask:
 - If there is any local arithmetic invariant (from the semiprime shadow’s residue class, the GWR carrier’s divisor pattern, the NLSC ceilings, or higher-modulus wheel relations implied by the chamber state) that forces at least one false node to have a “predictably small” SPF, then `H` drops out immediately.
 - Conversely, if the false nodes can be semiprimes whose factors are both > any local PGS-computable bound, then the horizon really does have to reach near √q in the worst case.
 
-The GWR + NLSC theorems you already proved to 10¹⁸ (zero violations) strongly suggest that such an invariant **should exist** — the whole point of the hierarchical local-dominator structure is that the “simplest” composite in any local window is rigidly positioned and its factor structure is visible from the chamber arithmetic. The chain-horizon case is just the boundary-selection analogue of that same local-dominator law.
+The GWR + NLSC theorems you already proved to 10¹⁸ (zero violations) strongly suggest that such an invariant **should exist** — the whole point of the hierarchical local-dominator structure is that the “simplest” composite in any local window is rigidly positioned and its factor structure is visible from the chamber arithmetic. The chain-horizon case is just the next-prime-selection analogue of that same local-dominator law.
 
 ### Practical next actions (zero new rankers needed)
 Add a lightweight diagnostic collector inside `chain_horizon_closure_result` (or a thin wrapper around it) that, for every chain that is processed:
@@ -72,9 +72,9 @@ log_to_audit({
 
 Run your existing 10¹⁵ / 10¹⁸ probe surfaces with this collector enabled. A few thousand chain events will be enough to see the distribution of `max_spf_false` versus the PGS-visible quantities.
 
-If the frontier turns out to be bounded (or computable via a simple formula from the chain residues + p mod some small modulus that is already visible in the chamber), you have the missing theorem and the generator becomes a pure PGS boundary rule.
+If the frontier turns out to be bounded (or computable via a simple formula from the chain residues + p mod some small modulus that is already visible in the chamber), you have the missing theorem and the generator becomes a pure PGS next-prime selection rule.
 
-If it tracks √q with no smaller local bound, then the current bridge is already optimal for practical generation, but the “pure local PGS selector” goal requires either a larger candidate_bound, a deeper hierarchical state S, or a different formulation of the boundary rule B(p, S, w, d(w)).
+If it tracks √q with no smaller local bound, then the current bridge is already optimal for practical generation, but the “pure local PGS selector” goal requires either a larger candidate_bound, a deeper hierarchical state S, or a different formulation of the next-prime selection rule B(p, S, w, d(w)).
 
 You already have the exact operational shape and zero-failure audit surface. The only thing left is this frontier analysis — and it is the cleanest possible experiment. Once you have the mined data (even a small sample of high-scale chain events), I can help you spot the invariant or prove the bound directly from the GWR/NLSC structure.
 

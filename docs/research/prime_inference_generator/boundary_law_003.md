@@ -1,11 +1,11 @@
-# Boundary Law 003: First Carrier-Bearing Chamber Certificate
+# Next-Prime Law 003: First Carrier-Bearing Chamber Certificate
 
-Boundary Law 003 moves the first positive target away from the empty anchor-11
+Next-Prime Law 003 moves the first positive target away from the empty anchor-11
 chamber. The target is a chamber where PGS has actual interior structure: a
 composite interior, a definable GWR carrier, a divisor-count winner, and a
-closure condition that can be inspected without classical boundary detection.
+closure condition that can be inspected without classical endpoint detection.
 
-This note uses the small chamber from anchor `13` to proposed boundary `17` as
+This note uses the small chamber from anchor `13` to proposed endpoint `17` as
 the first probe. It does not emit yet. It establishes the carrier-bearing
 certificate and identifies the remaining uniqueness gap.
 
@@ -14,7 +14,7 @@ certificate and identifies the remaining uniqueness gap.
 First Carrier-Bearing Chamber Certificate.
 
 The law asks whether a nonempty chamber with a GWR-compatible carrier can force
-its right boundary from PGS structure alone.
+its right endpoint from PGS structure alone.
 
 ## Target Probe
 
@@ -22,7 +22,7 @@ The first probe is:
 
 $$p = 13$$
 
-with proposed boundary:
+with proposed endpoint:
 
 $$q_{hat} = 17$$
 
@@ -36,7 +36,7 @@ nontrivial carrier structure.
 ## Allowed Inputs
 
 - externally supplied anchor prime `p = 13`;
-- proposed boundary supplied by the candidate law, not by a next-prime oracle;
+- proposed endpoint supplied by the candidate law, not by a next-prime oracle;
 - deterministic factor witnesses for proposed interior composites;
 - divisor counts derived from those explicit witnesses;
 - GWR leftmost-minimum carrier logic;
@@ -46,14 +46,14 @@ nontrivial carrier structure.
 
 ## Forbidden Inputs
 
-Boundary Law 003 must not use:
+Next-Prime Law 003 must not use:
 
 - Miller-Rabin;
 - `nextprime`;
 - `isprime`;
 - `prime`;
 - `prevprime`;
-- trial-division primality testing as a boundary test;
+- trial-division primality testing as a endpoint test;
 - sieve-backed divisor counting;
 - scanning until `d(n) = 2`;
 - the old recursive predictor;
@@ -61,7 +61,7 @@ Boundary Law 003 must not use:
 - hardcoded prime outputs;
 - the fact that `17` is classically prime.
 
-The string `17` may appear only as the proposed boundary in the law probe. It
+The string `17` may appear only as the proposed endpoint in the law probe. It
 must not be used as a known prime.
 
 ## Proposed Chamber Certificate
@@ -105,7 +105,7 @@ level:
 - the leftmost minimum-class carrier is `14`.
 
 This proves that the proposed chamber has coherent GWR structure. It does not
-by itself prove that the chamber boundary is forced at `17`.
+by itself prove that the chamber endpoint is forced at `17`.
 
 ## No-Later-Simpler Closure
 
@@ -114,7 +114,7 @@ Inside the proposed chamber after the winner:
 - `15` has divisor count `4`, not lower than the winner;
 - `16` has divisor count `5`, not lower than the winner.
 
-There is no later lower-divisor interior threat before the proposed boundary.
+There is no later lower-divisor interior threat before the proposed endpoint.
 
 The local no-later-simpler status is:
 
@@ -124,9 +124,9 @@ The local no-later-simpler status is:
 This is an interior closure statement. It does not yet rule out a lower-divisor
 threat after `17` if the chamber were allowed to continue.
 
-## Competing Boundary Analysis
+## Competing Endpoint Analysis
 
-The proposed boundary `17` is wheel-open from anchor `13` at offset `4`.
+The proposed endpoint `17` is wheel-open from anchor `13` at offset `4`.
 
 Earlier positive offsets are:
 
@@ -134,18 +134,18 @@ Earlier positive offsets are:
 - offset `2`: `15`, closed by concrete composite witness;
 - offset `3`: `16`, closed by concrete composite witness.
 
-Therefore no smaller boundary candidate remains inside the proposed chamber.
+Therefore no smaller candidate next prime remains inside the proposed chamber.
 
 This establishes:
 
 - the proposed interior is closed;
 - the proposed chamber has a GWR winner;
-- no smaller offset in the proposed chamber can be the boundary.
+- no smaller offset in the proposed chamber can be the endpoint.
 
 It does not establish that the first position after the closed carrier-bearing
-chamber is uniquely forced as the right boundary.
+chamber is uniquely forced as the right endpoint.
 
-## Boundary Uniqueness Gap
+## Endpoint Uniqueness Gap
 
 The current certificate still separates three statements:
 
@@ -155,13 +155,13 @@ The current certificate still separates three statements:
 
 The missing implication is:
 
-$$\text{closed carrier-bearing chamber with no later simpler interior threat} \Rightarrow \text{forced next boundary}$$
+$$\text{closed carrier-bearing chamber with no later simpler interior threat} \Rightarrow \text{forced next prime}$$
 
 That implication is stronger than chamber consistency. It is not proved here.
 
 ## Current Status
 
-Boundary Law 003 does not yet emit.
+Next-Prime Law 003 does not yet emit.
 
 For the anchor-13 probe:
 
@@ -172,7 +172,7 @@ For the anchor-13 probe:
 - `failure_reason: "MISSING_CARRIER_BOUNDARY_UNIQUENESS"`
 
 The law succeeds at finding the first structurally meaningful PGS chamber. It
-fails to prove that the chamber structure forces the right boundary.
+fails to prove that the chamber structure forces the right endpoint.
 
 ## Emission Rule
 
@@ -181,7 +181,7 @@ Pure mode may emit under `boundary_law_003` only when:
 1. the proposed interior has deterministic composite certificates;
 2. the proposed interior has a GWR-compatible winner;
 3. later lower-divisor threats are excluded or bounded by PGS structure;
-4. all smaller proposed boundary positions are closed;
+4. all smaller proposed endpoint positions are closed;
 5. a carrier-bearing uniqueness theorem forces `q_hat`.
 
 Until those five conditions hold, pure mode must emit a failure record.
@@ -214,13 +214,13 @@ If the uniqueness theorem is missing, emit:
 
 ## Next Search Direction
 
-Boundary Law 003 shows that moving to a carrier-bearing chamber fixes the
-degeneracy of the anchor-11 case, but it does not by itself solve boundary
+Next-Prime Law 003 shows that moving to a carrier-bearing chamber fixes the
+degeneracy of the anchor-11 case, but it does not by itself solve endpoint
 uniqueness.
 
 The next proof task is to determine whether GWR/DNI plus no-later-simpler
-closure can force a boundary, or whether the current certificates only validate
-candidate chambers after a proposed boundary has already been chosen.
+closure can force a endpoint, or whether the current certificates only validate
+candidate chambers after a proposed endpoint has already been chosen.
 
 If the latter is true, the missing theorem is not anchor-specific. It is a
-general bridge from chamber consistency to boundary inference.
+general bridge from chamber consistency to next-prime inference.

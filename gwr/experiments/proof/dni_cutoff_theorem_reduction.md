@@ -65,7 +65,7 @@ Branchwise, this is
 The repository now contains two next-gap transition laws.
 
 The exact unbounded transition scans the integers to the right of $q$ until
-the first prime boundary appears, then takes the lexicographic minimum over the
+the first prime endpoint appears, then takes the lexicographic minimum over the
 composite interior.
 
 That mechanism is exact by construction.

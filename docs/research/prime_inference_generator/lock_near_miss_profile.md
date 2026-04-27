@@ -4,14 +4,14 @@ The higher-divisor pressure lock abstains mostly because the required
 higher-divisor pressure component is absent. The strongest substitute signal in
 the abstention set is previous-chamber memory.
 
-This note profiles abstentions from Boundary Law 005 Candidate. It does not
+This note profiles abstentions from Next-Prime Law 005 Candidate. It does not
 approve a new lock family and does not approve pure generator emission.
 
 ## Status
 
 Current status:
 
-- Boundary Law 005: preserved as a candidate law.
+- Next-Prime Law 005: preserved as a candidate law.
 - Pure generator emission: forbidden.
 - Milestone 1: blocked for generator output.
 - Probe role: offline near-miss profiling only.
@@ -19,7 +19,7 @@ Current status:
 The profile targets rows where:
 
 ```text
-true boundary is resolved
+true next prime is resolved
 later unresolved alternatives remain
 higher_divisor_pressure_lock does not activate
 ```
@@ -89,7 +89,7 @@ higher-divisor pressure lock itself did not activate there.
 | `pressure_appears_after_unresolved_alternative` | `3` |
 
 The carrier-family result is important. Most near-misses do not have the same
-carrier regime as the activating Boundary Law 005 cases. Many are resolved at
+carrier regime as the activating Next-Prime Law 005 cases. Many are resolved at
 small offsets before a legal carrier exists in the chamber.
 
 ## Pressure Substitute Counts
@@ -128,14 +128,14 @@ should be tested first under the zero-wrong separator standard.
 The near-miss profile supports four facts:
 
 1. The higher-divisor lock abstains because the required pressure component is
-   absent, not because the true boundary is usually unresolved.
-2. Previous-chamber memory is present in most abstaining true-boundary rows.
+   absent, not because the true next prime is usually unresolved.
+2. Previous-chamber memory is present in most abstaining true-next-prime rows.
 3. Most abstentions are outside the activating carrier-family regime.
 4. Square and semiprime pressure are real but sparse in this near-miss set.
 
-The next candidate should not be a broad version of Boundary Law 005. The next
+The next candidate should not be a broad version of Next-Prime Law 005. The next
 test should isolate previous-chamber memory as a lock separator and ask whether
-it selects true resolved boundaries without selecting false resolved survivors.
+it selects true resolved endpoints without selecting false resolved survivors.
 
 ## Next Gate
 

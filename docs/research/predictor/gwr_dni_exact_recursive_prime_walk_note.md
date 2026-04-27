@@ -42,7 +42,7 @@ The mechanism now has a clean split:
 
 - the unbounded DNI/GWR transition is exact by construction, because it scans
   the full next-gap interior and takes the lexicographic divisor minimum before
-  the first prime boundary;
+  the first prime endpoint;
 - the current bounded walker uses a dynamic log-squared cutoff rather than the
   falsified fixed `44/60` map.
 
@@ -129,8 +129,8 @@ There are now two related transition laws in the repository.
 The unconditional reference law is:
 
 1. start at $q+1$,
-2. read exact divisor counts until the first prime boundary appears,
-3. over the composite offsets before that boundary, take the lexicographic
+2. read exact divisor counts until the first prime endpoint appears,
+3. over the composite offsets before that endpoint, take the lexicographic
    minimum.
 
 That rule is exact by construction.
@@ -175,7 +175,7 @@ For a known prime $q$:
 Written more compactly, the algorithm computes the lexicographic minimum over
 the composite interior of the next gap, but does so without prior knowledge of
 the next prime. The first prime encountered during the scan marks the right
-boundary of the gap.
+endpoint of the gap.
 
 The resulting next prime is then recovered by:
 

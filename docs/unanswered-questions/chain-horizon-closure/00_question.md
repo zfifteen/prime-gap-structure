@@ -1,10 +1,10 @@
 The most significant unanswered question is:
 
-**Can `chain_horizon_closure` be turned into a pure PGS boundary rule by deriving the divisor-horizon law from PGS structure, instead of using fallback divisor exhaustion?**
+**Can `chain_horizon_closure` be turned into a pure PGS next-prime selection rule by deriving the divisor-horizon law from PGS structure, instead of using fallback divisor exhaustion?**
 
 Right now the generator has the correct operational shape:
 
-- chamber closure finds the first visible boundary candidate;
+- chamber closure finds the first visible candidate next prime;
 - semiprime shadows seed a short rightward chain;
 - chain-horizon closure closes false chain nodes;
 - downstream audit confirms zero failures on tested surfaces.
@@ -17,7 +17,7 @@ The precise missing object is:
 H(p, s0, chain_state)
 ```
 
-where `H` predicts the divisor horizon needed to close the false semiprime-shadow chain nodes before the true boundary.
+where `H` predicts the divisor horizon needed to close the false semiprime-shadow chain nodes before the true next prime.
 
 If we can derive that horizon from PGS-visible quantities, then the current bridge becomes a real PGS selector. That would convert the major high-scale non-PGS portion:
 

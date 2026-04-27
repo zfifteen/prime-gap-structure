@@ -50,9 +50,9 @@ Compress the primes-`<= 47` certificate rule into a residue lookup and test the 
 Mechanism:
 Fixed small-prime opening-prefix pruning at higher scale: certify the initial wheel-open prefix by divisibility against primes `<= 47`, then start full prime testing at the first uncertified candidate.
 Why it could help:
-It swaps expensive full primality tests for a short deterministic divisibility screen on the composite-dense opening prefix that GWR/DNI places near the left boundary.
+It swaps expensive full primality tests for a short deterministic divisibility screen on the composite-dense opening prefix that GWR/DNI places near the left endpoint.
 Method:
-Ran one deterministic 100,000-gap consecutive sweep starting at the first prime `>= 10^12`, used `sympy.nextprime` only to obtain the true next-prime boundary, counted baseline wheel-open candidate tests, and subtracted only the contiguous opening prefix individually certified composite by primes `<= 47`.
+Ran one deterministic 100,000-gap consecutive sweep starting at the first prime `>= 10^12`, used `sympy.nextprime` only to obtain the true next-prime endpoint, counted baseline wheel-open candidate tests, and subtracted only the contiguous opening prefix individually certified composite by primes `<= 47`.
 What was built or tested:
 An in-shell Python prototype walked 100,000 consecutive gaps from `q = 1000000000039`, computed the certified opening-prefix length for each gap with the fixed table `(7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)`, and tallied the remaining full candidate tests.
 Result:
@@ -120,11 +120,11 @@ Fold the same residue-mask lookup into the pre-Miller-Rabin small-prime stage it
 
 ## 2026-04-11 09:07 run
 Mechanism:
-Propagated boundary-state 64-open residue mask: carry `q mod p` for primes `<= 37` and replace the candidate-by-candidate small-prime gate on the first `64` wheel-open candidates with one combined certification mask.
+Propagated endpoint-state 64-open residue mask: carry `q mod p` for primes `<= 37` and replace the candidate-by-candidate small-prime gate on the first `64` wheel-open candidates with one combined certification mask.
 Why it could help:
-The GWR/DNI edge structure says the useful composite information is boundary-local, so one small residue state can certify most of the early search window without per-candidate divisor checks.
+The GWR/DNI edge structure says the useful composite information is endpoint-local, so one small residue state can certify most of the early search window without per-candidate divisor checks.
 Method:
-Ran one deterministic `100,000`-gap consecutive sweep starting at the first prime `>= 10^13`, comparing a baseline exact wheel-open next-prime loop against a hybrid that propagated the boundary residue state across gaps, OR-ed nine precomputed masks, and sent only uncertified positions to bare Miller-Rabin plus final exact confirmation.
+Ran one deterministic `100,000`-gap consecutive sweep starting at the first prime `>= 10^13`, comparing a baseline exact wheel-open next-prime loop against a hybrid that propagated the endpoint residue state across gaps, OR-ed nine precomputed masks, and sent only uncertified positions to bare Miller-Rabin plus final exact confirmation.
 What was built or tested:
 An in-shell Python prototype precomputed `1,496` `uint64` state entries for primes `(7, 11, 13, 17, 19, 23, 29, 31, 37)`, covering the first `64` wheel-open offsets for each `(q mod 30, q mod p)` state, then ran both exact search loops on the same `100,000`-prime chain while updating the residue state by the realized gap offset after each step.
 Result:
@@ -138,11 +138,11 @@ Replace the in-shell prototype with the same propagated `64`-open mask inside on
 
 ## 2026-04-11 10:06 run
 Mechanism:
-Propagated boundary-state `64`-open residue mask for exact next-prime search: carry `q mod p` for primes `<= 37` and replace the first `64` wheel-open candidate-side small-prime checks with one combined certification mask.
+Propagated endpoint-state `64`-open residue mask for exact next-prime search: carry `q mod p` for primes `<= 37` and replace the first `64` wheel-open candidate-side small-prime checks with one combined certification mask.
 Why it could help:
 It collapses the composite-heavy left edge of each next-prime search into `9` carried residues plus one mask OR, removing most repeated small-prime modulus work before Miller-Rabin.
 Method:
-Moved the mechanism out of an in-shell prototype into one repo benchmark script, then ran one deterministic `100,000`-gap consecutive sweep from `q = 10000000000037` comparing the exact baseline wheel-open loop against the exact boundary-mask loop.
+Moved the mechanism out of an in-shell prototype into one repo benchmark script, then ran one deterministic `100,000`-gap consecutive sweep from `q = 10000000000037` comparing the exact baseline wheel-open loop against the exact endpoint-mask loop.
 What was built or tested:
 Added `benchmarks/python/predictor/gwr_dni_boundary_state_mask_search.py`, which precomputes `1,496` `uint64` certification states, propagates the nine carried residues by the realized gap offset, and verifies exact chain parity against the baseline path on every step.
 Result:
@@ -152,15 +152,15 @@ ADVANCE
 Artifacts:
 `benchmarks/python/predictor/gwr_dni_boundary_state_mask_search.py`; `docs/research/algorithmic_frontier_hourly.md`; script output with `state_entries = 1496`, `u64_table_bytes = 11968`, `saved_small_prime_mods = 5144291`, `resolved_in_window_fraction = 0.99989`, and `elapsed_speedup = 1.0428044811527897`.
 Next step:
-Extend the same propagated boundary-state mask just far enough to absorb the remaining `11` fallback gaps and rerun the same exact search loop.
+Extend the same propagated endpoint-state mask just far enough to absorb the remaining `11` fallback gaps and rerun the same exact search loop.
 
 ## 2026-04-11 11:03 run
 Mechanism:
-Propagated boundary-state `96`-open residue mask for exact next-prime search: carry `q mod p` for primes `<= 37` and certify the first `96` wheel-open candidates from one boundary mask before bare Miller-Rabin.
+Propagated endpoint-state `96`-open residue mask for exact next-prime search: carry `q mod p` for primes `<= 37` and certify the first `96` wheel-open candidates from one endpoint mask before bare Miller-Rabin.
 Why it could help:
-It widens the same boundary-local compressed state just enough to absorb the remaining fallback gaps, so the candidate-by-candidate small-prime gate can disappear entirely after the initial residue seed.
+It widens the same endpoint-local compressed state just enough to absorb the remaining fallback gaps, so the candidate-by-candidate small-prime gate can disappear entirely after the initial residue seed.
 Method:
-Derived the exact required search depth on the existing `10^13` chain by measuring the realized wheel-open index of the true next prime on each of `100,000` consecutive gaps, then reran the exact boundary-mask hybrid once at `96` opens on that same chain.
+Derived the exact required search depth on the existing `10^13` chain by measuring the realized wheel-open index of the true next prime on each of `100,000` consecutive gaps, then reran the exact endpoint-mask hybrid once at `96` opens on that same chain.
 What was built or tested:
 An in-shell Python prototype found that only `11` gaps exceeded the current `64`-open window and that the deepest required wheel-open position was `93`, then rebuilt the carried-residue mask at width `96` and reran the repo's exact baseline and hybrid loops from `q = 10000000000037`.
 Result:
@@ -170,7 +170,7 @@ ADVANCE
 Artifacts:
 `docs/research/algorithmic_frontier_hourly.md`; in-shell Python output with `max_open_index = 93`, `count_gt_64 = 11`, `mask_width = 96`, `resolved_in_window_fraction = 1.0`, `saved_small_prime_mod_fraction = 1.0`, `estimated_u64_table_bytes = 23936`, and `elapsed_speedup = 1.034540059922176`.
 Next step:
-Rerun this same full-coverage boundary-state mask at the exact observed ceiling of `93` wheel-open positions to see whether the no-fallback gain survives with no extra mask slack.
+Rerun this same full-coverage endpoint-state mask at the exact observed ceiling of `93` wheel-open positions to see whether the no-fallback gain survives with no extra mask slack.
 
 ## 2026-04-11 12:00 run
 Mechanism:
@@ -192,33 +192,33 @@ Test the same transition law again only with a fixed next-gap DNI prefix if it c
 
 ## 2026-04-12 daily run
 Mechanism:
-Winner-location prediction from the locked 12-offset prefix: after the fixed prefix scan yields `delta <= 3`, no later composite can undercut that divisor class, so the lex-min state `(delta, omega)` already identifies an interior witness `W = q + omega`, and `nextprime(W - 1)` recovers the exact boundary.
+Winner-location prediction from the locked 12-offset prefix: after the fixed prefix scan yields `delta <= 3`, no later composite can undercut that divisor class, so the lex-min state `(delta, omega)` already identifies an interior witness `W = q + omega`, and `nextprime(W - 1)` recovers the exact endpoint.
 Why it could help:
-It replaces the remaining divisor-count walk to the boundary with one fast next-prime recovery call once the prefix lock holds.
+It replaces the remaining divisor-count walk to the endpoint with one fast next-prime recovery call once the prefix lock holds.
 Method:
 Compared the live bounded walker against the pre-shortcut bounded scan reproduced verbatim from the earlier prefix-plus-extended-loop logic on two verified lock-triggering primes.
 What was built or tested:
-Verified the live `benchmarks/python/predictor/gwr_dni_recursive_walk.py:bounded_next_gap_profile` on `q = 229433` and `q = 1026167`, tracked its `divisor_counts_segment` calls, and compared the returned boundary against the reconstructed old bounded loop that kept counting divisors until the prime boundary.
+Verified the live `benchmarks/python/predictor/gwr_dni_recursive_walk.py:bounded_next_gap_profile` on `q = 229433` and `q = 1026167`, tracked its `divisor_counts_segment` calls, and compared the returned endpoint against the reconstructed old bounded loop that kept counting divisors until the prime endpoint.
 Result:
-For `q = 229433`, the locked prefix gives `delta = 3` at `omega = 8`. The live lock path used exactly `12` divisor-count calls plus one `nextprime` recovery and returned `229459`, while the old bounded loop used `26` divisor-count calls to reach the same boundary, eliminating `14` divisor-count operations (`53.85%`). For `q = 1026167`, the locked prefix gives `delta = 3` at `omega = 2`. The live lock path again used `12` divisor-count calls plus one `nextprime` recovery and returned `1026197`, while the old bounded loop used `30` divisor-count calls, eliminating `18` divisor-count operations (`60%`). In both cases the recovered boundary was identical.
+For `q = 229433`, the locked prefix gives `delta = 3` at `omega = 8`. The live lock path used exactly `12` divisor-count calls plus one `nextprime` recovery and returned `229459`, while the old bounded loop used `26` divisor-count calls to reach the same endpoint, eliminating `14` divisor-count operations (`53.85%`). For `q = 1026167`, the locked prefix gives `delta = 3` at `omega = 2`. The live lock path again used `12` divisor-count calls plus one `nextprime` recovery and returned `1026197`, while the old bounded loop used `30` divisor-count calls, eliminating `18` divisor-count operations (`60%`). In both cases the recovered endpoint was identical.
 Status:
 ADVANCE
 Artifacts:
-`benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `docs/research/algorithmic_frontier_hourly.md`; in-shell verification output with old bounded call counts `26` and `30`, live prefix-path divisor-count calls `12` and `12`, and exact recovered boundaries `229459` and `1026197`.
+`benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `docs/research/algorithmic_frontier_hourly.md`; in-shell verification output with old bounded call counts `26` and `30`, live prefix-path divisor-count calls `12` and `12`, and exact recovered endpoints `229459` and `1026197`.
 Next step:
 Derive an exact `delta = 4` sub-condition from the Z-band invariants that certifies when the same winner-location prediction can fire without any extended scan.
 
 ## 2026-04-12 20:17 run
 Mechanism:
-Winner-anchored tail scan: once the DNI/GWR lex-min localizer has identified the leftmost minimum-divisor carrier at offset `omega`, recover the next-prime boundary by scanning only from `q + omega + 1` forward instead of from `q + 1`.
+Winner-anchored tail scan: once the DNI/GWR lex-min localizer has identified the leftmost minimum-divisor carrier at offset `omega`, recover the next-prime endpoint by scanning only from `q + omega + 1` forward instead of from `q + 1`.
 Why it could help:
-It removes the left prefix `[q + 1, q + omega]` from the exact divisor-field boundary search. Because the lex-min carrier stays near the left edge on the tested surface, that cuts pure DNI/GWR search width before any classical machinery enters.
+It removes the left prefix `[q + 1, q + omega]` from the exact divisor-field endpoint search. Because the lex-min carrier stays near the left edge on the tested surface, that cuts pure DNI/GWR search width before any classical machinery enters.
 Method:
 Deterministic experiment.
 What was built or tested:
-An in-shell Python experiment used `benchmarks/python/predictor/gwr_dni_recursive_walk.py:exact_next_gap_profile` to collect `5,000` consecutive exact next-gap profiles starting at `q = 10000000000037`, then timed the same exact divisor-field boundary scan twice on that chain: once from `q + 1`, and once from the exact winner anchor `q + omega + 1`.
+An in-shell Python experiment used `benchmarks/python/predictor/gwr_dni_recursive_walk.py:exact_next_gap_profile` to collect `5,000` consecutive exact next-gap profiles starting at `q = 10000000000037`, then timed the same exact divisor-field endpoint scan twice on that chain: once from `q + 1`, and once from the exact winner anchor `q + omega + 1`.
 Result:
-The winner-anchored scan matched the same `5,000` next primes with `0` mismatches. Mean exact gap width was `29.6308`, mean winner offset was `5.9066`, and the exact search width after the winner was `23.7242`, so the DNI/GWR anchor removed `19.93%` of the pure boundary-search width. In the current `64`-wide block implementation that reduced divisor-field reads from `356,736` to `347,264` (`2.66%`) and improved boundary-scan wall time from `11.0483 s` to `10.7264 s` (`1.0300x`).
+The winner-anchored scan matched the same `5,000` next primes with `0` mismatches. Mean exact gap width was `29.6308`, mean winner offset was `5.9066`, and the exact search width after the winner was `23.7242`, so the DNI/GWR anchor removed `19.93%` of the pure endpoint-search width. In the current `64`-wide block implementation that reduced divisor-field reads from `356,736` to `347,264` (`2.66%`) and improved endpoint-scan wall time from `11.0483 s` to `10.7264 s` (`1.0300x`).
 Status:
 ADVANCE
 Artifacts:
@@ -254,7 +254,7 @@ Deterministic experiment.
 What was built or tested:
 An in-shell Python repo-side prototype kept the current `12`-offset `divisor_counts_segment` prefix from `benchmarks/python/predictor/gwr_dni_recursive_walk.py:exact_next_gap_profile`, then replaced the tail's full `64`-wide block divisor-count scan with candidate-by-candidate clipped classification that stopped factor work at `delta - 1` after each lex-min update.
 Result:
-On `1,000` consecutive exact next-gap steps starting at `q = 1000000000039`, the clipped prototype matched the current `exact_next_gap_profile` with `0` mismatches and reached the same final prime `1000000027591`. Wall time fell from `1.4655225839815103 s` to `1.1192784579470754 s` (`1.3093458321975557x`). On the same chain, the current exact walk read `69,248` block slots while the clipped prototype inspected only the `27,552` actual candidates up to the true boundaries, removing `41,696` slot evaluations (`60.21256931608133%`).
+On `1,000` consecutive exact next-gap steps starting at `q = 1000000000039`, the clipped prototype matched the current `exact_next_gap_profile` with `0` mismatches and reached the same final prime `1000000027591`. Wall time fell from `1.4655225839815103 s` to `1.1192784579470754 s` (`1.3093458321975557x`). On the same chain, the current exact walk read `69,248` block slots while the clipped prototype inspected only the `27,552` actual candidates up to the true next primes, removing `41,696` slot evaluations (`60.21256931608133%`).
 Status:
 ADVANCE
 Artifacts:
@@ -264,7 +264,7 @@ Inline the same clipped-divisor tail into the exact recursive walker and re-meas
 
 ## 2026-04-12 23:06 run
 Mechanism:
-Current-lex-min clipped divisor classification in the exact DNI/GWR recursive walk: after the fixed 12-offset prefix sets the live minimum divisor class `delta`, classify each later candidate only up to `delta - 1` instead of reading full divisor-count blocks through the boundary.
+Current-lex-min clipped divisor classification in the exact DNI/GWR recursive walk: after the fixed 12-offset prefix sets the live minimum divisor class `delta`, classify each later candidate only up to `delta - 1` instead of reading full divisor-count blocks through the endpoint.
 Why it could help:
 Once a candidate with divisor class `delta` is already known, no later value with `d(n) >= delta` can change the lex-min state. That removes unnecessary exact divisor-field work from the pure DNI/GWR next-prime walk itself.
 Method:
@@ -278,4 +278,4 @@ ADVANCE
 Artifacts:
 `benchmarks/python/predictor/gwr_dni_recursive_walk.py`; `tests/python/predictor/test_gwr_dni_recursive_walk.py`; `docs/research/algorithmic_frontier_hourly.md`; measured output with `baseline_elapsed = 1.5411759580019861`, `fast_elapsed = 1.134829582995735`, `speedup = 1.3580681902330864`, `baseline_segment_slots = 69248`, `fast_prefix_segment_slots = 12000`, and `saved_segment_fraction = 0.8267097966728281`.
 Next step:
-Thread the same clipped divisor classifier into the standalone exact boundary walk and measure the same `10^12` chain.
+Thread the same clipped divisor classifier into the standalone exact endpoint walk and measure the same `10^12` chain.

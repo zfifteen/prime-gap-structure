@@ -1,6 +1,6 @@
 Yes. The answer is:
 
-chain_horizon_closure can plausibly become a pure PGS boundary rule, but only if the horizon law is about closing false shadow-chain nodes, not about proving the terminal node prime by trial division.
+chain_horizon_closure can plausibly become a pure PGS next-prime selection rule, but only if the horizon law is about closing false shadow-chain nodes, not about proving the terminal node prime by trial division.
 
 That distinction is the missing key.
 
@@ -16,9 +16,9 @@ That is too strong and collapses back toward classical primality proving.
 
 The theorem target should be:
 
-How far must the generator look to expose every false shadow-chain node before the true boundary?
+How far must the generator look to expose every false shadow-chain node before the true next prime?
 
-If we can derive a horizon H(p, s0, chain_state) that always closes the false chain nodes before the terminal boundary, then the terminal node becomes the first survivor of a deterministic PGS chain process. That is the bridge-to-theorem conversion.
+If we can derive a horizon H(p, s0, chain_state) that always closes the false chain nodes before the terminal next prime, then the terminal node becomes the first survivor of a deterministic PGS chain process. That is the bridge-to-theorem conversion.
 
 Technical-domain mode:
 
@@ -40,7 +40,7 @@ Shadow-Chain Horizon Law
 Given anchor p and semiprime-shadow seed s0, construct the visible-open chain
 C = (s1, s2, ..., sk).
 There exists a PGS-visible horizon H(p, s0, C_i) such that every false chain node
-before the true boundary has a divisor witness <= H, while the true boundary is
+before the true next prime has a divisor witness <= H, while the true next prime is
 the first chain node not closed by that horizon.
 
 This is much more plausible than proving primality directly.

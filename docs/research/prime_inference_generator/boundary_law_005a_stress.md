@@ -1,12 +1,12 @@
-# Boundary Law 005A Stress Tests
+# Next-Prime Law 005A Stress Tests
 
 ## Status
 
-Boundary Law 005A passed two controlled one-axis stress tests, the stronger
+Next-Prime Law 005A passed two controlled one-axis stress tests, the stronger
 candidate-horizon shifted-window stress, the combined-bound origin stress, and
 the combined-bound shifted-window stress.
 
-This is offline theorem discovery. Boundary Law 005A remains candidate-grade only. Pure generator emission remains forbidden. Classical labels are external audit only.
+This is offline theorem discovery. Next-Prime Law 005A remains candidate-grade only. Pure generator emission remains forbidden. Classical labels are external audit only.
 
 ## Configuration
 

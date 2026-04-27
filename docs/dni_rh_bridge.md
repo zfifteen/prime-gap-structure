@@ -152,7 +152,7 @@ sides of the bridge.
 ## Coefficient-Side and Spectral-Side Collapse
 
 The DNI and the Riemann Hypothesis each collapse arithmetic structure onto a
-one-dimensional invariant boundary.
+one-dimensional invariant endpoint.
 
 For the DNI:
 
@@ -216,7 +216,7 @@ It also clarifies the presentation surface:
 
 ## Why the Gap-Ridge Program Fits Naturally Beside RH
 
-Prime gaps have two boundaries and a composite interior.
+Prime gaps have two endpoints and a composite interior.
 
 The Riemann Hypothesis matters most when prime locations are studied in short
 intervals, because zeta-zero geometry governs how sharply prime counts can
@@ -246,10 +246,10 @@ Those results are documented in:
 This creates a natural division of labor.
 
 On the endpoint side, RH and explicit-formula methods describe how prime
-boundaries can fluctuate.
+endpoints can fluctuate.
 
 On the interior side, the DNI field ranks the composites that fill the gap
-between those boundaries.
+between those endpoints.
 
 That is a genuine structural fit:
 

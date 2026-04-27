@@ -1,22 +1,22 @@
 # Carrier-Locked Pressure Ceiling Integration
 
 Carrier-locked pressure ceilings prune false candidates safely on the tested
-surface, but they do not yet create a unique inferred boundary.
+surface, but they do not yet create a unique inferred next prime.
 
-Boundary Law 005 is not approved by this note.
+Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
 Integrate the zero-wrong carrier-lock predicates into the composite-exclusion
-probe and measure whether they improve boundary inference without rejecting the
-true boundary.
+probe and measure whether they improve next-prime inference without rejecting the
+true next prime.
 
 The integrated conditional ceiling is:
 
 1. find a candidate GWR lower-divisor pressure event;
 2. require an explicit carrier-lock predicate;
-3. reject candidate boundaries at or beyond the pressure threat;
-4. attach the classical boundary label only after elimination.
+3. reject candidate next primes at or beyond the pressure threat;
+4. attach the classical endpoint label only after elimination.
 
 ## Instrument
 
@@ -76,7 +76,7 @@ All four modes pass the hard safety gate:
 
 - `true_boundary_rejected_count: 0`
 
-No mode creates a unique resolved boundary:
+No mode creates a unique resolved next prime:
 
 - `unique_resolved_survivor_count: 0`
 
@@ -84,7 +84,7 @@ No mode creates a unique resolved boundary:
 
 The carrier-lock filters repair the safety failure of the naive ceiling. When
 the tested lock predicates fire, the integrated ceiling does not reject the
-true boundary on this surface.
+true next prime on this surface.
 
 The ceiling also performs real pruning:
 
@@ -96,16 +96,16 @@ but it is a certificate-state condition, not a standalone number-theoretic
 law. The cleaner structural predicate is `higher_divisor_pressure_before_threat`,
 but it applies to only `10` anchors here.
 
-Neither predicate resolves the remaining core blocker. True-boundary unresolved
+Neither predicate resolves the remaining core blocker. True-endpoint unresolved
 count stays at `52`, and multiple resolved survivors remain possible.
 
 ## Status
 
 Milestone 1 remains blocked.
 
-Boundary Law 005 is not approved.
+Next-Prime Law 005 is not approved.
 
 Carrier-locked pressure ceilings are safe and useful as pruning rules on this
-surface, but they are not boundary-forcing rules yet. The next missing piece is
+surface, but they are not next-prime-forcing rules yet. The next missing piece is
 a completion or domination rule for the alternatives that remain after the
 safe ceiling is applied.

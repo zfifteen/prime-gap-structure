@@ -12,12 +12,12 @@ not highly composite.
 ---
 
 I do think there is a related intuition hiding inside your comment. Numbers
-near prime boundaries are not arithmetically generic. That may help explain why
+near prime endpoints are not arithmetically generic. That may help explain why
 low-divisor carriers often appear early in a gap. But that is still weaker than
 the actual result. An early low-divisor arrival is only part of the structure.
 The theorem also has to control what happens before that point and after it.
 
-![Boundary intuition versus the stronger theorem](./boundary_bias_vs_theorem.png)
+![Endpoint intuition versus the stronger theorem](./boundary_bias_vs_theorem.png)
 
 ---
 

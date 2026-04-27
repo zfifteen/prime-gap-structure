@@ -20,7 +20,7 @@ tail candidates excluded by reset: 77457
 Every previously unresolved anchor had one resolved survivor followed by a
 later unresolved tail. Under the chamber-reset rule, the first resolved
 survivor closes the current chamber, so later unresolved candidates are
-assigned to later chambers and excluded from the current anchor's boundary
+assigned to later chambers and excluded from the current anchor's endpoint
 choice.
 
 ## Tested Rule
@@ -32,7 +32,7 @@ The tested chamber-reset rule is:
 
 ```text
 If r is resolved before any later unresolved candidate u,
-then u is not a candidate boundary for p.
+then u is not a candidate next prime for p.
 
 u belongs to a chamber beginning at r or later.
 ```
@@ -68,11 +68,11 @@ exclude later unresolved candidates as post-reset chamber material
 
 ## Interpretation
 
-The unresolved anchors were not missing the boundary. They already contained
-the boundary as the first resolved survivor.
+The unresolved anchors were not missing the endpoint. They already contained
+the endpoint as the first resolved survivor.
 
 The previous emission rule treated later unresolved candidates as competing
-boundaries. The chamber-reset test shows that this was too conservative in the
+endpoints. The chamber-reset test shows that this was too conservative in the
 tested windows. Once the first resolved survivor appears, later unresolved
 candidates are outside the current chamber and should not block emission.
 

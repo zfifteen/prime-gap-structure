@@ -10,23 +10,23 @@ The corrected rule is:
 ```text
 If a candidate has no positive witness <= B but is large enough to hide a
 two-factor composite with both factors above B, do not treat it as a resolved
-boundary survivor. Hold it open as a semiprime-shadow landmark.
+endpoint survivor. Hold it open as a semiprime-shadow landmark.
 ```
 
 This is not a rejection of the semiprime. The semiprime is a landmark. The
 error was treating a semiprime-shadow landmark as if it were already a resolved
-prime boundary.
+prime endpoint.
 
 With the guard enabled:
 
-| witness bound | exact unique matches | true boundary rejected |
+| witness bound | exact unique matches | true next prime rejected |
 |---:|---:|---:|
 | `97` | `311 / 9588` | `0` |
 | `127` | `488 / 9588` | `0` |
 
-The same surfaces before the guard had true-boundary rejections:
+The same surfaces before the guard had true-next-prime rejections:
 
-| witness bound | true boundary rejected before guard |
+| witness bound | true next prime rejected before guard |
 |---:|---:|
 | `97` | `507` |
 | `127` | `331` |
@@ -81,7 +81,7 @@ label_lock_true_boundary_rejected_count = 0
 The complete small-scale rule stack is now:
 
 ```text
-1. Build candidate boundary hypotheses.
+1. Build candidate next-prime hypotheses.
 2. Reject candidate composites by positive witness.
 3. Hold unresolved interiors open.
 4. Hold semiprime-shadow landmarks open instead of treating them as resolved q.
@@ -91,9 +91,9 @@ The complete small-scale rule stack is now:
    alternatives remain.
 ```
 
-This produces exact boundary inference for a nontrivial subset of anchors with
-zero true-boundary rejections on the tested surface.
+This produces exact next-prime inference for a nontrivial subset of anchors with
+zero true-next-prime rejections on the tested surface.
 
 The result is program-advancing because the guard directly explains the earlier
 failure family: the rows were not random defects. They were semiprime-shadow
-landmarks being promoted too early to boundary survivors.
+landmarks being promoted too early to endpoint survivors.

@@ -1,4 +1,4 @@
-# Prime-Boundary Placement Finding
+# Prime-Endpoint Placement Finding
 
 This note records a stronger reading of what `Gap Winner Rule` (`GWR`) says
 about prime gaps.
@@ -10,9 +10,9 @@ The usual surface statement is:
 That statement is correct, but it is not the whole structural content.
 
 If `GWR` holds on a prime gap, then the winner law is also a local constraint
-on where the consecutive primes at the boundaries are allowed to sit.
+on where the consecutive primes at the endpoints are allowed to sit.
 
-In the dominant `d=4` regime, that boundary reading becomes especially
+In the dominant `d=4` regime, that endpoint reading becomes especially
 concrete:
 
 - the winner starts a square-phase clock,
@@ -29,7 +29,7 @@ The strongest supported claim is:
 
 `GWR`, as a proved prime-gap winner law on the current proof surface, is not
 only a statement about which
-composite wins inside a gap. It is also a local boundary-placement constraint
+composite wins inside a gap. It is also a local endpoint-placement constraint
 on where the consecutive primes bounding that gap are allowed to occur.
 
 The dominant `d=4` specialization sharpens that into a concrete prime-placement
@@ -67,7 +67,7 @@ In words:
 - every later interior integer must avoid divisor classes $< \delta$ until the
   right endpoint prime arrives.
 
-That means the gap boundaries are not free to enclose an arbitrary interior.
+That means the gap endpoints are not free to enclose an arbitrary interior.
 The consecutive primes must bound an interval whose interior divisor profile is
 compatible with the winner law.
 
@@ -80,7 +80,7 @@ The usual phrasing starts from the composites:
 
 - given the interior of the gap, which composite wins?
 
-The boundary-placement reading starts from the same law and turns it around:
+The endpoint-placement reading starts from the same law and turns it around:
 
 - given that the winner sits at offset $r$ with divisor class $\delta$, which
   interior profiles are consecutive primes allowed to bound at all?
@@ -92,7 +92,7 @@ holds, the winner also certifies a set of forbidden lower-divisor events that
 the left prefix and right suffix were not allowed to realize before the gap
 opened and before it closed.
 
-So the gap boundaries are constrained by the admissibility of the interior
+So the gap endpoints are constrained by the admissibility of the interior
 divisor profile, not only by abstract gap length.
 
 ## The Dominant `d=4` Square-Phase Clock
@@ -130,7 +130,7 @@ also:
 - a local upper bound on right-endpoint prime placement,
 - driven by the low-divisor threat geometry of the composite interior.
 
-## A Measurable Boundary Observable
+## A Measurable Endpoint Observable
 
 The existing closure notes track:
 
@@ -157,7 +157,7 @@ Under the dominant `d=4` specialization of that closure consequence,
 
 $$U_{\square}(w, q) \le 1.$$
 
-So this ratio turns the closure law into a boundary-placement coordinate.
+So this ratio turns the closure law into a endpoint-placement coordinate.
 
 ## What The Current Surface Shows
 
@@ -192,7 +192,7 @@ So the current tested dominant surface shows a striking split:
 - the mean winner-to-next-prime step stays only about `12` to `20`,
 - while the mean winner-to-next-prime-square threat distance grows from the
   thousands into the billions,
-- and the resulting mean boundary utilization drops from about `2e-3` at the
+- and the resulting mean endpoint utilization drops from about `2e-3` at the
   exact $10^6$ surface to about `6e-9` at the even-band $10^{18}$ surface.
 
 That does **not** state a separate pointwise asymptotic law. It does show that, on the
@@ -205,7 +205,7 @@ This finding changes the natural language of the project in three ways.
 
 ### 1. `GWR` is not only a winner law
 
-It is also a boundary-placement law.
+It is also a endpoint-placement law.
 
 The winner law identifies:
 
@@ -214,7 +214,7 @@ The winner law identifies:
 - and what later lower-divisor threat the right suffix failed to realize
   before the next prime arrived.
 
-That makes the boundary primes part of the theorem content, not just the
+That makes the endpoint primes part of the theorem content, not just the
 background scenery.
 
 ### 2. The dominant `d=4` regime has a literal clock variable
@@ -242,7 +242,7 @@ The dominant closure law can be read as:
 This does not mean the repo has proved a literal dynamical process on the
 integers.
 
-It does mean that the interior composite structure defines a stopping boundary
+It does mean that the interior composite structure defines a stopping endpoint
 for admissible prime-gap termination.
 
 ## Relation To The Admissibility-Censorship Finding
@@ -258,13 +258,13 @@ That earlier finding says:
 The present note says something more specific:
 
 - once the winner is fixed, the same interior structure yields direct
-  constraints on where the boundary primes are allowed to sit,
+  constraints on where the endpoint primes are allowed to sit,
 - and in the dominant `d=4` regime those constraints are naturally measured by
   a square-phase utilization ratio.
 
 So the admissibility note is about which interior patterns are realizable at
 all.
-This boundary note is about how the realized interior pattern constrains the
+This endpoint note is about how the realized interior pattern constrains the
 prime endpoints once it occurs.
 
 ## Scope Limits
@@ -280,7 +280,7 @@ This finding does **not** claim:
 The exact supported statement is narrower:
 
 - if `GWR` holds, then the interior winner law implies local constraints on
-  prime-gap boundary placement,
+  prime-gap endpoint placement,
 - and on the current documented dominant `d=4` surface, the right endpoint
   prime uses only a tiny mean fraction of the available square-threat budget.
 
@@ -289,7 +289,7 @@ The exact supported statement is narrower:
 The safest strong statement is:
 
 `GWR`, if true as a prime-gap law, does not merely rank composites inside a
-gap. It constrains where the consecutive boundary primes are allowed to occur.
+gap. It constrains where the consecutive endpoint primes are allowed to occur.
 
 In the dominant `d=4` regime, the winner starts a square-phase clock, and the
 next prime must appear before the next prime square after that winner. On the

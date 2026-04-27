@@ -3,15 +3,15 @@
 The higher-divisor pressure lock is safe where it fires, and it fires only in
 the initial anchor surface tested here.
 
-This note profiles the activation regime for Boundary Law 005 Candidate:
-Higher-Divisor Locked Resolved-Boundary Absorption. It does not approve pure
+This note profiles the activation regime for Next-Prime Law 005 Candidate:
+Higher-Divisor Locked Resolved-Endpoint Absorption. It does not approve pure
 generator emission.
 
 ## Status
 
 Current status:
 
-- Boundary Law 005: candidate-grade offline rule.
+- Next-Prime Law 005: candidate-grade offline rule.
 - Pure generator emission: forbidden.
 - Milestone 1: blocked for generator output.
 - Probe role: offline activation profiling only.
@@ -58,7 +58,7 @@ wrong_count: 0
 
 The shifted windows did not falsify the lock. They did not activate it.
 
-## Activation By Boundary Offset
+## Activation By Endpoint Offset
 
 The activations are concentrated in small resolved offsets:
 
@@ -154,7 +154,7 @@ The activation profile supports three facts:
 
 The result preserves the candidate-law status. It does not justify broadening
 the lock, enabling pure emission, or treating shifted-window abstention as
-boundary inference.
+next-prime inference.
 
 ## Falsification Condition
 

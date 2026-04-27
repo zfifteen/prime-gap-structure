@@ -78,7 +78,7 @@ The second residual class has:
 - multiple resolved candidates;
 - unresolved alternatives still exist.
 
-That class needs both completion and absorption/dominance work. A selector alone
+That class needs both completion and absorption/dominance work. A selection rule alone
 is not enough while unresolved alternatives remain live.
 
 The smallest residual class has:

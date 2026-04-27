@@ -20,7 +20,7 @@ Recover a legal shadow of the higher-divisor signal without using:
 - the old recursive walker.
 
 The probe is offline theorem discovery. It may attach classical next-gap labels
-for collision measurement, but the candidate state vectors are separately
+for conflict measurement, but the candidate state vectors are separately
 marked for pure-generation eligibility.
 
 ## Instrument
@@ -94,23 +94,23 @@ Surface:
 
 Exact-state audit:
 
-- `higher_divisor_pressure_state`: `0` collisions;
+- `higher_divisor_pressure_state`: `0` conflicts;
   `minimal_illegal_component: divisor_bucket_ladder`.
-- `previous_chamber_plus_higher_divisor_pressure_state`: `0` collisions;
+- `previous_chamber_plus_higher_divisor_pressure_state`: `0` conflicts;
   no single necessary illegal component on this smaller surface.
-- `previous_chamber_plus_square_and_higher_pressure_state`: `0` collisions;
+- `previous_chamber_plus_square_and_higher_pressure_state`: `0` conflicts;
   no single necessary illegal component on this smaller surface.
 
 Legal candidate results:
 
-- `bounded_composite_witness_pressure`: `0` collisions.
-- `power_signature_pressure`: `0` collisions.
-- `multiplicity_pressure_without_primality`: `0` collisions.
-- `small_factor_witness_pressure`: `215` collisions.
-- `wheel_closed_density_pressure`: `30` collisions.
-- `square_cube_power_pressure`: `97` collisions.
-- `residue_class_pressure`: `129` collisions.
-- `early_composite_run_pressure`: `76` collisions.
+- `bounded_composite_witness_pressure`: `0` conflicts.
+- `power_signature_pressure`: `0` conflicts.
+- `multiplicity_pressure_without_primality`: `0` conflicts.
+- `small_factor_witness_pressure`: `215` conflicts.
+- `wheel_closed_density_pressure`: `30` conflicts.
+- `square_cube_power_pressure`: `97` conflicts.
+- `residue_class_pressure`: `129` conflicts.
+- `early_composite_run_pressure`: `76` conflicts.
 
 Surface:
 
@@ -120,18 +120,18 @@ Surface:
 
 Exact-state audit:
 
-- `higher_divisor_pressure_state`: `0` collisions;
+- `higher_divisor_pressure_state`: `0` conflicts;
   `minimal_illegal_component: divisor_bucket_ladder`.
-- `previous_chamber_plus_higher_divisor_pressure_state`: `0` collisions;
+- `previous_chamber_plus_higher_divisor_pressure_state`: `0` conflicts;
   `minimal_illegal_component: divisor_bucket_ladder`.
-- `previous_chamber_plus_square_and_higher_pressure_state`: `0` collisions;
+- `previous_chamber_plus_square_and_higher_pressure_state`: `0` conflicts;
   `minimal_illegal_component: divisor_bucket_ladder`.
 
 Removing `divisor_bucket_ladder` produces:
 
-- `236` collisions for `higher_divisor_pressure_state`;
-- `90` collisions for `previous_chamber_plus_higher_divisor_pressure_state`;
-- `2` collisions for
+- `236` conflicts for `higher_divisor_pressure_state`;
+- `90` conflicts for `previous_chamber_plus_higher_divisor_pressure_state`;
+- `2` conflicts for
   `previous_chamber_plus_square_and_higher_pressure_state`.
 
 The smallest exposed illegal component is therefore:
@@ -140,16 +140,16 @@ The smallest exposed illegal component is therefore:
 
 Legal candidate results on input primes `11..100_000`, prefix `32`:
 
-- `bounded_composite_witness_pressure`: `0` collisions.
-- `power_signature_pressure`: `0` collisions.
-- `multiplicity_pressure_without_primality`: `0` collisions.
-- `small_factor_witness_pressure`: `1331` collisions.
-- `wheel_closed_density_pressure`: `37` collisions.
-- `square_cube_power_pressure`: `228` collisions.
-- `residue_class_pressure`: `202` collisions.
-- `early_composite_run_pressure`: `1749` collisions.
+- `bounded_composite_witness_pressure`: `0` conflicts.
+- `power_signature_pressure`: `0` conflicts.
+- `multiplicity_pressure_without_primality`: `0` conflicts.
+- `small_factor_witness_pressure`: `1331` conflicts.
+- `wheel_closed_density_pressure`: `37` conflicts.
+- `square_cube_power_pressure`: `228` conflicts.
+- `residue_class_pressure`: `202` conflicts.
+- `early_composite_run_pressure`: `1749` conflicts.
 
-The first zero-collision eligible state reported by the probe is:
+The first zero-conflict eligible state reported by the probe is:
 
 - `bounded_composite_witness_pressure`
 
@@ -160,7 +160,7 @@ component is illegal because it contains full divisor buckets and marks `d = 2`
 positions. The previous-square context can reduce the damage after ablation,
 but it does not remove the illegal dependency.
 
-Three legal approximations reached zero collisions on input primes `11..100_000`,
+Three legal approximations reached zero conflicts on input primes `11..100_000`,
 prefix `32`:
 
 - bounded composite witnesses;
@@ -180,7 +180,7 @@ Milestone 1 remains blocked.
 Next-Prime Law 005 is not approved.
 
 The next admissible work item is a focused legality stress test for the three
-zero-collision eligible candidates:
+zero-conflict eligible candidates:
 
 - `bounded_composite_witness_pressure`
 - `power_signature_pressure`

@@ -5,7 +5,7 @@ This note records the executed prime-gap admissibility result from
 
 The question is direct:
 
-for each actual earlier spoiler candidate inside a prime gap, how far to the
+for each actual earlier competing integer inside a prime gap, how far to the
 right does one have to go before finding a later interior composite that beats
  it exactly on the score?
 
@@ -19,16 +19,16 @@ right does one have to go before finding a later interior composite that beats
 On the full exact surface through $10^6$:
 
 - `70327` prime gaps with composite interior,
-- `169021` earlier spoiler candidates,
+- `169021` earlier competing integers,
 - `0` unresolved earlier candidates.
 
 On the full exact surface through $2 \cdot 10^7$:
 
 - `1163198` prime gaps with composite interior,
-- `3349874` earlier spoiler candidates,
+- `3349874` earlier competing integers,
 - `0` unresolved earlier candidates.
 
-So on both exact surfaces, every actual earlier spoiler candidate has a later
+So on both exact surfaces, every actual earlier competing integer has a later
 interior dominator.
 
 ## Offset Law
@@ -43,7 +43,7 @@ quickly:
 - offset `6`: about `97.36%` cumulative,
 - offset `12`: about `99.85%` cumulative.
 
-So the earlier-spoiler mechanism is not surviving deep into the gap on the
+So the earlier-competing-integer mechanism is not surviving deep into the gap on the
 tested exact surface. It is being killed locally.
 
 ## Divisor-Class Extremal Case
@@ -76,17 +76,17 @@ The larger offsets are concentrated in the low divisor classes:
 - `d = 32`: max offset `4`,
 - `d = 48`: max offset `3`.
 
-So the hard part of the earlier-spoiler problem is no longer the high-divisor
+So the hard part of the earlier-competing-integer problem is no longer the high-divisor
 tail. On the tested exact surface, the high-divisor candidates are killed
 almost immediately.
 
 ## Current Reading
 
 This is the first exact artifact in the repo that directly measures the
-prime-gap admissibility of earlier spoilers rather than only their divisor
+prime-gap admissibility of earlier competing integers rather than only their divisor
 classes.
 
 The strongest supported claim is:
 
-actual earlier spoilers are locally unstable inside prime gaps, and that
+actual earlier competing integers are locally unstable inside prime gaps, and that
 instability becomes stronger, not weaker, as the earlier divisor count rises.

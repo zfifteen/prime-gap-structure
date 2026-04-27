@@ -1,4 +1,4 @@
-# No-Early-Spoiler Margin Findings
+# No-Early-Counterexample Margin Findings
 
 This note records the executed exact margin scan from
 [`no_early_spoiler_margin_scan.py`](../experiments/proof/no_early_spoiler_margin_scan.py).
@@ -29,12 +29,12 @@ $$L(w) - L(k),$$
 
 $$\frac{d(k) - 2}{d_{\min} - 2} - \frac{\ln w}{\ln k}.$$
 
-The second quantity is the direct slack in the exact spoiler condition:
+The second quantity is the direct slack in the exact counterexample condition:
 
 $$\frac{\ln w}{\ln k} \ge \frac{d(k) - 2}{d_{\min} - 2}.$$
 
 So a positive critical-ratio margin means the earlier composite is still safely
-below spoiler threshold.
+below counterexample threshold.
 
 ## Current Executed Artifact
 
@@ -46,9 +46,9 @@ On the full exact surface through $2 \cdot 10^7$:
 
 - `1163198` prime gaps with composite interior,
 - `3349874` earlier interior candidates before the true `GWR` integer,
-- `0` exact earlier spoilers against that integer.
+- `0` exact earlier competing integers against that integer.
 
-So on the current exact surface, the no-early-spoiler condition itself holds
+So on the current exact surface, the no-early-counterexample condition itself holds
 with zero counterexamples.
 
 The scan also records the current tightest margins on that surface:
@@ -77,10 +77,10 @@ This margin scan is stronger in the direction that matters for `GWR`:
 - it compares every earlier candidate directly to the actual selected integer
   $w$,
 - it records the tightest direct log-score slack,
-- and it records the tightest critical-ratio slack in the exact spoiler
+- and it records the tightest critical-ratio slack in the exact counterexample candidate
   inequality.
 
-So this is the current exact measurement surface for the no-early-spoiler
+So this is the current exact measurement surface for the no-early-counterexample
 condition itself, not just for later admissible rescue.
 
 ## Current Reading

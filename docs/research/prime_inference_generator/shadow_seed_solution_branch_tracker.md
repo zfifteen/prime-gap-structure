@@ -5,7 +5,7 @@ replacements for `shadow_seed_trial_recovery_v1`.
 
 The current generator state is honest:
 
-- `pgs_chamber_closure_v2` is the current pure PGS selector.
+- `pgs_chamber_closure_v2` is the current pure PGS selection rule.
 - `shadow_seed_recovery` is operationally correct on the tested outputted
   high-scale samples, but it is not pure PGS because its terminal step uses
   exact divisor arithmetic.
@@ -26,7 +26,7 @@ Promotion requires:
 - no generator contamination;
 - no added fields in outputted records;
 - no primality, factorization, `nextprime`, or full divisor exhaustion inside a
-  pure PGS selector;
+  pure PGS selection rule;
 - zero audit failures if the rule is promoted;
 - projected pure PGS at least `50%` at both $10^{15}$ and $10^{18}$.
 
@@ -36,19 +36,19 @@ Promotion requires:
 |---|---:|---|---|
 | [`codex/solution-01-grok-shadow-state-contract`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01-grok-shadow-state-contract) | `c7a0456` | Rejected | Required state objects are absent from current artifacts. |
 | [`codex/solution-01b-grok-reinvoke-closure`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01b-grok-reinvoke-closure) | `e07d776` | Rejected | Re-invoking search-interval closure from `q0` selects too early on many rows. |
-| [`codex/solution-01c-grok-gwr-later-side-closure`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01c-grok-gwr-later-side-closure) | `56d131f` | Rejected as drop-in | Existing GWR/NLSC selectors do not select a endpoint from only `p` and `q0`. |
+| [`codex/solution-01c-grok-gwr-later-side-closure`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01c-grok-gwr-later-side-closure) | `56d131f` | Rejected as drop-in | Existing GWR/NLSC selection rules do not select a endpoint from only `p` and `q0`. |
 | [`codex/solution-01d-grok-gwr-locked-chamber`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01d-grok-gwr-locked-chamber) | `d5d248d` | Rejected | GWR lock alone does not provide the missing next-prime offset. |
 | [`codex/solution-01d-gwr-locked-integration`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-01d-gwr-locked-integration) | `e81d287` | Not promotable | Fair locked-state integration found no safe replayable next-prime-margin key. |
 | [`codex/solution-02-gemini-rst-law`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-02-gemini-rst-law) | `4994dc2` | Rejected | Residual symmetry minimization selects many wrong endpoints. |
 | [`codex/solution-03-meta-frontier-exhaustion`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-03-meta-frontier-exhaustion) | `cba771c` | Rejected | Required mark-stream inputs are absent; materialized proxies are unsafe or abstain. |
 | [`codex/solution-04-deepseek-square-grid-openq`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-04-deepseek-square-grid-openq) | `343616d` | Rejected | The proposed square-grid sequence misses the audited endpoint on all 388 shadow rows. |
-| [`codex/solution-05-claude-ssbrl-residue-advance`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-05-claude-ssbrl-residue-advance) | `bfdab74` | Rejected | `q0 + r` never selects the endpoint; residue advance repeats the unsafe first-visible-open failure. |
+| [`codex/solution-05-claude-ssbrl-residue-advance`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-05-claude-ssbrl-residue-advance) | `bfdab74` | Rejected | `q0 + r` never selects the endpoint; residue advance repeats the unsafe first-uneliminated-candidate failure. |
 | [`codex/solution-06-copilot-windowed-stabilization`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-06-copilot-windowed-stabilization) | `fb1f18a` | Rejected | Windowed flux/pressure stabilization abstains on every target row. |
-| [`codex/solution-07-seed-erasure-endpoint`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-07-seed-erasure-boundary) | `973b3e3` | Rejected | Literal erasure collapses to first-visible-open; explicit seed-offset residue constraints are unsafe. |
+| [`codex/solution-07-seed-erasure-endpoint`](https://github.com/zfifteen/prime-gap-structure/tree/codex/solution-07-seed-erasure-boundary) | `973b3e3` | Rejected | Literal erasure collapses to first-not eliminated by bounded factor checks; explicit seed-offset residue constraints are unsafe. |
 | `codex/solution-08-seed-pressure-gap` | `uncommitted` | Rejected | Bidirectional right-residue closure selects too early and too late; it adds no safe endpoint margin. |
-| `codex/solution-09-seed-distance-closure` | `uncommitted` | Rejected | Seed-distance closure collapses to first-visible-open; the distance predicate is satisfied immediately on every target row. |
-| `codex/solution-10-continued-chamber-ladder` | `uncommitted` | Rejected | Continued-search interval ladders show a weak 4m+2 distance signal but produce audit failures on every tested selector. |
-| `codex/solution-11-carrier-threat-margin` | `uncommitted` | Rejected | Low-witness post-seed “threat” appears on every row but is too early; selecting the last visible-open before it abstains often and creates audit failures. |
+| `codex/solution-09-seed-distance-closure` | `uncommitted` | Rejected | Seed-distance closure collapses to first-not eliminated by bounded factor checks; the distance predicate is satisfied immediately on every target row. |
+| `codex/solution-10-continued-chamber-ladder` | `uncommitted` | Rejected | Continued-search interval ladders show a weak 4m+2 distance signal but produce audit failures on every tested selection rule. |
+| `codex/solution-11-carrier-threat-margin` | `uncommitted` | Rejected | Low-witness post-seed “threat” appears on every row but is too early; selecting the last not eliminated by bounded factor checks before it abstains often and creates audit failures. |
 
 ## Solution 1: Full Search Interval State Contract
 
@@ -151,7 +151,7 @@ The rule is minimal and uses only current search interval machinery.
 
 Weakness:
 
-It reproduces the known failure mode: the first visible-open candidate after
+It reproduces the known failure mode: the first candidate not eliminated by bounded factor checks after
 the seed is often another right-side impostor.
 
 Limitation:
@@ -190,16 +190,16 @@ Artifacts:
 
 Result:
 
-The claimed drop-in function is not implemented, and the existing selector
+The claimed drop-in function is not implemented, and the existing selection rule
 contracts do not select a endpoint from only `p` and `q0`.
 
-| Scale | Selector | Shadow rows | Correct | No selection | Projected PGS |
+| Scale | Selection Rule | Shadow rows | Correct | No selection | Projected PGS |
 |---|---|---:|---:|---:|---:|
-| $10^{12}$ | next-prime selector without offset | 102 | 0 | 102 | 59.68% |
+| $10^{12}$ | next-prime selection rule without offset | 102 | 0 | 102 | 59.68% |
 | $10^{12}$ | d4 NLSC without margin | 102 | 0 | 102 | 59.68% |
-| $10^{15}$ | next-prime selector without offset | 141 | 0 | 141 | 43.37% |
+| $10^{15}$ | next-prime selection rule without offset | 141 | 0 | 141 | 43.37% |
 | $10^{15}$ | d4 NLSC without margin | 141 | 0 | 141 | 43.37% |
-| $10^{18}$ | next-prime selector without offset | 145 | 0 | 145 | 42.00% |
+| $10^{18}$ | next-prime selection rule without offset | 145 | 0 | 145 | 42.00% |
 | $10^{18}$ | d4 NLSC without margin | 145 | 0 | 145 | 42.00% |
 
 Strength:
@@ -252,7 +252,7 @@ Result:
 The weak executable reading selected too early. The strict locked readings had
 no next-prime signal.
 
-| Scale | Selector | Correct | No selection | Audit failures if promoted | Projected PGS |
+| Scale | Selection Rule | Correct | No selection | Audit failures if promoted | Projected PGS |
 |---|---|---:|---:|---:|---:|
 | $10^{12}$ | weak visible closure with lock | 60/102 | 0 | 42 | 83.40% |
 | $10^{15}$ | weak visible closure with lock | 76/141 | 0 | 65 | 73.90% |
@@ -267,7 +267,7 @@ selected integer rather than allowing later candidates to become new selected in
 
 Weakness:
 
-The lock is not a terminal selector. It does not identify which later candidate
+The lock is not a terminal selection rule. It does not identify which later candidate
 is the endpoint.
 
 Limitation:
@@ -290,7 +290,7 @@ the missing terminal margin.
 
 The probe computes:
 
-- visible-open candidates after `q0`;
+- candidates not eliminated by bounded factor checks after `q0`;
 - visible delta vectors;
 - visible gap vectors;
 - square-ceiling observables;
@@ -321,10 +321,10 @@ Best replay signal:
 | $10^{15}$ | `K_visible_prefix_2` | 29/141 | 91 | 21 | 55.02% |
 | $10^{18}$ | `K_visible_prefix_2` | 13/145 | 100 | 32 | 47.20% |
 
-Some richer keys were zero-collision in-sample only because they were
+Some richer keys were zero-conflict in-sample only because they were
 effectively row-unique:
 
-| Key | Rows | Key count | Repeated keys | Collision keys |
+| Key | Rows | Key count | Repeated keys | Conflict keys |
 |---|---:|---:|---:|---:|
 | `K_visible_prefix_8` | 388 | 388 | 0 | 0 |
 | `K_square_delta_bucket` | 388 | 388 | 0 | 0 |
@@ -373,7 +373,7 @@ using `closure_reason(...)`. It tested:
 - the literal fixed `128`-integer pre-shadow vector;
 - a search interval-native prefix vector from `p` into `q0`;
 - all integer candidates;
-- visible-open candidate domains only.
+- candidate not eliminated by bounded factor checks domains only.
 
 Artifacts:
 
@@ -384,17 +384,17 @@ Artifacts:
 
 Result:
 
-No RST variant promoted. The visible-open domains produced some correct picks
+No RST variant promoted. The domains of candidates not eliminated by bounded factor checks produced some correct picks
 and would raise projected PGS over `50%`, but only with many wrong selections.
 
 Best legal-domain results:
 
 | Scale | Vector | Domain | Correct | Audit failures | Projected PGS |
 |---|---|---|---:|---:|---:|
-| $10^{15}$ | input prime prefix | visible-open input prime bound | 52/141 | 89 | 64.26% |
-| $10^{18}$ | input prime prefix | visible-open input prime bound | 47/145 | 98 | 60.80% |
-| $10^{15}$ | fixed 128 | visible-open input prime bound | 41/141 | 100 | 59.84% |
-| $10^{18}$ | fixed 128 | visible-open input prime bound | 27/145 | 118 | 52.80% |
+| $10^{15}$ | input prime prefix | bounded-factor-check input-prime bound | 52/141 | 89 | 64.26% |
+| $10^{18}$ | input prime prefix | bounded-factor-check input-prime bound | 47/145 | 98 | 60.80% |
+| $10^{15}$ | fixed 128 | bounded-factor-check input-prime bound | 41/141 | 100 | 59.84% |
+| $10^{18}$ | fixed 128 | bounded-factor-check input-prime bound | 27/145 | 118 | 52.80% |
 
 The all-integer domains selected too early almost everywhere.
 
@@ -406,7 +406,7 @@ clean and cheap after caching.
 
 Weakness:
 
-The Hamming-minimum criterion is not a next-prime selector. It frequently picks
+The Hamming-minimum criterion is not a next-prime selection rule. It frequently picks
 another right-side impostor or overshoots the true next prime.
 
 Limitation:
@@ -669,7 +669,7 @@ The proposed witness step points in the wrong direction. The least factor of
 the seed is far outside the actual seed-to-next-prime distance, so `q0 + r` and
 `q0 + k r` cannot select the endpoint under the current search interval window.
 Residue advance without the least-factor step reproduces the known unsafe
-first-visible-open behavior.
+first-uneliminated-candidate behavior.
 
 Limitation:
 
@@ -702,8 +702,8 @@ closure predicate over a local rightward window and tested:
 
 - literal flux/pressure stabilization;
 - a next-prime-open stabilization variant where the selected `r` must be
-  visible-open;
-- the first-visible-open selector as a baseline comparator.
+  not eliminated by bounded factor checks;
+- the first-uneliminated-candidate selection rule as a baseline comparator.
 
 Artifacts:
 
@@ -716,7 +716,7 @@ Artifacts:
 Result:
 
 No rule promoted. Both stabilization rules abstained on every
-`shadow_seed_recovery` and unresolved row. The first-visible-open baseline
+`shadow_seed_recovery` and unresolved row. The first-uneliminated-candidate baseline
 again shows high projected PGS only by accepting many too-early endpoints.
 
 | Scale | Source | Stabilization correct | Stabilization no selection | First-visible correct | First-visible too early |
@@ -751,7 +751,7 @@ state over a rightward window.
 Weakness:
 
 The concrete stabilization criteria are too strict to select any tested
-endpoint. When relaxed to the first visible-open comparator, the rule
+endpoint. When relaxed to the first candidate not eliminated by bounded factor checks comparator, the rule
 collapses into the known unsafe early-selection pattern.
 
 Limitation:
@@ -770,7 +770,7 @@ Commit: `973b3e3`
 
 Proposed solution:
 
-Treat the true next prime as the first visible-open candidate after `q0` where
+Treat the true next prime as the first candidate not eliminated by bounded factor checks after `q0` where
 the rightward search interval trace no longer depends on the placed shadow seed.
 
 ```text
@@ -779,7 +779,7 @@ seed_erasure_defect(c) =
   and the right trace with q0 erased
 ```
 
-The selector chooses the first visible-open `c > q0` where the defect is zero,
+The selection rule chooses the first candidate not eliminated by bounded factor checks `c > q0` where the defect is zero,
 or the first stable minimum if zero is too strict.
 
 Test performed:
@@ -804,7 +804,7 @@ Artifacts:
 Result:
 
 No rule promoted. The literal interpretation collapses to the known
-first-visible-open selector. The explicit seed-offset residue integrations select many
+first-uneliminated-candidate selection rule. The explicit seed-offset residue integrations select many
 wrong endpoints.
 
 Window `128`:
@@ -852,8 +852,8 @@ mathematically invisible.
 
 Weakness:
 
-The tested seed-offset residue integrations are not safe selectors. They either reduce
-to the first-visible-open failure or produce mixed early and late errors.
+The tested seed-offset residue integrations are not safe selection rules. They either reduce
+to the first-uneliminated-candidate failure or produce mixed early and late errors.
 
 Limitation:
 
@@ -870,20 +870,20 @@ Commit: `uncommitted`
 
 Proposed solution:
 
-Treat each visible-open candidate after `q0` as a proposed right endpoint, not
-only as a point in the input prime-framed rightward scan. Earlier visible-open
+Treat each candidate not eliminated by bounded factor checks after `q0` as a proposed right endpoint, not
+only as a point in the input prime-framed rightward scan. Earlier not eliminated by bounded factor checks
 impostors that are open from `p` should close from the proposed endpoint side
 if the candidate is the real terminal next prime.
 
-The tested selector computes a right-residue defect:
+The tested selection rule computes a right-residue defect:
 
 ```text
 right_phase_defect(c) =
-  count of earlier input-prime-visible-open nodes n
+  count of earlier input-prime-framed nodes not eliminated by bounded factor checks n
   whose distance c - n is also right-residue open
 ```
 
-The branch tests whether the true next prime is the first visible-open candidate
+The branch tests whether the true next prime is the first candidate not eliminated by bounded factor checks
 with zero defect, the leftmost minimum-defect candidate, or the first candidate
 whose full left-open interior is closed by the right endpoint residue.
 
@@ -949,17 +949,17 @@ Commit: `uncommitted`
 
 Proposed solution:
 
-Treat each input-prime-visible-open candidate after `q0` as a proposed right
-endpoint. Require that every prior input-prime-visible-open point (including the
+Treat each input-prime-candidate not eliminated by bounded factor checks after `q0` as a proposed right
+endpoint. Require that every prior input-prime-framed point not eliminated by bounded factor checks (including the
 seed itself) is *visibly closed* by the distance to the candidate, using the
 same PGS-visible `closure_reason(0, delta)` predicate (wheel + bounded divisor
 witnesses).
 
-The tested selector is:
+The tested selection rule is:
 
 ```text
-Pick the first input-prime-visible-open candidate c after q0
-such that for every prior visible-open node n <= c,
+Pick the first input-prime-framed candidate not eliminated by bounded factor checks c after q0
+such that for every prior node not eliminated by bounded factor checks n <= c,
 closure_reason(0, c - n) is not None.
 ```
 
@@ -981,8 +981,8 @@ Artifacts:
 Result:
 
 No rule promoted. The distance-closure gate does not separate true next primes
-from visible-open impostors: it is satisfied by the first visible-open
-candidate on every target row, so it collapses to the known first-visible-open
+from uneliminated composite candidates: it is satisfied by the first candidate not eliminated by bounded factor checks
+candidate on every target row, so it collapses to the known first-not eliminated by bounded factor checks
 baseline.
 
 | Scale | Rule family | Correct | Too early | Too late | No selection | Projected PGS |
@@ -1003,7 +1003,7 @@ operator that is stronger than mod-only residue closure.
 Weakness:
 
 The closure operator is too weakly correlated with the hidden large-factor
-structure. Empirically, the seed-to-first-visible-open distance is always
+structure. Empirically, the seed-to-first-not eliminated by bounded factor checks distance is always
 visibly closed (wheel-closed or small-witness-closed), so the gate never
 filters the baseline impostor.
 
@@ -1012,7 +1012,7 @@ Limitation:
 This branch rejects seed-distance closure as materialized by
 `closure_reason(0, delta)` with the current factor-search bound. It does not
 rule out a integer-aware state transition that distinguishes the seed from the
-first visible-open candidate.
+first candidate not eliminated by bounded factor checks.
 
 ## Solution 10: Continued-Search Interval Ladder
 
@@ -1033,11 +1033,11 @@ lambert_step(distance) := distance >= 2 and (distance - 2) mod 4 == 0
 
 The probe tests whether the true next prime tends to lie on this distance ladder
 or on a related ladder in the seed-framed closure prefix count, and whether
-either ladder yields an audit-clean selector on shadow-seed rows.
+either ladder yields an audit-clean selection rule on shadow-seed rows.
 
 Test performed:
 
-The probe tested four selectors on the current 388 high-scale shadow rows:
+The probe tested four selection rules on the current 388 high-scale shadow rows:
 
 - `first_visible_open` baseline;
 - `first_distance_on_4m_plus_2`;
@@ -1054,11 +1054,11 @@ Artifacts:
 
 Result:
 
-No rule promoted. Every tested selector that produces nonzero hits also creates
+No rule promoted. Every tested selection rule that produces nonzero hits also creates
 audit failures. The best-performing continued-search-interval rule has substantial
 recall but is unsafe.
 
-Per-scale selector summary:
+Per-scale selection-rule summary:
 
 | Scale | Rule | Correct | Failures | Selected |
 |---|---|---:|---:|---:|
@@ -1091,13 +1091,13 @@ surfaces.
 Weakness:
 
 The property is not selective enough to identify the terminal next prime. Many
-visible-open impostors also lie on the ladder, so selecting on ladder
+uneliminated composite candidates also lie on the ladder, so selecting on ladder
 membership produces audit failures.
 
 Limitation:
 
 This branch rejects the literal Lambert ladder materialization as a endpoint
-selector. It does not rule out a seed-carried transition state that uses the
+selection rule. It does not rule out a seed-carried transition state that uses the
 ladder only as a prior inside a stricter integer-preservation or reset
 discriminator.
 
@@ -1115,7 +1115,7 @@ PGS-visible integer-transition event:
 
 - threat = first `n > q0` with `closure_reason(p, n - p)` of the form
   `divisor_witness:w` with `w <= 97`;
-- select `q_hat` = last input-prime-visible-open candidate strictly before the
+- select `q_hat` = last input-prime-candidate not eliminated by bounded factor checks strictly before the
   threat.
 
 Test performed:
@@ -1137,7 +1137,7 @@ Artifacts:
 Result:
 
 No rule promoted. A low-witness post-seed threat exists on every shadow row,
-but it typically occurs before any post-seed visible-open candidate, so the
+but it typically occurs before any post-seed candidate not eliminated by bounded factor checks, so the
 gate abstains frequently. When the gate does select, it produces audit
 failures via both early and late mis-selections.
 
@@ -1156,8 +1156,8 @@ turn a post-seed closure witness event into a next-prime-margin marker.
 Weakness:
 
 The threat is too local and too common. It appears immediately after `q0` on
-all rows, so it does not separate the terminal next prime from visible-open
-impostors and it often leaves no selectable visible-open candidate before the
+all rows, so it does not separate the terminal next prime from not eliminated by bounded factor checks
+impostors and it often leaves no selectable candidate not eliminated by bounded factor checks before the
 threat.
 
 Limitation:

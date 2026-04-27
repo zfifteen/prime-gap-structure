@@ -137,7 +137,7 @@ than unlimited closure.
 In the current repo, those scans already serve three exact jobs:
 
 - they establish the finite base,
-- they measure the tight spoiler and ratio extremums,
+- they measure the tight obstruction and ratio extremums,
 - they normalize the asymptotic bridge target into one bridge-load quantity.
 
 That is why the proof-facing artifacts now converge on explicit bridge
@@ -145,8 +145,8 @@ constants rather than on ever-larger blind enumeration. The bridge has now been
 certified below the exact finite base under the recorded BHP/Robin constants.
 The key files are
 [gwr/findings/gwr_universal_bridge_closure.md](../../gwr/findings/gwr_universal_bridge_closure.md),
-[gwr/findings/no_early_spoiler_margin_findings.md](../../gwr/findings/no_early_spoiler_margin_findings.md),
-[gwr/findings/no_early_spoiler_ratio_frontier_findings.md](../../gwr/findings/no_early_spoiler_ratio_frontier_findings.md),
+[gwr/findings/no_early_counterexample candidate_margin_findings.md](../../gwr/findings/no_early_spoiler_margin_findings.md),
+[gwr/findings/no_early_counterexample candidate_ratio_frontier_findings.md](../../gwr/findings/no_early_spoiler_ratio_frontier_findings.md),
 [gwr/findings/asymptotic_bridge_load_findings.md](../../gwr/findings/asymptotic_bridge_load_findings.md),
 and
 [gwr/experiments/proof/proof_bridge_universal_lemma.md](../../gwr/experiments/proof/proof_bridge_universal_lemma.md).
@@ -165,14 +165,14 @@ These three input primes now line up cleanly:
 - the Meissel-Mertens constant input primes where reciprocal-prime thresholds sit,
 - `FIXED_POINT_V = e^{2}/2` input primes the `DCI` prime fixed-point band,
 - the bridge-load threshold $B(k, w) < 1$ input primes the current `GWR`
-  no-early-spoiler closure record.
+  no-early-counterexample closure record.
 
 The shared lesson is that this project advances fastest when it finds the right
 invariant endpoint and then measures ratios against that endpoint.
 
 For prime-reciprocal thresholds, that endpoint is a computational horizon.
 For `DCI`, it is the fixed-point band.
-For `GWR`, it is the normalized spoiler budget.
+For `GWR`, it is the normalized counterexample budget.
 
 Finite computation still matters. But on this reading, its highest use is to
 calibrate the invariant and the bridge, not to substitute for them.

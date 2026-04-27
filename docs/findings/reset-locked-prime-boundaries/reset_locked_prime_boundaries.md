@@ -50,6 +50,6 @@ I have produced a polished technical report that documents the hypothesis, the v
 
 **Report saved to**:
 
-This refinement makes the completed PGS Prime Inference Generator even more robust, auditable, and conceptually clean. The "double tap" is the missing positive signal that turns good inference into near-perfect, self-confirming inference.
+This refinement makes the completed PGS Next-Prime Generator even more robust, auditable, and conceptually clean. The "double tap" is the missing positive signal that turns good inference into near-perfect, self-confirming inference.
 
 Ready to integrate this into the spec, the code, or the next benchmark run whenever you are.

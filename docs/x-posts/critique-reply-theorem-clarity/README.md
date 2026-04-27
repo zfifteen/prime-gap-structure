@@ -23,7 +23,7 @@ The theorem also has to control what happens before that point and after it.
 
 The actual theorem is gap-local and three-part. First, the selected integer is the first
 appearance of the lowest divisor class present in the gap. Second, every
-earlier spoiler is beaten by some later admissible composite. Third, no later
+earlier competing integer is beaten by some later admissible composite. Third, no later
 strictly simpler composite appears before the gap closes. Those three facts
 together force the score maximizer. That is stronger than saying the score leans
 left or that numbers near primes are composite-rich.

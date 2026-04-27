@@ -53,8 +53,8 @@ The closure artifacts that discharged the former low-class remainder are:
 
 The exact audit surface behind that closure includes:
 
-- [../../output/gwr_proof/parallel_no_early_spoiler_5e9.json](../../output/gwr_proof/parallel_no_early_spoiler_5e9.json)
-- [../../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json](../../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)
+- [../../output/gwr_proof/parallel_no_early_counterexample candidate_5e9.json](../../output/gwr_proof/parallel_no_early_spoiler_5e9.json)
+- [../../output/gwr_proof/earlier_counterexample candidate_local_dominator_scan_square_adjacent_1e12.json](../../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)
 
 The historical validation summaries remain useful as audit record:
 

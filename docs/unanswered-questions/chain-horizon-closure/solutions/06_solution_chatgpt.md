@@ -1,6 +1,6 @@
 Recommendation: implement the least-factor maximum probe now. Do not promote any H law yet.
 
-The best answer is 05_answer_chatgpt, with useful support from 03_answer_deepseek, 04_answer_copilot, and 06_answer_xai_grok. The central reason: the right theorem target is not “prove the terminal node is prime.” The right theorem target is “derive a PGS-visible horizon that closes every false shadow-chain node before the terminal next prime.” That matches the actual repo gap: chain_horizon_closure_result(..., horizon_bound=None) still lets divisor_witness fall through to complete divisor exhaustion, while DEFAULT_VISIBLE_DIVISOR_BOUND = 10000 only builds the visible-open chain.  ￼
+The best answer is 05_answer_chatgpt, with useful support from 03_answer_deepseek, 04_answer_copilot, and 06_answer_xai_grok. The central reason: the right theorem target is not “prove the terminal node is prime.” The right theorem target is “derive a PGS-visible horizon that closes every false shadow-chain node before the terminal next prime.” That matches the actual repo gap: chain_horizon_closure_result(..., horizon_bound=None) still lets divisor_witness fall through to complete divisor exhaustion, while DEFAULT_VISIBLE_DIVISOR_BOUND = 10000 only builds the sequence of candidates not eliminated by bounded factor checks.  ￼
 
 The current unanswered question is framed correctly: can chain_horizon_closure become pure PGS by deriving H(p, s0, chain_state) rather than using fallback divisor exhaustion?  ￼ The answer after review and pilot testing is:
 
@@ -47,7 +47,7 @@ This is a bounded pilot, not a full theorem result. It tests whether small, obvi
 For each sampled input prime, I rebuilt:
 
 PGS search-interval-closure candidate q0
-visible-open shadow chain
+shadow sequence of candidates not eliminated by bounded factor checks
 terminal chain node if one was prime
 false pre-terminal nodes
 least visible divisor <= 100000 where available
@@ -153,7 +153,7 @@ Overall: strongest answer
 
 06_answer_xai_grok
 
-This answer correctly reads the code shape: visible-open chain construction is local and PGS-visible; horizon closure is the remaining non-PGS step because it still uses divisor witnesses up to a supplied bound or full sqrt(n).  ￼
+This answer correctly reads the code shape: construction of the sequence of candidates not eliminated by bounded factor checks is local and PGS-visible; horizon closure is the remaining non-PGS step because it still uses divisor witnesses up to a supplied bound or full sqrt(n).  ￼
 
 It overstates the proof intuition when it says GWR and NLSC “strongly suggest” the invariant should exist. That may be true, but the pilot shows the horizon is not a tiny visible extension. The needed law, if it exists, is subtler than “visible bound plus small local residue features.”
 

@@ -30,13 +30,13 @@ The input prime `p` is the current accepted prime. The generator accepts `p` as
 input. It does not prove `p` during generation.
 
 For every resolved input prime, the generator outputs exactly one record. If the PGS
-selector does not resolve inside the supplied search bound, the generator
+selection rule does not resolve inside the supplied search bound, the generator
 raises `PGSUnresolvedError`. It does not run a backup prime search.
 
 ## Stage 2: Search Interval
 
 The search interval is the finite interval to the right of `p` inspected by the PGS
-selector.
+selection rule.
 
 Inside the search interval, the generator uses:
 

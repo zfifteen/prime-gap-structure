@@ -3,7 +3,7 @@
 PGS Inference Generator v1.1 is the PGS-only production iteration.
 
 The generator starts from an input prime `p` and outputs exactly one
-minimal record when the PGS selector resolves:
+minimal record when the PGS selection rule resolves:
 
 ```json
 {"p": 89, "q": 97}
@@ -26,13 +26,13 @@ Version `1.1` removes those paths from the generator. The generator now has one
 execution path:
 
 ```text
-input prime p -> GWR/NLSC search-interval-reset selector -> output {"p": p, "q": q}
+input prime p -> GWR/NLSC search-interval-reset selection rule -> output {"p": p, "q": q}
 ```
 
-If the selector does not resolve inside the supplied search bound, generation
+If the selection rule does not resolve inside the supplied search bound, generation
 raises `PGSUnresolvedError`. It does not run a backup prime search.
 
-## Frozen Selector
+## Frozen Selection Rule
 
 ```text
 rule_id: pgs_chamber_reset_v1
@@ -87,4 +87,4 @@ Current result:
 
 This is a production-generator refactor for the tested surfaces above. It does
 not claim a proof that every future input prime at every scale is covered by the
-current bounded selector.
+current bounded selection rule.

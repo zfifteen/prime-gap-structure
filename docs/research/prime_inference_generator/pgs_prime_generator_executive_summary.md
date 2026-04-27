@@ -1,8 +1,8 @@
-# PGS Prime Inference Generator Executive Summary
+# PGS Next-Prime Generator Executive Summary
 
 ## Headline
 
-The production PGS Prime Inference Generator is now PGS-only.
+The production PGS Next-Prime Generator is now PGS-only.
 
 It starts from an accepted prime `p` and outputs the next prime `q` without trial
 division, fallback prime search, Miller-Rabin, sieve generation, `isprime`, or
@@ -47,7 +47,7 @@ The earlier `v1.0` generator had already displaced fallback on the audited
 production surfaces, but the code still carried explicit last-resort paths.
 
 The `v1.1` generator removes those paths from the generator file. If the PGS
-selector does not resolve inside the supplied search bound, generation raises
+selection rule does not resolve inside the supplied search bound, generation raises
 `PGSUnresolvedError` instead of choosing `q` by another method.
 
 Removed from the production generator:
@@ -61,7 +61,7 @@ Removed from the production generator:
 
 ## Endpoint Rule
 
-The production selector is:
+The production selection rule is:
 
 ```text
 rule_id: pgs_chamber_reset_v1

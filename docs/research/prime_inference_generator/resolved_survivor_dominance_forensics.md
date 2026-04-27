@@ -14,7 +14,7 @@ least one resolved false-endpoint candidate.
 The question is:
 
 Which PGS-native dominance rule can select the true next prime from multiple
-resolved candidate candidates without using primality labels?
+resolved candidates without using primality labels?
 
 A rule may abstain. A rule with any wrong selection is rejected.
 
@@ -46,7 +46,7 @@ Run:
 
 ## Candidate Metadata
 
-For each resolved candidate candidate, the probe records:
+For each resolved candidate, the probe records:
 
 - `candidate_offset`
 - `candidate_width`

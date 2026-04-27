@@ -253,7 +253,7 @@ This note is narrower than
 That earlier finding says:
 
 - actual prime gaps appear to realize only a thin subset of the divisor-class
-  spoiler patterns that class-only algebra leaves unresolved.
+  counterexample patterns that class-only algebra leaves unresolved.
 
 The present note says something more specific:
 

@@ -60,7 +60,7 @@ first $d=4$ witness after an integer seed $s$ lies in $(p, q)$ if and only if
 $$\sigma^-_4(p, q) < s \le \sigma^+_4(p, q).$$
 
 This is the exact dominant-regime seed corridor. Seeds at or below
-$\sigma^-_4$ are blocked by a pre-gap spoiler. Seeds above $\sigma^+_4$ miss
+$\sigma^-_4$ are blocked by a pre-gap counterexample candidate. Seeds above $\sigma^+_4$ miss
 the target gap because no in-gap $d=4$ integer remains.
 
 ## Small Exact Surface
@@ -90,7 +90,7 @@ On the deterministic sweep $n = 10$ through $1000$, it reports:
 - witness-in-target-gap rate: $0.0000$;
 - target-gap $d=4$ availability rate: $0.7185$;
 - exact $d=4$ seed-corridor hit rate: $0.0000$;
-- blocked by a pre-gap $d=4$ spoiler: $0.7185$;
+- blocked by a pre-gap $d=4$ counterexample candidate: $0.7185$;
 - target gaps with no interior $d=4$ integer: $0.2815$;
 - mean deficit from the left corridor edge: $50.42$;
 - mean exact corridor width: $11.09$;
@@ -102,7 +102,7 @@ only whether some in-gap $d=4$ integer lay ahead of the seed. Gap recovery
 also requires the seed to start to the right of the last pre-gap $d=4$
 integer. On this corrected exact corridor metric, the result is stronger:
 whenever the target gap contains $d=4$ integers at all, the current PNT seed is
-still blocked by a pre-gap spoiler. The remaining problem is therefore not
+still blocked by a pre-gap counterexample candidate. The remaining problem is therefore not
 witness recovery inside the target gap. It is crossing the lower exclusion
 endpoint.
 
@@ -117,7 +117,7 @@ The nontrivial problem is stricter:
 - either predict the exact dominant-regime corridor
   $(\sigma^-_4(p, q), \sigma^+_4(p, q)]$ from $n$;
 - or enlarge the admissible seed region so the witness map can start
-  outside the final gap but still cross the last pre-gap spoiler and land on
+  outside the final gap but still cross the last pre-gap counterexample candidate and land on
   an in-gap integer;
 - or predict a seed that lands before a certified in-gap integer, not merely
   somewhere inside the gap.

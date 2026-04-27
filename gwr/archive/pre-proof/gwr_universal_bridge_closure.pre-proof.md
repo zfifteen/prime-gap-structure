@@ -1,7 +1,7 @@
 # GWR Universal Bridge Closure
 
 This note records the current headline proof result for the `Gap Winner Rule`
-(`GWR`): the no-early-spoiler bridge closes below the repo's exact verified
+(`GWR`): the no-early-counterexample bridge closes below the repo's exact verified
 finite base under explicit literature constants.
 
 ## Finding
@@ -16,7 +16,7 @@ The proof has two parts:
 
 1. the exact finite base verifies every relevant gap below
    $p < 20{,}000{,}001$;
-2. the analytic bridge bound falls below the spoiler threshold before that
+2. the analytic bridge bound falls below the counterexample threshold before that
    finite base ends.
 
 So there is no unverified interval between the exact computation and the
@@ -28,7 +28,7 @@ For an earlier interior candidate $k$ and the true `GWR` integer $w$, define
 
 $$B(k,w)=\frac{\frac{\ln w}{\ln k}-1}{\frac{\delta}{d_{\min}-2}}.$$
 
-The no-early-spoiler condition is exactly
+The no-early-counterexample condition is exactly
 
 $$B(k,w)<1.$$
 
@@ -51,7 +51,7 @@ $c=1.5379$ constant with the current $2 \cdot 10^7$ finite base.
 
 ## Exact Finite Base
 
-The committed no-early-spoiler bridge artifact through
+The committed no-early-counterexample bridge artifact through
 $p < 20{,}000{,}001$ records:
 
 - `1,163,198` prime gaps with composite interior,

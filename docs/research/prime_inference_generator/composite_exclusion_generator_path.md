@@ -9,7 +9,7 @@ The current evidence is consistent across the failed paths:
 - legal ladder and pressure states can classify local structure;
 - high-resolution legal states can separate labels, but they become
   table-like;
-- compressed legal states reuse buckets, but then endpoint-offset collisions
+- compressed legal states reuse buckets, but then endpoint-offset conflicts
   appear.
 
 The next generator path should not add richer local fingerprints. It should

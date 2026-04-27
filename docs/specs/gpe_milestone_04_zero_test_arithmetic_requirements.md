@@ -32,7 +32,7 @@ arithmetic:
 
 - fixed GPE state,
 - explicit modular constraints,
-- branch-specific selector laws,
+- branch-specific selection rules,
 - NLSC threat horizons,
 - and deterministic integer arithmetic.
 

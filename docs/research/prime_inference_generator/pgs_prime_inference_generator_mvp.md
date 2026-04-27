@@ -1,6 +1,6 @@
-# PGS Prime Inference Generator MVP
+# PGS Next-Prime Generator MVP
 
-The PGS Prime Inference Generator separates prime generation from prime
+The PGS Next-Prime Generator separates prime generation from prime
 validation. The generator outputs PGS-inferred primes. It does not certify them.
 Classical validation reads the outputted trace afterward and audits the result.
 

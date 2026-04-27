@@ -22,7 +22,7 @@ If we can derive a horizon H(p, s0, chain_state) that always closes the false ch
 
 Technical-domain mode:
 
-The repo implementation makes the gap very precise. In simple_pgs_generator.py, DEFAULT_VISIBLE_DIVISOR_BOUND = 10000 is used to build the visible-open chain, while chain_horizon_closure_result(..., horizon_bound=None) makes divisor_witness(candidate, horizon_bound) use complete divisor exhaustion up to sqrt(candidate) for the chain node. That is exactly the non-PGS part we need to replace.  ￼
+The repo implementation makes the gap very precise. In simple_pgs_generator.py, DEFAULT_VISIBLE_DIVISOR_BOUND = 10000 is used to build the sequence of candidates not eliminated by bounded factor checks, while chain_horizon_closure_result(..., horizon_bound=None) makes divisor_witness(candidate, horizon_bound) use complete divisor exhaustion up to sqrt(candidate) for the chain node. That is exactly the non-PGS part we need to replace.  ￼
 
 The high-scale bridge result says the operational shape is right: at 10^15, the probe outputs 249 / 256 rows with 0 audit failures, 43.37% pure PGS and 56.63% chain_horizon_closure; at 10^18, it outputs 250 / 256 rows with 0 audit failures, 42.00% pure PGS and 58.00% chain_horizon_closure.  ￼
 
@@ -37,7 +37,7 @@ The most important refinement: H should not be asked to certify the terminal nod
 That gives the theorem candidate a sharper form:
 
 Shadow-Chain Horizon Law
-Given input prime p and semiprime-shadow seed s0, construct the visible-open chain
+Given input prime p and semiprime-shadow seed s0, construct the sequence of candidates not eliminated by bounded factor checks
 C = (s1, s2, ..., sk).
 There exists a PGS-visible horizon H(p, s0, C_i) such that every false chain node
 before the true next prime has a divisor witness <= H, while the true next prime is
@@ -84,7 +84,7 @@ Then test candidate horizon laws:
 
 H0 = visible_divisor_bound
 H1 = visible_divisor_bound + max chain gap so far
-H2 = visible_divisor_bound + product or lcm of visible-open residue gaps in prefix
+H2 = visible_divisor_bound + product or lcm of residue gaps between candidates not eliminated by bounded factor checks in prefix
 H3 = max visible divisor witness observed in closure_reason_vector_before_node
 H4 = visible_divisor_bound + f(chain_position, delta_prev, delta_next)
 H5 = smallest divisor horizon that closes all prior false chain nodes in the same row

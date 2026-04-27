@@ -3,7 +3,7 @@
 This note records the executed status of the repo's former finite-reduction
 route:
 
-1. exact earlier-spoiler exhaustion on the full small-prime surface, and
+1. exact earlier-competing-integer exhaustion on the full small-prime surface, and
 2. a fixed-factor large-prime reducer above an explicit threshold.
 
 ## Executed Reducer
@@ -49,7 +49,7 @@ The executed result is:
 
 - exact small-prime surface scanned through $396739$,
 - `29830` prime gaps with composite interior,
-- `0` exact earlier spoilers,
+- `0` exact earlier competing integers,
 - `0` unresolved earlier candidates,
 - and `0` unresolved divisor-class rows through earlier divisor count
   $D = 32768$.
@@ -72,7 +72,7 @@ gate for theorem language.
 
 It does show that the remaining gap has become much narrower:
 
-- no earlier-spoiler counterexample exists on the full exact surface below
+- no earlier-competing-integer counterexample exists on the full exact surface below
   $396739$,
 - and no unresolved large-prime divisor class appears through $D = 32768$
   under the current fixed-factor reducer.

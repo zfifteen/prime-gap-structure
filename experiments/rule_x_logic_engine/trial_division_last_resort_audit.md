@@ -132,8 +132,8 @@ docs/specs/prime-gen/minimal_pgs_generator_logic.md
 ```
 
 The corrected fix removes the `has_trial_divisor(q0)` check from `resolve_q`.
-The production selector now uses exact divisor-count GWR/NLSC search-interval-reset
-state instead of the earlier first-visible-open shortcut. That is search interval
+The production selection rule now uses exact divisor-count GWR/NLSC search-interval-reset
+state instead of the earlier first-uneliminated-candidate shortcut. That is search interval
 state, not fallback completion.
 
 ## Post-Fix Runtime Evidence
@@ -192,7 +192,7 @@ PGS_GENERATOR_FREEZE_ID = pgs_inference_generator_v1_1_pgs_only
 
 The generator file no longer contains trial-division helpers, divisor-witness
 search, shadow-seed recovery, chain fallback, or fallback prime search. If the
-PGS selector does not resolve inside the supplied search bound, generation
+PGS selection rule does not resolve inside the supplied search bound, generation
 raises `PGSUnresolvedError` instead of choosing `q` by another method.
 
 Current focused test result:

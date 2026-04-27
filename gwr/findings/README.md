@@ -65,12 +65,12 @@ language than those input primes.
 - [gap_type_engine_decode_findings.md](./gap_type_engine_decode_findings.md):
   Rulebook, million-step stress test, and record-gap rarity readout for the
   persistent `14`-state model surface.
-- [gap_type_scheduler_findings.md](./gap_type_scheduler_findings.md):
-  Deterministic scheduler search showing that aligned `256`-window scoring
-  nearly closes the higher-order gap with a finite scheduler above the
+- [gap_type_transition rule_findings.md](./gap_type_scheduler_findings.md):
+  Deterministic transition-rule search showing that aligned `256`-window scoring
+  nearly closes the higher-order gap with a finite transition rule above the
   persistent `14`-state core.
-- [gap_type_hybrid_scheduler_findings.md](./gap_type_hybrid_scheduler_findings.md):
-  Hybrid lag-2 plus periodic scheduler search showing that the local-window
+- [gap_type_hybrid_transition rule_findings.md](./gap_type_hybrid_scheduler_findings.md):
+  Hybrid lag-2 plus periodic transition-rule search showing that the local-window
   model closes further, while the stationary long-horizon re-entry law
   remains the missing piece.
 - [gap_type_long_horizon_controller_findings.md](./gap_type_long_horizon_controller_findings.md):

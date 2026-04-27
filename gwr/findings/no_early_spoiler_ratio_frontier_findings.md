@@ -1,13 +1,13 @@
-# No-Early-Spoiler Ratio Extremum Findings
+# No-Early-Counterexample Ratio Extremum Findings
 
 This note records the executed pair-extremum extraction from
 [`no_early_spoiler_ratio_frontier.py`](../experiments/proof/no_early_spoiler_ratio_frontier.py).
 
-The input surface is the exact no-early-spoiler condition against the true
+The input surface is the exact no-early-counterexample condition against the true
 `GWR` integer. The question here is narrower:
 
 which selected integer/earlier divisor-class pairs come closest to violating the
-ratio-form spoiler inequality?
+ratio-form counterexample inequality?
 
 ## Executed Artifact
 
@@ -53,7 +53,7 @@ to zero.
 
 This extremal case shifts the research picture in one clear way:
 
-the no-early-spoiler problem is not currently tightening first in the small
+the no-early-counterexample problem is not currently tightening first in the small
 selected divisor-count classes.
 
 The exact extremum is instead led by adjacent or near-adjacent higher divisor

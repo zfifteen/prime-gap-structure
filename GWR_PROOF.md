@@ -89,23 +89,23 @@ So no requested residual class remains open on the retained proof obstruction li
 
 ### 5. Exact Audit Surface
 
-The proof chain is backed by exact no-spoiler audit surfaces rather than by a
+The proof chain is backed by exact no-counterexample audit surfaces rather than by a
 live open remainder.
 
 The strongest committed aggregate through $p < 5 \cdot 10^9$ is:
 
-- [output/gwr_proof/parallel_no_early_spoiler_5e9.json](output/gwr_proof/parallel_no_early_spoiler_5e9.json)
+- [output/gwr_proof/parallel_no_early_counterexample candidate_5e9.json](output/gwr_proof/parallel_no_early_spoiler_5e9.json)
 
 That artifact reports:
 
 - `172,913,029` prime gaps
 - `660,287,089` earlier candidates before the true `GWR` integer
-- `0` exact earlier spoilers
+- `0` exact earlier competing integers
 - `0` bridge failures
 
 The square-adjacent stress surface remains:
 
-- [output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json](output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)
+- [output/gwr_proof/earlier_counterexample candidate_local_dominator_scan_square_adjacent_1e12.json](output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)
 
 That artifact reports:
 
@@ -125,7 +125,7 @@ The visible proof chain is:
 4. exact square-free early-arrival closure on the committed admissibility
    extremal case;
 5. residual low-class closure by the committed residual-class artifacts;
-6. exact no-spoiler audit through $p < 5 \cdot 10^9$ plus square-adjacent
+6. exact no-counterexample audit through $p < 5 \cdot 10^9$ plus square-adjacent
    stress coverage at $10^{12}$.
 
 Older bridge-era and proof-progress notes are retained only in the archive:

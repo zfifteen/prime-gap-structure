@@ -381,7 +381,7 @@ later interior competitor.
 The earlier side is closed by the committed bridge chain:
 
 - exact finite scan through $p < 20{,}000{,}001$;
-- zero earlier spoilers across `1,163,198` prime gaps and `3,349,874` earlier
+- zero earlier competing integers across `1,163,198` prime gaps and `3,349,874` earlier
   candidates;
 - analytic BHP/Robin bridge for the large-$p$ tail;
 - verification-record thresholds `102` and `3,544`, both below the exact finite base.

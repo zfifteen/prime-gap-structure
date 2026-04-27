@@ -20,14 +20,14 @@
   and
   [../output/gwr_proof/residual_class_closure_20260413_1104.json](../output/gwr_proof/residual_class_closure_20260413_1104.json),
   with latest retained summary `all_requested_classes_closed = true`.
-- **The exact no-early-spoiler audit now carries the proof surface through
+- **The exact no-early-counterexample audit now carries the proof surface through
   `p < 5 x 10^9`.** The aggregate artifact
-  [../output/gwr_proof/parallel_no_early_spoiler_5e9.json](../output/gwr_proof/parallel_no_early_spoiler_5e9.json)
+  [../output/gwr_proof/parallel_no_early_counterexample candidate_5e9.json](../output/gwr_proof/parallel_no_early_spoiler_5e9.json)
   reports `172,913,029` gaps, `660,287,089` earlier candidates before the
-  true `GWR` integer, `0` exact earlier spoilers, and `0` bridge failures.
+  true `GWR` integer, `0` exact earlier competing integers, and `0` bridge failures.
 - **The square-adjacent stress surface at `10^12` remains clean.** The matched
   artifact
-  [../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json](../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)
+  [../output/gwr_proof/earlier_counterexample candidate_local_dominator_scan_square_adjacent_1e12.json](../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)
   reports `137,771` gaps, `649,769` earlier candidates, and `0` unresolved.
 - **The exact DNI/GWR next-prime oracle remains exact by construction.** Given
   a known prime `q`, the unbounded walker recovers the next prime from the

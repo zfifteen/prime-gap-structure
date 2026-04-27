@@ -14,7 +14,7 @@ But the stationary million-step walk was still far weaker:
 
 So the remaining question was narrower than before.
 
-It was no longer “is there a scheduler?” The local data had already answered
+It was no longer “is there a transition rule?” The local data had already answered
 that. The live question was:
 
 Can a deterministic long-horizon controller raise the stationary three-step
@@ -131,7 +131,7 @@ That is not a completion result. It is a target-setting result.
 The current model now has three empirically distinct layers:
 
 1. a local core grammar on the persistent `14`-state alphabet;
-2. a scheduler layer that closes the pooled `256`-window surface;
+2. a transition-rule layer that closes the pooled `256`-window surface;
 3. a long-horizon controller layer that can raise stationary concentration but
    currently does so by over-sharpening the local walk.
 

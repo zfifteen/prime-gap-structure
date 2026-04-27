@@ -151,7 +151,7 @@ Not yet supported:
 
 The strongest next target is now obvious:
 
-The alphabet appears to be right. The missing structure is the scheduler.
+The alphabet appears to be right. The missing structure is the transition rule.
 
 In practical terms, the next model candidate should preserve the same
 `14`-state scaffold but tighten the long-horizon two-step and three-step

@@ -14,7 +14,7 @@ Those coordinates are:
 
 - direct-score vulnerability, where the absolute margin $L(w) - L(k)$ can
   become small;
-- normalized ratio-form tightness, where the spoiler ratio can approach its
+- normalized ratio-form tightness, where the counterexample ratio can approach its
   threshold even though the absolute score margin remains comfortably positive.
 
 The current repository already records both extremal cases separately. This note
@@ -76,7 +76,7 @@ admissibility closure.
 
 ### 2. Ratio-Form Tightness
 
-The normalized spoiler ratio can be written as
+The normalized counterexample ratio can be written as
 
 $$\frac{d(k) - 2}{d_{\min} - 2} - \frac{\ln w}{\ln k},$$
 
@@ -212,7 +212,7 @@ It already closes the earlier side through a different architecture:
    regime;
 2. the residual low-class closure artifacts discharge the remaining requested
    low-class surface;
-3. the proof surface is then backed by the exact no-spoiler audits recorded in
+3. the proof surface is then backed by the exact no-counterexample audits recorded in
    the live theorem-facing documents.
 
 See:

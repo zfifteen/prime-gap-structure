@@ -37,7 +37,7 @@ as the scale grows.
 
 So the real theorem is not “the score prefers simpler numbers.” That part is
 elementary. The real theorem is that prime-gap interiors appear always to
-organize themselves so that every earlier spoiler gets beaten by some later
+organize themselves so that every earlier competing integer gets beaten by some later
 admissible composite, while nothing strictly simpler appears after the selected integer
 before the gap closes. That extra organization is what turns a directional bias
 into a complete maximizer rule.

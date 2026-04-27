@@ -30,7 +30,7 @@ and
 $$A < 14.246224287129907.$$
 
 Here $g(p)$ is the next-prime gap after $p$. The constant budget is the
-conservative bridge budget after the exact no-early-spoiler audit base
+conservative bridge budget after the exact no-early-counterexample audit base
 $P_0 = 5 \cdot 10^9$.
 
 If the handoff is postponed to the conservative end of the Dusart bridge
@@ -100,7 +100,7 @@ A completed bridge result must provide:
 This task does not alter the current GWR proof surface. It does not rework the
 hierarchical local-dominator theorem, lexicographic raw-$Z$ dominance,
 earlier-side local admissibility, residual-class closure, or exact
-no-early-spoiler audit.
+no-early-counterexample audit.
 
 The only target is the external analytic prime-gap input needed to turn the
 retained normalized bridge into a uniform analytic alternative proof.

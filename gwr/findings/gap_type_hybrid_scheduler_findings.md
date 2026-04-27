@@ -1,10 +1,10 @@
-# GWR Gap-Type Hybrid Scheduler Findings
+# GWR Gap-Type Hybrid Transition Rule Findings
 
 ## Observable Facts
 
-The local scheduler result was real, but it did not close the stationary walk.
+The local transition-rule result was real, but it did not close the stationary walk.
 
-On the aligned pooled `256`-window surface, the earlier scheduler probe had
+On the aligned pooled `256`-window surface, the earlier transition-rule probe had
 already reduced concentration L1 error from `0.1390` to `0.0201`. But on the
 full `1,000,000`-step stationary walk, the best three-step concentration was
 still only `0.4900`.
@@ -31,15 +31,15 @@ deterministic models:
 
 Here:
 
-- `mod8` means the scheduler carries an explicit `8`-state counter;
+- `mod8` means the transition rule carries an explicit `8`-state counter;
 - `reset_hdiv` resets that state when a higher-divisor state arrives;
 - `reset_nontriad` resets it whenever the walk leaves the Semiprime Wheel
   Attractor.
 
 The exact artifacts are:
 
-- [../../output/gwr_dni_gap_type_hybrid_scheduler_probe_summary.json](../../output/gwr_dni_gap_type_hybrid_scheduler_probe_summary.json)
-- ![Hybrid scheduler probe overview](../../output/gwr_dni_gap_type_hybrid_scheduler_probe_overview.png)
+- [../../output/gwr_dni_gap_type_hybrid_transition rule_probe_summary.json](../../output/gwr_dni_gap_type_hybrid_scheduler_probe_summary.json)
+- ![Hybrid transition-rule probe overview](../../output/gwr_dni_gap_type_hybrid_scheduler_probe_overview.png)
 
 ## Main Result
 
@@ -90,10 +90,10 @@ claim can and cannot be.
 
 Supported:
 
-- a finite hybrid scheduler closes the local-window surface to about `1.2%`
+- a finite hybrid transition rule closes the local-window surface to about `1.2%`
   concentration L1;
 - a hybrid lag-2 plus modulo controller improves the stationary walk relative
-  to the plain lag-2 scheduler.
+  to the plain lag-2 transition rule.
 
 Not yet supported:
 
@@ -107,7 +107,7 @@ not isolate it as uniquely privileged.
 
 Two cycle sweeps matter here.
 
-For the plain modulo scheduler, the best pooled-window cycle in the tested
+For the plain modulo transition rule, the best pooled-window cycle in the tested
 range `2..12` is actually `11`, with:
 
 - pooled concentration L1: `0.0202`
@@ -179,7 +179,7 @@ Prime-gap type generation is best modeled, on the present reduced surface, by a
 hierarchical finite model with three visible pieces:
 
 1. a persistent `14`-state core grammar;
-2. a lag-2 local scheduler;
+2. a lag-2 local transition rule;
 3. a small periodic gate with explicit reset behavior.
 
 That model now fits the observed pooled `256`-window concentration surface to

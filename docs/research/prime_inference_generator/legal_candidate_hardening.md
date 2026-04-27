@@ -2,8 +2,8 @@
 
 The first legal higher-divisor shadows did not survive the hardening gate.
 
-The strongest collision result belongs to
-`multiplicity_pressure_without_primality`: it has zero collisions on every
+The strongest conflict result belongs to
+`multiplicity_pressure_without_primality`: it has zero conflicts on every
 tested surface below. Its anti-table profile is decisive, however. It produces
 one distinct state for every input prime on every tested surface:
 
@@ -17,14 +17,14 @@ Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
-Test the three legal zero-collision signals from higher-divisor pressure
+Test the three legal zero-conflict signals from higher-divisor pressure
 legalization:
 
 - `bounded_composite_witness_pressure`
 - `power_signature_pressure`
 - `multiplicity_pressure_without_primality`
 
-The probe checks both collision behavior and anti-table behavior. A candidate
+The probe checks both conflict behavior and anti-table behavior. A candidate
 must not merely separate labels; it must do so without becoming a near-unique
 input prime fingerprint.
 
@@ -65,7 +65,7 @@ Each candidate report records:
 - `hardening_gate_status`
 - `passes_hardening_gate`
 
-The hardening gate marks a zero-collision candidate as quarantined when
+The hardening gate marks a zero-conflict candidate as quarantined when
 `distinct_state_ratio >= 0.95` or `singleton_bucket_rate >= 0.95`.
 
 ## Surfaces
@@ -85,7 +85,7 @@ The required hardening surfaces were:
 
 Rows: `9588`
 
-| Candidate | Collisions | Distinct Ratio | Singleton Rate | Status |
+| Candidate | Conflicts | Distinct Ratio | Singleton Rate | Status |
 |---|---:|---:|---:|---|
 | `multiplicity_pressure_without_primality` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 | `power_signature_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
@@ -97,7 +97,7 @@ Hardening candidates: none.
 
 Rows: `78494`
 
-| Candidate | Collisions | Distinct Ratio | Singleton Rate | Status |
+| Candidate | Conflicts | Distinct Ratio | Singleton Rate | Status |
 |---|---:|---:|---:|---|
 | `multiplicity_pressure_without_primality` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 | `power_signature_pressure` | `8` | `0.99986` | `0.99986` | `failed_collision_gate` |
@@ -109,7 +109,7 @@ Hardening candidates: none.
 
 Rows: `78494`
 
-| Candidate | Collisions | Distinct Ratio | Singleton Rate | Status |
+| Candidate | Conflicts | Distinct Ratio | Singleton Rate | Status |
 |---|---:|---:|---:|---|
 | `multiplicity_pressure_without_primality` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 | `power_signature_pressure` | `9` | `0.999834` | `0.999834` | `failed_collision_gate` |
@@ -121,7 +121,7 @@ Hardening candidates: none.
 
 Rows: `78494`
 
-| Candidate | Collisions | Distinct Ratio | Singleton Rate | Status |
+| Candidate | Conflicts | Distinct Ratio | Singleton Rate | Status |
 |---|---:|---:|---:|---|
 | `multiplicity_pressure_without_primality` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 | `power_signature_pressure` | `8` | `0.99986` | `0.99986` | `failed_collision_gate` |
@@ -133,7 +133,7 @@ Hardening candidates: none.
 
 Rows: `8392`
 
-| Candidate | Collisions | Distinct Ratio | Singleton Rate | Status |
+| Candidate | Conflicts | Distinct Ratio | Singleton Rate | Status |
 |---|---:|---:|---:|---|
 | `multiplicity_pressure_without_primality` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 | `power_signature_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
@@ -145,7 +145,7 @@ Hardening candidates: none.
 
 Rows: `7216`
 
-| Candidate | Collisions | Distinct Ratio | Singleton Rate | Status |
+| Candidate | Conflicts | Distinct Ratio | Singleton Rate | Status |
 |---|---:|---:|---:|---|
 | `multiplicity_pressure_without_primality` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 | `power_signature_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
@@ -155,15 +155,15 @@ Hardening candidates: none.
 
 ## Interpretation
 
-The collision evidence did not promote a Next-Prime Law 005 candidate.
+The conflict evidence did not promote a Next-Prime Law 005 candidate.
 
 `power_signature_pressure` and `bounded_composite_witness_pressure` fail the
-collision gate on the full `11..1_000_000` surface for at least one tested
+conflict gate on the full `11..1_000_000` surface for at least one tested
 prefix.
 
-`multiplicity_pressure_without_primality` keeps zero collisions, but it also
+`multiplicity_pressure_without_primality` keeps zero conflicts, but it also
 keeps a fully singleton state partition. The state is too specific to count as
-a reusable transition law. Its zero-collision result is quarantined as
+a reusable transition law. Its zero-conflict result is quarantined as
 table-like evidence.
 
 The legal candidate family therefore remains useful as a diagnostic signal, but

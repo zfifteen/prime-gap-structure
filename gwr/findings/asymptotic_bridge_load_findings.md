@@ -3,7 +3,7 @@
 This note records the executed normalized bridge surface from
 [`asymptotic_bridge_load_scan.py`](../experiments/proof/asymptotic_bridge_load_scan.py).
 
-The universal proof target for the no-early-spoiler condition is
+The universal proof target for the no-early-counterexample condition is
 
 $$\frac{\ln w}{\ln k} < 1 + \frac{\delta}{d_{\min} - 2}.$$
 
@@ -17,7 +17,7 @@ This artifact rewrites that target as one dimensionless load:
 
 $$B(k,w) = \frac{\frac{\ln w}{\ln k} - 1}{\frac{\delta}{d_{\min} - 2}}.$$
 
-So the no-early-spoiler condition is exactly
+So the no-early-counterexample condition is exactly
 
 $$B(k,w) < 1.$$
 
@@ -42,12 +42,12 @@ That maximum normalized load occurs at the gap $(7, 11)$ with:
 - earlier class $d = 4$.
 
 So on the current exact surface, even the hardest normalized case uses only
-about `5.66 %` of the available spoiler budget.
+about `5.66 %` of the available counterexample budget.
 
 This is the cleanest exact proof-facing surface in the repo for the asymptotic
 bridge. It removes the scale of the critical excess and asks only:
 
-how much of the available spoiler budget does the realized geometry actually
+how much of the available counterexample budget does the realized geometry actually
 use?
 
 ## Current Reading
@@ -79,5 +79,5 @@ The explicit certificate in
 [`proof_bridge_certificate_2e7.json`](../../output/gwr_proof/proof_bridge_certificate_2e7.json)
 then evaluates BHP's $\theta = 0.525$ with the recorded divisor-function
 constants. For $A=1$, the bridge thresholds `102` and `3,544` both land below
-the exact finite base $p < 20{,}000{,}001$, so the no-early-spoiler bridge
+the exact finite base $p < 20{,}000{,}001$, so the no-early-counterexample bridge
 closes under those assumptions.

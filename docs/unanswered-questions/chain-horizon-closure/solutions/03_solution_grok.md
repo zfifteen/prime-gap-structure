@@ -9,7 +9,7 @@ I read the committed question (00_question.md) and all six potential answers in 
 **I conducted a controlled simulation experiment** (saved as `/home/workdir/artifacts/pgs_horizon_experiment.py` + `pgs_horizon_experiment_results.json`) that directly executes the “sharpest next experiment” you defined:
 
 - Sampled 120 input primes across scales 10³–10⁶ (feasible proxy for high-scale behavior).
-- Simulated semiprime-shadow seeding + visible-open chains inside `candidate_bound=128`.
+- Simulated semiprime-shadow seeding + sequences of candidates not eliminated by bounded factor checks inside `candidate_bound=128`.
 - Used small `visible_divisor_bound=64` (PGS-local search interval value) to model the realistic high-scale regime where visible closure does **not** catch every false node.
 - Computed true **least-factor maximum** = max SPF of pre-terminal false nodes.
 - Tested **every proposed H form** from all six LLM answers head-to-head.

@@ -1,10 +1,10 @@
-# Pressure Collision Forensics
+# Pressure Conflict Forensics
 
-The first pressure-state probe found no eligible zero-collision state on input primes
+The first pressure-state probe found no eligible zero-conflict state on input primes
 `11..10_000`, prefix `8`. The closest legal signal was
-`previous_chamber_pressure_state`, with `30` collision buckets.
+`previous_chamber_pressure_state`, with `30` conflict buckets.
 
-This note records the next forensic target: inspect those collisions directly
+This note records the next forensic target: inspect those conflicts directly
 instead of adding new state families blindly.
 
 ## Target
@@ -12,11 +12,11 @@ instead of adding new state families blindly.
 - input primes: `11..10_000`
 - prefix: `8`
 - state: `previous_chamber_pressure_state`
-- collision buckets: all
+- conflict buckets: all
 
 ## Minimum Artifact Fields
 
-Each collision bucket records:
+Each conflict bucket records:
 
 - `boundary_offsets_observed`
 - `anchors_by_bucket`
@@ -33,12 +33,12 @@ The summary records:
 ## Interpretation Rule
 
 The next state family should be selected from the repeated missing observables,
-not guessed. If the collisions are mostly separated by current legal ladder or
+not guessed. If the conflicts are mostly separated by current legal ladder or
 square pressure, the next probe should combine those with previous-search-interval
 state. If they require exact semiprime or exact divisor pressure, the result is
 useful but not yet pure-eligible.
 
-Next-Prime Law 005 remains blocked until a legal state reaches zero collisions on
+Next-Prime Law 005 remains blocked until a legal state reaches zero conflicts on
 the meaningful surface.
 
 ## Result
@@ -60,10 +60,10 @@ Candidate missing observable counts:
 - `previous_gap_width_class`: `16`
 
 The strongest legal next candidate is `previous_chamber_plus_square_pressure`.
-It varies in every collision bucket and does not require prime-marker identity,
+It varies in every conflict bucket and does not require prime-marker identity,
 future next-prime offset, or exact factorization. Exact semiprime, integer, and
-threat-schedule variants also separate the collisions, but they are not
+threat-schedule variants also separate the conflicts, but they are not
 pure-eligible in their current form.
 
 Next-Prime Law 005 remains blocked until the combined state is tested and reaches
-zero collisions on the meaningful surface.
+zero conflicts on the meaningful surface.

@@ -4,7 +4,7 @@
 ```text
 H(p, s0, chain_state)
 ```
-that **predicts the divisor horizon** (how far one must search for a small factor) required to close false semiprime-shadow chain nodes before the true next prime, using only PGS-visible state. If such an `H` exists and is provably bounded well below \(\sqrt{q}\) by PGS-visible invariants, the bridge becomes a pure PGS selector.   [github.com](https://github.com/zfifteen/prime-gap-structure/blob/a1c6a7938c4cd9a234f0508f570ede4513084431/)
+that **predicts the divisor horizon** (how far one must search for a small factor) required to close false semiprime-shadow chain nodes before the true next prime, using only PGS-visible state. If such an `H` exists and is provably bounded well below \(\sqrt{q}\) by PGS-visible invariants, the bridge becomes a pure PGS selection rule.   [github.com](https://github.com/zfifteen/prime-gap-structure/blob/a1c6a7938c4cd9a234f0508f570ede4513084431/)
 
 **Why this matters.** Converting the bridge to a PGS-derived rule would move a large fraction of high-scale outputs from deterministic fallback into PGS-derived output (current fallback share ~56–58% at the tested scales). The repository already documents the generator shape, the semiprime wheel attractor, and the current fallback displacement targets.   [github.com](https://github.com/zfifteen/prime-gap-structure/blob/a1c6a7938c4cd9a234f0508f570ede4513084431/)
 

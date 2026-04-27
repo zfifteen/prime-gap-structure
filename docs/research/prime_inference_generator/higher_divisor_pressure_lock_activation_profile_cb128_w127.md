@@ -193,7 +193,7 @@ unique success: mostly semiprime selected integer, usually d=4, no single-hole c
 non-unique activation: mostly prime-power selected integer, usually d=3, single-hole closure used
 ```
 
-This is a profile result, not an approved selector. It identifies a possible
+This is a profile result, not an approved selection rule. It identifies a possible
 future refinement target without authorizing any rule broadening.
 
 ## Interpretation

@@ -109,7 +109,7 @@ high-utilization tail at about `1.05%`.
 
 ## Reading
 
-This changes the most natural one-step scheduler story.
+This changes the most natural one-step transition-rule account.
 
 The earlier parity note and reset probes showed that a current discrete label
 can carry one-step memory. This new probe says the current gap also carries a
@@ -141,7 +141,7 @@ exact baseline and the pooled high-scale windows.
 ## Scope
 
 This is a bounded transition claim on the current executed catalog surface. It
-does not claim that prime-square interval utilization alone closes the full scheduler
+does not claim that prime-square interval utilization alone closes the full transition rule
 problem, and it does not claim a universal theorem for all gap families.
 
 What it does show is narrower and stronger:

@@ -5,11 +5,11 @@
 Milestone 3 resolves the fact that the current reduced 14-state selected integer type is
 not sufficient to output the exact next prime.
 
-The state must be sharpened until the next-prime selector is single-valued:
+The state must be sharpened until the next-prime selection rule is single-valued:
 
 $$B(q,S,w,d(w))=q^+$$
 
-## Known Collision
+## Known Conflict
 
 The committed catalog surface contains rows with the same reduced selected integer type
 and different next-prime offsets:
@@ -23,22 +23,22 @@ Therefore the reduced type alone cannot be the full GPE state.
 
 ## Required State Rule
 
-Add only state ingredients that remove real selector collisions.
+Add only state ingredients that remove real selection-rule conflicts.
 
 Candidate ingredients must be measured as ratios or invariant coordinates when
 possible, including:
 
 - current residue and wheel-open offset,
 - previous reduced state,
-- lag-2 scheduler state,
+- lag-2 transition rule state,
 - prime-square interval utilization for $d(w)=4$,
 - controller lock state,
-- and any explicitly derived modular constraint needed by the selector.
+- and any explicitly derived modular constraint needed by the selection rule.
 
 No ingredient is accepted merely because it improves a statistical score. It
-must reduce or eliminate exact selector collisions.
+must reduce or eliminate exact selection-rule conflicts.
 
-## Collision Audit
+## Conflict Audit
 
 For any proposed state $S$, the audit must group validation rows by:
 
@@ -53,14 +53,14 @@ with $q$ removed, so the state compression is visible rather than tautological.
 
 Milestone 3 is complete when:
 
-- the proposed state has no endpoint-selector collisions on the validation
+- the proposed state has no endpoint selection-rule conflicts on the validation
   surface,
 - each state ingredient has a documented reason for inclusion,
-- dropping any accepted ingredient reintroduces a measured collision or fails a
+- dropping any accepted ingredient reintroduces a measured conflict or fails a
   branch proof obligation,
 - and the resulting state remains small enough to audit manually from one row.
 
 ## Non-Goals
 
 This milestone does not create a generalized state framework or a configurable
-feature search. It identifies the smallest state needed by the GPE selector.
+feature search. It identifies the smallest state needed by the GPE selection rule.

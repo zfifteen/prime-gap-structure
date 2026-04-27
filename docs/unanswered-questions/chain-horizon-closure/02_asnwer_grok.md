@@ -3,9 +3,9 @@
 ### Current Operational Shape (Confirmed in Repo)
 The Minimal PGS Generator (docs/specs/prime-gen/minimal_pgs_generator_logic.md + supporting probes) exactly matches your description:
 
-- **Search-interval closure** (v2 selector) enumerates wheel-admissible offsets up to `candidate_bound` (default 128, a fixed PGS-local constant), rejects visibly closed candidates via search-interval arithmetic + wheel structure, and outputs the first fully closed proposed endpoint when PGS rules suffice.
+- **Search-interval closure** (v2 selection rule) enumerates wheel-admissible offsets up to `candidate_bound` (default 128, a fixed PGS-local constant), rejects visibly closed candidates via search-interval arithmetic + wheel structure, and outputs the first fully closed proposed endpoint when PGS rules suffice.
 - **Semiprime shadows** seed short rightward chains from the initial PGS selection record (`pgs_probe_certificate`).
-- **Chain-horizon closure** walks the visible-open shadow chain nodes, applies closure reasons (`closure_reason(p, offset, visible_divisor_bound)`), and selects the remaining candidate.
+- **Chain-horizon closure** walks the shadow-chain nodes not eliminated by bounded factor checks, applies closure reasons (`closure_reason(p, offset, visible_divisor_bound)`), and selects the remaining candidate.
 - Downstream audit (separate from generation) confirms **zero failures** on all tested surfaces (exact low-scale + high-scale probes to 10¹⁸).
 
 The generator is therefore **operationally correct and audit-clean** at every scale. The only non-pure-PGS portion is the terminal decision inside `chain_horizon_closure` when the initial PGS selection record proposes a composite seed: it still falls back to deterministic `factorization_accepts_candidate` (trial division up to `√n ≈ √q`) to decide which chain node is prime.
@@ -19,11 +19,11 @@ This produces the headline numbers you cited:
 The repo’s benchmark scripts (`benchmarks/python/predictor/`) are purpose-built for exactly the experiment you propose:
 
 - `simple_pgs_recursive_shadow_chain_state_mine.py` — recursively mines shadow-chain states (prefix + sub-chains), records delta vectors, mod-30 residues, closure vectors (`closure_vector_between`), open densities, ranker mappings (`ranker_b/c/d`), and hidden-obstruction proxies. It evaluates six termination rules and projects PGS-conversion rates.
-- `simple_pgs_shadow_chain_terminal_certificate_mine.py` — the closest match to “mine the least-factor maximum of false chain nodes”. It ingests chain-fallback probe rows, annotates every visible-open node with:
+- `simple_pgs_shadow_chain_terminal_certificate_mine.py` — the closest match to “mine the least-factor maximum of false chain nodes”. It ingests chain-fallback probe rows, annotates every node not eliminated by bounded factor checks with:
     - PGS-visible state: offsets, prefix/suffix deltas, mod-30 / mod-6 residues, closure/open counts before & after the node, `visible_boundary_score` (4-tuple penalizing opens before the node and rewarding closure after), local signatures, ranker scores.
     - Ground-truth label `is_terminal_for_audit_only` (matches true `q`).
 - False nodes = all non-terminal nodes before the true `q`.
-- It then applies heuristic selectors (`rule_b_best_ranker_b`, `rule_d_post_visible_open_drop`, `rule_f_low_exact_terminal_signature` extracted from true low-endpoint PGS terminals, etc.) and measures `top1_recall`, `would_create_audit_failures`, and `projected_pgs_percent` (how many chain-fallback cases could become pure PGS if the rule were trusted).
+- It then applies heuristic selection rules (`rule_b_best_ranker_b`, `rule_d_post_visible_open_drop`, `rule_f_low_exact_terminal_signature` extracted from true low-endpoint PGS terminals, etc.) and measures `top1_recall`, `would_create_audit_failures`, and `projected_pgs_percent` (how many chain-fallback cases could become pure PGS if the rule were trusted).
 
 Parallel backward-law miners (`pgs_semiprime_backward_factor_closure_search.py`, `pgs_semiprime_backward_law_search.py`, `pgs_semiprime_backward_pattern_miner.py`, `pgs_semiprime_backward_*_transition_law_search.py`, etc.) traverse semiprime “lanes” using exactly the same PGS invariants (GWR-selected integer / first-`d=4` / first-`d_min` integers, gap widths, large negative offsets, lane-factor intersection with the semiprime’s prime factors, search interval-style three-gap neighborhoods). They record step counts to factor reach and failure modes (lane broken, max_steps exhausted).
 
@@ -57,7 +57,7 @@ All of these scripts operate inside the **fixed `candidate_bound=128`** search i
 
 3. **Re-audit**. Because the original chain logic already produces zero audit failures when full factorization is used, and the new `H` is derived from the same visible structure that the existing rules already exploit successfully, the only risk is under-closing a false node (which would be caught immediately by the downstream audit). The repo’s zero-failure track record makes this low-risk.
 
-4. **Expected outcome**: the 56–58 % bridge collapses into PGS-derived output, pushing overall PGS fraction well above 90 % (or 100 % if search interval rules are also tightened). The generator becomes a **pure local PGS selector** at the fixed `candidate_bound=128`.
+4. **Expected outcome**: the 56–58 % bridge collapses into PGS-derived output, pushing overall PGS fraction well above 90 % (or 100 % if search interval rules are also tightened). The generator becomes a **pure local PGS selection rule** at the fixed `candidate_bound=128`.
 
 ### Bottom Line
 The repo has already done the hard empirical work: the generator is correct, the mining tools exist and are running on exactly the false-chain-node least-factor maximum, and the structural invariants (deltas, residues, closure vectors, low-exact-terminal signatures, GWR-selected integers) are rich enough to support a small deterministic `H`. The only remaining step is to **explicitly mine and publish the least-factor maximum statistics** (max spf of false nodes vs PGS state) and close the loop with a derived horizon law.

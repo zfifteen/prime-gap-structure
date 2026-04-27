@@ -96,7 +96,7 @@ The current offline operation is:
 1. Run composite exclusion with single-hole positive witness closure enabled.
 2. Run selected-integer-locked pressure ceiling with
    `unresolved_alternatives_before_threat`.
-3. Identify resolved candidate candidates.
+3. Identify resolved candidates.
 4. For each resolved candidate, inspect later unresolved alternatives.
 5. If legal higher-divisor pressure exists between the resolved candidate and
    those later unresolved alternatives, treat the resolved candidate as locked.

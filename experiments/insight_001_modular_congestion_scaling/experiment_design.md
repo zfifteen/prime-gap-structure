@@ -210,7 +210,7 @@ $$MCS_0(x) = k(x)\frac{W(x)}{\phi(W(x))}.$$
 This removes local residue alignment and keeps only the average density of
 coprime slots. In implementation, compute `W(x) / phi(W(x))` as
 `product(ell / (ell - 1))` over active primes; do not materialize the
-primorial. If `MCS_0` performs as well as `MCS`, the local collision claim has
+primorial. If `MCS_0` performs as well as `MCS`, the local conflict claim has
 not added predictive information beyond ordinary small-prime density.
 
 ## Required Artifacts
@@ -311,7 +311,7 @@ The residue-alignment-blind control performs as well as the local `MCS` metric.
 
 Interpretation:
 
-The experiment does not support the collision-and-locking part of the insight.
+The experiment does not support the conflict-and-locking part of the insight.
 The signal is explainable by ordinary average coprime density.
 
 ## Obstruction Cases

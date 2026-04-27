@@ -85,7 +85,7 @@ core. Its dominant dynamical object is the **Semiprime Wheel Attractor**:
 The frozen `v1.0` model has three layers:
 
 1. core grammar;
-2. scheduler;
+2. transition rule;
 3. higher-divisor-triggered long-horizon controller.
 
 Its reference operating profiles are:
@@ -142,7 +142,7 @@ Miller-Rabin, sieves, and oracle-style `nextprime` calls are also excluded from
 generation. Classical validation remains downstream audit after generation.
 
 On the current production generator surface, exact output is preserved and the
-PGS selector applies exact divisor-count GWR/NLSC search-interval-reset state:
+PGS selection rule applies exact divisor-count GWR/NLSC search-interval-reset state:
 
 ```text
 surface: 11..100000
@@ -154,7 +154,7 @@ incorrect candidates: 0
 coverage: 100.00%
 ```
 
-The same production selector now reproduces the high-scale decade-window
+The same production selection rule now reproduces the high-scale decade-window
 surface through `10^18`:
 
 ```text
@@ -254,7 +254,7 @@ The repository now carries the following named structures and results:
   [gwr/findings/gap_type_engine_v1_freeze.md](gwr/findings/gap_type_engine_v1_freeze.md).
 - **Hierarchical finite-state model:** on the persistent reduced gap-type
   surface, the frozen `v1.0` model combines a `14`-state core grammar, a
-  scheduler layer, and a higher-divisor-triggered long-horizon controller. See
+  transition-rule layer, and a higher-divisor-triggered long-horizon controller. See
   [docs/releases/prime_gap_generative_engine_v1_0.md](docs/releases/prime_gap_generative_engine_v1_0.md)
   and
   [gwr/findings/gap_type_engine_v1_rulebook.md](gwr/findings/gap_type_engine_v1_rulebook.md).
@@ -351,7 +351,7 @@ The formal theorem file expresses this as a hierarchical local-dominator law.
 The proof is closed on the repository's current proof surface: ordered
 dominance closes the later side, the local admissibility theorem closes the
 earlier side, the residual-class closure artifacts discharge the former
-low-class remainder, and the exact no-early-spoiler audits through
+low-class remainder, and the exact no-early-counterexample audits through
 $p < 5 \times 10^9$ plus the square-adjacent stress surface at $10^{12}$
 remain clean.
 

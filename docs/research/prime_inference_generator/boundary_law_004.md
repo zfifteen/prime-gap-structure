@@ -158,7 +158,7 @@ candidate next prime without calling `nextprime`.
 
 What it establishes:
 
-- a possible implementation shape for a pure next-prime selector;
+- a possible implementation shape for a pure next-prime selection rule;
 - a route from interior selected-integer metadata to a next-prime offset.
 
 What remains missing:

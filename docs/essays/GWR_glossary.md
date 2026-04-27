@@ -204,20 +204,20 @@ where `δ` is the selected integer’s divisor count.
 It means the endpoint primes are only allowed to bound interiors with that
 general structure.
 
-## Spoiler Terms
+## Counterexample-Candidate Terms
 
-### Spoiler
+### Counterexample Candidate
 
 **Plain language:** A candidate that could beat the intended selected integer.
 
-**In this repo:** A spoiler is usually an earlier interior integer that might
+**In this repo:** A counterexample candidate is usually an earlier interior integer that might
 have a larger score than the actual `GWR` integer.
 
 If such a candidate really beat the selected integer, `GWR` would fail on that gap.
 
-### Earlier Spoiler
+### Earlier Competing Integer
 
-**Plain language:** A spoiler that appears before the selected integer inside the gap.
+**Plain language:** A counterexample candidate that appears before the selected integer inside the gap.
 
 **In this repo:** This was the hard direction in the proof program. The
 explicit bridge verification record and closure artifacts now close it on the current
@@ -227,46 +227,46 @@ The right side is easier because later simpler candidates are ruled out by the
 maximizer rule and the dominance theorem. The difficult side is the earlier
 higher-divisor candidates.
 
-### Spoiler Candidate
+### Counterexample Candidate
 
-**Plain language:** A candidate checked for whether it could be a spoiler.
+**Plain language:** A candidate checked for whether it could be a counterexample candidate.
 
-**In this repo:** Not every spoiler candidate is a real spoiler. It is just an
+**In this repo:** Not every counterexample candidate is a real counterexample. It is just an
 interior integer that has to be checked.
 
-### Spoiler Template
+### Counterexample Template
 
 **Plain language:** A pattern of values or divisor classes that could act like
-a spoiler if it were realized in an actual gap.
+a counterexample candidate if it were realized in an actual gap.
 
 **In this repo:** This is an interpretive term, not a formal theorem term.
 
 It usually means an abstract pattern that looks dangerous on paper, before
 checking whether actual prime gaps ever realize it.
 
-### Spoiler Family
+### Counterexample Family
 
-**Plain language:** A whole infinite collection of spoiler-like patterns built
+**Plain language:** A whole infinite collection of counterexample-like patterns built
 from one formula.
 
 **In this repo:** The class-only obstruction families are examples. They show
 that the current abstract inequality does not automatically eliminate every
 possible dangerous class pattern.
 
-### Divisor-Class Spoiler
+### Divisor-Class Counterexample Candidate
 
-**Plain language:** A spoiler discussed at the level of divisor counts rather
+**Plain language:** A counterexample candidate discussed at the level of divisor counts rather
 than at the level of one specific gap.
 
 **In this repo:** This usually means talking about a pair like
 “selected divisor-count class `30`, earlier class `32`” rather than one single pair of
 integers.
 
-### Spoiler Threshold
+### Counterexample Threshold
 
 **Plain language:** The endpoint between safe and unsafe cases.
 
-**In this repo:** For bridge load, the spoiler threshold is `B(k, w) = 1`.
+**In this repo:** For bridge load, the counterexample threshold is `B(k, w) = 1`.
 Below `1` is safe. At or above `1` would be dangerous.
 
 ## Bridge Terms
@@ -276,7 +276,7 @@ Below `1` is safe. At or above `1` would be dangerous.
 **Plain language:** The argument connecting the exact finite base to the
 large-scale theorem.
 
-**In this repo:** “Bridge” often means the no-early-spoiler argument that turns
+**In this repo:** “Bridge” often means the no-early-counterexample argument that turns
 the exact finite base into a universal proof. The committed certificate now
 records that the bridge threshold falls below the finite base on the repo's
 current closed proof surface.
@@ -284,7 +284,7 @@ current closed proof surface.
 ### Bridge Load
 
 **Plain language:** A normalized measure of how close an earlier candidate is
-to becoming a true spoiler.
+to becoming a true counterexample.
 
 **In this repo:** Written as `B(k, w)`.
 
@@ -292,12 +292,12 @@ You can read it as:
 
 - `B` near `0` means very safe,
 - `B` near `1` means close to dangerous,
-- `B >= 1` would mean the spoiler condition is no longer safely satisfied.
+- `B >= 1` would mean the counterexample condition is no longer safely satisfied.
 
-### Spoiler Budget
+### Counterexample Budget
 
 **Plain language:** How much room there is before a candidate becomes a true
-spoiler.
+counterexample candidate.
 
 **In this repo:** This is informal language for the same idea measured by
 bridge load.
@@ -353,7 +353,7 @@ to violating the target rule.
 **In this repo:** This is informal language, not a formal theorem term.
 
 When a note says “danger surface,” it means the region of the scan where the
-cases look closest to becoming spoilers or failures.
+cases look closest to becoming counterexamples or failures.
 
 ### Extremal Case
 
@@ -372,7 +372,7 @@ some target bound.
 Example:
 
 - a pair like `(30, 32)` may lead the ratio extremum because it comes closest
-  to the spoiler threshold among the measured class pairs.
+  to the counterexample threshold among the measured class pairs.
 
 ### Motif
 
@@ -510,7 +510,7 @@ It does **not** mean the repo has proved a censorship theorem.
 
 It means the current evidence suggests:
 
-- many spoiler-like patterns are available in abstract class algebra,
+- many counterexample-like patterns are available in abstract class algebra,
 - but only a thin subset seems to survive as actual gap interiors.
 
 ### Prime-Gap Admissibility Censorship
@@ -603,7 +603,7 @@ When a note feels unreadable, try this translation rule:
 
 - “surface” means “the cases we measured,”
 - “extremal case” means “the hardest measured cases,”
-- “spoiler” means “a candidate that could beat the selected integer,”
+- “counterexample candidate” means “a candidate that could beat the selected integer,”
 - “bridge load” means “how close that candidate comes,”
 - “closure” means “whether the next prime arrives in time,”
 - “admissibility” means “whether a pattern can actually happen in a real gap.”

@@ -116,7 +116,7 @@ The transition-state search should test deterministic state vectors built from:
 - previous GWR-selected integer type;
 - semiprime-wheel attractor state.
 
-The initial probe should start small. A state collision is not a failure of the
+The initial probe should start small. A state conflict is not a failure of the
 project. It is information about which data cannot force a endpoint.
 
 ## Legal Ladder State Vectors
@@ -148,8 +148,8 @@ The probe must:
 2. Compute candidate PGS state vectors for each input prime.
 3. Attach the classical next gap width as a label.
 4. Group rows by state vector.
-5. Report collisions where one state maps to multiple next-prime offsets.
-6. Report the first tested state vector with zero collisions, if one exists.
+5. Report conflicts where one state maps to multiple next-prime offsets.
+6. Report the first tested state vector with zero conflicts, if one exists.
 
 Output fields:
 
@@ -176,7 +176,7 @@ before generation can output a value.
 
 ## Leakage Audit Gate
 
-Zero collisions are not enough. A state vector is disqualified as a pure
+Zero conflicts are not enough. A state vector is disqualified as a pure
 generation candidate if it includes the next-prime offset, the current gap width,
 prime-marker tokens, stop-at-first-prime behavior, `nextprime`, `isprime`, or an
 equivalent endpoint-discovery mechanism.
@@ -195,14 +195,14 @@ The first legal ladder expansion tested input primes `11..200`, `11..10_000`, an
 `11..100_000` across prefixes `8, 12, 16, 24, 32`.
 
 The contaminated `carrier_ladder` and `previous_gap_ladder` states keep zero
-collisions on these surfaces, but they remain ineligible because they use
+conflicts on these surfaces, but they remain ineligible because they use
 prime-marker masking.
 
 The legal shadow states do not yet supply a Next-Prime Law 005 candidate:
 
-- `11..200`, prefix `12`: `known_composite_divisor_ladder` has zero collisions;
-- `11..10_000`, all tested prefixes: no eligible zero-collision state;
-- `11..100_000`, all tested prefixes: no eligible zero-collision state.
+- `11..200`, prefix `12`: `known_composite_divisor_ladder` has zero conflicts;
+- `11..10_000`, all tested prefixes: no eligible zero-conflict state;
+- `11..100_000`, all tested prefixes: no eligible zero-conflict state.
 
 The current result is:
 
@@ -215,7 +215,7 @@ found.
 
 ## Next Next-Prime Law Candidate
 
-If the transition-state probe finds a zero-collision state vector on a meaningful
+If the transition-state probe finds a zero-conflict state vector on a meaningful
 surface, the next candidate is:
 
 Next-Prime Law 005: Finite Transition Next-Prime Law.

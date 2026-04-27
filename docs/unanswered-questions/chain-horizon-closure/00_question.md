@@ -19,7 +19,7 @@ H(p, s0, chain_state)
 
 where `H` predicts the divisor horizon needed to close the false semiprime-shadow chain nodes before the true next prime.
 
-If we can derive that horizon from PGS-visible quantities, then the current bridge becomes a real PGS selector. That would convert the major high-scale non-PGS portion:
+If we can derive that horizon from PGS-visible quantities, then the current bridge becomes a real PGS selection rule. That would convert the major high-scale non-PGS portion:
 
 - `56.63%` at `10^15`
 - `58.00%` at `10^18`

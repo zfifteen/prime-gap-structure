@@ -65,7 +65,7 @@ The false resolved candidate at offset 12 absorbs the true next prime candidate 
 
 ## Interpretation
 
-The previous-to-current selected-integer shift lock hardened as a zero-wrong selector inside a narrower theorem-discovery population. Direct integration applies it operationally to every row where the local predicate fires.
+The previous-to-current selected-integer shift lock hardened as a zero-wrong selection rule inside a narrower theorem-discovery population. Direct integration applies it operationally to every row where the local predicate fires.
 
 Those are not the same regime.
 

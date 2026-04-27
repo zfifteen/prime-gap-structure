@@ -29,7 +29,7 @@ $10^9 < p < 5 \times 10^9$.
 - Key statistics:
   `172,913,029` gaps,
   `660,287,089` earlier candidates,
-  `0` exact spoilers,
+  `0` exact counterexamples,
   `0` bridge failures,
   maximum bridge load `3.7231970839712858e-09`
 - Load comparison:
@@ -43,11 +43,11 @@ $10^9 < p < 5 \times 10^9$.
   - checks every earlier interior composite against that candidate using exact
     integer-power score comparison,
   - and records which earlier candidates are already eliminated by the current
-    spoiler-bound reduction.
+    counterexample-bound reduction.
 - [`finite_remainder_attempt.py`](./finite_remainder_attempt.py):
   deterministic class-only route test that
   - attempts to derive an explicit finite remainder bound from the current
-    spoiler reduction,
+    counterexample reduction,
   - and writes the exact obstruction family showing that the current reduction
     alone does not close the infinite tail.
 - [`large_prime_reducer.py`](./large_prime_reducer.py):
@@ -55,7 +55,7 @@ $10^9 < p < 5 \times 10^9$.
   - exhaustively scans every prime gap below a fixed explicit large-prime
     threshold,
   - then tests a fixed-factor large-prime class table against the exact
-    earlier-spoiler inequality,
+    earlier-competing-integer inequality,
   - and writes the remaining large-prime divisor classes, if any.
 - [`large_prime_tail_obstruction.py`](./large_prime_tail_obstruction.py):
   deterministic tail-obstruction script that
@@ -65,40 +65,40 @@ $10^9 < p < 5 \times 10^9$.
     alone keeps that family unresolved forever.
 - [`earlier_spoiler_local_dominator_scan.py`](./earlier_spoiler_local_dominator_scan.py):
   exact prime-gap admissibility scan that
-  - takes each actual earlier spoiler candidate before the `GWR` selected integer,
+  - takes each actual earlier competing integer before the `GWR` selected integer,
   - finds the first later interior composite that beats it exactly,
   - and records the offset law and per-class offset extremal case.
 - [`no_early_spoiler_margin_scan.py`](./no_early_spoiler_margin_scan.py):
-  exact no-early-spoiler scan that
+  exact no-early-counterexample scan that
   - compares every earlier interior candidate directly to the actual `GWR`
     integer,
   - records the smallest selected integer-minus-earlier log-score margin,
-  - and records the smallest critical-ratio slack in the exact spoiler
+  - and records the smallest critical-ratio slack in the exact counterexample candidate
     inequality.
 - [`no_early_spoiler_ratio_frontier.py`](./no_early_spoiler_ratio_frontier.py):
   exact pair-extremal-case extractor that
   - finds the tightest realized case for each selected integer/earlier divisor-class
     pair,
   - ranks those pairs by critical-ratio slack,
-  - and writes the current ratio-form ratio extremum of the no-early-spoiler
+  - and writes the current ratio-form ratio extremum of the no-early-counterexample
     condition.
 - [`large_gap_margin_scan.py`](./large_gap_margin_scan.py):
   exact large-gap extractor that
-  - records the worst realized no-early-spoiler case inside each of the
+  - records the worst realized no-early-counterexample case inside each of the
     largest gaps,
   - records the worst realized case for each exact gap size,
   - and tests directly whether large gap length is where the current margin
     surface tightens.
 - [`asymptotic_bridge_load_scan.py`](./asymptotic_bridge_load_scan.py):
   exact normalized bridge extractor that
-  - rewrites the no-early-spoiler inequality as a dimensionless load,
+  - rewrites the no-early-counterexample inequality as a dimensionless load,
   - records the maximum realized bridge load on the exact surface,
   - and writes pair and gap-size extremal cases in that normalized coordinate.
 - [`parallel_no_early_spoiler_scan.py`](./parallel_no_early_spoiler_scan.py):
   deterministic segmented scanner that
   - partitions the left-endpoint prime range into fixed-width segments,
   - writes one JSON checkpoint per completed segment,
-  - aggregates exact spoiler counts and bridge-load extrema across segments,
+  - aggregates exact counterexample counts and bridge-load extrema across segments,
   - and provides the straight execution path for extending the finite GWR base
   beyond the current $10^9$ surface.
 - [`prime_gap_admissibility_frontier.py`](./prime_gap_admissibility_frontier.py):
@@ -110,7 +110,7 @@ $10^9 < p < 5 \times 10^9$.
 - [`proof_bridge_universal_lemma.md`](./proof_bridge_universal_lemma.md):
   theorem-facing bridge note that
   - derives a non-empirical large-$p$ upper bound for the normalized
-  no-early-spoiler load,
+  no-early-counterexample load,
   - records the exact dependence on explicit literature constants,
   - separates the bounded unconditional Dusart regime from the provisional BHP
     tail,

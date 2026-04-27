@@ -107,20 +107,20 @@ So no requested residual class remains open on the current proof surface.
 
 ## Exact Audit Surface
 
-The exact no-early-spoiler aggregate through $p < 5 \cdot 10^9$ is:
+The exact no-early-counterexample aggregate through $p < 5 \cdot 10^9$ is:
 
-- [../../output/gwr_proof/parallel_no_early_spoiler_5e9.json](../../output/gwr_proof/parallel_no_early_spoiler_5e9.json)
+- [../../output/gwr_proof/parallel_no_early_counterexample candidate_5e9.json](../../output/gwr_proof/parallel_no_early_spoiler_5e9.json)
 
 It reports:
 
 - `172,913,029` gaps,
 - `660,287,089` earlier candidates before the true `GWR` integer,
-- `0` exact earlier spoilers,
+- `0` exact earlier competing integers,
 - `0` bridge failures.
 
 The square-adjacent stress artifact at $10^{12}$ is:
 
-- [../../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json](../../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)
+- [../../output/gwr_proof/earlier_counterexample candidate_local_dominator_scan_square_adjacent_1e12.json](../../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)
 
 It reports `137,771` gaps, `649,769` earlier candidates, and `0` unresolved.
 

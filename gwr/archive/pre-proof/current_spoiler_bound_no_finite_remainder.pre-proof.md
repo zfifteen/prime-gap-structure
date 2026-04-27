@@ -1,13 +1,13 @@
-# Current Class-Only Spoiler Bound Leaves An Infinite Family
+# Current Class-Only Counterexample Candidate Bound Leaves An Infinite Family
 
 This note records the exact result of the first executed class-only test for
-the spoiler inequality used in the repo's former finite-reduction proof route,
+the counterexample inequality used in the repo's former finite-reduction proof route,
 now retained only as historical context in
 [`what_counts_as_gwr_proof.md`](./what_counts_as_gwr_proof.md).
 
 The question is narrow:
 
-starting from the current earlier-spoiler reduction,
+starting from the current earlier-competing-integer reduction,
 
 $$
 a^{(D-\delta)} < 2^{(\delta-2)},
@@ -38,7 +38,7 @@ $$
 
 So this gives an exact divisor-class witness for the pair $(\delta, D)$.
 
-Under the current spoiler reduction, elimination would require
+Under the current counterexample reduction, elimination would require
 
 $$
 a^{D-\delta} \ge 2^{\delta-2}.
@@ -94,7 +94,7 @@ So it does **not** prove that the whole finite-reduction route is impossible.
 
 It says something narrower:
 
-the current spoiler inequality, by itself, does not force a finite class-level
+the current counterexample inequality, by itself, does not force a finite class-level
 remainder.
 
 ## Executed Artifact

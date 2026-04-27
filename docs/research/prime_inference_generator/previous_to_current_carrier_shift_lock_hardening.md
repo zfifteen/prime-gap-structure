@@ -28,7 +28,7 @@ witness_bound: 97
 single_hole_positive_witness_closure: enabled
 carrier_locked_pressure_ceiling: enabled
 higher_divisor_locked_absorption: disabled
-previous_to_current_carrier_shift_lock: selector only
+previous_to_current_carrier_shift_lock: selection-rule only
 ```
 
 The lock was evaluated on the previous-search-interval near-miss target population:

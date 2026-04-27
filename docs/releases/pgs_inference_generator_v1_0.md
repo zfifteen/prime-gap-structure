@@ -1,7 +1,7 @@
 # PGS Inference Generator v1.0
 
 PGS Inference Generator v1.0 is the frozen reference release for the current
-successor-prime inference generator.
+successor-next-prime generator.
 
 This release is superseded by
 [PGS Inference Generator v1.1](pgs_inference_generator_v1_1_pgs_only.md),
@@ -28,7 +28,7 @@ The frozen object is the narrow production generator in:
 
 - [../../src/python/z_band_prime_predictor/simple_pgs_generator.py](../../src/python/z_band_prime_predictor/simple_pgs_generator.py)
 
-The frozen selector is:
+The frozen selection rule is:
 
 ```text
 rule_id: pgs_chamber_reset_v1
@@ -37,7 +37,7 @@ next-prime selection rule: GWR/NLSC search-interval-reset state
 output record: p, q only
 ```
 
-The generator labels a row `PGS` only when the GWR/NLSC search-interval-reset selector
+The generator labels a row `PGS` only when the GWR/NLSC search-interval-reset selection rule
 chooses the endpoint. Trial-division fallback remains present as an explicit
 last-resort path, but it is not used on the frozen validation surfaces and is
 not counted as `PGS`.
@@ -76,7 +76,7 @@ trial_calls: {}
 This freezes the source-accounting contract:
 
 ```text
-PGS means selected by the PGS selector.
+PGS means selected by the PGS selection rule.
 Fallback means selected by fallback arithmetic.
 Downstream audit confirms q after generation.
 ```
@@ -100,6 +100,6 @@ Current result:
 This is a production-generator freeze for the tested surfaces above.
 
 The freeze does not claim a proof that every future input prime at every scale is
-covered by the current bounded selector. It records the exact generator
+covered by the current bounded selection rule. It records the exact generator
 iteration, the exact rule id, the exact source accounting, and the exact
 validation surfaces that are audit-clean at freeze time.

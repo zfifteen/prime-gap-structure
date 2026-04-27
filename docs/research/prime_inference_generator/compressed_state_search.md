@@ -4,21 +4,21 @@ The first compression search did not produce a Next-Prime Law 005 candidate.
 
 The result is a clean obstruction:
 
-- zero-collision compressed states still have no bucket reuse;
-- states with measurable compression introduce endpoint-offset collisions.
+- zero-conflict compressed states still have no bucket reuse;
+- states with measurable compression introduce endpoint-offset conflicts.
 
 Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
 The rejected `multiplicity_pressure_without_primality` signal was legal-looking
-and collision-free, but it produced one distinct state per input prime. This probe
+and conflict-free, but it produced one distinct state per input prime. This probe
 coarsens that signal and asks whether any compressed version can keep the
 endpoint labels separated while grouping many input primes into reusable buckets.
 
 A candidate must satisfy both:
 
-- low or zero endpoint-offset collisions;
+- low or zero endpoint-offset conflicts;
 - nontrivial state compression.
 
 ## Instrument
@@ -92,7 +92,7 @@ Summary:
 - `lowest_collision_count: 0`
 - `best_compression_score: 0.154777`
 
-| Candidate | Collisions | Distinct Ratio | Singleton Rate | Max Bucket | Compression |
+| Candidate | Conflicts | Distinct Ratio | Singleton Rate | Max Bucket | Compression |
 |---|---:|---:|---:|---:|---:|
 | `multiplicity_pressure_bucketed` | `0` | `1.0` | `1.0` | `1` | `0.0` |
 | `multiplicity_pressure_mod_wheel` | `0` | `1.0` | `1.0` | `1` | `0.0` |
@@ -107,19 +107,19 @@ Summary:
 
 ## Interpretation
 
-The multiplicity signal has a sharp compression/collision tradeoff on this
+The multiplicity signal has a sharp compression/conflict tradeoff on this
 surface.
 
-When enough multiplicity detail remains to keep collisions at zero, the state
+When enough multiplicity detail remains to keep conflicts at zero, the state
 partition is fully singleton. The state is still acting as a row fingerprint.
 
-When the signal is coarsened enough to reuse buckets, collisions appear
+When the signal is coarsened enough to reuse buckets, conflicts appear
 immediately. The two most compressed candidates are:
 
 - `multiplicity_pressure_coarse_counts`
 - `multiplicity_pressure_prefix_histogram`
 
-Both fail the collision gate.
+Both fail the conflict gate.
 
 This does not falsify the transition-state approach. It does reject this first
 local multiplicity-compression family as a Next-Prime Law 005 candidate.
@@ -132,7 +132,7 @@ Next-Prime Law 005 is not approved.
 
 The next admissible search should not add richer state. It should either:
 
-- analyze the collision buckets from the compressed candidates that reuse
+- analyze the conflict buckets from the compressed candidates that reuse
   buckets; or
 - introduce a new invariant that compresses before it predicts, rather than
   adding more local fingerprint detail.

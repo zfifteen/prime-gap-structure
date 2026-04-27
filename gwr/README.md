@@ -34,7 +34,7 @@ The public proof-facing summary is:
 - [../docs/current_headline_results.md](../docs/current_headline_results.md)
 
 The live earlier-side route is the local admissibility program plus residual
-class closure and exact no-early-spoiler audit.
+class closure and exact no-early-counterexample audit.
 
 Bridge-era BHP/Robin notes and verification scripts are retained under
 [`experiments/proof/`](./experiments/proof/README.md) as historical comparison

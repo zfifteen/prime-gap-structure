@@ -87,7 +87,7 @@ Staged hardening results:
 | 11..100000 | 7431 | 4354 | 31 | 0 | 0 |
 | 11..1000000 | 49019 | 46286 | 31 | 0 | 0 |
 
-The selector safety gate passed through input primes 11..1000000:
+The selection-rule safety gate passed through input primes 11..1000000:
 
 ```text
 higher_divisor_pressure_lock_false_selected: 0
@@ -228,7 +228,7 @@ This changes the witness basis while preserving the candidate horizon.
 Only one axis should change at a time. The same gates must pass:
 
 ```text
-selector false selections: 0
+selection-rule false selections: 0
 integration wrong absorptions: 0
 true next prime rejections: 0
 missed action candidates: 0

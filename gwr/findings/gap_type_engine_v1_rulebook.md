@@ -48,9 +48,9 @@ The rules below are arranged from the fast core to the slow controller.
     `(o4_odd_semiprime|d<=4, o4_higher_divisor_odd|5<=d<=16)`, the next state
     is `o2_odd_semiprime|d<=4` with share `0.4500`.
 
-## Scheduler Rules
+## Transition Rules
 
-12. **Lag-2 scheduler law**. A lag-2 finite scheduler is enough to cut the
+12. **Lag-2 transition rule law**. A lag-2 finite transition rule is enough to cut the
     pooled-window concentration error to `0.0201`, which is the first clean
     closure of the higher-order gap beyond the plain second-order rotor.
 13. **Periodic-state law**. A small periodic controller is real on this
@@ -79,7 +79,7 @@ The readable picture is:
 - the walk spends most of its time in the Semiprime Wheel Attractor;
 - non-attractor states usually act as transient excursions;
 - higher-divisor states are repair and reset events;
-- a lag-2 plus periodic scheduler closes the short-window structure;
+- a lag-2 plus periodic transition rule closes the short-window structure;
 - higher-divisor-triggered locks sharpen the long-horizon walk.
 
 That is the frozen rulebook for `v1.0`.

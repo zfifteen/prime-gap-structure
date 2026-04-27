@@ -1,6 +1,6 @@
 # Pressure-State Endpoint Probe
 
-The legal ladder collision forensics showed that direct ladder recovery is
+The legal ladder conflict forensics showed that direct ladder recovery is
 blocked by missing prime-marker structure. The next theorem-search target is a
 different class of observable: pressure states.
 
@@ -63,18 +63,18 @@ The first approved surface is:
 - input primes: `11..10_000`
 - prefix: `8`
 
-If no eligible zero-collision pressure state appears on that surface, Endpoint
+If no eligible zero-conflict pressure state appears on that surface, Endpoint
 Law 005 remains blocked.
 
 ## Initial Result
 
 The first run used input primes `11..10_000` with prefix `8`.
 
-No eligible zero-collision pressure state appeared:
+No eligible zero-conflict pressure state appeared:
 
 - `first_zero_collision_eligible_state_vector: null`
 
-Collision counts:
+Conflict counts:
 
 - `square_pressure_state`: `268`
 - `previous_chamber_pressure_state`: `30`
@@ -104,11 +104,11 @@ Surfaces:
 The legal candidate did not close:
 
 - `previous_chamber_plus_square_pressure_state`, `11..10_000`, prefix `8`:
-  `224` collision buckets;
+  `224` conflict buckets;
 - `previous_chamber_plus_square_pressure_state`, `11..100_000`, prefix `32`:
-  `2056` collision buckets.
+  `2056` conflict buckets.
 
-The first zero-collision eligible state remains:
+The first zero-conflict eligible state remains:
 
 - `first_zero_collision_eligible_state_vector: null`
 
@@ -116,9 +116,9 @@ The ineligible exact higher-divisor variants became strong theorem-search
 signals:
 
 - `previous_chamber_plus_higher_divisor_pressure_state`, `11..100_000`,
-  prefix `32`: `0` collisions;
+  prefix `32`: `0` conflicts;
 - `previous_chamber_plus_square_and_higher_pressure_state`, `11..100_000`,
-  prefix `32`: `0` collisions.
+  prefix `32`: `0` conflicts.
 
 Those states are not Next-Prime Law 005 candidates because they use exact
 divisor/prime-marker internals. They indicate that higher-divisor pressure may

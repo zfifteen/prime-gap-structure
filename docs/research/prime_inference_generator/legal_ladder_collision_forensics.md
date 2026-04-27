@@ -1,6 +1,6 @@
-# Legal Ladder Collision Forensics
+# Legal Ladder Conflict Forensics
 
-The legal ladder search found no eligible zero-collision state on the meaningful
+The legal ladder search found no eligible zero-conflict state on the meaningful
 surfaces. The next question is what the contaminated perfect ladder knows that
 the legal ladder does not.
 
@@ -9,20 +9,20 @@ This note records the first forensic run:
 - input primes: `11..10_000`
 - prefix: `8`
 - legal state: `known_composite_divisor_ladder`
-- collision buckets inspected: first `10`
+- conflict buckets inspected: first `10`
 
 The run is offline theorem discovery. It does not change the pure generator and
 does not authorize Next-Prime Law 005.
 
 ## Result
 
-The legal state has collisions:
+The legal state has conflicts:
 
 - rows: `1225`
-- collision buckets: `29`
+- conflict buckets: `29`
 - inspected buckets: `10`
 
-The first `10` collision buckets are separated by illegal prime-marker
+The first `10` conflict buckets are separated by illegal prime-marker
 information:
 
 - `prime_marker_positions`: `10/10`
@@ -40,7 +40,7 @@ colliding legal states because they know where prime-position masks occur inside
 the prefix. That is exactly the information pure generation is not allowed to
 use.
 
-The current legal ladder does not merely need more collision testing. It needs a
+The current legal ladder does not merely need more conflict testing. It needs a
 PGS-native observable that can replace the separating power of prime-marker
 positions without identifying primes.
 
@@ -64,4 +64,4 @@ reasonable candidates are:
 - `legal_ladder_plus_threat_schedule`
 
 Each candidate must remain eligible for pure generation and must be tested
-against the same collision-forensics gate.
+against the same conflict-forensics gate.

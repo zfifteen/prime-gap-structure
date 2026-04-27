@@ -184,7 +184,7 @@ leftmost integer dominates the log-score competition?”
 
 The answer now has a two-part proof shape: ordered dominance eliminates every
 later candidate after the leftmost minimum-divisor integer, and the
-no-early-spoiler bridge eliminates every earlier higher-divisor candidate. The
+no-early-counterexample bridge eliminates every earlier higher-divisor candidate. The
 committed verification record puts the analytic bridge threshold below the exact
 finite base through $p < 20{,}000{,}001$.
 

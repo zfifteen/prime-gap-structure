@@ -89,7 +89,7 @@ At input prime 3137:
 - higher-divisor pressure lock absent at the true next prime: true
 - actual next prime resolved before absorption: false
 
-So this input prime was outside the hardening population. The hardening result was zero-wrong as a selector in its target population, but direct integration broadened the operational domain and allowed a false resolved candidate to absorb an unresolved true next prime.
+So this input prime was outside the hardening population. The hardening result was zero-wrong as a selection rule in its target population, but direct integration broadened the operational domain and allowed a false resolved candidate to absorb an unresolved true next prime.
 
 ## Quarantine Conditions
 

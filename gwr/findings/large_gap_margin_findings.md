@@ -5,14 +5,14 @@ This note records the executed large-gap surface extraction from
 
 The target is narrow:
 
-- record the worst realized no-early-spoiler margin inside each of the largest
+- record the worst realized no-early-counterexample margin inside each of the largest
   exact prime gaps on the current surface,
 - and record the worst realized margin for each exact gap size.
 
 This is the direct companion to the pair-extremal-case artifact. The pair extremal case
 identifies which divisor-class pairs get closest to the ratio-form threshold.
 This large-gap artifact asks whether the largest actual prime gaps are where
-the no-early-spoiler condition tightens.
+the no-early-counterexample condition tightens.
 
 ## Executed Artifact
 
@@ -34,7 +34,7 @@ The current extremal cases already come from tiny gap-4 cases. The large-gap
 surface therefore supports the same reading in a different coordinate system:
 
 - the hardest realized ratio-form cases are not the largest prime gaps,
-- and the largest prime gaps still retain positive no-early-spoiler margins
+- and the largest prime gaps still retain positive no-early-counterexample margins
   against the true `GWR` integer.
 
 The smallest realized critical-ratio margin among the top `100` largest gaps is
@@ -66,4 +66,4 @@ Together the two executed surfaces say:
   largest gaps on the current exact surface.
 
 So the current exact evidence does not point to large gap length as the regime
-where the no-early-spoiler condition becomes hardest.
+where the no-early-counterexample condition becomes hardest.

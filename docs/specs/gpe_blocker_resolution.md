@@ -18,7 +18,7 @@ known left endpoint prime $q$, the exact DNI/GWR oracle recovers:
   $d(n)=2$.
 
 That is not yet the same as a primality-free generative prime model. The
-missing object is an exact next-prime selector.
+missing object is an exact next-prime selection rule.
 
 ## Blocker 1: Selected integer Is Not The Endpoint
 
@@ -34,7 +34,7 @@ So the implementation skeleton cannot output `winner + 1`.
 
 ### Resolution Contract
 
-Replace `winner + 1` with a deterministic next-prime selector:
+Replace `winner + 1` with a deterministic next-prime selection rule:
 
 $$q^+=B(q,S,w,d(w)),$$
 
@@ -50,7 +50,7 @@ where:
 This is the first theorem/program target. Until $B$ exists, GPE is not an exact
 prime outputter.
 
-## Blocker 2: NLSC Gives A Ceiling, Not A Selector
+## Blocker 2: NLSC Gives A Ceiling, Not A Selection Rule
 
 The No-Later-Simpler-Composite consequence says:
 
@@ -65,12 +65,12 @@ $$q^+ \le S_{+}(w),$$
 where $S_{+}(w)$ is the next prime square after $w$.
 
 This resolves the upper endpoint of the search interval, not the exact endpoint
-inside it. The exact selector still has to identify which admissible integer in
+inside it. The exact selection rule still has to identify which admissible integer in
 $(w,T_{<}(w)]$ is $q^+$.
 
 ### Resolution Contract
 
-The next-prime selector must refine the NLSC ceiling into an equality:
+The next-prime selection rule must refine the NLSC ceiling into an equality:
 
 $$B(q,S,w,d(w)) = q^+.$$
 
@@ -99,9 +99,9 @@ Therefore the current reduced state alone cannot output the exact prime sequence
 ### Resolution Contract
 
 The GPE state $S$ must be enlarged or sharpened only as much as needed to make
-the next-prime selector single-valued: $$B(q,S,w,d(w))$$ must have no collisions
+the next-prime selection rule single-valued: $$B(q,S,w,d(w))$$ must have no conflicts
 on the validation surface, and the proof target must explain why the
-collision-free property persists outside the tested surface.
+conflict-free property persists outside the tested surface.
 
 ## Blocker 4: Exact DNI Evaluation Currently Uses Divisor-Count Values
 
@@ -126,7 +126,7 @@ described as zero-test.
 ## Immediate Proof Target
 
 The next executable target is not a broader framework. It is the smallest
-possible endpoint-selector theorem:
+possible endpoint selection-rule theorem:
 
 Given a known prime $q$ and the exact GWR-selected integer $w$ for the next gap, construct
 a deterministic arithmetic rule $B(q,S,w,d(w))$ that returns $q^+$ exactly and
@@ -137,8 +137,8 @@ The first branch to attack is the dominant case: $$d(w)=4.$$
 In that branch, the invariant ceiling is the next prime-square threat:
 $$q^+ \le S_{+}(w).$$
 
-The unresolved selector problem is the exact location of $q^+$ inside the
+The unresolved selection-rule problem is the exact location of $q^+$ inside the
 interval: $$w < q^+ \le S_{+}(w).$$
 
-Once this branch has a collision-free rule on the committed exact surface, the
+Once this branch has a conflict-free rule on the committed exact surface, the
 same test should be repeated for $d(w)=3$ and for higher-divisor selected divisor-count classes.

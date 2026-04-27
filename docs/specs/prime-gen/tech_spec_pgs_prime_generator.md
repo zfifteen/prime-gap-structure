@@ -1,4 +1,4 @@
-Technical Specification: PGS Prime Inference Generator
+Technical Specification: PGS Next-Prime Generator
 
 1. Purpose
 
@@ -14,7 +14,7 @@ Traditional prime generation asks:
 
 Is this candidate prime?
 
-The PGS Prime Inference Generator asks:
+The PGS Next-Prime Generator asks:
 
 Given a known prime endpoint and the deterministic structure of the following composite search interval, where is the next prime endpoint inferred to be?
 
@@ -426,15 +426,15 @@ Recommended artifact paths:
 
 Possible names:
 
-* PGS Prime Inference Generator
+* PGS Next-Prime Generator
 * PGS Recursive Prime Walker
 * DNI-GWR Prime Inference Algorithm
-* Structural Prime Inference Generator
+* Structural Next-Prime Generator
 * Prime Endpoint Inference Walker
 
 Recommended public name:
 
-PGS Prime Inference Generator
+PGS Next-Prime Generator
 
 Recommended short internal name:
 
@@ -450,7 +450,7 @@ Better internal names:
 
 Recommended careful claim:
 
-The PGS Prime Inference Generator outputs primes by deterministic structural inference from the PGS rule set. Classical primality methods are used only afterward to validate the outputted sequence.
+The PGS Next-Prime Generator outputs primes by deterministic structural inference from the PGS rule set. Classical primality methods are used only afterward to validate the outputted sequence.
 
 Avoid saying:
 
@@ -515,7 +515,7 @@ The first outputted inferred prime that is not the actual next prime after its i
 
 Create a research note and benchmark stub for:
 
-PGS Prime Inference Generator MVP
+PGS Next-Prime Generator MVP
 
 The first artifact should not try to be cryptographic. It should prove the architecture:
 
@@ -531,7 +531,7 @@ Starting from prime 11, PGS inferred the next N consecutive primes without class
 
 23. Final Design Summary
 
-The PGS Prime Inference Generator is a new architecture for prime generation.
+The PGS Next-Prime Generator is a new architecture for prime generation.
 
 It does not test candidates for primality during generation.
 

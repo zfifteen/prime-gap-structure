@@ -76,7 +76,7 @@ There may be something here.
 
 On the actual claim, the probe supports a real one-step memory effect after
 matching on current width and current first-open offset. But the dominant
-effect is not a large parity-only selector for one lane. The larger effect is
+effect is not a large parity-only selection rule for one lane. The larger effect is
 that even selected integers hand the walk back to the dominant triad more often.
 
 The most useful next discriminator is:

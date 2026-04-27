@@ -479,9 +479,9 @@ Rule X with search-interval reset resolved the full decade-window ladder:
 0 candidate-bound misses
 ```
 
-The search-interval-reset rule is now the production selector. The production generator
+The search-interval-reset rule is now the production selection rule. The production generator
 uses exact divisor-count GWR/NLSC search-interval-reset state instead of the earlier
-first-visible-open shortcut.
+first-uneliminated-candidate shortcut.
 
 Current production generator check:
 
@@ -504,7 +504,7 @@ failed outputs: 0
 ```
 
 The current `v1.1` production generator removes the displaced fallback and
-trial-division paths entirely. The generator is PGS-only: unresolved selector
+trial-division paths entirely. The generator is PGS-only: unresolved selection rule
 states raise explicitly instead of invoking another prime-search method.
 
 ## Artifact Links

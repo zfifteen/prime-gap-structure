@@ -1,4 +1,4 @@
-# Proof Bridge for the No-Early-Spoiler Condition
+# Proof Bridge for the No-Early-Counterexample Condition
 
 This note records the analytic bridge used on the earlier side of the
 `Gap Winner Rule` (`GWR`) proof surface.
@@ -25,7 +25,7 @@ The current explicit picture has two distinct regimes:
 
 Its job is:
 
-- restate the exact no-early-spoiler target in one normalized quantity,
+- restate the exact no-early-counterexample target in one normalized quantity,
 - derive a fully non-empirical large-$p$ bridge from gap geometry and divisor
   growth bounds,
 - record the explicit certificate showing what is already covered
@@ -199,14 +199,14 @@ budgets:
 | Handoff point $P_0$ | Conservative $c = 1.5379$ | Theoretical $c = \ln 2 \cdot e^\gamma$ |
 |---|---:|---:|
 | exact bridge-load base $P_0 = 20{,}000{,}000$ | $A < 5.185946985729438$ | $A < 31.597212393146396$ |
-| exact no-spoiler audit $P_0 = 5{,}000{,}000{,}000$ | $A < 14.246224287129907$ | $A < 126.17003339952021$ |
+| exact no-counterexample audit $P_0 = 5{,}000{,}000{,}000$ | $A < 14.246224287129907$ | $A < 126.17003339952021$ |
 | end of Dusart bridge window $P_0 = 5{,}571{,}362{,}243{,}795$ | $A < 52.627783539395274$ | $A < 733.5315973776145$ |
 
 So the open constant question is narrower than "find some explicit $A$." On
 the repo's current proof surface it is enough to supply any explicit
 $g(p) \le A p^{0.525}$ theorem with:
 
-- $A < 14.246224287129907$ once the exact no-spoiler audit through
+- $A < 14.246224287129907$ once the exact no-counterexample audit through
   $p < 5 \cdot 10^9$ is taken as the finite base, or
 - $A < 52.627783539395274$ if the handoff is postponed to the conservative
   end of Dusart's unconditional bridge window.

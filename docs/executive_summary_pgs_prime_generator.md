@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The PGS Prime Generator is a deterministic successor-prime inference generator.
+The PGS Prime Generator is a deterministic successor-next-prime generator.
 It starts from an accepted prime `p` and outputs the next prime `q` as a minimal
 two-key record:
 
@@ -23,7 +23,7 @@ It examines the finite arithmetic interval immediately to the right of `p`,
 uses exact divisor-count state to orient the local prime-gap structure, and
 selects the next prime by the GWR/NLSC search-interval-reset rule.
 
-The production selector is:
+The production selection rule is:
 
 ```text
 rule_id: pgs_chamber_reset_v1
@@ -31,7 +31,7 @@ state input: exact divisor-count values
 next-prime selection rule: GWR/NLSC search-interval-reset state
 ```
 
-If the selector does not resolve inside the supplied search bound, the
+If the selection rule does not resolve inside the supplied search bound, the
 generator raises `PGSUnresolvedError`. It does not run a backup prime search.
 
 ## Architecture
@@ -39,7 +39,7 @@ generator raises `PGSUnresolvedError`. It does not run a backup prime search.
 The production generator has one execution path:
 
 ```text
-input prime p -> GWR/NLSC search-interval-reset selector -> output {"p": p, "q": q}
+input prime p -> GWR/NLSC search-interval-reset selection rule -> output {"p": p, "q": q}
 ```
 
 The outputted stream contains only `p` and `q`. Source labels, diagnostic records,

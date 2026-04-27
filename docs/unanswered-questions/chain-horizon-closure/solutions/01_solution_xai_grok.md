@@ -58,6 +58,6 @@ All answers correctly restate the problem and converge on the *exact* experiment
 - **Implementation gap closed**: Merge Copilot’s engineering rigor + ChatGPT’s H-candidates/acceptance-gate + xAI-Grok’s in-place collector pseudocode → a single new benchmark script (`benchmarks/python/predictor/least_factor_frontier_miner.py`). Run on existing 10¹⁵/10¹⁸ probes. Expected: H emerges within days, bridge converts to PGS-derived, overall PGS fraction jumps >90 % at fixed candidate_bound=128.
 - **Risk**: Negligible — any candidate H is immediately auditable with the downstream zero-failure harness.
 
-The generator is already operationally perfect. The missing theorem is now a one-week mining task away. The least-factor data will close the last non-PGS piece and complete the pure local PGS selector.
+The generator is already operationally perfect. The missing theorem is now a one-week mining task away. The least-factor data will close the last non-PGS piece and complete the pure local PGS selection rule.
 
 Commit the miner, run the probes, and the question is answered. I’m ready to help write the code or analyze the resulting CSV the moment it exists.

@@ -11,7 +11,7 @@ Up to $10^6$ on the natural number line:
 - the gap-local raw-$Z$ maximum lands at edge distance $2$ in $43.6006\%$ of tested gaps versus an exact within-gap baseline of $22.1859\%$,
 - the resulting edge-distance enrichment is $1.965\times$,
 - the gap-local raw-$Z$ maximum is carried by a $d(n) = 4$ composite in $82.9027\%$ of tested gaps versus an exact within-gap baseline of $20.1401\%$,
-- the resulting carrier enrichment is $4.116\times$.
+- the resulting selected-divisor-count enrichment is $4.116\times$.
 
 This is the gap-ridge concern of the DNI. It is the study of where the strongest exact raw composite $Z$ value appears inside prime gaps and what kind of composite carries that peak.
 
@@ -32,7 +32,7 @@ Two measurements then matter:
 - how far that peak sits from the nearest edge of the gap,
 - which divisor count carries that peak.
 
-The edge-distance question tells us whether the field rises toward the endpoint or toward the midpoint. The carrier question tells us which divisor class most often supports the peak. In the current exact runs, the answers are near-edge position and $d(n) = 4$ carrier dominance.
+The edge-distance question tells us whether the field rises toward the endpoint or toward the midpoint. The selected-divisor-count question tells us which divisor class most often supports the peak. In the current exact runs, the answers are near-edge position and $d(n) = 4$ selected-divisor-count dominance.
 
 ## Why This Is A Separate Concern
 
@@ -40,7 +40,7 @@ The gap-ridge result is not the same concern as the production prefilter.
 
 The prefilter concern asks how the fixed-point locus is used operationally to remove composite work before Miller-Rabin. The gap-ridge concern asks what structure the exact raw composite field shows inside prime gaps once exact divisor count is available.
 
-It is also narrower than the full exact raw composite field concern. The broader field concern studies the exact raw composite $Z$ field itself. The gap-ridge concern studies one specific structure within that field: the location and carrier of the within-gap maximum.
+It is also narrower than the full exact raw composite field concern. The broader field concern studies the exact raw composite $Z$ field itself. The gap-ridge concern studies one specific structure within that field: the location and integer attaining the within-gap maximum.
 
 ## Exact Method
 
@@ -52,7 +52,7 @@ The method in this repository is deterministic and exact.
 4. Restrict attention to the composite interior points $p < n < q$.
 5. Evaluate the raw DNI field $Z(n) = n^{1 - d(n)/2}$ on those interiors.
 6. Within each gap, select the single composite with the largest raw $Z$.
-7. Compare the observed peak position and observed peak carrier against exact within-gap baselines induced by the same interior.
+7. Compare the observed peak position and observed peak integer against exact within-gap baselines induced by the same interior.
 
 The implementation compares peak candidates through the monotone identity
 
@@ -116,14 +116,14 @@ The edge effect is present across gap sizes, but its expression changes by regim
 
 In the exact $10^6$ run:
 
-- gaps $4\text{-}10$ show edge-distance-$2$ share $51.1269\%$ and $d(n) = 4$ carrier share $66.1648\%$,
-- gaps $12\text{-}20$ show edge-distance-$2$ share $38.9273\%$ and $d(n) = 4$ carrier share $98.5198\%$,
-- gaps $22+$ show edge-distance-$2$ share $32.2688\%$ and $d(n) = 4$ carrier share $99.4616\%$.
+- gaps $4\text{-}10$ show edge-distance-$2$ share $51.1269\%$ and $d(n) = 4$ selected-divisor-count share $66.1648\%$,
+- gaps $12\text{-}20$ show edge-distance-$2$ share $38.9273\%$ and $d(n) = 4$ selected-divisor-count share $98.5198\%$,
+- gaps $22+$ show edge-distance-$2$ share $32.2688\%$ and $d(n) = 4$ selected-divisor-count share $99.4616\%$.
 
-The near-edge location softens as gaps widen, but the low-divisor carrier pattern strengthens. That is why the ridge is best described by two linked properties rather than by one alone:
+The near-edge location softens as gaps widen, but the low-divisor integer pattern strengthens. That is why the ridge is best described by two linked properties rather than by one alone:
 
 - peak mass sits unusually close to the edge,
-- the peak carrier is unusually often a $d(n) = 4$ composite.
+- the peak integer is unusually often a $d(n) = 4$ composite.
 
 ## Regime Confirmation
 
@@ -132,7 +132,7 @@ The repository also includes broader regime confirmation through larger-scale wi
 Across the current committed execution surface summarized in the figure note:
 
 - edge-distance-$2$ enrichment stays near $2\times$ from the exact $10^6$ run through sampled $10^{18}$ windows,
-- the $d(n) = 4$ carrier enrichment strengthens with scale, rising from $4.116\times$ at $10^6$ to about $7.56\times$ in even-window $10^{18}$ runs and about $9.19\times$ in fixed-seed $10^{18}$ runs,
+- the $d(n) = 4$ selected-divisor-count enrichment strengthens with scale, rising from $4.116\times$ at $10^6$ to about $7.56\times$ in even-window $10^{18}$ runs and about $9.19\times$ in fixed-seed $10^{18}$ runs,
 - the left edge remains the dominant side of the ridge throughout the tested regimes.
 
 This does not widen the claim beyond the current committed execution surface.

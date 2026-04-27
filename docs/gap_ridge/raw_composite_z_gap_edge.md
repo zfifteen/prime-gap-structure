@@ -16,14 +16,14 @@ More precisely:
 - the exact within-gap position baseline for edge distance `2` is `22.1859%`,
 - the resulting edge-distance enrichment is `1.965x`,
 - the gap-local raw-`Z` maximum is carried by a `d(n) = 4` composite in `82.9027%` of tested gaps,
-- the exact within-gap carrier baseline for `d(n) = 4` is `20.1401%`,
-- the resulting carrier enrichment is `4.116x`.
+- the exact within-gap selected-divisor-count baseline for `d(n) = 4` is `20.1401%`,
+- the resulting selected-divisor-count enrichment is `4.116x`.
 
 The strongest supported interpretation is that the exact raw composite `Z` field forms a near-edge low-divisor ridge inside prime gaps rather than a midpoint ridge.
 
 On the current tested surface, that ridge can be stated more sharply: the
 gap-local raw-`Z` maximum matches the leftmost minimizer obtained by first
-minimizing interior divisor count `d(n)` and then taking the leftmost carrier
+minimizing interior divisor count `d(n)` and then taking the leftmost integer
 of that minimum.
 
 ## Method
@@ -37,7 +37,7 @@ The experiment is deterministic and exact.
 5. Within each gap, select the single composite with the largest raw `Z`.
 6. Compare that observed peak to the exact baseline induced by the same gap interior:
    - position baseline: each interior position counted once,
-   - carrier baseline: each interior composite counted once when `d(n) = 4`.
+   - selected-divisor-count baseline: each interior composite counted once when `d(n) = 4`.
 
 The implementation compares raw `Z` values through the monotone identity
 $\ln Z(n) = (1 - d(n)/2)\ln n$ only to preserve the ordering of the exact same raw field without floating-point underflow. The quantity being studied remains raw `Z`.
@@ -79,7 +79,7 @@ On the tested surface, the raw-`Z` selected integer is selected by:
 
 That discrete ordering explains why:
 
-- `d(n) = 4` carriers dominate the peak,
+- `d(n) = 4` integers dominate the peak,
 - left-edge wins dominate right-edge wins,
 - edge-distance `2` appears so often as the selected integer location.
 

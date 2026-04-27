@@ -233,7 +233,7 @@ The current repository already has exact and tested interior structure for that
 question:
 
 - the gap-local raw-`Z` maximum is enriched at edge distance `2`,
-- the carrier is overwhelmingly `d(n)=4`,
+- the integer is overwhelmingly `d(n)=4`,
 - and on the tested surface the peak agrees exactly with the lexicographic rule
   "smallest `d(n)`, then leftmost".
 
@@ -271,7 +271,7 @@ Z(n)=n^{-1}.
 $$
 
 That layer is not rare decoration in the current repository. It is the
-dominant carrier of the gap-local raw-`Z` peak on the tested surface.
+dominant integer of the gap-local raw-`Z` peak on the tested surface.
 
 The same divisor count belongs naturally to the $\zeta(s)^2$ side of the
 bridge because `d(n)` is exactly the coefficient sequence of that square.
@@ -329,7 +329,7 @@ That yields several concrete targets.
 1. Study the DNI divisor series $D(s)=\zeta(s)^2$ and normalization series
    $K(s)=-(1/e^2)D'(s)$ as the canonical analytic envelope of the DNI field.
 2. Express gap-local DNI observables against short-interval prime statistics,
-   especially interior peak location and `d(n)=4` carrier share.
+   especially interior peak location and `d(n)=4` selected-divisor-count share.
 3. Build residue-conditioned versions of those observables and compare them to
    the arithmetic-progression side of prime distribution.
 4. Search for a Hilbert-space or transfer-operator formulation only after the

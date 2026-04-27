@@ -68,7 +68,7 @@ inside the gap in a smooth way.
 ### Figure needs
 
 - a small panel of exemplar gaps at different scales,
-- optional divisor-color overlay to show low-`d` carriers.
+- optional divisor-color overlay to show low-`d` integers.
 
 ## 3. The Surprise: The Selected integer Collapses
 

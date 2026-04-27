@@ -69,9 +69,9 @@ v3_abstain_reason_counts:
   ACTIVE_GRAPH_NOT_SINGLE_RESOLVED: 230
 ```
 
-The dominant remaining unresolved-later blocker is not carrier preservation.
+The dominant remaining unresolved-later blocker is not selected-integer preservation.
 It is a missing reset discriminator for nearest unresolved targets that have no
-legal carrier.
+legal integer.
 
 ## Candidate v4 Hints
 
@@ -98,11 +98,11 @@ a label-free graph predicate, then audited downstream after graph emission.
 Graph Solver v3 already solves 211 anchors on this surface. In most remaining
 abstentions, the true next prime is resolved and later unresolved alternatives
 remain live. The nearest unresolved target after the resolved source often has
-no legal carrier, which leaves v1 and v2 in an unknown reset state and leaves
-v3 without its target-carrier condition.
+no legal integer, which leaves v1 and v2 in an unknown reset state and leaves
+v3 without its target-selected-integer condition.
 
 The next implementation step should stay inside unresolved-later domination:
-define a target-no-carrier reset discriminator that can absorb a nearest later
+define a target-no-selected-integer reset discriminator that can absorb a nearest later
 unresolved target only when existing graph facts supply positive legal support.
 If the discriminator cannot be made label-free, it must abstain.
 

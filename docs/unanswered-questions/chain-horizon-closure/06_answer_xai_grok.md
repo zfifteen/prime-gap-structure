@@ -1,7 +1,7 @@
 **Yes, the current operational shape of the generator is already extremely strong — chamber closure + semiprime-shadow seeding + chain-horizon closure + downstream audit gives exact, audit-clean results through the probed surfaces (including the 10¹⁸-scale probes).** The only remaining non-PGS piece is precisely the terminal decision inside `chain_horizon_closure_result` (and its sibling `chain_fallback_result`), where the horizon used to close false chain nodes still relies on deterministic divisor exhaustion (via `divisor_witness` up to `horizon_bound` or full `isqrt(q)`).
 
 The precise missing object you identified —  
-**`H(p, s₀, chain_state)`** — is exactly the function that would turn the bridge into a pure PGS next-prime selection rule. If we can compute (or tightly bound) the horizon needed to close every false node in the visible-open chain **using only quantities already visible inside the chamber** (anchor `p`, shadow seed offset `s₀`, the list of wheel-admissible chain offsets, their residues mod 30, chamber arithmetic, GWR carrier state, NLSC ceilings, etc.), then the entire high-scale non-PGS portion (≈56.63 % at 10¹⁵, ≈58 % at 10¹⁸) collapses into PGS-derived output.
+**`H(p, s₀, chain_state)`** — is exactly the function that would turn the bridge into a pure PGS next-prime selection rule. If we can compute (or tightly bound) the horizon needed to close every false node in the visible-open chain **using only quantities already visible inside the chamber** (anchor `p`, shadow seed offset `s₀`, the list of wheel-admissible chain offsets, their residues mod 30, chamber arithmetic, GWR-selected integer state, NLSC ceilings, etc.), then the entire high-scale non-PGS portion (≈56.63 % at 10¹⁵, ≈58 % at 10¹⁸) collapses into PGS-derived output.
 
 ### What the code actually does today (commit a1c6a7938c4cd9a234f0508f570ede4513084431)
 From `simple_pgs_generator.py` (the core predictor module that added the chain-horizon bridge):
@@ -27,7 +27,7 @@ For every chain-horizon (or chain-fallback) case that occurs in your high-scale 
     - seed offset `s₀`
     - full list of chain offsets / residues mod 30
     - chamber width used
-    - GWR carrier (selected integer) location & divisor class in the chamber
+    - GWR-selected integer (selected integer) location & divisor class in the chamber
     - any NLSC-derived ceilings or visible divisor-class relations already computed
 
 Then ask:
@@ -42,7 +42,7 @@ Then ask:
 - The visible divisor bound (currently 10 000) already closes everything with small factors.
 - The false nodes that survive visible closure are exactly the “hard” composites whose SPF > 10 000.
 - Because the chain is short (≤8 nodes) and the candidates are consecutive wheel-open positions inside a tiny chamber (≤128), the numbers are close together (typical spacing ≈ log q).
-- If there is any local arithmetic invariant (from the semiprime shadow’s residue class, the GWR carrier’s divisor pattern, the NLSC ceilings, or higher-modulus wheel relations implied by the chamber state) that forces at least one false node to have a “predictably small” SPF, then `H` drops out immediately.
+- If there is any local arithmetic invariant (from the semiprime shadow’s residue class, the GWR-selected integer’s divisor pattern, the NLSC ceilings, or higher-modulus wheel relations implied by the chamber state) that forces at least one false node to have a “predictably small” SPF, then `H` drops out immediately.
 - Conversely, if the false nodes can be semiprimes whose factors are both > any local PGS-computable bound, then the horizon really does have to reach near √q in the worst case.
 
 The GWR + NLSC theorems you already proved to 10¹⁸ (zero violations) strongly suggest that such an invariant **should exist** — the whole point of the hierarchical local-dominator structure is that the “simplest” composite in any local window is rigidly positioned and its factor structure is visible from the chamber arithmetic. The chain-horizon case is just the next-prime-selection analogue of that same local-dominator law.

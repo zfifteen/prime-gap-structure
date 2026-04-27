@@ -96,16 +96,16 @@ missing_pressure_component: higher_divisor_pressure
 This profile does not show shifted-window activation. The current evidence is
 consistent with a small-origin activation regime under this horizon.
 
-## Activation By Carrier Family
+## Activation By Integer Family
 
-| carrier family | count |
+| selected-integer family | count |
 |---|---:|
 | known_basis_semiprime | 31 |
 | known_basis_prime_power | 17 |
 
-## Activation By Carrier Divisor Count
+## Activation By Integer Divisor Count
 
-| carrier divisor count | count |
+| selected divisor count | count |
 |---:|---:|
 | 3 | 16 |
 | 4 | 31 |
@@ -172,14 +172,14 @@ single-hole closure usage:
 | unique successes | 36 | 0 |
 | non-unique activations | 0 | 12 |
 
-Carrier structure also differs:
+Integer structure also differs:
 
 | group | known_basis_semiprime | known_basis_prime_power |
 |---|---:|---:|
 | unique successes | 29 | 7 |
 | non-unique activations | 2 | 10 |
 
-Carrier divisor count differs in the same direction:
+Integer divisor count differs in the same direction:
 
 | group | d=3 | d=4 | d=6 |
 |---|---:|---:|---:|
@@ -189,8 +189,8 @@ Carrier divisor count differs in the same direction:
 The observed split is:
 
 ```text
-unique success: mostly semiprime carrier, usually d=4, no single-hole closure
-non-unique activation: mostly prime-power carrier, usually d=3, single-hole closure used
+unique success: mostly semiprime selected integer, usually d=4, no single-hole closure
+non-unique activation: mostly prime-power selected integer, usually d=3, single-hole closure used
 ```
 
 This is a profile result, not an approved selector. It identifies a possible

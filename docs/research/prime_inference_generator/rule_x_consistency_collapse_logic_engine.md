@@ -104,7 +104,7 @@ A candidate is a resolved survivor when:
 1. the candidate itself has no positive composite witness;
 2. all wheel-open interior positions in its proposed chamber are closed by
    positive composite evidence;
-3. the proposed chamber contains a carrier available to the rule stack;
+3. the proposed chamber contains a integer available to the rule stack;
 4. no active rule rejects the candidate.
 
 Resolved survivor does not mean "proved prime" in the mathematical sense. It
@@ -141,12 +141,12 @@ This is not a rejection. The semiprime-shadow landmark is load-bearing PGS
 evidence. The engine does not promote it to a resolved next prime survivor until
 it is cleared by additional evidence.
 
-### Carrier Lock
+### Integer Lock
 
-Each proposed chamber has a GWR-style carrier: the leftmost known composite in
+Each proposed chamber has a GWR-style integer: the leftmost known composite in
 the proposed interior with minimum divisor count among known composites.
 
-The carrier is not locked merely because it appears. The engine locks a carrier
+The integer is not locked merely because it appears. The engine locks a integer
 only after a resolved survivor exists.
 
 In logic-puzzle language:
@@ -158,13 +158,13 @@ resolved-survivor status.
 
 ### Lower-Divisor Threat
 
-After a carrier `w` is locked, the first later known composite `t` with lower
+After a integer `w` is locked, the first later known composite `t` with lower
 divisor count is a lower-divisor threat:
 
 $$t > w,\ d(t) < d(w).$$
 
-Under GWR/NLSC, a locked carrier cannot be followed inside the same prime gap
-by a strictly simpler composite. Therefore, once the carrier is legitimately
+Under GWR/NLSC, a locked integer cannot be followed inside the same prime gap
+by a strictly simpler composite. Therefore, once the integer is legitimately
 locked, the first certified lower-divisor threat becomes a right-endpoint
 ceiling.
 
@@ -204,8 +204,8 @@ The current Rule X chamber-reset stack is:
 2. Reject candidate composites with positive composite witnesses.
 3. Hold candidate chambers with unresolved wheel-open interiors.
 4. Hold semiprime-shadow landmarks open instead of treating them as resolved q.
-5. Lock the carrier only after a resolved survivor exists.
-6. Find the first certified lower-divisor threat after the locked carrier.
+5. Lock the selected integer only after a resolved survivor exists.
+6. Find the first certified lower-divisor threat after the locked selected integer.
 7. Reject candidate next primes beyond that threat.
 8. Identify the first resolved survivor r.
 9. Reset the chamber at r.
@@ -216,7 +216,7 @@ The current Rule X chamber-reset stack is:
 
 The decisive safety rule is step `4`. Before this rule, semiprime-shadow
 landmarks were incorrectly promoted to resolved next prime survivors. That caused
-premature carrier locks and true-next-prime rejection. After the hold-open rule,
+premature integer locks and true-next-prime rejection. After the hold-open rule,
 the tested `11..100000` surface has zero true-next-prime rejections for witness
 bounds `97` and `127`.
 
@@ -228,7 +228,7 @@ are assigned to later chambers and no longer block the current endpoint.
 ## Why GWR/NLSC Alone Did Not Collapse Candidates
 
 GWR and NLSC are interior consistency laws. If each candidate chamber is allowed
-to choose its own carrier from scratch, every proposed chamber can often remain
+to choose its own integer from scratch, every proposed chamber can often remain
 internally coherent.
 
 The initial structural-only run showed:
@@ -241,18 +241,18 @@ structural_unique_anchor_count = 0
 This does not weaken GWR/NLSC. It identifies the missing operational condition:
 
 ```text
-candidate extensions must not be allowed to freely rewrite the carrier story
-after a carrier has legitimately locked.
+candidate extensions must not be allowed to freely rewrite the selected integer story
+after a selected integer has legitimately locked.
 ```
 
 The logic engine supplies that missing operational condition.
 
-## Why The Naive Carrier Lock Failed
+## Why The Naive Integer Lock Failed
 
 The naive rule was:
 
 ```text
-lock the first carrier immediately
+lock the first selected integer immediately
 ```
 
 On `11..100000`, `candidate_bound = 128`, this was unsafe:
@@ -264,8 +264,8 @@ rule_x_true_boundary_rejected_count = 7297
 ```
 
 The rule locked too early. Many anchors begin with a small composite near
-`p + 1`, but the true gap later introduces the actual carrier before the prime
-endpoint. Locking the first carrier converts real reset structure into a false
+`p + 1`, but the true gap later introduces the actual integer before the prime
+endpoint. Locking the first integer converts real reset structure into a false
 contradiction.
 
 ## Why The Semiprime-Shadow Landmark Hold Is Necessary
@@ -300,7 +300,7 @@ no witness <= B and n >= next_prime(B)^2
 => SEMIPRIME_SHADOW_LANDMARK_HOLD
 ```
 
-The candidate remains active but unresolved. It cannot lock the carrier and it
+The candidate remains active but unresolved. It cannot lock the integer and it
 cannot be emitted.
 
 ## Measured Surface
@@ -360,7 +360,7 @@ This is a decade-window result, not exhaustive coverage of every prime through
 | Rule X with semiprime-shadow landmark hold | `11..100000` | `128` | `127` | `488` | `0` |
 
 The `317` run is a finite full-witness control for this surface because
-`317 > sqrt(100128)`. It shows the carrier-lock pressure rule is safe when
+`317 > sqrt(100128)`. It shows the selected-integer-lock pressure rule is safe when
 false endpoint promotion is removed by complete small-scale witness coverage.
 
 The semiprime-shadow landmark hold gives the same zero true-rejection safety
@@ -395,7 +395,7 @@ The chamber-reset logic engine may emit when all of these hold:
 first_resolved_survivor exists
 semiprime-shadow landmarks before that survivor are not promoted
 positive composite witnesses reject closed candidate next primes
-carrier lock and lower-divisor threat rules do not reject the survivor
+selected-integer lock and lower-divisor threat rules do not reject the survivor
 true-next-prime labels have not been consulted
 ```
 
@@ -413,7 +413,7 @@ generator-style path:
 {"p": 11, "q": 13}
 ```
 
-All rule status, carrier lock, landmark, threat, and audit fields belong in
+All rule status, integer lock, landmark, threat, and audit fields belong in
 sidecar records.
 
 ## Audit Endpoint
@@ -439,12 +439,12 @@ candidate-elimination and chamber-reset rule stack.
 It is related to these earlier lines of work:
 
 - `positive_composite_witness_rejection`;
-- carrier-locked pressure ceilings;
+- selected-integer-locked pressure ceilings;
 - candidate-constraint graph solving;
 - semiprime-shadow recovery;
 - unresolved candidate holds.
 
-The first new contribution is the semiprime-shadow landmark hold before carrier
+The first new contribution is the semiprime-shadow landmark hold before integer
 lock. It prevents unresolved two-factor landmarks from being promoted to
 endpoint survivors.
 

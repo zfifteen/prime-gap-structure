@@ -34,7 +34,7 @@ The system consists of four conceptual layers:
     * Infers the next prime endpoint q without classical primality testing.
 3. Emission Layer
     * Emits q as a PGS-inferred prime.
-    * Records the inference path, gap interior evidence, selected integer carrier, divisor-class logic, and confidence metadata.
+    * Records the inference path, gap interior evidence, selected integer, divisor-class logic, and confidence metadata.
 4. External Validation Layer
     * Runs after generation.
     * Uses classical methods only to audit the generated output.
@@ -77,9 +77,9 @@ I = {p + 1, ..., q - 1}
 
 In the generator, the future right endpoint q is not assumed known. The inference layer attempts to infer it.
 
-GWR Carrier
+GWR Integer
 
-The leftmost carrier of the minimum divisor-count class present in a gap interior. Under the GWR framing, this carrier is the raw-Z/log-Z selected integer inside the gap.
+The leftmost integer of the minimum divisor-count class present in a gap interior. Under the GWR framing, this integer is the raw-Z/log-Z selected integer inside the gap.
 
 Raw-Z / Log-Z Score
 
@@ -91,7 +91,7 @@ where d(n) is the divisor count.
 
 No-Later-Simpler-Composite Closure
 
-The rule that after the GWR carrier appears, the next prime endpoint arrives before any later composite with strictly lower divisor count can appear inside the same gap.
+The rule that after the GWR-selected integer appears, the next prime endpoint arrives before any later composite with strictly lower divisor count can appear inside the same gap.
 
 Threat Margin
 
@@ -124,8 +124,8 @@ Given an anchor prime p, the generator attempts to produce an inferred next prim
 
 1. q_hat > p
 2. All integers between p and q_hat are treated as inferred composite interior under the PGS chamber model.
-3. The interior contains a GWR-compatible carrier structure.
-4. The inferred carrier satisfies the active deterministic rule set.
+3. The interior contains a GWR-compatible selected integer structure.
+4. The inferred integer satisfies the active deterministic rule set.
 5. No-later-simpler-composite closure holds under the active inference model.
 6. The generator emits q_hat as a PGS-inferred prime.
 7. The generator records sufficient metadata to reproduce the inference.
@@ -176,7 +176,7 @@ Optional input:
 * maximum search horizon,
 * maximum chamber width,
 * divisor-class budget,
-* carrier-family restrictions,
+* selected-integer-family restrictions,
 * threat-margin reporting level,
 * metadata verbosity,
 * validation backend for post-generation audit.
@@ -217,8 +217,8 @@ The initial design should use the repo’s existing deterministic components in 
 
 1. Start from known prime p.
 2. Build or scan the candidate chamber immediately to the right of p using PGS-compatible structure.
-3. Identify admissible composite carriers and their divisor classes.
-4. Locate the earliest minimal-divisor carrier according to GWR logic.
+3. Identify admissible composite integers and their divisor classes.
+4. Locate the earliest minimum-divisor integer according to GWR logic.
 5. Use no-later-simpler-composite closure to infer the right endpoint before any later simpler composite threat.
 6. Infer the next prime endpoint q_hat.
 7. Emit q_hat and advance the anchor to q_hat.
@@ -286,7 +286,7 @@ The number satisfies the active deterministic inference rule set and is emitted 
 
 Level 2: PGS-Inferred + Internally Consistent
 
-The inference record satisfies all available PGS metadata checks: GWR carrier, closure, threat-margin, and chamber consistency.
+The inference record satisfies all available PGS metadata checks: GWR-selected integer, closure, threat-margin, and chamber consistency.
 
 Level 3: Classically Validated Prime
 

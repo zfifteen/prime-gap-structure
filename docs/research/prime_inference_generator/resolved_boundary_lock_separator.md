@@ -90,8 +90,8 @@ Predicate reports:
 
 ## Interpretation
 
-Most simple lock predicates fail the zero-wrong gate. Carrier preservation,
-no-reset status, carrier change, reset evidence, closure support, and previous
+Most simple lock predicates fail the zero-wrong gate. Integer preservation,
+no-reset status, integer change, reset evidence, closure support, and previous
 gap compatibility all select false resolved survivors.
 
 The one zero-wrong predicate on this surface is:

@@ -295,7 +295,7 @@ The probe computes:
 - visible gap vectors;
 - square-ceiling observables;
 - seed residues;
-- probe-only carrier class from existing measurement rows;
+- probe-only integer class from existing measurement rows;
 - terminal margin as audit-only label.
 
 Test performed:
@@ -930,7 +930,7 @@ the first point that remains open from the anchor.
 
 Weakness:
 
-The current right-phase definition has no carrier memory. It can describe a
+The current right-phase definition has no integer memory. It can describe a
 balanced interior phase after the real next prime as easily as a terminal
 endpoint, which creates many too-late selections.
 
@@ -938,7 +938,7 @@ Limitation:
 
 This branch rejects mod-`30` and mod-`210` right-phase closure as currently
 materialized. It does not rule out a right-endpoint state that carries the
-placed seed or GWR carrier as an active term.
+placed seed or GWR-selected integer as an active term.
 
 ## Solution 9: Seed-Distance Closure
 
@@ -1011,7 +1011,7 @@ Limitation:
 
 This branch rejects seed-distance closure as materialized by
 `closure_reason(0, delta)` with the current visible divisor bound. It does not
-rule out a carrier-aware state transition that distinguishes the seed from the
+rule out a integer-aware state transition that distinguishes the seed from the
 first visible-open candidate.
 
 ## Solution 10: Continued-Chamber Ladder
@@ -1098,10 +1098,10 @@ Limitation:
 
 This branch rejects the literal Lambert ladder materialization as a endpoint
 selector. It does not rule out a seed-carried transition state that uses the
-ladder only as a prior inside a stricter carrier-preservation or reset
+ladder only as a prior inside a stricter integer-preservation or reset
 discriminator.
 
-## Solution 11: Carrier Threat Transition Gate
+## Solution 11: Integer Threat Transition Gate
 
 Branch:
 `codex/solution-11-carrier-threat-margin`
@@ -1111,7 +1111,7 @@ Commit: `uncommitted`
 Proposed solution:
 
 Treat the first post-seed wheel-open closure with a small divisor witness as a
-PGS-visible carrier-transition event:
+PGS-visible integer-transition event:
 
 - threat = first `n > q0` with `closure_reason(p, n - p)` of the form
   `divisor_witness:w` with `w <= 97`;
@@ -1120,7 +1120,7 @@ PGS-visible carrier-transition event:
 
 Test performed:
 
-The probe evaluated the carrier-threat gate on the 388 high-scale shadow rows
+The probe evaluated the integer-threat gate on the 388 high-scale shadow rows
 with:
 
 - `candidate_bound=128`
@@ -1149,7 +1149,7 @@ failures via both early and late mis-selections.
 
 Strength:
 
-The carrier-threat observable is genuinely PGS-visible and does not use audit
+The integer-threat observable is genuinely PGS-visible and does not use audit
 labels or any exact divisor-field classification. It is a concrete attempt to
 turn a post-seed closure witness event into a next-prime-margin marker.
 
@@ -1163,7 +1163,7 @@ threat.
 Limitation:
 
 This branch rejects the specific low-witness threat-as-transition
-materialization. It does not rule out a carrier-preservation or reset
+materialization. It does not rule out a integer-preservation or reset
 observable that depends on a different post-seed invariant than the first
 small divisor witness.
 

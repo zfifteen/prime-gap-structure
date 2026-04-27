@@ -27,7 +27,7 @@ where
 
 $$d_{\min}(q)=\min\{\,d(n): q<n<q^+,\ n\text{ composite}\,\}.$$
 
-So $E(q)$ is the offset of the leftmost minimum-divisor carrier in the next
+So $E(q)$ is the offset of the leftmost minimum-divisor integer in the next
 gap.
 
 Define also

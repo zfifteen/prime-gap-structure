@@ -102,11 +102,11 @@ The existing dominant reduction already says:
 
 - if no interior prime square appears,
 - and the next-gap minimum divisor class is $4$,
-- then the exact next-gap minimum is the first interior $d=4$ carrier.
+- then the exact next-gap minimum is the first interior integer with $d(n)=4$.
 
 So this branch reduces to:
 
-prove that under square exclusion, the first interior $d=4$ carrier appears
+prove that under square exclusion, the first interior integer with $d(n)=4$ appears
 before the branch cutoff.
 
 This branch is not currently close to failure on the exact surface, but it
@@ -119,7 +119,7 @@ disappears.”
 
 The correct target is:
 
-prove that every such branch reaches its lex-min carrier very early, with a
+prove that every such branch reaches its lex-min integer very early, with a
 uniform bound far below the cutoff.
 
 The exact $10^6$ branch frontier suggests that this remainder should be a small

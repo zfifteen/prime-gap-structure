@@ -43,18 +43,18 @@ Inside the chamber, the generator uses:
 - offsets from the anchor;
 - wheel-open positions;
 - exact divisor-count state;
-- GWR carrier structure;
+- GWR-selected integer structure;
 - no-later-simpler-composite ceilings;
 - chamber-reset next-prime state.
 
 The chamber is not a place to ask a primality oracle which number is prime. It
 is the local arithmetic region where the PGS rule decides the next prime.
 
-## Stage 3: Carrier
+## Stage 3: Integer
 
-GWR identifies the simplest leftmost carrier `w` inside the chamber.
+GWR identifies the simplest leftmost integer `w` inside the chamber.
 
-The carrier is not the endpoint. It is a landmark that orients the local PGS
+The integer is not the endpoint. It is a landmark that orients the local PGS
 state. The rule `q = w + 1` is false as a general rule and is forbidden.
 
 ## Stage 4: Endpoint Rule
@@ -65,8 +65,8 @@ The production next-prime selection rule is Rule X with chamber reset:
 - reject candidates with composite divisor-count state;
 - preserve semiprime-shadow landmarks as unresolved landmarks instead of
   promoting them to endpoint survivors;
-- lock the GWR carrier only after a resolved survivor exists;
-- apply the lower-divisor threat ceiling after carrier lock;
+- lock the GWR-selected integer only after a resolved survivor exists;
+- apply the lower-divisor threat ceiling after integer lock;
 - identify the first resolved survivor `r`;
 - reset the chamber at `r`;
 - classify later unresolved candidates as post-reset chamber material;
@@ -87,7 +87,7 @@ For each resolved anchor `p`, the generator emits exactly one line:
 {"p": 11, "q": 13}
 ```
 
-The line contains no extra fields. It contains no carrier data, relation
+The line contains no extra fields. It contains no selected-integer data, relation
 history, proof object, approval flags, counters, status categories, source
 labels, or hidden diagnostics.
 

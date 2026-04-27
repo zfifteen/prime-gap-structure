@@ -64,7 +64,7 @@ For each resolved survivor candidate, the probe records:
 - `no_later_simpler_status`
 - `previous_chamber_pressure`
 
-Exact carrier and divisor-family fields are offline diagnostics for forensics.
+Exact integer and divisor-family fields are offline diagnostics for forensics.
 They are not generator rules.
 
 ## Result
@@ -118,7 +118,7 @@ The true next prime often requires the single-hole closure rule, while the false
 survivor requires less closure support. That kills minimal-closure dominance in
 this surface.
 
-GWR-carrier dominance has some signal, but it is not safe:
+GWR-selected-divisor-count dominance has some signal, but it is not safe:
 
 - `selection_wrong_count: 20`
 

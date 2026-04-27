@@ -4,7 +4,7 @@ This note records the executed pair-frontier extraction from
 [`no_early_spoiler_ratio_frontier.py`](../experiments/proof/no_early_spoiler_ratio_frontier.py).
 
 The input surface is the exact no-early-spoiler condition against the true
-`GWR` carrier. The question here is narrower:
+`GWR` integer. The question here is narrower:
 
 which selected integer/earlier divisor-class pairs come closest to violating the
 ratio-form spoiler inequality?

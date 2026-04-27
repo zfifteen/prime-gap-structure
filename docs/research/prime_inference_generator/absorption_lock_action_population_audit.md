@@ -23,8 +23,8 @@ The audit used the strongest safe pre-absorption eliminator:
 - candidate bound: 64
 - witness bound: 97
 - single-hole positive witness closure: enabled
-- carrier-locked pressure ceiling: enabled
-- carrier-lock predicate: unresolved_alternatives_before_threat
+- selected-integer-locked pressure ceiling: enabled
+- selected-integer-lock predicate: unresolved_alternatives_before_threat
 
 Surfaces:
 

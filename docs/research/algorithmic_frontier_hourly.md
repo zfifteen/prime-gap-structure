@@ -210,9 +210,9 @@ Derive an exact `delta = 4` sub-condition from the Z-band invariants that certif
 
 ## 2026-04-12 20:17 run
 Mechanism:
-Selected integer-anchored tail scan: once the DNI/GWR lex-min localizer has identified the leftmost minimum-divisor carrier at offset `omega`, recover the next-prime endpoint by scanning only from `q + omega + 1` forward instead of from `q + 1`.
+Selected integer-anchored tail scan: once the DNI/GWR lex-min localizer has identified the leftmost minimum-divisor integer at offset `omega`, recover the next-prime endpoint by scanning only from `q + omega + 1` forward instead of from `q + 1`.
 Why it could help:
-It removes the left prefix `[q + 1, q + omega]` from the exact divisor-field endpoint search. Because the lex-min carrier stays near the left edge on the tested surface, that cuts pure DNI/GWR search width before any classical machinery enters.
+It removes the left prefix `[q + 1, q + omega]` from the exact divisor-field endpoint search. Because the lex-min integer stays near the left edge on the tested surface, that cuts pure DNI/GWR search width before any classical machinery enters.
 Method:
 Deterministic experiment.
 What was built or tested:

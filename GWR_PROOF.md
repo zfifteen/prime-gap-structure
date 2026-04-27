@@ -45,7 +45,7 @@ Source:
 
 ### 2. Earlier Side, Square Branch
 
-If the first interior carrier of the minimal divisor class is a prime square
+If the first interior integer of the minimal divisor class is a prime square
 $s = r^2$, then every earlier composite $k < s$ satisfies $L(k) < L(s)$.
 
 That branch is closed in the local admissibility note.
@@ -56,7 +56,7 @@ Source:
 ### 3. Earlier Side, Square-Free Early-Arrival Branch
 
 The local admissibility note also closes the square-free first-$d=4$ branch
-once the first interior $d=4$ carrier arrives inside the fixed early window
+once the first interior integer with $d(n)=4$ arrives inside the fixed early window
 $K = 128$.
 
 The committed admissibility frontier artifacts keep that window explicit on the
@@ -99,7 +99,7 @@ The strongest committed aggregate through $p < 5 \cdot 10^9$ is:
 That artifact reports:
 
 - `172,913,029` prime gaps
-- `660,287,089` earlier candidates before the true `GWR` carrier
+- `660,287,089` earlier candidates before the true `GWR` integer
 - `0` exact earlier spoilers
 - `0` bridge failures
 

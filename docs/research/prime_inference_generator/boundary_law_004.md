@@ -46,31 +46,31 @@ Next-Prime Law 004 rejects any predicate that emits because:
 The standard is unchanged: PGS must force `q_hat`; audit only confirms
 afterward.
 
-## Candidate 1: First Post-Carrier Admissible Closure
+## Candidate 1: First Post-Integer Admissible Closure
 
 Statement:
 
-After a GWR carrier is established, the first admissible open offset satisfying
+After a GWR-selected integer is established, the first admissible open offset satisfying
 local closure constraints is forced as the right endpoint.
 
 Anchor-13 probe:
 
-- carrier: `w = 14`;
+- integer: `w = 14`;
 - divisor class: `d(w) = 4`;
 - later proposed interior points: `15`, `16`;
 - first post-chamber open candidate: `17`.
 
 What it establishes:
 
-- the chamber has a carrier;
+- the chamber has a integer;
 - no smaller endpoint inside the proposed chamber survives;
 - local interior closure is coherent.
 
 What remains missing:
 
-- a proof that the first admissible post-carrier closure point must be the
+- a proof that the first admissible post-integer closure point must be the
   endpoint;
-- a rule that distinguishes first admissible post-carrier candidate from a
+- a rule that distinguishes first admissible post-integer candidate from a
   later endpoint without checking primality.
 
 Status:
@@ -127,7 +127,7 @@ The desired predicate would map chamber state to a unique offset:
 
 $$B(p, S, w, d(w)) = q_{hat}$$
 
-where `S` is the PGS state and `w` is the active carrier.
+where `S` is the PGS state and `w` is the active integer.
 
 What it establishes:
 
@@ -153,13 +153,13 @@ Failure reason:
 
 Statement:
 
-Once `d_min` and carrier offset are known, a deterministic witness map returns a
+Once `d_min` and selected-integer offset are known, a deterministic witness map returns a
 candidate next prime without calling `nextprime`.
 
 What it establishes:
 
 - a possible implementation shape for a pure next-prime selector;
-- a route from interior carrier metadata to a next-prime offset.
+- a route from interior selected-integer metadata to a next-prime offset.
 
 What remains missing:
 
@@ -211,7 +211,7 @@ No candidate predicate in this note currently forces a endpoint.
 The strongest supported result is:
 
 PGS chamber certificates can establish interior closure, GWR-selected integers,
-leftmost-minimum carriers, and local no-later-simpler consistency. They do not
+leftmost-minimum integers, and local no-later-simpler consistency. They do not
 yet imply a unique next prime.
 
 Status:
@@ -225,7 +225,7 @@ certification:
 
 $$\text{PGS chamber state} \Rightarrow \text{unique right endpoint offset}$$
 
-For a carrier-bearing chamber, the desired form is:
+For a selected-integer-bearing chamber, the desired form is:
 
 $$B(p, S, w, d(w)) = q_{hat}$$
 

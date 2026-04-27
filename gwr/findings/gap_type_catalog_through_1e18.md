@@ -16,7 +16,7 @@ More concretely:
 - adding deterministic sampled decade windows from `10^7` through `10^18`
   raises the observed exact alphabet to `274` types, so only `50` exact types
   are new beyond the baseline;
-- all observed types still sit inside the same `6` carrier families:
+- all observed types still sit inside the same `6` integer families:
   `prime_square`, `prime_cube`, `even_semiprime`, `odd_semiprime`,
   `higher_divisor_even`, and `higher_divisor_odd`;
 - the post-baseline growth is carried entirely by
@@ -58,7 +58,7 @@ In ordinary language:
 - `o` records the first wheel-open even offset after the current right prime;
 - `d` records the minimum divisor class that actually wins in the next gap;
 - `a` records the leftmost offset where that winning class first appears;
-- `family` records what kind of carrier that selected integer is.
+- `family` records what kind of integer that selected integer is.
 
 That means one exact type is not just a family label. It is a full local gap
 signature.
@@ -91,7 +91,7 @@ On the current surface, the natural category split is:
    higher sampled decades.
 
 2. **Prime-cube types**
-   These are `d = 4` selected integers whose carrier is exactly a prime cube.
+   These are `d = 4` selected integers whose integer is exactly a prime cube.
    They are extremely rare on the current surface and stay rare enough that the
    high-decade windows did not add new cube families.
 
@@ -106,12 +106,12 @@ On the current surface, the natural category split is:
    dominant by `10^18`.
 
 5. **Higher-divisor even types**
-   These are selected integers with `d >= 6` on an even carrier.
+   These are selected integers with `d >= 6` on an even integer.
    They persist at every sampled scale and account for many of the new
    high-scale exact types.
 
 6. **Higher-divisor odd types**
-   These are selected integers with `d >= 6` on an odd carrier.
+   These are selected integers with `d >= 6` on an odd integer.
    They also persist at every sampled scale and pick up new late-arrival
    variants at high decades.
 
@@ -235,7 +235,7 @@ is probably **not** the raw exact type key alone.
 
 The more promising next objects are:
 
-- transitions among the stable carrier families,
+- transitions among the stable integer families,
 - transitions among the divisor class and first-open components,
 - or a mixed state that preserves the stable scaffold while factoring out the
   unbounded arrival-offset tail.

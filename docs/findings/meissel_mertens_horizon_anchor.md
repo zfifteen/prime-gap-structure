@@ -124,7 +124,7 @@ The same horizon reading also sharpens the `GWR` proof program.
 collapses to a simpler arithmetic law:
 
 - minimize the interior divisor count,
-- among ties, take the leftmost carrier.
+- among ties, take the leftmost integer.
 
 See [gwr/README.md](../../gwr/README.md) and
 [gwr/findings/gwr_hierarchical_local_dominator_theorem.md](../../gwr/findings/gwr_hierarchical_local_dominator_theorem.md).

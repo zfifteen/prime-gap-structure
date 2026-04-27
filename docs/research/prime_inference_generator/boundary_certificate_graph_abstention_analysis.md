@@ -20,7 +20,7 @@ The accepted v0 graph rules are:
 
 - positive composite witness rejection;
 - single-hole positive witness closure;
-- carrier-locked pressure ceiling;
+- selected-integer-locked pressure ceiling;
 - 005A-R higher-divisor locked absorption.
 
 The analysis does not add 005B, broad resolved-chamber absorption,
@@ -115,7 +115,7 @@ NEED_UNRESOLVED_LATER_DOMINATION
 The v2 refinement kept the same unresolved-later domination family and changed
 only the reset-evidence lens. It evaluates reset evidence over the active
 candidate graph after rejected and absorbed nodes have been removed, while
-still requiring carrier preservation and abstaining on positive or unknown
+still requiring selected-integer preservation and abstaining on positive or unknown
 reset evidence.
 
 ```text
@@ -141,9 +141,9 @@ v2 result shows that active-graph reset awareness is the right refinement path.
 ## v3 Follow-Up
 
 The v3 refinement stayed inside unresolved-later domination. It added a narrow
-empty-carrier extension relation that fires only when the active graph has
-exactly one resolved survivor, that source has no legal carrier, and the
-nearest later unresolved extension has a first legal carrier after the source.
+empty-selected-integer extension relation that fires only when the active graph has
+exactly one resolved survivor, that source has no legal integer, and the
+nearest later unresolved extension has a first legal integer after the source.
 
 On the same surface:
 
@@ -183,10 +183,10 @@ NEED_UNRESOLVED_LATER_DOMINATION: 959
 ## v4 Follow-Up
 
 The v4 refinement stayed inside unresolved-later domination. It added the
-target-no-carrier reset discriminator identified by the v4 abstention profile.
+target-no-selected-integer reset discriminator identified by the v4 abstention profile.
 The relation absorbs only the nearest later unresolved target when the active
 graph has exactly one resolved survivor, the source is not single-hole
-dependent, the target has no legal carrier, and the active graph contains no
+dependent, the target has no legal integer, and the active graph contains no
 positive reset evidence between source and target.
 
 On the same surface:
@@ -227,11 +227,11 @@ NEED_UNRESOLVED_LATER_DOMINATION: 723
 ## v5 Follow-Up
 
 The v5 refinement stayed inside unresolved-later domination. It re-evaluated
-the v3 empty-source legal-carrier extension after v4 had removed the no-carrier
+the v3 empty-source legal-integer extension after v4 had removed the no-selected-integer
 nearest blockers. The relation absorbs only the nearest later unresolved
 target when the active graph has exactly one resolved survivor, the source has
-no legal carrier, the source is not single-hole dependent, and the target has
-its first legal carrier after the source.
+no legal integer, the source is not single-hole dependent, and the target has
+its first legal integer after the source.
 
 On the same surface:
 

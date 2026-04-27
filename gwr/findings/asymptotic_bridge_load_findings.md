@@ -9,7 +9,7 @@ $$\frac{\ln w}{\ln k} < 1 + \frac{\delta}{d_{\min} - 2}.$$
 
 where
 
-- $w$ is the true `GWR` carrier,
+- $w$ is the true `GWR` integer,
 - $k$ is an earlier interior candidate,
 - $\delta = d(k) - d_{\min}$.
 

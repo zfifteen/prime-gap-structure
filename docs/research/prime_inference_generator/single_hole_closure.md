@@ -112,7 +112,7 @@ Closure candidate counts:
 | `small_factor_positive_witness_closure` | `178` |
 | `power_closure` | `13` |
 
-Hole position relative to GWR carrier:
+Hole position relative to GWR-selected integer:
 
 | Position | Count |
 |---|---:|

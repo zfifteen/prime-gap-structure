@@ -5,7 +5,7 @@ This note records the theorem-shaped form of the dominant $d=4$ reduction.
 The core idea is:
 
 in the dominant selected-integer regime, a prime gap first has to avoid admitting any
-interior prime square, and then the selected integer is the first interior carrier with
+interior prime square, and then the selected integer is the first interior integer with
 $d(n)=4$.
 
 That idea can be stated at two different levels.
@@ -48,18 +48,18 @@ $$w = u.$$
 In words:
 
 if the GWR-selected integer has divisor class $4$, then the selected integer is exactly the first
-interior $d=4$ carrier, and no prime square appears anywhere inside the gap.
+interior $d=4$ integer, and no prime square appears anywhere inside the gap.
 
 ### Why This Is Immediate
 
-Under GWR, the selected integer is the leftmost interior carrier with minimal divisor
+Under GWR, the selected integer is the leftmost interior integer with minimal divisor
 count.
 
 If some interior prime square existed, then some interior integer would have
-$d(n)=3<4$, so a $d=4$ carrier could not be the GWR-selected integer.
+$d(n)=3<4$, so a $d=4$ integer could not be the GWR-selected integer.
 
 If some earlier interior integer had $d(n)=4$, then the leftmost tie-break
-would force that earlier carrier to win instead.
+would force that earlier integer to win instead.
 
 So once a GWR-selected integer has divisor count $4$, the whole gap is forced into the
 shape:
@@ -112,7 +112,7 @@ It does not say:
 It says one precise thing:
 
 in the no-interior-prime-square regime, the implemented score maximizer is the first
-interior $d=4$ carrier.
+interior $d=4$ integer.
 
 That turns most of the observed selected integer surface from a global-looking score
 optimization into a local exclusion-and-arrival law.
@@ -169,7 +169,7 @@ This framing isolates two concrete observables:
 1. square exclusion:
    whether any interior prime square occurs at all;
 2. first-$d=4$ arrival:
-   the location of the earliest interior carrier with divisor count $4$.
+   the location of the earliest interior integer with divisor count $4$.
 
 That makes the dominant regime much easier to analyze than the full score field.
 
@@ -184,7 +184,7 @@ The safest way to state the candidate is:
 
 If GWR holds on a gap and its selected integer has divisor class $4$, then the gap
 contains no interior prime square and the selected integer is the first interior
-$d=4$ carrier. Independently of that corollary, the same dominant reduction can
+$d=4$ integer. Independently of that corollary, the same dominant reduction can
 be treated as a standalone theorem candidate: in prime gaps with no interior
-prime square and at least one interior $d=4$ carrier, the implemented score maximizer is
-the first such $d=4$ carrier.
+prime square and at least one interior $d=4$ integer, the implemented score maximizer is
+the first such $d=4$ integer.

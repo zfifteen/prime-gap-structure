@@ -1,14 +1,14 @@
-# Rule X Carrier-Lock Experiment Findings
+# Rule X Integer-Lock Experiment Findings
 
 ## Executive Summary
 
-The updated logic engine tested two carrier-lock rules on prime anchors
+The updated logic engine tested two selected-integer-lock rules on prime anchors
 `11..1000` with candidate offsets up to `128`.
 
 The naive rule is unsafe:
 
 ```text
-lock the first carrier immediately
+lock the first selected integer immediately
 ```
 
 It rejected `5072` candidate hypotheses, but it also rejected the true next prime
@@ -27,7 +27,7 @@ and collapsed `36 / 164` anchors to one survivor.
 This is the current lesson:
 
 ```text
-Carrier-lock pressure is useful only after premature carrier stories have been
+Selected-integer-lock pressure is useful only after premature selected-integer stories have been
 eliminated.
 ```
 
@@ -44,7 +44,7 @@ candidate hypotheses: 5562
 
 ### Structural GWR/NLSC Consistency
 
-Each candidate chamber may choose its own GWR carrier. This layer still rejects
+Each candidate chamber may choose its own GWR-selected integer. This layer still rejects
 no candidates.
 
 ```text
@@ -52,14 +52,14 @@ structural_rejection_count = 0
 structural_unique_anchor_count = 0
 ```
 
-### Naive First-Carrier Lock
+### Naive First-Integer Lock
 
-This rule locks the first composite carrier visible after the anchor, then
+This rule locks the first composite integer visible after the anchor, then
 rejects candidate next primes whose proposed interior extends past the first
 later lower-divisor composite.
 
 It is too early. Many anchors begin with a trivial composite near `p`, then the
-true gap later introduces a simpler carrier before the real next prime.
+true gap later introduces a simpler integer before the real next prime.
 
 ```text
 rule_x_rejection_count = 5072
@@ -67,10 +67,10 @@ rule_x_unique_anchor_count = 67
 rule_x_true_boundary_rejected_count = 107
 ```
 
-### Survivor-Carrier Lock Oracle
+### Survivor-Integer Lock Oracle
 
 This rule waits until the candidate next prime itself survives exact
-non-composite screening, then locks that candidate chamber's carrier. The first
+non-composite screening, then locks that candidate chamber's integer. The first
 later lower-divisor composite becomes a pressure ceiling.
 
 This is an oracle contrast, not a production-legal generator rule, because it
@@ -84,11 +84,11 @@ survivor_lock_true_boundary_rejected_count = 0
 
 ## Reset Transitions
 
-The run found `208` carrier transitions as candidate chambers extended
+The run found `208` selected-integer transitions as candidate chambers extended
 rightward.
 
 Of these, `44` transitions occurred before the actual next prime. These are the
-danger cases that explain why the naive first-carrier lock is unsafe.
+danger cases that explain why the naive first-integer lock is unsafe.
 
 ```text
 reset_transition_count = 208
@@ -99,7 +99,7 @@ reset_before_actual_boundary_count = 44
 
 The experiment confirms the shape of the missing puzzle piece.
 
-The carrier should not lock merely because it appears. It should lock only
+The integer should not lock merely because it appears. It should lock only
 after the candidate story has earned accepted-candidate status. Once that
 happens, later lower-divisor reset pressure becomes safe on this small surface.
 
@@ -107,7 +107,7 @@ The next experiment should replace the oracle's exact non-composite screening
 with a legal positive-witness survivor state:
 
 ```text
-lock carrier only after all earlier candidate hypotheses are rejected or
+lock selected integer only after all earlier candidate hypotheses are rejected or
 resolved by label-free composite evidence.
 ```
 

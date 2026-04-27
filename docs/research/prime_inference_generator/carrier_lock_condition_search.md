@@ -1,8 +1,8 @@
-# Carrier-Lock Condition Search
+# Integer-Lock Condition Search
 
 The naive right-endpoint ceiling failed because a later lower-divisor composite
-can reset the active carrier instead of proving that the endpoint occurred
-earlier. The carrier-lock search found two zero-wrong safety separators on the
+can reset the active integer instead of proving that the endpoint occurred
+earlier. The selected-integer-lock search found two zero-wrong safety separators on the
 tested surface, but neither is an emission rule.
 
 Next-Prime Law 005 is not approved by this note.
@@ -140,13 +140,13 @@ safe as a ceiling on this surface. The generator still cannot emit because the
 same unresolved alternatives remain to be closed or dominated.
 
 The second separator is more structurally PGS-like: higher-divisor pressure
-before the lower-divisor threat may indicate a carrier environment where the
+before the lower-divisor threat may indicate a integer environment where the
 later threat behaves as a ceiling. It covers only `10` cases here, so it is a
 small candidate, not a theorem.
 
 The unsafe reset cases are concentrated where the pre-threat candidate region
 is already fully resolved. That is the trap: a clean early resolved candidate
-does not imply a locked carrier.
+does not imply a locked integer.
 
 ## Status
 

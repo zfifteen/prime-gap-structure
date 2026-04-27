@@ -154,18 +154,18 @@ On the full exact run up to $10^6$:
 - the gap-local raw-$Z$ maximum lands at edge distance $2$ in $43.6006\%$ of tested gaps against an exact within-gap baseline of $22.1859\%$,
 - the resulting edge-distance enrichment is $1.965\times$,
 - the gap-local raw-$Z$ maximum is carried by a $d(n)=4$ composite in $82.9027\%$ of tested gaps against an exact within-gap baseline of $20.1401\%$,
-- the resulting carrier enrichment is $4.116\times$,
+- the resulting selected-divisor-count enrichment is $4.116\times$,
 - left edge wins occur in $74.5574\%$ of tested gaps, right edge wins in $16.0180\%$, and exact-center wins in $9.4245\%$.
 
 The strongest tested reading is therefore local and arithmetic:
 
 - the raw composite peak is pulled toward the endpoint of the gap,
-- the peak carrier is usually the first composite divisor layer $d(n)=4$,
+- the peak integer is usually the first composite divisor layer $d(n)=4$,
 - and the field does not build a midpoint ridge on the tested surface.
 
 That broader rendered surface now extends through sampled $10^{18}$. Across
 the regenerated even-window and fixed-seed campaigns, edge-distance-2
-enrichment stays near $2\times$, while the $d(n)=4$ carrier enrichment rises
+enrichment stays near $2\times$, while the $d(n)=4$ selected-divisor-count enrichment rises
 to about $7.56\times$ in evenly spaced $10^{18}$ windows and about $9.19\times$
 in fixed-seed $10^{18}$ windows.
 
@@ -249,7 +249,7 @@ The repository establishes the following results.
 
 1. The divisor normalization has a distinguished normalization scaling parameter $v = e^2 / 2$ at which the **Divisor Normalization Identity** (DNI) $Z(n) = n^{1 - d(n)/2}$ holds exactly.
 2. Under exact divisor counting on the tractable calibration corpus, confirmed primes lie on $Z = 1.0$, composites contract below that locus, and the observed normalization-load separation ratio is 4.54×.
-3. On exact prime-gap interiors up to $10^6$, the raw composite DNI field forms a near-edge ridge with edge-distance-$2$ enrichment of 1.965× and $d(n)=4$ carrier enrichment of 4.116× against exact within-gap baselines.
+3. On exact prime-gap interiors up to $10^6$, the raw composite DNI field forms a near-edge ridge with edge-distance-$2$ enrichment of 1.965× and $d(n)=4$ selected-divisor-count enrichment of 4.116× against exact within-gap baselines.
 4. Across the current committed execution surface of exact $10^6$, exact $10^7$, and sampled scales through $10^{18}$, the tested gap-local raw-$Z$ peak matches the leftmost minimizer "smallest divisor count, then leftmost" with zero observed counterexamples, and the ridge orientation is residue-modulated by the left endpoint prime modulo $30$ on the separately committed orientation surface.
 5. The production Python path converts the DNI into a deterministic factor-gated prefilter with one narrow survivor convention and one narrow rejection rule.
 6. On the committed cryptographic candidate corpora, the prefilter removes about 91 % of candidates before Miller-Rabin and yields about threefold candidate-loop speedup in the curated summary surface.

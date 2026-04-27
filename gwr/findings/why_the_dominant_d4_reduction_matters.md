@@ -21,7 +21,7 @@ The supported dominant-case reading is:
 - if a tested prime gap has selected divisor-count class $d(w)=4$, then the gap contains no
   interior prime square;
 - once no interior prime square is present, the selected integer is the first interior
-  $d=4$ carrier.
+  $d=4$ integer.
 
 This is narrower than full GWR, but it covers the dominant selected divisor-count class on the
 current surface.
@@ -29,7 +29,7 @@ current surface.
 The stricter semiprime-only slogan is already false. The surviving statement is
 class-based:
 
-- first interior $d=4$ carrier,
+- first interior integer with $d(n)=4$,
 
 not factorization-type-based:
 
@@ -55,7 +55,7 @@ The dominant $d=4$ reduction changes that.
 For most tested selected integer gaps, the mechanism now reads:
 
 - the gap fails to admit any interior prime square,
-- then the first interior $d=4$ carrier wins.
+- then the first interior integer with $d(n)=4$ wins.
 
 That is a local exclusion-and-arrival law, not a full gap-wide search story.
 
@@ -88,7 +88,7 @@ The dominant $d=4$ regime splits into two cleaner questions:
 
 - why do prime gaps with $d=4$ selected integers avoid interior prime squares?
 - once no interior prime square is present, why does the first interior
-  $d=4$ carrier always win?
+  $d=4$ integer always win?
 
 That is a much better follow-on proof program because it identifies the main
 regime and states its mechanism in a form that can plausibly be attacked
@@ -123,7 +123,7 @@ Prime gaps are usually described by their length.
 This project is now isolating a different kind of structure:
 
 - whether a prime square enters the interior,
-- where the first $d=4$ carrier appears,
+- where the first integer with $d(n)=4$ appears,
 - and how that local divisor profile determines the selected integer.
 
 If this continues to hold and eventually gets proved, then prime gaps will not
@@ -141,7 +141,7 @@ The selected integer does not primarily look like:
 
 It looks much more like:
 
-- the first low-divisor carrier that survives the local exclusions of the gap.
+- the first low-divisor integer that survives the local exclusions of the gap.
 
 That is a different kind of phenomenon.
 
@@ -149,7 +149,7 @@ If that picture is right, then the relevant mathematics may lie less in the
 global geometry of the score and more in the short-interval arithmetic of:
 
 - prime squares,
-- $d=4$ carriers,
+- $d=4$ integers,
 - and the order in which these classes can enter prime-gap interiors.
 
 ### 3. The dominant regime moves closer to classical objects
@@ -174,7 +174,7 @@ Combined with the No-Later-Simpler-Composite condition, the dominant reduction
 points toward this picture:
 
 - prime squares govern whether the $d=3$ layer can intrude,
-- the first interior $d=4$ carrier governs the dominant selected integer layer,
+- the first interior integer with $d(n)=4$ governs the dominant selected integer layer,
 - and the next prime closes the gap before a later strictly simpler threat can
   appear.
 
@@ -199,7 +199,7 @@ current deterministic artifact surface:
 On that current surface:
 
 - every tested $d=4$ selected integer gap contained no interior prime square,
-- every such gap had the first interior $d=4$ carrier as its true selected integer,
+- every such gap had the first interior integer with $d(n)=4$ as its true selected integer,
 - the semiprime-only version failed, but only through a very thin prime-cube
   exception family.
 

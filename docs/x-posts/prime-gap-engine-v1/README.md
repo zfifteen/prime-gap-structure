@@ -1,7 +1,7 @@
 # Prime Gap Generative Engine v1.0
 
 We reduced each prime gap to a small deterministic type: first open offset,
-carrier family, and a coarse divisor bucket. On that reduced surface, the gap
+selected-integer family, and a coarse divisor bucket. On that reduced surface, the gap
 stream does not look memoryless. It closes to a stable `14`-state grammar that
 persists from sampled `10^7` through `10^18`.
 

@@ -21,7 +21,7 @@ I failed in the most important way available on this task:
 The theorem that I kept discussing as if it were a live proof target was:
 
 For every prime $q$, if $E(q)$ is the offset of the leftmost next-gap
-minimum-divisor carrier and $o(q)$ is the first wheel-open even offset after
+minimum-divisor integer and $o(q)$ is the first wheel-open even offset after
 $q$, then
 
 - $E(q) \le 44$ when $o(q)=2$,

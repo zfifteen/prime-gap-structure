@@ -1,6 +1,6 @@
-# Previous-to-Current Carrier Shift Lock Hardening
+# Previous-to-Current Integer Shift Lock Hardening
 
-The previous-to-current carrier shift lock remained zero-wrong on all tested
+The previous-to-current selected-integer shift lock remained zero-wrong on all tested
 surfaces and abstained on both shifted windows.
 
 This note hardens the leading Next-Prime Law 005B candidate. It does not approve
@@ -11,7 +11,7 @@ integration and does not approve pure generator emission.
 Current status:
 
 - Next-Prime Law 005A: higher-divisor pressure lock, candidate-grade only.
-- Next-Prime Law 005B lead: previous-to-current carrier shift lock.
+- Next-Prime Law 005B lead: previous-to-current selected-integer shift lock.
 - Milestone 1: blocked for generator output.
 - Pure emission: forbidden.
 
@@ -68,7 +68,7 @@ coverage.
 
 ## Interpretation
 
-The previous-to-current carrier shift lock survives the same safety pressure
+The previous-to-current selected-integer shift lock survives the same safety pressure
 that killed broader previous-memory predicates:
 
 ```text
@@ -77,13 +77,13 @@ previous_first_open_transition_lock
 ```
 
 Those broader predicates selected many true candidates and many false
-survivors. The carrier-shift lock selected far fewer candidates and selected no
+survivors. The integer-shift lock selected far fewer candidates and selected no
 false survivors on this hardening surface.
 
 The result supports candidate status:
 
 ```text
-005B Candidate: Previous-to-Current Carrier Shift Lock
+005B Candidate: Previous-to-Current Selected-Integer Shift Lock
 ```
 
 It does not support pure generator emission.
@@ -104,7 +104,7 @@ This resembles Next-Prime Law 005A: safe where it fires, but sparse.
 Before integration, the candidate needs a separate flagged eliminator mode:
 
 ```text
---enable-previous-carrier-shift-locked-absorption
+--enable-previous-selected integer-shift-locked-absorption
 ```
 
 The integration tests should run separately:

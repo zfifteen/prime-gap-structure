@@ -20,7 +20,7 @@ $$U_{\square}(w, q) = \frac{q - w}{S_{+}(w) - w}.$$
 
 Then, inside each current local-geometry cell
 
-- carrier family,
+- selected-integer family,
 - selected-integer offset,
 - first-open offset,
 

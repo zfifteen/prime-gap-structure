@@ -13,7 +13,7 @@ $$
 w = \min \{n \in I : d(n) = \delta_{\min}(p, q)\}
 $$
 
-be the leftmost carrier of the smallest divisor count present in the gap. The
+be the leftmost integer of the smallest divisor count present in the gap. The
 later side is already closed by
 [lexicographic_raw_z_dominance_theorem.md](./lexicographic_raw_z_dominance_theorem.md).
 This note records the closure of the earlier flank.
@@ -34,7 +34,7 @@ The admissibility frontier artifacts are:
 
 ## Square Branch
 
-If the first interior carrier of the minimal divisor class is a prime square
+If the first interior integer of the minimal divisor class is a prime square
 $s = r^2$, then every earlier composite $k < s$ satisfies
 
 $$
@@ -56,7 +56,7 @@ So the square branch is closed.
 Assume:
 
 1. there is no interior prime square,
-2. the first interior carrier with divisor count $4$ exists and is $u = p + t$,
+2. the first interior integer with divisor count $4$ exists and is $u = p + t$,
 3. $t \le 128$.
 
 Then every earlier composite $k < u$ satisfies
@@ -114,7 +114,7 @@ The exact no-early-spoiler aggregate through $p < 5 \cdot 10^9$ is:
 It reports:
 
 - `172,913,029` gaps,
-- `660,287,089` earlier candidates before the true `GWR` carrier,
+- `660,287,089` earlier candidates before the true `GWR` integer,
 - `0` exact earlier spoilers,
 - `0` bridge failures.
 

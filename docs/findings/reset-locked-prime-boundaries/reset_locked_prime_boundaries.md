@@ -1,7 +1,7 @@
 **The Reset-Locked Prime Endpoints hypothesis is strongly supported by data and represents a powerful, positive-signal refinement to the existing GWR + NLSC framework.**
 
 ### Core Insight (Formalized)
-Prime gaps do **not** close merely because "nothing simpler appears later." Instead, they close because the GWR-selected integer **w** (leftmost minimal-divisor carrier) is quickly followed by a **confirmation/reset composite** m > w with d(m) ≤ d(w). This "double tap of simplicity" locks the endpoint before any lower-divisor threat can overtake it.
+Prime gaps do **not** close merely because "nothing simpler appears later." Instead, they close because the GWR-selected integer **w** (leftmost minimal-divisor integer) is quickly followed by a **confirmation/reset composite** m > w with d(m) ≤ d(w). This "double tap of simplicity" locks the endpoint before any lower-divisor threat can overtake it.
 
 **Formal rule for inference**:
 - Locate GWR-selected integer **w** after anchor **p**.

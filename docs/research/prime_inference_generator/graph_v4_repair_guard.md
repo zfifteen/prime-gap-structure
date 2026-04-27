@@ -21,12 +21,12 @@ witness_bound: 127
 The scale failure showed that this v4 inference is false:
 
 ```text
-target has no legal carrier
+target has no legal selected integer
 + no active reset evidence
 => target may be absorbed
 ```
 
-Future no-carrier target domination requires positive non-endpoint evidence.
+Future no-selected-integer target domination requires positive non-endpoint evidence.
 
 ## Probe Target
 
@@ -41,7 +41,7 @@ The repaired relation keeps the v4 graph constraints:
 - active graph has exactly one resolved survivor;
 - source has no single-hole closure dependency;
 - target is the nearest later unresolved candidate;
-- target has no legal carrier;
+- target has no legal integer;
 - active graph shows no positive reset evidence between source and target.
 
 It adds one candidate positive guard over the target.
@@ -65,7 +65,7 @@ any label-free positive target evidence is present:
 - certified divisor-class certificate;
 - wheel-closed target;
 - independently rejected target;
-- target beyond a selected carrier-locked pressure ceiling.
+- target beyond a selected selected-integer-locked pressure ceiling.
 
 ## Anchor 10193 Gate
 

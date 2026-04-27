@@ -119,7 +119,7 @@ The observed residual miss offsets were concentrated at:
 | $13$ | $375$ |
 
 So the failure mode was not that the first $12$ offsets produced the wrong
-local structure. The failure mode was that the correct minimum first carrier
+local structure. The failure mode was that the correct first minimum-divisor integer
 often appeared just beyond the prefix.
 
 ## 3. Exact Oracle and Dynamic Compression

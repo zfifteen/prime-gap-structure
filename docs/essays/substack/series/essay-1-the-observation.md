@@ -114,7 +114,7 @@ So the divisor rule is not a shortcut that usually works.
 
 It is the exact ordering rule on the tested surface:
 
-**the highest-scoring interior integer is the leftmost carrier of the smallest divisor count present in the gap.**
+**the highest-scoring interior integer is the leftmost integer of the smallest divisor count present in the gap.**
 
 This is the Gap Winner Rule.
 
@@ -130,7 +130,7 @@ The score mixes two different things:
 There is no obvious reason in advance that the selected integer should always be selected by such a clean lexicographic rule:
 
 1. minimize divisor count
-2. break ties by taking the leftmost carrier
+2. break ties by taking the leftmost integer
 
 But that is exactly what the tested surface shows.
 
@@ -152,7 +152,7 @@ That adds up to **4,423,459 tested prime gaps** with **0 counterexamples observe
 
 So the strongest supported claim is:
 
-**On the current tested surface, every checked prime gap has a canonical interior selected integer, and the selected integer is exactly the leftmost carrier of the smallest divisor count present in the gap.**
+**On the current tested surface, every checked prime gap has a canonical interior selected integer, and the selected integer is exactly the leftmost integer of the smallest divisor count present in the gap.**
 
 That is finite evidence, not an unconditional theorem for all primes. But it is already much stronger than a handful of numerical coincidences.
 

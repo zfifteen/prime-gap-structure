@@ -16,8 +16,8 @@ The integration matrix used the strongest safe eliminator configuration before a
 - candidate bound: 64
 - witness bound: 97
 - single-hole positive witness closure: enabled
-- carrier-locked pressure ceiling: enabled
-- carrier-lock predicate: unresolved_alternatives_before_threat
+- selected-integer-locked pressure ceiling: enabled
+- selected-integer-lock predicate: unresolved_alternatives_before_threat
 
 The four tested modes were:
 
@@ -65,7 +65,7 @@ The false resolved survivor at offset 12 absorbs the true next prime candidate a
 
 ## Interpretation
 
-The previous-to-current carrier shift lock hardened as a zero-wrong selector inside a narrower theorem-discovery population. Direct integration applies it operationally to every row where the local predicate fires.
+The previous-to-current selected-integer shift lock hardened as a zero-wrong selector inside a narrower theorem-discovery population. Direct integration applies it operationally to every row where the local predicate fires.
 
 Those are not the same regime.
 
@@ -81,7 +81,7 @@ The hardening population required the true next prime to already be a resolved s
 
 005B direct integration is quarantined:
 
-- previous-to-current carrier shift lock
+- previous-to-current selected-integer shift lock
 - hardening lead remains informative
 - direct absorption flag is not safe
 - combined 005A/005B modes are not safe

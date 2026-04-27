@@ -34,7 +34,7 @@ The allowed evidence is:
 - the supplied anchor `p = 11`;
 - arithmetic in the fixed mod-30 wheel;
 - deterministic divisibility by the wheel basis for pre-open positions;
-- the absence of a positive-offset open carrier before offset `2`;
+- the absence of a positive-offset open integer before offset `2`;
 - Next-Prime Law 001 as a proposed empty-chamber closure rule.
 
 For anchor `11`, the mod-30 residue is:
@@ -78,9 +78,9 @@ The integer `12` is wheel-closed because:
 $$12 \equiv 12 \pmod{30}$$
 
 Residue `12` is divisible by `2` and by `3` in the wheel basis. Therefore `12`
-is not an admissible open candidate next prime and not an open GWR carrier.
+is not an admissible open candidate next prime and not an open GWR-selected integer.
 
-The pre-open chamber has no positive-offset open composite carrier.
+The pre-open chamber has no positive-offset open composite integer.
 
 ## First-Open Offset Logic
 
@@ -98,13 +98,13 @@ endpoint.
 
 ## GWR/DNI Relevance
 
-GWR normally identifies the leftmost carrier of the minimum divisor-count class
-inside a prime-gap interior. DNI and no-later-simpler closure use that carrier
+GWR normally identifies the leftmost integer of the minimum divisor-count class
+inside a prime-gap interior. DNI and no-later-simpler closure use that integer
 to constrain where the right endpoint must arrive before a later lower-divisor
 threat overtakes the selected integer.
 
 For the proposed anchor-11 chamber ending at offset `2`, there is no positive
-open composite carrier before the candidate next prime. The selection fields are
+open composite integer before the candidate next prime. The selection fields are
 therefore null:
 
 - `winner_carrier_w: null`
@@ -112,9 +112,9 @@ therefore null:
 - `winner_divisor_count: null`
 - `winner_family: "empty_pre_open_chamber"`
 
-This empty-chamber state is not the standard GWR carrier regime. Next-Prime Law
+This empty-chamber state is not the standard GWR-selected integer regime. Next-Prime Law
 001 would need to define a lawful base case: if the pre-open chamber is closed
-and contains no admissible carrier, the first open position closes the chamber.
+and contains no admissible integer, the first open position closes the chamber.
 
 That base case is the exact mathematical content still needed.
 
@@ -124,7 +124,7 @@ The current derivation rules out competing endpoints before offset `2`:
 
 - offset `1` is wheel-closed;
 - there is no earlier positive offset;
-- no open carrier exists before the first open offset.
+- no open integer exists before the first open offset.
 
 The current derivation does not rule out the possibility that the first open
 position is only a candidate and that the chamber continues to a later endpoint.

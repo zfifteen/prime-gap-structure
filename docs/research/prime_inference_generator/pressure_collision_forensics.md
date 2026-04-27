@@ -61,7 +61,7 @@ Candidate missing observable counts:
 
 The strongest legal next candidate is `previous_chamber_plus_square_pressure`.
 It varies in every collision bucket and does not require prime-marker identity,
-future next-prime offset, or exact factorization. Exact semiprime, carrier, and
+future next-prime offset, or exact factorization. Exact semiprime, integer, and
 threat-schedule variants also separate the collisions, but they are not
 pure-eligible in their current form.
 

@@ -44,7 +44,7 @@ where
 
 $$L(n) = \left(1 - \frac{d(n)}{2}\right)\ln(n).$$
 
-So inside a prime gap, once the leftmost minimum-divisor carrier $w$ appears,
+So inside a prime gap, once the leftmost minimum-divisor integer $w$ appears,
 every later candidate is already eliminated.
 
 The earlier side is the bridge target:

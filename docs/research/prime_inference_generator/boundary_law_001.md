@@ -59,8 +59,8 @@ this chamber.
    `first_open_offset - 1`.
 4. Verify that every pre-open integer is wheel-closed by deterministic
    divisibility against the wheel basis.
-5. Establish that no GWR carrier is required when the inferred chamber interior
-   contains no admissible open composite carrier before the first open offset.
+5. Establish that no GWR-selected integer is required when the inferred chamber interior
+   contains no admissible open composite integer before the first open offset.
 6. Infer `q_hat = p + first_open_offset`.
 7. Emit `q_hat` only if the next-prime uniqueness condition below is resolved.
 
@@ -98,7 +98,7 @@ If the law resolves the endpoint, pure mode emits:
 - `failure_reason: null`
 
 The null selection fields are intentional for this first anchor. The chamber has
-no positive-offset open composite carrier before the inferred right endpoint.
+no positive-offset open composite integer before the inferred right endpoint.
 
 ## Failure Contract
 

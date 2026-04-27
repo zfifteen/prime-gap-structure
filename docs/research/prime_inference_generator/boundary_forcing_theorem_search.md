@@ -19,7 +19,7 @@ Milestone 1 remains blocked.
 The strongest supported result is:
 
 PGS chamber certificates can certify interior closure, GWR-selected integers,
-leftmost-minimum carriers, and local no-later-simpler consistency. They do not
+leftmost-minimum integers, and local no-later-simpler consistency. They do not
 yet force a unique next prime.
 
 This means GWR is currently an interior maximizer rule. It is not yet a endpoint
@@ -49,13 +49,13 @@ Any known anchor where the first wheel-open candidate is composite kills the
 unqualified theorem. A surviving version would need additional PGS conditions
 that do more than wheel admissibility.
 
-## Theorem Family 2: Carrier-Lock Endpoint Theorem
+## Theorem Family 2: Integer-Lock Endpoint Theorem
 
 Claim form:
 
-$$GWR\ carrier + no\ later\ lower-divisor\ threat\ up\ to\ candidate\ q \Rightarrow q\ is\ endpoint$$
+$$GWR\ integer + no\ later\ lower-divisor\ threat\ up\ to\ candidate\ q \Rightarrow q\ is\ endpoint$$
 
-This is the theorem family behind Next-Prime Law 003 and the anchor-13 carrier
+This is the theorem family behind Next-Prime Law 003 and the anchor-13 integer
 probe.
 
 Current status:
@@ -64,12 +64,12 @@ Current status:
 
 Reason:
 
-The carrier-lock certificate proves coherence inside a proposed chamber. It
+The selected-integer-lock certificate proves coherence inside a proposed chamber. It
 does not prove that the proposed chamber must stop at the candidate next prime.
 
 Kill condition:
 
-Two different admissible candidate next primes with internally coherent carrier
+Two different admissible candidate next primes with internally coherent integer
 certificates kill the unqualified theorem. A surviving version must identify
 which candidate is forced and why.
 
@@ -107,13 +107,13 @@ The transition-state search should test deterministic state vectors built from:
 
 - anchor residue modulo the wheel;
 - first-open offset;
-- first carrier family;
-- first carrier divisor count;
-- first carrier offset;
+- first selected-integer family;
+- first selected divisor count;
+- first selected-integer offset;
 - early divisor ladder shape excluding prime-endpoint detection;
 - lower-divisor threat schedule;
 - previous gap state;
-- previous GWR carrier type;
+- previous GWR-selected integer type;
 - semiprime-wheel attractor state.
 
 The initial probe should start small. A state collision is not a failure of the

@@ -1,19 +1,19 @@
-# Next-Prime Law 003: First Carrier-Bearing Chamber Certificate
+# Next-Prime Law 003: First Selected-Integer-Bearing Chamber Certificate
 
 Next-Prime Law 003 moves the first positive target away from the empty anchor-11
 chamber. The target is a chamber where PGS has actual interior structure: a
-composite interior, a definable GWR carrier, a divisor-count selected integer, and a
+composite interior, a definable GWR-selected integer, a divisor-count selected integer, and a
 closure condition that can be inspected without classical endpoint detection.
 
 This note uses the small chamber from anchor `13` to proposed endpoint `17` as
-the first probe. It does not emit yet. It establishes the carrier-bearing
+the first probe. It does not emit yet. It establishes the selected-integer-bearing
 certificate and identifies the remaining uniqueness gap.
 
 ## Name
 
-First Carrier-Bearing Chamber Certificate.
+First Selected-Integer-Bearing Chamber Certificate.
 
-The law asks whether a nonempty chamber with a GWR-compatible carrier can force
+The law asks whether a nonempty chamber with a GWR-compatible selected integer can force
 its right endpoint from PGS structure alone.
 
 ## Target Probe
@@ -31,7 +31,7 @@ The proposed interior is:
 $$I = \{14, 15, 16\}$$
 
 This chamber is small enough to audit by hand and large enough to contain
-nontrivial carrier structure.
+nontrivial selected-integer structure.
 
 ## Allowed Inputs
 
@@ -39,7 +39,7 @@ nontrivial carrier structure.
 - proposed endpoint supplied by the candidate law, not by a next-prime oracle;
 - deterministic factor witnesses for proposed interior composites;
 - divisor counts derived from those explicit witnesses;
-- GWR leftmost-minimum carrier logic;
+- GWR leftmost-minimum integer logic;
 - no-later-simpler comparison against explicitly identified later interior
   points;
 - deterministic wheel arithmetic.
@@ -80,7 +80,7 @@ The minimum divisor class inside the proposed chamber is:
 
 $$d_{min} = 4$$
 
-The leftmost carrier of that class is:
+The leftmost integer in that divisor-count class is:
 
 $$w = 14$$
 
@@ -91,7 +91,7 @@ The selection metadata is:
 - `winner_divisor_count: 4`
 - `winner_family: "semiprime"`
 
-This is the first meaningful carrier-bearing certificate in the Milestone 1
+This is the first meaningful selected-integer-bearing certificate in the Milestone 1
 sequence.
 
 ## GWR Compatibility
@@ -102,7 +102,7 @@ level:
 - every interior point has an explicit composite witness;
 - the interior divisor counts are known from those witnesses;
 - the minimum divisor class is `4`;
-- the leftmost minimum-class carrier is `14`.
+- the leftmost minimum-divisor integer is `14`.
 
 This proves that the proposed chamber has coherent GWR structure. It does not
 by itself prove that the chamber endpoint is forced at `17`.
@@ -142,7 +142,7 @@ This establishes:
 - the proposed chamber has a GWR-selected integer;
 - no smaller offset in the proposed chamber can be the endpoint.
 
-It does not establish that the first position after the closed carrier-bearing
+It does not establish that the first position after the closed selected-integer-bearing
 chamber is uniquely forced as the right endpoint.
 
 ## Endpoint Uniqueness Gap
@@ -150,12 +150,12 @@ chamber is uniquely forced as the right endpoint.
 The current certificate still separates three statements:
 
 - `14`, `15`, and `16` are composite interior points;
-- `14` is the GWR-compatible leftmost minimum carrier;
+- `14` is the GWR-compatible leftmost minimum-divisor integer;
 - `17` is the first candidate after the closed proposed chamber.
 
 The missing implication is:
 
-$$\text{closed carrier-bearing chamber with no later simpler interior threat} \Rightarrow \text{forced next prime}$$
+$$\text{closed selected-integer-bearing chamber with no later simpler interior threat} \Rightarrow \text{forced next prime}$$
 
 That implication is stronger than chamber consistency. It is not proved here.
 
@@ -182,13 +182,13 @@ Pure mode may emit under `boundary_law_003` only when:
 2. the proposed interior has a GWR-compatible selected integer;
 3. later lower-divisor threats are excluded or bounded by PGS structure;
 4. all smaller proposed endpoint positions are closed;
-5. a carrier-bearing uniqueness theorem forces `q_hat`.
+5. a selected-integer-bearing uniqueness theorem forces `q_hat`.
 
 Until those five conditions hold, pure mode must emit a failure record.
 
 ## Failure Contract
 
-If the carrier selected integer cannot be established, emit:
+If the selected integer cannot be established, emit:
 
 - `rule_set_version: "boundary_law_003"`
 - `inference_status: "failed_closed"`
@@ -214,7 +214,7 @@ If the uniqueness theorem is missing, emit:
 
 ## Next Search Direction
 
-Next-Prime Law 003 shows that moving to a carrier-bearing chamber fixes the
+Next-Prime Law 003 shows that moving to a selected-integer-bearing chamber fixes the
 degeneracy of the anchor-11 case, but it does not by itself solve endpoint
 uniqueness.
 

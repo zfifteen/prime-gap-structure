@@ -88,9 +88,9 @@ higher-divisor pressure lock itself did not activate there.
 | `wrong_pressure_location` | `5` |
 | `pressure_appears_after_unresolved_alternative` | `3` |
 
-The carrier-family result is important. Most near-misses do not have the same
-carrier regime as the activating Next-Prime Law 005 cases. Many are resolved at
-small offsets before a legal carrier exists in the chamber.
+The selected-integer-family result is important. Most near-misses do not have the same
+integer regime as the activating Next-Prime Law 005 cases. Many are resolved at
+small offsets before a legal integer exists in the chamber.
 
 ## Pressure Substitute Counts
 
@@ -130,7 +130,7 @@ The near-miss profile supports four facts:
 1. The higher-divisor lock abstains because the required pressure component is
    absent, not because the true next prime is usually unresolved.
 2. Previous-chamber memory is present in most abstaining true-next-prime rows.
-3. Most abstentions are outside the activating carrier-family regime.
+3. Most abstentions are outside the activating selected-integer-family regime.
 4. Square and semiprime pressure are real but sparse in this near-miss set.
 
 The next candidate should not be a broad version of Next-Prime Law 005. The next

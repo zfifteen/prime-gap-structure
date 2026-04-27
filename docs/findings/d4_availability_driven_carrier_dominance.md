@@ -1,6 +1,6 @@
-# d(n)=4 Carrier Dominance Is Availability-Driven
+# d(n)=4 Integer Dominance Is Availability-Driven
 
-This note records the finding that most of the observed `d(n)=4` carrier
+This note records the finding that most of the observed `d(n)=4` integer
 dominance is explained by whether a gap contains any interior `d(n)=4`
 composite at all.
 
@@ -9,18 +9,18 @@ composite at all.
 The promising core of the "d(n)=4 inevitability threshold" insight is correct
 in a narrow form:
 
-`d(n)=4` peak-carrier dominance tracks `d(n)=4` availability inside the gap
+`d(n)=4` peak-selected-divisor-count dominance tracks `d(n)=4` availability inside the gap
 almost one-for-one.
 
 Measured values:
 
-- `10^6`: has interior `d(n)=4` = `0.83119`, peak carrier `d(n)=4` = `0.82903`
-- `10^7`: has interior `d(n)=4` = `0.82616`, peak carrier `d(n)=4` = `0.82546`
-- `10^8` sampled: has interior `d(n)=4` = `0.82554`, peak carrier `d(n)=4` = `0.82498`
-- `10^10` sampled: has interior `d(n)=4` = `0.82577`, peak carrier `d(n)=4` = `0.82522`
-- `10^12` sampled: has interior `d(n)=4` = `0.82695`, peak carrier `d(n)=4` = `0.82627`
-- `10^15` sampled: has interior `d(n)=4` = `0.82699`, peak carrier `d(n)=4` = `0.82631`
-- `10^18` sampled: has interior `d(n)=4` = `0.82805`, peak carrier `d(n)=4` = `0.82730`
+- `10^6`: has interior `d(n)=4` = `0.83119`, peak integer `d(n)=4` = `0.82903`
+- `10^7`: has interior `d(n)=4` = `0.82616`, peak integer `d(n)=4` = `0.82546`
+- `10^8` sampled: has interior `d(n)=4` = `0.82554`, peak integer `d(n)=4` = `0.82498`
+- `10^10` sampled: has interior `d(n)=4` = `0.82577`, peak integer `d(n)=4` = `0.82522`
+- `10^12` sampled: has interior `d(n)=4` = `0.82695`, peak integer `d(n)=4` = `0.82627`
+- `10^15` sampled: has interior `d(n)=4` = `0.82699`, peak integer `d(n)=4` = `0.82631`
+- `10^18` sampled: has interior `d(n)=4` = `0.82805`, peak integer `d(n)=4` = `0.82730`
 
 That is the current committed execution surface for this note through sampled
 `10^18`.
@@ -54,7 +54,7 @@ The exception rate is tiny:
 
 ## Plain Reading
 
-Most of the reported `d(n)=4` carrier dominance is really telling us whether
+Most of the reported `d(n)=4` selected-divisor-count dominance is really telling us whether
 the gap contains an interior semiprime-class candidate.
 
 That makes the dominance mostly an availability law, with a thin square-driven

@@ -69,7 +69,7 @@ The candidate law may use:
 - legal divisor-class certificates from the bounded witness basis;
 - higher-divisor pressure between the resolved candidate and later unresolved
   alternatives;
-- carrier metadata computed from legal composite certificates;
+- selected-integer metadata computed from legal composite certificates;
 - post-run classical labels for offline audit only.
 
 ## Forbidden Evidence
@@ -94,7 +94,7 @@ true or false resolved candidates after the label-free records already exist.
 The current offline operation is:
 
 1. Run composite exclusion with single-hole positive witness closure enabled.
-2. Run carrier-locked pressure ceiling with
+2. Run selected-integer-locked pressure ceiling with
    `unresolved_alternatives_before_threat`.
 3. Identify resolved survivor candidates.
 4. For each resolved candidate, inspect later unresolved alternatives.

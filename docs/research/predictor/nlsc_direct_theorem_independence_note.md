@@ -39,7 +39,7 @@ strictly simpler composite can appear.
 On the current repo proof surface, this statement is already an exact
 corollary of `GWR`.
 
-If `GWR` holds on the gap, then the selected integer is the leftmost carrier of the
+If `GWR` holds on the gap, then the selected integer is the leftmost integer of the
 minimal divisor class present in the gap. A later interior composite with
 strictly smaller divisor count would contradict that selected integer description
 immediately.
@@ -120,7 +120,7 @@ That is also the regime that carries most of the recursive walk surface.
 ## 6. What A Direct Proof Would Need
 
 A true independent proof has to establish right-flank closure without using the
-full statement that $w$ is the leftmost minimum-divisor carrier of the gap.
+full statement that $w$ is the leftmost minimum-divisor integer of the gap.
 
 The narrow program is:
 

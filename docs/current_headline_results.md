@@ -24,7 +24,7 @@
   `p < 5 x 10^9`.** The aggregate artifact
   [../output/gwr_proof/parallel_no_early_spoiler_5e9.json](../output/gwr_proof/parallel_no_early_spoiler_5e9.json)
   reports `172,913,029` gaps, `660,287,089` earlier candidates before the
-  true `GWR` carrier, `0` exact earlier spoilers, and `0` bridge failures.
+  true `GWR` integer, `0` exact earlier spoilers, and `0` bridge failures.
 - **The square-adjacent stress surface at `10^12` remains clean.** The matched
   artifact
   [../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json](../output/gwr_proof/earlier_spoiler_local_dominator_scan_square_adjacent_1e12.json)

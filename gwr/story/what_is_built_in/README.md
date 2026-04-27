@@ -23,7 +23,7 @@ gaps.
 ---
 
 That is where the actual prime-gap result begins. Inside tested prime gaps, the
-score maximizer and the leftmost carrier of the smallest divisor class present in
+score maximizer and the leftmost integer with the smallest divisor count present in
 the gap land on the same integer. This is not a vague tendency. The local gap
 pictures show the collapse directly, the broader validation surface shows that
 it stays exact as the scale grows, and the bridge certificate now closes the

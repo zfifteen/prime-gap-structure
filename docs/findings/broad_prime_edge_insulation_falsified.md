@@ -40,5 +40,5 @@ What survives is narrower:
 
 - the raw-`Z` selected integer is still strongly pulled toward the first odd interior
   positions,
-- the ridge is still strongly associated with low-divisor carriers,
+- the ridge is still strongly associated with low-divisor integers,
 - but the full edge band is not a general low-complexity zone.

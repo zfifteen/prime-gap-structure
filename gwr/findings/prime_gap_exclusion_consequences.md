@@ -210,7 +210,7 @@ clean mechanism for why
 - left-edge selected integers are common,
 - edge-distance $2$ is enriched,
 - and $d(n) = 4$ selected integers dominate when no earlier $d(n) = 3$ or $d(n) = 4$
-  carrier is available.
+  integer is available.
 
 ## Claim Ladder
 

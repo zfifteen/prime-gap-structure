@@ -43,9 +43,9 @@ The engine records two layers.
 
 For each hypothetical chamber `(p, candidate_q)`, the engine:
 
-1. finds the GWR carrier inside the proposed interior;
+1. finds the GWR-selected integer inside the proposed interior;
 2. checks whether any later interior composite has lower divisor count than
-   that carrier;
+   that integer;
 3. rejects the candidate only on direct GWR/NLSC inconsistency.
 
 This layer rejected no candidates.
@@ -85,7 +85,7 @@ offset = 8
 ```
 
 The structural layer keeps every wheel-open candidate because each proposed
-chamber can choose its own internally consistent GWR carrier.
+chamber can choose its own internally consistent GWR-selected integer.
 
 The exact layer keeps only offset `8`.
 
@@ -99,15 +99,15 @@ proposed chamber.
 The experiment supports the user's framing that the right object is a logic
 engine. It also identifies the missing rule precisely.
 
-The existing GWR/NLSC rules do not create contradiction unless the carrier is
+The existing GWR/NLSC rules do not create contradiction unless the integer is
 already fixed across candidate extensions. If every candidate chamber is free
-to choose a new carrier, all candidate chambers remain structurally coherent.
+to choose a new integer, all candidate chambers remain structurally coherent.
 
-The next experimental rule should therefore be a carrier-lock rule:
+The next experimental rule should therefore be a selected-integer-lock rule:
 
 ```text
-Once a candidate chamber establishes a carrier, later candidate extensions
-must either preserve that carrier or provide a legal reset certificate.
+Once a candidate chamber establishes a selected integer, later candidate extensions
+must either preserve that selected integer or provide a legal reset certificate.
 ```
 
 The next probe should test whether that lock/reset rule eliminates false later

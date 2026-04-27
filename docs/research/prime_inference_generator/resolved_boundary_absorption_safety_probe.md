@@ -72,7 +72,7 @@ Absorption status counts:
 | `ABSORPTION_NONSELECTIVE` | `178` |
 | `ABSORPTION_UNSAFE_FALSE` | `282` |
 
-Carrier and reset feature counts:
+Integer and reset feature counts:
 
 | Feature | True candidates | False candidates |
 |---|---:|---:|
@@ -98,8 +98,8 @@ locally resolved chamber cannot absorb later unresolved alternatives unless an
 additional legal lock condition separates true resolved endpoints from false
 resolved survivors.
 
-The carrier/reset features also do not provide an immediate separator. Both
-true and false resolved candidates occur with shared carrier identity, carrier
+The integer/reset features also do not provide an immediate separator. Both
+true and false resolved candidates occur with shared selected-integer identity, integer
 change, and reset evidence. Those features may still be useful in combination,
 but none of the measured single features licenses Rule A.
 
@@ -112,4 +112,4 @@ Next-Prime Law 005 is not approved.
 Prime emission remains forbidden.
 
 The next target is not absorption integration. The next target is a stricter
-carrier-lock or reset condition that can make absorption selective.
+selected-integer-lock or reset condition that can make absorption selective.

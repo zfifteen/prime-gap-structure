@@ -1,6 +1,6 @@
 # Residual After Locked Ceiling Forensics
 
-After the strongest safe carrier-locked ceiling mode, the remaining blocker is
+After the strongest safe selected-integer-locked ceiling mode, the remaining blocker is
 mostly unresolved alternatives, not unsafe pruning.
 
 Next-Prime Law 005 is not approved by this note.

@@ -113,7 +113,7 @@ That is just the natural logarithm of Z(n). The two formulas are the same object
 
 So the Gap Winner Rule is not using an arbitrary score. It is finding the integer in the gap with the highest Z value, which means the integer closest to the prime fixed point at 1. Among all the composites in a prime gap, the selected integer is the one most similar to a prime under the DNI measure.
 
-That reframes the whole observation from Essay 1. The rule is not "minimize divisor count and pick the leftmost tie." That is the mechanical selection procedure. The deeper statement is: **inside every prime gap, the integer closest to the prime fixed point under the DNI is always the leftmost minimum-divisor carrier.**
+That reframes the whole observation from Essay 1. The rule is not "minimize divisor count and pick the leftmost tie." That is the mechanical selection procedure. The deeper statement is: **inside every prime gap, the integer closest to the prime fixed point under the DNI is always the leftmost minimum-divisor integer.**
 
 ---
 

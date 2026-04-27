@@ -30,5 +30,5 @@ The number line did not support a broad simple-edge law.
 It did support a narrower and still interesting law-like pattern:
 
 - near-edge raw-`Z` selected integers are real,
-- odd-composite carriers matter,
+- odd-composite integers matter,
 - and `d(n)=4` composites usually carry that peak.

@@ -107,7 +107,7 @@ ignored_rejected_or_absorbed_nodes_between_source_and_true: []
 So this first failure is not caused by active-graph pruning hiding a raw
 certified reset witness. The v4 relation fails because the absence of active
 reset evidence is too weak when both the source and target have no legal
-carrier.
+integer.
 
 ## Classification
 
@@ -152,8 +152,8 @@ replaced by a structural, label-free reset guard.
 The next concrete task is to design a v4 guard that rejects this condition:
 
 ```text
-source has no legal carrier
-target has no legal carrier
+source has no legal selected integer
+target has no legal selected integer
 target_no_carrier_reset_status: NO_ACTIVE_RESET_EVIDENCE
 ```
 

@@ -4,7 +4,7 @@
 
 Next-Prime Law 005B is quarantined as an absorption rule.
 
-The failure is reproduced at anchor $p = 3137$. The previous-to-current carrier shift lock authorizes a false resolved survivor at offset 12, and that false absorber removes the audited true next prime at offset 26.
+The failure is reproduced at anchor $p = 3137$. The previous-to-current selected-integer shift lock authorizes a false resolved survivor at offset 12, and that false absorber removes the audited true next prime at offset 26.
 
 Pure generator emission remains forbidden.
 
@@ -32,21 +32,21 @@ The hard gate fails because the true next prime candidate at offset 26 is remove
 
 The previous chamber is $3121 \to 3137$, with gap width 16.
 
-Its first legal carrier is:
+Its first legal integer is:
 
 - offset: 4
 - integer: 3125
 - divisor class: 6
 - family: known_basis_prime_power
 
-For the false absorber candidate $3137 + 12 = 3149$, the current carrier is:
+For the false absorber candidate $3137 + 12 = 3149$, the current integer is:
 
 - offset: 2
 - integer: 3139
 - divisor class: 4
 - family: known_basis_semiprime
 
-The 005B predicate sees a previous-to-current carrier shift:
+The 005B predicate sees a previous-to-current selected-integer shift:
 
 `previous=4,6,known_basis_prime_power|current=2,4,known_basis_semiprime`
 
@@ -79,7 +79,7 @@ Those offsets are exactly the composite structure that the one-hole closure rule
 
 ## What The Hardening Probe Missed
 
-The hardening probe only evaluated the previous-to-current carrier shift lock inside rows where the audited true next prime was already a resolved survivor before absorption.
+The hardening probe only evaluated the previous-to-current selected-integer shift lock inside rows where the audited true next prime was already a resolved survivor before absorption.
 
 At anchor 3137:
 
@@ -107,6 +107,6 @@ Both are structural and label-free at this anchor. Neither is approved as a patc
 The live status is:
 
 - 005A higher-divisor pressure lock: preserved as narrow candidate-grade
-- 005B previous-to-current carrier shift lock: quarantined as absorption logic
+- 005B previous-to-current selected-integer shift lock: quarantined as absorption logic
 - combined 005A/005B modes: rejected
 - pure generation: fail-closed

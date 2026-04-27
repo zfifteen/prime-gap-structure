@@ -1,20 +1,20 @@
-# Carrier-Locked Pressure Ceiling Integration
+# Integer-Locked Pressure Ceiling Integration
 
-Carrier-locked pressure ceilings prune false candidates safely on the tested
+Selected-integer-locked pressure ceilings prune false candidates safely on the tested
 surface, but they do not yet create a unique inferred next prime.
 
 Next-Prime Law 005 is not approved by this note.
 
 ## Objective
 
-Integrate the zero-wrong carrier-lock predicates into the composite-exclusion
+Integrate the zero-wrong selected-integer-lock predicates into the composite-exclusion
 probe and measure whether they improve next-prime inference without rejecting the
 true next prime.
 
 The integrated conditional ceiling is:
 
 1. find a candidate GWR lower-divisor pressure event;
-2. require an explicit carrier-lock predicate;
+2. require an explicit selected-integer-lock predicate;
 3. reject candidate next primes at or beyond the pressure threat;
 4. attach the classical endpoint label only after elimination.
 
@@ -53,7 +53,7 @@ python3 benchmarks/python/prime_inference_generator/composite_exclusion_boundary
 
 ## Baseline
 
-Before carrier-locked ceiling integration, with single-hole closure enabled:
+Before selected-integer-locked ceiling integration, with single-hole closure enabled:
 
 - `true_boundary_rejected_count: 0`
 - `true_boundary_unresolved_count: 52`
@@ -82,7 +82,7 @@ No mode creates a unique resolved next prime:
 
 ## Interpretation
 
-The carrier-lock filters repair the safety failure of the naive ceiling. When
+The selected-integer-lock filters repair the safety failure of the naive ceiling. When
 the tested lock predicates fire, the integrated ceiling does not reject the
 true next prime on this surface.
 
@@ -105,7 +105,7 @@ Milestone 1 remains blocked.
 
 Next-Prime Law 005 is not approved.
 
-Carrier-locked pressure ceilings are safe and useful as pruning rules on this
+Selected-integer-locked pressure ceilings are safe and useful as pruning rules on this
 surface, but they are not next-prime-forcing rules yet. The next missing piece is
 a completion or domination rule for the alternatives that remain after the
 safe ceiling is applied.

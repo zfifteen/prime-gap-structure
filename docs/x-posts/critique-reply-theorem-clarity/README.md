@@ -1,7 +1,7 @@
 # The 'Gap Winner Rule' Explained
 
 I think there is one real terminology issue here, and fixing it makes the
-theorem easier to see. Low-divisor carriers are not highly composite numbers in
+theorem easier to see. Low-divisor integers are not highly composite numbers in
 the standard sense. Composite just means not prime. Highly composite means a
 record-setting number of divisors among all smaller integers. The dominant
 selected integer layer in these gaps is usually divisor-count four, which is low-divisor,
@@ -13,7 +13,7 @@ not highly composite.
 
 I do think there is a related intuition hiding inside your comment. Numbers
 near prime endpoints are not arithmetically generic. That may help explain why
-low-divisor carriers often appear early in a gap. But that is still weaker than
+low-divisor integers often appear early in a gap. But that is still weaker than
 the actual result. An early low-divisor arrival is only part of the structure.
 The theorem also has to control what happens before that point and after it.
 

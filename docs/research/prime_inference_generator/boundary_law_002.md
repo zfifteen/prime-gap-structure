@@ -39,9 +39,9 @@ If any field is missing or unresolved, the law fails closed.
 - a proposed endpoint supplied by a PGS rule, not by a primality oracle;
 - deterministic wheel arithmetic;
 - deterministic composite witnesses for interior values;
-- PGS carrier metadata inside the proposed chamber;
-- GWR/DNI ordering of interior carriers;
-- no-later-simpler threat metadata when the chamber has a selected integer carrier;
+- PGS selected-integer metadata inside the proposed chamber;
+- GWR/DNI ordering of interior integers;
+- no-later-simpler threat metadata when the chamber has a selected integer;
 - a named empty-chamber base case, if such a base case is proved.
 
 ## Forbidden Inputs
@@ -84,7 +84,7 @@ A Next-Prime Law 002 certificate should record:
 - `uniqueness_status`;
 - `failure_reason`, if unresolved.
 
-For an empty chamber, the certificate must state that no positive-offset carrier
+For an empty chamber, the certificate must state that no positive-offset integer
 exists before the proposed endpoint and must identify the theorem that turns
 that empty chamber into a forced endpoint.
 
@@ -113,13 +113,13 @@ establish that `13` is forced as the endpoint.
 ## GWR/DNI Relevance
 
 For `p = 11` and `q_hat = 13`, the proposed interior contains no open composite
-carrier. The GWR-selected integer fields are null. Therefore the standard GWR carrier and
-no-later-simpler closure machinery has no positive carrier to operate on.
+integer. The GWR-selected integer fields are null. Therefore the standard GWR-selected integer and
+no-later-simpler closure machinery has no positive integer to operate on.
 
 Next-Prime Law 002 has two possible paths:
 
 - prove an empty-chamber base case that forces the first open endpoint;
-- reject this anchor as outside the carrier-bearing GWR/DNI regime.
+- reject this anchor as outside the selected-integer-bearing GWR/DNI regime.
 
 The first path would revive Next-Prime Law 001 with a stronger certificate. The
 second path keeps Milestone 1 blocked at anchor `11` and pushes the first
@@ -209,7 +209,7 @@ non-classical uniqueness theorem, not more admissibility evidence.
 The next search should compare two regimes:
 
 - empty-chamber anchors, where a first-open closure theorem would be needed;
-- carrier-bearing anchors, where GWR/DNI and no-later-simpler closure may have
+- selected-integer-bearing anchors, where GWR/DNI and no-later-simpler closure may have
   enough structure to force a endpoint.
 
 The first positive emission should come from whichever regime first supplies a

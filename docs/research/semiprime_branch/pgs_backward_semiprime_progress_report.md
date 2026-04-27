@@ -134,7 +134,7 @@ or the analogous `q`-side lane.
 At each step the harness allows only:
 
 - local prime endpoints from the previous and containing neighborhoods;
-- lower odd-semiprime interior carriers from those same two gaps.
+- lower odd-semiprime interior integers from those same two gaps.
 
 It does not use residue scores. It does not use `sqrt(N)`. It does not use a
 non-`PGS` side channel.
@@ -188,7 +188,7 @@ The success is still narrow, but it is real:
 - the old direct-hit framing was dead;
 - the rebuilt lane framing is not dead;
 - the signal appears only after the state space is changed to odd-semiprime
-  lane carriers plus terminal prime nominees;
+  lane integers plus terminal prime nominees;
 - the best law is `PGS`-only and does not use a residue term.
 
 ## What The Best Law Is Actually Doing
@@ -208,7 +208,7 @@ selected integer” in the abstract.
 
 It is more specific:
 
-- prefer lower odd-semiprime carriers;
+- prefer lower odd-semiprime integers;
 - prefer the previous gap;
 - prefer the first `d=4` entrance into that local odd-semiprime corridor;
 - then move deeper into that corridor rather than hugging the endpoint.
@@ -251,7 +251,7 @@ The path that looks dead is:
 The path that looks alive is:
 
 - exact modulus gap orientation first,
-- odd semiprimes as hidden-factor lane carriers,
+- odd semiprimes as hidden-factor lane integers,
 - prime endpoints as terminal nominees,
 - pure-`PGS` ranking laws over the local previous and containing gaps.
 

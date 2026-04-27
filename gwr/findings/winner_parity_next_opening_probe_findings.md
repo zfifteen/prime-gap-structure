@@ -81,7 +81,7 @@ that even selected integers hand the walk back to the dominant triad more often.
 
 The most useful next discriminator is:
 
-- rerun the same matched comparison with current carrier family held fixed, so
+- rerun the same matched comparison with current selected-integer family held fixed, so
   we can separate parity itself from the even-semiprime versus odd-semiprime
   family split;
 - then add current selected-integer offset as a second control to test whether the

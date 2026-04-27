@@ -50,7 +50,7 @@ This flag is required for `risky-v5` and `filtered-v5`. It is not required for
 
 ## Solver Modes
 
-`v3` uses the accepted graph relations through the empty-source legal-carrier
+`v3` uses the accepted graph relations through the empty-source legal-integer
 extension relation. It is the broad safe baseline before the repaired v4 guard.
 
 `v6` uses v3 plus:
@@ -79,7 +79,7 @@ non-production and non-cryptographic, but it is the current highest-coverage
 zero-failure experimental mode.
 
 `risky-v5` runs the quarantined v5 line. It is exposed only for research
-comparison. It includes the old v4 no-carrier/no-active-reset relation that
+comparison. It includes the old v4 no-selected-integer/no-active-reset relation that
 failed at anchor `10193` on the `11..100_000` surface.
 
 `filtered-v5` runs the same internal risky-v5 solve, then applies a

@@ -195,7 +195,7 @@ The error ~ ln(p_n)^2 is one factor of ln(p_n) too large for the placement condi
 
 ### 4.2 The Open Conjecture
 
-**Conjecture.** The deviation delta(n) = p_n - Li^{-1}(n) can be estimated within O(ln p_n) from the local DNI Z-field structure near Li^{-1}(n): specifically, from the density of d=4 carriers, the distance to the nearest prime square, and the GWR profile of the neighborhood.
+**Conjecture.** The deviation delta(n) = p_n - Li^{-1}(n) can be estimated within O(ln p_n) from the local DNI Z-field structure near Li^{-1}(n): specifically, from the density of `d=4` integers, the distance to the nearest prime square, and the GWR profile of the neighborhood.
 
 If this conjecture holds, then S*(n) = Li^{-1}(n) + delta_hat(n) satisfies the placement condition with no calibrated constants, and the formula is complete in the strict sense.
 

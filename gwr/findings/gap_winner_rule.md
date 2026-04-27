@@ -22,7 +22,7 @@ argmax, is exactly the interior integer selected by this arithmetic order:
 2. among interiors with that minimum, choose the leftmost one.
 
 Equivalently, the log-score maximizer and the leftmost minimizer are the same
-carrier.
+integer.
 
 ## Legacy Name
 

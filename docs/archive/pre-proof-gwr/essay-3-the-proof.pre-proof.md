@@ -6,7 +6,7 @@
 
 ## The question on the table
 
-The Gap Winner Rule says: inside every prime gap, the integer with the highest DNI score is always the leftmost carrier of the minimum divisor count. Zero exceptions found across 42 million prime gaps through one billion.
+The Gap Winner Rule says: inside every prime gap, the integer with the highest DNI score is always the leftmost integer of the minimum divisor count. Zero exceptions found across 42 million prime gaps through one billion.
 
 But "no exceptions found" is not a proof. A pattern that holds for the first billion integers might fail at a trillion, or a quadrillion, or somewhere astronomers cannot yet count to. Mathematics requires certainty, not just a very long run of good luck.
 
@@ -22,7 +22,7 @@ The Gap Winner Rule makes a claim about every integer in a prime gap. But "every
 
 These two cases have completely different characters.
 
-**The later side** asks: why can't something after the selected integer beat it? This turns out to be easy. If integer *w* is the selected integer and *m* comes after it in the gap, then *m > w*. Because *w* was chosen as the leftmost minimum-divisor carrier, *m* either has more divisors than *w* or it also has the minimum divisor count but sits to the right. Either way, the DNI score comparison goes in *w*'s favor: smaller divisor count at a smaller position always wins. This direction is fully proved. No remaining work.
+**The later side** asks: why can't something after the selected integer beat it? This turns out to be easy. If integer *w* is the selected integer and *m* comes after it in the gap, then *m > w*. Because *w* was chosen as the leftmost minimum-divisor integer, *m* either has more divisors than *w* or it also has the minimum divisor count but sits to the right. Either way, the DNI score comparison goes in *w*'s favor: smaller divisor count at a smaller position always wins. This direction is fully proved. No remaining work.
 
 **The earlier side** asks: why can't something before the selected integer beat it? This is harder. An integer *k* before the selected integer is smaller than *w*, which helps its score somewhat. The question is whether that size advantage can overcome the divisor-count disadvantage. Can a composite with more divisors, sitting slightly to the left, outscore the selected integer?
 

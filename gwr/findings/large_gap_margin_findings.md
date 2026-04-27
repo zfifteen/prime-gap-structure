@@ -24,7 +24,7 @@ On the exact through-$2 \cdot 10^7$ surface:
 
 - `1163198` prime gaps have composite interior,
 - `1054235` of those have at least one earlier candidate before the true
-  `GWR` carrier,
+  `GWR` integer,
 - the extractor records the top `100` largest such gaps exactly.
 
 On that large-gap surface, the largest gaps do not lead the ratio-form
@@ -35,7 +35,7 @@ surface therefore supports the same reading in a different coordinate system:
 
 - the hardest realized ratio-form cases are not the largest prime gaps,
 - and the largest prime gaps still retain positive no-early-spoiler margins
-  against the true `GWR` carrier.
+  against the true `GWR` integer.
 
 The smallest realized critical-ratio margin among the top `100` largest gaps is
 about `0.9999998973`, at the gap `(3851459, 3851587)` of length `128`, with:

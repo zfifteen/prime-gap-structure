@@ -62,7 +62,7 @@ The split also survives exact gap-size conditioning at `10^7`:
 The residue effect is not only a cosmetic orientation label.
 
 It acts like a gate on how soon the left endpoint can first host a
-wheel-admissible low-divisor carrier.
+wheel-admissible low-divisor integer.
 
 That is why this finding is best described as an early-arrival law:
 

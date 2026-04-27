@@ -46,7 +46,7 @@ where:
 So the dominant interior selected integer acts as a clock whose next `d=3` tick gives an
 upper bound on where the following prime can land.
 
-This is a stronger reading than "the selected integer is the first low-divisor carrier."
+This is a stronger reading than "the selected integer is the first low-divisor integer."
 It says the composite interior imposes an admissible stopping region for the
 next prime.
 
@@ -102,7 +102,7 @@ The note
 records the dominant reduction:
 
 - if the selected integer has `d(w)=4`, then the gap contains no interior prime square,
-- and the selected integer is the first interior carrier with `d(n)=4`.
+- and the selected integer is the first interior integer with `d(n)=4`.
 
 The note
 [`closure_constraint_findings.md`](./closure_constraint_findings.md)

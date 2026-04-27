@@ -13,8 +13,8 @@ This is offline theorem discovery. Next-Prime Law 005A remains candidate-grade o
 All stresses used the same base eliminator regime:
 
 - single-hole positive witness closure: enabled
-- carrier-locked pressure ceiling: enabled
-- carrier-lock predicate: unresolved_alternatives_before_threat
+- selected-integer-locked pressure ceiling: enabled
+- selected-integer-lock predicate: unresolved_alternatives_before_threat
 - 005A higher-divisor locked absorption: enabled only in offline stress
 - 005B: disabled
 

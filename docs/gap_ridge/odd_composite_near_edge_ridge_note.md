@@ -24,7 +24,7 @@ DNI field on prime-gap interiors:
 
 - the gap-local raw-`Z` maximum is strongly enriched at edge distance `2`,
 - that local peak is overwhelmingly carried by `d(n) = 4` composites,
-- the carrier enrichment strengthens with scale across the tested regimes.
+- the selected-divisor-count enrichment strengthens with scale across the tested regimes.
 
 That is the near-edge ridge result documented in:
 

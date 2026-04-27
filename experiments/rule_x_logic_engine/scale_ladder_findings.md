@@ -74,7 +74,7 @@ turns no-witness two-factor risk into unresolved state. Safety is preserved,
 but coverage plateaus.
 
 With a scale-matched witness horizon, candidate composites are cleared far
-enough for carrier lock and lower-divisor threat ceilings to operate across
+enough for integer lock and lower-divisor threat ceilings to operate across
 the whole tested domain. Coverage stabilizes near one fifth of anchors while
 remaining audit-clean.
 

@@ -30,7 +30,7 @@ So the `d=4` layer is the exact arithmetic shell occupied by distinct semiprimes
 The repo's current dominant-case GWR result says:
 
 - if the selected integer has `d(w)=4`, the tested surface shows no interior prime square
-- under that square exclusion, the selected integer is exactly the first interior `d=4` carrier
+- under that square exclusion, the selected integer is exactly the first interior `d=4` integer
 
 So the dominant GWR regime is already a `d=4` regime.
 

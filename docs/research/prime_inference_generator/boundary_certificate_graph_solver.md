@@ -11,7 +11,7 @@ Next-Prime Law 005 remains candidate-grade. The only live rule family used here
 is 005A-R. Next-Prime Law 005B remains quarantined.
 
 Graph v6 is the active safe solver version. It is v3 plus one repaired
-no-carrier relation with positive target non-endpoint evidence. Graph v4 and
+no-selected-integer relation with positive target non-endpoint evidence. Graph v4 and
 v5 remain quarantined outside the last clean `11..10_000` development surface
 because v4 absorbed the unresolved true next prime at anchor `10193` during the
 `11..100_000` scale run.
@@ -39,11 +39,11 @@ pipeline:
 
 - positive composite witness rejection;
 - single-hole positive witness closure;
-- carrier-locked pressure ceiling;
+- selected-integer-locked pressure ceiling;
 - 005A-R higher-divisor locked absorption with
   `single_hole_closure_used = false`.
 - unresolved-later domination from existing graph facts.
-- repaired no-carrier target domination with positive non-endpoint evidence.
+- repaired no-selected-integer target domination with positive non-endpoint evidence.
 
 It does not use 005B, broad resolved-chamber absorption, earliest-candidate
 dominance, scalar ranking, prime-marker identity, `nextprime`, `isprime`, or
@@ -59,7 +59,7 @@ unresolved_later_domination_from_existing_graph_facts
 
 It absorbs only the nearest later unresolved candidate after a resolved source
 when the source has no single-hole closure dependency, the target chamber
-preserves the same first legal carrier, and the existing graph facts contain no
+preserves the same first legal integer, and the existing graph facts contain no
 same-or-lower divisor reset evidence between the source and target.
 
 The relation abstains when reset evidence is positive or unknown. It does not
@@ -74,7 +74,7 @@ unresolved_later_domination_from_existing_graph_facts_v2
 ```
 
 It keeps the resolved-source, nearest-later-unresolved, no-single-hole, and
-carrier-preservation requirements. The controlled expansion is the reset
+integer-preservation requirements. The controlled expansion is the reset
 check: v2 computes reset evidence over the active candidate graph after
 rejected and absorbed nodes have been removed. It still abstains when the active
 graph contains positive reset evidence or when the reset state is unknown.
@@ -91,16 +91,16 @@ unresolved_later_domination_from_existing_graph_facts_v3
 ```
 
 It targets active graphs with exactly one resolved survivor. If that resolved
-source has no legal carrier, no single-hole closure dependency, and the
-nearest later unresolved candidate has a first legal carrier after the source,
+source has no legal integer, no single-hole closure dependency, and the
+nearest later unresolved candidate has a first legal integer after the source,
 v3 absorbs that nearest later unresolved candidate. It then repeats on the
 active graph.
 
 This relation does not say there is no reset in the number-theoretic sense. It
 says the existing active graph has one resolved source, that source is an
-empty-carrier chamber, and the next unresolved extension has a positive carrier
+empty-selected-integer chamber, and the next unresolved extension has a positive integer
 fact after the source. The single-resolved-source guard is load-bearing; a
-broader empty-carrier version absorbed true next primes in abstaining
+broader empty-selected-integer version absorbed true next primes in abstaining
 multiple-resolved graphs during development and was not retained.
 
 ## Quarantined v4 Relation
@@ -114,19 +114,19 @@ unresolved_later_domination_target_no_carrier_reset_discriminator
 
 It acts only when the active graph has exactly one resolved survivor, that
 source has no single-hole closure dependency, and the target is the nearest
-later unresolved candidate. The target must have no legal carrier under the
+later unresolved candidate. The target must have no legal integer under the
 current witness bound. The active graph between source and target must contain
 no positive reset evidence.
 
 This relation does not claim a universal absence of reset. It records that the
 existing active graph has no positive reset evidence for the nearest
-no-carrier unresolved target. It abstains on multiple resolved survivors,
-single-hole-dependent sources, targets with legal carriers, positive reset
+no-selected-integer unresolved target. It abstains on multiple resolved survivors,
+single-hole-dependent sources, targets with legal integers, positive reset
 evidence, and unknown preconditions.
 
 The relation is quarantined because the `11..100_000` scale run found anchor
 `10193`, where offset `18` is the true next prime and remained unresolved through
-v3. The v4 absence-based no-carrier relation absorbed that target. The failure
+v3. The v4 absence-based no-selected-integer relation absorbed that target. The failure
 was reproduced in a single-anchor audit and classified as an unsafe relation,
 not a mutation-order, range-order, or audit bug.
 
@@ -139,17 +139,17 @@ unresolved_later_domination_post_v4_empty_source_carrier_extension
 ```
 
 It is a post-v4 re-evaluation of the v3 empty-source extension pattern. v4
-removes nearest unresolved targets that have no legal carrier and no positive
+removes nearest unresolved targets that have no legal integer and no positive
 active reset evidence. After those blockers are removed, v5 checks the active
 graph again. It acts only when exactly one resolved survivor remains, that
-source has no legal carrier, the source has no single-hole closure dependency,
-and the nearest later unresolved candidate has its first legal carrier after
+source has no legal integer, the source has no single-hole closure dependency,
+and the nearest later unresolved candidate has its first legal integer after
 the source.
 
 This relation does not add broad resolved-chamber absorption. It acts only on
 the nearest later unresolved candidate and repeats on the active graph.
 
-Graph v5 inherits the v4 failure because it depends on the v4 no-carrier
+Graph v5 inherits the v4 failure because it depends on the v4 no-selected-integer
 removals. It is not part of the active v6 solver.
 
 ## v6 Relation
@@ -166,7 +166,7 @@ The repaired relation acts only when all of these graph facts are present:
 - the source is that resolved survivor;
 - the source has no single-hole closure dependency;
 - the target is the nearest later unresolved candidate;
-- the target has no legal carrier under the current witness bound;
+- the target has no legal integer under the current witness bound;
 - the active graph contains no positive reset evidence between source and
   target;
 - the target has positive non-endpoint evidence.
@@ -174,11 +174,11 @@ The repaired relation acts only when all of these graph facts are present:
 The positive non-endpoint evidence is label-free. It may come from a bounded
 composite witness, power witness, certified divisor-class certificate,
 wheel-closed target, independently rejected target, or target position beyond
-a selected carrier-locked pressure ceiling.
+a selected selected-integer-locked pressure ceiling.
 
 The relation abstains when the target has no positive non-endpoint evidence.
 This is the safety correction from the v4 failure: absence of reset evidence
-alone is not enough to absorb a no-carrier unresolved target.
+alone is not enough to absorb a no-selected-integer unresolved target.
 
 ## Record Contract
 

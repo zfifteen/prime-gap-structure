@@ -44,10 +44,10 @@ The rule remains candidate-grade. It is not a proof that the resolved survivor i
 - later unresolved candidate offsets
 - bounded positive composite witnesses
 - bounded legal divisor-class certificates
-- the first legal carrier of the proposed chamber
-- divisor class of that carrier
+- the first legal integer of the proposed chamber
+- divisor class of that integer
 - higher-divisor pressure after the resolved candidate and before later unresolved alternatives
-- carrier-locked pressure ceiling state already computed without labels
+- selected-integer-locked pressure ceiling state already computed without labels
 - single-hole positive witness closure state already computed without labels
 
 Classical labels may be attached only after the rule acts, for audit.
@@ -76,8 +76,8 @@ The rule must abstain when the legal higher-divisor pressure lock is absent.
 - candidate bound: 64
 - witness bound: 97
 - single-hole positive witness closure: enabled
-- carrier-locked pressure ceiling: enabled
-- carrier-lock predicate: unresolved_alternatives_before_threat
+- selected-integer-locked pressure ceiling: enabled
+- selected-integer-lock predicate: unresolved_alternatives_before_threat
 
 Staged hardening results:
 
@@ -101,8 +101,8 @@ higher_divisor_pressure_lock_wrong_count: 0
 - candidate bound: 64
 - witness bound: 97
 - single-hole positive witness closure: enabled
-- carrier-locked pressure ceiling: enabled
-- carrier-lock predicate: unresolved_alternatives_before_threat
+- selected-integer-locked pressure ceiling: enabled
+- selected-integer-lock predicate: unresolved_alternatives_before_threat
 - higher-divisor locked absorption: enabled only in offline integration
 
 Integration results:

@@ -8,7 +8,7 @@ The strongest supported finding is:
 like a layered first-arrival law.
 
 On one exact session probe through $10^6$, every observed selected divisor-count class matched
-the first carrier of the smallest divisor class present in the gap interior.
+the first integer of the smallest divisor class present in the gap interior.
 On two deterministic exploratory windows of width $2 \times 10^6$ near
 $10^{12}$, the dominant `d=4` first-arrival offsets stayed small while the
 `No-Later-Simpler-Composite` slack varied mainly with position relative to the
@@ -78,7 +78,7 @@ story.
 The cleanest current reading is:
 
 1. identify the smallest divisor class that actually appears in the gap,
-2. then take the first carrier of that class from the left.
+2. then take the first integer of that class from the left.
 
 In symbols, the layered reading is
 
@@ -86,9 +86,9 @@ $$w = p + A_{\delta_{\min}(p, q)}(p, q).$$
 
 This says the competition is hierarchical by divisor layer:
 
-- if a `d=3` carrier appears, it should beat every `d \ge 4` carrier,
+- if a `d=3` integer appears, it should beat every `d \ge 4` integer,
 - if no `d=3` appears but some `d=4` does, then `d=4` should beat every
-  `d \ge 6` carrier,
+  `d \ge 6` integer,
 - if no `d=3,4` appear but `d=6` does, then `d=6` should win,
 - and so on.
 
@@ -115,7 +115,7 @@ On the exact probe through $10^6$, the observed selected divisor-count classes w
 - `d=24`: `16`
 - `d=32`: `5`
 
-On that exact surface, every observed selected integer matched the first carrier of the
+On that exact surface, every observed selected integer matched the first integer of the
 smallest divisor class present:
 
 - `167 / 167` first-`d=3` matches,
@@ -133,7 +133,7 @@ The dominant regime is still `d=4`, so the most useful arrival observable is
 
 $$A_4(p, q) = \min \{r \ge 1 : d(p + r) = 4\},$$
 
-when a `d=4` carrier is present.
+when a `d=4` integer is present.
 
 The current probes suggest that once the `d=3` layer is absent, the decisive
 `d=4` layer appears very early.
@@ -214,7 +214,7 @@ The sharp change was in how close the whole window sat to the next prime square.
 That is what "square phase" means here.
 
 It is not scale.
-It is not the general density of `d=4` carriers.
+It is not the general density of `d=4` integers.
 It is the gap's location inside the current prime-square chamber.
 
 ## NLCT as a Quantified Consequence of Square Exclusion
@@ -223,7 +223,7 @@ The dominant reduction already says:
 
 - if the selected divisor-count class is `d=4`, then the gap contains no interior prime square;
 - once no interior prime square is present, the selected integer is the first interior
-  `d=4` carrier.
+  `d=4` integer.
 
 In that regime, `No-Later-Simpler-Composite` becomes
 
@@ -334,7 +334,7 @@ as one undifferentiated score law.
 
 The leading picture is:
 
-- the selected integer is the first carrier of the smallest divisor class present,
+- the selected integer is the first integer of the smallest divisor class present,
 - the dominant `d=4` regime is driven by early `d=4` arrival once the `d=3`
   layer is absent,
 - and the dominant `NLCT` margin is controlled mainly by square phase.

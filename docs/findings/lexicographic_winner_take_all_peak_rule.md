@@ -67,10 +67,10 @@ The near-edge ridge is not only a visual field effect on the tested surface.
 Its selected integer is fully determined by a simple arithmetic ordering rule:
 
 - first minimize divisor count,
-- then take the leftmost carrier of that minimum.
+- then take the leftmost integer of that minimum.
 
 This gives one exact tested explanation for:
 
-- $d(n)=4$ carrier dominance,
+- $d(n)=4$ selected-divisor-count dominance,
 - left-edge dominance,
 - and the frequent edge-distance-`2` peak.

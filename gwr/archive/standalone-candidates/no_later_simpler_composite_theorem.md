@@ -38,7 +38,7 @@ This is an exact corollary of GWR, not a new theorem.
 
 The reason is immediate: if some later interior integer had strictly smaller
 divisor count than the selected integer, then the selected integer would not be the minimal-divisor
-carrier of the gap and GWR would fail on that gap.
+integer of the gap and GWR would fail on that gap.
 
 ## 2. The Actual Theorem Candidate
 
@@ -69,7 +69,7 @@ plot-level observation.
 It does not say:
 
 - where the selected integer must occur,
-- that the selected integer is always the leftmost minimal-divisor carrier,
+- that the selected integer is always the leftmost minimal-divisor integer,
 - or that the full gap interior is lexicographically ordered.
 
 It says only one thing:

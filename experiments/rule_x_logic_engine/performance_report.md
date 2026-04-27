@@ -50,7 +50,7 @@ The runner uses the same Rule X decision layer as the documented engine:
 positive witness rejection
 unresolved interior hold
 semiprime-shadow landmark hold
-carrier lock after resolved survivor
+selected-integer lock after resolved survivor
 lower-divisor threat ceiling
 unique resolved survivor emission
 ```

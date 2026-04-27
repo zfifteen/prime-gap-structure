@@ -11,7 +11,7 @@ The broad dominant-case claim is:
    the gap contains no interior prime square;
 2. if a prime gap contains no interior prime square and does contain at least
    one interior integer with $d(n)=4$, then the implemented score maximizer is the
-   first such interior $d=4$ carrier.
+   first such interior $d=4$ integer.
 
 The implementation defines the selected integer from the log-score
 
@@ -80,7 +80,7 @@ The strongest supported statement on the current surface is therefore:
 
 For every tested gap whose selected integer has $d(w)=4$, no interior prime square
 appears anywhere in the gap, and the selected integer is exactly the first interior
-$d=4$ carrier.
+$d=4$ integer.
 
 The `first-$d=4$` rate is $1.0$ on every documented regime above.
 
@@ -119,7 +119,7 @@ Instead of asking:
 the dominant $d=4$ regime now reads:
 
 - did the gap admit any interior prime square at all?
-- if not, where is the first interior $d=4$ carrier?
+- if not, where is the first interior integer with $d(n)=4$?
 
 On the current documented surface, that local mechanism already recovers the
 true selected integer exactly for every tested $d=4$ selected integer gap.
@@ -144,7 +144,7 @@ into two questions:
 
 - why do prime gaps with $d=4$ selected integers avoid interior prime squares?
 - once no interior prime square is present, why does the first interior
-  $d=4$ carrier always win?
+  $d=4$ integer always win?
 
 That is a more focused program than treating the dominant regime as a full
 gap-wide score search.
@@ -156,7 +156,7 @@ the truth of the current surface. The exact $2 \times 10^7$ run already shows
 that a thin prime-cube exception family survives. So the correct formulation is
 class-based:
 
-- first interior $d=4$ carrier,
+- first interior integer with $d(n)=4$,
 
 not factorization-type-based:
 

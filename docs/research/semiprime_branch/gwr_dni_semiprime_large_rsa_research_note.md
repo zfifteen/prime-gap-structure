@@ -34,7 +34,7 @@ The current GWR surface already says the dominant selected-integer regime is a `
 Live repo finding:
 
 - when the implemented score maximizer has `d(w)=4`, the tested surface shows no interior prime square
-- under that square exclusion, the selected integer is exactly the first interior `d=4` carrier
+- under that square exclusion, the selected integer is exactly the first interior `d=4` integer
 
 This is the main bridge from GWR/DNI to semiprimes.
 

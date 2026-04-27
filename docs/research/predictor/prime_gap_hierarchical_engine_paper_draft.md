@@ -11,7 +11,7 @@ not yet about the full raw gap-size sequence.
 ## Abstract
 
 We study a deterministic reduced representation of prime gaps in which each gap
-is classified by its first open offset, carrier family, and a coarse divisor
+is classified by its first open offset, selected-integer family, and a coarse divisor
 bucket. On that surface, the type stream does not behave like a memoryless
 process and is not captured well by a simple first-order chain. Instead, it
 closes to a persistent `14`-state grammar whose dominant object is a triad of
@@ -32,7 +32,7 @@ Prime gaps admit a deterministic reduced typing on the current surface. Each
 row records:
 
 - the first open even offset after the current prime;
-- the carrier family of the selected interior integer;
+- the selected-integer family of the selected interior integer;
 - a divisor bucket for the selected integer.
 
 That reduction produces a finite alphabet that is stable across sampled decades
@@ -63,7 +63,7 @@ The reduced state is
 
 `open_family|d_bucket`
 
-where `open_family` combines first open offset and carrier family, and
+where `open_family` combines first open offset and selected-integer family, and
 `d_bucket` is one of:
 
 - `d<=4`
@@ -289,7 +289,7 @@ There exists a hierarchical finite-state engine on the reduced prime-gap type
 surface whose core `14`-state grammar is scale-invariant above `10^7`, whose
 dominant attractor is the Semiprime Wheel Attractor, and whose scheduler and
 reset layers arise from the interaction between wheel structure and the local
-availability of semiprime and higher-divisor carriers.
+availability of semiprime and higher-divisor integers.
 
 The current evidence does not prove that conjecture. It does provide the first
 deterministic engine family that reproduces the observed local and long-range

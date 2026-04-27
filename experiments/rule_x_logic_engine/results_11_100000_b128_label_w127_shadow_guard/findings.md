@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The semiprime-shadow landmark guard fixes the unsafe label-free carrier-lock
+The semiprime-shadow landmark guard fixes the unsafe label-free selected-integer-lock
 rule on the tested `11..100000` surface.
 
 The corrected rule is:
@@ -85,7 +85,7 @@ The complete small-scale rule stack is now:
 2. Reject candidate composites by positive witness.
 3. Hold unresolved interiors open.
 4. Hold semiprime-shadow landmarks open instead of treating them as resolved q.
-5. Lock the carrier only after a resolved survivor exists.
+5. Lock the selected integer only after a resolved survivor exists.
 6. Reject later candidates beyond the first certified lower-divisor threat.
 7. Emit only when exactly one resolved survivor remains and no unresolved
    alternatives remain.

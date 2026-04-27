@@ -46,7 +46,7 @@ CSV and extracts only transitions whose current gap has `d = 4` selected integer
 
 ## Main Controlled Readout
 
-The primary matched comparison keeps current carrier family, current selected integer
+The primary matched comparison keeps current selected-integer family, current selected integer
 offset, and current first-open offset fixed, then compares the lower-
 utilization half of each stratum against the higher-utilization half of the
 same stratum.
@@ -130,7 +130,7 @@ closure.
 
 ## Decision Rule
 
-For current `d = 4` gaps, if two rows share the same current carrier family,
+For current `d = 4` gaps, if two rows share the same current selected-integer family,
 current selected-integer offset, and current first-open offset, predict the row with
 smaller `U_square(w, q)` to return the next gap to the odd-semiprime triad
 more often than the row with larger `U_square(w, q)`.

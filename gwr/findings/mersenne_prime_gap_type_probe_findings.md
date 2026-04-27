@@ -15,7 +15,7 @@ More concretely:
 - the tested exact surface contains the known Mersenne primes
   `2^p - 1` with `p in {2, 3, 5, 7, 13, 17, 19, 31, 61}`;
 - for every tested Mersenne prime with `p >= 5`, the **following** selected interior integer
-  is an odd-semiprime `d = 4` carrier;
+  is an odd-semiprime `d = 4` integer;
 - those `7` following gaps collapse to only `2` exact type signatures:
   `o6_d4_a2_odd_semiprime` (`4` cases) and
   `o4_d4_a2_odd_semiprime` (`3` cases);

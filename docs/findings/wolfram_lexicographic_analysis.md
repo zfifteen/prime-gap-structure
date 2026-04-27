@@ -68,7 +68,7 @@ For every composite (n\ge 4), one has (d(n)\ge 3), hence (1-k/2<0). Since (\log 
 [
 L(a)>L(b).
 ]
-So within any fixed divisor class, the leftmost carrier always wins exactly.
+So within any fixed divisor class, the leftmost integer always wins exactly.
 
 The first key, “minimize (d(n)),” is not a tautology; it is the substantive content of the observed identity. If (d(a)<d(b)), then the coefficient of (\log n) at (a) is less negative, while the left-to-right movement increases (\log n) only by
 [
@@ -86,7 +86,7 @@ A second source of non-triviality is the divisor side. Classical divisor-distrib
 
 The surprise, then, is not merely that low-(d(n)) values matter. That would be plausible. The surprise is that the full optimization problem appears, on the tested surface, to collapse to a two-step discrete rule with no exceptions:
 [
-\text{minimize }d(n),\ \text{then take the leftmost carrier.}
+\text{minimize }d(n),\ \text{then take the leftmost integer.}
 ]
 That is much stronger than a frequency statement or a bias statement.
 
@@ -94,7 +94,7 @@ That is much stronger than a frequency statement or a bias statement.
 
 Inside a prime gap ((p,p')), every interior integer is composite. The rule says that the local raw-(Z) geometry is governed first and foremost by the smallest divisor count attained in that interval. Thus the gap is not merely a prime-free block; it carries an internal stratification by divisor complexity, and the minimal stratum controls the peak.
 
-In concrete terms, the rule implies that for each tested gap there is a sharply defined “first minimal-divisor carrier”
+In concrete terms, the rule implies that for each tested gap there is a sharply defined “first minimal-divisor integer”
 [
 n_\ast=\min{n\in(p,p'):d(n)=m(p,p')},
 \qquad
@@ -130,7 +130,7 @@ Second, why the bias is to the left. For a fixed divisor count (k), the score is
 [
 L(n)=c_k\log n,\qquad c_k=1-\frac{k}{2}<0,
 ]
-so among all points with the same (k), the smallest (n) wins. Therefore, once the minimal divisor class appears in the gap, its leftmost carrier defeats every later member of that same class. The left-bias is not a vague edge effect; it is an exact monotonicity statement inside each divisor layer.
+so among all points with the same (k), the smallest (n) wins. Therefore, once the minimal divisor class appears in the gap, its leftmost integer defeats every later member of that same class. The left-bias is not a vague edge effect; it is an exact monotonicity statement inside each divisor layer.
 
 Third, why edge-distance (2) is enriched. In an odd prime gap (p<p') with (p\ge 3), every interior integer is odd distance from one endpoint and even distance from the other. The earliest admissible interior composite after (p) is (p+2), since (p+1) is even and cannot lie between two odd primes except in the trivial (2,3) case. Thus the leftmost possible location for a low-(d) odd interior is distance (2) from the left endpoint. If (p+2) is semiprime or otherwise achieves the minimal divisor count of the gap, it wins immediately. The rule therefore converts the arithmetic abundance of low-(d) values near (p+2) into a direct enrichment of edge-distance (2).
 
@@ -304,7 +304,7 @@ For analytic number theory, the report points to an unexpectedly rigid interacti
 ]
 The current GWR proof status says that this coupling is so asymmetric that one obtains a deterministic local law, with the tested surface serving as the finite base and audit record.
 
-For the fine-scale geometry of the integers, the broader lesson is that prime-free intervals have canonical internal landmarks under the conditional GWR theorem. Here the landmark is the leftmost carrier of the minimum divisor count.
+For the fine-scale geometry of the integers, the broader lesson is that prime-free intervals have canonical internal landmarks under the conditional GWR theorem. Here the landmark is the leftmost integer of the minimum divisor count.
 
 Practical consequences should be stated modestly. The rule does not improve primality testing in the usual algorithmic sense. It does, however, give a fast surrogate for locating the raw-(Z) peak inside a gap: one can avoid evaluating all scores if one can identify the earliest minimum-(d) interior point. That may be useful in computational prime-gap studies, in exploratory sieve experiments, or in the design of diagnostics for local composite structure.
 

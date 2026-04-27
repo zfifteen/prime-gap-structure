@@ -5,7 +5,7 @@ This note records the executed exact margin scan from
 
 The target is the actual unresolved universal step behind `GWR`:
 
-for the true gap carrier
+for the true gap integer
 
 $$w = \min\{m \in G : d(m) = d_{\min}\}.$$
 
@@ -14,7 +14,7 @@ does every earlier interior composite $k < w$ satisfy
 $$L(k) < L(w)?$$
 
 The ordered-dominance theorem already removes every later candidate. This scan
-measures the exact slack against the true `GWR` carrier itself.
+measures the exact slack against the true `GWR` integer itself.
 
 ## Recorded Margins
 
@@ -45,8 +45,8 @@ below spoiler threshold.
 On the full exact surface through $2 \cdot 10^7$:
 
 - `1163198` prime gaps with composite interior,
-- `3349874` earlier interior candidates before the true `GWR` carrier,
-- `0` exact earlier spoilers against that carrier.
+- `3349874` earlier interior candidates before the true `GWR` integer,
+- `0` exact earlier spoilers against that integer.
 
 So on the current exact surface, the no-early-spoiler condition itself holds
 with zero counterexamples.
@@ -74,7 +74,7 @@ candidate eventually loses to some later admissible composite.
 
 This margin scan is stronger in the direction that matters for `GWR`:
 
-- it compares every earlier candidate directly to the actual selected integer carrier
+- it compares every earlier candidate directly to the actual selected integer
   $w$,
 - it records the tightest direct log-score slack,
 - and it records the tightest critical-ratio slack in the exact spoiler
@@ -88,7 +88,7 @@ condition itself, not just for later admissible rescue.
 The strongest supported claim from this artifact is:
 
 on the exact through-$2 \cdot 10^7$ surface, every earlier higher-divisor
-candidate is already beaten by the actual leftmost minimum-divisor carrier, and
+candidate is already beaten by the actual leftmost minimum-divisor integer, and
 the scan records the tightest direct and ratio-form safety margins for that
 fact.
 

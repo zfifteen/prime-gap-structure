@@ -2,7 +2,7 @@
 
 ## Overview
 
-This report reproduces the uploaded raw-Z gap-ridge workflow and extends the explicit lexicographic-selected integer check onto new exact and sampled surfaces. The rule under test is simple: inside each eligible prime gap, choose the interior integer with the smallest divisor count `d(n)`, then break ties by taking the leftmost carrier. The claim is that this leftmost minimizer is exactly the same integer selected by the raw-Z argmax with score `(1 - d(n)/2) * log(n)` on every tested gap. Sources from the workspace are cited below as [A1], [A2], and [A3].
+This report reproduces the uploaded raw-Z gap-ridge workflow and extends the explicit lexicographic-selected integer check onto new exact and sampled surfaces. The rule under test is simple: inside each eligible prime gap, choose the interior integer with the smallest divisor count `d(n)`, then break ties by taking the leftmost integer. The claim is that this leftmost minimizer is exactly the same integer selected by the raw-Z argmax with score `(1 - d(n)/2) * log(n)` on every tested gap. Sources from the workspace are cited below as [A1], [A2], and [A3].
 
 ## Phase 1: Audit of the uploaded artifacts
 
@@ -21,7 +21,7 @@ The uploaded `_analyze_interval` implementation [A1] does the following, gap by 
 3. enumerate prime gaps by zipping consecutive primes found in that segment,
 4. skip gaps shorter than `4`,
 5. score the interior composites by `(1 - d/2) * log(n)`,
-6. choose the best carrier with `np.argmax`, and
+6. choose the best integer with `np.argmax`, and
 7. summarize edge-distance-2, `d(n)=4`, and left/right/center selected-integer shares.
 
 The natural-language note [A2] states the exact selection rule, the zero-counterexample validation criterion, and the qualitative explanation for `d(n)=4` dominance, left-edge dominance, and frequent edge-distance-2 peaks. The prior JSON artifact [A3] records the already-tested surface:

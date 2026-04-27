@@ -74,15 +74,15 @@ The activations are concentrated in small resolved offsets:
 The current activation regime is not a broad large-gap rule. It is a narrow
 small-offset lock.
 
-## Activation By Carrier Family
+## Activation By Integer Family
 
-| Carrier family | Count |
+| Integer family | Count |
 |---|---:|
 | `known_basis_semiprime` | `19` |
 | `known_basis_prime_power` | `12` |
 
-The lock fires in two carrier families on this surface. It is not tied to one
-carrier class alone.
+The lock fires in two integer families on this surface. It is not tied to one
+integer class alone.
 
 ## Activation By First Open Offset
 
@@ -178,7 +178,7 @@ identify whether the absence is caused by:
 
 - the strictness of the pressure predicate;
 - absence of higher-divisor offsets between candidate and later alternatives;
-- carrier-family differences;
+- selected-integer-family differences;
 - previous-gap regime differences;
 - or a small-origin activation artifact.
 

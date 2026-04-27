@@ -50,7 +50,7 @@ The Rule X decision shape is unchanged:
 candidate hypotheses
 positive composite witnesses
 unresolved interior holds
-carrier lock after resolved survivor
+selected-integer lock after resolved survivor
 lower-divisor threat ceiling
 unique resolved survivor emission
 downstream audit

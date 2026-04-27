@@ -12,7 +12,7 @@ and let
 \[
 w := \min\{ n \in I : d(n) = \delta_{\min}(p,q) \}
 \]
-be the leftmost carrier of that class.
+be the leftmost integer of that class.
 
 Then the following three properties hold simultaneously:
 

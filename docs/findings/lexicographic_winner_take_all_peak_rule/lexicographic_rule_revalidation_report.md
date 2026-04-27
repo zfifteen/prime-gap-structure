@@ -125,7 +125,7 @@ Enrichment statistics computed at three scales using even-window mode (4 windows
 
 - **d(n)=4 dominance:** ~82.5% of raw-Z maximizers have exactly 4 divisors across all tested scales, compared to a ~15-18% baseline rate among interior integers. The enrichment ratio grows from 4.6x at 10^7 to 5.4x at 10^11, reflecting the declining baseline frequency of d=4 integers at larger scales while the selected-integer share remains stable.
 
-- **Left-edge dominance:** 75-77% of selected integers fall in the left half of their gap, with only ~16% in the right half. This is consistent with the lexicographic tie-breaking rule (leftmost among minimal-d carriers).
+- **Left-edge dominance:** 75-77% of selected integers fall in the left half of their gap, with only ~16% in the right half. This is consistent with the lexicographic tie-breaking rule (leftmost among minimal-d integers).
 
 - **Edge-distance-2 enrichment:** Selected integers appear at edge-distance 2 roughly 2x more often than the baseline expectation, stable across all scales. This follows from the fact that p+2 is the first available odd composite position after a prime p.
 

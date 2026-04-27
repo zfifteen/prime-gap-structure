@@ -24,7 +24,7 @@ large-$p$ argument under the stated constants.
 
 ## Analytic Bridge
 
-For an earlier interior candidate $k$ and the true `GWR` carrier $w$, define
+For an earlier interior candidate $k$ and the true `GWR` integer $w$, define
 
 $$B(k,w)=\frac{\frac{\ln w}{\ln k}-1}{\frac{\delta}{d_{\min}-2}}.$$
 
@@ -55,7 +55,7 @@ The committed no-early-spoiler bridge artifact through
 $p < 20{,}000{,}001$ records:
 
 - `1,163,198` prime gaps with composite interior,
-- `3,349,874` earlier candidates before the true `GWR` carrier,
+- `3,349,874` earlier candidates before the true `GWR` integer,
 - `0` bridge failures,
 - maximum realized bridge load `0.05664166714743768`.
 
@@ -71,7 +71,7 @@ The finite scan is no longer only evidence for `GWR`. It is the base case for
 the analytic closure.
 
 The ordered dominance theorem eliminates every later candidate after the
-leftmost minimum-divisor carrier. The bridge load eliminates every earlier
-higher-divisor candidate before that carrier. Together with the exact finite
+leftmost minimum-divisor integer. The bridge load eliminates every earlier
+higher-divisor candidate before that integer. Together with the exact finite
 base and the explicit large-$p$ constants, the prime-selected interior integer law closes
 under the stated assumptions.

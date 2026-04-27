@@ -71,7 +71,7 @@ $10^9 < p < 5 \times 10^9$.
 - [`no_early_spoiler_margin_scan.py`](./no_early_spoiler_margin_scan.py):
   exact no-early-spoiler scan that
   - compares every earlier interior candidate directly to the actual `GWR`
-    carrier,
+    integer,
   - records the smallest selected integer-minus-earlier log-score margin,
   - and records the smallest critical-ratio slack in the exact spoiler
     inequality.

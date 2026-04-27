@@ -1,8 +1,8 @@
-# Label-Free Carrier-Lock Experiment Findings
+# Label-Free Integer-Lock Experiment Findings
 
 ## Executive Summary
 
-The next experiment confirms the carrier-lock path is real, but only when the
+The next experiment confirms the selected-integer-lock path is real, but only when the
 positive-witness horizon is strong enough to prevent false early survivors.
 
 On prime anchors `11..100000` with candidate offsets up to `128`, the
@@ -24,7 +24,7 @@ The lower witness horizons expose the obstruction:
 | `127` | `331` | `2457` | `2144` |
 | `317` | `0` | `2231` | `2231` |
 
-The unsafe rows are not failures of carrier-lock pressure itself. They are
+The unsafe rows are not failures of selected-integer-lock pressure itself. They are
 premature locks caused by false early survivors whose composite witness lies
 above the current witness bound.
 
@@ -46,7 +46,7 @@ finite run has a positive factor witness inside the experiment horizon.
 | Layer | Rejections | Unique anchors | True endpoint rejected |
 |---|---:|---:|---:|
 | GWR/NLSC only | `0` | `0` | `0` |
-| Naive first-carrier lock | `297753` | `4162` | `7297` |
+| Naive first-integer lock | `297753` | `4162` | `7297` |
 | Oracle survivor lock | `90607` | `1429` | `0` |
 | Label-free full-witness lock | `241248` | `2231` | `0` |
 
@@ -61,7 +61,7 @@ The logic engine now has a working finite consistency-collapse rule:
 ```text
 reject candidate composites by positive witness;
 hold candidates with unresolved interior opens;
-lock the carrier only after a resolved survivor exists;
+lock the selected integer only after a resolved survivor exists;
 reject later candidates beyond the first certified lower-divisor threat.
 ```
 
@@ -85,7 +85,7 @@ candidates lack a small enough positive witness. Example:
 anchor p = 10607
 actual offset = 6
 false resolved survivor = 2
-lock carrier offset = 1
+lock selected-integer offset = 1
 threat offset = 3
 ```
 

@@ -73,18 +73,18 @@ implemented log-score
 Under `GWR`, that selected integer is exactly the leftmost interior integer with the
 smallest divisor count present in the gap.
 
-### Carrier
+### Integer
 
 **Plain language:** An integer that carries some divisor class or structural
 role.
 
-**In this repo:** “Carrier” usually means the actual integer where a particular
+**In this repo:** “Integer” usually means the actual integer where a particular
 divisor class shows up.
 
 Examples:
 
-- “first `d=4` carrier” means the first interior integer with `d(n)=4`,
-- “selected integer carrier” means the actual integer that wins the score.
+- “first `d=4` integer” means the first interior integer with `d(n)=4`,
+- “selected integer” means the actual integer that wins the score.
 
 ### Divisor Count
 
@@ -211,7 +211,7 @@ general structure.
 **Plain language:** A candidate that could beat the intended selected integer.
 
 **In this repo:** A spoiler is usually an earlier interior integer that might
-have a larger score than the actual `GWR` carrier.
+have a larger score than the actual `GWR` integer.
 
 If such a candidate really beat the selected integer, `GWR` would fail on that gap.
 
@@ -611,4 +611,4 @@ When a note feels unreadable, try this translation rule:
 If you want only one sentence to keep in your head, use this one:
 
 `GWR` says that prime gaps do not allow arbitrary composite interiors: the
-raw-$Z$ maximizer is the leftmost carrier of the minimum divisor class in the gap.
+raw-$Z$ maximizer is the leftmost integer with minimum divisor count in the gap.

@@ -39,12 +39,12 @@ That is where the story starts.
 ## The log-score looked geometric before it looked arithmetic
 
 If you look at individual gaps, the implemented log-score landscape really does
-look like a profile. Some carriers sit high, some collapse deep negative, and
+look like a profile. Some integers sit high, some collapse deep negative, and
 the peak often leans toward the left side of the gap. That is exactly why the
 result was surprising once it appeared.
 
 The key local fact is visible in exemplar gaps: the log-score maximizer and the
-leftmost minimum-divisor integer land on the same carrier.
+leftmost minimum-divisor integer land on the same integer.
 
 ![Exemplar prime gaps: the log-score maximizer and the GWR-selected integer coincide](./plots/figure_01_exemplar_gap_profiles.png)
 
@@ -119,7 +119,7 @@ The edge-distance view isolates this even more sharply.
 ![Edge-distance 2 is heavily overrepresented among selected integers](./plots/figure_05_edge_distance.png)
 
 Edge-distance $2$ stands out immediately. That is not a separate law. It is one
-of the visible consequences of the same selection rule when low-divisor carriers
+of the visible consequences of the same selection rule when low-divisor integers
 appear near the left endpoint of the gap.
 
 So the right reading is not that I discovered several unrelated regularities.
@@ -180,10 +180,10 @@ It is not:
 It is:
 
 “Why do prime-gap interiors arrange themselves so that the minimum-divisor
-leftmost carrier dominates the log-score competition?”
+leftmost integer dominates the log-score competition?”
 
 The answer now has a two-part proof shape: ordered dominance eliminates every
-later candidate after the leftmost minimum-divisor carrier, and the
+later candidate after the leftmost minimum-divisor integer, and the
 no-early-spoiler bridge eliminates every earlier higher-divisor candidate. The
 committed certificate puts the analytic bridge threshold below the exact
 finite base through $p < 20{,}000{,}001$.

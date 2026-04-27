@@ -90,8 +90,8 @@ The production next-prime selection rule applies these steps:
 - build wheel-open candidate next-prime hypotheses;
 - reject candidates with composite divisor-count state;
 - preserve semiprime-shadow landmarks as unresolved landmarks;
-- lock the GWR carrier only after a resolved survivor exists;
-- apply the lower-divisor threat ceiling after carrier lock;
+- lock the GWR-selected integer only after a resolved survivor exists;
+- apply the lower-divisor threat ceiling after integer lock;
 - identify the first resolved survivor;
 - reset the chamber at that survivor;
 - classify later unresolved candidates as post-reset chamber material;

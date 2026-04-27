@@ -99,7 +99,7 @@ The broad previous-gap and first-open transition predicates are not safe. They
 select many true candidates, but they also select many false resolved
 survivors.
 
-The narrow carrier-shift and previous-reset predicates are the useful results.
+The narrow integer-shift and previous-reset predicates are the useful results.
 
 ## Best Candidate
 
@@ -113,9 +113,9 @@ Operationally, this predicate selects a resolved candidate only when:
 
 ```text
 later unresolved alternatives exist
-previous chamber has a legal carrier
-current candidate has a legal carrier
-previous carrier identity != current carrier identity
+previous chamber has a legal selected integer
+current candidate has a legal selected integer
+previous selected-integer identity != current selected-integer identity
 ```
 
 On the tested surface, that condition selected `21` true resolved candidates
@@ -125,12 +125,12 @@ and `0` false resolved survivors.
 
 The near-miss profile said previous-chamber memory was the dominant adjacent
 signal. This probe shows that raw previous memory is too broad, but a narrow
-carrier-reset form is selective on the tested surface.
+integer-reset form is selective on the tested surface.
 
 The result supports a candidate family:
 
 ```text
-005B: Previous-Chamber Carrier-Shift Reset Lock
+005B: Previous-Chamber Selected Integer-Shift Reset Lock
 ```
 
 This is still candidate material only. It is not a theorem and not a generator
@@ -146,7 +146,7 @@ history contract:
 accepted previous endpoint
 accepted previous chamber certificate
 current resolved candidate
-previous-to-current carrier shift
+previous-to-current selected-integer shift
 ```
 
 Without that prior-endpoint trust chain, previous-chamber memory is offline

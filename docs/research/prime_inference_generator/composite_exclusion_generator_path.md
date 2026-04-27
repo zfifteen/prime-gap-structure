@@ -5,7 +5,7 @@ Local state-vector search has not produced a compact next-prime-forcing law.
 The current evidence is consistent across the failed paths:
 
 - chamber certificates describe proposed interiors;
-- GWR/DNI structure identifies carrier behavior inside a proposed chamber;
+- GWR/DNI structure identifies selected-integer behavior inside a proposed chamber;
 - legal ladder and pressure states can classify local structure;
 - high-resolution legal states can separate labels, but they become
   table-like;
@@ -59,7 +59,7 @@ The exclusion logic may use:
 - wheel closure;
 - integer square, cube, and power positions;
 - bounded small-factor composite witnesses when recorded as positive evidence;
-- GWR carrier structure computed from legal composite evidence;
+- GWR-selected integer structure computed from legal composite evidence;
 - no-later-simpler closure when all ingredients are legal;
 - square and threat pressure when expressed without primality recognition;
 - previous accepted chamber metadata, if the generator has lawfully emitted the
@@ -101,10 +101,10 @@ Reject `q_hat` if any legal rule proves the proposed chamber invalid:
    with being an open candidate next prime under the proposed chamber model.
 2. A required interior position remains unresolved when the rule requires full
    legal closure of the chamber interior.
-3. The chamber lacks a valid GWR carrier when the active exclusion model
+3. The chamber lacks a valid GWR-selected integer when the active exclusion model
    requires one.
 4. A legal lower-divisor or lower-complexity threat appears after the proposed
-   carrier and before the proposed endpoint.
+   integer and before the proposed endpoint.
 5. Square, power, or threat pressure contradicts the proposed chamber closure.
 6. A smaller admissible candidate remains unresolved under the same evidence.
 7. A deterministic PGS chamber rule rejects the proposed transition.

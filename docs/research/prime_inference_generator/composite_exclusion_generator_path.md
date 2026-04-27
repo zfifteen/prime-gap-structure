@@ -88,7 +88,7 @@ The exclusion logic must not use:
 - a table of known prime gaps.
 
 The offline probe may attach classical labels after elimination in order to
-measure whether the survivor matches the actual next prime. Those labels are
+measure whether the remaining candidate matches the actual next prime. Those labels are
 not part of the elimination state.
 
 ## Candidate Rejection Rules
@@ -167,7 +167,7 @@ A serious Next-Prime Law 005 candidate requires:
 - legal exclusion logic;
 - zero forbidden dependencies in the elimination path;
 - `survivor_count == 1` for every input prime on a meaningful exact surface;
-- the unique survivor matches the classical label after audit;
+- the unique remaining candidate matches the classical label after audit;
 - no table-like candidate encoding;
 - a clear PGS interpretation of every rejection rule.
 
@@ -181,11 +181,11 @@ The first exploratory success threshold is weaker:
 
 Reject or revise the path if:
 
-- most input primes retain many survivors;
+- most input primes retain many remaining candidates;
 - the true next prime is frequently rejected;
 - exclusion requires prime-marker identity;
 - exclusion becomes trial division primality testing;
-- unique survivors appear only because the candidate set is table-like;
+- unique remaining candidates appear only because the candidate set is table-like;
 - the bound `B` is doing the real work rather than the PGS rules.
 
 ## Interpretation
@@ -211,4 +211,4 @@ small exclusion rule set. The first acceptable probe should prefer
 `NO_UNIQUE_BOUNDARY` over speculative rejection.
 
 Milestone 1 remains blocked until the exclusion logic produces a lawful unique
-survivor and external audit confirms it.
+remaining candidate and external audit confirms it.

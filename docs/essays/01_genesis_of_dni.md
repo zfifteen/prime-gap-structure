@@ -306,7 +306,7 @@ That is the exact raw score function over the integers: what the full DNI landsc
 looks like when you evaluate it directly rather than only using it as a
 prefilter.
 
-The fourth is the gap-ridge concern.
+The fourth is the near-endpoint raw-Z peak concern.
 
 That is the local structure inside prime gaps: where the strongest composite
 interior points sit, why the near-edge ridge appears, and why `d(n) = 4`

@@ -48,13 +48,13 @@ For **4096-bit RSA keys**, tested over 50 deterministic keypairs:
 - Speedup: **2.82x**
 - Fraction of Miller-Rabin calls eliminated: **91.07%**
 
-Those are end-to-end numbers. They include all overhead: candidate generation, prefilter evaluation, Miller-Rabin on survivors, and final confirmation. The speedup is real and reproducible from the committed benchmark corpus.
+Those are end-to-end numbers. They include all overhead: candidate generation, prefilter evaluation, Miller-Rabin on remaining candidates, and final confirmation. The speedup is real and reproducible from the committed benchmark corpus.
 
 The 91% rejection rate means roughly 9 out of every 10 composite candidates get discarded before the expensive test runs. The primes that remain are the only ones that pay full cost.
 
 ---
 
-## Where the math and the engineering connect
+## Where the math and the algorithmering connect
 
 The prefilter itself is not mysterious. Small-prime tables are standard practice. What is new is the theoretical grounding.
 
@@ -67,7 +67,7 @@ The practical path from the identity to the speedup is:
 1. The DNI establishes that primes are structurally distinguished by their divisor count.
 2. Integers with small prime factors have high divisor counts and map far from the fixed point.
 3. A prefilter based on small-prime divisibility eliminates those integers cheaply.
-4. The survivors are structurally similar to primes, so Miller-Rabin rarely wastes effort.
+4. The remaining candidates are structurally similar to primes, so Miller-Rabin rarely wastes effort.
 
 The Gap Winner Rule is what connects the DNI to prime gap structure. The prefilter is what connects it to cryptographic practice. They are downstream of the same identity.
 
@@ -81,7 +81,7 @@ A completed proof of the Gap Winner Rule would change that. It would establish t
 
 That distinction matters for security-critical applications. A heuristic that performs well in testing is one thing. A heuristic grounded in a proved identity about prime structure is another. The latter is what belongs in cryptographic standards.
 
-The proof is not finished yet. Essay 3 described exactly where it stands. But the engineering result does not wait for the proof: the benchmark numbers are what they are, and anyone can reproduce them.
+The proof is not finished yet. Essay 3 described exactly where it stands. But the algorithmering result does not wait for the proof: the benchmark numbers are what they are, and anyone can reproduce them.
 
 ---
 
@@ -111,7 +111,7 @@ The first is mathematical: inside every prime gap, the Divisor Normalization Ide
 
 The second is engineering: a prefilter derived from the same identity eliminates 91% of composite candidates before Miller-Rabin, producing a 2x to 2.8x end-to-end speedup in RSA key generation at standard bit sizes. The benchmark is fully reproducible.
 
-Neither result depends on the other being finished. The engineering result is live now. The mathematical proof is the work in progress.
+Neither result depends on the other being finished. The algorithmering result is live now. The mathematical proof is the work in progress.
 
 The full repository, with all benchmark data, proof artifacts, and documentation, is at:
 

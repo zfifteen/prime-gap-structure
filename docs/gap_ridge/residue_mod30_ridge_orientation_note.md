@@ -1,6 +1,6 @@
 # Residue-Modulated Ridge Orientation
 
-This note records one arithmetic refinement of the raw composite gap-ridge
+This note records one arithmetic refinement of the raw composite near-endpoint peak
 result.
 
 The global ridge summary is true:
@@ -85,7 +85,7 @@ class. It means:
 
 For this repository, the immediate implication is conceptual and diagnostic.
 
-The gap-ridge concern should not be documented only through global aggregate
+The near-endpoint raw-Z peak concern should not be documented only through global aggregate
 shares. Future notes and figures should separate:
 
 - global ridge orientation,

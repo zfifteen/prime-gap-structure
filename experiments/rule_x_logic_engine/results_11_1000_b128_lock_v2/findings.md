@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The updated logic engine tested two selected-integer-lock rules on input primes
+The updated algorithm tested two selected-integer-lock rules on input primes
 `11..1000` with candidate offsets up to `128`.
 
 The naive rule is unsafe:
@@ -22,7 +22,7 @@ screening
 ```
 
 It rejected `2964` candidate hypotheses, rejected the true next prime `0` times,
-and collapsed `36 / 164` input primes to one survivor.
+and collapsed `36 / 164` input primes to one remaining candidate.
 
 This is the current lesson:
 
@@ -67,7 +67,7 @@ rule_x_unique_anchor_count = 67
 rule_x_true_boundary_rejected_count = 107
 ```
 
-### Survivor-Integer Lock Oracle
+### Remaining-Candidate Integer Lock Oracle
 
 This rule waits until the candidate next prime itself survives exact
 non-composite screening, then locks that proposed interval's integer. The first
@@ -104,11 +104,11 @@ after the candidate story has earned accepted-candidate status. Once that
 happens, later lower-divisor reset pressure becomes safe on this small surface.
 
 The next experiment should replace the oracle's exact non-composite screening
-with a legal positive-witness survivor state:
+with a legal positive-witness remaining-candidate state:
 
 ```text
 lock selected integer only after all earlier candidate hypotheses are rejected or
 resolved by label-free composite evidence.
 ```
 
-That is the path from this oracle result to a production-grade logic engine.
+That is the path from this oracle result to a production-grade algorithm.

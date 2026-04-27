@@ -38,7 +38,7 @@ unresolved_later_domination_target_no_carrier_with_positive_nonboundary_guard
 
 The repaired relation keeps the v4 graph constraints:
 
-- active graph has exactly one resolved survivor;
+- active graph has exactly one resolved candidate;
 - source has no single-hole closure dependency;
 - target is the nearest later unresolved candidate;
 - target has no legal integer;

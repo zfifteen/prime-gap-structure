@@ -101,12 +101,12 @@ and fixed-base Miller-Rabin on deterministic cryptographic-scale odd candidates.
 | Deep tail minimum bits | 4096 |
 | Rejected before Miller-Rabin | 932 |
 | Rejection rate | 91.015625% |
-| Survivors to Miller-Rabin | 92 |
-| Survivor rate | 8.984375% |
+| Candidates kept for Miller-Rabin | 92 |
+| Pass-through rate | 8.984375% |
 | Miller-Rabin passes after proxy | 1 |
 | First pass index after proxy | 354 |
 | Mean proxy time (ms) | 0.245011 |
-| Mean survivor Miller-Rabin time (ms) | 30.097927 |
+| Mean Miller-Rabin on kept candidates time (ms) | 30.097927 |
 | Mean pipeline time (ms) | 2.949122 |
 | Speedup vs MR-only | 2.910095x |
 
@@ -136,12 +136,12 @@ and fixed-base Miller-Rabin on deterministic cryptographic-scale odd candidates.
 | Deep tail minimum bits | 4096 |
 | Rejected before Miller-Rabin | 234 |
 | Rejection rate | 91.406250% |
-| Survivors to Miller-Rabin | 22 |
-| Survivor rate | 8.593750% |
+| Candidates kept for Miller-Rabin | 22 |
+| Pass-through rate | 8.593750% |
 | Miller-Rabin passes after proxy | 0 |
 | First pass index after proxy | none in corpus |
 | Mean proxy time (ms) | 0.949357 |
-| Mean survivor Miller-Rabin time (ms) | 213.540326 |
+| Mean Miller-Rabin on kept candidates time (ms) | 213.540326 |
 | Mean pipeline time (ms) | 19.300479 |
 | Speedup vs MR-only | 3.333643x |
 
@@ -155,7 +155,7 @@ and fixed-base Miller-Rabin on deterministic cryptographic-scale odd candidates.
 
 ## Predictive Extensions
 
-Single-stage survivor-only prototype (commit `6b1851d`) tested; prime enrichment < 0.05% and not promoted.
+Single-stage pass-through-only prototype (commit `6b1851d`) tested; prime enrichment < 0.05% and not promoted.
 
 ## Reproduction
 
@@ -172,7 +172,7 @@ These output files are generated into the local benchmark output directory.
 - Baseline generated `2` deterministic `64`-bit keypairs in `0.235958` ms total (`8476.084727` keypairs/s).
 - The accelerated path generated the same `2` keypairs in `1.139417` ms total (`1755.283623` keypairs/s) for a measured `0.21x` speedup.
 - The proxy removed `16` Miller-Rabin calls (`80.00%` of baseline MR work) while preserving identical deterministic keypairs across both paths.
-- Timing buckets in the accelerated path broke down into `0.923001` ms proxy filtering (`81.01%`), `0.132959` ms survivor Miller-Rabin (`11.67%`), `0.030334` ms RSA assembly/validation (`2.66%`), and `0.053123` ms residual search overhead (`4.66%`).
+- Timing buckets in the accelerated path broke down into `0.923001` ms proxy filtering (`81.01%`), `0.132959` ms Miller-Rabin on kept candidates (`11.67%`), `0.030334` ms RSA assembly/validation (`2.66%`), and `0.053123` ms residual search overhead (`4.66%`).
 - Final keypair primes were confirmed by `sympy.isprime`; under the DNI, all `4` confirmed factors remain exactly on the `Z = 1.0` fixed-point locus.
 
 | Metric | Baseline | Accelerated |
@@ -188,11 +188,11 @@ These output files are generated into the local benchmark output directory.
 | Proxy rejection contribution | 0.000000% | 80.000000% |
 | Saved Miller-Rabin call rate | 0.000000% | 80.000000% |
 | Proxy filtering time (ms) | 0.000000 | 0.923001 |
-| Survivor Miller-Rabin time (ms) | 0.129956 | 0.132959 |
+| Miller-Rabin on kept candidates time (ms) | 0.129956 | 0.132959 |
 | RSA assembly + validation time (ms) | 0.032750 | 0.030334 |
 | Residual search overhead (ms) | 0.073252 | 0.053123 |
 | Proxy filtering share | 0.000000% | 81.006427% |
-| Survivor Miller-Rabin share | 55.075903% | 11.669038% |
+| Miller-Rabin on kept candidates share | 55.075903% | 11.669038% |
 | RSA assembly + validation share | 13.879589% | 2.662239% |
 | Residual search overhead share | 31.044508% | 4.662297% |
 | Matching deterministic keypairs | 2 | 2 |
@@ -202,7 +202,7 @@ These output files are generated into the local benchmark output directory.
 - Baseline generated `1` deterministic `128`-bit keypairs in `0.608583` ms total (`1643.161245` keypairs/s).
 - The accelerated path generated the same `1` keypairs in `9.304417` ms total (`107.475836` keypairs/s) for a measured `0.07x` speedup.
 - The proxy removed `74` Miller-Rabin calls (`94.87%` of baseline MR work) while preserving identical deterministic keypairs across both paths.
-- Timing buckets in the accelerated path broke down into `8.591464` ms proxy filtering (`92.34%`), `0.361749` ms survivor Miller-Rabin (`3.89%`), `0.187375` ms RSA assembly/validation (`2.01%`), and `0.163829` ms residual search overhead (`1.76%`).
+- Timing buckets in the accelerated path broke down into `8.591464` ms proxy filtering (`92.34%`), `0.361749` ms Miller-Rabin on kept candidates (`3.89%`), `0.187375` ms RSA assembly/validation (`2.01%`), and `0.163829` ms residual search overhead (`1.76%`).
 - Final keypair primes were confirmed by `sympy.isprime`; under the DNI, all `2` confirmed factors remain exactly on the `Z = 1.0` fixed-point locus.
 
 | Metric | Baseline | Accelerated |
@@ -218,11 +218,11 @@ These output files are generated into the local benchmark output directory.
 | Proxy rejection contribution | 0.000000% | 94.871795% |
 | Saved Miller-Rabin call rate | 0.000000% | 94.871795% |
 | Proxy filtering time (ms) | 0.000000 | 8.591464 |
-| Survivor Miller-Rabin time (ms) | 0.328963 | 0.361749 |
+| Miller-Rabin on kept candidates time (ms) | 0.328963 | 0.361749 |
 | RSA assembly + validation time (ms) | 0.036458 | 0.187375 |
 | Residual search overhead (ms) | 0.243162 | 0.163829 |
 | Proxy filtering share | 0.000000% | 92.337478% |
-| Survivor Miller-Rabin share | 54.053925% | 3.887928% |
+| Miller-Rabin on kept candidates share | 54.053925% | 3.887928% |
 | RSA assembly + validation share | 5.990637% | 2.013828% |
 | Residual search overhead share | 39.955437% | 1.760766% |
 | Matching deterministic keypairs | 1 | 1 |

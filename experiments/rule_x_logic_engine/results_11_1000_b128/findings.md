@@ -1,8 +1,8 @@
-# Rule X Logic Engine Findings
+# Rule X Algorithm Findings
 
 ## Executive Summary
 
-The tiny logic engine collapses every tested input prime to the true next prime
+The tiny algorithm collapses every tested input prime to the true next prime
 when exact search-interval closure is allowed, but GWR/NLSC structural consistency
 alone eliminates zero candidate next primes.
 
@@ -13,7 +13,7 @@ GWR/NLSC consistency annotates proposed intervals.
 It does not, by itself, reject false candidate next primes.
 ```
 
-Exact search-interval closure produced one survivor for every input prime:
+Exact search-interval closure produced one remaining candidate for every input prime:
 
 ```text
 exact_unique_match_count = 164 / 164
@@ -32,16 +32,16 @@ input primes: 11..1000
 candidate bound: 128
 ```
 
-The engine tested `164` input primes and `5562` wheel-open candidate next prime
+The algorithm tested `164` input primes and `5562` wheel-open candidate next prime
 hypotheses.
 
 ## Rule Sets
 
-The engine records two layers.
+The algorithm records two layers.
 
 ### Structural Layer
 
-For each hypothetical interval `(p, candidate_q)`, the engine:
+For each hypothetical interval `(p, candidate_q)`, the algorithm:
 
 1. finds the GWR-selected integer inside the proposed interior;
 2. checks whether any later interior composite has lower divisor count than
@@ -52,14 +52,14 @@ This layer rejected no candidates.
 
 ### Exact Search Interval Layer
 
-For each hypothetical interval, the engine also applies exact small-scale
+For each hypothetical interval, the algorithm also applies exact small-scale
 closure facts:
 
 1. reject the candidate if `candidate_q` is composite;
 2. reject the candidate if a prime appears inside `(p, candidate_q)`;
 3. keep the candidate only if the proposed interval is exactly closed.
 
-This layer left exactly one survivor for every input prime, and every survivor was
+This layer left exactly one remaining candidate for every input prime, and every remaining candidate was
 the audited next prime.
 
 ## Summary Metrics
@@ -97,7 +97,7 @@ proposed interval.
 ## Interpretation
 
 The experiment supports the user's framing that the right object is a logic
-engine. It also identifies the missing rule precisely.
+model. It also identifies the missing rule precisely.
 
 The existing GWR/NLSC rules do not create contradiction unless the integer is
 already fixed across candidate extensions. If every proposed interval is free

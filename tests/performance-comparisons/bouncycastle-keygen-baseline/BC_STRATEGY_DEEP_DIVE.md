@@ -18,7 +18,7 @@ The full probe wall time was `36.17` minutes. That is much larger than the model
 
 The strongest validated repo result is still the deterministic factor-gated win on a less-conditioned candidate stream.
 
-- The production Python path rejects composites only when it finds a concrete factor in gated prime tables, keeps survivors on the fixed-point convention `proxy_z = 1.0`, then runs fixed-base Miller-Rabin and final confirmation.
+- The production Python path rejects composites only when it finds a concrete factor in gated prime tables, keeps candidates on the fixed-point convention `proxy_z = 1.0`, then runs fixed-base Miller-Rabin and final confirmation.
 - The validated repo benchmark surface in [benchmarks.md](../../../docs/prefilter/benchmarks.md) reports about `91%` candidate rejection before Miller-Rabin and end-to-end deterministic RSA speedups of `2.09x` at `2048` bits and `2.82x` at `4096` bits.
 - The repo's table-depth sweep in [RSA_TABLE_DEPTH_SWEEP_REPORT.md](../../../benchmarks/output/python/prefilter/rsa_table_depth_sweep/RSA_TABLE_DEPTH_SWEEP_REPORT.md) shows that deeper is not automatically better. On the tested Python RSA surface, `1,000,003` beat both `300,007` and `3,000,000`.
 - The repo's broader structural findings remain real but separate from the production prefilter. In [raw_composite_z_gap_edge.md](../../../docs/gap_ridge/raw_composite_z_gap_edge.md), the exact raw composite score values forms a near-edge low-divisor ridge, with edge-distance-`2` enrichment `1.965x` and `d(n) = 4` selected-divisor-count enrichment `4.116x`. The leftmost minimizer rule also matched all tested gaps on the committed surface.
@@ -59,7 +59,7 @@ The best BC insertion point is earlier than randomized MR and likely earlier tha
 A fixed-base deterministic MR front-end is worth testing only after we move earlier in the candidate path, likely inside or immediately around `createRandomPrime()`. Testing it after `createRandomPrime()` but before BC's randomized MR is still possible, but this probe suggests the certainty=`1` `BigInteger.isProbablePrime()` screen has already done most of that work.
 
 `H5` Speculative:
-The gap-ridge, lexicographic, and residue-modulated findings may still help BC candidate ordering, especially if we open the candidate loop before the certainty=`1` probable-prime screen. Those findings are about structure inside a broader candidate set, not about the already-conditioned post-`createRandomPrime()` stream measured here.
+The near-endpoint raw-Z peak, lexicographic, and residue-modulated findings may still help BC candidate ordering, especially if we open the candidate loop before the certainty=`1` probable-prime screen. Those findings are about structure inside a broader candidate set, not about the already-conditioned post-`createRandomPrime()` stream measured here.
 
 ## 4. Next BC Patch Candidates
 
@@ -79,7 +79,7 @@ Ordered patch candidates:
 4. Deprioritize the later `gcd(e, p - 1)` path.
    For `e = 65537`, BC already checks `p.mod(e)` earlier. The probe measured `0` rejections at both stages, and the later gcd path is not the first place to look for keygen speed.
 
-5. Keep the gap-ridge line as a second stage.
+5. Keep the near-endpoint raw-Z peak line as a second stage.
    If we later open the earlier candidate loop, the repo's lexicographic and residue findings may help candidate ordering or candidate bias. They should not be the first BC patch while the earlier deterministic screens remain untested.
 
 This round therefore narrows the strategy sharply. The repo's measured win does not port to BC by adding a deeper factor table after `createRandomPrime()`. The next serious BC work should move earlier than that stage or change the distribution of candidates entering it.

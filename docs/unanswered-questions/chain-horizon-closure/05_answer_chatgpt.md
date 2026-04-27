@@ -18,7 +18,7 @@ The theorem target should be:
 
 How far must the generator look to expose every false shadow-chain node before the true next prime?
 
-If we can derive a horizon H(p, s0, chain_state) that always closes the false chain nodes before the terminal next prime, then the terminal node becomes the first survivor of a deterministic PGS chain process. That is the bridge-to-theorem conversion.
+If we can derive a horizon H(p, s0, chain_state) that always closes the false chain nodes before the terminal next prime, then the terminal node becomes the first remaining candidate of a deterministic PGS chain process. That is the bridge-to-theorem conversion.
 
 Technical-domain mode:
 
@@ -104,7 +104,7 @@ for each candidate H:
 false_nodes_closed
 false_nodes_unclosed
 terminal_nodes_improperly_closed
-first_survivor_correct_count
+first_remaining candidate_correct_count
 projected_pgs_rate
 
 The decisive success condition:

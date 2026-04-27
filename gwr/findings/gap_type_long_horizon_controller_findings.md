@@ -2,7 +2,7 @@
 
 ## Observable Facts
 
-The hybrid engine already closed the local-window surface very tightly:
+The hybrid model already closed the local-window surface very tightly:
 
 - pooled-window concentration L1: `0.0116`
 - best local model:
@@ -22,7 +22,7 @@ surface without breaking the local-window fit?
 
 ## Controllers Tested
 
-The long-horizon probe keeps the same hybrid base engine,
+The long-horizon probe keeps the same hybrid base model,
 `hybrid_lag2_mod8_scheduler`, and adds two explicit controller families.
 
 ### Event Lock
@@ -53,7 +53,7 @@ The exact artifacts are:
 The strongest supported result is:
 
 The long-horizon controller extremal case is now explicit, and it shows a real
-tradeoff rather than a completed engine.
+tradeoff rather than a completed model.
 
 One controller reaches the pooled-window target. A different controller reaches
 the stationary three-step target. No single tested controller reaches both at
@@ -103,7 +103,7 @@ But the price is visible on the pooled-window surface:
 
 - pooled-window concentration L1: `0.0614`
 
-So this setting overshoots the local engine and degrades the short-window fit
+So this setting overshoots the local model and degrades the short-window fit
 too much.
 
 ## The Fatigue Controller
@@ -128,7 +128,7 @@ That is not a completion result. It is a target-setting result.
 
 ## What This Means
 
-The current engine now has three empirically distinct layers:
+The current model now has three empirically distinct layers:
 
 1. a local core grammar on the persistent `14`-state alphabet;
 2. a scheduler layer that closes the pooled `256`-window surface;

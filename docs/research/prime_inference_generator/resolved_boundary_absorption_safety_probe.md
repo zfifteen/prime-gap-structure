@@ -85,8 +85,8 @@ Integer and reset feature counts:
 Rule A fails the safety gate.
 
 Every true resolved candidate absorbs all later unresolved alternatives, but
-every false resolved survivor does the same. Absorption alone does not
-distinguish true resolved endpoints from false resolved survivors.
+every false resolved candidate does the same. Absorption alone does not
+distinguish true resolved endpoints from false resolved candidates.
 
 The fatal counts are:
 
@@ -96,7 +96,7 @@ The fatal counts are:
 Those counts reject direct resolved-interval absorption as a generator rule. A
 locally resolved interval cannot absorb later unresolved alternatives unless an
 additional legal lock condition separates true resolved endpoints from false
-resolved survivors.
+resolved candidates.
 
 The integer/reset features also do not provide an immediate separator. Both
 true and false resolved candidates occur with shared selected-integer identity, integer

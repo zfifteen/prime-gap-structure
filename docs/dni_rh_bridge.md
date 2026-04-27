@@ -214,7 +214,7 @@ It also clarifies the presentation surface:
 - meromorphic continuation supplies the global analytic geometry,
 - RH constrains the location of the nontrivial poles of that same ratio.
 
-## Why the Gap-Ridge Program Fits Naturally Beside RH
+## Why the Near-Endpoint Raw-Z Peak Program Fits Naturally Beside RH
 
 Prime gaps have two endpoints and a composite interior.
 
@@ -222,7 +222,7 @@ The Riemann Hypothesis matters most when prime locations are studied in short
 intervals, because zeta-zero geometry governs how sharply prime counts can
 fluctuate around their main term.
 
-The DNI gap-ridge program studies the complementary part of that same local
+The DNI near-endpoint raw-Z peak program studies the complementary part of that same local
 picture:
 
 - once the prime endpoints are fixed,
@@ -280,10 +280,10 @@ This gives a precise arithmetic reading of the observed ridge:
 
 - primes form the fixed-point `d=2` locus,
 - the strongest composite layer adjacent to that locus is the `d=4` layer,
-- and the gap-ridge result says that this first composite layer dominates the
+- and the near-endpoint raw-Z peak result says that this first composite layer dominates the
   interior peak geometry.
 
-So the DNI gap ridge is not only a spatial statement about where the interior
+So the DNI near-endpoint raw-Z peak is not only a spatial statement about where the interior
 peak sits. It is also a statement about which divisor-complexity layer sits
 closest to the prime locus inside the exact integer score function.
 
@@ -347,7 +347,7 @@ This repository already establishes:
 
 - the exact DNI at $v = e^2/2$,
 - the deterministic production prefilter built from that invariant,
-- and the exact raw-DNI gap-ridge observables developed in the committed notes
+- and the exact raw-DNI near-endpoint raw-Z peak observables developed in the committed notes
   and benchmark artifacts.
 
 This note records why those objects sit naturally beside the Riemann Hypothesis.
@@ -373,7 +373,7 @@ For the exact DNI and production path:
 - [spec/contract.md](../spec/contract.md)
 - [the RH bridge helpers](../src/python/z_band_prime_rh_bridge/bridge.py)
 
-For the exact gap-ridge research surface:
+For the exact near-endpoint raw-Z peak research surface:
 
 - [docs/dni_gap_ridge.md](./dni_gap_ridge.md)
 - [docs/gap_ridge/raw_composite_z_gap_edge.md](./gap_ridge/raw_composite_z_gap_edge.md)

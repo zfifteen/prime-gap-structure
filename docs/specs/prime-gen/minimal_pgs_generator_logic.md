@@ -64,10 +64,10 @@ The production next-prime selection rule is Rule X with search-interval reset:
 - build wheel-open candidate next-prime hypotheses;
 - reject candidates with composite divisor-count state;
 - preserve semiprime-shadow landmarks as unresolved landmarks instead of
-  promoting them to endpoint survivors;
-- lock the GWR-selected integer only after a resolved survivor exists;
+  promoting them to endpoint candidates;
+- lock the GWR-selected integer only after a resolved candidate exists;
 - apply the lower-divisor threat ceiling after integer lock;
-- identify the first resolved survivor `r`;
+- identify the first resolved candidate `r`;
 - reset the search interval at `r`;
 - classify later unresolved candidates as post-reset search interval material;
 - output `r` as the proposed next prime.

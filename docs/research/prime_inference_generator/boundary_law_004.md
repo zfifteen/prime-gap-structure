@@ -180,7 +180,7 @@ Failure reason:
 
 Statement:
 
-A reduced gap-type or search interval-state engine predicts the next prime offset
+A reduced gap-type or search interval-state model predicts the next prime offset
 from state transitions rather than primality detection.
 
 What it establishes:

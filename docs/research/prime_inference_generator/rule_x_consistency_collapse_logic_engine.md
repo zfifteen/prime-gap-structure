@@ -1,8 +1,8 @@
-# Rule X Consistency-Collapse Logic Engine
+# Rule X Consistency-Collapse Algorithm
 
 ## Executive Summary
 
-The Rule X logic engine is a finite candidate-elimination engine for next-prime
+The Rule X algorithm is a finite candidate-elimination model for next-prime
 next-prime inference from an input prime `p`.
 
 It does not score candidate primes. It does not search until the next prime. It
@@ -28,9 +28,9 @@ false outputs: 0
 candidate-bound misses: 0
 ```
 
-The result is significant because the engine now distinguishes current-search interval
+The result is significant because the algorithm now distinguishes current-search interval
 endpoint evidence from later-search interval tail evidence. Once the first resolved
-survivor appears, later unresolved candidates are assigned to later search intervals
+remaining candidate appears, later unresolved candidates are assigned to later search intervals
 and no longer block output for the original input prime.
 
 The earlier semiprime-shadow landmark hold remains necessary. It prevents
@@ -56,7 +56,7 @@ Each candidate `c = p + h` defines a proposed interval:
 
 $$I(p, c) = \{p+1, p+2, \dots, c-1\}.$$
 
-The engine asks one question:
+The algorithm asks one question:
 
 ```text
 If c were the next prime endpoint, can the proposed interval remain consistent
@@ -67,10 +67,10 @@ The endpoint is inferred by consistency collapse followed by search-interval res
 
 ```text
 all impossible proposed intervals are removed;
-the first resolved survivor appears;
-that survivor closes the current search interval;
+the first resolved candidate appears;
+that candidate closes the current search interval;
 later unresolved candidates are assigned to later search intervals;
-the first resolved survivor is output as q_hat.
+the first resolved candidate is output as q_hat.
 ```
 
 ## Rule Vocabulary
@@ -83,7 +83,7 @@ A candidate next-prime hypothesis is one proposed statement:
 q_hat = p + h
 ```
 
-It is not assumed prime. It is a node in the logic engine.
+It is not assumed prime. It is a node in the algorithm.
 
 ### Positive Composite Witness
 
@@ -97,9 +97,9 @@ rejected.
 If an interior wheel-open position has no positive witness, that interior
 position remains unresolved. Absence of a witness is not primality evidence.
 
-### Resolved Survivor
+### Resolved Remaining Candidate
 
-A candidate is a resolved survivor when:
+A candidate is a resolved candidate when:
 
 1. the candidate itself has no positive composite witness;
 2. all wheel-open interior positions in its proposed interval are closed by
@@ -107,17 +107,17 @@ A candidate is a resolved survivor when:
 3. the proposed interval contains a integer available to the rule stack;
 4. no active rule rejects the candidate.
 
-Resolved survivor does not mean "proved prime" in the mathematical sense. It
+Resolved remaining candidate does not mean "proved prime" in the mathematical sense. It
 means "not eliminated by the label-free finite rule stack."
 
 ### Unresolved Hold
 
 An unresolved hold is an abstention state before search-interval reset. A candidate
-with unresolved interior positions remains active until a resolved survivor
+with unresolved interior positions remains active until a resolved candidate
 closes the current search interval.
 
 Before search-interval reset, unresolved alternatives block output. After the first
-resolved survivor, later unresolved alternatives belong to a later search interval and
+resolved candidate, later unresolved alternatives belong to a later search interval and
 do not compete with the current input prime's endpoint.
 
 ### Semiprime-Shadow Landmark
@@ -138,7 +138,7 @@ $$n \geq s^2$$
 is held open as a semiprime-shadow landmark.
 
 This is not a rejection. The semiprime-shadow landmark is load-bearing PGS
-evidence. The engine does not promote it to a resolved next prime survivor until
+evidence. The model does not promote it to a resolved next prime remaining candidate until
 it is cleared by additional evidence.
 
 ### Integer Lock
@@ -146,14 +146,14 @@ it is cleared by additional evidence.
 Each proposed interval has a GWR-style integer: the leftmost known composite in
 the proposed interior with minimum divisor count among known composites.
 
-The integer is not locked merely because it appears. The engine locks a integer
-only after a resolved survivor exists.
+The integer is not locked merely because it appears. The algorithm locks a integer
+only after a resolved candidate exists.
 
 In logic-puzzle language:
 
 ```text
 the search-interval account cannot become binding until the proposed endpoint has earned
-resolved-survivor status.
+resolved-candidate status.
 ```
 
 ### Lower-Divisor Threat
@@ -168,11 +168,11 @@ by a strictly simpler composite. Therefore, once the integer is legitimately
 locked, the first certified lower-divisor threat becomes a right-endpoint
 ceiling.
 
-The engine rejects later candidate next primes that extend beyond this threat.
+The algorithm rejects later candidate next primes that extend beyond this threat.
 
 ### Search-Interval Reset
 
-A search-interval reset occurs at the first resolved survivor `r` after input prime `p`.
+A search-interval reset occurs at the first resolved candidate `r` after input prime `p`.
 
 The observable state is:
 
@@ -180,7 +180,7 @@ The observable state is:
 p ... r ... u
 ```
 
-where `r` is the first resolved survivor and `u` is a later unresolved
+where `r` is the first resolved candidate and `u` is a later unresolved
 candidate.
 
 The reset rule is:
@@ -192,8 +192,8 @@ u is not a competing endpoint for input prime p.
 ```
 
 This rule does not promote arbitrary candidates. It activates only after the
-existing Rule X stack has produced a resolved survivor. The reset classifies
-the later tail. It does not create the first survivor.
+existing Rule X stack has produced a resolved candidate. The reset classifies
+the later tail. It does not create the first remaining candidate.
 
 ## Rule Stack
 
@@ -204,10 +204,10 @@ The current Rule X search-interval-reset stack is:
 2. Reject candidate composites with positive composite witnesses.
 3. Hold proposed intervals with unresolved wheel-open interiors.
 4. Hold semiprime-shadow landmarks open instead of treating them as resolved q.
-5. Lock the selected integer only after a resolved survivor exists.
+5. Lock the selected integer only after a resolved candidate exists.
 6. Find the first certified lower-divisor threat after the locked selected integer.
 7. Reject candidate next primes beyond that threat.
-8. Identify the first resolved survivor r.
+8. Identify the first resolved candidate r.
 9. Reset the search interval at r.
 10. Exclude later unresolved candidates as post-reset search-interval material.
 11. Output r as q_hat.
@@ -215,13 +215,13 @@ The current Rule X search-interval-reset stack is:
 ```
 
 The decisive safety rule is step `4`. Before this rule, semiprime-shadow
-landmarks were incorrectly promoted to resolved next prime survivors. That caused
+landmarks were incorrectly promoted to resolved next prime remaining candidates. That caused
 premature integer locks and true-next-prime rejection. After the hold-open rule,
 the tested `11..100000` surface has zero true-next-prime rejections for witness
 bounds `97` and `127`.
 
-The decisive coverage rule is step `9`. Before this rule, the engine found the
-true next prime as the first resolved survivor but refused to output when later
+The decisive coverage rule is step `9`. Before this rule, the algorithm found the
+true next prime as the first resolved candidate but refused to output when later
 unresolved tail candidates remained. After search-interval reset, those tail candidates
 are assigned to later search intervals and no longer block the current endpoint.
 
@@ -245,7 +245,7 @@ candidate extensions must not be allowed to freely rewrite the selected integer 
 after a selected integer has legitimately locked.
 ```
 
-The logic engine supplies that missing operational condition.
+The algorithm supplies that missing operational condition.
 
 ## Why The Naive Integer Lock Failed
 
@@ -291,7 +291,7 @@ Examples:
 
 These are semiprime-shadow landmarks. They mark the two-factor layer just
 beyond the current witness horizon. The error was not their existence. The
-error was treating them as resolved prime-endpoint survivors.
+error was treating them as resolved prime-endpoint candidates.
 
 The hold-open rule fixes this by preserving the landmark state:
 
@@ -389,13 +389,13 @@ label_lock_true_boundary_rejected_count = 0
 
 ## Output Contract
 
-The search-interval-reset logic engine may output when all of these hold:
+The search-interval-reset algorithm may output when all of these hold:
 
 ```text
 first_resolved_survivor exists
-semiprime-shadow landmarks before that survivor are not promoted
+semiprime-shadow landmarks before that candidate are not promoted
 positive composite witnesses reject closed candidate next primes
-selected-integer lock and lower-divisor threat rules do not reject the survivor
+selected-integer lock and lower-divisor threat rules do not reject the candidate
 true-next-prime labels have not been consulted
 ```
 
@@ -418,7 +418,7 @@ sidecar records.
 
 ## Audit Endpoint
 
-Classical labels are downstream audit only. The rule engine must not use:
+Classical labels are downstream audit only. The rule implementation must not use:
 
 - `nextprime`;
 - `isprime`;
@@ -446,15 +446,15 @@ It is related to these earlier lines of work:
 
 The first new contribution is the semiprime-shadow landmark hold before integer
 lock. It prevents unresolved two-factor landmarks from being promoted to
-endpoint survivors.
+endpoint candidates.
 
-The second new contribution is search-interval reset at the first resolved survivor.
+The second new contribution is search-interval reset at the first resolved candidate.
 It converts the later unresolved tail from apparent endpoint competition into
 post-endpoint search interval structure.
 
 ## Current Status
 
-Rule X with semiprime-shadow landmark hold is a safe finite inference engine on
+Rule X with semiprime-shadow landmark hold is a safe finite inference algorithm on
 the documented `11..100000`, `candidate_bound = 128` surface for
 `witness_bound = 97` and `127`:
 
@@ -510,7 +510,7 @@ states raise explicitly instead of invoking another prime-search method.
 ## Artifact Links
 
 - Experiment script:
-  [../../../experiments/rule_x_logic_engine/run_logic_engine.py](../../../experiments/rule_x_logic_engine/run_logic_engine.py)
+  [../../../experiments/rule_x_logic_engine/run_logic_model.py](../../../experiments/rule_x_logic_engine/run_logic_engine.py)
 - Guarded `witness_bound = 97` summary:
   [../../../experiments/rule_x_logic_engine/results_11_100000_b128_label_w97_shadow_guard/summary.json](../../../experiments/rule_x_logic_engine/results_11_100000_b128_label_w97_shadow_guard/summary.json)
 - Guarded `witness_bound = 127` summary:

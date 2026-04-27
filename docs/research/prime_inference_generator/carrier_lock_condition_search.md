@@ -110,7 +110,7 @@ Rejected predicates:
 | `no_higher_divisor_pressure_before_threat` | `118` | `11` | rejected |
 
 The rejected single-resolved predicates fail at input prime `6883`, where the
-candidate ceiling would select an earlier survivor while the audited endpoint
+candidate ceiling would select an earlier remaining candidate while the audited endpoint
 is at offset `16`.
 
 ## Observable Split

@@ -138,7 +138,7 @@ Compare:
 - cost-matched classical baseline
 - semiprime-layer-aware proxy variants
 
-with explicit false-survivor and false-reject audits.
+with explicit false-remaining candidate and false-reject audits.
 
 ## Working Interpretation
 

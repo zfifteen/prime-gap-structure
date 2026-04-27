@@ -224,11 +224,11 @@ The initial design should use the repo’s existing deterministic components in 
 7. Output q_hat and advance the input prime to q_hat.
 8. Repeat.
 
-This strategy may be refined into multiple inference engines, but all engines must obey the generation contract.
+This strategy may be refined into multiple inference algorithms, but all algorithms must obey the generation contract.
 
-12. Candidate Engine Variants
+12. Candidate Algorithm Variants
 
-12.1 Exact Recursive Walker Engine
+12.1 Exact Recursive Walker
 
 Uses the repo’s exact recursive next-prime walk logic where available.
 
@@ -238,7 +238,7 @@ Best for:
 * low-to-mid-scale validation,
 * proving the inference interface.
 
-12.2 Bounded Walker Engine
+12.2 Bounded Walker
 
 Uses a bounded search-interval rule such as a cutoff based on log-scale growth.
 
@@ -250,7 +250,7 @@ Best for:
 
 Must output explicit failure if the inferred next prime cannot be uniquely resolved within the bound.
 
-12.3 Threat-Margin Engine
+12.3 Threat-Margin Variant
 
 Uses lower-divisor threat margins to infer safe closure of the search interval.
 
@@ -260,7 +260,7 @@ Best for:
 * identifying endpoint cases,
 * building the next theorem candidate.
 
-12.4 Finite-State Surface Engine
+12.4 Finite-State Surface Model
 
 Uses the reduced gap-type grammar and Semiprime Wheel Attractor as a stateful predictive layer.
 
@@ -268,7 +268,7 @@ Best for:
 
 * long-run structure experiments,
 * compressed symbolic inference,
-* testing whether the reduced engine can support prime-endpoint inference rather than only gap-type modeling.
+* testing whether the reduced model can support prime-endpoint inference rather than only gap-type modeling.
 
 This should be treated as experimental until it achieves exact recovery benchmarks.
 
@@ -387,7 +387,7 @@ The most important number is pure inference speed, but the honest deployment num
 
 The generator must fail closed.
 
-If the inference engine cannot identify a unique next prime, it must output a structured failure rather than guessing.
+If the inference algorithm cannot identify a unique next prime, it must output a structured failure rather than guessing.
 
 Failure types:
 
@@ -428,7 +428,7 @@ Possible names:
 
 * PGS Prime Inference Generator
 * PGS Recursive Prime Walker
-* DNI-GWR Prime Inference Engine
+* DNI-GWR Prime Inference Algorithm
 * Structural Prime Inference Generator
 * Prime Endpoint Inference Walker
 

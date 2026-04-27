@@ -97,7 +97,7 @@ law. The cleaner structural predicate is `higher_divisor_pressure_before_threat`
 but it applies to only `10` input primes here.
 
 Neither predicate resolves the remaining core blocker. True-endpoint unresolved
-count stays at `52`, and multiple resolved survivors remain possible.
+count stays at `52`, and multiple resolved candidates remain possible.
 
 ## Status
 

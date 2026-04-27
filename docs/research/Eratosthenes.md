@@ -179,7 +179,7 @@ In the dominant regime, the smallest divisor class present in almost every prime
 
 An exact probe through $10^6$ reveals the full selected integer-class breakdown by divisor tier: 167 gaps won by $d=3$ integers, 58,303 by $d=4$, 2,983 by $d=6$, 7,392 by $d=8$, 820 by $d=12$, 485 by $d=16$, and rarer classes above. On that complete surface, the hierarchical first-arrival law -- take the leftmost integer of the smallest present divisor class -- matched exactly across every observed selected divisor-count class without a single exception, class by class. This is not a $d=4$ story with noise; it is a strictly ordered divisor-layer hierarchy.
 
-## The Gap Ridge: Edge Enrichment and d=4 Dominance
+## The Near-Endpoint Raw-Z Peak: Edge Enrichment and d=4 Dominance
 
 The DNI score function over gap interiors is not uniform. Evaluated exactly up to $10^6$: the gap-local raw-Z maximum lands at edge distance 2 in 43.60% of gaps versus an exact within-gap baseline of 22.19%, a 1.965x enrichment. The $d=4$ class carries the gap-local maximum in 82.90% of gaps versus a baseline of 20.14%, a 4.116x enrichment. Left-edge wins dominate at 74.56% versus right-edge at 16.02% and midpoint at 9.42%. The ridge is not a midpoint feature -- it is a near-left-edge low-divisor structure. Additionally, a residue-mod-30 orientation effect has been documented: the direction of the near-edge ridge depends on the left endpoint prime modulo 30, which connects naturally to Dirichlet character decomposition territory.
 

@@ -27,7 +27,7 @@ The same prefilter setup is held fixed across the whole size ladder. Each size i
 
 ## Verification Table
 
-| RSA bits | Keypairs | Repeats | Rejection | Baseline mean/keypair (ms) | Proxy mean/keypair (ms) | Survivor MR mean/keypair (ms) | Speedup median | Speedup range | Ceiling | Ceiling share |
+| RSA bits | Keypairs | Repeats | Rejection | Baseline mean/keypair (ms) | Proxy mean/keypair (ms) | Miller-Rabin on kept candidates mean/keypair (ms) | Speedup median | Speedup range | Ceiling | Ceiling share |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | 1024 | 24 | 3 | 91.316073% | 87.959604 | 30.754011 | 31.774626 | 1.282760x | 1.264699x..1.315472x | 11.515528x | 11.139398% |
 | 2048 | 12 | 3 | 91.042048% | 751.221059 | 75.868970 | 247.823570 | 2.032357x | 2.024229x..2.144987x | 11.163265x | 18.205755% |

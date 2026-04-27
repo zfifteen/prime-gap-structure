@@ -19,7 +19,7 @@ The current strongest supported claim is:
 ```text
 In offline composite-exclusion testing, the higher-divisor pressure lock
 remained zero-wrong through input primes 11..1_000_000, and flagged integration
-produced 25 unique resolved survivors through input primes 11..1_000_000 with zero
+produced 25 unique resolved candidates through input primes 11..1_000_000 with zero
 true-next-prime rejections and zero wrong absorptions.
 ```
 
@@ -30,7 +30,7 @@ rejection alone did not force a unique endpoint.
 
 Resolved-interval absorption alone also failed. It absorbed later unresolved
 alternatives for true resolved endpoints, but it also absorbed later
-alternatives for false resolved survivors. Therefore:
+alternatives for false resolved candidates. Therefore:
 
 ```text
 resolved interval => absorbs extensions
@@ -39,7 +39,7 @@ resolved interval => absorbs extensions
 is false as a next-prime law.
 
 The missing ingredient is a lock condition that separates true resolved
-endpoints from false resolved survivors before absorption is allowed.
+endpoints from false resolved candidates before absorption is allowed.
 
 ## Candidate Law
 
@@ -53,7 +53,7 @@ record supersedes the lock.
 ```
 
 On the tested surfaces, this candidate rule selected true resolved candidates
-with zero false selections and produced unique resolved survivors under flagged
+with zero false selections and produced unique resolved candidates under flagged
 integration without rejecting the true next prime.
 
 This does not prove that the outputted candidate is prime. It only states that,
@@ -96,13 +96,13 @@ The current offline operation is:
 1. Run composite exclusion with single-hole positive witness closure enabled.
 2. Run selected-integer-locked pressure ceiling with
    `unresolved_alternatives_before_threat`.
-3. Identify resolved survivor candidates.
+3. Identify resolved candidate candidates.
 4. For each resolved candidate, inspect later unresolved alternatives.
 5. If legal higher-divisor pressure exists between the resolved candidate and
    those later unresolved alternatives, treat the resolved candidate as locked.
 6. Absorb later unresolved alternatives only for locked resolved candidates.
 7. Fail closed unless the final candidate state contains exactly one resolved
-   survivor and no unresolved alternatives.
+   remaining candidate and no unresolved alternatives.
 
 This rule is opt-in in the offline probe:
 
@@ -162,7 +162,7 @@ on every staged hardening surface.
 
 Flagged integration:
 
-| Surface | Rows | Unique resolved survivors | True rejected | Applied | Correct | Wrong | False absorber |
+| Surface | Rows | Unique resolved candidates | True rejected | Applied | Correct | Wrong | False absorber |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | `11..100_000` | `9588` | `25` | `0` | `31` | `31` | `0` | `0` |
 | `11..1_000_000` | `78494` | `25` | `0` | `31` | `31` | `0` | `0` |
@@ -177,14 +177,14 @@ unique_resolved_survivor_count: 25
 
 Shifted-window integration:
 
-| Surface | Rows | Unique resolved survivors | True rejected | Applied | Correct | Wrong | False absorber |
+| Surface | Rows | Unique resolved candidates | True rejected | Applied | Correct | Wrong | False absorber |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | `100_000..200_000` | `8392` | `0` | `0` | `0` | `0` | `0` | `0` |
 | `1_000_000..1_100_000` | `7216` | `0` | `0` | `0` | `0` | `0` | `0` |
 
 The shifted windows passed the safety gate but abstained. They produced no
 wrong absorption and no true-next-prime rejection, but also no applications and no
-unique resolved survivors.
+unique resolved candidates.
 
 ## Why This Is Not Yet Generator Output
 

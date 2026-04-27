@@ -10,7 +10,7 @@ The corrected rule is:
 ```text
 If a candidate has no positive witness <= B but is large enough to hide a
 two-factor composite with both factors above B, do not treat it as a resolved
-endpoint survivor. Hold it open as a semiprime-shadow landmark.
+endpoint candidate. Hold it open as a semiprime-shadow landmark.
 ```
 
 This is not a rejection of the semiprime. The semiprime is a landmark. The
@@ -85,9 +85,9 @@ The complete small-scale rule stack is now:
 2. Reject candidate composites by positive witness.
 3. Hold unresolved interiors open.
 4. Hold semiprime-shadow landmarks open instead of treating them as resolved q.
-5. Lock the selected integer only after a resolved survivor exists.
+5. Lock the selected integer only after a resolved candidate exists.
 6. Reject later candidates beyond the first certified lower-divisor threat.
-7. Output only when exactly one resolved survivor remains and no unresolved
+7. Output only when exactly one resolved candidate remains and no unresolved
    alternatives remain.
 ```
 
@@ -96,4 +96,4 @@ zero true-next-prime rejections on the tested surface.
 
 The result is program-advancing because the guard directly explains the earlier
 failure family: the rows were not random defects. They were semiprime-shadow
-landmarks being promoted too early to endpoint survivors.
+landmarks being promoted too early to endpoint candidates.

@@ -1,25 +1,25 @@
-# 10^18 Gap-Ridge Test Plan
+# 10^18 Near-Endpoint Raw-Z Peak Test Plan
 
 ## Objective
 
-The project proof bar for structural gap-ridge claims is `10^18` minimum.
+The project proof bar for structural near-endpoint raw-Z peak claims is `10^18` minimum.
 
 This document separates two different surfaces:
 
 - **Configured band coverage**: the regime ladder recognized by the code, tests, JSON payloads, and plotting pipeline.
 - **Executed high-scale validation**: bands that have actually been run and committed with artifacts.
 
-This pass expands configured band coverage through `10^18`, upgrades the exact interval engine to support `10^18`-class windows, and reruns the main raw gap-edge, lexicographic, and composite-structure validation campaigns on that widened surface.
+This pass expands configured band coverage through `10^18`, upgrades the exact interval implementation to support `10^18`-class windows, and reruns the main raw gap-edge, lexicographic, and composite-structure validation campaigns on that widened surface.
 
 ## Current State
 
-The current committed execution surface for the gap-ridge program is:
+The current committed execution surface for the near-endpoint raw-Z peak program is:
 
 - exact full runs at `10^6` and `10^7`,
 - sampled regime bands by decade from `10^8` through `10^18`.
 
 The former blocking constraint in `src/python/z_band_prime_composite_field/field.py`
-has now been removed. The interval engine no longer walks primes up to
+has now been removed. The interval implementation no longer walks primes up to
 `sqrt(hi)`. It strips factors only through `cuberoot(hi)` and uses `gmpy2` to
 classify the residual exactly as `1`, prime, prime square, or semiprime.
 
@@ -61,7 +61,7 @@ Fast pytest should cover the shape of that ladder without attempting real
 ### Stage 1: Band Coverage Through `10^18`
 
 - expand the shared sampled-scale defaults through `10^18`,
-- make all gap-ridge CLIs inherit that shared ladder,
+- make all near-endpoint raw-Z peak CLIs inherit that shared ladder,
 - update tests so defaults, parsers, JSON fixtures, and plot pipelines all recognize the full decade ladder through `10^18`,
 - keep exact full runs capped at `10^7`,
 - keep smoke tests on tiny custom scales so ordinary pytest remains fast.
@@ -74,13 +74,13 @@ Fast pytest should cover the shape of that ladder without attempting real
 
 ### Stage 3: Committed `10^18` Artifacts
 
-- completed: run the higher-band raw gap-edge, lexicographic, and composite-structure campaigns with the new engine,
+- completed: run the higher-band raw gap-edge, lexicographic, and composite-structure campaigns with the new model,
 - completed: regenerate the main `10^18`-grade artifacts,
 - completed: upgrade README and supporting notes from “configured through `10^18`” to “executed through `10^18`” where the data support it.
 
 ## Acceptance Criteria
 
-- all gap-ridge defaults and tests recognize the full sampled decade ladder through `10^18`,
-- no public gap-ridge docs describe `10^10` as the terminal validation horizon,
+- all near-endpoint raw-Z peak defaults and tests recognize the full sampled decade ladder through `10^18`,
+- no public near-endpoint raw-Z peak docs describe `10^10` as the terminal validation horizon,
 - fast pytest remains fast,
-- high-scale execution is no longer blocked on the old exact interval engine.
+- high-scale execution is no longer blocked on the old exact interval implementation.

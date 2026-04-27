@@ -1,7 +1,7 @@
 # Higher-Divisor Pressure Lock Activation Profile, Candidate Bound 128, Witness Bound 127
 
 The strongest safe horizon produced 48 higher-divisor pressure lock activations
-on input primes 11..1000000, with 36 unique resolved survivors after absorption and
+on input primes 11..1000000, with 36 unique resolved candidates after absorption and
 0 wrong activations.
 
 This is offline theorem discovery. Next-Prime Law 005A remains candidate-grade

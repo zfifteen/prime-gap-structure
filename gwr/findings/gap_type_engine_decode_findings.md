@@ -1,14 +1,14 @@
-# Gap-Type Engine Decode Findings
+# Gap-Type Model Decode Findings
 
 The reduced grammar is now decoded far enough to separate what is already
-engine-like from what is still missing.
+model-like from what is still missing.
 
 Three facts survive the stronger test surface:
 
 - the persistent `14`-state reduced grammar is real;
 - the **Semiprime Wheel Attractor** remains the dominant dynamical object;
 - the current deterministic second-order rotor is not yet the whole hidden
-  engine, because it underproduces higher-order concentration at long
+  model, because it underproduces higher-order concentration at long
   horizons.
 
 That is a strong result, not a retreat. The grammar generates the right
@@ -146,15 +146,15 @@ Supported:
 
 Not yet supported:
 
-- that the current second-order rotor is the full hidden engine;
+- that the current second-order rotor is the full hidden model;
 - that maximal gaps are explained as low-probability tails of that grammar.
 
 The strongest next target is now obvious:
 
 The alphabet appears to be right. The missing structure is the scheduler.
 
-In practical terms, the next engine candidate should preserve the same
+In practical terms, the next model candidate should preserve the same
 `14`-state scaffold but tighten the long-horizon two-step and three-step
 concentration surface. That is where the present rotor still leaks.
 
-![Gap-type engine decode overview](../../output/gwr_dni_gap_type_engine_decode_overview.png)
+![Gap-type model decode overview](../../output/gwr_dni_gap_type_engine_decode_overview.png)

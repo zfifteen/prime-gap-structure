@@ -23,7 +23,7 @@ later unresolved candidates as post-endpoint search interval material.
 
 ## Tested Rule
 
-For an input prime `p`, let `r` be the first resolved survivor under the
+For an input prime `p`, let `r` be the first resolved candidate under the
 existing Rule X stack.
 
 The search-interval-reset rule is:
@@ -34,8 +34,8 @@ Any later unresolved candidate belongs to a later search interval.
 Output r as q_hat.
 ```
 
-The rule does not create the first survivor. It classifies the unresolved tail
-after a survivor has already been resolved.
+The rule does not create the first remaining candidate. It classifies the unresolved tail
+after a remaining candidate has already been resolved.
 
 ## Results By Decade
 
@@ -70,7 +70,7 @@ after a survivor has already been resolved.
 ## Interpretation
 
 The unresolved input primes were not missing the endpoint. They already contained
-the endpoint as the first resolved survivor.
+the endpoint as the first resolved candidate.
 
 The search-interval-reset rule resolves the remaining ambiguity:
 

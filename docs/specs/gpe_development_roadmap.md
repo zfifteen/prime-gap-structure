@@ -2,7 +2,7 @@
 
 This roadmap turns the blocker analysis in
 [`gpe_blocker_resolution.md`](./gpe_blocker_resolution.md) into a staged
-development plan for the GWR-DNI Generative Prime Engine.
+development plan for the GWR-DNI Generative Prime Model.
 
 The requirements are not reduced. Each milestone exists to remove one blocker
 standing between the current exact DNI/GWR oracle and the GPE target contract:
@@ -29,7 +29,7 @@ $$q^+=B(q,S,w,d(w))$$
 
 and establishes the validation harness that every later selector must satisfy.
 
-This milestone does not try to solve every branch. It prevents the engine from
+This milestone does not try to solve every branch. It prevents the algorithm from
 building on a false closure rule.
 
 ### Milestone 2: NLSC Selector
@@ -76,4 +76,4 @@ satisfied together:
   marking.
 
 Until then, the current repo still has the exact DNI/GWR oracle, but not the GPE
-target engine.
+target implementation.

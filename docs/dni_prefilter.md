@@ -12,7 +12,7 @@ $$
 
 Here, the normalization scaling parameter names the distinguished scalar $v = e^2/2$ in the normalization, and the fixed-point locus names the normalized set $Z = 1.0$ occupied by confirmed primes under the exact identity.
 
-At that normalization scaling parameter, confirmed primes lie on the fixed-point locus $Z = 1.0$, while composites contract below it under exact divisor counting. The production prefilter keeps that locus as its survivor convention and uses concrete factor discovery as its rejection rule.
+At that normalization scaling parameter, confirmed primes lie on the fixed-point locus $Z = 1.0$, while composites contract below it under exact divisor counting. The production prefilter keeps that locus as its pass-through convention and uses concrete factor discovery as its rejection rule.
 
 ## Why A Prefilter Matters
 
@@ -23,7 +23,7 @@ When prime generation runs at cryptographic bit lengths, most odd candidates are
 The DNI gives the pipeline an invariant target. Under the exact identity, primes occupy the fixed-point locus $Z = 1.0$. That makes it possible to organize the production path around a narrow distinction:
 
 - reject when a concrete factor is found,
-- preserve the survivor locus when no such factor has yet been found.
+- preserve the pass-through locus when no such factor has yet been found.
 
 This is the role of the prefilter. It is not a replacement for the final probable-prime path. It is the deterministic front end that reduces how much composite work reaches that path.
 
@@ -39,7 +39,7 @@ This identity is exact under exact divisor count, and it is the mathematical sou
 
 That exact law is the derivation and the audit surface for the prefilter. It is not the runtime mechanism used for cryptographic-scale candidate loops. Exact divisor counting remains too expensive at that scale.
 
-The production path in this repository therefore does something narrower. It keeps the fixed-point locus as the invariant survivor target, but it does not attempt to compute exact divisor count for each cryptographic candidate. Instead it uses deterministic factor-gated discovery to decide whether a candidate can already be pushed below the locus.
+The production path in this repository therefore does something narrower. It keeps the fixed-point locus as the invariant pass-through target, but it does not attempt to compute exact divisor count for each cryptographic candidate. Instead it uses deterministic factor-gated discovery to decide whether a candidate can already be pushed below the locus.
 
 ## Deterministic Production Path
 
@@ -48,8 +48,8 @@ The runtime path is intentionally straight.
 1. Generate deterministic odd candidates from the SHA-256 namespace/index stream.
 2. Scan each candidate against the gated prime tables.
 3. Reject immediately only when a concrete factor is found.
-4. Keep survivors on the locus convention `proxy_z = 1.0`.
-5. Run fixed-base Miller-Rabin on survivors.
+4. Keep candidates on the locus convention `proxy_z = 1.0`.
+5. Run fixed-base Miller-Rabin on remaining candidates.
 6. Apply final `sympy.isprime` confirmation in the current Python path.
 
 The gated tables are organized in three intervals in the normative Python implementation:
@@ -58,13 +58,13 @@ The gated tables are organized in three intervals in the normative Python implem
 - a tail table,
 - a deep-tail table used only from the configured bit threshold upward.
 
-The implementation searches those intervals deterministically. If one interval finds a factor, the candidate is rejected on that concrete arithmetic evidence. If no interval finds a factor, the candidate remains on the survivor convention `proxy_z = 1.0` and advances.
+The implementation searches those intervals deterministically. If one interval finds a factor, the candidate is rejected on that concrete arithmetic evidence. If no interval finds a factor, the candidate remains on the pass-through convention `proxy_z = 1.0` and advances.
 
 This is a single deterministic execution path. It does not widen into alternate rejection rules, probabilistic proxy gates, or backup modes.
 
-## Survivor Semantics
+## Pass-Through Semantics
 
-The production prefilter uses the fixed-point locus as a survivor convention.
+The production prefilter uses the fixed-point locus as a pass-through convention.
 
 That convention is narrow. In this repository, `proxy_z() == 1.0` means the candidate survived the gated factor tables used by the prefilter. It does not by itself prove primality.
 
@@ -85,7 +85,7 @@ The repository commits to the following production behavior:
 - the normalization scaling parameter is fixed at `v = e^2 / 2`,
 - candidate generation uses the deterministic SHA-256 namespace/index stream,
 - the prefilter rejects only when it has found a concrete factor in one of the gated prime tables,
-- survivor status is not a primality proof,
+- pass-through status is not a primality proof,
 - the fixed Miller-Rabin base set is `2, 3, 5, 7, 11, 13, 17, 19`.
 
 That contract is recorded in [spec/contract.md](../spec/contract.md), and the parity surface is committed in [spec/vectors/](../spec/vectors/). The normative executable implementation of this concern is [the Python prefilter module](../src/python/z_band_prime_prefilter/prefilter.py), with the public API exported through [the package entrypoint](../src/python/z_band_prime_prefilter/__init__.py).
@@ -98,11 +98,11 @@ The public Python surface for this concern includes:
 - `FIXED_POINT_V`
 - `DEFAULT_MR_BASES`
 
-At the class level, the survivor-facing interface includes `proxy_z()` and `is_prime_candidate()`.
+At the class level, the pass-through interface includes `proxy_z()` and `is_prime_candidate()`.
 
 ## Measured Results
 
-The current validated Python regime shows that the deterministic production path removes most tested cryptographic candidates before Miller-Rabin while preserving the invariant survivor convention.
+The current validated Python regime shows that the deterministic production path removes most tested cryptographic candidates before Miller-Rabin while preserving the invariant pass-through convention.
 
 In the curated benchmark summary:
 

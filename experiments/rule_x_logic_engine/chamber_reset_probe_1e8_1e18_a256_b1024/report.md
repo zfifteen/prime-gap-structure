@@ -17,15 +17,15 @@ tail cases converted: 2303
 tail candidates excluded by reset: 77457
 ```
 
-Every previously unresolved input prime had one resolved survivor followed by a
+Every previously unresolved input prime had one resolved candidate followed by a
 later unresolved tail. Under the search-interval-reset rule, the first resolved
-survivor closes the current search interval, so later unresolved candidates are
+remaining candidate closes the current search interval, so later unresolved candidates are
 assigned to later search intervals and excluded from the current input prime's endpoint
 choice.
 
 ## Tested Rule
 
-For an input prime `p`, let `r` be the first resolved survivor under the
+For an input prime `p`, let `r` be the first resolved candidate under the
 existing Rule X stack.
 
 The tested search-interval-reset rule is:
@@ -40,13 +40,13 @@ u belongs to a search interval beginning at r or later.
 This changes the output rule from:
 
 ```text
-output only if exactly one resolved survivor exists and no unresolved tail remains
+output only if exactly one resolved candidate exists and no unresolved tail remains
 ```
 
 to:
 
 ```text
-output the first resolved survivor;
+output the first resolved candidate;
 exclude later unresolved candidates as post-reset search-interval material
 ```
 
@@ -69,11 +69,11 @@ exclude later unresolved candidates as post-reset search-interval material
 ## Interpretation
 
 The unresolved input primes were not missing the endpoint. They already contained
-the endpoint as the first resolved survivor.
+the endpoint as the first resolved candidate.
 
 The previous output rule treated later unresolved candidates as competing
 endpoints. The search-interval-reset test shows that this was too conservative in the
-tested windows. Once the first resolved survivor appears, later unresolved
+tested windows. Once the first resolved candidate appears, later unresolved
 candidates are outside the current search interval and should not block output.
 
 The measured effect is complete on this decade ladder:

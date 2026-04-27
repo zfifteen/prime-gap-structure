@@ -64,23 +64,23 @@ language than those input primes.
   reduced grammar against the sampled `10^18` window.
 - [gap_type_engine_decode_findings.md](./gap_type_engine_decode_findings.md):
   Rulebook, million-step stress test, and record-gap rarity readout for the
-  persistent `14`-state engine surface.
+  persistent `14`-state model surface.
 - [gap_type_scheduler_findings.md](./gap_type_scheduler_findings.md):
   Deterministic scheduler search showing that aligned `256`-window scoring
   nearly closes the higher-order gap with a finite scheduler above the
   persistent `14`-state core.
 - [gap_type_hybrid_scheduler_findings.md](./gap_type_hybrid_scheduler_findings.md):
   Hybrid lag-2 plus periodic scheduler search showing that the local-window
-  engine closes further, while the stationary long-horizon re-entry law
+  model closes further, while the stationary long-horizon re-entry law
   remains the missing piece.
 - [gap_type_long_horizon_controller_findings.md](./gap_type_long_horizon_controller_findings.md):
   Deterministic long-horizon controller search showing the current research target
   between local-window fidelity and stationary-walk concentration.
 - [gap_type_engine_v1_freeze.md](./gap_type_engine_v1_freeze.md):
-  Frozen `v1.0` definition of the hierarchical gap-type engine, including the
+  Frozen `v1.0` definition of the hierarchical gap-type model, including the
   reference operating profiles and the current target endpoint.
 - [gap_type_engine_v1_rulebook.md](./gap_type_engine_v1_rulebook.md):
-  Minimal readable rulebook for the frozen `v1.0` engine on the persistent
+  Minimal readable rulebook for the frozen `v1.0` model on the persistent
   `14`-state reduced surface.
 - [mersenne_prime_gap_type_probe_findings.md](./mersenne_prime_gap_type_probe_findings.md):
   Exact tractable test of whether known Mersenne primes carry distinctive

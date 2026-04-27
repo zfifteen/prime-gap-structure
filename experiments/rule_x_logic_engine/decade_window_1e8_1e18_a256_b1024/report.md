@@ -50,14 +50,14 @@ The Rule X decision shape is unchanged:
 candidate hypotheses
 positive composite witnesses
 unresolved interior holds
-selected-integer lock after resolved survivor
+selected-integer lock after resolved candidate
 lower-divisor threat ceiling
-unique resolved survivor output
+unique resolved candidate output
 downstream audit
 ```
 
 Classical labels are used for input prime selection and audit. The reported result
-is a decade-window measurement of the logic engine, not a production generator
+is a decade-window measurement of the algorithm, not a production generator
 claim.
 
 ## Results By Decade
@@ -99,7 +99,7 @@ The match rate varies by decade but remains nontrivial at every scale. The
 zero times.
 
 Runtime increases with scale because high-scale exact factorization is used to
-materialize positive witnesses in the window. The logic engine itself remains
+materialize positive witnesses in the window. The algorithm itself remains
 small and deterministic; the high-scale measurement cost is dominated by the
 classical witness oracle used for this experiment.
 

@@ -103,7 +103,7 @@ on the tested horizon while preserving every unique success.
 
 The observed rule is narrower than 005A. It is also more generator-shaped on
 the tested origin surface because every selected activation yielded a unique
-resolved survivor after absorption.
+resolved candidate after absorption.
 
 This remains a candidate pattern. A future integration gate must verify that
 the refined action population matches the hardening population before any pure

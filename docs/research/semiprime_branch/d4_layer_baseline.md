@@ -78,7 +78,7 @@ Measure the share of `d=4` selected integers across:
 
 ### B4 — Large-RSA relevance
 
-Map the arithmetic baseline to the engineering baseline by asking:
+Map the arithmetic baseline to the algorithmering baseline by asking:
 
 - which candidate classes are currently rejected by the production front end
 - how much of that rejection is plausibly correlated with shallow evidence of the `d=4` layer

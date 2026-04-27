@@ -33,7 +33,7 @@ The 005A-R selection condition is:
 ```text
 005A activation
 and single_hole_closure_used = false
-and the post-absorption candidate set has exactly one resolved survivor
+and the post-absorption candidate set has exactly one resolved candidate
 and no unresolved candidates
 ```
 

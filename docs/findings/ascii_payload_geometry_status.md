@@ -21,15 +21,15 @@ Across `512,000` tested `2048`-bit indices at production namespace
 `combined`, `leftmost_first`, `changed_digits_first`, and
 `trailing_zero_first` all produced the same result:
 
-- baseline first-three prefilter survivor mean position `21.5013`
-- reordered first-three prefilter survivor mean position `22.2600`
+- baseline first-three prefilter remaining candidate mean position `21.5013`
+- reordered first-three prefilter remaining candidate mean position `22.2600`
 - position gain `-0.7587`
 - relative change `-3.53%`
 
 The same steady-state run showed only a tiny Miller-Rabin improvement:
 
-- baseline first Miller-Rabin survivor mean position `562.136`
-- reordered first Miller-Rabin survivor mean position `561.452`
+- baseline first Miller-Rabin remaining candidate mean position `562.136`
+- reordered first Miller-Rabin remaining candidate mean position `561.452`
 - position gain `0.684`
 - relative change `0.12%`
 - Miller-Rabin advantage batch share `11.4%`
@@ -69,8 +69,8 @@ The first official geometry run extended that negative picture at larger scale:
 
 - steady-state regime: `512,000` indices, start index `100000`,
   batch size `1024`,
-- baseline prefilter survivor rate `8.9475%`,
-- baseline Miller-Rabin survivor rate `0.1363%`,
+- baseline prefilter pass-through rate `8.9475%`,
+- baseline Miller-Rabin pass-through rate `0.1363%`,
 - no tested ordering produced useful prefilter advancement.
 
 The committed feature table still shows a real local effect in rare regimes:
@@ -100,7 +100,7 @@ The active gate stays simple:
 - if the rollover regime produces a clear lift, integrate the winning ordering
   as an optional lightweight mode and re-run end-to-end benchmarks,
 - if the rollover regime is also flat or negative, retire the full ranking
-  family and pivot to the engineering path: a Rust or SIMD hot-path port of
+  family and pivot to the algorithmering path: a Rust or SIMD hot-path port of
   candidate generation, prefilter, and Miller-Rabin.
 
 ## Artifacts

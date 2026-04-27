@@ -42,7 +42,7 @@ previous_chamber_signal is present
 
 ## Headline Result
 
-The lock selected no false resolved survivors on any tested surface:
+The lock selected no false resolved candidates on any tested surface:
 
 ```text
 all_surfaces_zero_wrong: true
@@ -77,8 +77,8 @@ previous_first_open_transition_lock
 ```
 
 Those broader predicates selected many true candidates and many false
-survivors. The integer-shift lock selected far fewer candidates and selected no
-false survivors on this hardening surface.
+remaining candidates. The integer-shift lock selected far fewer candidates and selected no
+false remaining candidates on this hardening surface.
 
 The result supports candidate status:
 

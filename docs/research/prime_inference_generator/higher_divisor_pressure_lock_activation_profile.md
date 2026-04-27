@@ -36,7 +36,7 @@ and reads uniqueness from the post-absorption state.
 ## Headline Result
 
 The lock fired `31` times across the tested profile, produced `25` unique
-resolved survivors after flagged absorption, and produced `0` wrong selections.
+resolved candidates after flagged absorption, and produced `0` wrong selections.
 
 All `31` activations occurred on the `11..1_000_000` surface. Both shifted
 windows abstained:

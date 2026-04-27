@@ -92,7 +92,7 @@ So the strongest exact conclusion is not "selected-integer offset alone detects 
 presence." It is:
 
 - the local square clock determines the selected integer exactly when it fires;
-- otherwise the dominant survivor law is early `d=4` arrival.
+- otherwise the dominant remaining-candidate rule is early `d=4` arrival.
 
 ## Better Theorem Target
 

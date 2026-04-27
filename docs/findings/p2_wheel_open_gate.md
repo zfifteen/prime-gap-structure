@@ -1,6 +1,6 @@
 # $p+2$ Wheel-Open Gate Splits Early Selected integer Arrival
 
-This note records one residue-conditioned refinement of the gap-ridge result.
+This note records one residue-conditioned refinement of the near-endpoint raw-Z peak result.
 
 ## Finding
 

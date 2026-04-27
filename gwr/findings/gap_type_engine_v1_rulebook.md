@@ -1,8 +1,8 @@
-# GWR Gap-Type Engine v1.0 Rulebook
+# GWR Gap-Type Model v1.0 Rulebook
 
-The reduced engine is now simple enough to state as a short rulebook.
+The reduced model is now simple enough to state as a short rulebook.
 
-These rules describe the frozen `v1.0` engine on the persistent `14`-state
+These rules describe the frozen `v1.0` model on the persistent `14`-state
 reduced gap-type surface. They are not meant to replace the exact transition
 matrices. They are the readable laws that those matrices imply.
 
@@ -20,7 +20,7 @@ The rules below are arranged from the fast core to the slow controller.
 
 ## Core Rules
 
-1. **Finite alphabet**. The persistent reduced engine closes to `14` states on
+1. **Finite alphabet**. The persistent reduced model closes to `14` states on
    the sampled `10^7..10^18` surface.
 2. **Attractor definition**. The Semiprime Wheel Attractor is the triad
    `o2/o4/o6` odd-semiprime lanes at `d<=4`.
@@ -58,7 +58,7 @@ The rules below are arranged from the fast core to the slow controller.
     the current reduced sweep is `11`, and the best higher-divisor reset cycle
     in that sweep is `2`.
 14. **Local reset law**. Resetting the hybrid state when the walk leaves the
-    attractor gives the current best local engine,
+    attractor gives the current best local model,
     `hybrid_lag2_mod8_reset_nontriad_scheduler`, with pooled-window
     concentration L1 `0.0116`.
 
@@ -72,7 +72,7 @@ The rules below are arranged from the fast core to the slow controller.
 
 ## Reading
 
-The engine does not behave like a diffuse memoryless stream.
+The model does not behave like a diffuse memoryless stream.
 
 The readable picture is:
 

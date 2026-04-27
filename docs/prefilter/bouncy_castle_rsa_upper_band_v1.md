@@ -10,7 +10,7 @@ numbersections: true
 link-citations: true
 colorlinks: true
 abstract: |
-  This note records a measured Bouncy Castle RSA key-generation acceleration obtained from one narrow RSA-local change. The mathematical frame comes from the Divisor Normalization Identity (DNI) $Z(n) = n^{1 - d(n)/2}$ at $v = e^2 / 2$, which in this repository yields a deterministic computational lesson: preserve the survivor convention, remove doomed work early, and do not change the final confirmation path. A direct late-stage port of the repository's deeper deterministic factor gating into Bouncy Castle was tested first and rejected no additional candidates on the measured 4096-bit RSA surface. The profitable invariant instead came from Bouncy Castle's own RSA square-bound rule. For 4096-bit RSA, the BC condition $p^2 \ge 2^{4095}$ is equivalent to the exact lower-band constraint $p \ge \sqrt{2}\,2^{2047}$ for each 2048-bit prime candidate, leaving an accepted fraction $2 - \sqrt{2} \approx 58.58\%$ of the 2048-bit interval and a rejected fraction $\sqrt{2} - 1 \approx 41.42\%$. The modified BC build moves that exact acceptance rule earlier in the RSA candidate path while leaving the later probable-prime and key-validation logic in place. On the direct-core benchmark surface used in this repository, the modified build reduced 100 runs of 4096-bit RSA key generation from 169.032 s to 102.305 s for a measured 1.652x speedup and a 39.48% wall-time reduction.
+  This note records a measured Bouncy Castle RSA key-generation acceleration obtained from one narrow RSA-local change. The mathematical frame comes from the Divisor Normalization Identity (DNI) $Z(n) = n^{1 - d(n)/2}$ at $v = e^2 / 2$, which in this repository yields a deterministic computational lesson: preserve the pass-through convention, remove doomed work early, and do not change the final confirmation path. A direct late-stage port of the repository's deeper deterministic factor gating into Bouncy Castle was tested first and rejected no additional candidates on the measured 4096-bit RSA surface. The profitable invariant instead came from Bouncy Castle's own RSA square-bound rule. For 4096-bit RSA, the BC condition $p^2 \ge 2^{4095}$ is equivalent to the exact lower-band constraint $p \ge \sqrt{2}\,2^{2047}$ for each 2048-bit prime candidate, leaving an accepted fraction $2 - \sqrt{2} \approx 58.58\%$ of the 2048-bit interval and a rejected fraction $\sqrt{2} - 1 \approx 41.42\%$. The modified BC build moves that exact acceptance rule earlier in the RSA candidate path while leaving the later probable-prime and key-validation logic in place. On the direct-core benchmark surface used in this repository, the modified build reduced 100 runs of 4096-bit RSA key generation from 169.032 s to 102.305 s for a measured 1.652x speedup and a 39.48% wall-time reduction.
 ---
 
 **Keywords:** Divisor Normalization Identity; DNI; RSA key generation; Bouncy Castle; accepted-band sampling; square-bound geometry; deterministic acceleration
@@ -71,7 +71,7 @@ Its first arithmetic reading is immediate:
 
 The repository's production Python path does not compute exact divisor count for cryptographic-scale candidates. That would be the wrong runtime mechanism. What the identity supplies is the invariant. It tells the implementation what has to be preserved:
 
-- primes live on the fixed-point survivor convention,
+- primes live on the fixed-point pass-through convention,
 - composites are the doomed work,
 - the job of the prefilter is to move exact rejection earlier without altering final confirmation semantics.
 
@@ -259,7 +259,7 @@ The DNI does not contain the number $2 - \sqrt{2}$. That number comes from BC's 
 
 What the DNI supplies is the method:
 
-- identify the invariant that defines the survivor set,
+- identify the invariant that defines the pass-through set,
 - locate a large doomed region,
 - eliminate that region earlier,
 - keep the final confirmation path intact.
@@ -386,7 +386,7 @@ But the patch removes enough of the dominated discarded-candidate work that the 
 
 This repository now has two distinct cryptographic acceleration demonstrations.
 
-The first is the existing Python deterministic prefilter built directly from the DNI survivor logic and concrete factor discovery.
+The first is the existing Python deterministic prefilter built directly from the DNI pass-through logic and concrete factor discovery.
 
 The second is this BC result:
 

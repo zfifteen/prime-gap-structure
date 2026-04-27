@@ -1,7 +1,7 @@
 # Fixed-Table Rejection Is a Number-Theory Endpoint
 
 This note records the finding that the current `~91%` prefilter rejection rate
-is not primarily an engineering plateau. It is the measured small-factor layer
+is not primarily an algorithmering plateau. It is the measured small-factor layer
 available to the current fixed odd-prime table depth.
 
 ## Finding
@@ -16,7 +16,7 @@ On the current deterministic table-depth surface, deeper tables do increase
 the structural rejection ceiling, but only by small fractions of a percentage
 point at the repo's existing depths:
 
-| Covered odd-prime limit | Structural rejection ceiling | Structural survivor share | Gain from previous row |
+| Covered odd-prime limit | Structural rejection ceiling | Structural pass-through share | Gain from previous row |
 |---:|---:|---:|---:|
 | `300,007` | `91.096550%` | `8.903450%` | |
 | `600,014` | `91.560859%` | `8.439141%` | `+0.464309 pp` |
@@ -36,7 +36,7 @@ The direct doubling probe is the cleanest falsifiable statement:
 
 The production prefilter rejects an odd candidate only when it finds a concrete
 factor in the gated odd-prime tables. For an arbitrary odd candidate stream, the
-survivor share after screening all odd primes up to a finite limit $L$ is
+pass-through share after screening all odd primes up to a finite limit $L$ is
 
 $$S(L)=\prod_{3 \le p \le L}(1 - 1/p).$$
 
@@ -49,7 +49,7 @@ depth. Implementation quality can change the time required to evaluate the
 table. It cannot make the same table reject candidates that have no covered
 small odd-prime factor.
 
-The product does not converge to a positive survivor floor as $L$ tends to
+The product does not converge to a positive pass-through floor as $L$ tends to
 infinity. Formally, $S(L)$ keeps drifting downward and $R(L)$ tends toward
 `100%`. The operational endpoint here is finite-regime, not infinite-regime:
 near the repo's current table depths, the remaining numerator has already

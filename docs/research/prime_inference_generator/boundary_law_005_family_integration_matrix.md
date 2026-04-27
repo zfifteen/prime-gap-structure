@@ -28,7 +28,7 @@ The four tested modes were:
 
 ## Results
 
-| mode | surface | unique resolved survivors | true next prime rejected | correct absorptions | wrong absorptions | false survivor absorptions | 005A applied | 005B applied | hard gate |
+| mode | surface | unique resolved candidates | true next prime rejected | correct absorptions | wrong absorptions | false remaining candidate absorptions | 005A applied | 005B applied | hard gate |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | 005A only | 11..100000 | 25 | 0 | 31 | 0 | 0 | 31 | 0 | pass |
 | 005A only | 11..1000000 | 25 | 0 | 31 | 0 | 0 | 31 | 0 | pass |
@@ -58,7 +58,7 @@ The first hard-gate failure is:
 - false absorber offset: 12
 - absorbed offsets: 26, 30, 32, 44, 50, 54
 
-The false resolved survivor at offset 12 absorbs the true next prime candidate at offset 26. That violates both required gates:
+The false resolved candidate at offset 12 absorbs the true next prime candidate at offset 26. That violates both required gates:
 
 - true_boundary_rejected_count must remain 0
 - absorption_wrong_count must remain 0
@@ -69,7 +69,7 @@ The previous-to-current selected-integer shift lock hardened as a zero-wrong sel
 
 Those are not the same regime.
 
-The hardening population required the true next prime to already be a resolved survivor with later unresolved alternatives and no active higher-divisor pressure lock. The direct integration path cannot use the true next prime label, so it can fire earlier on false resolved survivors. Input Prime 3137 shows that failure mode explicitly.
+The hardening population required the true next prime to already be a resolved candidate with later unresolved alternatives and no active higher-divisor pressure lock. The direct integration path cannot use the true next prime label, so it can fire earlier on false resolved candidates. Input Prime 3137 shows that failure mode explicitly.
 
 ## Decision
 

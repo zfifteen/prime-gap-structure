@@ -20,8 +20,8 @@ result is therefore best kept under a narrower name.
 ## Related Notes
 
 - [Broad prime-edge insulation is falsified](./broad_prime_edge_insulation_falsified.md)
-- [Original gap-ridge note](../gap_ridge/odd_composite_near_edge_ridge_note.md)
-- [DNI gap-ridge overview](../dni_gap_ridge.md)
+- [Original near-endpoint raw-Z peak note](../gap_ridge/odd_composite_near_edge_ridge_note.md)
+- [DNI near-endpoint raw-Z peak overview](../dni_gap_ridge.md)
 
 ## Plain Reading
 

@@ -4,7 +4,7 @@
 
 Next-Prime Law 005B is quarantined as an absorption rule.
 
-The failure is reproduced at input prime $p = 3137$. The previous-to-current selected-integer shift lock authorizes a false resolved survivor at offset 12, and that false absorber removes the audited true next prime at offset 26.
+The failure is reproduced at input prime $p = 3137$. The previous-to-current selected-integer shift lock authorizes a false resolved candidate at offset 12, and that false absorber removes the audited true next prime at offset 26.
 
 Pure generator output remains forbidden.
 
@@ -16,7 +16,7 @@ Before 005B absorption, the strongest safe eliminator has:
 - previous input prime: 3121
 - actual next prime offset: 26
 - actual next prime integer: 3163
-- resolved survivor offsets: 2, 12
+- resolved candidate offsets: 2, 12
 - unresolved candidate offsets: 26, 30, 32, 44, 50, 54
 
 After 005B-only absorption:
@@ -79,7 +79,7 @@ Those offsets are exactly the composite structure that the one-hole closure rule
 
 ## What The Hardening Probe Missed
 
-The hardening probe only evaluated the previous-to-current selected-integer shift lock inside rows where the audited true next prime was already a resolved survivor before absorption.
+The hardening probe only evaluated the previous-to-current selected-integer shift lock inside rows where the audited true next prime was already a resolved candidate before absorption.
 
 At input prime 3137:
 
@@ -89,7 +89,7 @@ At input prime 3137:
 - higher-divisor pressure lock absent at the true next prime: true
 - actual next prime resolved before absorption: false
 
-So this input prime was outside the hardening population. The hardening result was zero-wrong as a selector in its target population, but direct integration broadened the operational domain and allowed a false resolved survivor to absorb an unresolved true next prime.
+So this input prime was outside the hardening population. The hardening result was zero-wrong as a selector in its target population, but direct integration broadened the operational domain and allowed a false resolved candidate to absorb an unresolved true next prime.
 
 ## Quarantine Conditions
 

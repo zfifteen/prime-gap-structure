@@ -61,7 +61,7 @@ The composite-exclusion probe now has an explicit offline flag:
 
 This flag absorbs later unresolved candidates only when the resolved candidate
 satisfies `higher_divisor_pressure_lock`. It does not select among multiple
-resolved survivors and does not touch the pure generator.
+resolved candidates and does not touch the pure generator.
 
 Command:
 
@@ -71,7 +71,7 @@ python3 benchmarks/python/prime_inference_generator/composite_exclusion_boundary
 
 ## Integration Result
 
-| Surface | Unique resolved survivors | True rejected | Applied | Correct | Wrong | False absorber |
+| Surface | Unique resolved candidates | True rejected | Applied | Correct | Wrong | False absorber |
 |---|---:|---:|---:|---:|---:|---:|
 | `11..10_000` | `25` | `0` | `31` | `31` | `0` | `0` |
 | `11..100_000` | `25` | `0` | `31` | `31` | `0` | `0` |
@@ -85,8 +85,8 @@ higher_divisor_locked_absorption_wrong_count == 0
 ```
 
 Coverage remains narrow. The rule applies `31` times and produces `25` unique
-resolved survivors because some locked rows still retain multiple resolved
-survivors after unresolved alternatives are absorbed.
+resolved candidates because some locked rows still retain multiple resolved
+remaining candidates after unresolved alternatives are absorbed.
 
 ## Interpretation
 

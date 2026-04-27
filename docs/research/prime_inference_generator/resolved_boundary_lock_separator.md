@@ -8,10 +8,10 @@ Next-Prime Law 005 is not approved by this note.
 ## Objective
 
 Resolved-interval absorption alone failed because true resolved endpoints and
-false resolved survivors both absorb later unresolved alternatives.
+false resolved candidates both absorb later unresolved alternatives.
 
 This probe asks whether any legal lock/reset feature separates true resolved
-endpoints from false resolved survivors before absorption is allowed.
+endpoints from false resolved candidates before absorption is allowed.
 
 ## Measured Mode
 
@@ -92,7 +92,7 @@ Predicate reports:
 
 Most simple lock predicates fail the zero-wrong gate. Integer preservation,
 no-reset status, integer change, reset evidence, closure support, and previous
-gap compatibility all select false resolved survivors.
+gap compatibility all select false resolved candidates.
 
 The one zero-wrong predicate on this surface is:
 
@@ -100,7 +100,7 @@ The one zero-wrong predicate on this surface is:
 higher_divisor_pressure_lock
 ```
 
-It selects `31` true resolved endpoints and `0` false resolved survivors.
+It selects `31` true resolved endpoints and `0` false resolved candidates.
 That is not Next-Prime Law 005. It is a candidate lock separator worth hardening.
 
 The observed shape is:

@@ -1,4 +1,4 @@
-# Resolved Survivor Dominance Forensics
+# Resolved Candidate Dominance Forensics
 
 The integrated eliminator now resolves more true-next-prime search intervals, but it also
 creates competing resolved false-endpoint search intervals. The dominance forensics test
@@ -9,12 +9,12 @@ Next-Prime Law 005 is not approved by this note.
 ## Objective
 
 Study input primes where the integrated composite-exclusion eliminator produces at
-least one resolved false-endpoint survivor.
+least one resolved false-endpoint candidate.
 
 The question is:
 
 Which PGS-native dominance rule can select the true next prime from multiple
-resolved survivor candidates without using primality labels?
+resolved candidate candidates without using primality labels?
 
 A rule may abstain. A rule with any wrong selection is rejected.
 
@@ -46,7 +46,7 @@ Run:
 
 ## Candidate Metadata
 
-For each resolved survivor candidate, the probe records:
+For each resolved candidate candidate, the probe records:
 
 - `candidate_offset`
 - `candidate_width`
@@ -75,9 +75,9 @@ Summary:
 - `anchors_with_false_resolved_survivors: 230`
 - `true_boundary_rejected_count: 0`
 
-Resolved-survivor count distribution:
+Resolved-candidate count distribution:
 
-| Resolved Survivors | Input primes |
+| Resolved Candidates | Input primes |
 |---:|---:|
 | `2` | `230` |
 
@@ -111,11 +111,11 @@ No tested rule passes the hard gate:
 
 ## Interpretation
 
-The false resolved survivor is usually earlier than the true next prime. That
+The false resolved candidate is usually earlier than the true next prime. That
 kills earliest-endpoint and minimal-width dominance outright.
 
 The true next prime often requires the single-hole closure rule, while the false
-survivor requires less closure support. That kills minimal-closure dominance in
+remaining candidate requires less closure support. That kills minimal-closure dominance in
 this surface.
 
 GWR-selected-divisor-count dominance has some signal, but it is not safe:
@@ -137,5 +137,5 @@ Milestone 1 remains blocked.
 Next-Prime Law 005 is not approved.
 
 The next admissible work should focus on why the false earlier resolved
-survivor remains structurally plausible. A safe dominance rule must either
+remaining candidate remains structurally plausible. A safe dominance rule must either
 reject that earlier search interval or abstain, never select it incorrectly.

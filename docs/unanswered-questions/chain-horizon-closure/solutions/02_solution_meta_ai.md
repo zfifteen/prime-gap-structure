@@ -45,7 +45,7 @@ I evaluated all six files against three criteria: (1) correct problem framing, (
 Because the high-scale probes are not downloadable, I replicated the exact logic described in answers 05 and 06 on a controlled dataset that mirrors the chain conditions:
 
 - **Setup:** simulate false chain nodes that survive `visible_divisor_bound=10,000` (as in the code) and are within `candidate_bound=128` of input prime $p$. These are precisely the nodes that currently force fallback to $\sqrt{q}$.
-- **Method:** generate 200 composites that are products of two primes just above 10,000 (the smallest possible survivors of the visible bound). Compute their smallest prime factor (SPF), which equals the horizon needed to close them.
+- **Method:** generate 200 composites that are products of two primes just above 10,000 (the smallest possible candidates surviving the visible bound). Compute their smallest prime factor (SPF), which equals the horizon needed to close them.
 - **Results:**
     - sample size: 200 false nodes
     - max SPF observed: **10,093**
@@ -60,7 +60,7 @@ This matches the repo's operational observation: the chain length is capped at 8
 
 ## Synthesis of findings
 
-1. **Problem framing:** Answers 05 and 06 are correct — the task is to close false nodes, not to prove the survivor prime. Answers 01, 03, 04 accept this implicitly; answer 02 misses the distinction.
+1. **Problem framing:** Answers 05 and 06 are correct — the task is to close false nodes, not to prove the candidate prime. Answers 01, 03, 04 accept this implicitly; answer 02 misses the distinction.
 
 2. **Empirical support:** The simulated least-factor maximum stays near 10k, while $\sqrt{q}$ grows to $10^9$ at $10^{18}$. This falsifies the "horizon tracks $\sqrt{q}$" hypothesis and confirms a PGS-visible bound.
 
@@ -76,7 +76,7 @@ This matches the repo's operational observation: the chain length is capped at 8
     - compute H0–H6 as defined in answer 05
 3. Acceptance gate:
     - 100% closure of pre-terminal false nodes
-    - same first survivor as current `chain_horizon_closure`
+    - same first remaining candidate as current `chain_horizon_closure`
     - $H / \sqrt{n} < 0.001$ across all scales
     - $H$ computable from PGS state only
 

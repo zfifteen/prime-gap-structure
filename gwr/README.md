@@ -52,7 +52,7 @@ presented in the repo headline files.
 
 ## Current Source Of Truth
 
-The historical executable validation path remains in the existing gap-ridge
+The historical executable validation path remains in the existing near-endpoint raw-Z peak
 code:
 
 - [`benchmarks/python/gap_ridge/lexicographic_rule_revalidation.py`](../benchmarks/python/gap_ridge/lexicographic_rule_revalidation.py)

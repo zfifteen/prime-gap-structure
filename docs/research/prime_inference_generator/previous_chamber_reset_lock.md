@@ -97,7 +97,7 @@ windows.
 
 The broad previous-gap and first-open transition predicates are not safe. They
 select many true candidates, but they also select many false resolved
-survivors.
+remaining candidates.
 
 The narrow integer-shift and previous-reset predicates are the useful results.
 
@@ -119,7 +119,7 @@ previous selected-integer identity != current selected-integer identity
 ```
 
 On the tested surface, that condition selected `21` true resolved candidates
-and `0` false resolved survivors.
+and `0` false resolved candidates.
 
 ## Interpretation
 

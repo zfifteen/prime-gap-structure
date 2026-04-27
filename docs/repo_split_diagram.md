@@ -3,7 +3,7 @@
 ```mermaid
 flowchart TB
     A["Current repository<br/>z-band-prime-prefilter"] --> B["Repo 1<br/>z-band-prime-prefilter<br/><br/>Normative production artifact"]
-    A --> C["Repo 2<br/>z-band-prime-gap-ridge<br/><br/>Gap-ridge research and findings"]
+    A --> C["Repo 2<br/>z-band-prime-gap-ridge<br/><br/>Near-endpoint raw-Z peak research and findings"]
     A --> D["Optional Repo 3<br/>z-band-prime-composite-field<br/><br/>Shared exact divisor-count and field helpers"]
 
     B --> B1["Keep<br/>src/python/z_band_prime_prefilter/<br/>spec/contract.md<br/>spec/vectors/<br/>tests/python/prefilter/<br/>docs/prefilter/<br/>docs/architecture.md"]
@@ -22,7 +22,7 @@ flowchart TB
 ## Plain Reading
 
 - `Repo 1` stays narrow and remains the normative production implementation.
-- `Repo 2` becomes the research surface for the gap-ridge program and findings.
+- `Repo 2` becomes the research surface for the near-endpoint raw-Z peak program and findings.
 - `Repo 3` is optional and only worth creating if the exact composite-field code
   becomes a genuinely shared dependency rather than just internal research code.
 

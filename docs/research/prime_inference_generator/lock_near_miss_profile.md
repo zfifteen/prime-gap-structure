@@ -135,7 +135,7 @@ The near-miss profile supports four facts:
 
 The next candidate should not be a broad version of Next-Prime Law 005. The next
 test should isolate previous-search-interval memory as a lock separator and ask whether
-it selects true resolved endpoints without selecting false resolved survivors.
+it selects true resolved endpoints without selecting false resolved candidates.
 
 ## Next Gate
 
@@ -152,7 +152,7 @@ false_locked_count == 0
 true_locked_count > 0
 ```
 
-If previous-search-interval memory selects false resolved survivors, it is rejected as
+If previous-search-interval memory selects false resolved candidates, it is rejected as
 nonselective. If it passes, it becomes an adjacent candidate lock family. Until
 then, it is only the best next family by near-miss support.
 

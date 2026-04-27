@@ -114,7 +114,7 @@ So the horizon reading reinforces the repo's invariant-first posture:
 
 - brute-force scale is not the main coordinate,
 - the fixed-point band is the main coordinate,
-- deterministic local rejection is the engineering use of that coordinate.
+- deterministic local rejection is the algorithmering use of that coordinate.
 
 ## Implication for GWR
 

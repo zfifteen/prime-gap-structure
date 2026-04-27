@@ -91,7 +91,7 @@ Rows: `9588`
 | `power_signature_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 | `bounded_composite_witness_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 
-Hardening survivors: none.
+Hardening candidates: none.
 
 ### Input Primes 11..1,000,000, Prefix 32
 
@@ -103,7 +103,7 @@ Rows: `78494`
 | `power_signature_pressure` | `8` | `0.99986` | `0.99986` | `failed_collision_gate` |
 | `bounded_composite_witness_pressure` | `2` | `0.999949` | `0.999949` | `failed_collision_gate` |
 
-Hardening survivors: none.
+Hardening candidates: none.
 
 ### Input Primes 11..1,000,000, Prefix 16
 
@@ -115,7 +115,7 @@ Rows: `78494`
 | `power_signature_pressure` | `9` | `0.999834` | `0.999834` | `failed_collision_gate` |
 | `bounded_composite_witness_pressure` | `329` | `0.993668` | `0.993718` | `failed_collision_gate` |
 
-Hardening survivors: none.
+Hardening candidates: none.
 
 ### Input Primes 11..1,000,000, Prefix 64
 
@@ -127,7 +127,7 @@ Rows: `78494`
 | `power_signature_pressure` | `8` | `0.99986` | `0.99986` | `failed_collision_gate` |
 | `bounded_composite_witness_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 
-Hardening survivors: none.
+Hardening candidates: none.
 
 ### Input primes 100,000..200,000, Prefix 32
 
@@ -139,7 +139,7 @@ Rows: `8392`
 | `power_signature_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 | `bounded_composite_witness_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 
-Hardening survivors: none.
+Hardening candidates: none.
 
 ### Input primes 1,000,000..1,100,000, Prefix 32
 
@@ -151,7 +151,7 @@ Rows: `7216`
 | `power_signature_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 | `bounded_composite_witness_pressure` | `0` | `1.0` | `1.0` | `quarantined_table_like_state` |
 
-Hardening survivors: none.
+Hardening candidates: none.
 
 ## Interpretation
 

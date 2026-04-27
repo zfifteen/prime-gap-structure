@@ -1,6 +1,6 @@
 # Residue-Modulated Ridge Orientation
 
-This note records one arithmetic refinement of the gap-ridge result.
+This note records one arithmetic refinement of the near-endpoint raw-Z peak result.
 
 ## Finding
 

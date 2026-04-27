@@ -5,7 +5,7 @@
 This repository now carries three major prime-gap results:
 
 - a proved local arithmetic selection law inside prime gaps;
-- a frozen hierarchical finite-state engine for reduced prime-gap types.
+- a frozen hierarchical finite-state model for reduced prime-gap types.
 - a Prime-Gap Inference Generator that infers the successor prime from the
   arithmetic structure of the interval after a given prime, instead of scanning
   candidates until a primality test succeeds.
@@ -42,8 +42,8 @@ These examples show the local arithmetic choice that input primes the repository
 - **Gap Winner Rule (GWR):** on the repository's current proof surface, the
   implemented divisor-normalization score picks exactly the leftmost interior
   integer with minimum divisor count in every prime gap.
-- **Prime Gap Generative Engine v1.0:** on the persistent reduced gap-type
-  surface, prime-gap types close to a frozen hierarchical finite-state engine
+- **Prime Gap Generative Model v1.0:** on the persistent reduced gap-type
+  surface, prime-gap types close to a frozen hierarchical finite-state model
   with a stable `14`-state core.
 - **Prime-Gap Inference Generator:** the generator outputs one two-key
   `{"p": ..., "q": ...}` record per given prime `p`, keeps diagnostics outside
@@ -68,9 +68,9 @@ every prime gap. The theorem statement is
 [Gap Winner Rule — Hierarchical Local-Dominator Law](gwr/findings/gwr_hierarchical_local_dominator_theorem.md),
 and the proof surface is summarized in [GWR_PROOF.md](GWR_PROOF.md).
 
-## Prime Gap Generative Engine v1.0
+## Prime Gap Generative Model v1.0
 
-The second headline result in the repository is the frozen engine on the
+The second headline result in the repository is the frozen model on the
 persistent reduced gap-type surface. This is a result about the persistent
 reduced gap-type surface, not yet a theorem about the full raw gap-size
 sequence.
@@ -82,7 +82,7 @@ core. Its dominant dynamical object is the **Semiprime Wheel Attractor**:
 - `o4_odd_semiprime|d<=4`
 - `o6_odd_semiprime|d<=4`
 
-The frozen `v1.0` engine has three layers:
+The frozen `v1.0` model has three layers:
 
 1. core grammar;
 2. scheduler;
@@ -97,11 +97,11 @@ Its reference operating profiles are:
 
 See also:
 
-- [Prime Gap Generative Engine v1.0 release note](docs/releases/prime_gap_generative_engine_v1_0.md)
-- [Gap-type engine v1.0 freeze note](gwr/findings/gap_type_engine_v1_freeze.md)
-- [Gap-type engine v1.0 rulebook](gwr/findings/gap_type_engine_v1_rulebook.md)
-- [Hierarchical engine paper draft](docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md)
-- [Engine overview figure](output/gwr_dni_gap_type_engine_v1_overview.png)
+- [Prime Gap Generative Model v1.0 release note](docs/releases/prime_gap_generative_engine_v1_0.md)
+- [Gap-type model v1.0 freeze note](gwr/findings/gap_type_engine_v1_freeze.md)
+- [Gap-type model v1.0 rulebook](gwr/findings/gap_type_engine_v1_rulebook.md)
+- [Hierarchical model paper draft](docs/research/predictor/prime_gap_hierarchical_engine_paper_draft.md)
+- [Model overview figure](output/gwr_dni_gap_type_engine_v1_overview.png)
 
 ## Prime-Gap Inference Generator
 
@@ -173,7 +173,7 @@ The implementation contract and lower-level mechanism are recorded in
 The current release note is
 [PGS Inference Generator v1.1](docs/releases/pgs_inference_generator_v1_1_pgs_only.md).
 The detailed technical note is the
-[logic-engine report](docs/research/prime_inference_generator/rule_x_consistency_collapse_logic_engine.md),
+[algorithm report](docs/research/prime_inference_generator/rule_x_consistency_collapse_logic_engine.md),
 and the high-scale validation report is
 [Decade-Window Validation Report](experiments/rule_x_logic_engine/chamber_reset_decade_ladder_1e8_1e18_a256_b1024/report.md).
 
@@ -218,12 +218,12 @@ rule with jargon.
 This repository now carries three visible lines of work:
 
 - the proved GWR theorem and its proof surface;
-- the reduced gap-type engine and pattern results on the persistent reduced
+- the reduced gap-type model and pattern results on the persistent reduced
   surface;
 - the Prime-Gap Inference Generator and downstream deterministic DNI-based
   predictor and prefilter work.
 
-The GWR theorem remains the theorem foundation. The gap-type engine is the second
+The GWR theorem remains the theorem foundation. The gap-type model is the second
 headline prime-gap result. The Prime-Gap Inference Generator is the current
 operational inferred-prime generator milestone. The recursive walk and
 deterministic filter are downstream deterministic instruments built from the
@@ -252,8 +252,8 @@ The repository now carries the following named structures and results:
   `o6_odd_semiprime|d<=4` is the dominant dynamical object on the persistent
   reduced gap-type surface. See
   [gwr/findings/gap_type_engine_v1_freeze.md](gwr/findings/gap_type_engine_v1_freeze.md).
-- **Hierarchical finite-state engine:** on the persistent reduced gap-type
-  surface, the frozen `v1.0` engine combines a `14`-state core grammar, a
+- **Hierarchical finite-state model:** on the persistent reduced gap-type
+  surface, the frozen `v1.0` model combines a `14`-state core grammar, a
   scheduler layer, and a higher-divisor-triggered long-horizon controller. See
   [docs/releases/prime_gap_generative_engine_v1_0.md](docs/releases/prime_gap_generative_engine_v1_0.md)
   and

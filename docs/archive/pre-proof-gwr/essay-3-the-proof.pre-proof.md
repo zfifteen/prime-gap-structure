@@ -153,4 +153,4 @@ The full proof documentation, including all scan artifacts and the current statu
 
 ---
 
-*Next essay: The engineering payoff. How the same identity that identifies selected interior integers also accelerates RSA key generation by a factor of 2.*
+*Next essay: The algorithmering payoff. How the same identity that identifies selected interior integers also accelerates RSA key generation by a factor of 2.*

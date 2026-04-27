@@ -20,7 +20,7 @@ This sweep holds the deterministic RSA workload fixed at the first end-to-end re
 
 ## Sweep Summary
 
-| Covered odd primes | Theory rejection | Observed rejection | Saved MR call rate | Speedup | Accelerated wall time (s) | Proxy time (s) | Survivor MR time (s) |
+| Covered odd primes | Theory rejection | Observed rejection | Saved MR call rate | Speedup | Accelerated wall time (s) | Proxy time (s) | Miller-Rabin on kept candidates time (s) |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | 300,007 | 91.096550% | 90.308123% | 90.308123% | 2.835541x | 86.143903 | 1.237412 | 80.979567 |
 | 1,000,003 | 91.872366% | 91.428571% | 91.428571% | 3.071985x | 79.513592 | 3.541108 | 72.091973 |
@@ -34,7 +34,7 @@ This sweep holds the deterministic RSA workload fixed at the first end-to-end re
 | Mean time per keypair (s) | 122.132287 |
 | Total candidates tested | 3570 |
 | Total Miller-Rabin calls | 3570 |
-| Survivor Miller-Rabin time (s) | 240.295672 |
+| Miller-Rabin on kept candidates time (s) | 240.295672 |
 | Assembly + validation time (s) | 3.881435 |
 
 ## Reproduction

@@ -9,7 +9,7 @@ already reduced concentration L1 error from `0.1390` to `0.0201`. But on the
 full `1,000,000`-step stationary walk, the best three-step concentration was
 still only `0.4900`.
 
-So the immediate question was whether the missing engine layer was:
+So the immediate question was whether the missing model layer was:
 
 - a hybrid of lag-2 memory and a small global cycle;
 - an explicit reset trigger;
@@ -45,7 +45,7 @@ The exact artifacts are:
 
 The strongest supported result is:
 
-The hybrid engine improves the pooled-window fit again, but it still does not
+The hybrid model improves the pooled-window fit again, but it still does not
 close the stationary million-step walk.
 
 The best pooled-window model is
@@ -85,7 +85,7 @@ The best full-walk three-step concentration is delivered by
 So none of the tested finite hybrids crosses the requested `0.60` threshold on
 the full stationary walk.
 
-That matters because it tells us exactly what the current engine completion
+That matters because it tells us exactly what the current model completion
 claim can and cannot be.
 
 Supported:
@@ -176,13 +176,13 @@ That is the clean arithmetic reading:
 The current supported claim is:
 
 Prime-gap type generation is best modeled, on the present reduced surface, by a
-hierarchical finite engine with three visible pieces:
+hierarchical finite model with three visible pieces:
 
 1. a persistent `14`-state core grammar;
 2. a lag-2 local scheduler;
 3. a small periodic gate with explicit reset behavior.
 
-That engine now fits the observed pooled `256`-window concentration surface to
+That model now fits the observed pooled `256`-window concentration surface to
 L1 error `0.0116`.
 
 The remaining missing piece is narrower than before:

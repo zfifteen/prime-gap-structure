@@ -1,4 +1,4 @@
-# DNI Gap Ridge
+# DNI Near-Endpoint Raw-Z Peak
 
 Prime gaps have interior composite points.
 
@@ -13,7 +13,7 @@ Up to $10^6$ on the natural number line:
 - the gap-local raw-$Z$ maximum is carried by a $d(n) = 4$ composite in $82.9027\%$ of tested gaps versus an exact within-gap baseline of $20.1401\%$,
 - the resulting selected-divisor-count enrichment is $4.116\times$.
 
-This is the gap-ridge concern of the DNI. It is the study of where the strongest exact raw composite $Z$ value appears inside prime gaps and what kind of composite carries that peak.
+This is the near-endpoint raw-Z peak concern of the DNI. It is the study of where the strongest exact raw composite $Z$ value appears inside prime gaps and what kind of composite carries that peak.
 
 ## What Is Being Measured
 
@@ -36,11 +36,11 @@ The edge-distance question tells us whether the score rises toward the endpoint 
 
 ## Why This Is A Separate Concern
 
-The gap-ridge result is not the same concern as the production prefilter.
+The near-endpoint raw-Z peak result is not the same concern as the production prefilter.
 
-The prefilter concern asks how the fixed-point locus is used operationally to remove composite work before Miller-Rabin. The gap-ridge concern asks what structure the exact raw composite score values show inside prime gaps once exact divisor count is available.
+The prefilter concern asks how the fixed-point locus is used operationally to remove composite work before Miller-Rabin. The near-endpoint raw-Z peak concern asks what structure the exact raw composite score values show inside prime gaps once exact divisor count is available.
 
-It is also narrower than the full exact raw composite score-function concern. The broader concern studies the exact raw composite $Z$ score values themselves. The gap-ridge concern studies one specific structure within that score function: the location and integer attaining the within-gap maximum.
+It is also narrower than the full exact raw composite score-function concern. The broader concern studies the exact raw composite $Z$ score values themselves. The near-endpoint raw-Z peak concern studies one specific structure within that score function: the location and integer attaining the within-gap maximum.
 
 ## Exact Method
 
@@ -62,7 +62,7 @@ $$
 
 only to preserve the ordering of the exact same raw score function without floating-point underflow. The quantity being studied remains raw $Z$.
 
-In the normative Python helpers for this concern, exact divisor counts over intervals are supplied by the exact composite-field path, and the gap-ridge summaries are produced by [the gap-ridge run helpers](../src/python/z_band_prime_gap_ridge/runs.py).
+In the normative Python helpers for this concern, exact divisor counts over intervals are supplied by the exact composite-field path, and the near-endpoint raw-Z peak summaries are produced by [the gap-ridge run helpers](../src/python/z_band_prime_gap_ridge/runs.py).
 
 ## Exact $10^6$ Result
 

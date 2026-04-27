@@ -7,9 +7,9 @@ The precise missing object you identified —
 From `simple_pgs_generator.py` (the core predictor module that added the chain-horizon bridge):
 
 - `visible_open_chain_offsets(p, seed_offset, candidate_bound=128, chain_limit=8, max_divisor=10_000)` builds the short rightward chain of wheel-open candidates that survive visible search-interval closure (no divisor ≤ `max_divisor` and open mod-30 residue). This part is already 100 % PGS-visible.
-- `chain_horizon_closure_result(...)` walks the chain and calls `divisor_witness(candidate, horizon_bound)` on each node until it finds one with **no witness** (the survivor). All earlier nodes become “closed” with their witness recorded.
+- `chain_horizon_closure_result(...)` walks the chain and calls `divisor_witness(candidate, horizon_bound)` on each node until it finds one with **no witness** (the remaining candidate). All earlier nodes become “closed” with their witness recorded.
 - When `horizon_bound=None` it falls back to full `isqrt(q)` exhaustion (the “deterministic divisor checking” you mentioned).
-- `chain_fallback_result` does the same but with full `has_trial_divisor` (complete `isqrt(q)` on every node until the survivor).
+- `chain_fallback_result` does the same but with full `has_trial_divisor` (complete `isqrt(q)` on every node until the remaining candidate).
 
 The semiprime shadow seeds the chain exactly as you described; the search-interval closure supplies the first visible candidate next prime; everything else is downstream audit-clean. The only non-PGS step is deciding the exact horizon (or which position in the short chain survives) via divisor work.
 

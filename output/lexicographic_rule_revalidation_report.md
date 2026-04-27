@@ -8,7 +8,7 @@ This revalidation extended the committed surface from `10^6`, `10^7`, `10^8`, `1
 
 ## Methods
 
-The implementation follows the existing gap-ridge machinery in [`runs.py`](../src/python/z_band_prime_gap_ridge/runs.py), which computes divisor counts on an exact interval, identifies primes as `d(n) = 2`, enumerates adjacent-prime gaps, and scores each interior integer with raw-`Z` using `np.argmax` on `(1 - d/2) * log(n)`.
+The implementation follows the existing near-endpoint raw-Z peak machinery in [`runs.py`](../src/python/z_band_prime_gap_ridge/runs.py), which computes divisor counts on an exact interval, identifies primes as `d(n) = 2`, enumerates adjacent-prime gaps, and scores each interior integer with raw-`Z` using `np.argmax` on `(1 - d/2) * log(n)`.
 The rule statement and previously committed findings come from [`lexicographic_winner_take_all_peak_rule.md`](../docs/findings/lexicographic_winner_take_all_peak_rule.md), and the prior validation surface comes from [`lexicographic_peak_validation.json`](../benchmarks/output/python/gap_ridge/lexicographic_peak_validation/lexicographic_peak_validation.json).
 For each gap with at least one interior composite (`gap >= 4`), the revalidation code computed `best_n_z`, `best_d_z`, `best_n_lex`, and `best_d_lex`. A counterexample is any gap where either `best_n` or `best_d` differs between the raw-`Z` argmax and the leftmost minimizer.
 Sampled windows used two deterministic placement families: evenly spaced starts from `build_even_window_starts`, and fixed-seed starts from `build_seeded_window_starts` with seeds `20260331` and `20260401`. The sampled window size was `2,000,000` and the window count was `4` per regime.

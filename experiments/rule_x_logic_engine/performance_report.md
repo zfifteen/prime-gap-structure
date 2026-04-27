@@ -1,8 +1,8 @@
-# Rule X Logic Engine Performance Report
+# Rule X Algorithm Performance Report
 
 ## Executive Summary
 
-The Rule X summary engine evaluated the scale ladder through `10^7` quickly
+The Rule X summary implementation evaluated the scale ladder through `10^7` quickly
 while preserving the correctness invariant:
 
 ```text
@@ -23,7 +23,7 @@ candidate throughput: 528394.49 candidates/second
 input-prime throughput: 7784.82 input primes/second
 ```
 
-The timed ladder shows that the engine remains near `0.53M` to `0.76M`
+The timed ladder shows that the algorithm remains near `0.53M` to `0.76M`
 candidate hypotheses per second on this local run, including setup and CSV/JSON
 artifact writing.
 
@@ -44,15 +44,15 @@ Each run records:
 - input primes per second;
 - candidate hypotheses per second.
 
-The runner uses the same Rule X decision layer as the documented engine:
+The runner uses the same Rule X decision layer as the documented model:
 
 ```text
 positive witness rejection
 unresolved interior hold
 semiprime-shadow landmark hold
-selected-integer lock after resolved survivor
+selected-integer lock after resolved candidate
 lower-divisor threat ceiling
-unique resolved survivor output
+unique resolved candidate output
 ```
 
 ## Timed Scale Ladder
@@ -83,7 +83,7 @@ unique resolved survivor output
 
 ## Interpretation
 
-The speed is real for the summary engine. The largest run evaluated
+The speed is real for the summary implementation. The largest run evaluated
 `45108041` candidate hypotheses in `85.368115` seconds while writing summary
 artifacts.
 

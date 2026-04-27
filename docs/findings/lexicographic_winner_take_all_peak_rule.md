@@ -1,6 +1,6 @@
 # Lexicographic Winner-Take-All Peak Rule
 
-This note records the strongest gap-ridge finding developed in this session.
+This note records the strongest near-endpoint raw-Z peak finding developed in this session.
 
 ## Finding
 

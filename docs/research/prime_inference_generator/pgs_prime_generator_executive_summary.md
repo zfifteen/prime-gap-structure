@@ -71,11 +71,11 @@ next-prime selection rule: GWR/NLSC search-interval-reset state
 
 The key search-interval-reset interpretation is:
 
-After the first resolved survivor appears, later unresolved candidates are
+After the first resolved candidate appears, later unresolved candidates are
 post-reset search interval material, not competing endpoints for the original input prime.
 
 That converts the remaining candidate set into a consistency-collapse problem:
-the endpoint is the first resolved survivor that leaves the earlier search interval
+the endpoint is the first resolved candidate that leaves the earlier search interval
 state coherent under GWR and NLSC.
 
 ## Repository Links
@@ -89,7 +89,7 @@ state coherent under GWR and NLSC.
 - Test surface:
   <https://github.com/zfifteen/prime-gap-structure/blob/main/tests/python/predictor/test_simple_pgs_generator.py>
 - Rule X logic report:
-  <https://github.com/zfifteen/prime-gap-structure/blob/main/docs/research/prime_inference_generator/rule_x_consistency_collapse_logic_engine.md>
+  <https://github.com/zfifteen/prime-gap-structure/blob/main/docs/research/prime_inference_generator/rule_x_consistency_collapse_logic_model.md>
 
 ## Scope
 

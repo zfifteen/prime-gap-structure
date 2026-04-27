@@ -116,7 +116,7 @@ However, the terminal decision inside `chain_horizon_closure_result` still calls
 
 **Weaknesses:**
 
-- The plan is more of an engineering specification than a hypothesis.
+- The plan is more of an algorithmering specification than a hypothesis.
 - Does not commit to a specific horizon law, only to exploratory data analysis.
 - Implementing the full module is a non‑trivial software task that would delay the scientific question.
 
@@ -189,7 +189,7 @@ Because direct code execution is not possible in this environment, the following
     - the input prime \(p\),
     - the seed offset \(s_0\),
     - the list of closed candidates and their divisor witnesses,
-    - the final survivor \(q\).
+    - the final remaining candidate \(q\).
 
 2. **Feature extraction:** For each false node \(n\):
     - Compute `lpf(n)` = the witness stored in `closure_witnesses` (which is the smallest prime factor found by `divisor_witness`).

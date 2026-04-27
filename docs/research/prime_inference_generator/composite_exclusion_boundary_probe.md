@@ -15,7 +15,7 @@ The strengthened accounting also shows why the probe still cannot output:
 - `unique_survivor_count: 1225`
 - `unique_resolved_survivor_count: 0`
 
-Every input prime has exactly one resolved survivor, but every input prime also has
+Every input prime has exactly one resolved candidate, but every input prime also has
 unresolved alternatives. That is not a unique endpoint.
 
 Next-Prime Law 005 is not approved by this note.
@@ -148,7 +148,7 @@ Summary:
 - `average_candidate_count: 16.749387755102042`
 - `average_rejected_count: 7.3428571428571425`
 - `average_unresolved_count: 8.406530612244898`
-- `average_survives_count: 1.0` for resolved survivors
+- `average_survives_count: 1.0` for resolved candidates
 
 True-endpoint status counts:
 
@@ -158,9 +158,9 @@ True-endpoint status counts:
 | `UNRESOLVED` | `230` |
 | `REJECTED` | `0` |
 
-Survivor-count distribution:
+Remaining-candidate count distribution:
 
-| Survivor Count | Input primes |
+| Remaining Candidate Count | Input primes |
 |---:|---:|
 | `1` | `1225` |
 
@@ -215,11 +215,11 @@ The probe now exposes a stronger structure:
   `9.41`;
 - interior-open accounting prevents unresolved intervals from being counted as
   closed;
-- the combined status model leaves one resolved survivor per input prime, but every
+- the combined status model leaves one resolved candidate per input prime, but every
   input prime still has unresolved alternatives.
 
-The `995` unique-survivor label matches are not generator outputs. They are
-cases where the single resolved survivor equals the classical label while
+The `995` unique-candidate label matches are not generator outputs. They are
+cases where the single resolved candidate equals the classical label while
 unresolved alternatives remain. Pure generation cannot output from that state.
 
 ## Status
@@ -274,7 +274,7 @@ The rule improved true-next-prime resolution:
 - no true next prime was rejected.
 
 It did not produce unique resolved endpoints. The integrated rule also closes
-`52` false-candidate next primes, so the resolved-survivor count rises from `1.0`
+`52` false-candidate next primes, so the resolved-candidate count rises from `1.0`
 to `1.1877551020408164` on average. The eliminator remains fail-closed.
 
 Next-Prime Law 005 is still not approved.

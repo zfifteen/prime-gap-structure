@@ -171,7 +171,7 @@ Combined with the original validation surface of 4,423,459 gaps (up to sampled w
 
 2. **Runtime constraints.** This independent revalidation script reached `10^12`
    for its own sampled runs. The main committed repository surface now extends
-   to sampled `10^18`, and the old `sqrt(hi)` engine limit described in earlier
+   to sampled `10^18`, and the old `sqrt(hi)` model limit described in earlier
    notes no longer applies to the current codebase.
 
 3. **Numerical precision.** All score comparisons use 64-bit floating-point arithmetic. At scales above ~10^14, the minimum log-score margin rounds to 0.0 in float64 (as noted in the original JSON for scales 10^15 through 10^18). The zero-counterexample search remains valid because it compares argmax indices, not margin magnitudes, but a future pass using exact rational arithmetic or extended precision would strengthen the numerical foundation at the highest scales.

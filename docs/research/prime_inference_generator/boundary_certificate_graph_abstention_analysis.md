@@ -142,7 +142,7 @@ v2 result shows that active-graph reset awareness is the right refinement path.
 
 The v3 refinement stayed inside unresolved-later domination. It added a narrow
 empty-selected-integer extension relation that fires only when the active graph has
-exactly one resolved survivor, that source has no legal integer, and the
+exactly one resolved candidate, that source has no legal integer, and the
 nearest later unresolved extension has a first legal integer after the source.
 
 On the same surface:
@@ -185,7 +185,7 @@ NEED_UNRESOLVED_LATER_DOMINATION: 959
 The v4 refinement stayed inside unresolved-later domination. It added the
 target-no-selected-integer reset discriminator identified by the v4 abstention profile.
 The relation absorbs only the nearest later unresolved target when the active
-graph has exactly one resolved survivor, the source is not single-hole
+graph has exactly one resolved candidate, the source is not single-hole
 dependent, the target has no legal integer, and the active graph contains no
 positive reset evidence between source and target.
 
@@ -229,7 +229,7 @@ NEED_UNRESOLVED_LATER_DOMINATION: 723
 The v5 refinement stayed inside unresolved-later domination. It re-evaluated
 the v3 empty-source legal-integer extension after v4 had removed the no-selected-integer
 nearest blockers. The relation absorbs only the nearest later unresolved
-target when the active graph has exactly one resolved survivor, the source has
+target when the active graph has exactly one resolved candidate, the source has
 no legal integer, the source is not single-hole dependent, and the target has
 its first legal integer after the source.
 
@@ -272,7 +272,7 @@ NEED_FALSE_RESOLVED_SURVIVOR_REJECTION: 3
 
 ## Interpretation
 
-The main blocker is not false resolved survivors and not candidate-bound
+The main blocker is not false resolved candidates and not candidate-bound
 coverage. After v5, the graph solves 995 of 1225 tested input primes with no audit
 failure. In the remaining abstentions, the graph still contains the actual
 endpoint as a resolved candidate in 178 rows and leaves it unresolved in 52

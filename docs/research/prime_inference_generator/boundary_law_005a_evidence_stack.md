@@ -31,10 +31,10 @@ resolved interval
 Operationally, 005A says:
 
 ```text
-If a resolved survivor has legal higher-divisor pressure between itself and its later unresolved alternatives, then that resolved survivor may absorb those later unresolved alternatives in the offline composite-exclusion eliminator.
+If a resolved candidate has legal higher-divisor pressure between itself and its later unresolved alternatives, then that resolved candidate may absorb those later unresolved alternatives in the offline composite-exclusion eliminator.
 ```
 
-The rule remains candidate-grade. It is not a proof that the resolved survivor is prime.
+The rule remains candidate-grade. It is not a proof that the resolved candidate is prime.
 
 ## Allowed Inputs
 
@@ -107,7 +107,7 @@ higher_divisor_pressure_lock_wrong_count: 0
 
 Integration results:
 
-| surface | unique resolved survivors | true next prime rejected | absorption correct | absorption wrong | false survivor absorbed |
+| surface | unique resolved candidates | true next prime rejected | absorption correct | absorption wrong | false remaining candidate absorbed |
 |---|---:|---:|---:|---:|---:|
 | 11..100000 | 25 | 0 | 31 | 0 | 0 |
 | 11..1000000 | 25 | 0 | 31 | 0 | 0 |
@@ -152,7 +152,7 @@ This removes the specific population-mismatch risk that killed 005B. It does not
 
 005A was tested on shifted windows:
 
-| surface | unique resolved survivors | true next prime rejected | applied | wrong |
+| surface | unique resolved candidates | true next prime rejected | applied | wrong |
 |---|---:|---:|---:|---:|
 | 100000..200000 | 0 | 0 | 0 | 0 |
 | 1000000..1100000 | 0 | 0 | 0 | 0 |
@@ -166,7 +166,7 @@ The shifted windows safely abstained. That is acceptable for candidate safety, b
 Across the origin surface through input primes 11..1000000:
 
 - selected true resolved candidates: 31
-- unique resolved survivors produced by integration: 25
+- unique resolved candidates produced by integration: 25
 - shifted-window activations: 0
 
 The candidate is valuable because it has not been wrong where it fires. It is not broad enough to complete Milestone 1.

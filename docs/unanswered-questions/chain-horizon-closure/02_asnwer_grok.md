@@ -5,7 +5,7 @@ The Minimal PGS Generator (docs/specs/prime-gen/minimal_pgs_generator_logic.md +
 
 - **Search-interval closure** (v2 selector) enumerates wheel-admissible offsets up to `candidate_bound` (default 128, a fixed PGS-local constant), rejects visibly closed candidates via search-interval arithmetic + wheel structure, and outputs the first fully closed proposed endpoint when PGS rules suffice.
 - **Semiprime shadows** seed short rightward chains from the initial PGS selection record (`pgs_probe_certificate`).
-- **Chain-horizon closure** walks the visible-open shadow chain nodes, applies closure reasons (`closure_reason(p, offset, visible_divisor_bound)`), and selects the survivor.
+- **Chain-horizon closure** walks the visible-open shadow chain nodes, applies closure reasons (`closure_reason(p, offset, visible_divisor_bound)`), and selects the remaining candidate.
 - Downstream audit (separate from generation) confirms **zero failures** on all tested surfaces (exact low-scale + high-scale probes to 10¹⁸).
 
 The generator is therefore **operationally correct and audit-clean** at every scale. The only non-pure-PGS portion is the terminal decision inside `chain_horizon_closure` when the initial PGS selection record proposes a composite seed: it still falls back to deterministic `factorization_accepts_candidate` (trial division up to `√n ≈ √q`) to decide which chain node is prime.
@@ -51,7 +51,7 @@ All of these scripts operate inside the **fixed `candidate_bound=128`** search i
        if has_visible_divisor(node, horizon):   # only PGS-visible check
            close_as_false(node)
        else:
-           # survivor — output as PGS-derived q
+           # remaining candidate — output as PGS-derived q
    ```
    (No trial division beyond the small, PGS-derived `horizon`.)
 

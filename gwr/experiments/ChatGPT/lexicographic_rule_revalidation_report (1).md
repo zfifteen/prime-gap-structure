@@ -2,7 +2,7 @@
 
 ## Overview
 
-This report reproduces the uploaded raw-Z gap-ridge workflow and extends the explicit lexicographic-selected integer check onto new exact and sampled surfaces. The rule under test is simple: inside each eligible prime gap, choose the interior integer with the smallest divisor count `d(n)`, then break ties by taking the leftmost integer. The claim is that this leftmost minimizer is exactly the same integer selected by the raw-Z argmax with score `(1 - d(n)/2) * log(n)` on every tested gap. Sources from the workspace are cited below as [A1], [A2], and [A3].
+This report reproduces the uploaded raw-Z peak workflow and extends the explicit lexicographic-selected integer check onto new exact and sampled surfaces. The rule under test is simple: inside each eligible prime gap, choose the interior integer with the smallest divisor count `d(n)`, then break ties by taking the leftmost integer. The claim is that this leftmost minimizer is exactly the same integer selected by the raw-Z argmax with score `(1 - d(n)/2) * log(n)` on every tested gap. Sources from the workspace are cited below as [A1], [A2], and [A3].
 
 ## Stage 1: Audit of the uploaded artifacts
 

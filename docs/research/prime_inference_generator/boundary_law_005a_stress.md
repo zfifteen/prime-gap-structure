@@ -42,8 +42,8 @@ The input prime surface did not change:
 | row_count | 78494 |
 | true_boundary_rejected_count | 0 |
 | absorption_wrong_count | 0 |
-| false_resolved_survivor_absorbed_count | 0 |
-| unique_resolved_survivor_count | 36 |
+| false_resolved_remaining candidate_absorbed_count | 0 |
+| unique_resolved_remaining candidate_count | 36 |
 | 005A_applied_count | 48 |
 | 005A_correct_count | 48 |
 | 005A_wrong_count | 0 |
@@ -75,8 +75,8 @@ The input prime surface did not change:
 | row_count | 78494 |
 | true_boundary_rejected_count | 0 |
 | absorption_wrong_count | 0 |
-| false_resolved_survivor_absorbed_count | 0 |
-| unique_resolved_survivor_count | 25 |
+| false_resolved_remaining candidate_absorbed_count | 0 |
+| unique_resolved_remaining candidate_count | 25 |
 | 005A_applied_count | 31 |
 | 005A_correct_count | 31 |
 | 005A_wrong_count | 0 |
@@ -101,7 +101,7 @@ Activation was not required. Safe abstention was acceptable.
 
 ## Shifted-Window Stress Metrics
 
-| anchor_range | candidate_bound | witness_bound | row_count | true_boundary_rejected_count | absorption_wrong_count | false_resolved_survivor_absorbed_count | action_population_match | action_population_missed_count | 005A_applied_count | 005A_correct_count | 005A_wrong_count | unique_resolved_survivor_count | safe_abstain_count | first_failure_example |
+| anchor_range | candidate_bound | witness_bound | row_count | true_boundary_rejected_count | absorption_wrong_count | false_resolved_remaining candidate_absorbed_count | action_population_match | action_population_missed_count | 005A_applied_count | 005A_correct_count | 005A_wrong_count | unique_resolved_remaining candidate_count | safe_abstain_count | first_failure_example |
 |---|---:|---:|---:|---:|---:|---:|---|---:|---:|---:|---:|---:|---:|---|
 | 100000..200000 | 128 | 97 | 8392 | 0 | 0 | 0 | true | 0 | 0 | 0 | 0 | 0 | 8392 | null |
 | 1000000..1100000 | 128 | 97 | 7216 | 0 | 0 | 0 | true | 0 | 0 | 0 | 0 | 0 | 7216 | null |
@@ -127,8 +127,8 @@ candidate rule, not an output gate.
 | row_count | 78494 |
 | true_boundary_rejected_count | 0 |
 | absorption_wrong_count | 0 |
-| false_resolved_survivor_absorbed_count | 0 |
-| unique_resolved_survivor_count | 36 |
+| false_resolved_remaining candidate_absorbed_count | 0 |
+| unique_resolved_remaining candidate_count | 36 |
 | 005A_applied_count | 48 |
 | 005A_correct_count | 48 |
 | 005A_wrong_count | 0 |
@@ -151,7 +151,7 @@ Activation was not required. Safe abstention was acceptable.
 
 ## Combined-Bound Shifted-Window Stress Metrics
 
-| anchor_range | candidate_bound | witness_bound | row_count | true_boundary_rejected_count | absorption_wrong_count | false_resolved_survivor_absorbed_count | action_population_match | action_population_missed_count | 005A_applied_count | 005A_correct_count | 005A_wrong_count | unique_resolved_survivor_count | safe_abstain_count | first_failure_example |
+| anchor_range | candidate_bound | witness_bound | row_count | true_boundary_rejected_count | absorption_wrong_count | false_resolved_remaining candidate_absorbed_count | action_population_match | action_population_missed_count | 005A_applied_count | 005A_correct_count | 005A_wrong_count | unique_resolved_remaining candidate_count | safe_abstain_count | first_failure_example |
 |---|---:|---:|---:|---:|---:|---:|---|---:|---:|---:|---:|---:|---:|---|
 | 100000..200000 | 128 | 127 | 8392 | 0 | 0 | 0 | true | 0 | 0 | 0 | 0 | 0 | 8392 | null |
 | 1000000..1100000 | 128 | 127 | 7216 | 0 | 0 | 0 | true | 0 | 0 | 0 | 0 | 0 | 7216 | null |
@@ -179,13 +179,13 @@ All recorded stress rows passed all four requirements.
 
 Coverage under the larger candidate horizon improved:
 
-- bound 64 integration: 31 applications, 25 unique resolved survivors
-- bound 128 stress: 48 applications, 36 unique resolved survivors
+- bound 64 integration: 31 applications, 25 unique resolved candidates
+- bound 128 stress: 48 applications, 36 unique resolved candidates
 
 Coverage under the larger witness basis did not broaden:
 
-- witness bound 97 integration: 31 applications, 25 unique resolved survivors
-- witness bound 127 stress: 31 applications, 25 unique resolved survivors
+- witness bound 97 integration: 31 applications, 25 unique resolved candidates
+- witness bound 127 stress: 31 applications, 25 unique resolved candidates
 
 The stronger candidate horizon abstained safely on shifted windows:
 
@@ -194,7 +194,7 @@ The stronger candidate horizon abstained safely on shifted windows:
 
 The combined-bound origin stress preserved the larger candidate-bound coverage:
 
-- candidate bound 128, witness bound 127: 48 applications, 36 unique resolved survivors
+- candidate bound 128, witness bound 127: 48 applications, 36 unique resolved candidates
 
 The combined-bound horizon also abstained safely on shifted windows:
 

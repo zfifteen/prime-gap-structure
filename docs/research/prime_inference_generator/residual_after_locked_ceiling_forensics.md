@@ -66,7 +66,7 @@ the diagnostic record.
 The largest residual class is:
 
 - true next prime is resolved;
-- only one resolved survivor remains;
+- only one resolved candidate remains;
 - unresolved alternatives still exist.
 
 That points to stronger legal closure or unresolved-alternative domination as
@@ -75,7 +75,7 @@ the next target.
 The second residual class has:
 
 - true next prime resolved;
-- multiple resolved survivors;
+- multiple resolved candidates;
 - unresolved alternatives still exist.
 
 That class needs both completion and absorption/dominance work. A selector alone

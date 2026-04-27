@@ -17,7 +17,7 @@ known left endpoint prime $q$, the exact DNI/GWR oracle recovers:
 - and the right endpoint prime $q^+$ by scanning the divisor-count values until
   $d(n)=2$.
 
-That is not yet the same as a primality-free generative prime engine. The
+That is not yet the same as a primality-free generative prime model. The
 missing object is an exact next-prime selector.
 
 ## Blocker 1: Selected integer Is Not The Endpoint
@@ -120,7 +120,7 @@ Tier 1 must either:
 - remain explicitly outside the zero-test GPE contract.
 
 There is no acceptable hidden path where `find_min_L_in_window` silently
-performs primality or divisor-count scanning while the surrounding engine is
+performs primality or divisor-count scanning while the surrounding implementation is
 described as zero-test.
 
 ## Immediate Proof Target

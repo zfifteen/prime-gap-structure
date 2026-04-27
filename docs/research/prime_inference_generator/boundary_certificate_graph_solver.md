@@ -90,7 +90,7 @@ The v3 refinement remains inside the same relation family:
 unresolved_later_domination_from_existing_graph_facts_v3
 ```
 
-It targets active graphs with exactly one resolved survivor. If that resolved
+It targets active graphs with exactly one resolved candidate. If that resolved
 source has no legal integer, no single-hole closure dependency, and the
 nearest later unresolved candidate has a first legal integer after the source,
 v3 absorbs that nearest later unresolved candidate. It then repeats on the
@@ -112,7 +112,7 @@ domination:
 unresolved_later_domination_target_no_carrier_reset_discriminator
 ```
 
-It acts only when the active graph has exactly one resolved survivor, that
+It acts only when the active graph has exactly one resolved candidate, that
 source has no single-hole closure dependency, and the target is the nearest
 later unresolved candidate. The target must have no legal integer under the
 current witness bound. The active graph between source and target must contain
@@ -120,7 +120,7 @@ no positive reset evidence.
 
 This relation does not claim a universal absence of reset. It records that the
 existing active graph has no positive reset evidence for the nearest
-no-selected-integer unresolved target. It abstains on multiple resolved survivors,
+no-selected-integer unresolved target. It abstains on multiple resolved candidates,
 single-hole-dependent sources, targets with legal integers, positive reset
 evidence, and unknown preconditions.
 
@@ -141,7 +141,7 @@ unresolved_later_domination_post_v4_empty_source_carrier_extension
 It is a post-v4 re-evaluation of the v3 empty-source extension pattern. v4
 removes nearest unresolved targets that have no legal integer and no positive
 active reset evidence. After those blockers are removed, v5 checks the active
-graph again. It acts only when exactly one resolved survivor remains, that
+graph again. It acts only when exactly one resolved candidate remains, that
 source has no legal integer, the source has no single-hole closure dependency,
 and the nearest later unresolved candidate has its first legal integer after
 the source.
@@ -162,8 +162,8 @@ unresolved_later_domination_target_no_carrier_with_positive_nonboundary_guard
 
 The repaired relation acts only when all of these graph facts are present:
 
-- the active graph has exactly one resolved survivor;
-- the source is that resolved survivor;
+- the active graph has exactly one resolved candidate;
+- the source is that resolved candidate;
 - the source has no single-hole closure dependency;
 - the target is the nearest later unresolved candidate;
 - the target has no legal integer under the current witness bound;

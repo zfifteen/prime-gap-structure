@@ -1,0 +1,144 @@
+{
+  "regime": "left primes from 10 inclusive to 10000000 exclusive",
+  "limit": 10000000,
+  "scanner": "compact",
+  "gap_count": 664574,
+  "max_offset": 60,
+  "median_offset": 3.0,
+  "sanity_matches_chapter_22": false,
+  "compression_ceiling_breaches": 0,
+  "max_offset_witness": {
+    "left_prime": 1885069,
+    "right_prime": 1885151,
+    "selected_witness": 1885129,
+    "offset": 60,
+    "divisor_count": 3,
+    "left_prime_mod_30": 19,
+    "winner_kind": "prime_square",
+    "gap": 82,
+    "minimum_multiplicity": 1
+  },
+  "l4_applicable_count": 63515,
+  "l4_min_offset": 2,
+  "l4_neighbor_mechanism": {
+    "saved_by_p_plus_2": 63017,
+    "saved_by_p_plus_3": 297,
+    "saved_later": 201,
+    "multiple_of_30_is_the_witness": 0,
+    "saved_later_min_gap": 8,
+    "saved_later_example": {
+      "left_prime": 551549,
+      "right_prime": 551557,
+      "selected_witness": 551555,
+      "offset": 6,
+      "divisor_count": 4,
+      "left_prime_mod_30": 29,
+      "winner_kind": "two_prime_product",
+      "gap": 8,
+      "minimum_multiplicity": 1
+    }
+  },
+  "square_envelope": {
+    "predicate": "Every witness with offset at least 24 has winner kind prime_square. This sentence was read off the 10^6 kind table. A later limit is the test.",
+    "offset_threshold": 24,
+    "failure_count": 27,
+    "first_failure": {
+      "left_prime": 1039429,
+      "right_prime": 1039463,
+      "selected_witness": 1039453,
+      "offset": 24,
+      "divisor_count": 4,
+      "left_prime_mod_30": 19,
+      "winner_kind": "two_prime_product",
+      "gap": 34,
+      "minimum_multiplicity": 3
+    }
+  },
+  "by_winner_kind": {
+    "higher_prime_power": {
+      "count": 2,
+      "max_offset": 4
+    },
+    "other": {
+      "count": 164233,
+      "max_offset": 20
+    },
+    "prime_cube": {
+      "count": 11,
+      "max_offset": 4
+    },
+    "prime_square": {
+      "count": 444,
+      "max_offset": 60
+    },
+    "two_prime_product": {
+      "count": 499884,
+      "max_offset": 30
+    }
+  },
+  "decisions": [
+    {
+      "name": "L1",
+      "predicate": "If the winner kind is two_prime_product, the offset is in {2, 4, 6, 8, 10}.",
+      "status": "killed",
+      "counterexample_count": 111779,
+      "first_counterexample": {
+        "left_prime": 13,
+        "right_prime": 17,
+        "selected_witness": 14,
+        "offset": 1,
+        "divisor_count": 4,
+        "left_prime_mod_30": 13,
+        "winner_kind": "two_prime_product",
+        "gap": 4,
+        "minimum_multiplicity": 2
+      },
+      "detail": "111779 two_prime_product witnesses fall outside {2, 4, 6, 8, 10}"
+    },
+    {
+      "name": "L2",
+      "predicate": "The set of gaps whose offset lies in {1, 2, 3, 4, 5} equals the set of gaps whose selected witness has divisor count 4.",
+      "status": "killed",
+      "counterexample_count": 296548,
+      "first_counterexample": {
+        "left_prime": 11,
+        "right_prime": 13,
+        "selected_witness": 12,
+        "offset": 1,
+        "divisor_count": 6,
+        "left_prime_mod_30": 11,
+        "winner_kind": "other",
+        "gap": 2,
+        "minimum_multiplicity": 1
+      },
+      "detail": "the low band and the divisor-count-4 set differ"
+    },
+    {
+      "name": "L3",
+      "predicate": "Offsets strictly above 20 are a trichotomy: killed when any has divisor count at least 5; survived on the regime when every one has divisor count at most 4 and at least one has fractional position at least 1/2; abstained when every one has divisor count at most 4 and fractional position below 1/2.",
+      "status": "survived_on_regime",
+      "counterexample_count": 0,
+      "first_counterexample": {
+        "left_prime": 157579,
+        "right_prime": 157627,
+        "selected_witness": 157609,
+        "offset": 30,
+        "divisor_count": 3,
+        "left_prime_mod_30": 19,
+        "winner_kind": "prime_square",
+        "gap": 48,
+        "minimum_multiplicity": 1
+      },
+      "detail": "121 extremes sit at fractional position at least 1/2, with divisor count at most 4"
+    },
+    {
+      "name": "L4",
+      "predicate": "If the left prime is greater than 5, congruent to 29 modulo 30, and the next prime is at least 4 larger, the offset is not 1.",
+      "status": "survived_on_regime",
+      "counterexample_count": 0,
+      "first_counterexample": null,
+      "counterexamples": [],
+      "detail": "all 63515 applicable gaps have offset different from 1"
+    }
+  ]
+}

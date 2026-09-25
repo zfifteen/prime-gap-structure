@@ -7,6 +7,9 @@ This folder is organized by working cell. Do not recreate the old
 
 - `live-solver/rsa-v2/`: current public RSA v2 resolver, resolver contracts,
   default live output, and downstream audit output.
+- `live-solver/qu-certificate-to-factor-map/`: QU-only research packet
+  (certificate-to-factor map). Not live inference. Not PROOF.md. Do not
+  wire into the resolver.
 - `data-ladder/rsa-v2/`: rung specs, fixture builders, generated rung
   provenance, public fixture rows, and physically separate audit fixtures.
 - `transported-sidecars/rsa-v2/`: transported story law, d4 budget, d4 trace,

@@ -1,0 +1,33 @@
+{
+  "package": "pgs_cih1_baselines_gemini_v1",
+  "author_model": "Gemini",
+  "integrity_mode": "RA_COMPUTED_HASHES",
+  "files": {
+    "./.gitignore": "4c77d69370828d68e36696760d14568046c4745a30202648286b80468fb60863",
+    "./cih1_baselines/__init__.py": "27e8febb48ada44153ea2add9969a2c50a9831a74d9755fdd53c549a888b1cc2",
+    "./cih1_baselines/__main__.py": "ca39aa94227575aa7d991cdd5fbf68e61f8f0bbe0360fe6c592f56c4bd99e654",
+    "./cih1_baselines/contamination.py": "dd4b2c6bfba413de6006495459069baf4d29da20664667e1206ad08c5b17c96f",
+    "./cih1_baselines/decoy_reciprocal.py": "1a091fdd58193dc88cd879de37e4114e5d911b95f66a23648d1774284998bab2",
+    "./cih1_baselines/fermat.py": "f1e960769fe5e30a0960acd124780dd1b89eefa32271e56de31e5cbe3453baf3",
+    "./cih1_baselines/floor_density.py": "49f3499707dabe4f3422d4984aa93d8248cd0a43a06cd23fe8ef10b300e5afe0",
+    "./cih1_baselines/io_jsonl.py": "2cc07fe7e99f3d2b01a69532ad54e0c06b439594f417e5198468761ee0eb873d",
+    "./cih1_baselines/official_replay.py": "93866a145869949f67b52e2ccf25baaa084b19eb1994da337c18750146f03130",
+    "./cih1_baselines/primality.py": "fbbaaac0cbe32ec7b9ae70b44299ab935a24de1d268ea1aec1fbd675e2e7a55f",
+    "./cih1_baselines/run.py": "fc84239e6a5e9c6b83616b7105f8cde59352d3b466a73eac08c2324513fc3883",
+    "./examples/tiny_audit.jsonl": "4a166a14f3278670f862fa34360d0a129123bed209795d32a4bf696cbfafb889",
+    "./examples/tiny_public.jsonl": "30ec0aa9fea476df5db27cab1ef6fd1834d44baaccfeac66c69249747ac6ac30",
+    "./INTERPRETATION_CARD.md": "2b6caff4c41414235804967a93466c637a00ab40bf650a0b277c67c16768fed4",
+    "./README.md": "66a4877c4d6eb5f27f34a485c27d764b3ab3189161cdba21f8d4e3f927e517d1",
+    "./scripts/generate_manifest.sh": "f09332fe810741096f9b6df1219d47caabeeac3005e54de5de2767428bdaad02",
+    "./scripts/smoke_run.sh": "2a325733e58fb35e46dddaed6eafe0638228f991df2336f90dd96f3ec106ac08",
+    "./self_check_report.txt": "fe61939e1aadf8ab5b2f95d69eaa41888bf7405e6d6f6ef129790e2caf0733fd",
+    "./tests/test_contamination_flags.py": "23f51b242009f43a7d0c388a25e8d22f742d9b09b74ca1d6fd3a316f41ba3f35",
+    "./tests/test_decoy_not_factors.py": "6084283a8309f7b5e5c3e2ddf5410012af1fb5d2afba3de84b1b646ae96a62c0",
+    "./tests/test_fermat_positive_steps_50.py": "b8129a8ef5a0eb72dd82bf2271cacd8423cd1440c2c39b9b72303b06c4dfd28e",
+    "./tests/test_fermat_zero_steps_40_64.py": "476b42648f6b5bbfd316b64c1f0364191c36b43586dc42a628042d16fb966a35",
+    "./tests/test_floor_density_high_near_sqrt_50.py": "1c2403f4c0abe020bd294aab9d78f9e8ac1744f52bc6adb3466d5b9f45c5b40c",
+    "./tests/test_join_mismatch_fails.py": "a4d86b2ff554d922937aa3dcdab73762a325366d3289f398d5784e20ca4a08df",
+    "./tests/test_official_replay_classification.py": "ed15e18d39b14f67ad3b6d7c5eba658e151bfa11093cf3d85d037f119b28572c"
+  },
+  "repro_command": "bash scripts/generate_manifest.sh"
+}

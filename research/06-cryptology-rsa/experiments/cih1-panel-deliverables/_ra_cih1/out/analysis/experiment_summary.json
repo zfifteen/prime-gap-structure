@@ -1,0 +1,17 @@
+{
+  "abort_reason": null,
+  "aborted": false,
+  "allowed_claim_sentence": "Measured on hold-out corpus: the frozen test did not establish a carrier/control difference.",
+  "decision": "no_difference",
+  "experiment_id": "CIH-1",
+  "f_beat": 0.9166666666666666,
+  "freeze_source": "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/experiments/cih1-panel-deliverables/_ra_cih1/inputs/freeze_execution.json",
+  "mean_R": 0.9999956574411323,
+  "median_R": 0.9999978483003695,
+  "n_excluded": 0,
+  "n_included": 60,
+  "n_total": 60,
+  "p_value": 5.191331739484717e-12,
+  "package_version": "1.0.0",
+  "seed": 20260808
+}

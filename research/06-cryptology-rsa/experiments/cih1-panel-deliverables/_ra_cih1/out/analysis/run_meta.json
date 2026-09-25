@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/experiments/cih1-panel-deliverables/chatgpt/pgs_cih1_analysis_chatgpt_v1/cih1_analysis/__main__.py",
+    "run",
+    "--public",
+    "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/experiments/cih1-panel-deliverables/_ra_cih1/out/public_int.jsonl",
+    "--audit",
+    "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/experiments/cih1-panel-deliverables/_ra_cih1/out/audit_int.jsonl",
+    "--carrier",
+    "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/experiments/cih1-panel-deliverables/_ra_cih1/out/carrier_rows.jsonl",
+    "--freeze",
+    "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/experiments/cih1-panel-deliverables/_ra_cih1/inputs/freeze_execution.json",
+    "--out-dir",
+    "/Users/velocityworks/IdeaProjects/prime-gap-structure/research/06-cryptology-rsa/experiments/cih1-panel-deliverables/_ra_cih1/out/analysis",
+    "--seed",
+    "20260808"
+  ],
+  "input_sha256": {
+    "audit": "b703fc79414a6b2925811cfec7fcdd29c8345ca81eb89c6f02668dec9e36b685",
+    "carrier": "3c34ad29f7bbeec00b8aa90f713bc81600499b60d4a6fcb1b3930d3c2abed27e",
+    "freeze": "1c74c9e6d32a2117debc1fdfab7eecf83c187d33f81c4e63ef5de3b1076dfb11",
+    "public": "35654f1d4eaecc4b9dde69341ee3b82c750fc1d67ad9e4be98e0634a90727819"
+  },
+  "package_version": "1.0.0",
+  "seed": 20260808,
+  "timestamp_utc": "2026-08-08T08:22:56.925890+00:00"
+}

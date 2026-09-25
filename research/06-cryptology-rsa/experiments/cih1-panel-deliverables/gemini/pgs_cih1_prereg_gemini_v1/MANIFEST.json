@@ -1,0 +1,15 @@
+{
+  "package": "pgs_cih1_prereg_gemini_v1",
+  "author_model": "Gemini",
+  "files": {
+    "PROTOCOL.md": "a24b89f812e1180c441be8...", 
+    "freeze.json": "f8a02bd9456bc383debc34...",
+    "schemas/case_score_record.schema.json": "6c45ba332f1a603c40...",
+    "schemas/experiment_summary.schema.json": "30bbca136511ab3cd...",
+    "schemas/intermediate_certificate_fields.schema.json": "8d3e200cf5630...",
+    "decision_table.md": "d54d241ea0dc907572719...",
+    "README.md": "180b54fc108920bc..."
+  },
+  "repro_command": "Sandbox local JSON schema structural validation."
+}
+

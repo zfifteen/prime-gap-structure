@@ -1,0 +1,20 @@
+{
+  "n_cases": 60,
+  "n_near_square": 0,
+  "n_non_near_square": 60,
+  "near_square_rate": 0.0,
+  "audit_integrity_failures": 0,
+  "fermat_steps_median_non_near_square": 64518.0,
+  "fermat_steps_median_near_square": null,
+  "floor_pass_rate_median": 1.0,
+  "floor_window": 1000,
+  "floor_stride": 1,
+  "decoy_cases_with_at_least_one": 60,
+  "official_replay_ok": true,
+  "warnings": [],
+  "allowed_claim_language": [
+    "baseline measurements computed on hold-out corpus",
+    "hypothesis context only",
+    "no verified/validated language"
+  ]
+}

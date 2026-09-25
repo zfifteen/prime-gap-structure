@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "experiment_id",
+    "freeze_source",
+    "n_total",
+    "n_included",
+    "n_excluded",
+    "median_R",
+    "mean_R",
+    "f_beat",
+    "p_value",
+    "decision",
+    "allowed_claim_sentence",
+    "aborted",
+    "abort_reason",
+    "seed",
+    "package_version"
+  ],
+  "properties": {
+    "experiment_id": {
+      "type": "string"
+    },
+    "freeze_source": {
+      "type": "string"
+    },
+    "n_total": {
+      "type": "integer"
+    },
+    "n_included": {
+      "type": "integer"
+    },
+    "n_excluded": {
+      "type": "integer"
+    },
+    "median_R": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "mean_R": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "f_beat": {
+      "type": "number"
+    },
+    "p_value": {
+      "type": "number"
+    },
+    "decision": {
+      "type": "string"
+    },
+    "allowed_claim_sentence": {
+      "type": "string"
+    },
+    "aborted": {
+      "type": "boolean"
+    },
+    "abort_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "package_version": {
+      "type": "string"
+    }
+  }
+}

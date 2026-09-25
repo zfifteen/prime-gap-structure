@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Experiment Summary",
+  "type": "object",
+  "properties": {
+    "experiment_id": {"type": "string"},
+    "total_cases": {"type": "integer"},
+    "excluded_cases": {"type": "integer"},
+    "analyzed_cases": {"type": "integer"},
+    "primary_metric_median_delta": {"type": "number"},
+    "p_value": {"type": "number"},
+    "decision_outcome": {"type": "string"},
+    "aborted": {"type": "boolean"},
+    "abort_reason": {"type": ["string", "null"]}
+  },
+  "required": [
+    "experiment_id", 
+    "total_cases", 
+    "excluded_cases", 
+    "analyzed_cases", 
+    "primary_metric_median_delta", 
+    "p_value", 
+    "decision_outcome", 
+    "aborted"
+  ]
+}
+

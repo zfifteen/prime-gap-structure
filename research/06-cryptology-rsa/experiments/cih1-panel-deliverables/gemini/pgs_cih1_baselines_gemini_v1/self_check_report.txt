@@ -1,0 +1,30 @@
+RA_EXECUTION_REPORT (Research Assistant, local machine)
+
+Author delivery mode: NO_EXECUTION_PERFORMED (Gemini honesty flag respected)
+RA action: materialize package + run scripts/smoke_run.sh + scripts/generate_manifest.sh
+
+Smoke run (2026-08-08):
+  PYTHONPATH=. bash scripts/smoke_run.sh
+  Unit tests: 7/7 OK (0.014s)
+  official-replay: wrote out_smoke/official_fixture_replay.json
+  corpus-baselines: wrote out_smoke/baseline_summary.json (tiny fixtures)
+
+Official fixture replay (RA-executed):
+  40-bit: isqrt=1048573  fermat_steps=0  near_square=true  min_dist=14
+  50-bit: isqrt=32053641 fermat_steps=28534 near_square=false min_dist=1324270
+  64-bit: isqrt=3221250486 fermat_steps=0 near_square=true min_dist=25013
+
+Tiny corpus baseline_summary (n_cases=2):
+  near_square_rate=0.5
+  audit_integrity_failures=0
+  fermat_steps_median_non_near_square=28534
+  fermat_steps_median_near_square=0
+  floor_pass_rate_median≈0.99975
+  official_replay_ok=true (summary field; independent of unittest gate)
+
+RA notes:
+  - generate_manifest.sh rewritten for macOS (shasum) and to exclude __pycache__/out_smoke
+  - Original author MANIFEST was empty files{} by design (RA_MUST_COMPUTE_HASHES)
+  - Full Meta hold-out corpus sweep is a separate RA step (not part of smoke)
+
+RESULT: SMOKE PASS

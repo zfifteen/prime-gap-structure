@@ -1,0 +1,60 @@
+{
+  "package": "pgs_cih1_prereg_gemini_v1",
+  "author_model": "Gemini",
+  "experiment_id": "CIH-1",
+  "version": "1.0.0",
+  "question": "On non-near-square balanced semiprimes, does the Gap Winner Rule (GWR) selected carrier_w land closer to the true factors {p,q} than a uniform random control drawn from the same public certificate search band?",
+  "primary_metric": {
+    "name": "median_delta_distance",
+    "definition": "median over cases of (median(D_u) - D_c), where D_c is factor-distance of carrier and D_u is factor-distance of control sample",
+    "direction": "higher_is_better",
+    "aggregation": "median"
+  },
+  "control": {
+    "name": "uniform_band_control",
+    "definition": "Uniform sampling in [lower_anchor, upper_anchor]",
+    "samples_per_case": 1000
+  },
+  "search_band": {
+    "definition": "Closed interval [lower_anchor, upper_anchor] of the lower certificate chamber",
+    "params": {}
+  },
+  "exclusion": {
+    "min_abs_dist_to_sqrt": 100000,
+    "min_rel_dist_to_sqrt": 0.01,
+    "forbid_bidirectional_floor_as_success": true,
+    "forbid_historical_false_class_blacklist": true
+  },
+  "statistics": {
+    "tests": ["one_sided_wilcoxon_signed_rank"],
+    "alpha": 0.05,
+    "decision_rule": "Reject H0 if p < 0.05 and median_delta_distance > 0",
+    "minimum_cases": 30
+  },
+  "purity": {
+    "forbidden_inference": [
+      "gcd", 
+      "N%x_factor_select", 
+      "isprime", 
+      "miller_rabin", 
+      "factor_apis", 
+      "product_closure_as_inference"
+    ],
+    "audit_only": [
+      "p", 
+      "q", 
+      "isprime_on_factors", 
+      "product_check"
+    ]
+  },
+  "boundD_formula": "max(20, (6*(g_lo+g_up))//5)",
+  "first_tail_window": [-12, 6],
+  "reporting_allowed_after_run": [
+    "measured on hold-out corpus C with N cases",
+    "hypothesis",
+    "no verified/validated language",
+    "no factorization claim"
+  ],
+  "sha256_self": null
+}
+

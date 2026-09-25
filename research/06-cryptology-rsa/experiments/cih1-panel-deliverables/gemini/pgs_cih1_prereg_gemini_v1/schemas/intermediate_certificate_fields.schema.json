@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Intermediate Certificate Fields",
+  "type": "object",
+  "properties": {
+    "anchor": {"type": "integer"},
+    "reset_endpoint": {"type": "integer"},
+    "carrier_w": {"type": "integer"},
+    "carrier_d": {"type": "integer"},
+    "gap_offset": {"type": "integer"},
+    "lock_carrier_offset": {"type": "integer"},
+    "tail_after_reset_offsets": {
+      "type": "array",
+      "items": {"type": "integer"}
+    },
+    "reset_signature": {"type": "string"}
+  },
+  "required": [
+    "anchor", 
+    "reset_endpoint", 
+    "carrier_w", 
+    "carrier_d", 
+    "gap_offset", 
+    "reset_signature"
+  ]
+}
+

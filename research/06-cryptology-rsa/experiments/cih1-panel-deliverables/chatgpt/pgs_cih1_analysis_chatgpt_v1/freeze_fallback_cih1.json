@@ -1,0 +1,32 @@
+{
+  "experiment_id": "CIH-1",
+  "primary_metric": "median_R",
+  "control": {
+    "name": "uniform_band_control",
+    "samples_per_case": 200
+  },
+  "exclusion": {
+    "min_abs_dist_to_sqrt": 100000,
+    "min_rel_dist_to_sqrt": 0.01
+  },
+  "statistics": {
+    "alpha": 0.05,
+    "two_sided_alpha": 0.05,
+    "minimum_cases": 30,
+    "test": "one-sided exact sign test on delta = control_median_D_u - D_c",
+    "decision_rule": {
+      "carrier_median_R_max": 0.9,
+      "carrier_fbeat_min": 0.6,
+      "control_median_R_min": 1.1
+    }
+  },
+  "reporting": {
+    "status": "sandbox analysis tooling / hypothesis support",
+    "forbidden_claim_terms": [
+      "verified",
+      "validated",
+      "factorization breakthrough",
+      "oracle"
+    ]
+  }
+}

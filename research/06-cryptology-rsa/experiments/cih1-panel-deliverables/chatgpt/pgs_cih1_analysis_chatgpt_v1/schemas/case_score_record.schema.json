@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "case_id",
+    "bits",
+    "N",
+    "carrier_w",
+    "search_band_lo",
+    "search_band_hi",
+    "p",
+    "q",
+    "isqrt_N",
+    "min_dist_to_sqrt",
+    "rel_dist",
+    "excluded",
+    "exclude_reason",
+    "D_c",
+    "control_median_D_u",
+    "control_mean_D_u",
+    "R",
+    "carrier_beats_control_median",
+    "control_samples",
+    "seed"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "bits": {
+      "type": "integer"
+    },
+    "N": {
+      "type": "integer"
+    },
+    "carrier_w": {
+      "type": "integer"
+    },
+    "search_band_lo": {
+      "type": "integer"
+    },
+    "search_band_hi": {
+      "type": "integer"
+    },
+    "p": {
+      "type": "integer"
+    },
+    "q": {
+      "type": "integer"
+    },
+    "isqrt_N": {
+      "type": "integer"
+    },
+    "min_dist_to_sqrt": {
+      "type": "integer"
+    },
+    "rel_dist": {
+      "type": "number"
+    },
+    "excluded": {
+      "type": "boolean"
+    },
+    "exclude_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "D_c": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "control_median_D_u": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "control_mean_D_u": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "R": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "carrier_beats_control_median": {
+      "type": "boolean"
+    },
+    "control_samples": {
+      "type": "integer"
+    },
+    "seed": {
+      "type": "integer"
+    }
+  }
+}

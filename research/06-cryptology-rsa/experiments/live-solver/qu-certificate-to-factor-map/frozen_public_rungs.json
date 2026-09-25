@@ -1,0 +1,177 @@
+{
+  "packet_id": "qu_certificate_to_factor_map_v2",
+  "status": "QU-only research freeze. Not a theorem. Not PROOF.md. Not live inference.",
+  "public_fields_only": true,
+  "audit_factors_omitted": true,
+  "qu_does_not_do": [
+    "multiply listed endpoint classes or reciprocal pairs against N",
+    "recompute frozen 50-bit remainders",
+    "restate live resolver Stage 1-2 or missing-lower-certificate residual"
+  ],
+  "locked_constants": {
+    "first_tail_window": [-12, 6],
+    "first_tail_window_fixed": true,
+    "boundD": "max(20, floor(1.2 * (g_lo + g_up))) with public gap default 20",
+    "orientation": "center = isqrt(N); square root is orientation only",
+    "stage4_x": "x = lower.reset_endpoint if reset_endpoint <= center else lower.anchor",
+    "floor_transport": "y = floor(N / x)",
+    "historical_false_class_50bit": [32047651, 32059633]
+  },
+  "rungs": [
+    {
+      "case_id": "rsa_v2_40bit_static_001",
+      "bits": 40,
+      "N": "1099507433251",
+      "center": "1048573",
+      "v2_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction",
+      "v3_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction",
+      "endpoint_class": {"lower": "1048559", "upper": "1048589"},
+      "transport": {
+        "corrected_lower_endpoint": "1048559",
+        "corrected_upper_endpoint": "1048589",
+        "transported_lower_endpoint": "1048564",
+        "transported_upper_endpoint": "1048574"
+      },
+      "certificates_slim": {
+        "lower": {
+          "anchor": "1048571",
+          "reset_endpoint": "1048573",
+          "carrier_w": "1048572",
+          "carrier_d": 96,
+          "gap_offset": 2,
+          "lock_carrier_offset": 1,
+          "reset_deadline_value": "1048574",
+          "reset_deadline_margin": 1,
+          "reset_signature": "carrier_d=96;lock_carrier_d=96;threat=True;deadline=threat",
+          "tail_after_reset_offsets_head": []
+        },
+        "upper": {
+          "anchor": "1048573",
+          "reset_endpoint": "1048583",
+          "carrier_w": "1048574",
+          "carrier_d": 4,
+          "gap_offset": 10,
+          "lock_carrier_offset": 1,
+          "reset_deadline_value": "1048589",
+          "reset_deadline_margin": 6,
+          "reset_signature": "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail",
+          "tail_after_reset_offsets_head": [16, 28, 36, 40, 54, 60]
+        },
+        "corrected_lower": {
+          "anchor": "1048559",
+          "reset_endpoint": "1048571",
+          "carrier_w": "1048561",
+          "carrier_d": 4,
+          "gap_offset": 12,
+          "lock_carrier_offset": 2,
+          "reset_deadline_value": "1048573",
+          "reset_deadline_margin": 2,
+          "reset_signature": "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail",
+          "tail_after_reset_offsets_head": [14, 24, 30, 42, 50, 54]
+        }
+      },
+      "gwr_notes": {
+        "first_tail_delta": -11,
+        "first_tail_holds": true
+      }
+    },
+    {
+      "case_id": "rsa_v2_50bit_static_001",
+      "bits": 50,
+      "N": "1027435935526951",
+      "v2_closure_status": "unresolved_by_reciprocal_carrier_misalignment",
+      "v2_rejected_candidate": [32047651, 32059633],
+      "v3_residual_cell": "joint_cell_C1T2L1_v2_tail_boundary_lock_quarter_S54",
+      "residual_vector_R": [1, 2, 1],
+      "pinch_S": 54,
+      "delta_c": 30,
+      "boundD": 45,
+      "delta_t": -22,
+      "first_tail_deltas_lower_to_upper": [-22, -26, -40, -80, -86, -98],
+      "first_tail_deltas_upper_to_lower": [-36, -50, -74, -78, -90, -104],
+      "v3_resolved_by": "carrier_reciprocal_closure",
+      "v3_closure_status": "endpoint_class_by_reciprocal_deadline_signature_correction",
+      "v3_endpoint_class": [32047633, 32059651],
+      "v3_remainder": 6170868,
+      "v3_product": "1027435929356083",
+      "second_reciprocal_candidate": [32047663, 32059621],
+      "second_remainder": 5811228,
+      "certificates_slim": {
+        "lower": {
+          "anchor": "32047627",
+          "reset_endpoint": "32047651",
+          "carrier_w": "32047633",
+          "carrier_d": 4,
+          "gap_offset": 24,
+          "lock_carrier_offset": 6,
+          "lock_carrier_d": 4,
+          "reset_deadline_margin": 12,
+          "reset_signature": "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail",
+          "tail_after_reset_offsets_head": [36, 40, 54, 94, 100, 112]
+        },
+        "upper": {
+          "anchor": "32059619",
+          "reset_endpoint": "32059633",
+          "carrier_w": "32059621",
+          "gap_offset": 14,
+          "lock_carrier_offset": 2,
+          "reset_deadline_margin": 46,
+          "reset_signature": "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail",
+          "tail_after_reset_offsets_head": [60, 74, 98, 102, 114, 128]
+        }
+      }
+    },
+    {
+      "case_id": "rsa_v2_64bit_static_001",
+      "bits": 64,
+      "N": "10376454699372036973",
+      "v2_closure_status": "endpoint_class_by_mutual_certificate_closure",
+      "endpoint_class": {"lower": "3221225473", "upper": "3221275501"},
+      "first_tail_deltas_lower_to_upper": [-5, -59, -75, -77, -87, -89],
+      "certificates_slim": {
+        "lower": {
+          "anchor": "3221225461",
+          "reset_endpoint": "3221225473",
+          "carrier_w": "3221225471",
+          "gap_offset": 12,
+          "lock_carrier_offset": 10,
+          "reset_deadline_margin": 6,
+          "reset_signature": "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail",
+          "tail_after_reset_offsets_head": [18, 72, 88, 90, 100, 102]
+        },
+        "upper": {
+          "anchor": "3221275487",
+          "reset_endpoint": "3221275501",
+          "carrier_w": "3221275489",
+          "gap_offset": 14,
+          "tail_after_reset_offsets_head": [44, 72, 86, 92, 104, 110]
+        }
+      }
+    },
+    {
+      "case_id": "rsa_v2_128bit_static_001",
+      "bits": 127,
+      "N": "85070591730234615902737140005361155371",
+      "v2_closure_status": "unresolved_by_missing_lower_certificate",
+      "endpoint_class": null,
+      "note": "High-scale C exercised via _c. No public endpoint class emitted."
+    },
+    {
+      "case_id": "rsa_v2_256bit_static_001",
+      "bits": 256,
+      "N": "57896044618658097711785492504343955952566120322525139588585136554122987719313",
+      "v2_closure_status": "unresolved_by_missing_lower_certificate",
+      "endpoint_class": null,
+      "note": "High-scale C exercised via _c. No public endpoint class emitted."
+    }
+  ],
+  "not_in_this_packet": {
+    "v3_extra_public_corpora": {
+      "path": "research/06-cryptology-rsa/experiments/live-solver/rsa-v3/corpora/",
+      "counts": {"128": 32, "256": 16, "512": 4},
+      "reason": "Omitted to keep QU context small. Public N only. Hermes can attach later."
+    },
+    "audit_factors_path": "research/06-cryptology-rsa/experiments/data-ladder/rsa-v2/fixtures/audit_factors.jsonl",
+    "reason": "Physically separate. QU must not read them. Hermes may audit pairs QU names."
+  }
+}

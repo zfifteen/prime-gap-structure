@@ -1,0 +1,22 @@
+{
+  "allowed_claim_language": [
+    "measured on hold-out corpus",
+    "hypothesis",
+    "no verified/validated language",
+    "no factorization claim"
+  ],
+  "alpha": 0.05,
+  "decision_gemini_text_rule": "carrier_better",
+  "gemini_rule": "Reject H0 if p < 0.05 and median_delta_distance > 0 (sign-test stand-in; freeze named Wilcoxon)",
+  "mean_delta_distance": 10.65,
+  "median_delta_distance": 9.5,
+  "n_deltas": 60,
+  "n_excluded": 0,
+  "n_included": 60,
+  "n_negative_delta": 5,
+  "n_positive_delta": 55,
+  "n_total": 60,
+  "n_zero_delta": 0,
+  "note": "Wilcoxon signed-rank not implemented in stdlib; exact sign test used as transparent substitute. Label as measured/hypothesis only.",
+  "sign_test_one_sided_p": 5.191331739484717e-12
+}

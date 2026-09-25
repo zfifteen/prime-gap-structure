@@ -1,0 +1,20 @@
+Self-check report for pgs_holdout_corpus_meta_ai_v1
+Seed: 1337 Count: 60
+
+Check p*q==N: PASS for all 60 rows
+Check min_dist>=100000: PASS min=175350
+Check rel>=0.01: PASS min_rel=0.01411
+Check balanced bits |bitlen(p)-bitlen(q)|<=1: PASS
+Check public/private case_id bijection: PASS public=60 private=60
+Check public has no forbidden keys {'p', 'factors', 'prime', 'q', 'is_prime', 'factor'}: PASS
+Check N.bit_length()==bits field: PASS
+
+SHA256:
+  public/holdout_public.jsonl: 3edfbf2822d8c55d65f21cbe6a76ecab7f37e8ce8388041f30126c135f1bd627
+  private/holdout_audit.jsonl: e0de4b007c1587c4e7b194c5b952d8c23bbe0f91228bdfb1cc17144b582ddbb7
+  generate_holdout_corpus.py: ec44183b6939758691ac5201283fb2620dc513a136a17efaf4f0ef22abb659eb
+
+Bit distribution: {48: 20, 50: 20, 52: 20}
+min_dist_to_sqrt: min=175350 median=4150045.5 max=13504467
+rel_dist: min=0.0141 median=0.1472 max=0.2820
+Check p!=q: PASS

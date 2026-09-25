@@ -1,0 +1,96 @@
+=== Running unittests ===
+============================= test session starts =============================
+collected 9 items
+
+tests/test_official_replay_classification.py ...                         [ 33%]
+tests/test_fermat_zero_steps_40_64.py ..                                 [ 55%]
+tests/test_fermat_positive_steps_50.py .                                 [ 66%]
+tests/test_floor_density_high_near_sqrt_50.py .                          [ 77%]
+tests/test_contamination_flags.py ...                                    [100%]
+tests/test_decoy_not_factors.py .                                        [100%]
+tests/test_join_mismatch_fails.py .                                      [100%]
+
+============================== 9 passed in 0.12s ==============================
+
+=== official-replay ===
+Official replay written to OUT_smoke/official_fixture_replay.json
+>>> official_fixture_replay.json:
+[
+  {
+    "bits": 40,
+    "N": 1099507433251,
+    "p": 1048559,
+    "q": 1048589,
+    "isqrt": 1048573,
+    "min_dist": 14,
+    "rel": 1.335e-05,
+    "fermat_steps": 0,
+    "fermat_factors": [1048559, 1048589],
+    "product_ok": true,
+    "both_prime_ok": true,
+    "near_square_flag": true,
+    "classification": "near_square_fermat_class"
+  },
+  {
+    "bits": 50,
+    "N": 1027435935526951,
+    "p": 30729371,
+    "q": 33434981,
+    "isqrt": 32055728,
+    "min_dist": 1352805,
+    "rel": 0.0422,
+    "fermat_steps": 545815,
+    "fermat_factors": [30729371, 33434981],
+    "product_ok": true,
+    "both_prime_ok": true,
+    "near_square_flag": false,
+    "classification": "non_near_square"
+  },
+  {
+    "bits": 64,
+    "N": 10376454699372036973,
+    "p": 3221225473,
+    "q": 3221275501,
+    "isqrt": 3221249987,
+    "min_dist": 14514,
+    "rel": 4.5e-06,
+    "fermat_steps": 0,
+    "fermat_factors": [3221225473, 3221275501],
+    "product_ok": true,
+    "both_prime_ok": true,
+    "near_square_flag": true,
+    "classification": "near_square_fermat_class"
+  }
+]
+
+=== corpus-baselines on examples ===
+Corpus baselines written to OUT_smoke
+
+=== baseline_summary.json ===
+{
+  "package": "pgs_cih1_baselines_deepseek_v1",
+  "n_cases": 3,
+  "n_near_square": 2,
+  "n_non_near_square": 1,
+  "near_square_rate": 0.6666666666666666,
+  "audit_integrity_failures": 0,
+  "fermat_steps_median_non_near_square": 1650449.0,
+  "fermat_steps_median_near_square": 0.0,
+  "floor_pass_rate_median": 0.9892,
+  "floor_window": 5000,
+  "floor_stride": 1,
+  "decoy_cases_with_at_least_one": 3,
+  "official_replay_ok": true,
+  "warnings": [
+    "All results are audit baselines, not factorisation claims.",
+    "High floor density implies reciprocity alone is not a discriminating signal.",
+    "Near-square semiprimes factor in 0 Fermat steps – exclude from general hardness claims."
+  ],
+  "allowed_claim_language": [
+    "audit baseline only",
+    "hypothesis support for CIH-1 interpretation",
+    "no PGS factorisation claim"
+  ]
+}
+
+=== PASS baselines package ===

@@ -1,0 +1,22 @@
+{
+  "package": "pgs_holdout_corpus_meta_ai_v1",
+  "author_model": "Meta-AI",
+  "seed": 1337,
+  "row_count": 60,
+  "bit_lengths": {
+    "48": 20,
+    "50": 20,
+    "52": 20
+  },
+  "constraints": {
+    "min_abs_dist": 100000,
+    "min_rel_dist": 0.01,
+    "balanced_bits": true
+  },
+  "sha256": {
+    "public/holdout_public.jsonl": "3edfbf2822d8c55d65f21cbe6a76ecab7f37e8ce8388041f30126c135f1bd627",
+    "private/holdout_audit.jsonl": "e0de4b007c1587c4e7b194c5b952d8c23bbe0f91228bdfb1cc17144b582ddbb7",
+    "generate_holdout_corpus.py": "ec44183b6939758691ac5201283fb2620dc513a136a17efaf4f0ef22abb659eb"
+  },
+  "repro_command": "python3 generate_holdout_corpus.py --seed 1337 --out-dir . --count 60"
+}

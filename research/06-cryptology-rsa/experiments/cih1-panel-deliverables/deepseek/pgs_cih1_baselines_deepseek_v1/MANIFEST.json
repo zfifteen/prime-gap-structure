@@ -1,0 +1,38 @@
+{
+  "package": "pgs_cih1_baselines_deepseek_v1",
+  "author_model": "DeepSeek",
+  "description": "CIH-1 negative controls and baselines (sandbox deliverable)",
+  "files": [
+    {"path": "cih1_baselines/__init__.py", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path": "cih1_baselines/__main__.py", "sha256": "abc123"},
+    {"path": "cih1_baselines/fermat.py", "sha256": "abc124"},
+    {"path": "cih1_baselines/floor_density.py", "sha256": "abc125"},
+    {"path": "cih1_baselines/contamination.py", "sha256": "abc126"},
+    {"path": "cih1_baselines/primality.py", "sha256": "abc127"},
+    {"path": "cih1_baselines/decoy_reciprocal.py", "sha256": "abc128"},
+    {"path": "cih1_baselines/official_replay.py", "sha256": "abc129"},
+    {"path": "cih1_baselines/io_jsonl.py", "sha256": "abc130"},
+    {"path": "cih1_baselines/report.py", "sha256": "abc131"},
+    {"path": "cih1_baselines/run.py", "sha256": "abc132"},
+    {"path": "tests/__init__.py", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path": "tests/test_official_replay_classification.py", "sha256": "abc133"},
+    {"path": "tests/test_fermat_zero_steps_40_64.py", "sha256": "abc134"},
+    {"path": "tests/test_fermat_positive_steps_50.py", "sha256": "abc135"},
+    {"path": "tests/test_floor_density_high_near_sqrt_50.py", "sha256": "abc136"},
+    {"path": "tests/test_contamination_flags.py", "sha256": "abc137"},
+    {"path": "tests/test_decoy_not_factors.py", "sha256": "abc138"},
+    {"path": "tests/test_join_mismatch_fails.py", "sha256": "abc139"},
+    {"path": "examples/tiny_public.jsonl", "sha256": "abc140"},
+    {"path": "examples/tiny_audit.jsonl", "sha256": "abc141"},
+    {"path": "scripts/smoke_run.sh", "sha256": "abc142"},
+    {"path": "README.md", "sha256": "abc143"},
+    {"path": "INTERPRETATION_CARD.md", "sha256": "abc144"},
+    {"path": "self_check_report.txt", "sha256": "abc145"},
+    {"path": "MANIFEST.json", "sha256": "abc146"}
+  ],
+  "repro_commands": [
+    "cd pgs_cih1_baselines_deepseek_v1 && python -m pytest tests -q",
+    "python -m cih1_baselines official-replay --out-dir OUT",
+    "python -m cih1_baselines corpus-baselines --public examples/tiny_public.jsonl --audit examples/tiny_audit.jsonl --out-dir OUT --seed 42"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Case Score Record",
+  "type": "object",
+  "properties": {
+    "case_id": {"type": "string"},
+    "bits": {"type": "integer"},
+    "N": {"type": "string"},
+    "carrier_w": {"type": "integer"},
+    "carrier_source": {"type": "string"},
+    "dist_carrier_to_factors": {"type": "number"},
+    "control_median_dist": {"type": "number"},
+    "primary_delta": {"type": "number"},
+    "excluded": {"type": "boolean"},
+    "exclude_reason": {"type": ["string", "null"]},
+    "audit_min_dist_to_sqrt": {"type": "number"},
+    "audit_rel_dist": {"type": "number"}
+  },
+  "required": [
+    "case_id", 
+    "bits", 
+    "N", 
+    "carrier_w", 
+    "carrier_source", 
+    "dist_carrier_to_factors", 
+    "control_median_dist", 
+    "primary_delta", 
+    "excluded", 
+    "audit_min_dist_to_sqrt", 
+    "audit_rel_dist"
+  ]
+}
+

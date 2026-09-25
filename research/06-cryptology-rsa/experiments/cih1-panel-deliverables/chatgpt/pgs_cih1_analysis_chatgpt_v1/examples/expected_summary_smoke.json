@@ -1,0 +1,17 @@
+{
+  "abort_reason": "insufficient_included_cases",
+  "aborted": true,
+  "allowed_claim_sentence": "Measured on hold-out corpus: experiment aborted for insufficient included cases.",
+  "decision": "aborted_insufficient_n",
+  "experiment_id": "CIH-1",
+  "f_beat": 0.25,
+  "freeze_source": "freeze_fallback_cih1.json",
+  "mean_R": 1.3067826030839957,
+  "median_R": 1.130390514480295,
+  "n_excluded": 0,
+  "n_included": 4,
+  "n_total": 4,
+  "p_value": 0.9375,
+  "package_version": "1.0.0",
+  "seed": 20260808
+}

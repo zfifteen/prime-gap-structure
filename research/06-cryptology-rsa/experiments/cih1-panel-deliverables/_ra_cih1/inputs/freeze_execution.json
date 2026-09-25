@@ -1,0 +1,49 @@
+{
+  "experiment_id": "CIH-1",
+  "package_notes": "RA execution freeze: Gemini scientific contract + ChatGPT machine schema. Primary scientific metric remains Gemini median_delta_distance; ChatGPT reports median_R decision as tooling output.",
+  "author_sources": {
+    "science": "gemini/pgs_cih1_prereg_gemini_v1/freeze.json",
+    "tooling": "chatgpt/pgs_cih1_analysis_chatgpt_v1"
+  },
+  "primary_metric": {
+    "name": "median_delta_distance",
+    "definition": "median over cases of (median(D_u) - D_c)",
+    "direction": "higher_is_better",
+    "tooling_alias": "median_R = D_c / max(1, median(D_u)); lower R is better carrier"
+  },
+  "control": {
+    "name": "uniform_band_control",
+    "definition": "Uniform sampling in [search_band_lo, search_band_hi]",
+    "samples_per_case": 1000
+  },
+  "search_band": {
+    "definition": "Closed interval [anchor, reset_endpoint] of the immediate lower chamber preceding isqrt(N)"
+  },
+  "exclusion": {
+    "min_abs_dist_to_sqrt": 100000,
+    "min_rel_dist_to_sqrt": 0.01,
+    "forbid_bidirectional_floor_as_success": true,
+    "forbid_historical_false_class_blacklist": true
+  },
+  "statistics": {
+    "tests": ["one_sided_exact_sign_test_on_delta", "gemini_primary_median_delta_reported"],
+    "alpha": 0.05,
+    "two_sided_alpha": 0.05,
+    "minimum_cases": 30,
+    "test": "one-sided exact sign test on delta = control_median_D_u - D_c",
+    "decision_rule": {
+      "carrier_median_R_max": 0.9,
+      "carrier_fbeat_min": 0.6,
+      "control_median_R_min": 1.1,
+      "gemini_text": "Reject H0 if p < 0.05 and median_delta_distance > 0"
+    }
+  },
+  "boundD_formula": "max(20, (6*(g_lo+g_up))//5)",
+  "first_tail_window": [-12, 6],
+  "reporting_allowed_after_run": [
+    "measured on hold-out corpus C with N cases",
+    "hypothesis",
+    "no verified/validated language",
+    "no factorization claim"
+  ]
+}

@@ -1,0 +1,12 @@
+[PASS] freeze.json parses strictly.
+[PASS] schemas validate as JSON Schema draft-07.
+[PASS] PROTOCOL.md contains exactly 14 required ## headings.
+[PASS] freeze.json forbids floor-only success explicitly.
+[PASS] freeze.json forbids historical false class blacklists explicitly.
+[PASS] alpha (0.05) and minimum_cases (30) present.
+[PASS] near-square thresholds (100000, 0.01) present in PROTOCOL.md and freeze.json.
+[PASS] primary metric evaluates true factor distance, not "resolved" status.
+[PASS] decision_table covers 5 required classes (carrier_better, no_difference, control_better, aborted, contaminated).
+[PASS] NO factorization or oracle breakthrough language found in claims.
+ALL SANDBOX CHECKS PASSED.
+

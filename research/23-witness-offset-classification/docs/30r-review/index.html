@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The 30r chamber: evidence review</title>
+<style>
+body{font:13px/1.55 system-ui,sans-serif;color:#202830;background:#f7f8fa;margin:24px auto;padding:0 22px;max-width:980px}h1{font-size:1.9rem;line-height:1.2}h2{font-size:1.2rem;margin-top:26px}table{border-collapse:collapse;width:100%;background:white;margin:12px 0}th,td{padding:8px 10px;border:1px solid #d4dce3;text-align:left;vertical-align:top}th{background:#eaf0f4}code,pre{font-family:ui-monospace,monospace;font-size:12px}pre{padding:12px;background:#eaf0f4;white-space:pre-wrap;overflow-wrap:anywhere}.lead{border-left:4px solid #236650;padding:10px 16px;background:#edf7f0}a{color:#155681}.status{color:#586571}
+</style>
+<h1>The twenty chambers survive the audit</h1>
+<p class="status">Review date: 2026-09-25. Measurement source: commit <code>362d95e688872786aaab2afe5f9c7edf1977fa8f</code>. Status: reproduced on the named ranges; downstream audit corroboration below 10<sup>8</sup>.</p>
+<p class="lead">All twenty listed wins have consecutive prime endpoints eight apart, witness <code>30r</code> with prime <code>r</code>, minimum divisor count 16, and a tied leftmost minimum. The smallest is <code>p = 17,666,309</code>. Four corrections are needed in the supplied note and its reproduction instructions. None removes a win or changes the shared shape.</p>
+<p>Reviewed text: <a href="../the-30r-chamber.md">The 30r chamber</a>, identical to the supplied attachment when reviewed. The source note, scanner, stored measurements, and <code>PROOF.md</code> were left unchanged. This report records corrections rather than silently revising the reviewed evidence.</p>
+
+<h2>Four findings</h2>
+<table>
+<tr><th>Finding</th><th>Evidence and correction</th></tr>
+<tr><td><strong>1. Range coverage mismatch</strong><br>Scanner and regime labels</td><td>Both scanner paths process consecutive endpoints below the limit. They omit the final gap whose left prime is below the limit and whose right prime is above it. The quoted totals therefore describe <code>10 ≤ p &lt; q &lt; limit</code>, not every left prime below the limit. The omitted 10<sup>8</sup> chamber is <code>(99,999,989, 100,000,007)</code>, with witness <code>99,999,993</code> and divisor count 4. It is applicable to L4 and belongs in the <code>p + 2</code> undercut row. For the stated left-prime scope, use 5,761,451 total gaps, 573,517 applicable chambers, and 566,850 first-neighbor undercuts. The twenty-win count remains 20. Alternatively, retain the stored totals and explicitly label the two-endpoint range. The same mismatch is present in CONTRACT, FINDINGS, ELEVATION_CARD, and JSON regime strings.</td></tr>
+<tr><td><strong>2. One multiplicity is wrong</strong><br>Note line 153</td><td>For <code>r = 1,775,867</code>, <code>p = 53,276,009</code>, the seven interior counts are <code>[16,16,24,24,16,16,40]</code>. Multiplicity is <strong>4</strong>, not 5. Both the stored record and independent enumeration give 4. All other rows in the twenty-chamber table agree.</td></tr>
+<tr><td><strong>3. The largest tie is overstated</strong><br>Six-neighbor section</td><td>“Two chambers tie on all six later seats” is false. At <code>p = 61,134,869</code> and <code>89,172,869</code>, seats 1 through 6 have count 16, while seat 7 has count 72 and 96 respectively. Replace with: “Two chambers have six tied integers: the witness and five later seats.” The 11 distinct tie patterns and the single tie restricted to seats 1 and 2 are corroborated.</td></tr>
+<tr><td><strong>4. The command writes a different filename</strong><br>Reproduction section</td><td><code>--scan</code> does not change the default filename. The displayed command writes <code>classification_100000000.json</code>, while the note points to <code>classification_scan_100000000.json</code>. Add <code>--destination research/23-witness-offset-classification/classification_scan_100000000.json</code> when intentionally regenerating the named artifact, or name the actual generated file.</td></tr>
+</table>
+
+<h2>Boundary correction for the stated left-prime scope</h2>
+<p>The rerun reproduced the stored tables exactly. A separate downstream divisor enumeration checked each omitted crossing gap and established consecutive endpoints. Adding these three boundary chambers yields:</p>
+<table>
+<tr><th>Left-prime limit</th><th>Stored gaps</th><th>Complete left-prime count</th><th>Complete applicable count</th><th>Wins</th></tr>
+<tr><td>10<sup>6</sup></td><td>78,493</td><td>78,494</td><td>7,108</td><td>0</td></tr>
+<tr><td>10<sup>7</sup></td><td>664,574</td><td>664,575</td><td>63,515</td><td>0</td></tr>
+<tr><td>10<sup>8</sup></td><td>5,761,450</td><td>5,761,451</td><td>573,517</td><td>20</td></tr>
+</table>
+<p>The omitted smaller boundary pairs are <code>(999,983, 1,000,003)</code> and <code>(9,999,991, 10,000,019)</code>. Their left residues are 23 and 1 modulo 30, so they do not change L4 counts. At 10<sup>8</sup>, the corrected mechanism counts are <code>566850 + 3892 + 2755 + 20 = 573517</code>.</p>
+
+<h2>What the evidence establishes</h2>
+<p><strong>Measured result:</strong> the three regenerated JSON documents equal their corresponding committed documents in every parsed field. The full 10<sup>8</sup> scan reports exactly twenty L4 counterexamples. Its record list is capped at twenty, but its uncapped counter is also twenty, so no wins are hidden by that cap in this run. The boundary audit supplies the omitted applicable chamber and finds no additional win.</p>
+<p><strong>Downstream audit:</strong> independent divisor enumeration for every integer in the twenty closed chambers corroborates consecutive endpoints, all seven interior counts, each prime cofactor, and each stored multiplicity. All seven displayed prime factorizations in the first chamber are correct. The audit uses trial divisibility after reading the frozen records and is separate from PGS inference.</p>
+<p><strong>Arithmetic and theorem alignment:</strong> the universal exclusions of distances 4 and 6 follow from <code>p+4=3(10r+1)</code> and <code>p+6=5(6r+1)</code>. The eight admissible even distances modulo 30 are correctly listed. For prime <code>r &gt; 5</code>, the four distinct prime factors of <code>30r</code> give divisor count 16. The six-neighbor inequality is exactly the definition of a leftmost minimum on a gap of eight. The quoted universal offset ceiling agrees with <code>PROOF.md</code>; its proof status is unchanged.</p>
+<p><strong>Method boundary:</strong> this compact classifier builds a smallest-prime-factor table, uses it to identify endpoints, and then selects the leftmost minimum by divisor counts. It is a finite classification instrument using classical arithmetic machinery. The results do not establish an inference pipeline free of classical endpoint gates.</p>
+<p><strong>Unresolved:</strong> larger regimes, longer winning gaps, and universality of the observed gap-8/count-16/tie shape remain unestablished. No 10<sup>18</sup> surface was executed for this package, so program-level “verified” or “validated” status is unavailable. The supplied contract asserts that L4 was frozen before aggregation, but the available Git history introduces the contract and results in the same commit; independent chronology of preregistration is not established by that history.</p>
+
+<h2>Executed checks and reproduction</h2>
+<p>The pinned commit was checked out at <code>/tmp/pgs-30r-review-362d95e6</code>. Commands executed there:</p>
+<pre>python3 -m pytest research/23-witness-offset-classification/tests/test_classify_offsets.py -q
+python3 research/23-witness-offset-classification/scripts/classify_offsets.py --limit 1000000 --destination /tmp/pgs-30r-reproduced-1000000.json
+python3 research/23-witness-offset-classification/scripts/classify_offsets.py --scan --limit 10000000 --destination /tmp/pgs-30r-reproduced-10000000.json
+python3 research/23-witness-offset-classification/scripts/classify_offsets.py --scan --limit 100000000</pre>
+<p>The independent audit is preserved in <a href="audit.py">audit.py</a> and its exact chamber counts in <a href="audit.json">audit.json</a>. Run from the main repository root:</p>
+<pre>python3 research/23-witness-offset-classification/docs/30r-review/audit.py</pre>
+<p>The audit reads the measurement JSON directly from the pinned Git commit. It does not modify that artifact. The existing tests cover small selections and decision branches; their scan/list comparison shares the omitted-boundary behavior, so 15 passing tests do not resolve finding 1.</p>
+
+<h2>Closing review</h2>
+<table>
+<tr><th>Criterion</th><th>Result</th><th>Correction or limit</th></tr>
+<tr><td>Headline twenty-win finding</td><td>Pass on the stated finite regime</td><td>Boundary completion adds no win.</td></tr>
+<tr><td>Reproduction and regression</td><td>15 tests passed; all three JSON comparisons equal</td><td>Same implementation reproduces the same boundary omission.</td></tr>
+<tr><td>Independent arithmetic audit</td><td>20 chambers and first factor table corroborated</td><td>Multiplicity and tie-sentence corrections recorded above.</td></tr>
+<tr><td>Claim alignment</td><td>Four open source corrections</td><td>Source files preserved; review is not a clean approval.</td></tr>
+<tr><td>PGS / theorem separation</td><td>Pass for review claims</td><td>Classification and downstream audit are explicitly distinguished from inference and proof.</td></tr>
+<tr><td>10<sup>18</sup> evidence</td><td>Not executed</td><td>Only finite-regime reproduction and audit corroboration claimed.</td></tr>
+<tr><td>Review artifact and diff</td><td>Partial: browser inspection blocked</td><td>Browser URL security policy rejected the local file. Source text and relative links checked directly; rendered layout was not inspected. Source note and pinned implementation unchanged.</td></tr>
+</table>
+</html>

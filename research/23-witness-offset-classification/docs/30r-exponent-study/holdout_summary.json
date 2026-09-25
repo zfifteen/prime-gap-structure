@@ -1,0 +1,60 @@
+{
+  "status": "measured on fresh band [10^8,1.1*10^8); arithmetic rule checked on that band",
+  "frozen_rule_sha256": "db2751e01875a1677f2b689ce1d869e947e5d8b4772f964edb0581c1bbc3bb19",
+  "source_commit": "362d95e688872786aaab2afe5f9c7edf1977fa8f",
+  "range": [
+    100000000,
+    110000000
+  ],
+  "matched_count": 730,
+  "branches": {
+    "3": 376,
+    "1": 354
+  },
+  "violation_count": 0,
+  "violations": [],
+  "winners": [
+    {
+      "p": 101035229,
+      "q": 101035237,
+      "r_mod4": 1,
+      "forced_position": 7,
+      "selected_offset": 1,
+      "counts": [
+        16,
+        16,
+        24,
+        48,
+        16,
+        16,
+        72
+      ]
+    },
+    {
+      "p": 108640229,
+      "q": 108640237,
+      "r_mod4": 1,
+      "forced_position": 7,
+      "selected_offset": 1,
+      "counts": [
+        16,
+        16,
+        32,
+        24,
+        16,
+        16,
+        24
+      ]
+    }
+  ],
+  "winner_count": 2,
+  "winners_with_final_tie": 0,
+  "winners_with_unique_minimum": 0,
+  "independently_audited": [
+    100032329,
+    100049189,
+    101035229,
+    108640229
+  ],
+  "high_scale_surface_executed": false
+}

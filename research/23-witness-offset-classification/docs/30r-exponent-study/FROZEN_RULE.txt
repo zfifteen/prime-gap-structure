@@ -1,0 +1,35 @@
+Frozen after the 364-chamber discovery audit and before fresh-band execution.
+2026-09-25
+
+Object: p=30r-1, with r odd; positions p+3=30r+2 and p+7=30r+6.
+Rule: r=1 mod4 forces v2(p+7)=2 and hence 3 divides tau(p+7).
+      r=3 mod4 forces v2(p+3)=2 and hence 3 divides tau(p+3).
+Therefore the forced position never has divisor count 16; both positions
+cannot simultaneously have count 16. In a winning matched chamber the
+forced position has count at least 18.
+
+Derivation: both positions are divisible by4 and differ by4, so exactly
+one is divisible by4 but not8. Write that integer as4m with m odd.
+Its divisor count is3*tau(m). For r=1 mod4, 30r+6=4 mod8; for r=3 mod4,
+30r+2=4 mod8. Since16 is not divisible by3, the exclusion follows.
+This is an elementary exact arithmetic deduction, not a novelty claim or
+an edit to PROOF.md. Fresh data checks implementation, not proof status.
+
+Discovery subset: twenty winners and 344 single-undercut losers below10^8.
+Fresh band: 100000000 <= p < 110000000, all matched consecutive gap-8
+chambers with p mod30=29 and tau(p+1)=16. Build the pinned classifier's
+exact divisor field through110000008 so a crossing gap is not omitted.
+Match endpoints and interior from that field, as retrospective measurement.
+No winner or row from this band has been inspected before this freeze.
+
+Failure criteria: any matched row violates the predicted valuation or
+multiple-of-three count; any simultaneous ties at p+3 and p+7; any winner
+whose forced position is below18. Save every matched row and all violations.
+Also report all fresh winners, unique/tied minima, and whether a winner
+has tau(p+7)=16; these describe the old pattern on a new band.
+Do not fit a replacement rule to the fresh data in this experiment.
+
+Independent audit: enumerate divisors for every fresh winner and the first
+matched chamber in each r mod4 branch. Read the minimum condition separately
+from the new arithmetic restriction. No 10^18 surface or program-level
+validation is claimed. No biological mechanism is claimed.

@@ -1,0 +1,24 @@
+30r matched chamber comparison
+Frozen before executing this comparison, 2026-09-25.
+
+Retrospective measurement, not PGS generation or inference.
+Range: 10 <= p < 100000000. Match p mod 30 = 29, consecutive prime
+endpoints p and p+8, and tau(p+1)=16. Read endpoints and all interior
+counts from the exact divisor field built by the pinned classifier.
+The prior boundary audit proves the last prime below the limit has gap 18,
+so restricting this gap-8 comparison to p+8 below the limit omits no match.
+
+Compare winners and losers by position: count below 16, equal to 16,
+and above 16; histogram the number of undercutting positions; retain all
+matched rows. Candidate from the twenty discovery cases: position p+7
+is strictly above 16 in every winner. This same-range comparison is not
+an independent holdout test of that candidate.
+
+For each of positions 2 through 7, retain the least-p losing example in
+which that position is the sole undercut, if one exists. Independently
+enumerate divisors for each retained closed chamber. No synthetic mixing
+of positions and no independent-site probability assumptions.
+
+Acceptance: reproduce the exact twenty audited winners and their counts;
+account for every matched row; audit retained examples; inspect plot;
+report finite-range results and unresolved claims. No 10^18 claim.

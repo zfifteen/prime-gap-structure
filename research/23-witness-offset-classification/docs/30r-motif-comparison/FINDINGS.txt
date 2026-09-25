@@ -1,0 +1,99 @@
+Matched 30r chambers: every neighbor can be the sole undercut
+2026-09-25
+
+Measured result
+--------------
+Among all 9,376 matched chambers below 10^8, 20 select p+1 and 9,356
+select a later integer. Match conditions: p mod 30 = 29, consecutive
+prime endpoints p and p+8, and tau(p+1)=16. All twenty winners and their
+seven divisor counts match the prior independent audit exactly.
+
+There are 344 losers with exactly one interior count below 16. Every
+neighbor position can supply that sole undercut on this measured set:
+
+Position                    p+2  p+3  p+4  p+5  p+6  p+7
+Number of sole undercuts    193   19   41   48   41    2
+
+Thus none of the six individual neighbor-threshold checks can be omitted
+from the conjunction tau(p+j)>=16, j=2..7, without admitting an actual
+losing chamber in this set. This is a concrete nonredundancy result for
+these threshold checks, not a claim that no other arithmetic description
+could replace them. The conjunction itself is the definition of winning;
+its truth is not a newly discovered mechanism.
+
+A particularly close pair
+------------------------
+Winner p=17666309, q=17666317: [16,16,16,24,16,16,48]
+Loser  p=29227829, q=29227837: [16, 8,16,24,16,16,48]
+
+Six of seven divisor counts agree exactly. In the losing chamber, p+2
+has count 8 and is selected instead. These are two different actual
+chambers. No integer, prime factor, or biological sequence was mutated.
+This example was selected after the comparison: earliest winner, then
+earliest loser whose count profile differs at exactly one position.
+Both complete chambers were independently audited by divisor enumeration.
+
+The final-position candidate
+----------------------------
+In winners, tau(p+7)>16 in 20/20 cases.
+In losers, tau(p+7)>16 in 8400/9356 cases (89.782%);
+313 have tau(p+7)=16 and 643 have tau(p+7)<16.
+
+A high final count therefore does not distinguish winning chambers by
+itself. It is common among matched losers. Its absence as a tied minimum
+in winners remains a same-range observation, not a universal result.
+Position p+7 can also be decisive: two actual losers satisfy the other
+five neighbor inequalities but fail this final one.
+
+Least-p independently audited examples, sole undercut by position:
+p+2: p=689789,   [16,8,32,16,16,16,30]
+p+3: p=1014869,  [16,16,8,16,16,16,24]
+p+4: p=3948809,  [16,16,18,12,16,16,20]
+p+5: p=759029,   [16,16,16,36,8,16,24]
+p+6: p=1719869,  [16,16,56,20,16,8,24]
+p+7: p=38915069, [16,16,88,20,32,24,12]
+Each right endpoint is p+8. Endpoint divisor counts are 2; all seven
+interior counts exceed 2, corroborating consecutive endpoints.
+
+Interpretation
+--------------
+The sequence analogy now has actual aligned controls: matching most
+positions does not ensure the same selection. Every neighboring position
+has a demonstrated role in the literal winning condition. The observed
+asymmetry of roles, including 193 sole undercuts at p+2 versus 2 at p+7,
+is an arithmetic question about these matched chambers. It does not
+establish a genetic mechanism or an independent-site probability model.
+
+Unresolved: arithmetic constraints explaining the joint distribution of
+these counts, the absence of final-position ties in the twenty winners,
+and behavior beyond 10^8. No new holdout range or 10^18 surface was run.
+The universal theorems in PROOF.md are unchanged.
+
+Reproduction from repository root
+---------------------------------
+python3 research/23-witness-offset-classification/docs/30r-motif-comparison/compare.py
+python3 research/23-witness-offset-classification/docs/30r-motif-comparison/analyze.py
+
+compare.py reads the original classifier source using git show at commit
+362d95e688872786aaab2afe5f9c7edf1977fa8f, builds its divisor field, and
+writes all matched rows and the summary. This is retrospective arithmetic
+classification using the existing field builder, not PGS inference.
+CONTRACT.txt was written before executing this comparison. The illustrative
+one-position pair was a subsequent descriptive analysis, explicitly labeled.
+
+Range boundary: the prior audit establishes the final prime below 10^8
+is 99999989 with next prime 100000007, a gap of 18. It is outside this
+gap-8 match. The boundary omission identified in the original scanner
+therefore does not omit any matched row in this experiment.
+
+Closing review
+--------------
+Claim alignment: PASS, finite matched comparison and explicit open claims.
+Reproduction: executed the full comparison and the analysis commands.
+Regression: all 20 winners and their complete profiles match prior audit.
+Accounting: all 9,376 CSV rows reconcile with the group/position counts.
+Independent audit: six sole-undercut examples and both illustrative chambers.
+Visual: comparison.png inspected; labels and numbers match stored records.
+PGS separation: retrospective field classification and downstream audit only.
+10^18: NOT EXECUTED; no program-level verified/validated status claimed.
+Diff discipline: original note, previous review, and PROOF.md untouched.

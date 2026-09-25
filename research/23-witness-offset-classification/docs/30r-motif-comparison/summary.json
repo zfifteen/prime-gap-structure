@@ -1,0 +1,188 @@
+{
+  "status": "measured below 10^8; retrospective matched comparison",
+  "source_commit": "362d95e688872786aaab2afe5f9c7edf1977fa8f",
+  "limit": 100000000,
+  "counts": {
+    "winner": 20,
+    "loser": 9356
+  },
+  "position_columns": [
+    "below_16",
+    "equal_16",
+    "above_16"
+  ],
+  "by_position": {
+    "winner": [
+      [
+        0,
+        20,
+        0
+      ],
+      [
+        0,
+        18,
+        2
+      ],
+      [
+        0,
+        10,
+        10
+      ],
+      [
+        0,
+        8,
+        12
+      ],
+      [
+        0,
+        17,
+        3
+      ],
+      [
+        0,
+        12,
+        8
+      ],
+      [
+        0,
+        0,
+        20
+      ]
+    ],
+    "loser": [
+      [
+        0,
+        9356,
+        0
+      ],
+      [
+        8158,
+        955,
+        243
+      ],
+      [
+        3804,
+        1018,
+        4534
+      ],
+      [
+        5299,
+        1675,
+        2382
+      ],
+      [
+        5743,
+        2490,
+        1123
+      ],
+      [
+        5861,
+        1985,
+        1510
+      ],
+      [
+        643,
+        313,
+        8400
+      ]
+    ]
+  },
+  "undercut_histogram": {
+    "0": 20,
+    "1": 344,
+    "2": 1866,
+    "3": 3784,
+    "4": 2744,
+    "5": 604,
+    "6": 14
+  },
+  "least_p_sole_undercut_examples": {
+    "2": {
+      "p": 689789,
+      "q": 689797,
+      "counts": [
+        16,
+        8,
+        32,
+        16,
+        16,
+        16,
+        30
+      ],
+      "selected_offset": 2
+    },
+    "5": {
+      "p": 759029,
+      "q": 759037,
+      "counts": [
+        16,
+        16,
+        16,
+        36,
+        8,
+        16,
+        24
+      ],
+      "selected_offset": 5
+    },
+    "3": {
+      "p": 1014869,
+      "q": 1014877,
+      "counts": [
+        16,
+        16,
+        8,
+        16,
+        16,
+        16,
+        24
+      ],
+      "selected_offset": 3
+    },
+    "6": {
+      "p": 1719869,
+      "q": 1719877,
+      "counts": [
+        16,
+        16,
+        56,
+        20,
+        16,
+        8,
+        24
+      ],
+      "selected_offset": 6
+    },
+    "4": {
+      "p": 3948809,
+      "q": 3948817,
+      "counts": [
+        16,
+        16,
+        18,
+        12,
+        16,
+        16,
+        20
+      ],
+      "selected_offset": 4
+    },
+    "7": {
+      "p": 38915069,
+      "q": 38915077,
+      "counts": [
+        16,
+        16,
+        88,
+        20,
+        32,
+        24,
+        12
+      ],
+      "selected_offset": 7
+    }
+  },
+  "winners_match_prior_audit": true,
+  "independent_examples_audit": true,
+  "high_scale_surface_executed": false
+}

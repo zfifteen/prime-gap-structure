@@ -1,0 +1,123 @@
+Two chamber positions cannot both have sixteen divisors
+2026-09-25
+
+Strongest result
+---------------
+For p=30r-1 with r odd, the integers p+3 and p+7 are both divisible
+by four and differ by four. Exactly one is divisible by four but not
+eight. Its divisor count is a multiple of three and therefore is not16.
+Consequently tau(p+3)=tau(p+7)=16 is impossible.
+
+The residue of r determines the restricted position:
+  r=1 mod4: p+7=4 mod8, so 3 divides tau(p+7).
+  r=3 mod4: p+3=4 mod8, so 3 divides tau(p+3).
+
+Proof: 30r+2 and30r+6 are consecutive multiples of4 when r is odd.
+One has the form4m with m odd. The divisor-count identity gives
+ tau(4m)=3*tau(m).
+Reduction modulo8 gives the two branches above. In a matched winning
+chamber the restricted count must therefore be at least18, not merely16.
+This is an elementary exact deduction under the stated hypothesis. It
+is not claimed as a novel theorem, and PROOF.md was not edited.
+
+What the discovery audit supplied
+---------------------------------
+We factored all seven interior integers in twenty winners and344
+single-undercut chambers, all below10^8. Each factorization was checked
+by its product and its divisor-count product against the stored field.
+The full factorizations and exponent-pattern counts are preserved.
+
+Discovery counts by r modulo4:
+                    r=1 mod4   r=3 mod4
+Winners                 17           3
+Single-undercut         222         122
+
+The modulo4 restriction explains the absence of a final-position tie
+in17 of the20 original winners. The other3 have r=3 mod4: this rule
+restricts p+3 instead, so their final-position behavior remains unexplained.
+Eight single-undercut discovery chambers have a final count of16; all
+are in the permitted r=3 mod4 branch. No discovery row violates the rule.
+
+The restriction adds information beyond the minimum inequality:
+[16,16,16,16,16,16,16] satisfies all six neighbor inequalities but cannot
+be the interior count profile of a30r chamber with r odd. More generally,
+simultaneous ties at seats3 and7 are arithmetically excluded. Thus some
+arrays allowed by the selection definition cannot be realized here.
+This is a constraint on possible count profiles, not a replacement rule
+for selecting the witness or a prediction of the entire field.
+
+Frozen fresh-band test
+---------------------
+Before inspecting the fresh band, FROZEN_RULE.txt fixed the rule,
+acceptance conditions, and range100000000 <= p <110000000.
+Its SHA256, recorded in the executed result, is:
+db2751e01875a1677f2b689ce1d869e947e5d8b4772f964edb0581c1bbc3bb19
+
+Match: consecutive gap-8 endpoints, p mod30=29, tau(p+1)=16.
+The exact divisor field extended through110000008 so crossing gaps
+were included. This is retrospective arithmetic classification using
+the pinned field builder, not a PGS inference implementation.
+
+Fresh matched chambers:730.
+r=1 mod4:354; r=3 mod4:376.
+Frozen-rule violations:0.
+Matched winners:2.
+
+p=101035229, q=101035237:
+  [16,16,24,48,16,16,72]
+p=108640229, q=108640237:
+  [16,16,32,24,16,16,24]
+
+Both have r=1 mod4, tied minima, and the forced final count above16.
+Their complete closed chambers were independently audited by divisor
+enumeration, together with the first matched chamber of each residue
+branch (p=100032329 and100049189).
+
+Scope: the test preselects gap8 and initial divisor count16. It does not
+exclude other winning gap lengths or counts in the fresh band. The two
+new winners extend the list of examples of the original shape; they do
+not establish that all new wins have that shape. The fresh arithmetic
+check corroborates the implementation of the exact deduction; it does
+not supply or bound its proof. No10^18 surface was executed.
+
+Research assessment
+-------------------
+The sequence analogy has led to an explicit relationship between
+positions: their possible divisor counts are coupled. This relationship
+is ordinary exact arithmetic arising from powers of two. It explains
+part of the visual pattern, while leaving the joint arrangement needed
+for all six neighbors to stay above the threshold unresolved.
+
+The promised decision point has been met in a limited but concrete way:
+a constraint beyond the selection inequality was derived and reproduced
+on an unexamined band. It is a useful structural explanation, not evidence
+by itself of a new deep law or a biological mechanism. The remaining
+question is whether richer cross-position constraints explain the three
+unaccounted-for original winners and the rarity of complete winning rows.
+No replacement candidate was fitted to the fresh band in this experiment.
+
+Reproduction from repository root
+---------------------------------
+python3 research/23-witness-offset-classification/docs/30r-exponent-study/discover.py
+python3 research/23-witness-offset-classification/docs/30r-exponent-study/holdout.py
+python3 research/23-witness-offset-classification/docs/30r-exponent-study/plot.py
+
+The holdout runner reads classifier source from Git commit
+362d95e688872786aaab2afe5f9c7edf1977fa8f. Discovery reads the preserved
+matched_chambers.csv in the sibling30r-motif-comparison folder.
+All three commands were executed. No random construction or fallback
+method is used. The fresh-band CSV preserves every matched record.
+
+Closing review
+--------------
+Claim alignment: PASS; exact deduction, discovery, and fresh measurements
+are separated. The selection condition and biological analogy are not
+presented as new causal mechanisms.
+Arithmetic: PASS; parity, residue branches, and divisor-count identity
+checked explicitly. All364 discovery rows satisfy the factor pattern.
+Fresh-band accounting: PASS; all730 stored rows satisfy the frozen rule.
+Independent audit: PASS on four named closed chambers in the fresh band.
+Boundary: field extends beyond the upper left-prime limit by eight.
+Visual: positional_rule.png inspected against the recorded branch counts.
+10^18: not executed; finite-regime wording retained for implementation.
+Diff: original note, prior evidence, and PROOF.md unchanged.

@@ -1,0 +1,38 @@
+{
+  "status": "post-comparison descriptive example; distinct actual chambers",
+  "winner": {
+    "p": 17666309,
+    "q": 17666317,
+    "selected_offset": 1,
+    "undercut_count": 0,
+    "tau_p_plus_1": 16,
+    "tau_p_plus_2": 16,
+    "tau_p_plus_3": 16,
+    "tau_p_plus_4": 24,
+    "tau_p_plus_5": 16,
+    "tau_p_plus_6": 16,
+    "tau_p_plus_7": 48
+  },
+  "loser": {
+    "p": 29227829,
+    "q": 29227837,
+    "selected_offset": 2,
+    "undercut_count": 1,
+    "tau_p_plus_1": 16,
+    "tau_p_plus_2": 8,
+    "tau_p_plus_3": 16,
+    "tau_p_plus_4": 24,
+    "tau_p_plus_5": 16,
+    "tau_p_plus_6": 16,
+    "tau_p_plus_7": 48
+  },
+  "sole_undercut_counts": {
+    "2": 193,
+    "3": 19,
+    "4": 41,
+    "5": 48,
+    "6": 41,
+    "7": 2
+  },
+  "independent_pair_audit": true
+}

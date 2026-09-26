@@ -32,10 +32,11 @@ This page is the master navigation hub for the `docs/` folder.
 | Generators & applications   | [docs/PRIME_GAP_GENERATOR.md](PRIME_GAP_GENERATOR.md) | Deterministic prime and Mersenne generators  |
 | Proof enhancements          | [docs/proof-enhancements/](proof-enhancements/) | Certificates, Lean work, and hardening notes |
 | Open questions              | [pgs-unsolved-problems/](../pgs-unsolved-problems/) | Active research questions                    |
+| Most significant open Q     | [docs/unanswered-questions/MOST_SIGNIFICANT_UNANSWERED_QUESTION.md](unanswered-questions/MOST_SIGNIFICANT_UNANSWERED_QUESTION.md) | Live identification of highest-priority residual after GWR/UBC closure |
 | Visualizations & demos      | [visualizations/](../visualizations/)         | Plot library gallery (primary), explorers, historical dumps |
 | Research continuity         | [research/00-index/continuity/START_HERE.md](../research/00-index/continuity/START_HERE.md) | Session resume and corpus map                |
 
 ## Recent Documentation Improvements
-This navigation structure was introduced as part of the July 2026 documentation polish pass to make the rich `docs/` and `research/` content more discoverable while preserving full technical depth.
+This navigation structure was introduced as part of the July 2026 documentation polish pass to make the rich `docs/` and `research/` content more discoverable while preserving full technical depth. The 2026-08-16 addition surfaces the single highest-priority residual question on the live proof surface.
 
 For the high-level project overview and tiered reading path, return to the main [README.md](../README.md).

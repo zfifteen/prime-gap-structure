@@ -158,11 +158,9 @@ static int test_around_2_65(void) {
     mpz_ui_pow_ui(b, 2UL, 65UL);
     passed &= expect_mpz_eq_str("2^65", b, "36893488147419103232");
 
-    /* sum = 2^65 + 2^64  --> 3 * 2^64 */
-    mpz_add(sum, b, a);          /* temporarily (2^65-1) */
-    mpz_add_ui(sum, sum, 1UL);   /* now 2^65 */
-    mpz_ui_pow_ui(a, 2UL, 64UL);
-    mpz_add(sum, sum, a);        /* 2^65 + 2^64 */
+    /* sum = 2^65 + 2^64  --> 3 * 2^64 = 55340232221128654848 */
+    mpz_ui_pow_ui(a, 2UL, 64UL); /* a = 2^64 */
+    mpz_add(sum, b, a);          /* 2^65 + 2^64 */
     passed &= expect_mpz_eq_str("2^65 + 2^64", sum, "55340232221128654848");
 
     /* integer square root of a number near 2^128 would be near 2^64;

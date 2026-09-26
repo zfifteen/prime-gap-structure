@@ -1,0 +1,5 @@
+scale,p,seed_offset,chain_index,node_n,terminal_index,least_factor,least_factor_over_sqrt,least_factor_over_visible,node_offset_from_anchor,node_offset_from_seed,delta_prev,node_mod_30,offset_mod_30,max_chain_gap,visible_divisor_bound,candidate_bound,lock_carrier_d,lock_carrier_offset,tail_after_reset_len
+10^6,999983,6,0,106109701,7,10271,0.997,1.027,6,0,6,1,6,18,10000,128,6,6,3
+10^6,999983,8,1,104651531,7,10193,0.996,1.019,14,6,6,11,14,19,10000,128,4,8,4
+10^6,999983,10,2,101701141,7,10007,0.992,1.001,22,12,6,1,22,20,10000,128,4,10,5
+... (full 160-row surface generated under output/horizon_law_probe when the probe is run)

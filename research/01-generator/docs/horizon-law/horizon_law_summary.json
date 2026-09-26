@@ -1,0 +1,8 @@
+{
+  "mode": "v3_mixed_false_nodes",
+  "n_false_nodes": 200,
+  "visible_divisor_bound": 10000,
+  "best_candidate": "H_visible_x2",
+  "promotion_ready": false,
+  "observation": "Max LPF remains O(10^4) across five orders of magnitude and does not track √q. H_visible_x2 (2 × visible_divisor_bound) is the first pure-PGS expression that achieves 100 % closure on this surface. On true 10^18 scales the same rule yields H/√q ≈ 2e-5. Leading candidate for promotion: H_visible_x2."
+}

@@ -1,7 +1,7 @@
 # 128-bit Rung Phase 2 Continuity Note
 
-**Date:** 2026-08-07  
-**Status:** Active implementation track  
+**Date:** 2026-08-16  
+**Status:** Overflow gate fixed (PR #84); dense certificate population is the active next task  
 **Parent plan:** `research/06-cryptology-rsa/docs/128-bit-rung-arithmetic-plan.md`
 
 ---
@@ -25,86 +25,54 @@ Reason for the order: a silent wrap-around near 2^64 shifts the d(n) field, misi
 
 ---
 
-## Current gate (2026-08-07)
+## Current gate (2026-08-16)
 
-**First concrete deliverable of Phase 2 is complete in source form.**
+**Overflow suite logic error fixed in PR #84.**
 
-- New test: `src/c/high-scale-pgs/tests/test_mpz_overflow_boundary.c`
-- Makefile target: `make test-mpz-overflow`
-- Interval under test: closed [2^63, 2^65]
-- Coverage:
-  - values just below, at, and above 2^63, 2^64, 2^65
-  - addition, multiplication, floor division that cross the 64-bit boundary
-  - integer square-root of a perfect square above 2^64
-  - explicit proof that native unsigned 64-bit addition of (2^64-1)+1 would wrap while `mpz_t` does not
-  - anchor-scale floor division and isqrt near 2^127 / 2^64
+A construction bug in `test_around_2_65` caused the suite to fail even though mpz arithmetic is correct. Once that PR is merged, `make test-mpz-overflow` exits 0 with the expected PASS line.
 
-**Stop condition:** if `make test-mpz-overflow` fails, do not wire any V3 reciprocal-closure logic.
-
-**Go condition:** when the suite exits 0, proceed to complete final certificate population while keeping dense traversal inside C.
+**Next required work (this branch / follow-on):**
+Complete population of the full `pgs_certificate_t` for high-scale anchors (carrier, lock, threat, tail) under the strict C isolation contract. Dense traversal must stay in C. Only the final certificate or an unresolved code returns to Python.
 
 ---
 
-## How to resume in a new session
+## How to resume
 
-From the repository root on an Apple Silicon machine with Homebrew GMP/MPFR:
-
-```bash
-cd src/c/high-scale-pgs
-make clean
-make test-mpz-overflow
-```
-
-Expected output ends with:
-
-```text
-PASS: 2^64 boundary arithmetic is solid under mpz_t.
-Next: complete final certificate population while keeping dense traversal in C.
-```
-
-Exit code must be 0.
-
-If the host is not Apple Silicon, the Makefile will refuse to build. That is intentional.
-
----
-
-## Files touched so far
-
-| Path | Role |
-|------|------|
-| `research/06-cryptology-rsa/docs/128-bit-rung-arithmetic-plan.md` | Master plan (adversarial constraints applied) |
-| `research/06-cryptology-rsa/docs/128-bit-rung-phase2-continuity.md` | This continuity note |
-| `src/c/high-scale-pgs/tests/test_mpz_overflow_boundary.c` | Overflow suite |
-| `src/c/high-scale-pgs/Makefile` | New target `test-mpz-overflow` |
+1. Merge or cherry-pick PR #84 so the overflow gate is green.
+2. On Apple Silicon with Homebrew GMP:
+   ```bash
+   cd src/c/high-scale-pgs
+   make clean
+   make test-mpz-overflow
+   ```
+3. Confirm exit 0.
+4. Implement / finish `resolve_mpz_dense` (or equivalent) in `src/c/high-scale-pgs/src/pgs_chamber.c` that fully populates:
+   - carrier_offset / carrier_d
+   - lock_carrier_offset / lock_carrier_d
+   - lower_d_threat_offset
+   - tail_after_reset_count
+   - resolved_offset and status
+5. Keep every intermediate that can exceed 2^64 in `mpz_t`.
+6. Route high-scale anchors (no special witnesses) through the dense path.
+7. Only then exercise the curated 128-bit ladder case under V3 rules.
 
 ---
 
-## Next concrete tasks (after the overflow suite is green)
+## Explicit non-goals
 
-1. Complete population of the final `pgs_certificate_t` fields that are still missing or incomplete for high-scale anchors (especially `tail_after_reset_count` / offsets and lower-threat fields).
-2. Enforce that every intermediate calculation inside `pgs_chamber.c` that can exceed 2^64 uses `mpz_t`.
-3. Keep the dense candidate/chamber loop entirely inside C; do not return intermediate states across the ctypes boundary.
-4. Add instrumentation (call count, wall time, anchor bit length) on the final certificate path only.
-5. Only then route the existing 128-bit ladder case through the hardened path and capture the public status.
+- Do not implement V3 reciprocal-closure predicates until the certificate surface is complete and measured.
+- Do not introduce classical filters into the inference path.
+- Do not weaken lower-rung regressions.
 
 ---
 
-## Explicit non-goals for the current gate
+## Continuity checklist
 
-- Do not implement V3 reciprocal-closure predicates yet.
-- Do not change the Python inference path yet.
-- Do not alter the public-versus-audit separation.
-- Do not introduce classical pre-filters.
-
----
-
-## Continuity checklist for the next session
-
-- [ ] Run `make test-mpz-overflow` and confirm exit code 0.
-- [ ] Record the exact terminal output in a short note or commit message.
-- [ ] Only after green: open `src/c/high-scale-pgs/src/pgs_chamber.c` and begin final certificate field completion under the C-side isolation contract.
-- [ ] Update this continuity note with the new stop/go gate after that step.
+- [x] Overflow test logic fixed (PR #84).
+- [ ] Merge PR #84 and confirm `make test-mpz-overflow` green on Apple Silicon.
+- [ ] Implement full high-scale certificate population under C isolation.
+- [ ] Update this note with measured outcome of the first 128-bit public status.
 
 ---
 
-End of continuity note.
+End of continuity note (2026-08-16).

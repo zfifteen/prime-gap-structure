@@ -1,0 +1,104 @@
+{
+  "label": "Measured",
+  "verifier": "Hermes Bridge",
+  "shard_id": "W0-P1",
+  "land": "/workspace/pools/crew-wave0-w0-p1/out/wave0-w0-p1",
+  "pair": {
+    "lower": "9223372036854756211",
+    "upper": "9223372036854795377"
+  },
+  "seed_revalidation": {
+    "ft_real": true,
+    "delta_t": -6,
+    "lock": true,
+    "carrier": true
+  },
+  "land_summary_stage6_admit": true,
+  "land_outcome": "A_admit",
+  "admit_row": {
+    "lower_id": "anchor",
+    "upper_id": "reset_endpoint"
+  },
+  "n_trials": 5,
+  "n_diff": 0,
+  "spot_rows": [
+    {
+      "trial": 0,
+      "lower_id": "anchor",
+      "upper_id": "anchor",
+      "land_base_close_any": false,
+      "re_base_close_any": false,
+      "land_stage6_admit": false,
+      "re_stage6_admit": false,
+      "land_strict": false,
+      "re_strict": false,
+      "land_corr": false,
+      "re_corr": false,
+      "diff": false
+    },
+    {
+      "trial": 1,
+      "lower_id": "anchor",
+      "upper_id": "reset_endpoint",
+      "land_base_close_any": true,
+      "re_base_close_any": true,
+      "land_stage6_admit": true,
+      "re_stage6_admit": true,
+      "land_strict": true,
+      "re_strict": true,
+      "land_corr": false,
+      "re_corr": false,
+      "diff": false
+    },
+    {
+      "trial": 2,
+      "lower_id": "reset_endpoint",
+      "upper_id": "anchor",
+      "land_base_close_any": false,
+      "re_base_close_any": false,
+      "land_stage6_admit": false,
+      "re_stage6_admit": false,
+      "land_strict": false,
+      "re_strict": false,
+      "land_corr": false,
+      "re_corr": false,
+      "diff": false
+    },
+    {
+      "trial": 3,
+      "lower_id": "reset_endpoint",
+      "upper_id": "reset_endpoint",
+      "land_base_close_any": false,
+      "re_base_close_any": false,
+      "land_stage6_admit": false,
+      "re_stage6_admit": false,
+      "land_strict": false,
+      "re_strict": false,
+      "land_corr": false,
+      "re_corr": false,
+      "diff": false
+    },
+    {
+      "trial": 4,
+      "lower_id": "carrier_w",
+      "upper_id": "carrier_w",
+      "land_base_close_any": false,
+      "re_base_close_any": false,
+      "land_stage6_admit": false,
+      "re_stage6_admit": false,
+      "land_strict": false,
+      "re_strict": false,
+      "land_corr": false,
+      "re_corr": false,
+      "diff": false
+    }
+  ],
+  "VERIFY_MATCH": true,
+  "rem0_used": false,
+  "window": [
+    -12,
+    6
+  ],
+  "not_a_theorem": true,
+  "not_factorization": true
+}

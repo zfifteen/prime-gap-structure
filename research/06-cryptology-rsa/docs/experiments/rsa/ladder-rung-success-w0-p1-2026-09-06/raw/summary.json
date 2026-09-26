@@ -1,0 +1,59 @@
+{
+  "label": "Measured",
+  "not_a_theorem": true,
+  "not_factorization": true,
+  "pin": "66bf995de3ca07fdad40648a5d1e4d25e504c022",
+  "case_id": "rsa_v2_128bit_static_001",
+  "window": [
+    -12,
+    6
+  ],
+  "window_unchanged": true,
+  "agent": "Pool Boss Wave-0 volume",
+  "shard_id": "W0-P1",
+  "seed": {
+    "lower": "9223372036854756211",
+    "upper": "9223372036854795377",
+    "delta_t_claim": -6,
+    "delta_t": -6,
+    "ft_real": true,
+    "lock": true,
+    "carrier": true,
+    "lower_cert_sha256": "20d267cff1dc57976f2bd21814c191ec48aa5e76c65fd804ace03fcefc742e81",
+    "upper_cert_sha256": "ba88bbbd989d486d516e6dc4eb14c1732fef7417803dc8d5094a8609edb84dca",
+    "seed_ok": true,
+    "upper_closing_reset_endpoint": "9223372036854795409"
+  },
+  "joint_grid": "{anchor,reset_endpoint}\u00d7{anchor,reset_endpoint} + carrier_w\u00d7carrier_w",
+  "n_joint_trials": 5,
+  "n_base_close": 1,
+  "n_stage6_admit": 1,
+  "stage6_admit": true,
+  "outcome": "A_admit",
+  "admit_row": {
+    "lower_id": "anchor",
+    "upper_id": "reset_endpoint"
+  },
+  "rem0_used": false,
+  "not_x_only": true,
+  "ft_rule": "ft_real := deadline=tail \u2227 non-empty tails \u2227 delta_t \u2208 [-12,6]; vacuous \u2260 pass",
+  "elapsed_s": 1.475,
+  "residual_package": {
+    "residual_primary": null,
+    "n_joint_trials": 5,
+    "n_base_close": 1,
+    "n_admit": 1,
+    "ft_real_rule": "held"
+  },
+  "closing_identity": {
+    "lower_id": "anchor",
+    "upper_id": "reset_endpoint",
+    "lower_endpoint": "9223372036854756211",
+    "upper_endpoint_closing": "9223372036854795409",
+    "upper_chamber_anchor_card": "9223372036854795377",
+    "note": "PGS soft: publish closing U as reset \u202695409, not only card anchor \u202695377"
+  },
+  "admit_class": "joint_identity_stage6_admit",
+  "not_stock_eval_strict": true,
+  "pgs_writeup": "/workspace/agent-boards/ladder-pm/PGS_MATCH_W0_P1_STOCK_VS_JOINT.md"
+}

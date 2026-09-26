@@ -1,0 +1,58 @@
+{
+  "verdict": "MATCH",
+  "land": "/workspace/pools/crew-wave0-w0-p1/out/wave0-w0-p1",
+  "checks": {
+    "summary_admit_true": true,
+    "ft_real": true,
+    "delta_t": -6,
+    "not_vacuous": true,
+    "lock": true,
+    "carrier": true,
+    "signatures_match": true,
+    "admit_identity": "anchor\u00d7reset_endpoint",
+    "mutual_floor_close_recomputed": true,
+    "floor_N_over_le": 9223372036854795409,
+    "floor_N_over_ue": 9223372036854756211,
+    "land_floors_match": true,
+    "not_x_only": true,
+    "rem0_false": true,
+    "window_fixed": true,
+    "n_base_close": 1
+  },
+  "official_eval_strict_note": "eval_strict(L,U,x=anchor) uses stock upper.reset in predicate; admit here is joint substituted lower.anchor\u00d7upper.reset_endpoint mutual floor \u2014 recomputed TRUE",
+  "official_eval_strict_anchor": {
+    "floor_N_over_x": "9223372036854795409",
+    "upper_reset": "9223372036854795409",
+    "floor_N_over_x_eq_upper_reset": true,
+    "floor_N_over_upper_reset": "9223372036854756211",
+    "lower_reset": "9223372036854756227",
+    "floor_N_over_upper_reset_eq_lower_reset": false,
+    "signatures_match": true,
+    "lower_signature": "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail",
+    "upper_signature": "carrier_d=4;lock_carrier_d=4;threat=False;deadline=tail",
+    "passed": false
+  },
+  "admit_trial": {
+    "lower_id": "anchor",
+    "upper_id": "reset_endpoint",
+    "le": "9223372036854756211",
+    "ue": "9223372036854795409",
+    "strict_detail": {
+      "lower_id_endpoint": "9223372036854756211",
+      "upper_id_endpoint": "9223372036854795409",
+      "x_used": "9223372036854756211",
+      "floor_N_over_x": "9223372036854795409",
+      "floor_N_over_x_eq_upper_id": true,
+      "floor_N_over_upper_id": "9223372036854756211",
+      "floor_N_over_upper_id_eq_lower_id": true,
+      "passed": true,
+      "endpoints_are_stock_resets": false
+    }
+  },
+  "pin": "66bf995de3ca07fdad40648a5d1e4d25e504c022",
+  "pair": {
+    "L": "9223372036854756211",
+    "U": "9223372036854795377",
+    "delta_t": -6
+  }
+}

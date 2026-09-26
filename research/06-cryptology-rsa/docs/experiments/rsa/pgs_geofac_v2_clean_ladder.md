@@ -36,3 +36,11 @@ radius = 2 ** max(10, bits // 5 + 2)
 
 Rows that exceed the clean endpoint-measurement budget are reported as
 `unresolved`. The script does not widen the chamber from hidden factors.
+
+## Measured rung SUCCESS — 2026-09-06 (joint-identity Stage-6 admit)
+
+**Fixture** `rsa_v2_128bit_static_001` · shard `W0-P1` · δ_t=-6 · closing L anchor `…56211` × U reset_endpoint `…95409`.
+
+**Label:** joint-identity Stage-6 admit (Measured). Stock `eval_strict` still fails — do not conflate.
+
+Full packet: [`ladder-rung-success-w0-p1-2026-09-06/`](./ladder-rung-success-w0-p1-2026-09-06/).

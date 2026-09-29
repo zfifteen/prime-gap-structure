@@ -145,8 +145,9 @@ These rows record killed interpretive extensions of proved local structure. They
 | Date | Claim | Status | Regime / evidence |
 | --- | --- | --- | --- |
 | 2026-07-24 | Residual-mean elevation after Gap Winner: mean `tau` on residual `(w, q)` strictly exceeds mean `tau` on pre-valve `(p, w)` for every both-sided nonempty gap (and residual/pre ratio increases with `tau(w)`) | **Falsified** (H1 and H2). About 60–64% of eligible gaps reverse on mid-scale surfaces. NLS undercuts remain 0. | `p ≤ 2e6`; package `experiments/gap-winner-one-way-complexity-valve-falsification-2026-07/` |
+| 2026-07-25 | Unique Floor Dichotomy U2: among gaps with min-\(\tau\) floor \(m=4\) and length \(g \ge 20\), multi-tie rate \(\lvert L\rvert \ge 2\) is at least \(0.99\) (long non-square corridors almost surely multi-tie) | **Falsified** on the executed decade ladder. Multi rate \(0.9429\) (\(1421/1507\)). Mid-scale consecutive \(p \le 10^7\) still held U2; the high-scale ladder kills it. U1/U3 not falsified under stated ceilings on that ladder. | Decade ladder \(10^8..10^{18}\), 256 primes/decade (2805 gaps) plus mid-scale consecutive; package `experiments/unique-floor-dichotomy-falsification-2026-07/` |
 
-Truncation of residual search for lower-complexity certificates continues to rest on GWR, No-Later-Simpler-Composite, and bounded compression alone. It does not require residual mean elevation.
+Truncation of residual search for lower-complexity certificates continues to rest on GWR, No-Later-Simpler-Composite, and bounded compression alone. It does not require residual mean elevation, dual right-pin as a hard certificate, or near-certain multi-tie on every moderate-length semiprime floor.
 
 ## Legacy Prefilter
 
@@ -217,3 +218,4 @@ Reference document:
 - [docs/core/PRIME_GAP_GENERATIVE_MODEL.md](docs/core/PRIME_GAP_GENERATIVE_MODEL.md) explains the reduced gap-type model.
 - [docs/core/RECURSIVE_PRIME_WALK.md](docs/core/RECURSIVE_PRIME_WALK.md) explains the recursive walk, closure condition, cutoff falsification, and dominant `d=4` regime.
 - [experiments/gap-winner-one-way-complexity-valve-falsification-2026-07/](../experiments/gap-winner-one-way-complexity-valve-falsification-2026-07/) records the mid-scale falsification of residual-mean elevation after the Gap Winner.
+- [experiments/unique-floor-dichotomy-falsification-2026-07/](../experiments/unique-floor-dichotomy-falsification-2026-07/) records unique-floor U2 falsification on the \(10^8..10^{18}\) decade ladder (U1/U3 still hold under stated ceilings on that surface).

@@ -1,0 +1,145 @@
+{
+  "hypothesis": "dual_endpoint_pin_multi_tie_right_clearance",
+  "status_language": "measured_on_regime_only",
+  "regime": {
+    "p_min": 11,
+    "p_max": 10000000,
+    "hard_limit": 10000719
+  },
+  "counts": {
+    "gaps_nonempty": 664575,
+    "multi_tie": 414444,
+    "clearance_gt_32": 1,
+    "clearance_gt_p2_bound": 1,
+    "theorem_left_breaks": 0
+  },
+  "metrics": {
+    "max_clearance": 34,
+    "mean_clearance": 3.7953668046829003,
+    "median_clearance": 3.0,
+    "p95_clearance": 9.0,
+    "median_clearance_g_ge_20": 4.0
+  },
+  "max_clearance_row": {
+    "p": 9725087,
+    "q": 9725141,
+    "g": 54,
+    "m": 4,
+    "w": 9725097,
+    "w_R": 9725107,
+    "alpha": 10,
+    "clearance": 34,
+    "L_size": 5,
+    "C": 130,
+    "p2_bound": 32,
+    "multi_tie": true
+  },
+  "g_bins_g_ge_20_n100": [
+    {
+      "g_bin": 20,
+      "n": 93003,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.471511671666505,
+      "max_clearance": 24
+    },
+    {
+      "g_bin": 30,
+      "n": 49427,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.375179557731604,
+      "max_clearance": 32
+    },
+    {
+      "g_bin": 40,
+      "n": 21345,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.499461232138674,
+      "max_clearance": 22
+    },
+    {
+      "g_bin": 50,
+      "n": 8009,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.537770008740167,
+      "max_clearance": 34
+    },
+    {
+      "g_bin": 60,
+      "n": 4257,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.353065539112051,
+      "max_clearance": 26
+    },
+    {
+      "g_bin": 70,
+      "n": 1762,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.482406356413167,
+      "max_clearance": 19
+    },
+    {
+      "g_bin": 80,
+      "n": 647,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.255023183925811,
+      "max_clearance": 17
+    },
+    {
+      "g_bin": 90,
+      "n": 311,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.408360128617363,
+      "max_clearance": 14
+    },
+    {
+      "g_bin": 100,
+      "n": 128,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.484375,
+      "max_clearance": 22
+    }
+  ],
+  "outcomes": {
+    "P1_clearance_le_32": "out_of_registered_window",
+    "P1_raw_status": "falsified",
+    "P2_clearance_le_bound": "falsified",
+    "P3_median_flat": "holds",
+    "P1_falsified": false,
+    "P2_falsified": true,
+    "P3_falsified": false,
+    "linear_climb_detected": false
+  },
+  "sample_clearance_gt_32": [
+    {
+      "p": 9725087,
+      "q": 9725141,
+      "g": 54,
+      "m": 4,
+      "w": 9725097,
+      "w_R": 9725107,
+      "alpha": 10,
+      "clearance": 34,
+      "L_size": 5,
+      "C": 130,
+      "p2_bound": 32,
+      "multi_tie": true
+    }
+  ],
+  "sample_p2_violations": [
+    {
+      "p": 9725087,
+      "q": 9725141,
+      "g": 54,
+      "m": 4,
+      "w": 9725097,
+      "w_R": 9725107,
+      "alpha": 10,
+      "clearance": 34,
+      "L_size": 5,
+      "C": 130,
+      "p2_bound": 32,
+      "multi_tie": true
+    }
+  ],
+  "elapsed_seconds": 14.078147172927856
+}

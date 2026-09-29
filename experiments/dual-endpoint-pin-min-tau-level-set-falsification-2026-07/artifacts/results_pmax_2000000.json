@@ -1,0 +1,94 @@
+{
+  "hypothesis": "dual_endpoint_pin_multi_tie_right_clearance",
+  "status_language": "measured_on_regime_only",
+  "regime": {
+    "p_min": 11,
+    "p_max": 2000000,
+    "hard_limit": 2000621
+  },
+  "counts": {
+    "gaps_nonempty": 148929,
+    "multi_tie": 90846,
+    "clearance_gt_32": 0,
+    "clearance_gt_p2_bound": 0,
+    "theorem_left_breaks": 0
+  },
+  "metrics": {
+    "max_clearance": 22,
+    "mean_clearance": 3.5213107896880436,
+    "median_clearance": 3.0,
+    "p95_clearance": 8.0,
+    "median_clearance_g_ge_20": 4.0
+  },
+  "max_clearance_row": {
+    "p": 969821,
+    "q": 969851,
+    "g": 30,
+    "m": 4,
+    "w": 969823,
+    "w_R": 969829,
+    "alpha": 2,
+    "clearance": 22,
+    "L_size": 3,
+    "C": 96,
+    "p2_bound": 32,
+    "multi_tie": true
+  },
+  "g_bins_g_ge_20_n100": [
+    {
+      "g_bin": 20,
+      "n": 19143,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.146424280415818,
+      "max_clearance": 20
+    },
+    {
+      "g_bin": 30,
+      "n": 8811,
+      "median_clearance": 4.0,
+      "mean_clearance": 3.992849846782431,
+      "max_clearance": 22
+    },
+    {
+      "g_bin": 40,
+      "n": 3277,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.195605736954532,
+      "max_clearance": 20
+    },
+    {
+      "g_bin": 50,
+      "n": 1117,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.188898836168308,
+      "max_clearance": 18
+    },
+    {
+      "g_bin": 60,
+      "n": 490,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.061224489795919,
+      "max_clearance": 18
+    },
+    {
+      "g_bin": 70,
+      "n": 201,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.288557213930348,
+      "max_clearance": 16
+    }
+  ],
+  "outcomes": {
+    "P1_clearance_le_32": "holds",
+    "P1_raw_status": "holds",
+    "P2_clearance_le_bound": "holds",
+    "P3_median_flat": "holds",
+    "P1_falsified": false,
+    "P2_falsified": false,
+    "P3_falsified": false,
+    "linear_climb_detected": false
+  },
+  "sample_clearance_gt_32": [],
+  "sample_p2_violations": [],
+  "elapsed_seconds": 1.698838710784912
+}

@@ -1,0 +1,108 @@
+{
+  "hypothesis": "dual_endpoint_pin_multi_tie_right_clearance",
+  "status_language": "measured_on_regime_only",
+  "regime": {
+    "p_min": 11,
+    "p_max": 5000000,
+    "hard_limit": 5000675
+  },
+  "counts": {
+    "gaps_nonempty": 348509,
+    "multi_tie": 215476,
+    "clearance_gt_32": 0,
+    "clearance_gt_p2_bound": 0,
+    "theorem_left_breaks": 0
+  },
+  "metrics": {
+    "max_clearance": 26,
+    "mean_clearance": 3.6751424752640665,
+    "median_clearance": 3.0,
+    "p95_clearance": 8.0,
+    "median_clearance_g_ge_20": 4.0
+  },
+  "max_clearance_row": {
+    "p": 4036961,
+    "q": 4036993,
+    "g": 32,
+    "m": 4,
+    "w": 4036966,
+    "w_R": 4036967,
+    "alpha": 5,
+    "clearance": 26,
+    "L_size": 2,
+    "C": 116,
+    "p2_bound": 32,
+    "multi_tie": true
+  },
+  "g_bins_g_ge_20_n100": [
+    {
+      "g_bin": 20,
+      "n": 47294,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.329893855457352,
+      "max_clearance": 24
+    },
+    {
+      "g_bin": 30,
+      "n": 23669,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.2194009041362115,
+      "max_clearance": 26
+    },
+    {
+      "g_bin": 40,
+      "n": 9690,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.317337461300309,
+      "max_clearance": 22
+    },
+    {
+      "g_bin": 50,
+      "n": 3461,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.440046229413464,
+      "max_clearance": 22
+    },
+    {
+      "g_bin": 60,
+      "n": 1778,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.277840269966254,
+      "max_clearance": 18
+    },
+    {
+      "g_bin": 70,
+      "n": 709,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.221438645980254,
+      "max_clearance": 19
+    },
+    {
+      "g_bin": 80,
+      "n": 245,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.240816326530612,
+      "max_clearance": 14
+    },
+    {
+      "g_bin": 90,
+      "n": 106,
+      "median_clearance": 4.0,
+      "mean_clearance": 4.481132075471698,
+      "max_clearance": 12
+    }
+  ],
+  "outcomes": {
+    "P1_clearance_le_32": "out_of_registered_window",
+    "P1_raw_status": "holds",
+    "P2_clearance_le_bound": "holds",
+    "P3_median_flat": "holds",
+    "P1_falsified": false,
+    "P2_falsified": false,
+    "P3_falsified": false,
+    "linear_climb_detected": false
+  },
+  "sample_clearance_gt_32": [],
+  "sample_p2_violations": [],
+  "elapsed_seconds": 5.859822988510132
+}
